@@ -144,6 +144,16 @@
     background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px;
     padding: 0.75rem 1rem; font-size: 0.85rem; margin-bottom: 1.5rem;
   }
+  .guia-pasos {
+    display: grid; gap: 0.75rem; margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) { .guia-pasos { grid-template-columns: repeat(2, 1fr); } }
+  .guia-item {
+    background: #fff; border: 1px solid #e7e5e4; border-left: 4px solid #0f766e;
+    border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.85rem;
+  }
+  .guia-item strong { color: #0f766e; display: block; margin-bottom: 0.25rem; }
+  .guia-item span { color: #57534e; }
 </style>
 </head>
 <body>
@@ -162,6 +172,14 @@
   <div class="resumen">
     Flujo completo: <strong>informe</strong> → <strong>propuesta</strong> → <strong>web</strong> → <strong>WhatsApp</strong>.
     Cada paso es un HTML independiente listo para mostrar al cliente o enviar por link.
+  </div>
+
+  <h2>Cómo ejecutar el proyecto (1 → 4)</h2>
+  <div class="guia-pasos">
+    <div class="guia-item"><strong>1 · Informe</strong><span>URL del negocio + audit marketing. Envías al cliente y esperas respuesta.</span></div>
+    <div class="guia-item"><strong>2 · Propuesta</strong><span>3 planes con precio. Solo si el cliente mostró interés en el informe.</span></div>
+    <div class="guia-item"><strong>3 · Web</strong><span>Landing con CTA y confianza. Requiere propuesta aceptada + dominio/hosting.</span></div>
+    <div class="guia-item"><strong>4 · WhatsApp</strong><span>Bot que agenda. Después de la web + API Meta (producción).</span></div>
   </div>
 
   <div class="nav-steps">
