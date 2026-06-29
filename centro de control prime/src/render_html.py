@@ -301,9 +301,10 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str) -> st
         <div class="embudo-toolbar">
           <button type="button" class="embudo-tool" data-embudo-back>← Índice panel</button>
           <span id="embudo-viewer-title" class="embudo-viewer-title">—</span>
+          <span id="embudo-viewer-step" class="embudo-viewer-step"></span>
           <div class="embudo-tool-group">
-            <button type="button" class="embudo-tool" data-embudo-prev disabled>← Anterior</button>
-            <button type="button" class="embudo-tool" data-embudo-next disabled>Siguiente →</button>
+            <button type="button" class="embudo-tool is-disabled" data-embudo-prev disabled aria-disabled="true">← Anterior</button>
+            <button type="button" class="embudo-tool is-disabled" data-embudo-next disabled aria-disabled="true">Siguiente →</button>
             <a id="embudo-external" class="embudo-tool embudo-tool-link" href="#" target="_blank" rel="noopener">Nueva pestaña ↗</a>
           </div>
         </div>

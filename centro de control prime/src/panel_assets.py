@@ -294,17 +294,21 @@ body {
 #embudo-overview[hidden] { display: none !important; }
 .embudo-toolbar {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
-  padding: 8px 10px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+  position: sticky; top: 0; z-index: 20;
 }
 .embudo-viewer-title { flex: 1; font-size: 0.82rem; font-weight: 600; min-width: 120px; }
-.embudo-tool-group { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.embudo-viewer-step { font-size: 0.68rem; color: var(--muted); margin-left: 4px; }
+.embudo-tool-group { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; width: 100%; }
+@media (min-width: 640px) { .embudo-tool-group { width: auto; margin-left: auto; } }
 .embudo-tool {
-  font-family: inherit; font-size: 0.72rem; color: var(--accent);
-  background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
-  padding: 4px 10px; cursor: pointer;
+  font-family: inherit; font-size: 0.78rem; font-weight: 500; color: var(--accent);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 14px; min-height: 44px; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
 }
-.embudo-tool:hover:not(:disabled) { border-color: var(--accent); background: var(--bg); }
-.embudo-tool:disabled { opacity: 0.35; cursor: default; }
+.embudo-tool:hover:not(:disabled):not(.is-disabled) { border-color: var(--accent); background: var(--bg); }
+.embudo-tool:disabled, .embudo-tool.is-disabled { opacity: 0.35; cursor: default; pointer-events: none; }
 .embudo-tool-link { text-decoration: none; display: inline-flex; align-items: center; }
 .embudo-frame {
   flex: 1; width: 100%; min-height: 480px; border: 1px solid var(--border);
@@ -443,6 +447,13 @@ function resetEmbudoOverview() {
   if (frame) frame.src = 'about:blank';
 }
 
+function setEmbudoBtn(btn, enabled) {
+  if (!btn) return;
+  btn.disabled = !enabled;
+  btn.classList.toggle('is-disabled', !enabled);
+  btn.setAttribute('aria-disabled', String(!enabled));
+}
+
 function initEmbudo() {
   const shell = document.getElementById('embudo-shell');
   if (!shell) return;
@@ -450,6 +461,7 @@ function initEmbudo() {
   const viewer = document.getElementById('embudo-viewer');
   const frame = document.getElementById('embudo-frame');
   const titleEl = document.getElementById('embudo-viewer-title');
+  const stepEl = document.getElementById('embudo-viewer-step');
   const ext = document.getElementById('embudo-external');
   const btnPrev = document.querySelector('[data-embudo-prev]');
   const btnNext = document.querySelector('[data-embudo-next]');
@@ -459,6 +471,32 @@ function initEmbudo() {
   steps.sort((a, b) => a.paso - b.paso);
   let current = null;
 
+  function pasoFromHref(href) {
+    const h = (href || '').toLowerCase();
+    if (!h || h.startsWith('http') || h.startsWith('mailto') || h.startsWith('tel') || h.startsWith('#')) return null;
+    if (h.includes('index.html') && !/paso-\\d/.test(h)) return 0;
+    const m = h.match(/paso-(\\d+)/);
+    return m ? parseInt(m[1], 10) : null;
+  }
+
+  function itemForPaso(paso) {
+    if (paso === 0) return { url: indexUrl, title: 'Índice del embudo', paso: 0 };
+    return steps.find(s => s.paso === paso) || null;
+  }
+
+  function itemFromHref(href) {
+    const paso = pasoFromHref(href);
+    return paso === null ? null : itemForPaso(paso);
+  }
+
+  function updateToolbar(paso) {
+    if (stepEl) {
+      stepEl.textContent = paso > 0 ? `Paso ${paso} de ${steps.length}` : 'Índice';
+    }
+    setEmbudoBtn(btnPrev, paso > 0);
+    setEmbudoBtn(btnNext, paso < steps.length);
+  }
+
   function openItem(item) {
     if (!item?.url || !frame) return;
     overview.hidden = true;
@@ -467,9 +505,43 @@ function initEmbudo() {
     if (titleEl) titleEl.textContent = item.title || 'Embudo';
     if (ext) ext.href = item.url;
     current = item;
-    const paso = item.paso || 0;
-    if (btnPrev) btnPrev.disabled = paso <= 0;
-    if (btnNext) btnNext.disabled = paso <= 0 || paso >= steps.length;
+    updateToolbar(item.paso || 0);
+  }
+
+  function syncFromFrame() {
+    if (!frame) return;
+    try {
+      const path = frame.contentWindow.location.pathname + frame.contentWindow.location.search;
+      const paso = pasoFromHref(path);
+      if (paso === null) return;
+      const item = itemForPaso(paso);
+      if (!item) return;
+      current = item;
+      if (titleEl) titleEl.textContent = item.title || 'Embudo';
+      if (ext) ext.href = item.url;
+      updateToolbar(paso);
+    } catch (_) {}
+  }
+
+  function hijackIframeNav() {
+    if (!frame) return;
+    try {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+      doc.querySelectorAll('.embudo-inline-nav').forEach(el => { el.hidden = true; });
+      doc.querySelectorAll('a[href]').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const paso = pasoFromHref(href);
+        if (paso === null) return;
+        if (a.dataset.embudoBound === '1') return;
+        a.dataset.embudoBound = '1';
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const item = itemFromHref(href);
+          if (item) openItem(item);
+        });
+      });
+    } catch (_) {}
   }
 
   shell.querySelectorAll('[data-embudo-url]').forEach(el => {
@@ -483,7 +555,11 @@ function initEmbudo() {
   document.querySelector('[data-embudo-back]')?.addEventListener('click', resetEmbudoOverview);
 
   btnPrev?.addEventListener('click', () => {
-    if (!current || current.paso <= 1) {
+    if (!current) {
+      if (indexUrl) openItem({ url: indexUrl, title: 'Índice del embudo', paso: 0 });
+      return;
+    }
+    if (current.paso <= 1) {
       if (indexUrl) openItem({ url: indexUrl, title: 'Índice del embudo', paso: 0 });
       return;
     }
@@ -492,13 +568,27 @@ function initEmbudo() {
   });
 
   btnNext?.addEventListener('click', () => {
-    if (!current) return;
+    if (!current) {
+      if (steps.length) openItem(steps[0]);
+      return;
+    }
     if (current.paso === 0 && steps.length) {
       openItem(steps[0]);
       return;
     }
     const next = steps.find(s => s.paso === current.paso + 1);
     if (next) openItem(next);
+  });
+
+  frame?.addEventListener('load', () => {
+    syncFromFrame();
+    hijackIframeNav();
+  });
+
+  window.addEventListener('message', (ev) => {
+    if (!ev.data || ev.data.type !== 'embudo-nav') return;
+    const item = itemFromHref(ev.data.href || '');
+    if (item) openItem(item);
   });
 }
 
