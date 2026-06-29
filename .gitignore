@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.pyc
+.cache/
+node_modules/
+.DS_Store
+*.log
+.cursor/
+
+# PDFs y outputs pesados (opcional subir manual)
+libros a entender/libros/*.pdf
