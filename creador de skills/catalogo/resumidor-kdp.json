@@ -1,0 +1,22 @@
+{
+  "nombre": "resumidor-kdp",
+  "titulo": "Resumidor KDP",
+  "tipo": "workflow",
+  "proyecto_destino": "libros-a-entender",
+  "triggers": ["resumidor kdp", "pdf resumen amazon", "marketing kdp", "usa resumidor-kdp", "listing amazon"],
+  "proceso": "Flujo completo en libros a entender: PDF fuente → resumen editorial (main.py) → listing Amazon KDP (kdp_main.py). Marketing solo lee el PDF; nunca lo modifica.",
+  "pasos": [
+    "Colocar PDF fuente en libros/{Libro}.pdf. Definir slug y lista de temas con el usuario.",
+    "Producción: cd ~/cursorprime/libros\\ a\\ entender && python3 main.py --slug {slug} --sin-confirmacion \"{Libro}\" \"Tema 1\" \"Tema 2\" ...",
+    "Revisar resumenes/{slug}/{Libro}.pdf y pedir aprobación explícita del usuario antes de marketing.",
+    "Marketing KDP: python3 kdp_main.py --slug {slug} (o ruta al PDF). Salida en resumenes/{slug}/kdp/.",
+    "QC listing: título, descripción, keywords, beneficios. Si el PDF tiene problemas → logs/produccion_solicitudes.json, NO tocar PDF desde marketing."
+  ],
+  "reglas": [
+    "Aprobación usuario obligatoria en PDF final antes de kdp_main.py",
+    "Seguir marketing-constitucion.mdc: marketing SOLO LEE el PDF",
+    "No confundir con pdf-resumidor (ideas de proyectos) — este flujo es editorial + Amazon",
+    "Modos parciales: --solo-pdf, --solo-tablas, --solo-mapa para iterar diseño",
+    "Ruta base: ~/cursorprime/libros a entender"
+  ]
+}

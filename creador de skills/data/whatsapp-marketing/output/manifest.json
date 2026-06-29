@@ -1,0 +1,17 @@
+{
+  "nombre": "whatsapp-marketing",
+  "tipo": "capacidad",
+  "proyecto": "ideas-de-proyectos",
+  "triggers": [
+    "whatsapp marketing",
+    "whatsapp ventas",
+    "secuencia whatsapp",
+    "usa whatsapp-marketing",
+    "spoki"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T01:00:10.350164+00:00"
+}

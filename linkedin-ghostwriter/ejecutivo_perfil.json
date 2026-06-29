@@ -1,0 +1,27 @@
+{
+  "nombre": "Carlos Mendoza",
+  "cargo": "Gerente General",
+  "empresa": "Empresa de Construcción",
+  "industria": "Construcción y Infraestructura",
+  "anos_experiencia": 20,
+  "ciudad": "Santiago, Chile",
+  "tono": "profesional pero cercano",
+  "temas_experto": [
+    "liderazgo de equipos",
+    "gestión de proyectos",
+    "desarrollo inmobiliario",
+    "sostenibilidad en construcción"
+  ],
+  "logros_recientes": [
+    "Completamos el proyecto Torres del Sur con 0 accidentes en 18 meses",
+    "Implementamos BIM en todos nuestros proyectos este año",
+    "El equipo creció de 50 a 120 personas en 2 años"
+  ],
+  "valores": [
+    "trabajo en equipo",
+    "seguridad primero",
+    "innovación constante",
+    "desarrollo de personas"
+  ],
+  "cantidad_posts": 8
+}

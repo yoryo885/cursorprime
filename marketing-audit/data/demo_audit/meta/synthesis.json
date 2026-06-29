@@ -1,0 +1,92 @@
+{
+  "url": "https://calendly.com",
+  "brand_name": "calendly.com",
+  "business_type": "general",
+  "overall_score": 55,
+  "grade": "C",
+  "categories": {
+    "Content & Messaging": {
+      "score": 63,
+      "weight": "25%"
+    },
+    "Conversion Optimization": {
+      "score": 61,
+      "weight": "20%"
+    },
+    "SEO & Discoverability": {
+      "score": 25,
+      "weight": "20%"
+    },
+    "Competitive Positioning": {
+      "score": 68,
+      "weight": "15%"
+    },
+    "Brand & Trust": {
+      "score": 59,
+      "weight": "10%"
+    },
+    "Growth & Strategy": {
+      "score": 55,
+      "weight": "10%"
+    }
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "title": "Sin meta description",
+      "detail": "Google autogenera snippets — baja CTR en búsqueda.",
+      "dimension": "Content & Messaging"
+    },
+    {
+      "severity": "high",
+      "title": "Meta description ausente",
+      "detail": "Escribir meta única por página principal (150-160 chars).",
+      "dimension": "SEO & Discoverability"
+    },
+    {
+      "severity": "medium",
+      "title": "Revisar página de alternativas / vs",
+      "detail": "Comparar posicionamiento explícito vs competidores detectados.",
+      "dimension": "Competitive Positioning"
+    },
+    {
+      "severity": "medium",
+      "title": "3 imágenes sin alt",
+      "detail": "Añadir alt descriptivo para accesibilidad y SEO.",
+      "dimension": "SEO & Discoverability"
+    },
+    {
+      "severity": "medium",
+      "title": "Sin schema markup detectado",
+      "detail": "Añadir JSON-LD (Organization, FAQ) para rich results.",
+      "dimension": "Brand & Growth Strategy"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Competitor A",
+      "url": "https://example-a.com",
+      "tier": "direct",
+      "note": "mock"
+    },
+    {
+      "name": "Competitor B",
+      "url": "https://example-b.com",
+      "tier": "direct",
+      "note": "mock"
+    },
+    {
+      "name": "Market Leader",
+      "url": "https://example-leader.com",
+      "tier": "aspirational",
+      "note": "mock"
+    }
+  ],
+  "quick_wins": [
+    "Sin meta description",
+    "Meta description ausente"
+  ],
+  "mock": true,
+  "confidence": "medio",
+  "synthesized_at": "2026-06-29T00:11:12.783248+00:00"
+}

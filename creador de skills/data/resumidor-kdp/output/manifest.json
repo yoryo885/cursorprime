@@ -1,0 +1,17 @@
+{
+  "nombre": "resumidor-kdp",
+  "tipo": "workflow",
+  "proyecto": "libros-a-entender",
+  "triggers": [
+    "resumidor kdp",
+    "pdf resumen amazon",
+    "marketing kdp",
+    "usa resumidor-kdp",
+    "listing amazon"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:08:28.258430+00:00"
+}

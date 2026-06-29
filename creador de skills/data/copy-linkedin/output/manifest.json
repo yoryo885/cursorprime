@@ -1,0 +1,17 @@
+{
+  "nombre": "copy-linkedin",
+  "tipo": "capacidad",
+  "proyecto": "linkedin-ghostwriter",
+  "triggers": [
+    "post linkedin",
+    "copy linkedin",
+    "ghostwriter",
+    "usa copy-linkedin",
+    "posts del mes"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:17:32.478139+00:00"
+}

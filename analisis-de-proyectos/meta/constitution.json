@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "nombre": "Análisis de proyectos",
+  "reglas": [
+    "Entrada: YouTube + web. Salida: análisis accionable para crear pipelines.",
+    "No inventar métricas — citar fuentes URL en hallazgos.",
+    "MOCK_FETCH=true por defecto; false para búsqueda real (DuckDuckGo).",
+    "Exportar a ideas de proyectos no construye código — solo borrador JSON.",
+    "No tocar libros a entender salvo orden explícita del usuario."
+  ]
+}

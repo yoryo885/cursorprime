@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa — El principio de Pareto - Antoine Delers</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #5c5c5c;
+  --accent: #2c5282;
+  --accent-light: #ebf4ff;
+  --border: #d4d4d4;
+  --paper: #fafaf8;
+  --serif: 'Literata', Georgia, 'Palatino Linotype', 'Book Antiqua', serif;
+  --sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm 22mm 20mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--ink);
+  background: white;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page-break { page-break-after: always; }
+.avoid-break { page-break-inside: avoid; }
+
+/* —— Portada (estilo guía editorial) —— */
+.cover {
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2.5rem 0 2rem;
+  page-break-after: always;
+}
+
+.cover-rule {
+  width: 42px;
+  height: 4px;
+  background: var(--accent);
+  margin-bottom: 1.75rem;
+}
+
+.cover-label {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1.25rem;
+}
+
+.cover-title {
+  font-family: var(--serif);
+  font-size: 26pt;
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 0.45rem;
+  max-width: 16cm;
+  color: #111;
+}
+
+.cover-author {
+  font-family: var(--sans);
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+}
+
+.cover-meta {
+  font-family: var(--sans);
+  font-size: 9.5pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+.cover-meta span { display: block; }
+
+.cover-intro {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  font-style: italic;
+  color: #666;
+  max-width: 92%;
+  border-left: 4px solid #dbeafe;
+  padding-left: 1.15rem;
+  line-height: 1.55;
+}
+
+/* —— Mapa conceptual —— */
+.map-section {
+  page-break-after: always;
+  padding-top: 0.5rem;
+}
+
+.section-kicker {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.section-title {
+  font-size: 20pt;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mindmap-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.mindmap-center {
+  text-align: center;
+  background: #37474F;
+  color: white;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 4px 18px rgba(55, 71, 79, 0.22);
+  page-break-inside: avoid;
+}
+
+.mindmap-center-icon {
+  font-size: 22px;
+  margin-bottom: 0.35rem;
+  line-height: 1;
+}
+
+.mindmap-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.mindmap-branch {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  border: 2px solid color-mix(in srgb, var(--branch-color, var(--accent)) 40%, white);
+  background: color-mix(in srgb, var(--branch-color, var(--accent)) 10%, white);
+  page-break-inside: avoid;
+  box-shadow: 0 2px 10px rgba(55, 71, 79, 0.07);
+}
+
+.mindmap-branch-title {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--branch-color, var(--accent));
+  color: white;
+  display: inline-block;
+}
+
+.mindmap-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mindmap-node {
+  font-size: 9pt;
+  line-height: 1.45;
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.82);
+  border-left: 3px solid var(--branch-color, var(--accent));
+}
+
+.mindmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-card {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  border: 2px solid color-mix(in srgb, var(--cat-color, var(--accent)) 35%, white);
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 8%, white);
+  page-break-inside: avoid;
+  box-shadow: 0 2px 10px rgba(55, 71, 79, 0.06);
+}
+
+.category-card h3 {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--cat-color, var(--accent));
+  color: white;
+  display: inline-block;
+}
+
+.category-card ul {
+  list-style: none;
+  font-size: 9pt;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.category-card li {
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+}
+
+.category-card li:last-child { margin-bottom: 0; }
+
+.connections {
+  margin-top: 0.5rem;
+}
+
+.connections h3 {
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.conn-list {
+  list-style: none;
+  font-size: 9pt;
+}
+
+.conn-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+}
+
+.conn-from, .conn-to {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.conn-arrow { color: var(--muted); }
+
+.conn-label {
+  flex: 1 1 100%;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 8.5pt;
+  padding-left: 0.5rem;
+}
+
+/* —— Página de tema (solo resumen) —— */
+.topic {
+  page-break-before: always;
+  padding-top: 0.25rem;
+}
+
+.topic-header {
+  margin-bottom: 1.35rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.topic-number {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 0.35rem;
+}
+
+.topic-title {
+  font-family: var(--serif);
+  font-size: 20pt;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.topic-voice {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: #888;
+}
+
+.summary {
+  text-align: justify;
+}
+
+.summary p {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #222;
+  margin-bottom: 0.85rem;
+}
+
+.summary p:last-child { margin-bottom: 0; }
+
+/* —— Página de tabla (imagen Playwright, página aparte) —— */
+.table-page {
+  page-break-before: always;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.table-page img {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+}
+
+/* —— Tabla —— */
+.concept-table-wrap {
+  margin-top: 0.5rem;
+  page-break-inside: avoid;
+}
+
+.concept-table-label {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.concept-table thead th {
+  font-family: var(--sans);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  background: var(--accent);
+  color: white;
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+}
+
+.concept-table tbody td {
+  padding: 0.6rem 0.65rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  background: white;
+}
+
+.concept-table tbody tr:nth-child(even) td {
+  background: var(--paper);
+}
+
+/* —— Tabla standalone (archivo individual) —— */
+.standalone-table-page {
+  padding: 1.5rem;
+  max-width: 18cm;
+  margin: 0 auto;
+}
+
+.standalone-table-page h1 {
+  font-size: 16pt;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+/* —— Base editorial (estilo tarjetas compartido) —— */
+.page-table {
+  background: #ffffff;
+  min-height: 100vh;
+}
+.page-table .standalone-table-page {
+  padding: 2.5rem 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.page-table .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+.page-table .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 2rem;
+  font-style: normal;
+}
+
+.tbl-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.tbl-editorial-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.tbl-editorial-badge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+}
+.tbl-editorial-badge--idea { background: #e8f4fc; }
+.tbl-editorial-badge--ejemplo { background: #e8f5e9; }
+.tbl-editorial-badge--aplicacion { background: #fef3e8; }
+.tbl-editorial-body strong {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #777;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.tbl-editorial-body p {
+  font-family: var(--serif);
+  font-size: 10pt;
+  line-height: 1.55;
+  color: #2a2a2a;
+  margin: 0;
+}
+
+/* —— Variante ICONOS — infografía con bloques de color —— */
+.page-icons .tbl-editorial-card,
+.table-page-icons .tbl-editorial-card {
+  border: none;
+  box-shadow: 0 2px 14px rgba(55, 71, 79, 0.09);
+  padding: 1.4rem 1.5rem;
+  gap: 1.25rem;
+  align-items: center;
+}
+.page-icons .tbl-editorial-card--idea,
+.table-page-icons .tbl-editorial-card--idea {
+  background: linear-gradient(135deg, #e0f7f4 0%, #ffffff 65%);
+}
+.page-icons .tbl-editorial-card--ejemplo,
+.table-page-icons .tbl-editorial-card--ejemplo {
+  background: #fafafa;
+  border-left: 5px solid #26A69A;
+  border-radius: 0 16px 16px 0;
+}
+.page-icons .tbl-editorial-card--aplicacion,
+.table-page-icons .tbl-editorial-card--aplicacion {
+  background: linear-gradient(135deg, #fff3e6 0%, #ffffff 70%);
+}
+.page-icons .tbl-editorial-badge,
+.table-page-icons .tbl-editorial-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 26px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.page-icons .tbl-editorial-badge--idea,
+.table-page-icons .tbl-editorial-badge--idea { background: #26A69A; }
+.page-icons .tbl-editorial-badge--ejemplo,
+.table-page-icons .tbl-editorial-badge--ejemplo { background: #FF6B35; }
+.page-icons .tbl-editorial-badge--aplicacion,
+.table-page-icons .tbl-editorial-badge--aplicacion { background: #37474F; }
+.page-icons .tbl-editorial-body strong,
+.table-page-icons .tbl-editorial-body strong {
+  color: #37474F;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.page-icons .tbl-editorial-body p,
+.table-page-icons .tbl-editorial-body p {
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #2a2a2a;
+}
+.page-icons .tbl-editorial,
+.table-page-icons .tbl-editorial { gap: 1.3rem; }
+
+.table-page-icons {
+  page-break-before: always;
+  background: #ffffff;
+  padding: 2rem 0 1.5rem;
+}
+.table-page-icons .standalone-table-page {
+  padding: 0 0.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.table-page-icons .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.table-page-icons .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+}
+
+/* —— Variante MINIMALISTA: mismas tarjetas, sin icono —— */
+.page-minimal .tbl-editorial-card {
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.25rem 0;
+  gap: 0;
+}
+.page-minimal .tbl-editorial-card:first-child { padding-top: 0; }
+.page-minimal .tbl-editorial-badge { display: none; }
+.page-minimal .tbl-editorial-body strong { color: #aaa; font-size: 7pt; }
+.page-minimal .tbl-editorial-body p { font-size: 10.5pt; color: #333; }
+
+/* —— Variante COLORIDA (barras azul / verde / dorado) —— */
+.page-colorful .tbl-editorial-card,
+.table-page-colorful .tbl-editorial-card {
+  border: none;
+  border-left: 6px solid var(--card-accent, #3182ce);
+  border-radius: 0 14px 14px 0;
+  background: var(--card-bg, #f7fafc);
+  box-shadow: none;
+  padding: 1.1rem 1.35rem 1.1rem 1rem;
+  align-items: center;
+  gap: 1.15rem;
+}
+.page-colorful .tbl-editorial-card--idea,
+.table-page-colorful .tbl-editorial-card--idea {
+  --card-accent: #3182ce;
+  --card-bg: #ebf8ff;
+}
+.page-colorful .tbl-editorial-card--ejemplo,
+.table-page-colorful .tbl-editorial-card--ejemplo {
+  --card-accent: #38a169;
+  --card-bg: #f0fff4;
+}
+.page-colorful .tbl-editorial-card--aplicacion,
+.table-page-colorful .tbl-editorial-card--aplicacion {
+  --card-accent: #d69e2e;
+  --card-bg: #fffff0;
+}
+.page-colorful .tbl-editorial-badge,
+.table-page-colorful .tbl-editorial-badge {
+  width: auto;
+  height: auto;
+  min-width: 3.2rem;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--card-accent);
+  padding: 0;
+  border-radius: 0;
+  align-self: flex-start;
+  padding-top: 0.15rem;
+}
+.page-colorful .tbl-editorial-body strong,
+.table-page-colorful .tbl-editorial-body strong {
+  color: var(--card-accent);
+  font-size: 7.5pt;
+  letter-spacing: 0.1em;
+}
+.page-colorful .tbl-editorial-body p,
+.table-page-colorful .tbl-editorial-body p {
+  font-size: 10.5pt;
+  line-height: 1.55;
+}
+
+.table-page-colorful {
+  page-break-before: always;
+  background: #ffffff;
+  padding: 2rem 0 1.5rem;
+}
+.table-page-colorful .standalone-table-page {
+  padding: 0 0.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.table-page-colorful .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.table-page-colorful .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+}
+.table-page-colorful .tbl-editorial { gap: 1rem; }
+
+/* —— Imágenes embebidas en PDF —— */
+.map-image-wrap, .table-image-wrap {
+  margin-top: 1rem;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+.map-image-wrap img, .table-image-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.map-image-wrap img { max-height: 240mm; }
+</style>
+</head>
+<body>
+
+<style>
+.map-section {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  padding: 32px 28px;
+  background: #f8f8f8;
+}
+.map-kicker {
+  font-size: 8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 6px;
+}
+.map-title {
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+.map-subtitle {
+  font-size: 9pt;
+  color: #bbb;
+  margin-bottom: 28px;
+}
+</style>
+
+<section class="map-section">
+  <div class="map-kicker">Visión general</div>
+  <h2 class="map-title">Mapa conceptual</h2>
+  <p class="map-subtitle">El principio de Pareto - Antoine Delers</p>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+
+    <!-- Nodo central -->
+    <div style="background:#1a1a1a;color:#fff;padding:14px 40px;border-radius:14px;
+                font-size:14pt;font-weight:700;text-align:center;
+                box-shadow:0 3px 12px rgba(0,0,0,0.2);z-index:2;">
+      El principio de Pareto
+    </div>
+
+    <!-- Conectores desde nodo central -->
+    <svg width="100%" height="52" style="display:block;overflow:visible;margin:0;">
+      <line x1="50%" y1="0" x2="50%" y2="18" stroke="#aaa" stroke-width="2"/>
+      <line x1="25%" y1="18" x2="75%" y2="18" stroke="#aaa" stroke-width="2"/>
+      <line x1="25%" y1="18" x2="25%" y2="52" stroke="#aaa" stroke-width="2"/>
+      <line x1="75%" y1="18" x2="75%" y2="52" stroke="#aaa" stroke-width="2"/>
+    </svg>
+
+    <!-- Filas de categorías 2x2 -->
+    <div style="display:flex;flex-direction:column;gap:28px;width:100%;">
+      
+<div style="display:flex;flex-direction:row;gap:24px;align-items:flex-start;width:100%;">
+  
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#085041;color:#9FE1CB;padding:10px 18px;border-radius:24px;
+              font-size:10pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.15);">Fundamentos teóricos</div>
+  <div style="width:2px;height:20px;background:#1D9E75;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">es la base</div>
+  <div style="background:#E1F5EE;color:#085041;border:2px solid #1D9E75;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Principio 80/20</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  
+  <div style="background:#E1F5EE;color:#085041;border:2px solid #1D9E75;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Ley de Pareto</div>
+</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#3C3489;color:#CECBF6;padding:10px 18px;border-radius:24px;
+              font-size:10pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.15);">Resultados y optimización</div>
+  <div style="width:2px;height:20px;background:#7F77DD;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">multiplica resultados con</div>
+  <div style="background:#EEEDFE;color:#26215C;border:2px solid #7F77DD;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Productividad personal</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">maximiza valor por</div>
+  <div style="background:#EEEDFE;color:#26215C;border:2px solid #7F77DD;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Eficiencia y eficacia</div>
+</div>
+  </div>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:flex-start;width:100%;">
+  
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#712B13;color:#F5C4B3;padding:10px 18px;border-radius:24px;
+              font-size:10pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.15);">Técnicas de implementación</div>
+  <div style="width:2px;height:20px;background:#D85A30;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">identifica el 20%</div>
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Priorización de tareas</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">permite dirigir energía</div>
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Foco y concentración</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">libera horas para</div>
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Gestión del tiempo</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Eliminar lo innecesario</div>
+</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#72243E;color:#F4C0D1;padding:10px 18px;border-radius:24px;
+              font-size:10pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.15);">Aplicación práctica</div>
+  <div style="width:2px;height:20px;background:#D4537E;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">orienta qué proyectos</div>
+  <div style="background:#FBEAF0;color:#4B1528;border:2px solid #D4537E;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Decisiones estratégicas</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:9pt;color:#999;font-style:italic;margin-bottom:3px;text-align:center;">transforma teoría en</div>
+  <div style="background:#FBEAF0;color:#4B1528;border:2px solid #D4537E;padding:7px 12px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:90px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.10);">Aplicación en la vida diaria</div>
+</div>
+  </div>
+</div>
+</div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "agent": "CompetitionAgent",
+  "confidence": 0.42,
+  "error_margin_pct": 30,
+  "sources": [
+    {
+      "url": "https://wati.io/pricing/",
+      "title": "wati.io",
+      "accessed_at": "2026-06-28T01:24:17.440788+00:00",
+      "mock": false
+    },
+    {
+      "url": "https://respond.io/pricing",
+      "title": "respond.io",
+      "accessed_at": "2026-06-28T01:24:17.899799+00:00",
+      "mock": false
+    },
+    {
+      "url": "https://www.chatbot.com/pricing/",
+      "title": "chatbot.com",
+      "accessed_at": "2026-06-28T01:24:18.395063+00:00",
+      "mock": false
+    }
+  ],
+  "findings": [
+    "Saturación: media",
+    "URLs: 3/3",
+    "Precios usados: 0 (crudos: 0, descartados: 0)",
+    "Mediana mensual estimada: CLP 80.000",
+    "Rango filtro: CLP 8000-400000/mes"
+  ],
+  "metrics": {
+    "num_competidores": {
+      "min": 2,
+      "max": 4,
+      "point": 3
+    },
+    "precio_clp": {
+      "min": 8000,
+      "max": 400000,
+      "point": 80000
+    }
+  },
+  "warnings": [
+    "wati.io: BrowserType.launch: Executable doesn't exist at /Users/yoryo/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell\n╔════════════════════════════",
+    "respond.io: BrowserType.launch: Executable doesn't exist at /Users/yoryo/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell\n╔════════════════════════════",
+    "chatbot.com: BrowserType.launch: Executable doesn't exist at /Users/yoryo/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell\n╔════════════════════════════",
+    "ningún precio en rango 8000-400000 CLP/mes — revisa filtros o URLs"
+  ],
+  "generated_at": "2026-06-28T01:24:18.395239+00:00",
+  "saturacion": "media",
+  "competidores": [
+    {
+      "url": "https://wati.io/pricing/",
+      "nombre": "wati.io",
+      "precios_detectados": [],
+      "precios_filtrados": [],
+      "precios_descartados": [],
+      "snippet": "",
+      "mock": true,
+      "error": "BrowserType.launch: Executable doesn't exist at /Users/yoryo/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell\n╔════════════════════════════"
+    },
+    {
+      "url": "https://respond.io/pricing",
+      "nombre": "respond.io",
+      "precios_detectados": [],
+      "precios_filtrados": [],
+      "precios_descartados": [],
+      "snippet": "",
+      "mock": true,
+      "error": "BrowserType.launch: Executable doesn't exist at /Users/yoryo/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell\n╔════════════════════════════"
+    },
+    {
+      "url": "https://www.chatbot.com/pricing/",
+      "nombre": "chatbot.com",
+      "precios_detectados": [],
+      "precios_filtrados": [],
+      "precios_descartados": [],
+      "snippet": "",
+      "mock": true,
+      "error": "BrowserType.launch: Executable doesn't exist at /Users/yoryo/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell\n╔════════════════════════════"
+    }
+  ],
+  "mock": true,
+  "precio_mediana_clp": 80000,
+  "filtros_aplicados": {
+    "max_urls": 10,
+    "precio_clp_min": 8000,
+    "precio_clp_max": 400000,
+    "usd_to_clp": 950,
+    "excluir_outliers": true
+  }
+}

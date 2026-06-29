@@ -1,0 +1,7 @@
+{
+  "titulo": "Pack demo productividad",
+  "salidas": ["png"],
+  "estilo": "yordy-minimal",
+  "temas": ["enfoque", "tiempo", "prioridad"],
+  "notas": "Demo solo PNG"
+}

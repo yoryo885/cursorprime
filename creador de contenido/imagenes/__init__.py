@@ -1,0 +1,1 @@
+"""Módulo imágenes PNG."""

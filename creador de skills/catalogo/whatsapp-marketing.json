@@ -1,0 +1,15 @@
+{
+  "nombre": "whatsapp-marketing",
+  "titulo": "WhatsApp Marketing",
+  "tipo": "capacidad",
+  "proyecto_destino": "ideas-de-proyectos",
+  "triggers": ["whatsapp marketing", "whatsapp ventas", "secuencia whatsapp", "usa whatsapp-marketing", "spoki"],
+  "proceso": "Copy y secuencias WhatsApp para PYMEs (prospección, seguimiento, cierre) sin Spoki ni conectores externos. Complementa idea cola-pedidos-bot; esto es marketing/comercial.",
+  "reglas": [
+    "Mensajes cortos: ≤300 caracteres por bubble; máx. 3 bubbles seguidos",
+    "Tono cercano profesional LATAM; sin spam ni MAYÚSCULAS",
+    "Secuencia típica: valor → prueba social → CTA suave → follow-up 48h",
+    "Incluir opt-out / respeto horario comercial",
+    "No integrar API WhatsApp sin que usuario pida construye — solo scripts copy"
+  ]
+}

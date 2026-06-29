@@ -1,0 +1,37 @@
+{
+  "dimension": "competitive",
+  "label": "Competitive Positioning",
+  "score": 68,
+  "findings": [
+    {
+      "severity": "medium",
+      "title": "Revisar página de alternativas / vs",
+      "detail": "Comparar posicionamiento explícito vs competidores detectados."
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Competitor A",
+      "url": "https://example-a.com",
+      "tier": "direct",
+      "note": "mock"
+    },
+    {
+      "name": "Competitor B",
+      "url": "https://example-b.com",
+      "tier": "direct",
+      "note": "mock"
+    },
+    {
+      "name": "Market Leader",
+      "url": "https://example-leader.com",
+      "tier": "aspirational",
+      "note": "mock"
+    }
+  ],
+  "wins": [
+    "Competidor identificado: Competitor A",
+    "Competidor identificado: Competitor B"
+  ],
+  "confidence": "bajo"
+}

@@ -1,0 +1,18 @@
+{
+  "negocio": "Empanadas Don Pedro (FICTICIO)",
+  "slug": "don-pedro",
+  "cliente": "empanadas-don-pedro",
+  "proyecto": "bot-pedidos",
+  "rubro": "comida rápida",
+  "horario": "11:00-22:00",
+  "menu": [
+    {"sku": "pino", "nombre": "Empanada de pino", "precio_clp": 2500},
+    {"sku": "napolitana", "nombre": "Empanada napolitana", "precio_clp": 2800},
+    {"sku": "queso", "nombre": "Empanada de queso", "precio_clp": 2300}
+  ],
+  "faqs": [
+    {"q": "horario", "a": "Abrimos 11:00 a 22:00"},
+    {"q": "delivery", "a": "Delivery Radio Santiago, pedido mínimo $10.000"}
+  ],
+  "notas": "Demo sin WhatsApp API — ver CHECKLIST para live"
+}

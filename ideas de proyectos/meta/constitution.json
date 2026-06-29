@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "reglas_inmutables": [
+    "Diseño siempre en borradores/ — construcción solo en proyectos/ con autorización explícita",
+    "No inventar métricas de mercado sin marcar confidence baja o pendiente_manual",
+    "MVP semi-automático por defecto si el proveedor no tiene API oficial",
+    "Cada proyecto destino debe tener plan.json, constitution.json y QC final"
+  ],
+  "prohibiciones": [
+    "Crear proyectos en proyectos/ sin que el usuario diga construye/armado/crea el proyecto",
+    "Sobrescribir proyectos/{slug}/ existente sin confirmación"
+  ]
+}

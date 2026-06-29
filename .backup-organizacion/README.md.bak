@@ -1,0 +1,12 @@
+# cursorprime
+
+**Abrir en Cursor:** `File → Open Workspace → cursorprime.code-workspace`  
+Guía paso a paso: [COMO_ABRIR.md](./COMO_ABRIR.md) ← **lee esto si no ves carpetas**
+
+| Carpeta | Descripción |
+|---------|-------------|
+| [creador de prompts](./creador%20de%20prompts/) | **Compartido** — genera prompts para todos los proyectos |
+| [creador de contenido](./creador%20de%20contenido/) | Pipeline PNG · GIF · Video · PDF |
+| [libros a entender](./libros%20a%20entender/) | Herramientas y flujos para analizar y entender libros/PDFs. |
+| [linkedin-ghostwriter](./linkedin-ghostwriter/) | Generación de posts de LinkedIn a partir de perfil ejecutivo. |
+| [ideas de proyectos](./ideas%20de%20proyectos/) | Evaluación y borradores de ideas de negocio/proyecto. |

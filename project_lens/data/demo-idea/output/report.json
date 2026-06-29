@@ -1,0 +1,100 @@
+{
+  "slug": "demo-idea",
+  "titulo": "Bot WhatsApp + cola de pedidos para pymes",
+  "veredicto": {
+    "agent": "SynthesisAgent",
+    "score_global": {
+      "min": 46.2,
+      "max": 70.2,
+      "point": 58.2
+    },
+    "confidence_global": 0.59,
+    "veredicto": "condicional",
+    "veredicto_labels": [
+      "viable",
+      "condicional",
+      "descartar"
+    ],
+    "por_area": {
+      "trend": {
+        "score": 50.0,
+        "confidence": 0.45,
+        "weight": 0.1
+      },
+      "market": {
+        "score": 60.0,
+        "confidence": 0.6,
+        "weight": 0.15
+      },
+      "competition": {
+        "score": 35.0,
+        "confidence": 0.75,
+        "weight": 0.15
+      },
+      "financial": {
+        "score": 73.33,
+        "confidence": 0.58,
+        "weight": 0.2
+      },
+      "scalability": {
+        "score": 80.0,
+        "confidence": 0.55,
+        "weight": 0.2
+      },
+      "cost_mvp": {
+        "score": 40.0,
+        "confidence": 0.62,
+        "weight": 0.1
+      },
+      "risk": {
+        "score": 55.0,
+        "confidence": 0.6,
+        "weight": 0.1
+      }
+    },
+    "tipo_negocio": "saas",
+    "recomendacion": "Veredicto condicional — validar hipótesis clave antes de escalar",
+    "siguiente_paso": "Ejecutar plan_accion fase 1"
+  },
+  "plan_accion": {
+    "agent": "PlannerAgent",
+    "veredicto_base": "condicional",
+    "horizonte_semanas": {
+      "min": 4,
+      "max": 10
+    },
+    "fases": [
+      {
+        "id": 1,
+        "nombre": "Validación",
+        "semanas": 2,
+        "objetivo": "Validar disposición a pagar",
+        "tareas": [],
+        "criterio_exito": "3 señales de interés"
+      },
+      {
+        "id": 2,
+        "nombre": "MVP",
+        "semanas": 4,
+        "objetivo": "MVP testeable",
+        "tareas": [
+          {
+            "id": "2.1",
+            "tarea": "Prototipo core",
+            "prioridad": "media"
+          }
+        ],
+        "criterio_exito": "1 usuario piloto activo"
+      }
+    ],
+    "hitos": [
+      {
+        "semana": 4,
+        "hito": "MVP testeable"
+      }
+    ],
+    "siguiente_accion_inmediata": "Ejecutar plan_accion fase 1"
+  },
+  "qc_ok": true,
+  "generado_at": "2026-06-28T01:17:25.865113+00:00"
+}

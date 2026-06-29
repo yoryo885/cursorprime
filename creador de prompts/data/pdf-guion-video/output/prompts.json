@@ -1,0 +1,18 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "tema": "Extender módulo PDF para generar guiones de video además del documento PDF",
+      "variante": 1,
+      "tipo": "cursor",
+      "proyecto_destino": "creador-de-contenido",
+      "estado_referencia": "pendiente",
+      "prompt": "Actúa como agente del proyecto **Creador de Contenido** (`~/cursorprime/creador de contenido`).\n\n## Problema\n\nHoy el módulo PDF (`pdf/agent.py` → `PdfModule`) solo maqueta PNGs en un `.pdf` con reportlab. Los guiones de video viven aparte: el usuario debe poner `guion` o `escenas` en `lote.json` y activar modo `video` animado para que `EscenasAgent` genere `meta/escenas.json`.\n\nQueremos que la salida PDF **también** pueda crear guiones para video — no limitarse al documento.\n\n## Objetivo\n\nCuando un lote pida salida `pdf` (o `pdf` + `video`), además del `.pdf` generar un **guion estructurado** reutilizable por el pipeline de video animado existente.\n\n## Estado actual (no reinventar)\n\n- `PdfModule`: compila PNG + título → `data/{slug}/pdf/{slug}.pdf`\n- `EscenasAgent`: divide `guion` en escenas con prompts de frame inicio/fin/animación → `meta/escenas.json`\n- `VideosModule` modo animado: consume escenas + frames PNG → clips → MP4\n- Entrada típica: `data/{slug}/inputs/lote.json` con `temas`, `salidas`, opcional `guion`\n\n## Qué implementar (MVP incremental)\n\n1. Extender salida del módulo PDF (o agente hermano mínimo): generar guion desde `temas` si no existe, o normalizar `guion` existente.\n2. Contrato: guion.md + meta/guion.json con escenas_preview.\n3. Integrar en pipeline para que video animado pueda reutilizar el guion generado.\n4. Documentar en pdf/README.md y PROYECTO.md.\n\n## Restricciones\n\nMVP local, sin APIs de pago; no romper flujos actuales; cambio mínimo; español por defecto.\n\n## Criterios de éxito\n\n- PDF + guion con temas sin guion previo\n- Video animado consume el guion generado\n- Guion existente no se sobrescribe\n- QC y packager OK",
+      "negative": "",
+      "archivo_sugerido": "01-pdf-guion-video-cursor.md",
+      "generado_at": "2026-06-27T23:58:37.202822+00:00"
+    }
+  ],
+  "count": 1,
+  "plantilla": "cursor"
+}

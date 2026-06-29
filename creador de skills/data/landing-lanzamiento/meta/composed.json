@@ -1,0 +1,17 @@
+{
+  "nombre": "landing-lanzamiento",
+  "description": "Funnel de lanzamiento reinventado en cursorprime: estratega oferta → copy → wireframe markdown (sin HostGator ni skills externas). Prompts vía creador-de-prompts. Proyecto: General. Usar cuando el usuario menciona landing, lanzamiento, oferta, pagina ventas, usa landing-lanzamiento, copy lanzamiento, o pide seguir este flujo paso a paso.",
+  "line_count": 40,
+  "tipo": "workflow",
+  "triggers": [
+    "landing",
+    "lanzamiento",
+    "oferta",
+    "pagina ventas",
+    "usa landing-lanzamiento",
+    "copy lanzamiento"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/landing-lanzamiento/output/SKILL.md"
+  ]
+}

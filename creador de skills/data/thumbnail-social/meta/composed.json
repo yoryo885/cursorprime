@@ -1,0 +1,16 @@
+{
+  "nombre": "thumbnail-social",
+  "description": "Thumbnail on-brand para YouTube/Reels: brief visual → prompt imagen → pipeline creador de contenido (PNG 16:9 o 9:16). Proyecto: Creador de Contenido. Usar cuando el usuario menciona thumbnail, miniatura, portada video, usa thumbnail-social, carátula youtube, o pide seguir este flujo paso a paso.",
+  "line_count": 40,
+  "tipo": "workflow",
+  "triggers": [
+    "thumbnail",
+    "miniatura",
+    "portada video",
+    "usa thumbnail-social",
+    "carátula youtube"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/thumbnail-social/output/SKILL.md"
+  ]
+}

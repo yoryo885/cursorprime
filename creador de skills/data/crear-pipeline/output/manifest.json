@@ -1,0 +1,17 @@
+{
+  "nombre": "crear-pipeline",
+  "tipo": "pipeline-python",
+  "proyecto": "general",
+  "triggers": [
+    "crear pipeline",
+    "nuevo pipeline",
+    "scaffolding agentes",
+    "usa crear-pipeline",
+    "pipeline python"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:24:51.460398+00:00"
+}

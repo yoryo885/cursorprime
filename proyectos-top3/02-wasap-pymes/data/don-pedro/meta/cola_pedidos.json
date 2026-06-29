@@ -1,0 +1,21 @@
+{
+  "pedidos": [
+    {
+      "id": "1001",
+      "items": [
+        {
+          "sku": "pino",
+          "qty": 2
+        },
+        {
+          "sku": "napolitana",
+          "qty": 1
+        }
+      ],
+      "total_clp": 8500,
+      "estado": "en_cola",
+      "cliente_telefono": "+56900000000 (ficticio)"
+    }
+  ],
+  "mock": true
+}

@@ -1,0 +1,44 @@
+{
+  "slug_a": "wasap-pymes",
+  "slug_b": "demo-idea",
+  "score_a": 61.2,
+  "score_b": 61.7,
+  "veredicto_a": "condicional",
+  "veredicto_b": "condicional",
+  "por_area_a": {
+    "market": 60.0,
+    "scalability": 80.0,
+    "cost_mvp": 40.0,
+    "financial": 73.33,
+    "risk": 55.0,
+    "competition": 35.0,
+    "trend": 60.0
+  },
+  "por_area_b": {
+    "market": 0,
+    "scalability": 0,
+    "cost_mvp": 40.0,
+    "financial": 73.33,
+    "risk": 0,
+    "competition": 0,
+    "trend": 0
+  },
+  "ganador_por_area": {
+    "market": "wasap-pymes",
+    "scalability": "wasap-pymes",
+    "cost_mvp": "empate",
+    "financial": "empate",
+    "risk": "wasap-pymes",
+    "competition": "wasap-pymes",
+    "trend": "wasap-pymes"
+  },
+  "ganador_global": "demo-idea",
+  "trade_offs": [
+    "wasap-pymes mejor en market",
+    "wasap-pymes mejor en scalability",
+    "wasap-pymes mejor en risk",
+    "wasap-pymes mejor en competition",
+    "wasap-pymes mejor en trend"
+  ],
+  "generado_at": "2026-06-28T00:32:38.337739+00:00"
+}

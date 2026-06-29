@@ -1,0 +1,10 @@
+{
+  "slug": "demo_investigacion",
+  "tipo": "investigacion",
+  "tema": "resumenes libros kdp",
+  "output": {
+    "analisis_json": "/Users/yoryo/cursorprime/lluvia-de-ideas/data/demo_investigacion/output/analisis.json",
+    "analisis_md": "/Users/yoryo/cursorprime/lluvia-de-ideas/data/demo_investigacion/output/analisis.md"
+  },
+  "empaquetado_at": "2026-06-28T22:56:50.875618+00:00"
+}

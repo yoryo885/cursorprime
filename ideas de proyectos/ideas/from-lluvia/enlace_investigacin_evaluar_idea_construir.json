@@ -1,0 +1,16 @@
+{
+  "titulo": "Enlace investigación → evaluar-idea → construir",
+  "slug": "enlace_investigacin_evaluar_idea_construir",
+  "tipo": "from_lluvia",
+  "categoria_lluvia": "meta",
+  "origen_idea_id": "idea-8201d58d",
+  "problema": "Las ideas no fluyen solas hacia ideas de proyectos.",
+  "propuesta": "Al aprobar idea en cola, generar borrador JSON en ideas de proyectos automáticamente.",
+  "proyecto_destino": "ideas de proyectos",
+  "confidence_lluvia": 0.8,
+  "aprobada_at": "2026-06-28T23:01:59.196154+00:00",
+  "hipotesis": [
+    "Al aprobar idea en cola, generar borrador JSON en ideas de proyectos automáticamente."
+  ],
+  "notas": "Exportada desde lluvia-de-ideas cola (idea-8201d58d)"
+}

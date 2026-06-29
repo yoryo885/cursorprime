@@ -1,0 +1,39 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "tema": "enfoque",
+      "variante": 1,
+      "tipo": "imagen",
+      "proyecto_destino": "creador-de-contenido",
+      "prompt": "Illustration about 'enfoque' for emprendedores. Style: flat minimal yordy, motivador y claro. Flat design, clean composition, no text, square format. Project context: Creador de Contenido.",
+      "negative": "blurry, watermark, text, logo, low quality, distorted anatomy",
+      "archivo_sugerido": "01-enfoque.md",
+      "generado_at": "2026-06-27T20:19:04.274839+00:00"
+    },
+    {
+      "id": 2,
+      "tema": "tiempo",
+      "variante": 1,
+      "tipo": "imagen",
+      "proyecto_destino": "creador-de-contenido",
+      "prompt": "Illustration about 'tiempo' for emprendedores. Style: flat minimal yordy, motivador y claro. Flat design, clean composition, no text, square format. Project context: Creador de Contenido.",
+      "negative": "blurry, watermark, text, logo, low quality, distorted anatomy",
+      "archivo_sugerido": "02-tiempo.md",
+      "generado_at": "2026-06-27T20:19:04.274869+00:00"
+    },
+    {
+      "id": 3,
+      "tema": "prioridad",
+      "variante": 1,
+      "tipo": "imagen",
+      "proyecto_destino": "creador-de-contenido",
+      "prompt": "Illustration about 'prioridad' for emprendedores. Style: flat minimal yordy, motivador y claro. Flat design, clean composition, no text, square format. Project context: Creador de Contenido.",
+      "negative": "blurry, watermark, text, logo, low quality, distorted anatomy",
+      "archivo_sugerido": "03-prioridad.md",
+      "generado_at": "2026-06-27T20:19:04.274892+00:00"
+    }
+  ],
+  "count": 3,
+  "plantilla": "imagen"
+}

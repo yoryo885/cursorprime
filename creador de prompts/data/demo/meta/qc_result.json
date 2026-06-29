@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "passed": [
+    "01-enfoque.md",
+    "02-tiempo.md",
+    "03-prioridad.md"
+  ],
+  "issues": []
+}

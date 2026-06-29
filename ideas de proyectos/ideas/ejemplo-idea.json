@@ -1,0 +1,19 @@
+{
+  "titulo": "Dropshipping parlantes Mercado Libre Chile",
+  "slug": "dropship_ml",
+  "problema": "Vendedor ML compra en Hogatodo y revende; necesita márgenes reales y sync stock.",
+  "cliente_objetivo": "Vendedores B2B Mercado Libre Chile (electrónica/audio)",
+  "modelo_negocio": "SaaS semi-automático: scrape proveedor → margen ML → reporte → alertas",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "semi_automatico": true,
+  "urls_referencia": [
+    "https://www.hogatodo.cl",
+    "https://developers.mercadolibre.com"
+  ],
+  "hipotesis": [
+    "Margen neto > 15% en SKUs seleccionados",
+    "Semi-auto reduce riesgo vs full-auto"
+  ],
+  "notas": "Vender el software al cliente, no los parlantes"
+}

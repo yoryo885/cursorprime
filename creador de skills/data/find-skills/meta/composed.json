@@ -1,0 +1,17 @@
+{
+  "nombre": "find-skills",
+  "description": "Descubre skills en el ecosistema abierto (skills.sh, anthropics/skills) antes de crear una nueva en cursorprime. Verifica calidad e instala o adapta al catálogo. Proyecto: General. Usar cuando el usuario menciona find skill, buscar skill, existe skill para, usa find-skills, skills.sh, instalar skill, o pide seguir este flujo paso a paso.",
+  "line_count": 40,
+  "tipo": "workflow",
+  "triggers": [
+    "find skill",
+    "buscar skill",
+    "existe skill para",
+    "usa find-skills",
+    "skills.sh",
+    "instalar skill"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/find-skills/output/SKILL.md"
+  ]
+}

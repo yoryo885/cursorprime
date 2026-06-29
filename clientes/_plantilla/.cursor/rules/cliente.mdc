@@ -1,0 +1,35 @@
+---
+description: Contexto y restricciones del cliente — aplica en toda la carpeta del cliente
+globs: clientes/slug-cliente/**
+alwaysApply: false
+---
+
+# Cliente — reglas de contexto
+
+## Al iniciar cualquier tarea en esta carpeta
+
+1. Lee `CLIENTE.md` y `perfil.json` antes de generar copy o visuales.
+2. Respeta tono, prohibiciones y mercado del cliente.
+3. **No mezcles** contexto de otros clientes ni de pipelines internos sin permiso.
+
+## Memoria compartida (equipo de marketing)
+
+Todos los agentes/sesiones de este cliente comparten:
+
+| Recurso | Uso |
+|---------|-----|
+| `CLIENTE.md` | Identidad, tono, prohibiciones |
+| `perfil.json` | Copy LinkedIn, captions, emails |
+| `templates/` | Referencias visuales y de copy |
+| `proyectos/{slug}/` | Brief y entregables por campaña |
+
+## Router global + este cliente
+
+- Sigue ejecutando `router.py` para elegir skill base.
+- **Después** aplica las reglas del proyecto activo en `proyectos/{slug}/.cursor/rules/proyecto.mdc`.
+- Si hay conflicto: **proyecto > cliente > router global**.
+
+## Entregables
+
+- Escribir borradores en `proyectos/{slug}/entregables/` salvo que el pipeline tenga ruta fija.
+- Tras correr un pipeline, documentar en `CONTEXTO.md` qué se generó y dónde está.

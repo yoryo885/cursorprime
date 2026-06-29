@@ -1,0 +1,54 @@
+---
+description: Ecosistema cursorprime — enrutamiento automático skill + prompt + pipeline
+alwaysApply: true
+---
+
+# cursorprime
+
+Abrir siempre `cursorprime.code-workspace`.
+
+## Enrutamiento automático (obligatorio)
+
+En **cada pedido de trabajo** (video, libro, idea, imágenes, KDP, LinkedIn…):
+
+1. Ejecuta o consulta el router:
+   ```bash
+   python3 ~/cursorprime/router.py --texto "<mensaje del usuario>" --json
+   ```
+   Fuente: `meta/router.json`
+
+2. Lee el **skill** indicado en `~/.cursor/skills/{skill}/SKILL.md` y **ejecútalo** — no esperes `usa X`.
+
+3. Si la ruta tiene `prompt.auto: true`, corre **creador de prompts** antes del pipeline destino.
+
+4. Anuncia en 1 línea: skill + prompt + proyecto elegidos.
+
+5. Si `matched: false`, pregunta **una sola vez** qué producto quiere (video, libro, idea, LinkedIn).
+
+Skill del router: `cursorprime-router` (protocolo completo).
+
+## Rutas base
+
+| Proyecto | Carpeta |
+|----------|---------|
+| Router | `~/cursorprime/router.py` + `meta/router.json` |
+| Prompts | `~/cursorprime/creador de prompts` |
+| Skills | `~/cursorprime/creador de skills` |
+| Contenido | `~/cursorprime/creador de contenido` |
+| Ideas | `~/cursorprime/ideas de proyectos` |
+| Lluvia / investigación | `~/cursorprime/lluvia-de-ideas` |
+| **Análisis → proyectos** | `~/cursorprime/analisis-de-proyectos` |
+| **Marketing audit** | `~/cursorprime/marketing-audit` |
+| **Centro de control** | `~/cursorprime/centro de control prime` |
+| Libros/PDF | `~/cursorprime/libros a entender` |
+| LinkedIn | `~/cursorprime/linkedin-ghostwriter` |
+| **Clientes / campañas** | `~/cursorprime/clientes/` |
+
+## Convenciones
+
+- Pipelines: `python3 *_main.py --slug {slug}` desde la carpeta del proyecto.
+- No inventar métricas; marcar `confidence` bajo si faltan fuentes.
+- No construir ramas en ideas de proyectos sin veredicto previo.
+- Probar con `--limit` o datos pequeños antes de lotes completos.
+- Trabajo por cliente: carpeta `clientes/{cliente}/proyectos/{slug}/` + reglas `.cursor/rules/proyecto.mdc`.
+- Marketing agencia: skills `market-audit`, `market-report-pdf`, `market-proposal` — fuente `vendor/ai-marketing-claude`.

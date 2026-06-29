@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "pipeline": [
+    {"id": 1, "slug": "context", "nombre": "Context Loader", "agente": "ContextAgent", "required": true, "flag_cli": "--solo-context"},
+    {"id": 2, "slug": "style", "nombre": "Style Profile", "agente": "StyleAgent", "required": true, "flag_cli": "--solo-style"},
+    {"id": 3, "slug": "prompt", "nombre": "Prompt Builder", "agente": "PromptAgent", "required": true, "flag_cli": "--solo-prompt"},
+    {"id": 4, "slug": "generate", "nombre": "Image Generator", "agente": "GenerateAgent", "required": true, "flag_cli": "--solo-generate"},
+    {"id": 5, "slug": "qc", "nombre": "QC Visual", "agente": "QcAgent", "required": true, "flag_cli": "--solo-qc"},
+    {"id": 6, "slug": "packager", "nombre": "Packager", "agente": "PackagerAgent", "required": true, "flag_cli": "--solo-packager"}
+  ],
+  "defaults": {
+    "checkpoint": true,
+    "mock_generate": true,
+    "formato": "png",
+    "estilo": "yordy-minimal"
+  }
+}

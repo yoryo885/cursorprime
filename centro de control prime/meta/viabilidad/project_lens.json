@@ -1,0 +1,97 @@
+{
+  "id": "project_lens",
+  "slug": "viabilidad-project_lens",
+  "nombre": "Project Lens (profundo)",
+  "carpeta": "project_lens",
+  "capa": "creador",
+  "tema": "business viability market analysis tool entrepreneur",
+  "fetch": "live",
+  "fuentes": 14,
+  "youtube_n": 6,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:37.259560+00:00",
+  "veredicto": "viable",
+  "score": 80,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «business viability market analysis tool entrepreneur»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.81,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "Market Viability Stress Test #2 || Master The SWOT Analytics",
+      "url": "https://www.youtube.com/watch?v=oFFvRqtpsro",
+      "snippet": "Aug 10, 2024 · Together, market viability and SWOT analysis provide a powerful framework for understanding a business 's potential in a given market and for creating strategies to maximize its chances of...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Day 7 – Cresh: Validate Your Startup Idea in Minutes | AI ... Informly: The Must-Have AI Ally for Entrepreneurs – Depth ... From Vision to Reality: Analyzing Business Idea Viability How to evaluate bu",
+      "url": "https://www.youtube.com/watch?v=2l95uKx-ab0",
+      "snippet": "Cresh is a multi-agent AI platform that evaluates your business idea across 33 metrics including market viability , product strength, technical feasibility, financial robustness and... Feb 13, 2026 · Informly (featured on Quasa.io/projects/informly) is an AI-powered business idea validation tool that's empowering entrepreneurs in 2026 to quickly assess the viability of their concepts... If you're ",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Informly: The Must-Have AI Ally for Entrepreneurs – Depth ...",
+      "url": "https://www.youtube.com/watch?v=iuQtaOuYn38",
+      "snippet": "Feb 13, 2026 · Informly (featured on Quasa.io/projects/informly) is an AI-powered business idea validation tool that's empowering entrepreneurs in 2026 to quickly assess the viability of their concepts...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "From Vision to Reality: Analyzing Business Idea Viability",
+      "url": "https://www.youtube.com/watch?v=UtokoYouLGo",
+      "snippet": "If you're not sure which business idea to pursue, this video is for you. We'll show you how to evaluate your ideas for market size, feasibility, and financial viability .",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to evaluate business viability using feasibility findings?",
+      "url": "https://www.youtube.com/watch?v=OJ18-DLZuok",
+      "snippet": "Dec 21, 2025 · This video breaks down how to use feasibility findings to critically evaluate your business 's potential and make informed decisions about its viability .",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Using A to Z Databases to Assess Market Viability",
+      "url": "https://www.youtube.com/watch?v=KHxTaLFew-U",
+      "snippet": "Jul 28, 2025 · Are you ready to evaluate the market for your business idea? AtoZdatabases can help you get started.",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Test Your Idea in 120s - AI Startup Validator & Market ...",
+      "url": "https://ideaproof.io/",
+      "snippet": "Get instant market analysis , competitor intelligence, and a viability score based on 50+ criteria. Then generate a complete AI brand strategy, AI-designed logo, visual identity, and marketing-ready ad creatives for 6+ platforms.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Entrepreneurial assessment: Measuring Business Viability ...",
+      "url": "https://fastercapital.com/content/Entrepreneurial-assessment--Measuring-Business-Viability--Entrepreneurial-Assessment-Strategies.html",
+      "snippet": "Apr 12, 2025 · Entrepreneurial assessment is a systematic and rigorous evaluation of the feasibility , desirability, and sustainability of a business idea or venture. It helps entrepreneurs to: 1. identify the strengths and weaknesses of their value proposition, business model, and strategy.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Feasibility study tool: Feasibility Study Tools: Empowering ...",
+      "url": "https://fastercapital.com/content/Feasibility-study-tool--Feasibility-Study-Tools--Empowering-Entrepreneurs-to-Assess-Market-Viability.html",
+      "snippet": "May 7, 2026 · Entrepreneurs equipped with the right set of analytical tools can uncover gaps in the market , identify trends, and anticipate moves that could reshape the competitive landscape.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Razor - AI-Powered Market Research for Small Business Ideas",
+      "url": "https://razorio.com/",
+      "snippet": "Get instant market research and viability scores for your business ideas. Analyze competition, demand trends, startup costs, and profitability potential with AI-powered insights. Free market analysis tool for entrepreneurs and small businesses.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Market Verdict — Business Idea Validator",
+      "url": "https://marketverdict.app/",
+      "snippet": "Get a clear, data-driven viability score. Pressure-test your idea with market signals, break-even analysis, and risk factors. Try 3 analyses for free.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "10 market viability analysis tools for startups - growett",
+      "url": "https://growett.com/blogs/10-market-viability-analysis-tools-for-startups.html",
+      "snippet": "By understanding the fundamentals of market viability , entrepreneurs can create a solid foundation for their business, identify potential pitfalls, and develop a competitive strategy to achieve long-term success.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/project_lens.md"
+}

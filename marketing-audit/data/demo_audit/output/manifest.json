@@ -1,0 +1,9 @@
+{
+  "slug": "demo_audit",
+  "output": {
+    "markdown": "/Users/yoryo/cursorprime/marketing-audit/data/demo_audit/output/MARKETING-AUDIT.md",
+    "json": "/Users/yoryo/cursorprime/marketing-audit/data/demo_audit/output/audit.json"
+  },
+  "score": 55,
+  "empaquetado_at": "2026-06-29T00:11:12.786277+00:00"
+}

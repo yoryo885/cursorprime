@@ -1,0 +1,21 @@
+{
+  "gifs": [
+    {
+      "tema": "creatividad",
+      "archivo": "01-creatividad.gif",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/gifs/01-creatividad.gif",
+      "modulo": "gifs",
+      "frames": 4,
+      "generado_at": "2026-06-27T19:59:16.921251+00:00"
+    },
+    {
+      "tema": "energia",
+      "archivo": "02-energia.gif",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/gifs/02-energia.gif",
+      "modulo": "gifs",
+      "frames": 4,
+      "generado_at": "2026-06-27T19:59:17.649793+00:00"
+    }
+  ],
+  "count": 2
+}

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "actualizado": "2026-06-27",
+  "orden_implementacion": [
+    {
+      "orden": 1,
+      "id": "idea-86066e0f",
+      "titulo": "Radar de nichos KDP desde YouTube semanal",
+      "categoria": "informacion",
+      "proyecto": "lluvia-de-ideas"
+    },
+    {
+      "orden": 2,
+      "id": "idea-4f897bfa",
+      "titulo": "Pack promocional automático post-investigación",
+      "categoria": "visual",
+      "proyecto": "creador de contenido"
+    },
+    {
+      "orden": 3,
+      "id": "idea-8201d58d",
+      "titulo": "Enlace investigación → evaluar-idea → construir",
+      "categoria": "meta",
+      "proyecto": "ideas de proyectos"
+    }
+  ],
+  "en_espera": [
+    "idea-806203b4",
+    "idea-8befa305",
+    "idea-e3984f42"
+  ]
+}

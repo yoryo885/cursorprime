@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "mercado": "CL",
+  "moneda": "CLP",
+  "comision_ml_pct": 13.0,
+  "envio_estimado_clp": 3500,
+  "margen_minimo_pct": 15.0,
+  "margen_objetivo_pct": 25.0,
+  "iva_pct": 19.0,
+  "reglas": [
+    "No publicar productos con margen neto bajo margen_minimo_pct",
+    "Precios Hogatodo siempre en CLP",
+    "Semi-automático: compra manual al inicio, no auto-compra",
+    "Chile only: fees ML Chile"
+  ]
+}

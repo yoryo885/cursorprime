@@ -1,0 +1,44 @@
+{
+  "slug": "contenido-creativo",
+  "titulo": "Marca creativa: video + dibujo tablet + assets IA",
+  "problema": "Monetizar habilidades creativas (video, dibujo, animación) sin perder foco.",
+  "cliente_objetivo": "Creadores de contenido que compran assets; audiencia en redes (YouTube, TikTok)",
+  "modelo_negocio": "Aprender video+dibujo → monetizar canal → vender assets → sistema IA con estilo propio",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "ramas": [
+    {
+      "nombre": "Videos con dibujos integrados",
+      "descripcion": "Aprender integrar imágenes y dibujos en video",
+      "monetizacion": "YouTube, sponsors, contenido propio"
+    },
+    {
+      "nombre": "Canal con dibujos del tablet",
+      "descripcion": "Segundo canal integrando ilustraciones propias creadas en tablet",
+      "monetizacion": "AdSense, afiliados, marca personal"
+    },
+    {
+      "nombre": "Assets para creadores",
+      "descripcion": "Imágenes, GIFs, animaciones propias en plataformas para creators",
+      "monetizacion": "Gumroad, Creative Market, Etsy, Ko-fi — pago según calidad/demanda"
+    },
+    {
+      "nombre": "Sistema IA + ideas propias",
+      "descripcion": "Generar imágenes con ideas propias; IA como creador bajo tu dirección y estilo",
+      "monetizacion": "Packs, suscripción, venta de assets generados"
+    }
+  ],
+  "hipotesis": [
+    "El estilo propio (tablet) diferencia de IA genérica",
+    "Video + dibujo es base antes de monetizar lo demás",
+    "Con conocimiento se crea; con plata se expande"
+  ],
+  "mvp": [
+    "30 días dibujo en tablet — definir estilo",
+    "Integrar dibujos en 3 videos",
+    "Elegir 1 nicho de contenido",
+    "Pack de 10 assets en marketplace",
+    "Después: pipeline IA con estilo propio"
+  ],
+  "notas": "Proyecto independiente. No mezclar con otras ideas de la carpeta."
+}

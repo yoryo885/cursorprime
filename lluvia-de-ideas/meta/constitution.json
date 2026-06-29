@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "nombre": "Lluvia de ideas",
+  "reglas": [
+    "Nunca construir sin aprobación explícita del usuario (aprobar/rechazar en cola).",
+    "Investigación: citar fuentes URL en hallazgos; no inventar métricas de mercado.",
+    "Ideas siempre en categoría: visual | informacion | marketing | nuevo_proyecto | meta.",
+    "Cada idea lleva: titulo, problema, propuesta, proyecto_afectado, confidence (0-1).",
+    "MOCK_FETCH=true por defecto — datos demo sin red; MOCK_FETCH=false para búsqueda real.",
+    "No tocar libros a entender salvo orden explícita del usuario."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "nombre": "Marketing Audit",
+  "reglas": [
+    "Entrada: URL + brief. Salida: MARKETING-AUDIT.md con score 0-100.",
+    "5 agentes de dimensión corren en paralelo tras discovery.",
+    "MOCK_FETCH=true usa datos demo si la URL no responde.",
+    "No inventar métricas de tráfico — marcar confidence en synthesis.",
+    "PDF opcional vía vendor/ai-marketing-claude/scripts/generate_pdf_report.py.",
+    "Bridge clientes: copiar output a clientes/{cliente}/proyectos/{proyecto}/entregables/estrategia/."
+  ]
+}

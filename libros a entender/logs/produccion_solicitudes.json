@@ -1,0 +1,66 @@
+[
+  {
+    "id": "sol-2026-06-21T015549",
+    "timestamp": "2026-06-21T01:55:49.702300+00:00",
+    "estado": "pendiente",
+    "origen": "marketing",
+    "pdf_origen": "/Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf",
+    "slug": "pareto",
+    "tipo": "audiencia",
+    "prioridad": "media",
+    "problema": "La audiencia «psicopedagoga en escuela» no está reflejada claramente en el PDF.",
+    "solicitud": "Regenerar intro de audiencia y páginas de rol con AudienceIntroAgent. python main.py --solo-intros --slug pareto",
+    "agente_destino": "AudienceIntroAgent",
+    "contexto": {
+      "audiencia": "psicopedagoga en escuela"
+    }
+  },
+  {
+    "id": "sol-2026-06-21T015629",
+    "timestamp": "2026-06-21T01:56:29.556301+00:00",
+    "estado": "pendiente",
+    "origen": "marketing",
+    "pdf_origen": "/Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf",
+    "slug": "pareto",
+    "tipo": "audiencia",
+    "prioridad": "media",
+    "problema": "La audiencia «psicopedagoga en escuela» no está reflejada claramente en el PDF.",
+    "solicitud": "Regenerar intro de audiencia y páginas de rol con AudienceIntroAgent. python main.py --solo-intros --slug pareto",
+    "agente_destino": "AudienceIntroAgent",
+    "contexto": {
+      "audiencia": "psicopedagoga en escuela"
+    }
+  },
+  {
+    "id": "sol-2026-06-21T021219",
+    "timestamp": "2026-06-21T02:12:19.603887+00:00",
+    "estado": "pendiente",
+    "origen": "marketing",
+    "pdf_origen": "/Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf",
+    "slug": "pareto",
+    "tipo": "audiencia",
+    "prioridad": "media",
+    "problema": "La audiencia «psicopedagoga en escuela» no está reflejada claramente en el PDF.",
+    "solicitud": "Regenerar intro de audiencia y páginas de rol con AudienceIntroAgent. python main.py --solo-intros --slug pareto",
+    "agente_destino": "AudienceIntroAgent",
+    "contexto": {
+      "audiencia": "psicopedagoga en escuela"
+    }
+  },
+  {
+    "id": "sol-2026-06-21T021301",
+    "timestamp": "2026-06-21T02:13:01.703877+00:00",
+    "estado": "pendiente",
+    "origen": "marketing",
+    "pdf_origen": "/Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf",
+    "slug": "pareto",
+    "tipo": "audiencia",
+    "prioridad": "media",
+    "problema": "La audiencia «psicopedagoga en escuela» no está reflejada claramente en el PDF.",
+    "solicitud": "Regenerar intro de audiencia y páginas de rol con AudienceIntroAgent. python main.py --solo-intros --slug pareto",
+    "agente_destino": "AudienceIntroAgent",
+    "contexto": {
+      "audiencia": "psicopedagoga en escuela"
+    }
+  }
+]

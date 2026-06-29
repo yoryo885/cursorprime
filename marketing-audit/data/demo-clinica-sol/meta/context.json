@@ -1,0 +1,16 @@
+{
+  "slug": "demo-clinica-sol",
+  "url": "https://clinica-sol-demo.cl",
+  "brand_name": "Clínica Sol (FICTICIO)",
+  "business_type_hint": "local_business",
+  "cliente": "clinica-sol",
+  "proyecto": "audit-inicial",
+  "branding": {
+    "nombre": "Presencia Local",
+    "whatsapp": "56987654321",
+    "whatsapp_mensaje": "Hola, vi el informe de marketing de mi negocio y quiero agendar la llamada.",
+    "email": "hola@presencialocal.cl",
+    "logo": "assets/logo.svg"
+  },
+  "created_at": "2026-06-29T01:21:42.331676+00:00"
+}

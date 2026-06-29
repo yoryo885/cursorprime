@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "proyecto": "ideas-de-proyectos",
+  "descripcion": "Pipeline meta: diseña proyectos en borradores/, construye en proyectos/ solo con autorización",
+  "fases": {
+    "diseno": [1, 2, 3, 4],
+    "construccion": [5, 6, 7]
+  },
+  "palabras_autorizacion": ["construye", "armado", "crea el proyecto", "fase construcción", "construir"],
+  "pipeline": [
+    {
+      "id": 1,
+      "slug": "brief",
+      "nombre": "Brief",
+      "agente": "BriefAgent",
+      "fase": "diseno",
+      "flag_cli": "--solo-brief",
+      "input": ["ideas/{slug}.json", "ideas/{slug}.txt"],
+      "output": ["borradores/{slug}/meta/brief.json"]
+    },
+    {
+      "id": 2,
+      "slug": "research",
+      "nombre": "Research",
+      "agente": "ResearchAgent",
+      "fase": "diseno",
+      "flag_cli": "--solo-research",
+      "input": ["borradores/{slug}/meta/brief.json"],
+      "output": ["borradores/{slug}/meta/research.json"]
+    },
+    {
+      "id": 3,
+      "slug": "architecture",
+      "nombre": "Arquitectura",
+      "agente": "ArchitectureAgent",
+      "fase": "diseno",
+      "flag_cli": "--solo-architecture",
+      "input": ["borradores/{slug}/meta/brief.json", "borradores/{slug}/meta/research.json"],
+      "output": ["borradores/{slug}/meta/plan.json"]
+    },
+    {
+      "id": 4,
+      "slug": "feasibility",
+      "nombre": "Viabilidad",
+      "agente": "FeasibilityAgent",
+      "fase": "diseno",
+      "flag_cli": "--solo-feasibility",
+      "input": ["borradores/{slug}/meta/plan.json", "borradores/{slug}/meta/research.json"],
+      "output": ["borradores/{slug}/meta/feasibility.json", "borradores/{slug}/DISEÑO.md"]
+    },
+    {
+      "id": 5,
+      "slug": "scaffold",
+      "nombre": "Scaffold",
+      "agente": "ScaffoldAgent",
+      "fase": "construccion",
+      "requiere_autorizacion": true,
+      "flag_cli": "--solo-scaffold",
+      "input": ["borradores/{slug}/meta/plan.json", "borradores/{slug}/meta/brief.json"],
+      "output": ["proyectos/{slug}/"]
+    },
+    {
+      "id": 6,
+      "slug": "packager",
+      "nombre": "Empaquetar",
+      "agente": "SpecPackagerAgent",
+      "fase": "construccion",
+      "requiere_autorizacion": true,
+      "flag_cli": "--solo-packager",
+      "input": ["proyectos/{slug}/", "borradores/{slug}/meta/feasibility.json"],
+      "output": ["proyectos/{slug}/ENTREGA.txt", "proyectos/{slug}/meta/plan_accion.json"]
+    },
+    {
+      "id": 7,
+      "slug": "qc",
+      "nombre": "QC proyecto",
+      "agente": "ProjectQCAgent",
+      "fase": "construccion",
+      "requiere_autorizacion": true,
+      "flag_cli": "--solo-qc",
+      "input": ["proyectos/{slug}/"],
+      "output": ["proyectos/{slug}/meta/qc_report.json"]
+    }
+  ],
+  "defaults": {
+    "checkpoint": true
+  }
+}

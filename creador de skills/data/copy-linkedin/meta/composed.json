@@ -1,0 +1,16 @@
+{
+  "nombre": "copy-linkedin",
+  "description": "Mejora Copy LinkedIn con criterios específicos de calidad para LinkedIn Ghostwriter. Usar cuando el usuario pide post linkedin, copy linkedin, ghostwriter, usa copy-linkedin, posts del mes o necesita resultado superior al default del modelo.",
+  "line_count": 30,
+  "tipo": "capacidad",
+  "triggers": [
+    "post linkedin",
+    "copy linkedin",
+    "ghostwriter",
+    "usa copy-linkedin",
+    "posts del mes"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/copy-linkedin/output/SKILL.md"
+  ]
+}

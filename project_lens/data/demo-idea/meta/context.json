@@ -1,0 +1,67 @@
+{
+  "agent": "ContextAgent",
+  "confidence": 0.9,
+  "error_margin_pct": 5,
+  "sources": [],
+  "findings": [
+    "Título: Bot WhatsApp + cola de pedidos para pymes",
+    "Mercado: CL",
+    "Tipo: saas"
+  ],
+  "metrics": {},
+  "warnings": [],
+  "generated_at": "2026-06-28T01:16:47.581439+00:00",
+  "slug": "demo-idea",
+  "titulo": "Bot WhatsApp + cola de pedidos para pymes",
+  "tipo_negocio": "saas",
+  "mercado": "CL",
+  "modo_pipeline": "full",
+  "mock_web": false,
+  "idea_normalizada": {
+    "slug": "demo-idea",
+    "titulo": "Bot WhatsApp + cola de pedidos para pymes",
+    "problema": "Negocios locales con local físico no dan abasto en temporada alta: teléfono saturado, pedidos manuales, clientes preguntando lo mismo (horario, precios, estado).",
+    "cliente_objetivo": "Pymes Chile/LATAM que venden por WhatsApp o teléfono: comida, repuestos, ferretería, servicios",
+    "modelo_negocio": "SaaS B2B: setup + fee mensual. Planes Bajo (Sheet) / Medio (panel) / Alto (multiusuario + reportes). Yo opero servidor y APIs.",
+    "mercado": "CL",
+    "moneda": "CLP",
+    "tipo_negocio": "saas",
+    "keywords": [
+      "whatsapp bot pymes",
+      "pedidos whatsapp chile"
+    ],
+    "urls_referencia": [
+      "https://wati.io/pricing/",
+      "https://respond.io/pricing",
+      "https://www.chatbot.com/pricing/"
+    ],
+    "hipotesis": [
+      "MVP bot + Sheet en 2 semanas es vendible",
+      "Ticket mensual CLP 35-120k según plan",
+      "Primer cliente piloto valida antes de escalar",
+      "Margen SaaS > 50% si opero infraestructura"
+    ],
+    "mvp": [
+      "Bot FAQ + fuera de horario",
+      "Tomar pedido estructurado",
+      "Google Sheet o panel simple",
+      "Notificación al dueño",
+      "Aviso auto pedido listo"
+    ],
+    "planes": {
+      "bajo": {
+        "setup_clp": 150000,
+        "mensual_clp": 35000
+      },
+      "medio": {
+        "setup_clp": 350000,
+        "mensual_clp": 65000
+      },
+      "alto": {
+        "setup_clp": 650000,
+        "mensual_clp": 120000
+      }
+    },
+    "notas": "Demo incluida — copia de wasap-pymes para probar el pipeline."
+  }
+}

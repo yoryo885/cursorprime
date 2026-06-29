@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "descripcion": "Enrutador automático cursorprime — intención → skill + prompt + pipeline",
+  "instrucciones_agente": [
+    "En cada pedido de trabajo, lee este archivo o ejecuta: python3 router.py --texto \"...\"",
+    "Aplica la ruta con mayor score SIN esperar que el usuario diga 'usa X'",
+    "Lee el SKILL.md indicado en ~/.cursor/skills/{skill}/SKILL.md y síguelo",
+    "Si prompt.auto es true, corre creador de prompts ANTES del pipeline destino",
+    "Anuncia en 1 línea: skill + prompt + proyecto elegidos"
+  ],
+  "routes": [
+    {
+      "id": "centro-control",
+      "priority": 95,
+      "match": {
+        "any": ["centro de control", "centro control", "inventario cursorprime", "panel prime", "estadisticas ecosistema", "que tengo creado", "dashboard prime", "estado del ecosistema"],
+        "none": ["project-lens dashboard", "evaluar idea"]
+      },
+      "skill": "centro-de-control-prime",
+      "proyecto": "centro-de-control-prime",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "centro de control prime",
+        "cmd": "python3 panel_main.py refresh"
+      }
+    },
+    {
+      "id": "analisis-proyectos",
+      "priority": 94,
+      "match": {
+        "any": ["analizar mercado", "analisis de proyectos", "investigar nicho", "que funciona en youtube", "radar kdp", "crear proyecto desde"],
+        "none": ["lluvia", "aprobar idea", "cola"]
+      },
+      "skill": "analisis-de-proyectos",
+      "proyecto": "analisis-de-proyectos",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "analisis-de-proyectos",
+        "cmd": "python3 analisis_main.py analizar --texto \"{texto}\" --exportar"
+      }
+    },
+    {
+      "id": "investigacion-lluvia",
+      "priority": 92,
+      "match": {
+        "any": ["investigar", "investigacion", "youtube", "lluvia de ideas", "lluvia", "que funciona hoy", "tendencias", "analisis mercado", "pescar ideas"],
+        "none": ["evaluar idea", "video", "libro pareto"]
+      },
+      "skill": "lluvia-de-ideas",
+      "proyecto": "lluvia-de-ideas",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "lluvia-de-ideas",
+        "cmd": "python3 lluvia_main.py todo --texto \"{texto}\""
+      }
+    },
+    {
+      "id": "cola-ideas",
+      "priority": 73,
+      "match": {
+        "any": ["aprobar idea", "rechazar idea", "cola ideas", "cola pendientes"]
+      },
+      "skill": "lluvia-de-ideas",
+      "proyecto": "lluvia-de-ideas",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "lluvia-de-ideas",
+        "cmd": "python3 lluvia_main.py cola listar"
+      }
+    },
+    {
+      "id": "video-guion",
+      "priority": 90,
+      "match": {
+        "any": ["video", "guion", "guión", "animado", "mp4", "escena", "slideshow", "kling", "clip"],
+        "none": ["evaluar", "viabilidad", "negocio", "linkedin", "post"]
+      },
+      "skill": "guion-a-video",
+      "proyecto": "creador-de-contenido",
+      "prompt": { "tipo": "animacion", "proyecto_destino": "creador-de-contenido", "auto": true },
+      "pipeline": {
+        "cwd": "creador de contenido",
+        "cmd": "python3 creador_imagenes_main.py --slug {slug} --modo video"
+      }
+    },
+    {
+      "id": "imagenes-lote",
+      "priority": 85,
+      "match": {
+        "any": ["imagen", "imagenes", "png", "gif", "gifs", "lote", "pack visual", "contenido visual", "dall", "flux", "midjourney"],
+        "none": ["video", "libro", "pdf editorial", "kdp", "evaluar", "linkedin"]
+      },
+      "skill": "guion-a-video",
+      "proyecto": "creador-de-contenido",
+      "prompt": { "tipo": "imagen", "proyecto_destino": "creador-de-contenido", "auto": true },
+      "pipeline": {
+        "cwd": "creador de contenido",
+        "cmd": "python3 creador_imagenes_main.py --slug {slug} --modo png"
+      },
+      "nota": "Para solo GIF usar --modo gif; skill guion-a-video cubre el pipeline general"
+    },
+    {
+      "id": "resumidor-kdp",
+      "priority": 88,
+      "match": {
+        "any": ["resumen", "libro", "pdf editorial", "kdp", "amazon", "listing", "pareto", "maquet", "portada", "mapa conceptual", "entender libro"],
+        "none": ["evaluar idea", "viabilidad negocio", "linkedin post"]
+      },
+      "skill": "resumidor-kdp",
+      "proyecto": "libros-a-entender",
+      "prompt": { "tipo": "marketing", "proyecto_destino": "libros-a-entender", "auto": false, "cuando": "fase marketing KDP" },
+      "pipeline": {
+        "cwd": "libros a entender",
+        "cmd": "python3 main.py --slug {slug} --sin-confirmacion"
+      }
+    },
+    {
+      "id": "pdf-datos",
+      "priority": 70,
+      "match": {
+        "any": ["pdf", "extraer pdf", "resumir pdf", "plan de negocio pdf", "informe pdf"],
+        "none": ["editorial", "kdp", "amazon listing", "yordy", "mapa conceptual"]
+      },
+      "skill": "pdf-resumidor",
+      "proyecto": "general",
+      "prompt": null,
+      "pipeline": null
+    },
+    {
+      "id": "evaluar-idea-rapido",
+      "priority": 86,
+      "match": {
+        "any": ["evaluar", "viabilidad", "idea de", "negocio", "rentable", "escalable", "margen", "veredicto", "sirve la idea"],
+        "none": ["project-lens", "investigacion profunda", "mercado real", "competencia"]
+      },
+      "skill": "evaluar-idea",
+      "proyecto": "ideas-de-proyectos",
+      "prompt": { "tipo": "evaluacion", "proyecto_destino": "ideas-de-proyectos", "auto": false },
+      "pipeline": {
+        "cwd": "ideas de proyectos",
+        "cmd": "python3 evaluar.py --texto \"{texto}\""
+      }
+    },
+    {
+      "id": "evaluar-idea-profundo",
+      "priority": 87,
+      "match": {
+        "any": ["project-lens", "investigacion de mercado", "competencia", "analisis profundo", "score global", "dashboard"]
+      },
+      "skill": "project-lens",
+      "proyecto": "project-lens",
+      "prompt": { "tipo": "evaluacion", "proyecto_destino": "ideas-de-proyectos", "auto": false },
+      "pipeline": {
+        "cwd": "project_lens",
+        "cmd": "python3 project_lens_main.py --slug {slug}"
+      }
+    },
+    {
+      "id": "linkedin-posts",
+      "priority": 80,
+      "match": {
+        "any": ["linkedin", "post linkedin", "ghostwriter", "ejecutivo", "posts del mes"]
+      },
+      "skill": "copy-linkedin",
+      "proyecto": "linkedin-ghostwriter",
+      "prompt": { "tipo": "copy", "proyecto_destino": "linkedin-ghostwriter", "auto": true },
+      "pipeline": {
+        "cwd": "linkedin-ghostwriter",
+        "cmd": "python3 generar_posts.py"
+      }
+    },
+    {
+      "id": "crear-prompt",
+      "priority": 75,
+      "match": {
+        "any": ["crear prompt", "generar prompt", "prompts para", "plantilla prompt", "creador de prompts"]
+      },
+      "skill": "creador-de-prompts",
+      "proyecto": "general",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "creador de prompts",
+        "cmd": "python3 creador_prompts_main.py --slug {slug}"
+      }
+    },
+    {
+      "id": "crear-skill",
+      "priority": 74,
+      "match": {
+        "any": ["crear skill", "nueva skill", "creador de skills", "skill.md"]
+      },
+      "skill": "creador-de-skills",
+      "proyecto": "general",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "creador de skills",
+        "cmd": "python3 creador_skills_main.py --slug {slug}"
+      }
+    },
+    {
+      "id": "contenido-redes",
+      "priority": 84,
+      "match": {
+        "any": ["hook", "gancho", "reels", "shorts", "tiktok", "caption", "thumbnail", "miniatura", "faceless", "redes sociales", "instagram reel"],
+        "none": ["linkedin", "evaluar", "kdp", "libro editorial"]
+      },
+      "skill": "hooks-redes",
+      "proyecto": "creador-de-contenido",
+      "prompt": { "tipo": "copy", "proyecto_destino": "creador-de-contenido", "auto": false },
+      "pipeline": null,
+      "nota": "Encadenar hooks-redes → guion-a-video → captions-redes → thumbnail-social según pedido"
+    },
+    {
+      "id": "gestion-proyecto-route",
+      "priority": 83,
+      "match": {
+        "any": ["gestionar proyecto", "proyecto real", "documentar proyecto", "sistema proyecto", "yo sa", "algo real que funcione"]
+      },
+      "skill": "gestion-proyecto",
+      "proyecto": "general",
+      "prompt": null,
+      "pipeline": null
+    },
+    {
+      "id": "landing-lanzamiento-route",
+      "priority": 81,
+      "match": {
+        "any": ["landing", "lanzamiento", "pagina ventas", "página ventas", "copy lanzamiento", "oferta", "funnel"],
+        "none": ["evaluar idea", "libro", "kdp"]
+      },
+      "skill": "landing-lanzamiento",
+      "proyecto": "general",
+      "prompt": { "tipo": "marketing", "proyecto_destino": "general", "auto": false },
+      "pipeline": null
+    },
+    {
+      "id": "whatsapp-marketing-route",
+      "priority": 79,
+      "match": {
+        "any": ["whatsapp marketing", "whatsapp ventas", "secuencia whatsapp", "mensajes whatsapp", "spoki"],
+        "none": ["bot pedidos", "cola pedidos"]
+      },
+      "skill": "whatsapp-marketing",
+      "proyecto": "ideas-de-proyectos",
+      "prompt": { "tipo": "copy", "proyecto_destino": "ideas-de-proyectos", "auto": false },
+      "pipeline": null
+    },
+    {
+      "id": "market-audit-route",
+      "priority": 82,
+      "match": {
+        "any": ["market audit", "audit completo", "marketing score", "audit pdf", "informe pdf marketing", "market report", "audit web completo"],
+        "none": ["evaluar idea", "viabilidad negocio"]
+      },
+      "skill": "market-audit",
+      "proyecto": "marketing-audit",
+      "prompt": null,
+      "pipeline": {
+        "cwd": "marketing-audit",
+        "cmd": "python3 marketing_audit_main.py audit --url \"{url}\" --slug {slug}"
+      },
+      "nota": "PDF: añadir --pdf; clientes: --cliente --proyecto"
+    },
+    {
+      "id": "market-proposal-route",
+      "priority": 80,
+      "match": {
+        "any": ["market proposal", "propuesta cliente marketing", "propuesta retainer", "propuesta agencia"]
+      },
+      "skill": "market-proposal",
+      "proyecto": "clientes",
+      "prompt": null,
+      "pipeline": null
+    },
+    {
+      "id": "audit-marketing-route",
+      "priority": 78,
+      "match": {
+        "any": ["auditar marketing", "audit marketing", "audit ecommerce", "analisis competencia", "revisar anuncios", "revisar ads"]
+      },
+      "skill": "audit-marketing",
+      "proyecto": "ideas-de-proyectos",
+      "prompt": null,
+      "pipeline": null
+    },
+    {
+      "id": "find-skills-route",
+      "priority": 73,
+      "match": {
+        "any": ["find skill", "buscar skill", "skills.sh", "existe skill", "instalar skill"]
+      },
+      "skill": "find-skills",
+      "proyecto": "general",
+      "prompt": null,
+      "pipeline": null
+    },
+    {
+      "id": "nuevo-pipeline",
+      "priority": 72,
+      "match": {
+        "any": ["nuevo pipeline", "crear proyecto pipeline", "pipeline python", "agentes python", "scaffolding"]
+      },
+      "skill": "crear-pipeline",
+      "proyecto": "general",
+      "prompt": { "tipo": "pipeline", "proyecto_destino": "general", "auto": false },
+      "pipeline": {
+        "cwd": "creador de skills",
+        "cmd": "python3 creador_skills_main.py --slug crear-pipeline"
+      },
+      "nota": "Alternativa: skill pipeline-project-creator para scaffolding manual"
+    }
+  ],
+  "fallback": {
+    "skill": null,
+    "mensaje": "No hay ruta clara — pregunta al usuario qué producto quiere: video, imágenes, libro/PDF, evaluar idea, LinkedIn, o nuevo pipeline."
+  }
+}

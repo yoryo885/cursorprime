@@ -1,0 +1,82 @@
+{
+  "skills": [
+    {
+      "nombre": "guion-a-video",
+      "path": "/Users/yoryo/.cursor/skills/guion-a-video",
+      "proyecto": "creador-de-contenido",
+      "instalado_at": "2026-06-27T00:00:00+00:00"
+    },
+    {
+      "nombre": "evaluar-idea",
+      "path": "/Users/yoryo/.cursor/skills/evaluar-idea",
+      "proyecto": "ideas-de-proyectos",
+      "instalado_at": "2026-06-28T00:02:37.570011+00:00"
+    },
+    {
+      "nombre": "resumidor-kdp",
+      "path": "/Users/yoryo/.cursor/skills/resumidor-kdp",
+      "proyecto": "libros-a-entender",
+      "instalado_at": "2026-06-28T00:08:28.261851+00:00"
+    },
+    {
+      "nombre": "copy-linkedin",
+      "path": "/Users/yoryo/.cursor/skills/copy-linkedin",
+      "proyecto": "linkedin-ghostwriter",
+      "instalado_at": "2026-06-28T00:17:32.479703+00:00"
+    },
+    {
+      "nombre": "crear-pipeline",
+      "path": "/Users/yoryo/.cursor/skills/crear-pipeline",
+      "proyecto": "general",
+      "instalado_at": "2026-06-28T00:24:51.461796+00:00"
+    },
+    {
+      "nombre": "hooks-redes",
+      "path": "/Users/yoryo/.cursor/skills/hooks-redes",
+      "proyecto": "creador-de-contenido",
+      "instalado_at": "2026-06-28T00:36:38.422634+00:00"
+    },
+    {
+      "nombre": "captions-redes",
+      "path": "/Users/yoryo/.cursor/skills/captions-redes",
+      "proyecto": "creador-de-contenido",
+      "instalado_at": "2026-06-28T00:36:38.641421+00:00"
+    },
+    {
+      "nombre": "thumbnail-social",
+      "path": "/Users/yoryo/.cursor/skills/thumbnail-social",
+      "proyecto": "creador-de-contenido",
+      "instalado_at": "2026-06-28T00:36:38.862601+00:00"
+    },
+    {
+      "nombre": "find-skills",
+      "path": "/Users/yoryo/.cursor/skills/find-skills",
+      "proyecto": "general",
+      "instalado_at": "2026-06-28T00:36:39.092403+00:00"
+    },
+    {
+      "nombre": "gestion-proyecto",
+      "path": "/Users/yoryo/.cursor/skills/gestion-proyecto",
+      "proyecto": "general",
+      "instalado_at": "2026-06-28T01:00:10.061532+00:00"
+    },
+    {
+      "nombre": "landing-lanzamiento",
+      "path": "/Users/yoryo/.cursor/skills/landing-lanzamiento",
+      "proyecto": "general",
+      "instalado_at": "2026-06-28T01:00:10.191881+00:00"
+    },
+    {
+      "nombre": "whatsapp-marketing",
+      "path": "/Users/yoryo/.cursor/skills/whatsapp-marketing",
+      "proyecto": "ideas-de-proyectos",
+      "instalado_at": "2026-06-28T01:00:10.351785+00:00"
+    },
+    {
+      "nombre": "audit-marketing",
+      "path": "/Users/yoryo/.cursor/skills/audit-marketing",
+      "proyecto": "ideas-de-proyectos",
+      "instalado_at": "2026-06-28T01:00:10.484650+00:00"
+    }
+  ]
+}

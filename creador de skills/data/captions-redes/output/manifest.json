@@ -1,0 +1,18 @@
+{
+  "nombre": "captions-redes",
+  "tipo": "capacidad",
+  "proyecto": "creador-de-contenido",
+  "triggers": [
+    "caption",
+    "descripcion instagram",
+    "copy redes",
+    "usa captions-redes",
+    "texto del post",
+    "cta redes"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:36:38.639711+00:00"
+}

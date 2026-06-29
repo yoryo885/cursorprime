@@ -1,0 +1,30 @@
+{
+  "titulo": "Pipeline investigación → producto para: resumenes libros kdp",
+  "slug": "pipeline_investigacin_producto_para_resumenes_li",
+  "tipo": "from_analisis",
+  "analisis_slug": "demo_investigacion",
+  "problema": "Investigación sobre «resumenes libros kdp»: demanda en KDP/guias digitales, creadores combinan YouTube + ebook, oportunidad en automatizar el pipeline completo.",
+  "cliente_objetivo": "Emprendedor / creador de productos digitales",
+  "modelo_negocio": "Pipeline automatizado → producto o venta del sistema",
+  "hipotesis": [
+    "Varios resultados muestran flujo manual replicable por agentes.",
+    "Foros y videos mencionan vender sistemas además del ebook."
+  ],
+  "productos_que_funcionan": [
+    "Resúmenes / guías digitales en Amazon KDP",
+    "Sistemas semi-automatizados con IA (investigar → producir)",
+    "Contenido YouTube + producto digital emparejado",
+    "Venta del sistema/plantilla, no solo el producto final"
+  ],
+  "patrones": [
+    "Investigación de nicho antes de producir",
+    "Contenido gratis (YouTube) → producto de pago",
+    "Profesionalización por rol (no genérico)",
+    "Vender el método/sistema además del entregable"
+  ],
+  "fuentes_count": 5,
+  "confidence_analisis": 0.65,
+  "exportado_at": "2026-06-28T23:10:03.007717+00:00",
+  "notas": "Generado desde analisis-de-proyectos/data/demo_investigacion/",
+  "siguiente_paso": "python3 evaluar.py ideas/from-analisis/{slug}.json"
+}

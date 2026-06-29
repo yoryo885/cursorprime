@@ -1,0 +1,16 @@
+{
+  "nombre": "evaluar-idea",
+  "tipo": "workflow",
+  "proyecto": "ideas-de-proyectos",
+  "triggers": [
+    "evaluar idea",
+    "viabilidad",
+    "project lens",
+    "usa evaluar-idea"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:02:37.564132+00:00"
+}

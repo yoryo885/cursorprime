@@ -1,0 +1,31 @@
+{
+  "titulo_comercial": "Pareto para psicopedagogas en 10 semanas",
+  "subtitulo_portada": "El principio de Pareto",
+  "portada_aprobada": true,
+  "imagen_portada": "assets/portada-psicopedagoga.png",
+  "mini_guia": [
+    "Lee un tema por vez; no intentes aplicar todo el mismo lunes.",
+    "Al final del PDF tienes un plan semanal listo para imprimir.",
+    "Una semana = una acción. Marca ✓ solo cuando haya evidencia real.",
+    "Usa la columna NOTAS del plan para anotar tus resultados medibles.",
+    "Si dudas, vuelve al mapa conceptual antes de la semana 1."
+  ],
+  "empieza_pasos": [
+    "Lee «Para quién es este resumen» y el aviso legal (2 minutos).",
+    "Elige 2 casos críticos de tu carga en el gabinete y anótalos.",
+    "Abre la Semana 01 del plan de acción y complétala esta semana."
+  ],
+  "checklist_titulo": "¿Estoy aplicando Pareto?",
+  "checklist_items": [
+    "Identifiqué mis casos críticos (el 20%) esta semana",
+    "Dediqué más tiempo a esos casos que al resto de la carga",
+    "Eliminé o reduje al menos una tarea de bajo impacto",
+    "Registré un resultado medible (avance lector, derivaciones, tiempo…)",
+    "Documenté el resultado en mi registro o NOTAS del plan",
+    "Revisé si los casos prioritarios siguen siendo los mismos",
+    "Coordiné con docentes o familia solo en casos vitales",
+    "Protegí un bloque de tiempo para intervención profunda",
+    "No dispersé esfuerzo en urgencias que otros pueden resolver",
+    "Cerré la semana sabiendo qué haré distinto la próxima"
+  ]
+}

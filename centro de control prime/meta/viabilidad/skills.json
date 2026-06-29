@@ -1,0 +1,97 @@
+{
+  "id": "skills",
+  "slug": "viabilidad-skills",
+  "nombre": "Creador de skills",
+  "carpeta": "creador de skills",
+  "capa": "creador",
+  "tema": "cursor agent custom skills workflow automation",
+  "fetch": "live",
+  "fuentes": 14,
+  "youtube_n": 6,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:45.869225+00:00",
+  "veredicto": "viable",
+  "score": 82,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «cursor agent custom skills workflow automation»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.81,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "Cursor AI Agent Workflow (Complete Setup & Automation Guide ...",
+      "url": "https://www.youtube.com/watch?v=afZoQP2QCnc",
+      "snippet": "Feb 25, 2026 · In this video, we explain the Cursor AI Agent Workflow and provide a complete setup and automation guide so you can use AI-powered coding assistance efficiently.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Cursor AI Agents Work Like 10 Developers (Cursor VP Live Demo) How Cursor builds agentic workflows across the SDLC Skills vs. Subagents in Cursor: Build Smarter AI Workflows ... A ‘Cleaner’ Agent in C",
+      "url": "https://www.youtube.com/watch?v=8QN23ZThdRY",
+      "snippet": "Sep 2, 2025 · Join me as I chat with Lee Robinson, VP of Developer Experience at Cursor , as he shares practical tips for maximizing productivity with Cursor 's AI coding tools. May 12, 2026 · Tido Carriero (VP of Engineering, Cursor ) shares how the team is building agent systems across the entire SDLC—from bug triage bots to security reviewers to growth experiment pipelines—and ... Mar 9, 2026 ·",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How Cursor builds agentic workflows across the SDLC Skills vs. Subagents in Cursor: Build Smarter AI Workflows ... A ‘Cleaner’ Agent in Cursor - Custom Modes and Rules Master AI Agent Workflow with Cu",
+      "url": "https://www.youtube.com/watch?v=dJAVS1g3NDw",
+      "snippet": "May 12, 2026 · Tido Carriero (VP of Engineering, Cursor ) shares how the team is building agent systems across the entire SDLC—from bug triage bots to security reviewers to growth experiment pipelines—and ... Mar 9, 2026 · Cursor isn't just an AI vibe code editor — it's a platform for building repeatable, composable workflows using Skills and Subagents . This talk breaks down the difference and sh",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Skills vs. Subagents in Cursor: Build Smarter AI Workflows ... A ‘Cleaner’ Agent in Cursor - Custom Modes and Rules Master AI Agent Workflow with Cursor IDE | Complete Usage ... AI Coding with Cursor:",
+      "url": "https://www.youtube.com/watch?v=rm6QkMnRxmo",
+      "snippet": "Mar 9, 2026 · Cursor isn't just an AI vibe code editor — it's a platform for building repeatable, composable workflows using Skills and Subagents . This talk breaks down the difference and shows you how... If you’ve ever wondered how rules and agentic workflows can save hours of manual cleanup, this tutorial is for you. In this video, we dive deep into creating and using Custom Modes in... Jan 25,",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "A ‘Cleaner’ Agent in Cursor - Custom Modes and Rules Master AI Agent Workflow with Cursor IDE | Complete Usage ... AI Coding with Cursor: Full Setup, Agent Workflow & GitHub ...",
+      "url": "https://www.youtube.com/watch?v=dgQnRGrzPvg",
+      "snippet": "If you’ve ever wondered how rules and agentic workflows can save hours of manual cleanup, this tutorial is for you. In this video, we dive deep into creating and using Custom Modes in... Jan 25, 2026 · 🎯 Learn how to use AI Agent Workflow with Cursor IDE to supercharge your development process! In this comprehensive tutorial, I'll walk you through using AI Agent Workflow in Cursor . Oct 21, 2025 ·",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Master AI Agent Workflow with Cursor IDE | Complete Usage ... AI Coding with Cursor: Full Setup, Agent Workflow & GitHub ...",
+      "url": "https://www.youtube.com/watch?v=qpIk9jDNYrg",
+      "snippet": "Jan 25, 2026 · 🎯 Learn how to use AI Agent Workflow with Cursor IDE to supercharge your development process! In this comprehensive tutorial, I'll walk you through using AI Agent Workflow in Cursor . Oct 21, 2025 · In this video, I walk through how to use Cursor AI to plan, build, and ship faster — from setup to deployment. ...more",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Cursor : AI coding agent",
+      "url": "https://cursor.com/",
+      "snippet": "It's a demonstration of Cursor's IDE showing AI-powered coding assistance features. The interface is displayed over a scenic painted landscape wallpaper, giving the demo an artistic backdrop.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Cursor · Download",
+      "url": "https://cursor.com/download",
+      "snippet": "The Cursor desktop app is available for macOS, Windows, and Linux. 3.9Latest ↓↑ macOS Mac (ARM64)⤓ Mac (x64)⤓ Mac Universal⤓ Windows Windows (x64) (System)⤓ Windows (x64) (User)⤓ …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Cursor 下载安装以及使用教程（详细图文并茂） - CSDN博客",
+      "url": "https://blog.csdn.net/weixin_36467887/article/details/159619159",
+      "snippet": "Apr 8, 2026 · Cursor 是基于VSCode 开发的AI代码编辑器，提供智能代码补全、代码生成、代码修改、代码搜索和代码解释等。 与其他工具不同，Cursor 将AI 辅助编码直接融入到 编辑器的核心功能中， …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Cursor 全攻略：注册、使用到无限续杯，一次性讲清楚",
+      "url": "https://zhuanlan.zhihu.com/p/23874722853",
+      "snippet": "前些天，由于 deepseek 官网无法使用，有朋友说deepseek+cline编程绑定的deepseek的api key也用不了了，AI编程还有没有好用的工具，我说当然是 Cursor 了，鉴于很多原因，很多朋友一直没用 …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Cursor - 欢迎来到 Cursor - Cursor 文档",
+      "url": "https://docs.cursor.ac.cn/get-started/welcome",
+      "snippet": "最初，我们有语法高亮等功能，使代码更具可读性。 然后，我们有了自动完成等功能，使代码更高效。 这些已经成为标准很长时间了，但是通过 Cursor，我们正在重新发明您使用代码的方式。",
+      "fuente": "web"
+    },
+    {
+      "titulo": "全网最全面详细的 Cursor 使用教程，让开发变成聊天一样容易-CSDN博客",
+      "url": "https://blog.csdn.net/m0_68116052/article/details/142832657",
+      "snippet": "Oct 24, 2024 · 总结 今天介绍了Cursor的下载和使用，集成了LLM的编译器更加强大，并且极易上手，在使用了三个月后也是慢慢和Cursor在编程上形成了默契，相比较之前的GitHub copilot，Cursor能力 …",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/skills.md"
+}

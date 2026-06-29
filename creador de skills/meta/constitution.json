@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "principios": [
+    "SKILL.md < 500 líneas",
+    "description en tercera persona + triggers",
+    "workflow = pasos fijos; capacidad = criterios de calidad",
+    "Instalar en ~/.cursor/skills/ por defecto"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "gifs": [
+    {
+      "tema": "resmenes-guas-digitales-",
+      "archivo": "01-resmenes_guas_digitales_.gif",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/pack_demo_investigacion/gifs/01-resmenes_guas_digitales_.gif",
+      "modulo": "gifs",
+      "frames": 4,
+      "generado_at": "2026-06-28T23:05:42.298557+00:00"
+    },
+    {
+      "tema": "sistemas-semi-automatiza",
+      "archivo": "02-sistemas_semi_automatiza.gif",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/pack_demo_investigacion/gifs/02-sistemas_semi_automatiza.gif",
+      "modulo": "gifs",
+      "frames": 4,
+      "generado_at": "2026-06-28T23:05:43.144878+00:00"
+    },
+    {
+      "tema": "contenido-youtube-produc",
+      "archivo": "03-contenido_youtube_produc.gif",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/pack_demo_investigacion/gifs/03-contenido_youtube_produc.gif",
+      "modulo": "gifs",
+      "frames": 4,
+      "generado_at": "2026-06-28T23:05:43.960199+00:00"
+    }
+  ],
+  "count": 3
+}

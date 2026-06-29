@@ -1,0 +1,26 @@
+{
+  "nombre": "cursorprime-router",
+  "titulo": "Cursorprime Router",
+  "tipo": "workflow",
+  "proyecto_destino": "general",
+  "ubicacion": "personal",
+  "instalar": true,
+  "triggers": [
+    "enrutar",
+    "router cursorprime",
+    "que skill uso",
+    "usa cursorprime-router"
+  ],
+  "proceso": "Enruta automáticamente intención del usuario → skill + prompt + pipeline. Fuente: meta/router.json y router.py.",
+  "pasos": [
+    {"titulo": "Enrutar", "detalle": "python3 ~/cursorprime/router.py --texto \"...\""},
+    {"titulo": "Leer skill", "detalle": "~/.cursor/skills/{skill}/SKILL.md"},
+    {"titulo": "Prompts auto", "detalle": "Si prompt.auto: creador de prompts --tipo --proyecto --slug"},
+    {"titulo": "Pipeline", "detalle": "CLI del proyecto destino según la ruta"}
+  ],
+  "reglas": [
+    "No esperar 'usa X' — enrutar al inicio de cada pedido de trabajo.",
+    "Anunciar skill + prompt elegidos en 1 línea.",
+    "Si matched false, una sola pregunta de desambiguación."
+  ]
+}

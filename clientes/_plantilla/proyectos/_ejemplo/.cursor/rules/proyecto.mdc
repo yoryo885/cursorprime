@@ -1,0 +1,67 @@
+---
+description: Enrutamiento de ESTE proyecto — slug, orden de skills, entregables
+globs: clientes/slug-cliente/proyectos/ejemplo/**
+alwaysApply: false
+---
+
+# Proyecto — enrutamiento específico
+
+**Cliente:** leer `../../CLIENTE.md` y `../../perfil.json`  
+**Brief:** `brief.json` en esta carpeta  
+**Slug pipeline:** `cliente-slug-ejemplo` (cambiar al crear proyecto real)
+
+## Por qué esta regla existe
+
+El router global (`router.py`) no conoce este proyecto. Esta regla fija:
+
+- qué `pipeline_slug` usar en CLI
+- qué skills tiene prioridad
+- dónde escribir entregables
+- el orden del flujo para campaña completa
+
+## Prioridad de enrutamiento
+
+```
+1. Esta regla (proyecto.mdc)
+2. enrutamiento-equipo.mdc (cliente)
+3. router.py (global)
+```
+
+## Intención → acción en ESTE proyecto
+
+| Usuario pide… | Hacer | Comando / skill |
+|---------------|-------|-----------------|
+| campaña completa / paquete marketing | Flujo 4 fases abajo | varios |
+| **audit completo / score / PDF cliente** | Fase 1 | **`market-audit`** → **`market-report-pdf`** |
+| investigar / estrategia ligera | Fase 1 | `audit-marketing` o `analisis-de-proyectos` → CONTEXTO.md |
+| posts linkedin | Fase 2 | `copy-linkedin` + `perfil.json` del cliente |
+| carrusel / imágenes / reels | Fase 3 | `creador_imagenes_main.py --slug cliente-slug-ejemplo` |
+| caption / hook | Fase 2–3 | `captions-redes` / `hooks-redes` |
+| landing | Fase 2 | `landing-lanzamiento` → `entregables/copy/landing.md` |
+| calendario editorial | Fase 4 | markdown en `entregables/calendario.md` |
+
+## Flujo campaña completa (obligatorio si piden “todo”)
+
+1. **Estratega** — Leer brief + CLIENTE.md. Si falta investigación: correr análisis con slug `cliente-slug-ejemplo`. Escribir plan en `CONTEXTO.md`.
+2. **Creador** — Generar copy según `entregables_pedidos` en brief. Guardar en `entregables/copy/`.
+3. **Visual** — Usar `../../templates/creatividades/` como referencia. Pipeline visual con slug del brief.
+4. **CM** — Armar `entregables/calendario.md` (sin auto-publicación).
+5. **QC** — Listar entregables en CONTEXTO.md. Pedir revisión humana.
+
+## Rutas de entregables
+
+```
+entregables/
+├── estrategia/     ← informes, audit
+├── copy/           ← posts, emails, landing
+├── visual/         ← copias de PNG/GIF o symlinks
+└── calendario.md
+```
+
+Tras pipeline externo, **copiar o enlazar** outputs a `entregables/visual/`.
+
+## Prohibido en este proyecto
+
+- Cambiar `pipeline_slug` sin actualizar brief.json y esta regla
+- Inventar métricas de campaña
+- Publicar o afirmar que algo “ya está live” sin OK del usuario

@@ -1,0 +1,62 @@
+{
+  "id": "lluvia",
+  "slug": "viabilidad-lluvia",
+  "nombre": "Lluvia de ideas",
+  "carpeta": "lluvia-de-ideas",
+  "capa": "creador",
+  "tema": "brainstorm product ideas digital business automation 2026",
+  "fetch": "live",
+  "fuentes": 7,
+  "youtube_n": 0,
+  "web_n": 7,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:28.535371+00:00",
+  "veredicto": "condicional",
+  "score": 69,
+  "oportunidades": 1,
+  "resumen": "Investigación sobre «brainstorm product ideas digital business automation 2026»: 0 YouTube · 7 web. Demanda parcial — conviene nicho más específico o MVP pequeño.",
+  "confidence": 0.53,
+  "warnings": [
+    "YouTube «brainstorm product ideas digital busines»: Búsqueda falló — ddgs: Unsupported protocol version 0x304"
+  ],
+  "youtube": [],
+  "web": [
+    {
+      "titulo": "Best Automated Business Ideas to Start in 2026 - Podbase",
+      "url": "https://www.podbase.com/blogs/automated-business-ideas",
+      "snippet": "Jun 2, 2026 · This guide explores 13 proven automated business ideas for 2026, from print-on-demand stores to AI-powered content sites and vending machines. Learn what makes each model effective, what tools you'll need, and how to launch a passive income stream that works around your life.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "10 Automation Business Ideas for Mobile Innovators in 2026",
+      "url": "https://www.rapidnative.com/blogs/automation-business-ideas",
+      "snippet": "Jun 7, 2026 · Explore 10 powerful automation business ideas for 2026 . From AI code generation to QA, find your next venture and learn how to prototype it fast.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "25 Business Automation Ideas That Save Real Time in 2026",
+      "url": "https://infiniteagent.io/blog/business-automation-ideas-2026/",
+      "snippet": "Apr 29, 2026 · Discover 25 practical business automation ideas for small and medium businesses in 2026 . Each strategy aims to save at least 2-3 hours weekly, leveraging tools you likely already use, freeing up valuable time for growth.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Automation Ideas for Small Businesses (2026) | 30 Examples ...",
+      "url": "https://synergeniq.com/business-automation-ideas-2026/",
+      "snippet": "Dec 4, 2025 · And the good news? You don’t need massive software platforms or enterprise budgets. Most of the biggest wins come from automating simple, repetitive tasks that eat up your time. Here are 30 real-world business automation ideas you can implement in 2026 — whether you’re in Visalia, the Central Valley, or anywhere else.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "160+ Business Automation Ideas for Every Function & Industry ...",
+      "url": "https://labs.codersarts.com/blog/product-ideas/160-business-automation-ideas-every-company-should-know-in-2026",
+      "snippet": "Discover 160+ business automation ideas across marketing, sales, HR, finance, operations, IT, and 8 industries. Filter by difficulty, find your quick wins, and download the free g...",
+      "fuente": "web"
+    },
+    {
+      "titulo": "AI Tools for Brainstorming Digital Products: The Ultimate ...",
+      "url": "https://www.automateed.com/ai-tools-for-brainstorming-digital-products",
+      "snippet": "Feb 20, 2026 · Discover how AI tools revolutionize digital product brainstorming , idea generation, and product ideation .",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/lluvia.md"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "pipeline",
+  "nombre": "Prompt diseño de pipeline Python",
+  "template": "Diseña un pipeline Python para '{tema}' en el proyecto {proyecto}. Entrada/salida JSON, agentes por paso, QC final. Estilo: {estilo}. Restricciones: MVP local, sin APIs de pago. Documenta en PROYECTO.md.",
+  "negative": ""
+}

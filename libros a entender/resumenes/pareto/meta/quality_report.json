@@ -1,0 +1,70 @@
+{
+  "book_score": 0.97,
+  "passed": true,
+  "topics": [
+    {
+      "tema": "Principio 80/20",
+      "score": 1.0,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Ley de Pareto",
+      "score": 1.0,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Productividad personal",
+      "score": 0.99,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Priorización de tareas",
+      "score": 1.0,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Foco y concentración",
+      "score": 0.81,
+      "flags": [
+        "mezcla_primera_persona: aparece yo/mi/me en el resumen"
+      ],
+      "passed": true
+    },
+    {
+      "tema": "Gestión del tiempo",
+      "score": 0.99,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Eficiencia y eficacia",
+      "score": 1.0,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Eliminar lo innecesario",
+      "score": 0.99,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Decisiones estratégicas",
+      "score": 0.97,
+      "flags": [],
+      "passed": true
+    },
+    {
+      "tema": "Aplicación en la vida diaria",
+      "score": 0.99,
+      "flags": [],
+      "passed": true
+    }
+  ],
+  "failed_topics": [],
+  "summary": "10/10 temas aprobados"
+}

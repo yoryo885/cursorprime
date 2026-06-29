@@ -1,0 +1,11 @@
+{
+  "slug": "creador-imagenes",
+  "titulo": "Creador de Imágenes",
+  "problema": "Generar packs de imágenes y GIF con estilo propio de forma automática, separado de libros a entender.",
+  "cliente_objetivo": "Yo + creadores que venden assets; uso en redes y marketplaces",
+  "modelo_negocio": "Lotes automáticos → packs PNG/GIF → Gumroad/Ko-fi o uso propio",
+  "mercado": "CL",
+  "formato_default": "png",
+  "estilo_default": "yordy-minimal",
+  "cantidad_default": 5
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "reglas": [
+    "Nunca publicar score sin confidence",
+    "Toda métrica con min/max cuando hay incertidumbre",
+    "Chile default: IVA 19%",
+    "MOCK_WEB=true en MVP — marcar fuentes mock"
+  ],
+  "comisiones_plataforma": {
+    "mercadolibre_cl_pct": 13
+  },
+  "competition": {
+    "max_urls": 10,
+    "precio_clp_min": 8000,
+    "precio_clp_max": 400000,
+    "usd_to_clp": 950,
+    "excluir_outliers": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "nombre": "evaluar-idea",
+  "description": "Evalúa viabilidad de una idea de negocio/proyecto con veredicto, márgenes de error y fuentes. Usa evaluar.py y skills project-lens. Proyecto: Ideas de proyectos. Usar cuando el usuario menciona evaluar idea, viabilidad, project lens, usa evaluar-idea, o pide seguir este flujo paso a paso.",
+  "line_count": 37,
+  "tipo": "workflow",
+  "triggers": [
+    "evaluar idea",
+    "viabilidad",
+    "project lens",
+    "usa evaluar-idea"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/evaluar-idea/output/SKILL.md"
+  ]
+}

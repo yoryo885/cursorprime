@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "pipeline": [
+    {
+      "id": 1,
+      "slug": "context",
+      "name": "Context Loader",
+      "agent": "ContextAgent",
+      "required": true,
+      "flag_cli": "--solo-context",
+      "input": ["data/{slug}/inputs/productos.json", "meta/constitution.json"],
+      "output": ["data/{slug}/meta/context.json"],
+      "puede_fallar": {"si": false}
+    },
+    {
+      "id": 2,
+      "slug": "hogatodo_scrape",
+      "name": "Hogatodo Scraper",
+      "agent": "HogatodoScraperAgent",
+      "required": true,
+      "flag_cli": "--solo-hogatodo-scrape",
+      "input": ["data/{slug}/meta/context.json"],
+      "output": ["data/{slug}/meta/hogatodo_prices.json"],
+      "puede_fallar": {"si": true, "accion": "usar cache si existe, sino abortar paso"}
+    },
+    {
+      "id": 3,
+      "slug": "margin_calc",
+      "name": "Margin Engine",
+      "agent": "MarginEngineAgent",
+      "required": true,
+      "flag_cli": "--solo-margin-calc",
+      "input": ["data/{slug}/meta/hogatodo_prices.json", "data/{slug}/meta/context.json"],
+      "output": ["data/{slug}/meta/margins.json"],
+      "puede_fallar": {"si": false}
+    },
+    {
+      "id": 4,
+      "slug": "report",
+      "name": "Report Generator",
+      "agent": "ReportAgent",
+      "required": true,
+      "flag_cli": "--solo-report",
+      "input": ["data/{slug}/meta/margins.json", "data/{slug}/meta/context.json"],
+      "output": ["data/{slug}/meta/report.json"],
+      "puede_fallar": {"si": false}
+    },
+    {
+      "id": 5,
+      "slug": "qc",
+      "name": "Alignment QC",
+      "agent": "QCAgent",
+      "required": true,
+      "flag_cli": "--solo-qc",
+      "input": ["data/{slug}/meta/report.json", "data/{slug}/meta/margins.json"],
+      "output": ["data/{slug}/meta/qc_result.json"],
+      "puede_fallar": {"si": true, "accion": "marcar warnings, no bloquear MVP"}
+    },
+    {
+      "id": 6,
+      "slug": "packager",
+      "name": "Packager Output",
+      "agent": "PackagerAgent",
+      "required": true,
+      "flag_cli": "--solo-packager",
+      "input": ["data/{slug}/meta/report.json", "data/{slug}/meta/qc_result.json"],
+      "output": ["data/{slug}/output/dashboard.json", "data/{slug}/output/resumen.txt"],
+      "puede_fallar": {"si": false}
+    }
+  ],
+  "defaults": {
+    "model": "claude-sonnet-4-5",
+    "checkpoint": true,
+    "mock_scraper": true,
+    "mock_ml_api": true
+  }
+}

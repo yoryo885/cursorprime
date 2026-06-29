@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "proyectos": [
+    {"id": "creador-de-contenido", "nombre": "Creador de Contenido", "carpeta": "../creador de contenido"},
+    {"id": "ideas-de-proyectos", "nombre": "Ideas de proyectos", "carpeta": "../ideas de proyectos"},
+    {"id": "libros-a-entender", "nombre": "Libros a entender", "carpeta": "../libros a entender"},
+    {"id": "linkedin-ghostwriter", "nombre": "LinkedIn Ghostwriter", "carpeta": "../linkedin-ghostwriter"},
+    {"id": "general", "nombre": "General", "carpeta": "."}
+  ]
+}

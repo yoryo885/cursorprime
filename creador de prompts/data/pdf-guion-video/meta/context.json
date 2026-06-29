@@ -1,0 +1,19 @@
+{
+  "titulo": "PDF + guiones de video en creador de contenido",
+  "tipo": "cursor",
+  "proyecto_destino": "creador-de-contenido",
+  "proyecto_nombre": "Creador de Contenido",
+  "temas": [
+    "Extender módulo PDF para generar guiones de video además del documento PDF"
+  ],
+  "contexto": {
+    "audiencia": "desarrollador del pipeline creador de contenido",
+    "tono": "técnico y concreto",
+    "estilo": "MVP incremental, reutilizar EscenasAgent y convenciones existentes",
+    "idioma": "español",
+    "objetivo": "Cuando el lote pida salida pdf (o pdf+video), además del .pdf con PNGs maquetados, generar un guion estructurado reutilizable por el modo video animado — no limitarse solo al PDF"
+  },
+  "variantes": 1,
+  "notas": "",
+  "creado_at": "2026-06-27T23:58:37.198798+00:00"
+}

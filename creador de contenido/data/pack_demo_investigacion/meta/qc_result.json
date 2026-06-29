@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "passed": [
+    "01-resmenes_guas_digitales_.png",
+    "02-sistemas_semi_automatiza.png",
+    "03-contenido_youtube_produc.png",
+    "01-resmenes_guas_digitales_.gif",
+    "02-sistemas_semi_automatiza.gif",
+    "03-contenido_youtube_produc.gif"
+  ],
+  "issues": [],
+  "salidas": [
+    "png",
+    "gif"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "agent": "RiskAgent",
+  "confidence": 0.6,
+  "error_margin_pct": 15,
+  "sources": [],
+  "findings": [
+    "Riesgo máximo severidad 3/5"
+  ],
+  "metrics": {},
+  "warnings": [],
+  "generated_at": "2026-06-28T01:17:25.860166+00:00",
+  "riesgos": [
+    {
+      "categoria": "mercado",
+      "severidad": 3,
+      "probabilidad": 3,
+      "mitigacion": "Validar con pilotos"
+    },
+    {
+      "categoria": "tecnico",
+      "severidad": 2,
+      "probabilidad": 3,
+      "mitigacion": "MVP acotado"
+    }
+  ],
+  "severidad_max": 3
+}

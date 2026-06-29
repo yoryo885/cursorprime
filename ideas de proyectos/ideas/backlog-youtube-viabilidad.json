@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "descripcion": "Ideas extraídas de videos YouTube — viabilidad sin instalar skills/packs externos",
+  "actualizado": "2026-06-28",
+  "ideas": [
+    {
+      "slug": "gestion-proyectos-sistema",
+      "titulo": "Sistema gestión proyectos reales con IA (estilo Yo S.A)",
+      "fuentes": ["youtube-qI7Azj7H1kI"],
+      "veredicto": "viable",
+      "score_estimado": 75,
+      "skill_cursor": "gestion-proyecto",
+      "construir_pipeline": false,
+      "notas": "Metodología ya encaja en cursorprime. Skill + evaluar-idea + crear-pipeline. No comprar curso."
+    },
+    {
+      "slug": "landing-funnels-ia",
+      "titulo": "Landings + lanzamientos con agentes (oferta + copy + wireframe)",
+      "fuentes": ["youtube-iWi0ts-nOTQ", "youtube-n9eGIlbRbQU", "youtube-gGxI3tICCk0"],
+      "veredicto": "condicional",
+      "score_estimado": 55,
+      "skill_cursor": "landing-lanzamiento",
+      "construir_pipeline": false,
+      "notas": "Skill cubre entregable (brief.md). Pipeline web solo si hay clientes pagando landings recurrentes."
+    },
+    {
+      "slug": "whatsapp-marketing-pyme",
+      "titulo": "Marketing y ventas por WhatsApp (copy + secuencias)",
+      "fuentes": ["youtube-urZuDtTePWs"],
+      "veredicto": "condicional",
+      "score_estimado": 50,
+      "skill_cursor": "whatsapp-marketing",
+      "construir_pipeline": false,
+      "notas": "Distinto de bot operativo (cola-pedidos-whatsapp). Spoki/conectores: descartados por ahora. Evaluar con evaluar-idea si escala a SaaS."
+    },
+    {
+      "slug": "audit-marketing-ecommerce",
+      "titulo": "Auditoría marketing/e-commerce con IA",
+      "fuentes": ["youtube-gGxI3tICCk0"],
+      "veredicto": "condicional",
+      "score_estimado": 48,
+      "skill_cursor": "audit-marketing",
+      "construir_pipeline": false,
+      "notas": "Skill para informes puntuales. project-lens si necesita TAM/finanzas. No instalar plugins opacos del video."
+    },
+    {
+      "slug": "webs-agencia-10k",
+      "titulo": "Agencia webs premium 10k€ con Claude Code",
+      "fuentes": ["youtube-9oVfhupb77w"],
+      "veredicto": "descartar",
+      "score_estimado": 25,
+      "skill_cursor": null,
+      "construir_pipeline": false,
+      "notas": "Fuera foco cursorprime (contenido, libros, pipelines). Affiliate Hostinger/skilio. Revisitar solo si pivot a agencia web."
+    },
+    {
+      "slug": "marketing-agent-swarm",
+      "titulo": "Equipo 6+ agentes marketing en Claude Code",
+      "fuentes": ["youtube-iWi0ts-nOTQ", "youtube-n9eGIlbRbQU", "youtube-vuaxy1NLAQ8", "youtube-qw5wBGSKX4k"],
+      "veredicto": "descartar_como_proyecto",
+      "score_estimado": null,
+      "skills_equivalentes": ["hooks-redes", "captions-redes", "thumbnail-social", "copy-linkedin", "landing-lanzamiento", "creador-de-prompts"],
+      "notas": "Ya resuelto con skills + router. No migrar a Claude Code ni instalar packs."
+    },
+    {
+      "slug": "pack-31-skills-negocios",
+      "titulo": "Pack 31 skills negocios (Migue Baena / HubSpot)",
+      "fuentes": ["youtube-urZuDtTePWs"],
+      "veredicto": "descartar",
+      "score_estimado": 20,
+      "skill_cursor": "find-skills",
+      "notas": "Usar find-skills para cherry-pick oficial (anthropics). No instalar pack completo."
+    },
+    {
+      "slug": "higgsfield-faceless-reels",
+      "titulo": "Reels faceless vía Higgsfield MCP",
+      "fuentes": ["youtube-vuaxy1NLAQ8"],
+      "veredicto": "descartar",
+      "score_estimado": 30,
+      "skills_equivalentes": ["guion-a-video", "hooks-redes", "captions-redes", "thumbnail-social"],
+      "notas": "Pipeline local cursorprime suficiente. Higgsfield = sponsor externo."
+    }
+  ]
+}

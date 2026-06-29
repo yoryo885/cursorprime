@@ -1,0 +1,36 @@
+{
+  "nombre": "crear-pipeline",
+  "titulo": "Crear Pipeline Python",
+  "tipo": "pipeline-python",
+  "proyecto_destino": "general",
+  "proyecto_nombre": "General",
+  "proyecto_carpeta": ".",
+  "proceso": "Entry point cursorprime para diseñar proyectos Python por agentes. Lee pipeline-project-creator (spec completa) y aplica el patrón usado en creador de prompts / creador de skills.",
+  "pasos": [
+    "Leer ~/.cursor/skills/pipeline-project-creator/SKILL.md (spec base obligatoria).",
+    "Fase 1 — Brief YAML: problema, entrada, salida, integraciones (máx. 3 preguntas).",
+    "Fase 2 — Pipeline 5-12 pasos + diagrama mermaid (Context → … → QC → Packager).",
+    "Fase 3 — Estructura carpetas + meta/plan.json + meta/constitution.json.",
+    "Fase 4 — Scaffolding SOLO si el usuario dice construye/armado/fase 4.",
+    "Fase 5 — PROYECTO.md con comandos y checklist MVP/V1."
+  ],
+  "reglas": [
+    "Siempre leer pipeline-project-creator antes de diseñar o codear",
+    "No construir código sin autorización explícita (construye / armado / fase 4)",
+    "Un CLI principal: {slug}_main.py con --slug, --reset-checkpoint, flags por paso",
+    "QC obligatorio antes de packager; estado en meta/ + logs/errores.json",
+    "Copiar convenciones de creador de prompts o creador de skills como referencia viva",
+    "MVP funcional primero; sin over-engineering"
+  ],
+  "triggers": [
+    "crear pipeline",
+    "nuevo pipeline",
+    "scaffolding agentes",
+    "usa crear-pipeline",
+    "pipeline python"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T00:24:51.456055+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "titulo": "Demo slideshow",
+  "salidas": ["png", "video"],
+  "estilo": "yordy-minimal",
+  "temas": ["enfoque", "tiempo", "prioridad"],
+  "video": {
+    "modo": "slideshow",
+    "fps": 2
+  }
+}

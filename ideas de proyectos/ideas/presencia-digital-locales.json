@@ -1,0 +1,22 @@
+{
+  "slug": "presencia-digital-locales",
+  "titulo": "Agencia de presencia digital para negocios locales",
+  "problema": "Negocios locales sin web, sin Google bien armado ni presencia en redes — pierden clientes que buscan online.",
+  "cliente_objetivo": "Dueños de negocios locales (comida, retail, servicios) que venden por boca a boca o WhatsApp",
+  "modelo_negocio": "Servicio: crear web + presencia digital básica. Referencia visual (Dribbble) + IA para armar landing rápido. Paquetes según profundidad.",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "tipo_negocio": "servicio",
+  "hipotesis": [
+    "Landing profesional en días, no semanas",
+    "Referencia visual + Cursor/Agent acelera entrega",
+    "Cliente local paga por verse 'serio' online"
+  ],
+  "mvp": [
+    "1 landing de ejemplo (negocio ficticio o piloto)",
+    "Paquete básico: web 1 página + Google Business",
+    "Script de venta local",
+    "1 cliente piloto"
+  ],
+  "notas": "Idea inspirada en vídeo Adrián Sáenz (Claude Code — web agencia locales). Relacionada con auditorias-locales (auditoría = entrada, esto = implementación). Ref: https://youtu.be/KXKzgeHOr7A"
+}

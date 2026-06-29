@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "generado_at": "2026-06-29",
+  "confidence_global": "medio",
+  "nota": "Ranking rentabilidad para crear — mezcla ideas cursorprime + patrones web 2026. No son ingresos garantizados.",
+  "criterios": ["velocidad primer $", "margen", "recurrencia", "infra ya construida", "validación evaluar.py"],
+  "ranking": [
+    {
+      "rank": 1,
+      "slug": "auditorias-locales",
+      "titulo": "Auditorías marketing web → retainer locales",
+      "origen": "cursorprime",
+      "veredicto": "viable",
+      "score": 98,
+      "margen_pct": "25-55",
+      "por_que": "Pipeline marketing-audit hecho. Primer cobro en días. PDF = gancho comercial (modelo Zubair).",
+      "infra": ["marketing-audit", "clientes/", "market-proposal"],
+      "prioridad": "alta"
+    },
+    {
+      "rank": 2,
+      "slug": "wasap-pymes",
+      "titulo": "Bot WhatsApp + cola pedidos pymes",
+      "origen": "cursorprime",
+      "veredicto": "viable",
+      "score": 90,
+      "margen_pct": "60-85 bruto",
+      "por_que": "SaaS recurrente CLP 35-120k/mes. Dolor real temporada alta. Mejor LTV que audit one-shot.",
+      "infra": ["whatsapp-marketing", "evaluar-idea"],
+      "prioridad": "alta",
+      "bloqueo": "Falta MVP bot operativo — no solo copy"
+    },
+    {
+      "rank": 3,
+      "slug": "presencia-digital-locales",
+      "titulo": "Web + presencia digital para locales",
+      "origen": "cursorprime",
+      "veredicto": "viable",
+      "score": 98,
+      "margen_pct": "25-55",
+      "por_que": "Upsell natural post-audit. Ticket setup alto. IA acelera landing.",
+      "infra": ["landing-lanzamiento", "creador de contenido"],
+      "prioridad": "alta",
+      "nota": "Vender DESPUÉS del audit, no en paralelo"
+    },
+    {
+      "rank": 4,
+      "slug": "marketing-analytics-smb",
+      "titulo": "Micro-SaaS audit marketing SMB ($19-49/mes)",
+      "origen": "web",
+      "veredicto": "condicional",
+      "score_estimado": 75,
+      "por_que": "Nicho web 2026: herramientas caras excluyen 35% SMB. Productizar marketing-audit más adelante.",
+      "infra": ["marketing-audit"],
+      "prioridad": "media",
+      "bloqueo": "Necesita 5-10 clientes servicio antes de SaaS"
+    },
+    {
+      "rank": 5,
+      "slug": "pipeline-kdp-resumenes",
+      "titulo": "Sistema KDP resúmenes libros (producto + método)",
+      "origen": "cursorprime",
+      "veredicto": "viable",
+      "score": 85,
+      "margen_pct": "15-40",
+      "por_que": "Stack completo (analisis → libros → contenido). Ingreso pasivo Amazon. Más lento que B2B local.",
+      "infra": ["analisis-de-proyectos", "libros a entender", "creador de contenido"],
+      "prioridad": "media"
+    },
+    {
+      "rank": 6,
+      "slug": "vertical-crm-fitness-local",
+      "titulo": "CRM vertical nicho (entrenadores / clínicas locales)",
+      "origen": "web",
+      "veredicto": "condicional",
+      "score_estimado": 70,
+      "por_que": "Vertical SaaS = retención alta. Genérico pierde. Requiere nicho único.",
+      "infra": [],
+      "prioridad": "baja",
+      "bloqueo": "Mucho build; no encaja con lo ya hecho"
+    },
+    {
+      "rank": 7,
+      "slug": "landing-funnels-ia",
+      "titulo": "Landings + lanzamientos como servicio",
+      "origen": "cursorprime+web",
+      "veredicto": "condicional",
+      "score_estimado": 55,
+      "por_que": "Skill listo. Mercado saturado. Solo rentable con clientes recurrentes.",
+      "infra": ["landing-lanzamiento"],
+      "prioridad": "baja"
+    },
+    {
+      "rank": 8,
+      "slug": "whatsapp-marketing-copy",
+      "titulo": "Secuencias WhatsApp marketing (solo copy)",
+      "origen": "cursorprime",
+      "veredicto": "condicional",
+      "score_estimado": 50,
+      "por_que": "Entrega rápida pero ticket bajo y poco recurrente vs bot.",
+      "infra": ["whatsapp-marketing"],
+      "prioridad": "baja"
+    },
+    {
+      "rank": 9,
+      "slug": "contenido-faceless-youtube",
+      "titulo": "Canal faceless + productos digitales",
+      "origen": "cursorprime+web",
+      "veredicto": "condicional",
+      "score_estimado": 45,
+      "por_que": "Infra video existe. Competencia alta. Monetización lenta (6-12 meses).",
+      "infra": ["guion-a-video", "hooks-redes"],
+      "prioridad": "baja"
+    },
+    {
+      "rank": 10,
+      "slug": "pack-skills-agencia-generica",
+      "titulo": "Agencia IA genérica / packs skills",
+      "origen": "web",
+      "veredicto": "descartar",
+      "score_estimado": 20,
+      "por_que": "Sin nicho = guerra de precios. Ya resuelto en cursorprime con router+skills.",
+      "infra": ["skills"],
+      "prioridad": "no crear"
+    }
+  ],
+  "top3_accion": [
+    "1. auditorias-locales: 3 audits piloto live + outreach Maps",
+    "2. wasap-pymes: 1 negocio piloto temporada alta",
+    "3. presencia-digital: upsell solo tras audit cerrado"
+  ]
+}

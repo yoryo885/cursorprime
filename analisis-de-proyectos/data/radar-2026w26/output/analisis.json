@@ -1,0 +1,57 @@
+{
+  "tema": "nichos kdp resumenes libros youtube",
+  "generado_at": "2026-06-28T23:05:29.576793+00:00",
+  "resumen_ejecutivo": "Investigación sobre «nichos kdp resumenes libros youtube»: demanda en KDP/guias digitales, creadores combinan YouTube + ebook, oportunidad en automatizar el pipeline completo.",
+  "productos_que_funcionan": [
+    "Resúmenes / guías digitales en Amazon KDP",
+    "Sistemas semi-automatizados con IA (investigar → producir)",
+    "Contenido YouTube + producto digital emparejado",
+    "Venta del sistema/plantilla, no solo el producto final"
+  ],
+  "patrones": [
+    "Investigación de nicho antes de producir",
+    "Contenido gratis (YouTube) → producto de pago",
+    "Profesionalización por rol (no genérico)",
+    "Vender el método/sistema además del entregable"
+  ],
+  "oportunidades_pipeline": [
+    {
+      "titulo": "Pipeline investigación → producto para: nichos kdp resumenes libros youtube",
+      "razon": "Varios resultados muestran flujo manual replicable por agentes.",
+      "confidence": 0.65
+    },
+    {
+      "titulo": "Empaquetar pipeline como producto vendible",
+      "razon": "Foros y videos mencionan vender sistemas además del ebook.",
+      "confidence": 0.6
+    }
+  ],
+  "fuentes": [
+    {
+      "tipo": "youtube",
+      "titulo": "Cómo publicar resúmenes de libros en Amazon KDP (paso a paso)",
+      "url": "https://www.youtube.com/watch?v=mock-kdp-1"
+    },
+    {
+      "tipo": "youtube",
+      "titulo": "Faceless channel: resúmenes de libros con IA — ¿sigue funcionando?",
+      "url": "https://www.youtube.com/watch?v=mock-kdp-2"
+    },
+    {
+      "tipo": "youtube",
+      "titulo": "Automatizar ebooks KDP con ChatGPT y Canva",
+      "url": "https://www.youtube.com/watch?v=mock-kdp-3"
+    },
+    {
+      "tipo": "web",
+      "titulo": "Amazon KDP low content books trends",
+      "url": "https://example.com/kdp-trends"
+    },
+    {
+      "tipo": "web",
+      "titulo": "Self publishing forum — book summary niche",
+      "url": "https://example.com/forum"
+    }
+  ],
+  "siguiente_paso_sugerido": "Correr pipeline lluvia para generar ideas con tu aprobación."
+}

@@ -1,0 +1,9 @@
+{
+  "nombre": "market-proposal",
+  "titulo": "Market Proposal",
+  "tipo": "capacidad",
+  "proyecto_destino": "clientes",
+  "triggers": ["market proposal", "propuesta cliente marketing", "retainer agencia", "usa market-proposal"],
+  "proceso": "Propuesta comercial desde audit + discovery. CLIENT-PROPOSAL.md en entregables.",
+  "reglas": ["Tiers pricing", "ROI con confidence", "Leer MARKETING-AUDIT si existe"]
+}

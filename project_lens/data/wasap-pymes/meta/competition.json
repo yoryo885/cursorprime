@@ -1,0 +1,47 @@
+{
+  "agent": "CompetitionAgent",
+  "confidence": 0.42,
+  "error_margin_pct": 30,
+  "sources": [
+    {
+      "url": "https://example.com/competitors",
+      "title": "Competencia (mock)",
+      "accessed_at": "2026-06-28T00:32:32.486240+00:00",
+      "mock": true
+    }
+  ],
+  "findings": [
+    "Saturación: media"
+  ],
+  "metrics": {
+    "num_competidores": {
+      "min": 2,
+      "max": 5,
+      "point": 3
+    },
+    "precio_clp": {
+      "min": 10000,
+      "max": 150000,
+      "point": 80000.0
+    }
+  },
+  "warnings": [
+    "mock — V1 Playwright pendiente"
+  ],
+  "generated_at": "2026-06-28T00:32:32.486267+00:00",
+  "saturacion": "media",
+  "competidores": [
+    {
+      "nombre": "Competidor 1",
+      "mock": true
+    },
+    {
+      "nombre": "Competidor 2",
+      "mock": true
+    },
+    {
+      "nombre": "Competidor 3",
+      "mock": true
+    }
+  ]
+}

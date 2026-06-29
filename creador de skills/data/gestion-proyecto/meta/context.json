@@ -1,0 +1,34 @@
+{
+  "nombre": "gestion-proyecto",
+  "titulo": "Gestión Proyecto",
+  "tipo": "workflow",
+  "proyecto_destino": "general",
+  "proyecto_nombre": "General",
+  "proyecto_carpeta": ".",
+  "proceso": "Metodología sistema>prompts: brief → evaluar (opcional) → docs (PROYECTO.md, plan) → gate construye → entregables con QC. Sin magia, sin descargar plantillas externas.",
+  "pasos": [
+    "Capturar brief: problema, usuario, entrada, salida, restricciones (YAML o JSON en ideas/).",
+    "Si es negocio nuevo: usa evaluar-idea antes de codear.",
+    "Fase docs: PROYECTO.md, meta/plan.json, meta/constitution.json — sin código aún.",
+    "Gate: usuario dice construye/armado/fase 4 → usa crear-pipeline para scaffolding.",
+    "Seguimiento: checkpoints, logs/errores.json, actualizar plan al cerrar cada fase."
+  ],
+  "reglas": [
+    "No escribir código hasta Fase docs completa y gate explícito",
+    "Un PROYECTO.md legible sin leer el código",
+    "Registrar supuestos y TODOs visibles",
+    "Reutilizar cursorprime: evaluar-idea → crear-pipeline → creador-de-prompts/skills"
+  ],
+  "triggers": [
+    "gestionar proyecto",
+    "proyecto real",
+    "documentar proyecto",
+    "usa gestion-proyecto",
+    "yo sa",
+    "sistema proyecto"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T01:00:10.054977+00:00"
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "descripcion": "Dirección estratégica de cursorprime — alimenta la lluvia de ideas",
+  "direccion": [
+    "Fábrica de pipelines vendibles (investigar → analizar → pipeline → vender sistema)",
+    "Productos digitales con demanda real (KDP, packs visuales, contenido)",
+    "Automatización con agentes Python + Cursor skills",
+    "Doble ganancia: usar el pipeline para producir O vender el pipeline"
+  ],
+  "proyectos_activos": [
+    "libros a entender",
+    "creador de contenido",
+    "creador de prompts",
+    "creador de skills",
+    "ideas de proyectos"
+  ],
+  "proyectos_congelados": [
+    "libros a entender — producto listo; bloqueo Amazon documento fiscal"
+  ],
+  "prioridades": [
+    "investigacion mercado youtube y amazon",
+    "lluvia de ideas con aprobacion humana",
+    "conectar investigacion con ideas de proyectos"
+  ]
+}

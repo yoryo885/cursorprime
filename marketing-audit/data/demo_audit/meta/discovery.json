@@ -1,0 +1,54 @@
+{
+  "fetched_at": "2026-06-29T00:11:12.772937+00:00",
+  "url": "https://calendly.com",
+  "business_type": "general",
+  "mock": true,
+  "page_analysis": {
+    "seo": {
+      "title": "Demo Business — Automatización para PYMEs",
+      "meta_description": "",
+      "headings": {
+        "h1": [
+          "Automatiza tu negocio hoy"
+        ],
+        "h2": [
+          "Features",
+          "Pricing"
+        ]
+      },
+      "has_viewport": true,
+      "images_without_alt": 3
+    },
+    "conversion": {
+      "cta_count": 2,
+      "ctas": [
+        {
+          "text": "Start free trial",
+          "href": "/signup"
+        }
+      ],
+      "form_count": 1,
+      "forms": [
+        {
+          "fields": 4
+        }
+      ]
+    },
+    "trust": {
+      "social_link_count": 2
+    },
+    "tracking": {
+      "schema_count": 0,
+      "tools_count": 1
+    },
+    "scores": {
+      "seo": 6,
+      "cta": 7,
+      "trust": 6,
+      "tracking": 5
+    },
+    "overall_score": 6.0,
+    "word_count": 850
+  },
+  "fetch_error": null
+}

@@ -1,0 +1,16 @@
+{
+  "nombre": "resumidor-kdp",
+  "description": "Flujo completo en libros a entender: PDF fuente → resumen editorial (main.py) → listing Amazon KDP (kdp_main.py). Marketing solo lee el PDF; nunca lo modifica. Proyecto: Libros a entender. Usar cuando el usuario menciona resumidor kdp, pdf resumen amazon, marketing kdp, usa resumidor-kdp, listing amazon, o pide seguir este flujo paso a paso.",
+  "line_count": 41,
+  "tipo": "workflow",
+  "triggers": [
+    "resumidor kdp",
+    "pdf resumen amazon",
+    "marketing kdp",
+    "usa resumidor-kdp",
+    "listing amazon"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/resumidor-kdp/output/SKILL.md"
+  ]
+}

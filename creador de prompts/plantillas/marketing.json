@@ -1,0 +1,6 @@
+{
+  "id": "marketing",
+  "nombre": "Prompt marketing / KDP / Amazon",
+  "template": "Genera material de marketing sobre '{tema}' para {audiencia}. Tono: {tono}. Incluye: título corto, subtítulo, 5 keywords, descripción 150 palabras. Proyecto: {proyecto}. Idioma: {idioma}.",
+  "negative": ""
+}

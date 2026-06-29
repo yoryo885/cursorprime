@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "descripcion": "Cola de skills a crear paso a paso. Estado: pendiente | hecho",
+  "skills": [
+    {"orden": 1, "slug": "guion-a-video", "tipo": "workflow", "proyecto": "creador-de-contenido", "estado": "hecho"},
+    {"orden": 2, "slug": "evaluar-idea", "tipo": "workflow", "proyecto": "ideas-de-proyectos", "estado": "hecho"},
+    {"orden": 3, "slug": "resumidor-kdp", "tipo": "workflow", "proyecto": "libros-a-entender", "estado": "hecho"},
+    {"orden": 4, "slug": "copy-linkedin", "tipo": "capacidad", "proyecto": "linkedin-ghostwriter", "estado": "hecho"},
+    {"orden": 5, "slug": "crear-pipeline", "tipo": "pipeline-python", "proyecto": "general", "estado": "hecho", "nota": "Refina pipeline-project-creator existente"},
+    {"orden": 6, "slug": "hooks-redes", "tipo": "capacidad", "proyecto": "creador-de-contenido", "estado": "hecho", "nota": "Video Grow with Alex — hooks"},
+    {"orden": 7, "slug": "captions-redes", "tipo": "capacidad", "proyecto": "creador-de-contenido", "estado": "hecho", "nota": "Video Grow with Alex — captions"},
+    {"orden": 8, "slug": "thumbnail-social", "tipo": "workflow", "proyecto": "creador-de-contenido", "estado": "hecho", "nota": "Video Grow with Alex — thumbnails"},
+    {"orden": 9, "slug": "find-skills", "tipo": "workflow", "proyecto": "general", "estado": "hecho", "nota": "Video racks — descubrimiento skills.sh"},
+    {"orden": 10, "slug": "gestion-proyecto", "tipo": "workflow", "proyecto": "general", "estado": "hecho", "nota": "Ruben Loan — sistema>prompts"},
+    {"orden": 11, "slug": "landing-lanzamiento", "tipo": "workflow", "proyecto": "general", "estado": "hecho", "nota": "Videos marketing agents — reinventado"},
+    {"orden": 12, "slug": "whatsapp-marketing", "tipo": "capacidad", "proyecto": "ideas-de-proyectos", "estado": "hecho", "nota": "Video Migue Baena — sin Spoki"},
+    {"orden": 13, "slug": "audit-marketing", "tipo": "capacidad", "proyecto": "ideas-de-proyectos", "estado": "hecho", "nota": "Video Mariano Greggi — audit ligero"}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "nombre": "pipeline-python",
+  "description_template": "Diseña y construye pipelines Python con agentes, CLI y QC para {proyecto}. Usar cuando el usuario pide {triggers}, scaffolding, meta/plan.json o pipeline-project-creator.",
+  "body_template": "# {titulo}\n\nExtiende el patrón **pipeline-project-creator** para {proyecto}.\n\n## Reglas\n\n{reglas}\n\n## Pasos de diseño\n\n{pasos}\n\n## Proceso\n\n{proceso}\n\n## Cuándo usar\n\n{triggers}"
+}

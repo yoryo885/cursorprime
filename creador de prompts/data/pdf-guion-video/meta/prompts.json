@@ -1,0 +1,17 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "tema": "Extender módulo PDF para generar guiones de video además del documento PDF",
+      "variante": 1,
+      "tipo": "cursor",
+      "proyecto_destino": "creador-de-contenido",
+      "prompt": "Actúa como agente especializado en 'Extender módulo PDF para generar guiones de video además del documento PDF' para el proyecto Creador de Contenido. Audiencia: desarrollador del pipeline creador de contenido. Tono: técnico y concreto. Objetivo: Cuando el lote pida salida pdf (o pdf+video), además del .pdf con PNGs maquetados, generar un guion estructurado reutilizable por el modo video animado — no limitarse solo al PDF. Entrega pasos concretos, archivos a tocar y criterios de éxito. Idioma: español.",
+      "negative": "",
+      "archivo_sugerido": "01-extender_mdulo_pdf_para_generar_guiones_de_video.md",
+      "generado_at": "2026-06-27T23:58:37.202822+00:00"
+    }
+  ],
+  "count": 1,
+  "plantilla": "cursor"
+}

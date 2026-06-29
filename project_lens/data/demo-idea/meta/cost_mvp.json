@@ -1,0 +1,31 @@
+{
+  "agent": "CostToMvpAgent",
+  "confidence": 0.62,
+  "error_margin_pct": 30,
+  "sources": [],
+  "findings": [
+    "Complejidad: media"
+  ],
+  "metrics": {
+    "semanas": {
+      "min": 4,
+      "max": 10,
+      "point": 6
+    },
+    "costo_clp": {
+      "min": 500000,
+      "max": 3000000,
+      "point": 1200000
+    }
+  },
+  "warnings": [],
+  "generated_at": "2026-06-28T01:17:25.859077+00:00",
+  "complejidad": "media",
+  "checklist_mvp": [
+    "Bot FAQ + fuera de horario",
+    "Tomar pedido estructurado",
+    "Google Sheet o panel simple",
+    "Notificación al dueño",
+    "Aviso auto pedido listo"
+  ]
+}

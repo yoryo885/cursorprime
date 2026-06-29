@@ -1,0 +1,72 @@
+============================================================
+LISTING AMAZON KDP — LISTO PARA COPIAR
+============================================================
+
+Serie: Aplicar en tu rol
+PDF origen: /Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf
+Generado: 2026-06-21T02:12:58.958261+00:00
+
+Título portada PDF (referencia): Pareto para psicopedagogas en 10 semanas
+
+— TÍTULO (máx. 200 caracteres) —
+Pareto para psicopedagogas en 10 semanas: Prioriza el 20% de estudiantes que generan el 80% del impacto en tu aula
+(114 caracteres)
+
+— SUBTÍTULO (opcional, máx. 200) —
+Guía práctica para psicopedagogas · Serie Aplicar en tu rol
+(59 caracteres)
+
+— TÍTULOS ALTERNATIVOS (A/B) —
+1. Pareto para psicopedagogas en 10 semanas: Aplica la regla 80/20 para identificar casos prioritarios y optimizar tu tiempo
+2. Pareto para psicopedagogas en 10 semanas: Guía práctica de la regla 80/20 para focalizar intervenciones y maximizar resultados
+
+— DESCRIPCIÓN (HTML para KDP) —
+Si trabajas como psicopedagoga en una escuela, conoces la tensión constante: decenas de estudiantes requieren tu atención, pero tus recursos y tiempo son limitados. Intentar abordar cada caso con la misma intensidad te deja agotada sin generar los avances que esperas en quienes realmente lo necesitan.<br><br><b>Este resumen adaptado del principio de Pareto te enseña a identificar ese 20% de estudiantes o intervenciones que producirán el 80% de los resultados positivos en tu gabinete.</b> No se trata de abandonar casos, sino de aplicar una estrategia de priorización inteligente que maximice el impacto real de tu trabajo psicopedagógico.<br><br>Guía de la serie <b>Aplicar en tu rol</b> (Libros a Entender): aplica ideas de libros de negocio y productividad a tu rol profesional.<br><br><b>Qué encontrarás en estas 28 páginas:</b><br>• <b>Plan de acción de 10 semanas</b> con tareas concretas para aplicar Pareto en tu día a día<br>• <b>Resúmenes por tema</b> adaptados al contexto escolar y al trabajo de intervención psicopedagógica<br>• <b>Tarjetas prácticas</b> con idea clave, ejemplo y aplicación directa a tu rol<br>• <b>Mapa conceptual</b> para visualizar el sistema completo de priorización<br>• <b>Checklist imprimible</b>: ¿Estoy aplicando Pareto? para autoevaluar tu progreso<br>• <b>Plantilla en blanco</b> para diseñar tu propio plan semanal personalizado<br>• <b>Mini guía de inicio</b> para comenzar desde la primera semana<br><br>Aprenderás a redistribuir tu tiempo según indicadores medibles como avance lector, autonomía en aula, reducción de derivaciones y tiempo por caso crítico. Identificarás los procesos cognitivos y hitos de aprendizaje que concentran mayor impacto, protegerás tu energía de tareas dispersas y focalizarás intervenciones donde realmente transformas trayectorias escolares.<br><br>Este material está diseñado específicamente para profesionales de la psicopedagogía que necesitan resultados concretos con recursos escasos, respetando la plasticidad de cada estudiante sin diluir tu esfuerzo.<br><br><b>Importante:</b> Esta guía es un resumen independiente elaborado por Libros a Entender. No está afiliada, autorizada ni respaldada por el autor ni la editorial del libro original. Su objetivo es ayudarte a aplicar las ideas del libro en tu contexto profesional.<br><br><b>Para quién es:</b> psicopedagoga en escuela.
+
+— 7 KEYWORDS —
+1. principio pareto psicopedagogía
+2. priorizar intervenciones educativas
+3. productividad para psicopedagogas
+4. gestión tiempo aula
+5. estrategias psicopedagógicas escolares
+6. 80 20 educación
+7. intervención psicopedagoga
+
+— 5 BENEFICIOS DEL PRODUCTO —
+1. Identifica el 20% de estudiantes que requieren tu intervención prioritaria
+2. Redistribuye tu tiempo según indicadores medibles de impacto real
+3. Reduce la sensación de agotamiento por dispersión de esfuerzos
+4. Aplica un plan semanal concreto durante 10 semanas con acciones específicas
+5. Concentra recursos limitados donde realmente transformas trayectorias escolares
+
+— CATEGORÍAS BISAC (sugeridas) —
+· EDU000000 - EDUCATION / General
+· SEL000000 - SELF-HELP / General
+
+— MERCADOS —
+MX, ES
+
+— PRECIO SUGERIDO — $3.99 USD
+
+— DISCLAIMER —
+Esta guía es un resumen independiente elaborado por Libros a Entender. No está afiliada, autorizada ni respaldada por el autor ni la editorial del libro original. Su objetivo es ayudarte a aplicar las ideas del libro en tu contexto profesional.
+
+— CALIDAD (QC) — Score: 9.5/10
+  ⚠ audiencia_no_mencionada_en_descripcion
+  ⚠ titulo_difiere_del_borrador_kdp_listing
+
+— CORRECCIONES DE ALINEACIÓN —
+  · descripcion: serie/audiencia/elementos inyectados
+  · keywords: léxico del rol reforzado
+
+— CAMBIOS VS BORRADOR (meta/kdp_listing.json) —
+  titulo: borrador: «Pareto para psicopedagogas: priorizar casos en el aula» → generado: «Pareto para psicopedagogas en 10 semanas: Prioriza el 20% de estudiantes que generan el 80% del impacto en tu aula»
+  keywords: quitadas: pareto psicopedagogas, guía pareto psicopedagoga, aplicar pareto trabajo; nuevas: principio pareto psicopedagogía, priorizar intervenciones educativas, productividad para psicopedagogas
+
+============================================================
+ANÁLISIS INTERNO (referencia)
+============================================================
+Tema principal: Aplicación del principio de Pareto (80/20) para priorizar intervenciones psicopedagógicas en entornos escolares
+Libro fuente: El principio de Pareto - Antoine Delers
+Audiencia: Psicopedagogas que trabajan en escuelas
+Propuesta de valor: Ayudar a profesionales de la psicopedagogía a identificar el 20% de estudiantes o intervenciones que generan el 80% de los resultados, permitiéndoles concentrar recursos limitados donde realmente transforman trayectorias escolares sin dispersar energía en casos de bajo impacto

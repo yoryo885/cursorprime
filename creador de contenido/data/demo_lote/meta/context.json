@@ -1,0 +1,22 @@
+{
+  "slug": "demo_lote",
+  "titulo": "Pack demo productividad",
+  "cantidad": 3,
+  "salidas_pedidas": [
+    "png"
+  ],
+  "salidas_efectivas": [
+    "png"
+  ],
+  "estilo": "yordy-minimal",
+  "temas": [
+    "enfoque",
+    "tiempo",
+    "prioridad"
+  ],
+  "uso": "general",
+  "gif": {},
+  "video": {},
+  "pdf": {},
+  "notas": "Demo solo PNG"
+}

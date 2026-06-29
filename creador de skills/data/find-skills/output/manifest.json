@@ -1,0 +1,18 @@
+{
+  "nombre": "find-skills",
+  "tipo": "workflow",
+  "proyecto": "general",
+  "triggers": [
+    "find skill",
+    "buscar skill",
+    "existe skill para",
+    "usa find-skills",
+    "skills.sh",
+    "instalar skill"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:36:39.090413+00:00"
+}

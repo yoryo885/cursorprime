@@ -1,0 +1,20 @@
+{
+  "titulo": "Demo prompts productividad",
+  "tipo": "imagen",
+  "proyecto_destino": "creador-de-contenido",
+  "proyecto_nombre": "Creador de Contenido",
+  "temas": [
+    "enfoque",
+    "tiempo",
+    "prioridad"
+  ],
+  "contexto": {
+    "audiencia": "emprendedores",
+    "tono": "motivador y claro",
+    "estilo": "flat minimal yordy",
+    "idioma": "español"
+  },
+  "variantes": 1,
+  "notas": "",
+  "creado_at": "2026-06-27T20:19:04.272834+00:00"
+}

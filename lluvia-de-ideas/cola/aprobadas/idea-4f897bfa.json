@@ -1,0 +1,16 @@
+{
+  "id": "idea-4f897bfa",
+  "categoria": "visual",
+  "titulo": "Pack promocional automático post-investigación",
+  "problema": "Tras analizar un nicho no hay assets visuales listos para validar demanda.",
+  "propuesta": "Conectar análisis → creador de contenido (3 PNG + 1 GIF del nicho detectado).",
+  "proyecto_afectado": "creador de contenido",
+  "confidence": 0.7,
+  "estado": "implementada",
+  "origen": "resumenes libros kdp",
+  "creado_at": "2026-06-28T22:56:50.879148+00:00",
+  "aprobada_at": "2026-06-28T23:01:58.987303+00:00",
+  "nota_usuario": "prioridad 2",
+  "implementada_at": "2026-06-28T23:05:29.956332+00:00",
+  "implementacion_notas": "pack visual desde demo_investigacion"
+}

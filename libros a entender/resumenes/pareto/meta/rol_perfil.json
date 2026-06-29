@@ -1,0 +1,30 @@
+{
+  "rol_usuario": "psicopedagoga en escuela",
+  "familia_rol": "psicopedagoga_educador",
+  "enfoque": "procesos cognitivos, hitos de aprendizaje, plasticidad neuronal y KPIs de desempeño individual",
+  "lexico": [
+    "procesos cognitivos",
+    "hitos de aprendizaje",
+    "intervención",
+    "seguimiento",
+    "gabinete",
+    "aula",
+    "plasticidad"
+  ],
+  "kpis": [
+    "avance lector",
+    "autonomía en aula",
+    "reducción de derivaciones",
+    "tiempo por caso crítico"
+  ],
+  "metodologia": "triaje de casos → priorizar por impacto en aprendizaje → intervención focalizada → registro de avances",
+  "prohibido": [
+    "clientes",
+    "ventas",
+    "ROI de negocio",
+    "activos financieros",
+    "escalabilidad comercial"
+  ],
+  "reto": "Atender eficazmente a numerosos estudiantes con recursos y tiempo limitados",
+  "intento_fallido": "Intentar abordar todos los casos con la misma intensidad, dispersando esfuerzos sin resultados claros"
+}

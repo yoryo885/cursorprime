@@ -1,0 +1,15 @@
+{
+  "nombre": "centro-de-control-prime",
+  "version": "0.1.0",
+  "tipo": "panel",
+  "descripcion": "Inventario y estadísticas del ecosistema cursorprime",
+  "comandos": {
+    "refresh": "python3 panel_main.py refresh",
+    "resumen": "python3 panel_main.py resumen"
+  },
+  "salidas": [
+    "meta/inventario.json",
+    "output/panel.html",
+    "output/dashboard.canvas.tsx"
+  ]
+}

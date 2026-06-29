@@ -1,0 +1,16 @@
+{
+  "nombre": "whatsapp-marketing",
+  "description": "Mejora WhatsApp Marketing con criterios específicos de calidad para Ideas de proyectos. Usar cuando el usuario pide whatsapp marketing, whatsapp ventas, secuencia whatsapp, usa whatsapp-marketing, spoki o necesita resultado superior al default del modelo.",
+  "line_count": 29,
+  "tipo": "capacidad",
+  "triggers": [
+    "whatsapp marketing",
+    "whatsapp ventas",
+    "secuencia whatsapp",
+    "usa whatsapp-marketing",
+    "spoki"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/whatsapp-marketing/output/SKILL.md"
+  ]
+}

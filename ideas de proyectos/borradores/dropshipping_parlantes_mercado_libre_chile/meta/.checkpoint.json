@@ -1,0 +1,33 @@
+{
+  "slug": "dropshipping_parlantes_mercado_libre_chile",
+  "fase": "diseno",
+  "last_completed_step": 4,
+  "last_completed_slug": "feasibility",
+  "updated_at": "2026-06-21T17:51:38.706362+00:00",
+  "history": [
+    {
+      "step_id": 1,
+      "step_slug": "brief",
+      "notes": "Brief para dropshipping_parlantes_mercado_libre_chile",
+      "at": "2026-06-21T17:51:38.701136+00:00"
+    },
+    {
+      "step_id": 2,
+      "step_slug": "research",
+      "notes": "Research template — completar con datos reales",
+      "at": "2026-06-21T17:51:38.702555+00:00"
+    },
+    {
+      "step_id": 3,
+      "step_slug": "architecture",
+      "notes": "Plan destino con 5 pasos",
+      "at": "2026-06-21T17:51:38.704366+00:00"
+    },
+    {
+      "step_id": 4,
+      "step_slug": "feasibility",
+      "notes": "Veredicto: GO_CON_RESERVAS",
+      "at": "2026-06-21T17:51:38.706346+00:00"
+    }
+  ]
+}

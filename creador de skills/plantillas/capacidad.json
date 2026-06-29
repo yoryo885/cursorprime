@@ -1,0 +1,5 @@
+{
+  "nombre": "capacidad",
+  "description_template": "Mejora {titulo} con criterios específicos de calidad para {proyecto}. Usar cuando el usuario pide {triggers} o necesita resultado superior al default del modelo.",
+  "body_template": "# {titulo}\n\nSkill de **capacidad** — capa extra de criterio (no workflow completo).\n\n## Objetivo\n\n{proceso}\n\n## Criterios de calidad\n\n{reglas}\n\n## Cuándo usar\n\nTriggers: {triggers}\n\n## Proyecto\n\n`{proyecto_carpeta}`"
+}

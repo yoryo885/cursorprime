@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ideas por crear — Rentabilidad</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #fafaf9; color: #1c1917; line-height: 1.5;
+      max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 3rem;
+    }
+    .header {
+      border-bottom: 3px solid #0f766e; padding-bottom: 1rem; margin-bottom: 1.5rem;
+    }
+    h1 { font-size: 1.4rem; color: #0f766e; }
+    .sub { color: #57534e; font-size: 0.88rem; margin-top: 0.35rem; }
+    .leyenda {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1rem;
+      font-size: 0.75rem; margin: 1rem 0 1.5rem; color: #57534e;
+    }
+    .leyenda span { display: flex; align-items: center; gap: 0.35rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #fff; border: 1px solid #e7e5e4; border-radius: 12px;
+      padding: 1.1rem 1.15rem; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+    .rank {
+      font-size: 0.7rem; font-weight: 700; color: #a8a29e; flex-shrink: 0;
+    }
+    .card h2 { font-size: 0.95rem; color: #1c1917; line-height: 1.35; }
+    .rent {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap;
+    }
+    .r-alta { background: #d1fae5; color: #065f46; }
+    .r-media { background: #fef3c7; color: #92400e; }
+    .r-baja { background: #fee2e2; color: #991b1b; }
+    .r-no { background: #f5f5f4; color: #78716c; }
+    .rent-text { font-size: 0.82rem; color: #44403c; }
+    .meta { font-size: 0.72rem; color: #78716c; margin-top: auto; padding-top: 0.35rem; }
+    .meta strong { color: #57534e; }
+    .estado {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .e-demo { color: #0f766e; }
+    .e-falta { color: #ea580c; }
+    .e-listo { color: #16a34a; }
+    .top3 {
+      background: linear-gradient(135deg, #f0fdfa, #ecfdf5);
+      border: 1px solid #99f6e4; border-radius: 12px;
+      padding: 1rem 1.15rem; margin-bottom: 1.5rem;
+    }
+    .top3 h2 { font-size: 0.85rem; color: #0f766e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .top3 ol { padding-left: 1.2rem; font-size: 0.88rem; }
+    .top3 li { margin-bottom: 0.25rem; }
+    footer { margin-top: 2rem; font-size: 0.72rem; color: #a8a29e; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Ideas por crear</h1>
+    <p class="sub">cursorprime · Rentabilidad en breve · Jun 2026 · confidence medio</p>
+  </div>
+
+  <div class="leyenda">
+    <span><i class="dot" style="background:#059669"></i> Alta — primer $ rápido</span>
+    <span><i class="dot" style="background:#ca8a04"></i> Media — rentable pero lento o bloqueado</span>
+    <span><i class="dot" style="background:#dc2626"></i> Baja — mucho esfuerzo, poco retorno</span>
+    <span><i class="dot" style="background:#a8a29e"></i> No crear</span>
+  </div>
+
+  <div class="top3">
+    <h2>Prioridad ahora</h2>
+    <ol>
+      <li><strong>Auditorías locales</strong> — cobrar primero</li>
+      <li><strong>WhatsApp bot</strong> — recurrente, alto margen</li>
+      <li><strong>Web locales</strong> — upsell tras audit</li>
+    </ol>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#1</span>
+        <span class="rent r-alta">Alta</span>
+      </div>
+      <h2>Auditorías marketing → retainer</h2>
+      <p class="rent-text">Muy rentable. Primer cobro en días. Margen 25–55%.</p>
+      <p class="meta"><strong>Score:</strong> 98 · <span class="estado e-demo">Demo listo</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#2</span>
+        <span class="rent r-alta">Alta</span>
+      </div>
+      <h2>Bot WhatsApp + pedidos</h2>
+      <p class="rent-text">Muy rentable. Recurrente $35–120k/mes. Margen 60–85%.</p>
+      <p class="meta"><strong>Score:</strong> 90 · <span class="estado e-falta">Falta API Meta</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#3</span>
+        <span class="rent r-alta">Alta</span>
+      </div>
+      <h2>Web + presencia digital</h2>
+      <p class="rent-text">Rentable como upsell. Ticket setup alto. Margen 25–55%.</p>
+      <p class="meta"><strong>Score:</strong> 98 · <span class="estado e-demo">Demo HTML</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">—</span>
+        <span class="rent r-media">Media</span>
+      </div>
+      <h2>Embudo 1→4 automático</h2>
+      <p class="rent-text">Ahorra tiempo. No genera $ solo; acelera ventas.</p>
+      <p class="meta"><span class="estado e-demo">Parcial (embudo)</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">—</span>
+        <span class="rent r-media">Media</span>
+      </div>
+      <h2>Outreach automático</h2>
+      <p class="rent-text">Mejora cierre del audit. Rentable si contactas muchos.</p>
+      <p class="meta"><span class="estado e-falta">Por crear</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#4</span>
+        <span class="rent r-media">Media</span>
+      </div>
+      <h2>Micro-SaaS audit ($19–49/mes)</h2>
+      <p class="rent-text">Escalable pero lento. Necesitas 5–10 clientes servicio antes.</p>
+      <p class="meta"><strong>Score:</strong> ~75 · <span class="estado e-falta">Condicional</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#5</span>
+        <span class="rent r-media">Media</span>
+      </div>
+      <h2>KDP resúmenes libros</h2>
+      <p class="rent-text">Pasivo Amazon. Margen 15–40%. Tarda meses en despegar.</p>
+      <p class="meta"><strong>Score:</strong> 85 · <span class="estado e-listo">Infra lista</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#6</span>
+        <span class="rent r-baja">Baja</span>
+      </div>
+      <h2>CRM vertical (clínicas, gyms)</h2>
+      <p class="rent-text">Retención alta si aciertas nicho. Mucho build, poca infra hecha.</p>
+      <p class="meta"><strong>Score:</strong> ~70 · <span class="estado e-falta">Condicional</span></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#7</span>
+        <span class="rent r-baja">Baja</span>
+      </div>
+      <h2>Landings + lanzamientos</h2>
+      <p class="rent-text">Mercado saturado. Solo rentable con clientes fijos.</p>
+      <p class="meta"><strong>Score:</strong> ~55 · Skill listo</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#8</span>
+        <span class="rent r-baja">Baja</span>
+      </div>
+      <h2>WhatsApp solo copy</h2>
+      <p class="rent-text">Entrega rápida, ticket bajo, poco recurrente.</p>
+      <p class="meta"><strong>Score:</strong> ~50</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#9</span>
+        <span class="rent r-baja">Baja</span>
+      </div>
+      <h2>Canal faceless YouTube</h2>
+      <p class="rent-text">Monetización lenta (6–12 meses). Competencia alta.</p>
+      <p class="meta"><strong>Score:</strong> ~45 · Infra video existe</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="rank">#10</span>
+        <span class="rent r-no">No crear</span>
+      </div>
+      <h2>Agencia IA genérica</h2>
+      <p class="rent-text">Guerra de precios. Ya lo resuelve cursorprime.</p>
+      <p class="meta"><strong>Score:</strong> ~20 · Descartar</p>
+    </div>
+
+  </div>
+
+  <footer>No son ingresos garantizados · Fuente: RANKING_RENTABILIDAD.json</footer>
+</body>
+</html>

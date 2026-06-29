@@ -1,0 +1,28 @@
+{
+  "nombre": "audit-marketing",
+  "titulo": "Audit Marketing",
+  "tipo": "capacidad",
+  "proyecto_destino": "ideas-de-proyectos",
+  "proyecto_nombre": "Ideas de proyectos",
+  "proyecto_carpeta": "../ideas de proyectos",
+  "proceso": "Auditoría marketing ligera: competencia, copy, ángulos de ads, SEO básico, quick wins. Informe markdown — no reemplaza project-lens (finanzas/mercado profundo).",
+  "pasos": [],
+  "reglas": [
+    "Salida: informe.md con 🔴 crítico / 🟡 mejora / 🟢 ok",
+    "Competencia: 3-5 referentes con URL citada",
+    "Top 5 ángulos de ads inferidos o citados — marcar confidence si no hay fuente",
+    "Quick wins accionables en 7 días",
+    "Si falta data: recomendar usa project-lens, no inventar métricas"
+  ],
+  "triggers": [
+    "auditar marketing",
+    "audit ecommerce",
+    "analisis competencia ads",
+    "usa audit-marketing",
+    "revisar anuncios"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T01:00:10.479815+00:00"
+}

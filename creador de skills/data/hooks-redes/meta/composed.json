@@ -1,0 +1,18 @@
+{
+  "nombre": "hooks-redes",
+  "description": "Mejora Hooks Redes con criterios específicos de calidad para Creador de Contenido. Usar cuando el usuario pide hook, gancho, primeras lineas, usa hooks-redes, reels, shorts, tiktok o necesita resultado superior al default del modelo.",
+  "line_count": 29,
+  "tipo": "capacidad",
+  "triggers": [
+    "hook",
+    "gancho",
+    "primeras lineas",
+    "usa hooks-redes",
+    "reels",
+    "shorts",
+    "tiktok"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/hooks-redes/output/SKILL.md"
+  ]
+}

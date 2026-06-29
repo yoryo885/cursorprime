@@ -1,0 +1,51 @@
+---
+description: Cambios de marketing en el PDF requieren aprobación explícita del usuario
+alwaysApply: true
+---
+
+# PDF editorial — aprobación del usuario
+
+## Regla principal
+
+Cualquier cambio de **marketing o comercial** en el PDF de producción requiere **preguntar al usuario primero**. El usuario responde sí o no.
+
+Antes de proponer, dar **criterio con fundamentos**: si el cambio es bueno o malo para el lector, la venta y la coherencia del producto.
+
+**No aplicar** cambios de marketing en el PDF sin aprobación explícita.
+
+## Qué SÍ puede hacer marketing (sin tocar el PDF)
+
+- Título, descripción y keywords de **Amazon KDP** (`resumenes/{slug}/kdp/`)
+- Listing, beneficios, análisis comercial
+- **Solo leer** el PDF — nunca regenerarlo ni sobrescribirlo
+
+## Qué NO debe modificar marketing (ni solicitar sin aprobación)
+
+| Zona | Archivos / agentes |
+|------|-------------------|
+| Portada (textos, imagen, CSS) | `producto.json`, `html_renderer.py`, `PDFDesignAgent` |
+| Orden de páginas | `html_renderer.py` |
+| Mini guía, checklist, plan de acción | `producto.json`, `plan_accion.json` |
+| Contenido de temas y tablas | `main.py`, agentes de producción |
+| Perfil Yordy, audiencia, mapa | agentes de producción |
+
+## Portada congelada (Pareto / pareto)
+
+Si `producto.json` tiene `"portada_aprobada": true`:
+
+- Etiqueta: **Resumen personal** (no forzar serie «Aplicar en tu rol»)
+- Título: **Pareto para psicopedagogas en 10 semanas**
+- Subtítulo: **El principio de Pareto · [autor]**
+
+Marketing **no debe** crear solicitudes de producción para cambiar la portada.
+
+## Flujo cuando marketing detecta un «problema» del PDF
+
+1. Informar al usuario con problema + recomendación (bien/mal)
+2. Esperar sí/no
+3. Si sí → producción (`main.py`) ejecuta el cambio
+4. Si no → registrar en solicitudes como «rechazado por usuario» o ignorar
+
+## Cambios técnicos pedidos directamente por el usuario
+
+Layout, espaciado, plantilla en blanco, imagen de portada, etc. → aplicar sin tratarlos como marketing, salvo que afecten textos comerciales.

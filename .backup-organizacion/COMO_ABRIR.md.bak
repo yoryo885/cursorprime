@@ -1,0 +1,90 @@
+# Cómo abrir carpetas en Cursor
+
+## El problema
+
+En el sidebar ves algo así:
+
+```
+imagenes
+cursorprime          ← "No agents yet"
+creador de prompts
+creador de imagenes  ← al expandir:
+  • video
+  • imagenes
+  • gifs
+  • operador de pipeline
+```
+
+Eso **NO son carpetas del disco**. Es el panel **Agents** (conversaciones / agentes).
+
+Por eso al hacer clic en `video` no entras a una carpeta — abres un **chat**.
+
+---
+
+## Solución: abrir el workspace correcto
+
+### Paso 1 — Cierra workspaces viejos
+`File → Close Folder` (repítelo hasta que no quede ninguno abierto).
+
+### Paso 2 — Abre cursorprime
+`File → Open Workspace from File…`
+
+Elige:
+```
+/Users/yoryo/cursorprime/cursorprime.code-workspace
+```
+
+(O: `File → Open Folder…` → `/Users/yoryo/cursorprime`)
+
+### Paso 3 — Usa el Explorer de archivos
+Atajo: **⌘ + Shift + E** (Mac)
+
+Ahí sí verás carpetas reales:
+
+```
+cursorprime/
+├── creador de contenido/
+│   ├── imagenes/     ← módulo PNG (código)
+│   ├── gifs/
+│   ├── videos/       ← módulo video (código)
+│   ├── pdf/
+│   ├── operador/
+│   ├── src/
+│   └── data/
+├── creador de prompts/
+├── ideas de proyectos/
+├── libros a entender/
+└── linkedin-ghostwriter/
+```
+
+Haz **doble clic** en `videos/` dentro de `creador de contenido` → se abre `agent.py`.
+
+---
+
+## Dos sidebars distintos
+
+| Panel | Qué es | ¿Abre carpetas? |
+|-------|--------|-----------------|
+| **Agents** (tu captura) | Chats renombrados | ❌ No |
+| **Explorer** (⌘⇧E) | Archivos del disco | ✅ Sí |
+
+---
+
+## Nombres viejos
+
+| En Agents (chat) | Carpeta real en disco |
+|------------------|------------------------|
+| creador de imagenes | `cursorprime/creador de contenido` |
+| video, imagenes, gifs | Chats — puedes ignorarlos o borrarlos |
+| imagenes (arriba solo) | Otro chat suelto |
+
+---
+
+## Un solo lugar para todo
+
+Todo el ecosistema vive en:
+```
+/Users/yoryo/cursorprime/
+```
+
+No abras cada proyecto por separado desde el home (`~/creador de prompts`, etc.) — abre **solo cursorprime**.

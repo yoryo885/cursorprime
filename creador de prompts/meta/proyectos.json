@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "descripcion": "Registro de proyectos cursorprime — el creador de prompts enruta por proyecto_destino",
+  "proyectos": [
+    {
+      "id": "creador-de-contenido",
+      "nombre": "Creador de Contenido",
+      "carpeta": "../creador de contenido",
+      "tipos": ["imagen", "copy", "cursor", "pipeline", "animacion"]
+    },
+    {
+      "id": "libros-a-entender",
+      "nombre": "Libros a entender",
+      "carpeta": "../libros a entender",
+      "tipos": ["copy", "marketing", "cursor", "pipeline"]
+    },
+    {
+      "id": "ideas-de-proyectos",
+      "nombre": "Ideas de proyectos",
+      "carpeta": "../ideas de proyectos",
+      "tipos": ["evaluacion", "cursor", "pipeline"]
+    },
+    {
+      "id": "linkedin-ghostwriter",
+      "nombre": "LinkedIn Ghostwriter",
+      "carpeta": "../linkedin-ghostwriter",
+      "tipos": ["copy", "cursor"]
+    },
+    {
+      "id": "analisis-de-proyectos",
+      "nombre": "Análisis de proyectos",
+      "carpeta": "../analisis-de-proyectos",
+      "tipos": ["evaluacion", "pipeline", "cursor"]
+    },
+    {
+      "id": "lluvia-de-ideas",
+      "nombre": "Lluvia de ideas",
+      "carpeta": "../lluvia-de-ideas",
+      "tipos": ["evaluacion", "pipeline", "cursor"]
+    },
+    {
+      "id": "general",
+      "nombre": "General (cualquier uso)",
+      "carpeta": ".",
+      "tipos": ["imagen", "copy", "cursor", "pipeline", "marketing", "evaluacion"]
+    }
+  ]
+}

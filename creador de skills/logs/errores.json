@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "evaluar-idea",
+    "step": "Packager",
+    "error": "PosixPath('/Users/yoryo/cursorprime/creador de skills/data/evaluar-idea/output/SKILL.md') and PosixPath('/Users/yoryo/cursorprime/creador de skills/data/evaluar-idea/output/SKILL.md') are the same file\nTraceback (most recent call last):\n  File \"/Users/yoryo/cursorprime/creador de skills/src/pipeline.py\", line 59, in _run_agent\n    result: AgentResult = agent.run(ctx)\n  File \"/Users/yoryo/cursorprime/creador de skills/src/agents/packager_agent.py\", line 25, in run\n    shutil.copy2(skill_src, skill_dst)\n  File \"/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/shutil.py\", line 435, in copy2\n    copyfile(src, dst, follow_symlinks=follow_symlinks)\n  File \"/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/shutil.py\", line 244, in copyfile\n    raise SameFileError(\"{!r} and {!r} are the same file\".format(src, dst))\nshutil.SameFileError: PosixPath('/Users/yoryo/cursorprime/creador de skills/data/evaluar-idea/output/SKILL.md') and PosixPath('/Users/yoryo/cursorprime/creador de skills/data/evaluar-idea/output/SKILL.md') are the same file\n",
+    "at": "2026-06-28T00:02:12.959103+00:00"
+  },
+  {
+    "slug": "hooks-redes",
+    "step": "Packager",
+    "error": "[Errno 1] Operation not permitted: '/Users/yoryo/.cursor/skills/hooks-redes'\nTraceback (most recent call last):\n  File \"/Users/yoryo/cursorprime/creador de skills/src/pipeline.py\", line 59, in _run_agent\n    result: AgentResult = agent.run(ctx)\n  File \"/Users/yoryo/cursorprime/creador de skills/src/agents/packager_agent.py\", line 48, in run\n    dest.mkdir(parents=True, exist_ok=True)\n  File \"/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py\", line 1313, in mkdir\n    self._accessor.mkdir(self, mode)\nPermissionError: [Errno 1] Operation not permitted: '/Users/yoryo/.cursor/skills/hooks-redes'\n",
+    "at": "2026-06-28T00:36:31.728610+00:00"
+  }
+]

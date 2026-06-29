@@ -1,0 +1,16 @@
+{
+  "titulo": "Pack promocional automático post-investigación",
+  "slug": "pack_promocional_automtico_post_investigacin",
+  "tipo": "from_lluvia",
+  "categoria_lluvia": "visual",
+  "origen_idea_id": "idea-4f897bfa",
+  "problema": "Tras analizar un nicho no hay assets visuales listos para validar demanda.",
+  "propuesta": "Conectar análisis → creador de contenido (3 PNG + 1 GIF del nicho detectado).",
+  "proyecto_destino": "creador de contenido",
+  "confidence_lluvia": 0.7,
+  "aprobada_at": "2026-06-28T23:01:58.987303+00:00",
+  "hipotesis": [
+    "Conectar análisis → creador de contenido (3 PNG + 1 GIF del nicho detectado)."
+  ],
+  "notas": "Exportada desde lluvia-de-ideas cola (idea-4f897bfa)"
+}

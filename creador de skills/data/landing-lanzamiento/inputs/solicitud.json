@@ -1,0 +1,21 @@
+{
+  "nombre": "landing-lanzamiento",
+  "titulo": "Landing Lanzamiento",
+  "tipo": "workflow",
+  "proyecto_destino": "general",
+  "triggers": ["landing", "lanzamiento", "oferta", "pagina ventas", "usa landing-lanzamiento", "copy lanzamiento"],
+  "proceso": "Funnel de lanzamiento reinventado en cursorprime: estratega oferta → copy → wireframe markdown (sin HostGator ni skills externas). Prompts vía creador-de-prompts.",
+  "pasos": [
+    "Brief: producto, avatar, dolor, precio/CTA, prueba social disponible.",
+    "Agente estratega (chat): propuesta de valor, objeciones, estructura de página (hero, beneficio, prueba, CTA).",
+    "Agente copy (chat): headlines, bullets, CTA, garantía — criterios landing-lanzamiento.",
+    "Opcional: python3 creador_prompts_main.py --tipo marketing --slug {slug}-landing",
+    "Entregar: output/landing-brief.md con secciones listas para Webflow/HTML manual."
+  ],
+  "reglas": [
+    "No prometer hosting ni stack del video — solo copy + estructura",
+    "Hero: 1 headline + 1 sub + 1 CTA above the fold",
+    "Máx. 7 secciones en wireframe",
+    "CTA repetido 2-3 veces; objeciones respondidas antes del CTA final"
+  ]
+}

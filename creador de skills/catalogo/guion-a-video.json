@@ -1,0 +1,29 @@
+{
+  "nombre": "guion-a-video",
+  "titulo": "Guion a Video",
+  "tipo": "workflow",
+  "proyecto_destino": "creador-de-contenido",
+  "ubicacion": "personal",
+  "instalar": true,
+  "triggers": [
+    "guion a video",
+    "crear video desde guion",
+    "modo animado",
+    "escenas de video",
+    "usa guion-a-video"
+  ],
+  "proceso": "Convierte un guion de video en escenas con frames inicio/fin y clips animados usando el pipeline de creador de contenido. Conecta con creador de prompts si hace falta prompts exactos por escena.",
+  "pasos": [
+    {"titulo": "Recibir guion", "detalle": "Texto libre o archivo. Confirmar titulo del video y estilo (meta/estilos_animacion.json)."},
+    {"titulo": "Generar prompts (opcional)", "detalle": "Si no hay pack: correr creador de prompts tipo animacion → proyecto creador-de-contenido."},
+    {"titulo": "Armar lote.json", "detalle": "salidas: [png, video], video.modo: animado|slideshow, guion, limit_escenas para pruebas."},
+    {"titulo": "Ejecutar pipeline", "detalle": "cd cursorprime/creador de contenido && python3 creador_imagenes_main.py --slug {slug} --modo video"},
+    {"titulo": "Entregar", "detalle": "data/{slug}/videos/clips/ + MP4 final + manifest. Indicar si MOCK_KLING o Kling real."}
+  ],
+  "reglas": [
+    "Modo slideshow = gratis (ffmpeg). Modo animado = frame A+B (mock o Kling).",
+    "Probar con limit_escenas: 1 antes de lote completo.",
+    "No inventar metricas; el guion define las escenas.",
+    "Ruta base: ~/cursorprime/creador de contenido"
+  ]
+}

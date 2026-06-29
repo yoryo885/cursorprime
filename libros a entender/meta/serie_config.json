@@ -1,0 +1,16 @@
+{
+  "nombre_serie": "Aplicar en tu rol",
+  "marca_editorial": "Libros a Entender",
+  "voz": "Yordy",
+  "mercados_amazon": ["MX", "ES"],
+  "precio_sugerido_usd": 3.99,
+  "patron_titulo_comercial": "{concepto} para {rol_plural}: {hook}",
+  "patron_subtitulo_portada": "Serie {nombre_serie} · {libro_titulo}",
+  "hooks_por_familia_rol": {
+    "psicopedagoga_educador": "priorizar casos en el aula",
+    "emprendedor_negocio": "enfocar lo que mueve resultados",
+    "salud_clinico": "priorizar intervenciones de mayor impacto",
+    "generico": "aplicar las ideas en tu trabajo real"
+  },
+  "disclaimer_kdp": "Esta guía es un resumen independiente elaborado por Libros a Entender. No está afiliada, autorizada ni respaldada por el autor ni la editorial del libro original. Su objetivo es ayudarte a aplicar las ideas del libro en tu contexto profesional."
+}

@@ -1,0 +1,22 @@
+{
+  "nombre": "evaluar-idea",
+  "titulo": "Evaluar Idea",
+  "tipo": "workflow",
+  "proyecto_destino": "ideas-de-proyectos",
+  "triggers": ["evaluar idea", "viabilidad", "usa evaluar-idea", "antes de construir"],
+  "proceso": "Evalúa viabilidad de una idea de negocio/proyecto con veredicto, márgenes de error y confidence. Primero evaluar.py (rápido, local); si hace falta investigación de mercado real, complementar con usa project-lens.",
+  "pasos": [
+    "Recibir idea: JSON en ideas/ o texto libre. Confirmar slug y título.",
+    "Ejecutar: cd ~/cursorprime/ideas de proyectos && python3 evaluar.py ideas/{archivo}.json (o --texto \"...\").",
+    "Revisar evaluaciones/{slug}/veredicto.json e informe.md.",
+    "Si confidence bajo o falta data de mercado: invocar usa project-lens para investigación web profunda.",
+    "Entregar veredicto (viable / condicional / descartar), score, margen en rango y siguiente_paso. No construir código hasta que el usuario diga construye/armado/crea el proyecto."
+  ],
+  "reglas": [
+    "No inventar cifras de mercado — confidence ≤ 0.5 si no hay fuentes",
+    "Margen siempre en rango min/max, nunca punto único",
+    "Veredicto: viable (≥65) / condicional (40-64) / descartar (<40)",
+    "evaluar-idea = flujo rápido local; project-lens = investigación profunda con agentes",
+    "Ruta base: ~/cursorprime/ideas de proyectos"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nombre": "Campaña ejemplo",
+  "slug": "ejemplo",
+  "cliente_slug": "slug-cliente",
+  "pipeline_slug": "cliente-slug-ejemplo",
+  "objetivo": "Describir en una frase qué debe lograr esta campaña",
+  "producto_o_servicio": "",
+  "publico": "",
+  "canales": ["linkedin", "instagram"],
+  "entregables_pedidos": [
+    "informe_estrategia",
+    "posts_linkedin",
+    "carrusel_instagram"
+  ],
+  "fecha_limite": "",
+  "restricciones": [
+    "usar tono de CLIENTE.md",
+    "no inventar métricas"
+  ],
+  "pipelines": {
+    "analisis": {
+      "cmd": "python3 analisis_main.py analizar --texto \"{tema}\" --slug {pipeline_slug}",
+      "cwd": "analisis-de-proyectos"
+    },
+    "contenido_visual": {
+      "cmd": "python3 creador_imagenes_main.py --slug {pipeline_slug}",
+      "cwd": "creador de contenido"
+    },
+    "marketing_audit": {
+      "cmd": "python3 marketing_audit_main.py audit --url {url} --slug {pipeline_slug} --cliente {cliente_slug} --proyecto {slug}",
+      "cwd": "marketing-audit"
+    },
+    "linkedin": {
+      "cmd": "python3 generar_posts.py",
+      "cwd": "linkedin-ghostwriter",
+      "nota": "Copiar perfil.json del cliente o symlink antes de correr"
+    }
+  },
+  "estado": "borrador"
+}

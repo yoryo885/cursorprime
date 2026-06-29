@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "pipeline": [
+    {"id": 1, "slug": "context", "agent": "ContextAgent"},
+    {"id": 2, "slug": "discovery", "agent": "DiscoveryAgent"},
+    {"id": 3, "slug": "parallel_audit", "agent": "ParallelAuditAgent", "nota": "5 agentes en paralelo"},
+    {"id": 4, "slug": "synthesis", "agent": "SynthesisAgent"},
+    {"id": 5, "slug": "qc", "agent": "QcAgent"},
+    {"id": 6, "slug": "packager", "agent": "PackagerAgent"},
+    {"id": 7, "slug": "pdf", "agent": "PdfAgent", "opcional": true}
+  ],
+  "agentes_paralelos": [
+    "ContentAgent",
+    "ConversionAgent",
+    "CompetitiveAgent",
+    "TechnicalAgent",
+    "StrategyAgent"
+  ],
+  "pesos_score": {
+    "content": 0.25,
+    "conversion": 0.20,
+    "technical": 0.20,
+    "competitive": 0.15,
+    "brand": 0.10,
+    "growth": 0.10
+  },
+  "salida": {
+    "audit_json": "data/{slug}/meta/synthesis.json",
+    "audit_md": "data/{slug}/output/MARKETING-AUDIT.md",
+    "audit_pdf": "data/{slug}/output/MARKETING-REPORT.pdf"
+  }
+}

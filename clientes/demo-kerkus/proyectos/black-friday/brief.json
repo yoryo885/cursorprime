@@ -1,0 +1,36 @@
+{
+  "nombre": "Campaña ejemplo",
+  "slug": "black-friday",
+  "cliente_slug": "demo-kerkus",
+  "pipeline_slug": "demo-kerkus-black-friday",
+  "objetivo": "Describir en una frase qué debe lograr esta campaña",
+  "producto_o_servicio": "",
+  "publico": "",
+  "canales": ["linkedin", "instagram"],
+  "entregables_pedidos": [
+    "informe_estrategia",
+    "posts_linkedin",
+    "carrusel_instagram"
+  ],
+  "fecha_limite": "",
+  "restricciones": [
+    "usar tono de CLIENTE.md",
+    "no inventar métricas"
+  ],
+  "pipelines": {
+    "analisis": {
+      "cmd": "python3 analisis_main.py analizar --texto \"{tema}\" --slug {pipeline_slug}",
+      "cwd": "analisis-de-proyectos"
+    },
+    "contenido_visual": {
+      "cmd": "python3 creador_imagenes_main.py --slug {pipeline_slug}",
+      "cwd": "creador de contenido"
+    },
+    "linkedin": {
+      "cmd": "python3 generar_posts.py",
+      "cwd": "linkedin-ghostwriter",
+      "nota": "Copiar perfil.json del cliente o symlink antes de correr"
+    }
+  },
+  "estado": "borrador"
+}

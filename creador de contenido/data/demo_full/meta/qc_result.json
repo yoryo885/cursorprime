@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "passed": [
+    "01-creatividad.png",
+    "02-energia.png",
+    "01-creatividad.gif",
+    "02-energia.gif",
+    "demo_full.pdf"
+  ],
+  "issues": [],
+  "salidas": [
+    "png",
+    "gif",
+    "pdf"
+  ]
+}

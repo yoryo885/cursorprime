@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "pipeline": [
+    {"id": 1, "slug": "context", "agente": "ContextAgent"},
+    {"id": 2, "slug": "trend", "agente": "TrendAgent", "v1": true},
+    {"id": 3, "slug": "market", "agente": "MarketResearchAgent", "v1": true},
+    {"id": 4, "slug": "competition", "agente": "CompetitionAgent", "v1": true},
+    {"id": 5, "slug": "financial", "agente": "FinancialAgent"},
+    {"id": 6, "slug": "scalability", "agente": "ScalabilityAgent"},
+    {"id": 7, "slug": "cost_mvp", "agente": "CostToMvpAgent"},
+    {"id": 8, "slug": "risk", "agente": "RiskAgent"},
+    {"id": 9, "slug": "synthesis", "agente": "SynthesisAgent"},
+    {"id": 10, "slug": "planner", "agente": "PlannerAgent"},
+    {"id": 11, "slug": "qc", "agente": "QCAgent"},
+    {"id": 12, "slug": "report", "agente": "ReportAgent"},
+    {"id": 13, "slug": "improvement", "agente": "ImprovementAgent"}
+  ]
+}

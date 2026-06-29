@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Embudo comercial — Clínica Sol (FICTICIO)</title>
+  <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1c1917; line-height: 1.6; background: #fafaf9;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+  .wrap-wide { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+  a { color: #0f766e; }
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 1rem; border-bottom: 3px solid #0f766e; padding-bottom: 1rem; margin-bottom: 1.5rem;
+  }
+  .logo { height: 44px; width: auto; }
+  .logo-text { font-weight: 700; color: #0f766e; font-size: 1rem; }
+  .header-right { text-align: right; font-size: 0.8rem; color: #57534e; }
+  .header-right a { text-decoration: none; font-weight: 600; }
+  h1 { font-size: 1.5rem; color: #0f766e; margin-bottom: 0.5rem; }
+  h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em;
+       color: #0f766e; margin: 2rem 0 0.75rem; }
+  h3 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+  p, li { font-size: 0.95rem; }
+  .sub { color: #57534e; font-size: 0.9rem; margin-bottom: 1rem; }
+  .badge {
+    display: inline-block; background: #fef3c7; color: #92400e;
+    padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem;
+  }
+  .badge-demo { background: #e0e7ff; color: #3730a3; }
+  .score-box {
+    background: linear-gradient(135deg, #f0fdfa, #ecfdf5);
+    border: 1px solid #99f6e4; border-radius: 16px; padding: 1.5rem;
+    text-align: center; margin: 1.5rem 0;
+  }
+  .score { font-size: 3.5rem; font-weight: 800; color: #0f766e; line-height: 1; }
+  .resumen { background: #fff; border: 1px solid #e7e5e4; padding: 1rem 1.25rem;
+             border-radius: 8px; margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: #fff; }
+  th, td { padding: 0.6rem 0.5rem; border-bottom: 1px solid #e7e5e4; text-align: left; }
+  th { color: #78716c; font-weight: 600; }
+  .finding {
+    padding: 0.85rem 1rem; margin-bottom: 0.5rem; border-radius: 8px;
+    border-left: 4px solid #a8a29e; background: #fff; font-size: 0.92rem;
+  }
+  .critical { border-color: #dc2626; background: #fef2f2; }
+  .high { border-color: #ea580c; background: #fff7ed; }
+  .medium { border-color: #ca8a04; background: #fefce8; }
+  .tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+         color: #57534e; display: block; margin-bottom: 0.25rem; }
+  .cta {
+    background: #0f766e; color: #fff; padding: 1.25rem 1.5rem;
+    border-radius: 12px; margin-top: 2rem; text-align: center;
+  }
+  .cta a, .btn {
+    display: inline-block; margin-top: 0.75rem; background: #fff; color: #0f766e;
+    padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 700;
+    text-decoration: none; font-size: 0.95rem;
+  }
+  .btn-primary { background: #0f766e; color: #fff; margin-top: 0; }
+  footer { margin-top: 2rem; font-size: 0.75rem; color: #a8a29e; text-align: center; }
+  .nav-steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem; margin: 2rem 0;
+  }
+  .step-card {
+    background: #fff; border: 1px solid #e7e5e4; border-radius: 12px;
+    padding: 1.25rem; text-decoration: none; color: inherit;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .step-card:hover { border-color: #0f766e; box-shadow: 0 4px 12px rgba(15,118,110,0.12); }
+  .step-num {
+    display: inline-block; background: #0f766e; color: #fff; width: 28px; height: 28px;
+    border-radius: 50%; text-align: center; line-height: 28px; font-size: 0.85rem;
+    font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .step-card h3 { color: #0f766e; font-size: 1rem; margin: 0 0 0.35rem; }
+  .step-card p { font-size: 0.85rem; color: #57534e; margin: 0; }
+  .step-done { border-color: #99f6e4; background: #f0fdfa; }
+  .plan-grid { display: grid; gap: 1rem; margin: 1rem 0; }
+  @media (min-width: 640px) { .plan-grid { grid-template-columns: repeat(3, 1fr); } }
+  .plan {
+    background: #fff; border: 2px solid #e7e5e4; border-radius: 12px; padding: 1.25rem;
+  }
+  .plan.featured { border-color: #0f766e; position: relative; }
+  .plan.featured::before {
+    content: 'Recomendado'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: #0f766e; color: #fff; font-size: 0.65rem; font-weight: 700;
+    padding: 0.15rem 0.6rem; border-radius: 4px; text-transform: uppercase;
+  }
+  .price { font-size: 1.5rem; font-weight: 800; color: #0f766e; margin: 0.5rem 0; }
+  .plan ul { padding-left: 1.1rem; font-size: 0.85rem; }
+  .plan li { margin-bottom: 0.35rem; }
+  /* Landing clinica */
+  .hero-landing {
+    background: linear-gradient(135deg, #0f766e, #115e59); color: #fff;
+    padding: 3rem 1.5rem; border-radius: 16px; text-align: center; margin-bottom: 2rem;
+  }
+  .hero-landing h1 { color: #fff; font-size: 1.75rem; margin-bottom: 0.5rem; }
+  .hero-landing p { opacity: 0.92; margin-bottom: 1.25rem; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+  .hero-btns a {
+    background: #fff; color: #0f766e; padding: 0.65rem 1.25rem; border-radius: 8px;
+    font-weight: 700; text-decoration: none; font-size: 0.9rem;
+  }
+  .hero-btns a.outline { background: transparent; border: 2px solid #fff; color: #fff; }
+  .benefits { display: grid; gap: 1rem; margin: 1.5rem 0; }
+  @media (min-width: 640px) { .benefits { grid-template-columns: repeat(3, 1fr); } }
+  .benefit {
+    background: #fff; border: 1px solid #e7e5e4; border-radius: 10px;
+    padding: 1rem; text-align: center;
+  }
+  .benefit strong { display: block; color: #0f766e; margin-bottom: 0.25rem; }
+  .faq-item { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px;
+              padding: 1rem; margin-bottom: 0.5rem; }
+  .faq-item strong { color: #0f766e; }
+  /* WhatsApp chat */
+  .phone {
+    max-width: 380px; margin: 2rem auto; background: #ece5dd;
+    border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .phone-header {
+    background: #075e54; color: #fff; padding: 1rem 1.25rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%; background: #25d366;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.9rem;
+  }
+  .chat { padding: 1rem; min-height: 420px; display: flex; flex-direction: column; gap: 0.5rem; }
+  .bubble {
+    max-width: 85%; padding: 0.55rem 0.75rem; border-radius: 8px;
+    font-size: 0.88rem; line-height: 1.45; box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+  }
+  .bubble-in { background: #fff; align-self: flex-start; border-top-left-radius: 0; }
+  .bubble-out { background: #dcf8c6; align-self: flex-end; border-top-right-radius: 0; }
+  .bubble .time { font-size: 0.65rem; color: #78716c; text-align: right; margin-top: 0.25rem; }
+  .demo-note {
+    background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px;
+    padding: 0.75rem 1rem; font-size: 0.85rem; margin-bottom: 1.5rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap-wide">
+
+  <div class="header">
+    <img src="../paso-1-informe/logo.svg" alt="Presencia Local" class="logo" />
+    <div class="header-right">
+      <strong>Presencia Local</strong><br>
+      <a href="https://wa.me/56987654321?text=Hola%2C%20vi%20el%20informe%20de%20marketing%20de%20mi%20negocio%20y%20quiero%20agendar%20la%20llamada." target="_blank">WhatsApp</a> · <a href="mailto:hola@presencialocal.cl">hola@presencialocal.cl</a>
+    </div>
+  </div>
+  <h1>Embudo comercial — Clínica Sol (FICTICIO)</h1>
+  <p class="sub">Primer cliente demo · 4 entregables en HTML · <span class="badge badge-demo">DEMO</span></p>
+
+  <div class="resumen">
+    Flujo completo: <strong>informe</strong> → <strong>propuesta</strong> → <strong>web</strong> → <strong>WhatsApp</strong>.
+    Cada paso es un HTML independiente listo para mostrar al cliente o enviar por link.
+  </div>
+
+  <div class="nav-steps">
+    <a class="step-card step-done" href="paso-1-informe/index.html">
+      <span class="step-num">1</span>
+      <h3>Informe de marketing</h3>
+      <p>Audit 55/100 · lenguaje claro · listo para enviar</p>
+    </a>
+    <a class="step-card step-done" href="paso-2-propuesta/index.html">
+      <span class="step-num">2</span>
+      <h3>Propuesta comercial</h3>
+      <p>3 planes: $80k · $120k · $180k / mes</p>
+    </a>
+    <a class="step-card step-done" href="paso-3-web/index.html">
+      <span class="step-num">3</span>
+      <h3>Web propuesta</h3>
+      <p>Landing con CTA, FAQ y «Por qué elegirnos»</p>
+    </a>
+    <a class="step-card step-done" href="paso-4-whatsapp/index.html">
+      <span class="step-num">4</span>
+      <h3>Bot WhatsApp</h3>
+      <p>Simulación agendar hora · demo sin API</p>
+    </a>
+  </div>
+
+  <div class="cta">
+    <strong>¿Empezamos con un cliente real?</strong>
+    <p>Paso 1: envía el informe. Cuando respondan, comparte la propuesta.</p>
+    <a href="paso-1-informe/index.html">Ver informe (Paso 1)</a>
+  </div>
+
+  <footer>Presencia Local · Embudo demo · Confidencial</footer>
+</div>
+</body>
+</html>

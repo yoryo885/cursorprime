@@ -1,0 +1,99 @@
+{
+  "titulo_plan": "PLAN DE ACCIÓN · 10 SEMANAS",
+  "libro_line": "Pareto en intervención psicopedagógica",
+  "instruccion": "Una semana = una acción. Marca ✓ solo con evidencia del avance.",
+  "cita": "",
+  "filas": [
+    {
+      "numero": "01",
+      "tema": "Principio 80/20",
+      "concepto_libro": "Priorizar donde produce transformación real",
+      "escenario": "gabinete psicopedagógico",
+      "kpi_asignado": "avance lector",
+      "accion_concreta": "En el gabinete audita casos que concentran crisis · Marca los de mayor impacto escolar · Registra: casos con avance lector documentado"
+    },
+    {
+      "numero": "02",
+      "tema": "Ley de Pareto",
+      "concepto_libro": "Concentrar energía donde realmente transformas",
+      "escenario": "aula",
+      "kpi_asignado": "autonomía en aula",
+      "accion_concreta": "Observa en aula qué intervenciones generan cambio · Clasifica por respuesta visible · Mide: autonomía en aula (escala 1-5)"
+    },
+    {
+      "numero": "03",
+      "tema": "Productividad personal",
+      "concepto_libro": "Identificar casos que concentran el impacto",
+      "escenario": "familia",
+      "kpi_asignado": "reducción de derivaciones",
+      "accion_concreta": "Prioriza familias que multiplican demanda urgente · Acuerda foco en casos vitales · Registra: cuántas derivaciones evitaste esta semana"
+    },
+    {
+      "numero": "04",
+      "tema": "Priorización de tareas",
+      "concepto_libro": "Intensidad según respuesta a intervención",
+      "escenario": "equipo docente",
+      "kpi_asignado": "tiempo por caso crítico",
+      "accion_concreta": "Coordina con docentes casos de mayor respuesta · Redistribuye seguimiento del resto · Mide: minutos por caso crítico esta semana"
+    },
+    {
+      "numero": "05",
+      "tema": "Foco y concentración",
+      "concepto_libro": "Casos de mayor impacto vs consultas menores",
+      "escenario": "registro de seguimiento",
+      "kpi_asignado": "avance lector",
+      "accion_concreta": "En tu registro separa casos de impacto alto · Protege bloques para esos casos · Registra: casos con avance lector documentado"
+    },
+    {
+      "numero": "06",
+      "tema": "Gestión del tiempo",
+      "concepto_libro": "Duplicar energía en intervenciones que resuelven",
+      "escenario": "gabinete psicopedagógico",
+      "kpi_asignado": "autonomía en aula",
+      "accion_concreta": "Segmenta en gabinete casos por urgencia cognitiva · Automatiza seguimiento de estables · Mide: autonomía en aula antes/después"
+    },
+    {
+      "numero": "07",
+      "tema": "Eficiencia y eficacia",
+      "concepto_libro": "Diferenciar intensidad según impacto en crisis",
+      "escenario": "aula",
+      "kpi_asignado": "reducción de derivaciones",
+      "accion_concreta": "Identifica en aula intervenciones reactivas · Sustituye por protocolo grupal · Registra: cuántas derivaciones urgentes evitaste"
+    },
+    {
+      "numero": "08",
+      "tema": "Eliminar lo innecesario",
+      "concepto_libro": "Eliminar tareas que no generan cambio real",
+      "escenario": "familia",
+      "kpi_asignado": "tiempo por caso crítico",
+      "accion_concreta": "Con familia define límites de contacto · Enfoca reuniones en casos transformadores · Mide: minutos por caso crítico redistribuidos"
+    },
+    {
+      "numero": "09",
+      "tema": "Decisiones estratégicas",
+      "concepto_libro": "Proteger energía para el núcleo vital",
+      "escenario": "equipo docente",
+      "kpi_asignado": "avance lector",
+      "accion_concreta": "Blinda con docentes bloques para casos vitales · Documenta intervenciones de alto impacto · Registra: casos con avance lector documentado"
+    },
+    {
+      "numero": "10",
+      "tema": "Aplicación en la vida diaria",
+      "concepto_libro": "Casos de mayor riesgo o impacto potencial",
+      "escenario": "registro de seguimiento",
+      "kpi_asignado": "autonomía en aula",
+      "accion_concreta": "Contabiliza casos de mayor impacto en registro · Asigna franja óptima a prioritarios · Mide: autonomía en aula (escala 1-5)"
+    }
+  ],
+  "vital_20": {
+    "col1": "Casos vitales priorizados",
+    "col2": "Qué dejar de hacer",
+    "col3": "Lo aprendido",
+    "col4": "Lo que cambiarás"
+  },
+  "footer": "El principio de Pareto · Antoine Delers · Resumen y Plan de Acción por Yordy",
+  "aviso_legal": "Material de apoyo · No sustituye criterio profesional ni protocolo clínico.",
+  "incluir_plantilla_vacia": true,
+  "titulo_plantilla_vacia": "TU PLAN DE ACCIÓN · A COMPLETAR",
+  "instruccion_plantilla_vacia": "Misma estructura de 10 semanas. Escribe tus propias acciones en cada fila."
+}

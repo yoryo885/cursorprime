@@ -1,0 +1,11 @@
+{
+  "parallel": true,
+  "agents": [
+    "technical",
+    "content",
+    "strategy",
+    "competitive",
+    "conversion"
+  ],
+  "errors": []
+}

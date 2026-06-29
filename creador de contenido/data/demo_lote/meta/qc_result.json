@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "passed": [
+    "01-enfoque.png",
+    "02-tiempo.png",
+    "03-prioridad.png"
+  ],
+  "issues": [],
+  "salidas": [
+    "png"
+  ]
+}

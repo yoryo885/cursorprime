@@ -1,0 +1,11 @@
+{
+  "slug": "demo",
+  "tipo": "imagen",
+  "proyecto_destino": "creador-de-contenido",
+  "count": 3,
+  "qc_ok": true,
+  "archivos": [
+    "prompts.json",
+    "prompts.md"
+  ]
+}

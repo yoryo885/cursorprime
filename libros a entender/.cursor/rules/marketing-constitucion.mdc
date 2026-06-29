@@ -1,0 +1,37 @@
+---
+description: Regla irrefutable — marketing nunca modifica PDFs; escala a producción
+globs: src/marketing/**,kdp_main.py
+alwaysApply: false
+---
+
+# Constitución Marketing vs Producción
+
+## Regla irrefutable
+
+La pipeline de **marketing** (`kdp_main.py`, `src/marketing/`) **SOLO LEE** el PDF de producción.
+
+**ESTRICTAMENTE PROHIBIDO:**
+- Crear, modificar, regenerar o sobrescribir el PDF
+- Llamar a `main.py` para regenerar PDF desde marketing
+- Escribir en rutas que no sean `kdp/` o `logs/marketing_*`
+
+## Roles
+
+| Capa | Responsabilidad |
+|------|-----------------|
+| **Marketing** | Título, descripción, keywords, listing Amazon |
+| **Producción** (`main.py`) | Contenido, diseño, portada, mapa, tablas, PDF |
+
+## Si el PDF está mal
+
+1. **NO** corregir el PDF desde marketing
+2. **Preguntar al usuario** antes de solicitar cambios de portada o textos comerciales del PDF
+3. Si `producto.json` tiene `portada_aprobada: true` → **no** solicitar cambios de portada
+4. Usar `ProductionFeedbackAgent` → `logs/produccion_solicitudes.json`
+5. El usuario o el agente de **producción** ejecuta el fix tras aprobación
+
+## Archivos clave
+
+- `src/marketing/constitution.py` — guardias de solo lectura
+- `src/marketing/agents/production_feedback_agent.py` — puente a producción
+- `meta/marketing_constitution.json` — reglas en JSON

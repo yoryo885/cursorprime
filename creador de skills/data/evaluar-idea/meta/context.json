@@ -1,0 +1,29 @@
+{
+  "nombre": "evaluar-idea",
+  "titulo": "Evaluar Idea",
+  "tipo": "workflow",
+  "proyecto_destino": "ideas-de-proyectos",
+  "proyecto_nombre": "Ideas de proyectos",
+  "proyecto_carpeta": "../ideas de proyectos",
+  "proceso": "Evalúa viabilidad de una idea de negocio/proyecto con veredicto, márgenes de error y fuentes. Usa evaluar.py y skills project-lens.",
+  "pasos": [
+    "Cargar idea JSON en ideas/",
+    "Correr python3 evaluar.py",
+    "Revisar evaluaciones/{slug}/informe.md",
+    "Complementar con chat Project Lens si hace falta investigación real"
+  ],
+  "reglas": [
+    "No inventar datos de mercado sin marcar confidence bajo",
+    "Veredicto: viable / condicional / descartar"
+  ],
+  "triggers": [
+    "evaluar idea",
+    "viabilidad",
+    "project lens",
+    "usa evaluar-idea"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T00:02:37.560525+00:00"
+}

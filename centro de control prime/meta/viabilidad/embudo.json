@@ -1,0 +1,67 @@
+{
+  "id": "embudo",
+  "slug": "viabilidad-embudo",
+  "nombre": "Embudo comercial HTML",
+  "carpeta": "proyectos-top3",
+  "capa": "producto",
+  "tema": "sales funnel local business marketing audit proposal",
+  "fetch": "live",
+  "fuentes": 7,
+  "youtube_n": 6,
+  "web_n": 1,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:17:04.298343+00:00",
+  "veredicto": "viable",
+  "score": 77,
+  "oportunidades": 1,
+  "resumen": "Investigación sobre «sales funnel local business marketing audit proposal»: 6 YouTube · 1 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.53,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "Audit Your Funnel in 20 Minutes and Save Thousands: Quick ...",
+      "url": "https://www.youtube.com/watch?v=FFiItyNRWPc",
+      "snippet": "In this video, we'll walk you through a quick 20-minute funnel audit that could save you thousands! 🚀 Are you confident that your headline is clear, your offer is irresistible, and your...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "HOW TO AUDIT YOUR SALES FUNNEL [Free Sales Funnel Audit ...",
+      "url": "https://www.youtube.com/watch?v=fN9Zxm0Dqrs",
+      "snippet": "Jul 6, 2020 · In this video, I’m walking you through my go-to sales funnel audit process so that you can measure exactly how each section of your funnel is performing and diagnose your opportunities to...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Audit Your Funnel And Actually Get More Clients 2",
+      "url": "https://www.youtube.com/watch?v=UY23Sry0SLE",
+      "snippet": "In this video, I'll show you exactly how to perform a funnel audit that actually works – one that finds the real leaks costing you money and gives you actionable steps to fix them. 🎯 What You...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Local Business Sales Funnel | Local Business Marketing - YouTube",
+      "url": "https://www.youtube.com/watch?v=UDdu-FabHLc",
+      "snippet": "Part of the free local business marketing series found at http://www.swansea-biz.comIn this video, Steve Brown of http:// swanseabusinessmarketing .com discuss...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Audit a CRO Funnel Effectively? - YouTube",
+      "url": "https://www.youtube.com/watch?v=C1wjCtl0AMw",
+      "snippet": "Want to optimize your conversion rate and boost sales ? In this video, we walk you through a complete CRO (Conversion Rate Optimization) audit to help you ide...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Build a Marketing Funnel that Actually Works for your ... The Local Business Sales Funnel | How to Book Leads on ...",
+      "url": "https://www.youtube.com/watch?v=_2H7OlHkv1w",
+      "snippet": "Jan 29, 2025 · In this step-by-step tutorial, I'm breaking down exactly how to build a profitable marketing funnel from scratch. Mar 26, 2026 · We replace your boring contact page with a high converting sales funnel , a pre-selling video, and an AI chatbot that replies to new inquiries in under 60 seconds.",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Facing the Pain: A Founder's Guide to Conversion Rate Audits in 2026",
+      "url": "https://stormy.ai/blog/founders-conversion-rate-audit-2026",
+      "snippet": "Scale your business in 2026 without increasing ad spend. Learn the founder's framework for mystery shopping your own funnel and auditing for 'Visible, Juicy, Clear' conversion.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/embudo.md"
+}

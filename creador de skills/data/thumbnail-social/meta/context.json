@@ -1,0 +1,33 @@
+{
+  "nombre": "thumbnail-social",
+  "titulo": "Thumbnail Social",
+  "tipo": "workflow",
+  "proyecto_destino": "creador-de-contenido",
+  "proyecto_nombre": "Creador de Contenido",
+  "proyecto_carpeta": "../creador de contenido",
+  "proceso": "Thumbnail on-brand para YouTube/Reels: brief visual → prompt imagen → pipeline creador de contenido (PNG 16:9 o 9:16).",
+  "pasos": [
+    "Confirmar plataforma (YouTube 16:9, Reels/Shorts 9:16), título corto y estilo de marca.",
+    "Redactar prompt imagen: rostro/texto grande, alto contraste, máx. 5 palabras en imagen.",
+    "Opcional: usa creador-de-prompts tipo imagen → proyecto creador-de-contenido.",
+    "Ejecutar: cd ~/cursorprime/creador\\ de\\ contenido && python3 creador_imagenes_main.py --slug {slug} --modo png",
+    "Entregar PNG en data/{slug}/imagenes/ + variantes si pidió A/B."
+  ],
+  "reglas": [
+    "Texto en thumbnail legible en móvil (pocas palabras, bold)",
+    "Consistencia con meta/estilos si existe referencia de marca",
+    "No usar Facelock/Higgsfield — pipeline local cursorprime",
+    "Probar 1 variante antes de lote completo"
+  ],
+  "triggers": [
+    "thumbnail",
+    "miniatura",
+    "portada video",
+    "usa thumbnail-social",
+    "carátula youtube"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T00:36:38.854272+00:00"
+}

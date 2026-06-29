@@ -1,0 +1,39 @@
+# Estructura — Creador de Contenido
+
+## Carpetas reales (Explorer de Cursor)
+
+Abre **`/Users/yoryo/cursorprime/creador de contenido`** como workspace.
+
+```
+creador de contenido/
+├── imagenes/      ← código módulo PNG
+├── gifs/          ← código módulo GIF
+├── videos/        ← código módulo MP4
+├── pdf/           ← código módulo PDF
+├── operador/      ← documentación del pipeline (src/)
+├── src/           ← core + pipeline.py
+└── data/{slug}/   ← SALIDAS por lote
+    ├── imagenes/
+    ├── gifs/
+    ├── videos/
+    └── output/
+```
+
+## Confusión común: chats vs carpetas
+
+En el **sidebar de chats** de Cursor puedes ver nombres como:
+- `creador de imagenes 1`
+- `video`, `imagenes`, `gifs`, `operador de pipeline`
+
+Esos son **conversaciones renombradas**, no carpetas del disco. No se puede "entrar" a ellas como a un folder.
+
+Para ver carpetas reales: **File → Open Folder → cursorprime/creador de contenido**.
+
+## Nombre del proyecto
+
+- Carpeta actual: **`creador de contenido`**
+- Antes: `creador de imagenes 1` (nombre viejo del chat)
+
+## Prompts compartidos
+
+Usa **`../creador de prompts`** para generar prompts antes de correr un lote.

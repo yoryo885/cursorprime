@@ -1,0 +1,1 @@
+Este documento recoge lo que aprendí al leer «Pensar Rápido, Pensar Despacio - Daniel Kahneman». Lo escribí con mis propias palabras, conectando las ideas del libro con situaciones de la vida real. Puedes editar este texto en introduccion.txt antes de regenerar el PDF.

@@ -1,0 +1,14 @@
+{
+  "mercado": "MX",
+  "fecha": "2026-06-14",
+  "notas": "Copia a competitors.json. Top 5 resultados al buscar en Amazon.",
+  "items": [
+    {
+      "asin": "B0XXXXXXX",
+      "titulo": "Ejemplo: El principio de Pareto — resumen aplicado",
+      "precio_usd": 4.99,
+      "bsr": 120000,
+      "keywords_visibles": ["pareto", "productividad", "80/20"]
+    }
+  ]
+}

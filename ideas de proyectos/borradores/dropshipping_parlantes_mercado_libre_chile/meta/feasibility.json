@@ -1,0 +1,24 @@
+{
+  "slug": "dropshipping_parlantes_mercado_libre_chile",
+  "veredicto": "GO_CON_RESERVAS",
+  "mvp": [
+    "Collector con mock o scrape limitado",
+    "Calculadora margen ML Chile",
+    "Reporte JSON + resumen TXT"
+  ],
+  "v1": [
+    "Sync publicaciones ML",
+    "Alertas de órdenes",
+    "Stock guard"
+  ],
+  "futuro": [
+    "Auto-compra solo si proveedor lo permite"
+  ],
+  "bloqueadores": [
+    "Proveedor sin API → scraping frágil",
+    "Márgenes finos en productos baratos",
+    "Stock desactualizado → cancelaciones ML"
+  ],
+  "listo_para_construir": true,
+  "nota": "Revisar DISEÑO.md antes de decir construye"
+}

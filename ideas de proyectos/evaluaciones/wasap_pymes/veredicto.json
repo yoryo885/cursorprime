@@ -1,0 +1,37 @@
+{
+  "slug": "wasap_pymes",
+  "titulo": "wasap_pymes",
+  "evaluado_at": "2026-06-23T04:13:19.015057+00:00",
+  "tipo_negocio": "general",
+  "veredicto": "condicional",
+  "score": 50,
+  "confidence": 0.3,
+  "margen": {
+    "min": 15,
+    "max": 40,
+    "point": 25,
+    "unidad": "margen_neto_pct"
+  },
+  "escala": {
+    "sirve": true,
+    "nota": "Revisar cuellos de botella manuales"
+  },
+  "riesgos": [
+    {
+      "nivel": "medio",
+      "riesgo": "Mercado no validado con datos reales"
+    },
+    {
+      "nivel": "medio",
+      "riesgo": "MVP más largo de lo estimado"
+    }
+  ],
+  "siguiente_paso": "Validar margen y disposición a pagar con 3 clientes del nicho",
+  "warnings": [
+    "Problema poco definido",
+    "Cliente objetivo no claro",
+    "Modelo de negocio ausente",
+    "Sin fuentes externas — confidence reducida"
+  ],
+  "constitution_version": 1
+}

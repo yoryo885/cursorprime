@@ -1,0 +1,72 @@
+{
+  "proyecto": "creador-de-contenido",
+  "slug": "demo_full",
+  "titulo": "Demo todo en uno",
+  "salidas_pedidas": [
+    "png",
+    "gif",
+    "pdf"
+  ],
+  "salidas_generadas": [
+    "png",
+    "gif",
+    "pdf"
+  ],
+  "integracion_externa": false,
+  "modulos": {
+    "generated_imagenes": {
+      "imagenes": [
+        {
+          "tema": "creatividad",
+          "archivo": "01-creatividad.png",
+          "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/imagenes/01-creatividad.png",
+          "modulo": "imagenes",
+          "generado_at": "2026-06-27T19:59:16.081157+00:00"
+        },
+        {
+          "tema": "energia",
+          "archivo": "02-energia.png",
+          "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/imagenes/02-energia.png",
+          "modulo": "imagenes",
+          "generado_at": "2026-06-27T19:59:16.144753+00:00"
+        }
+      ],
+      "count": 2
+    },
+    "generated_gifs": {
+      "gifs": [
+        {
+          "tema": "creatividad",
+          "archivo": "01-creatividad.gif",
+          "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/gifs/01-creatividad.gif",
+          "modulo": "gifs",
+          "frames": 4,
+          "generado_at": "2026-06-27T19:59:16.921251+00:00"
+        },
+        {
+          "tema": "energia",
+          "archivo": "02-energia.gif",
+          "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/gifs/02-energia.gif",
+          "modulo": "gifs",
+          "frames": 4,
+          "generado_at": "2026-06-27T19:59:17.649793+00:00"
+        }
+      ],
+      "count": 2
+    },
+    "generated_pdf": {
+      "pdf": [
+        {
+          "archivo": "demo_full.pdf",
+          "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/pdf/demo_full.pdf",
+          "modulo": "pdf",
+          "paginas": 3,
+          "generado_at": "2026-06-27T19:59:17.872409+00:00"
+        }
+      ],
+      "count": 1
+    }
+  },
+  "qc_ok": true,
+  "empaquetado_at": "2026-06-27T19:59:17.873999+00:00"
+}

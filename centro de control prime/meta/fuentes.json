@@ -1,0 +1,16 @@
+{
+  "proyecto": "centro-de-control-prime",
+  "fuentes": [
+    "analisis-de-proyectos/data/",
+    "analisis-de-proyectos/logs/radar_historial.json",
+    "lluvia-de-ideas/cola/",
+    "ideas de proyectos/evaluaciones/",
+    "ideas de proyectos/borradores/",
+    "ideas de proyectos/ideas/",
+    "creador de contenido/data/",
+    "creador de prompts/data/",
+    "creador de skills/data/",
+    "~/.cursor/skills/"
+  ],
+  "modo": "solo_lectura"
+}

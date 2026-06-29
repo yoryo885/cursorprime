@@ -1,0 +1,8 @@
+{
+  "nombre": "guion-a-video",
+  "tipo": "workflow",
+  "proyecto": "creador-de-contenido",
+  "qc_ok": true,
+  "archivos": ["SKILL.md"],
+  "empaquetado_at": "2026-06-27T00:00:00+00:00"
+}

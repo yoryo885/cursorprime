@@ -1,0 +1,191 @@
+   📦 Texto PDF desde caché (El principio de Pareto - Antoine Delers_5d7e7ef9cac6.txt)
+📊 Costo estimado (resumenes): $0.3241 USD — ~21.5 llamadas LLM — 16.0 min
+   📦 Texto PDF desde caché (El principio de Pareto - Antoine Delers_5d7e7ef9cac6.txt)
+📝 Solo resúmenes: 10 temas → audiencia del plan
+   📌 Resúmenes anclados a: psicopedagoga en escuela
+  ✅ 'Principio 80/20' guardado (score 1.0)
+  ✅ 'Ley de Pareto' guardado (score 1.0)
+  ✅ 'Productividad personal' guardado (score 0.99)
+  ✅ 'Priorización de tareas' guardado (score 1.0)
+  ✅ 'Foco y concentración' guardado (score 0.81)
+  ✅ 'Gestión del tiempo' guardado (score 0.99)
+  ✅ 'Eficiencia y eficacia' guardado (score 1.0)
+  ✅ 'Eliminar lo innecesario' guardado (score 0.99)
+  ✅ 'Decisiones estratégicas' guardado (score 0.99)
+  ✅ 'Aplicación en la vida diaria' guardado (score 0.99)
+      ✏️  Corrigiendo: 'Principio 80/20'...
+      ✏️  Corrigiendo: 'Ley de Pareto'...
+      ✏️  Corrigiendo: 'Productividad personal'...
+      ✏️  Corrigiendo: 'Priorización de tareas'...
+      ✏️  Corrigiendo: 'Foco y concentración'...
+      ✏️  Corrigiendo: 'Gestión del tiempo'...
+      ✏️  Corrigiendo: 'Eficiencia y eficacia'...
+      ✏️  Corrigiendo: 'Eliminar lo innecesario'...
+      ✏️  Corrigiendo: 'Decisiones estratégicas'...
+      ✏️  Corrigiendo: 'Aplicación en la vida diaria'...
+
+✅ Resúmenes actualizados en /Users/yoryo/libros a entender/resumenes/pareto
+
+✅ Listo. Salida en: resumenes/pareto/
+✅ Markdown: /Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md
+   📦 Texto PDF desde caché (El principio de Pareto - Antoine Delers_5d7e7ef9cac6.txt)
+📊 Costo estimado (tablas): $0.2745 USD — ~36.6 llamadas LLM — 11.0 min
+⚡ Solo enriquecer: El principio de Pareto - Antoine Delers
+   🚀 Pipeline de enriquecimiento...
+   📊 Modo solo tablas: voz Yordy + diseño iconos + Playwright
+   📊 Agente Tablas: 3 sub-agentes + iconos + Playwright...
+      → Tarjeta: 'Principio 80/20' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: principio_80_20.png
+         ⚠️  Render PNG falló en 'Principio 80/20': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Ley de Pareto' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: ley_de_pareto.png
+         ⚠️  Render PNG falló en 'Ley de Pareto': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Productividad personal' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: productividad_personal.png
+         ⚠️  Render PNG falló en 'Productividad personal': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Priorización de tareas' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: priorización_de_tareas.png
+         ⚠️  Render PNG falló en 'Priorización de tareas': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Foco y concentración' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: foco_y_concentración.png
+         ⚠️  Render PNG falló en 'Foco y concentración': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Gestión del tiempo' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: gestión_del_tiempo.png
+         ⚠️  Render PNG falló en 'Gestión del tiempo': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Eficiencia y eficacia' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: eficiencia_y_eficacia.png
+         ⚠️  Render PNG falló en 'Eficiencia y eficacia': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Eliminar lo innecesario' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: eliminar_lo_innecesario.png
+         ⚠️  Render PNG falló en 'Eliminar lo innecesario': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Decisiones estratégicas' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: decisiones_estratégicas.png
+         ⚠️  Render PNG falló en 'Decisiones estratégicas': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+      → Tarjeta: 'Aplicación en la vida diaria' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: aplicación_en_la_vida_diaria.png
+         ⚠️  Render PNG falló en 'Aplicación en la vida diaria': BrowserType.launch: Executable doesn't exist at /var/folders/wc/b_63z2t15wxbl2d6x8l50myh0000gn/T/cursor-sandbox-cache/ff7e195520e0624c98a013969a79ebae/playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+   ⏭️  Markdown: no regenerado
+
+✅ Listo. Salida en: resumenes/pareto/

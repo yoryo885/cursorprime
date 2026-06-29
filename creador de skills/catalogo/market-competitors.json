@@ -1,0 +1,9 @@
+{
+  "nombre": "market-competitors",
+  "titulo": "Market Competitors",
+  "tipo": "capacidad",
+  "proyecto_destino": "clientes",
+  "triggers": ["market competitors", "competidores marketing", "inteligencia competitiva", "usa market-competitors"],
+  "proceso": "3 tiers competidores, COMPETITOR-REPORT.md. Spec vendor/ai-marketing-claude.",
+  "reglas": ["URL por competidor", "No inventar pricing", "Integrar con market-proposal"]
+}

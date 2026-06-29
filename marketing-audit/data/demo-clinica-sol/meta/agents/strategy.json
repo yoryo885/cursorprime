@@ -1,0 +1,16 @@
+{
+  "dimension": "strategy",
+  "label": "Brand & Growth Strategy",
+  "brand_score": 59,
+  "growth_score": 55,
+  "score": 57,
+  "findings": [
+    {
+      "severity": "medium",
+      "title": "Sin schema markup detectado",
+      "detail": "Añadir JSON-LD (Organization, FAQ) para rich results."
+    }
+  ],
+  "wins": [],
+  "confidence": "medio"
+}

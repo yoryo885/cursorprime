@@ -1,0 +1,23 @@
+{
+  "mercado": "MX",
+  "fecha": "2026-06-14",
+  "notas": "Borrador inicial — validar autocompletado en Amazon.mx y Amazon.es",
+  "busquedas": [
+    "pareto psicopedagog",
+    "productividad psicopedagog",
+    "priorizar casos escuela",
+    "regla 80 20 educacion",
+    "gestion tiempo psicopedagog",
+    "plan accion psicopedagog"
+  ],
+  "sugerencias_autocompletado": [
+    "pareto psicopedagogas escuela",
+    "pareto educacion especial",
+    "productividad psicopedagogica",
+    "priorizar intervenciones psicopedagogicas",
+    "regla 80 20 docentes",
+    "gestion casos gabinete psicopedagogico",
+    "plan semanal psicopedagog",
+    "eficiencia intervencion educativa"
+  ]
+}

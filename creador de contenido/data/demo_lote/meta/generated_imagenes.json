@@ -1,0 +1,26 @@
+{
+  "imagenes": [
+    {
+      "tema": "enfoque",
+      "archivo": "01-enfoque.png",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_lote/imagenes/01-enfoque.png",
+      "modulo": "imagenes",
+      "generado_at": "2026-06-27T19:59:15.665919+00:00"
+    },
+    {
+      "tema": "tiempo",
+      "archivo": "02-tiempo.png",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_lote/imagenes/02-tiempo.png",
+      "modulo": "imagenes",
+      "generado_at": "2026-06-27T19:59:15.730085+00:00"
+    },
+    {
+      "tema": "prioridad",
+      "archivo": "03-prioridad.png",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_lote/imagenes/03-prioridad.png",
+      "modulo": "imagenes",
+      "generado_at": "2026-06-27T19:59:15.790716+00:00"
+    }
+  ],
+  "count": 3
+}

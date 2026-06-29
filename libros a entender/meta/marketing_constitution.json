@@ -1,0 +1,33 @@
+{
+  "regla_irrefutable": "La pipeline de marketing SOLO LEE el PDF. Está ESTRICTAMENTE PROHIBIDO crear, modificar, regenerar, sobrescribir o exportar una nueva versión del PDF de producción.",
+  "rol_marketing": "Maquetación comercial Amazon KDP — título, descripción, keywords, listing",
+  "rol_produccion": "Fabricación del PDF editorial — main.py, src/agents/, src/main_agent.py",
+  "si_pdf_tiene_problemas": "Registrar solicitud en logs/produccion_solicitudes.json. Producción corrige. Marketing NO toca el PDF.",
+  "salida_permitida_marketing": [
+    "resumenes/{slug}/kdp/*",
+    "logs/marketing_mejoras.json",
+    "logs/marketing_errores.json",
+    "logs/produccion_solicitudes.json"
+  ],
+  "agentes_produccion_destino": {
+    "portada": "PDFDesignAgent",
+    "diseno": "PDFDesignAgent",
+    "contenido": "main_agent",
+    "audiencia": "AudienceIntroAgent",
+    "rol": "RolUsuarioAgent",
+    "plan_accion": "ActionPlanAgent",
+    "mapa": "MapAgent",
+    "tablas": "TablesAgent"
+  },
+  "pdf_zonas_protegidas": [
+    "portada (etiqueta, titulo, subtitulo, imagen, CSS)",
+    "orden de paginas del PDF",
+    "mini guia, checklist, plan de accion",
+    "contenido de temas y tablas editoriales",
+    "perfil lector, audiencia, mapa conceptual"
+  ],
+  "marketing_no_solicita_cambio_si": {
+    "portada_aprobada_en_producto_json": true,
+    "nota": "Si producto.json tiene portada_aprobada: true, el QC de marketing no debe pedir cambiar la portada por la serie KDP."
+  }
+}

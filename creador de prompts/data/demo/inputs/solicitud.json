@@ -1,0 +1,13 @@
+{
+  "titulo": "Demo prompts productividad",
+  "tipo": "imagen",
+  "proyecto_destino": "creador-de-contenido",
+  "temas": ["enfoque", "tiempo", "prioridad"],
+  "contexto": {
+    "audiencia": "emprendedores",
+    "tono": "motivador y claro",
+    "estilo": "flat minimal yordy",
+    "idioma": "español"
+  },
+  "variantes": 1
+}

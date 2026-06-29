@@ -1,0 +1,19 @@
+{
+  "agent": "ScalabilityAgent",
+  "confidence": 0.55,
+  "error_margin_pct": 20,
+  "sources": [],
+  "findings": [
+    "Automatización parcial posible"
+  ],
+  "metrics": {
+    "scalability_score": {
+      "min": 6,
+      "max": 9,
+      "point": 8
+    }
+  },
+  "warnings": [],
+  "generated_at": "2026-06-28T01:17:25.858260+00:00",
+  "bottlenecks": []
+}

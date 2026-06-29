@@ -1,0 +1,4 @@
+Creador de Contenido — Demo todo en uno
+Salidas: png, gif, pdf
+QC: OK
+Pack: demo_full_contenido.zip

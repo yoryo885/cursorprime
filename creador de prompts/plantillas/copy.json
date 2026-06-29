@@ -1,0 +1,6 @@
+{
+  "id": "copy",
+  "nombre": "Prompt copy / texto marketing",
+  "template": "Escribe copy en {idioma} sobre '{tema}' para {audiencia}. Tono: {tono}. Objetivo: {objetivo}. Incluye titular, 3 bullets y CTA. Proyecto: {proyecto}.",
+  "negative": ""
+}

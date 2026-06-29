@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa — El principio de Pareto - Antoine Delers</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #5c5c5c;
+  --accent: #2c5282;
+  --accent-light: #ebf4ff;
+  --border: #d4d4d4;
+  --paper: #fafaf8;
+  --serif: 'Literata', Georgia, 'Palatino Linotype', 'Book Antiqua', serif;
+  --sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm 22mm 20mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--ink);
+  background: white;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page-break { page-break-after: always; }
+.avoid-break { page-break-inside: avoid; }
+
+/* —— Portada —— */
+.cover {
+  min-height: 240mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1rem;
+  page-break-after: always;
+}
+
+.cover-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.cover-label {
+  font-family: var(--sans);
+  font-size: 9pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.cover-title {
+  font-size: 28pt;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+  max-width: 16cm;
+}
+
+.cover-author {
+  font-family: var(--sans);
+  font-size: 13pt;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+}
+
+.cover-meta {
+  font-family: var(--sans);
+  font-size: 9.5pt;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.cover-meta span { display: block; margin-bottom: 0.25rem; }
+
+.cover-intro {
+  font-size: 11pt;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 14cm;
+  border-left: 3px solid var(--accent-light);
+  padding-left: 1rem;
+}
+
+/* —— Mapa conceptual —— */
+.map-section {
+  page-break-after: always;
+  padding-top: 0.5rem;
+}
+
+.section-kicker {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.section-title {
+  font-size: 20pt;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mindmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.category-card {
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  page-break-inside: avoid;
+}
+
+.category-card h3 {
+  font-family: var(--sans);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--cat-color, var(--accent));
+  color: var(--cat-color, var(--accent));
+}
+
+.category-card ul {
+  list-style: none;
+  font-size: 9pt;
+  line-height: 1.45;
+}
+
+.category-card li {
+  padding: 0.2rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.category-card li:last-child { border-bottom: none; }
+
+.connections {
+  margin-top: 0.5rem;
+}
+
+.connections h3 {
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.conn-list {
+  list-style: none;
+  font-size: 9pt;
+}
+
+.conn-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+}
+
+.conn-from, .conn-to {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.conn-arrow { color: var(--muted); }
+
+.conn-label {
+  flex: 1 1 100%;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 8.5pt;
+  padding-left: 0.5rem;
+}
+
+/* —— Tema —— */
+.topic {
+  page-break-before: always;
+}
+
+.topic-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.topic-number {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.topic-title {
+  font-size: 18pt;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.topic-voice {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.summary {
+  margin-bottom: 1.25rem;
+  text-align: justify;
+}
+
+.summary p {
+  margin-bottom: 0.75rem;
+}
+
+.summary p:last-child { margin-bottom: 0; }
+
+/* —— Tabla —— */
+.concept-table-wrap {
+  margin-top: 0.5rem;
+  page-break-inside: avoid;
+}
+
+.concept-table-label {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.concept-table thead th {
+  font-family: var(--sans);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  background: var(--accent);
+  color: white;
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+}
+
+.concept-table tbody td {
+  padding: 0.6rem 0.65rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  background: white;
+}
+
+.concept-table tbody tr:nth-child(even) td {
+  background: var(--paper);
+}
+
+/* —— Tabla standalone (archivo individual) —— */
+.standalone-table-page {
+  padding: 1.5rem;
+  max-width: 18cm;
+  margin: 0 auto;
+}
+
+.standalone-table-page h1 {
+  font-size: 16pt;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+
+<section class="map-section">
+  <div class="section-kicker">Visión general</div>
+  <h2 class="section-title">Mapa conceptual</h2>
+  <p style="font-size: 9.5pt; color: var(--muted); margin-bottom: 1rem;">El principio de Pareto - Antoine Delers</p>
+  <div class="mindmap-grid">
+<div class="category-card" style="--cat-color: #1a365d;">
+  <h3>Fundamentos teóricos</h3>
+  <ul><li>Principio 80/20</li><li>Ley de Pareto</li></ul>
+</div>
+<div class="category-card" style="--cat-color: #2c5282;">
+  <h3>Aplicaciones prácticas</h3>
+  <ul><li>Productividad personal</li><li>Priorización de tareas</li><li>Gestión del tiempo</li><li>Aplicación en la vida diaria</li></ul>
+</div>
+<div class="category-card" style="--cat-color: #276749;">
+  <h3>Capacidades mentales</h3>
+  <ul><li>Foco y concentración</li></ul>
+</div>
+<div class="category-card" style="--cat-color: #744210;">
+  <h3>Resultados y métricas</h3>
+  <ul><li>Eficiencia y eficacia</li></ul>
+</div>
+<div class="category-card" style="--cat-color: #702459;">
+  <h3>Acciones estratégicas</h3>
+  <ul><li>Eliminar lo innecesario</li><li>Decisiones estratégicas</li></ul>
+</div></div>
+  
+<div class="connections avoid-break">
+  <h3>Relaciones entre temas</h3>
+  <ul class="conn-list">
+<li>
+  <span class="conn-from">Principio 80/20</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Ley de Pareto</span>
+  <span class="conn-label">es la denominación popular del concepto matemático</span>
+</li>
+<li>
+  <span class="conn-from">Principio 80/20</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Priorización de tareas</span>
+  <span class="conn-label">20% de tareas generan 80% de resultados</span>
+</li>
+<li>
+  <span class="conn-from">Priorización de tareas</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Foco y concentración</span>
+  <span class="conn-label">requiere identificar dónde enfocar energía mental</span>
+</li>
+<li>
+  <span class="conn-from">Foco y concentración</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Productividad personal</span>
+  <span class="conn-label">dedicar atención a lo vital multiplica producción</span>
+</li>
+<li>
+  <span class="conn-from">Eliminar lo innecesario</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Gestión del tiempo</span>
+  <span class="conn-label">libera horas al descartar el 80% improductivo</span>
+</li>
+<li>
+  <span class="conn-from">Priorización de tareas</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Eficiencia y eficacia</span>
+  <span class="conn-label">hacer lo correcto importa más que hacerlo bien</span>
+</li>
+<li>
+  <span class="conn-from">Decisiones estratégicas</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Eliminar lo innecesario</span>
+  <span class="conn-label">requiere coraje para decir no a lo trivial</span>
+</li>
+<li>
+  <span class="conn-from">Principio 80/20</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Decisiones estratégicas</span>
+  <span class="conn-label">revela qué iniciativas merecen inversión de recursos</span>
+</li>
+<li>
+  <span class="conn-from">Gestión del tiempo</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Aplicación en la vida diaria</span>
+  <span class="conn-label">transforma teoría en calendario y hábitos concretos</span>
+</li>
+<li>
+  <span class="conn-from">Eficiencia y eficacia</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Productividad personal</span>
+  <span class="conn-label">combinar ambas maximiza resultados con mínimo esfuerzo</span>
+</li>
+<li>
+  <span class="conn-from">Ley de Pareto</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Eliminar lo innecesario</span>
+  <span class="conn-label">demuestra matemáticamente que lo trivial es mayoría</span>
+</li>
+<li>
+  <span class="conn-from">Foco y concentración</span>
+  <span class="conn-arrow">→</span>
+  <span class="conn-to">Decisiones estratégicas</span>
+  <span class="conn-label">proteger la atención es decisión vital cotidiana</span>
+</li></ul>
+</div>
+</section>
+</body>
+</html>

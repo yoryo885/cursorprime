@@ -1,0 +1,34 @@
+{
+  "slug": "cola_de_pedidos_bot_whatsapp_para_negocios_local",
+  "titulo": "Cola de pedidos + bot WhatsApp para negocios locales",
+  "evaluado_at": "2026-06-21T22:48:07.840133+00:00",
+  "tipo_negocio": "saas",
+  "veredicto": "viable",
+  "score": 90,
+  "confidence": 0.5,
+  "margen": {
+    "min": 60,
+    "max": 85,
+    "point": 72,
+    "unidad": "margen_bruto_pct"
+  },
+  "escala": {
+    "sirve": true,
+    "nota": "Escala bien si el onboarding es self-service"
+  },
+  "riesgos": [
+    {
+      "nivel": "medio",
+      "riesgo": "Mercado no validado con datos reales"
+    },
+    {
+      "nivel": "medio",
+      "riesgo": "MVP más largo de lo estimado"
+    }
+  ],
+  "siguiente_paso": "MVP: landing + waitlist + entrevistas con 10 usuarios",
+  "warnings": [
+    "Sin fuentes externas — confidence reducida"
+  ],
+  "constitution_version": 1
+}

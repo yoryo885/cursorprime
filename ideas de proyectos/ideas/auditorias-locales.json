@@ -1,0 +1,41 @@
+{
+  "slug": "auditorias-locales",
+  "titulo": "Auditorías marketing para negocios locales",
+  "problema": "Pymes locales pierden clientes por web débil (SEO, CTAs, copy). No pueden pagar agencia grande; necesitan informe claro con score y quick wins accionables.",
+  "cliente_objetivo": "Negocios locales Chile/LATAM con web propia — clínicas, restaurantes, ferreterías, servicios",
+  "modelo_negocio": "Servicio: audit one-shot → retainer opcional. Audit como gancho; upsell implementación (WhatsApp, contenido).",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "tipo_negocio": "servicio",
+  "keywords": ["auditoria marketing web pymes", "audit digital locales chile"],
+  "fases": {
+    "v1_mvp": {
+      "que": "Audit web automatizado — score + PDF",
+      "pipeline": "marketing-audit",
+      "cli": "python3 marketing_audit_main.py audit --url {url} --pdf --cliente {c} --proyecto {p}",
+      "estado": "hecho"
+    },
+    "v2": {
+      "que": "Checklist ampliado: Google Business, WhatsApp, redes (manual o semi-auto)",
+      "estado": "pendiente"
+    }
+  },
+  "como_conseguir_prospectos": "Google Maps + ciudad → web del negocio. Evitar corporaciones grandes.",
+  "hipotesis": [
+    "Score 0-100 + PDF gratis abre conversación comercial",
+    "Ticket audit CLP 80-150k; retainer 150-300k/mes",
+    "1 de cada 5 outreach responde si citas 1 hallazgo crítico real"
+  ],
+  "mvp": [
+    "3 audits piloto con MOCK_FETCH=false",
+    "Entrega en clientes/{slug}/entregables/estrategia/",
+    "Script outreach con 1 quick win del informe",
+    "Propuesta retainer (skill market-proposal)"
+  ],
+  "planes": {
+    "audit": {"one_shot_clp": 120000},
+    "retainer": {"mensual_clp": 200000}
+  },
+  "upsell": "wasap-pymes",
+  "notas": "Una sola idea de negocio. v1 = pipeline existente. No duplicar en otro JSON. Evaluar: python3 evaluar.py ideas/auditorias-locales.json"
+}

@@ -1,0 +1,14 @@
+---
+description: Cada mensaje mejora el prompt activo (workspace local)
+alwaysApply: true
+---
+
+# Creador de prompts — mejora continua
+
+Regla global: `~/cursorprime/.cursor/rules/creador-prompts-siempre.mdc`
+
+Cada mensaje **refina** el prompt activo (`meta/prompt-activo.json`). **No** acumular pendientes.
+
+1. Leer prompt activo → integrar lo que dice el usuario → actualizar `data/{slug}/output/prompts.md`
+2. Tema nuevo explícito → nuevo slug
+3. Entregar prompt mejorado listo para copiar

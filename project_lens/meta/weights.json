@@ -1,0 +1,20 @@
+{
+  "tipos": {
+    "saas": {
+      "trend": 0.10, "market": 0.15, "competition": 0.15,
+      "financial": 0.20, "scalability": 0.20, "cost_mvp": 0.10, "risk": 0.10
+    },
+    "ecommerce": {
+      "trend": 0.15, "market": 0.15, "competition": 0.25,
+      "financial": 0.25, "scalability": 0.10, "cost_mvp": 0.05, "risk": 0.05
+    },
+    "marketplace": {
+      "trend": 0.10, "market": 0.20, "competition": 0.20,
+      "financial": 0.20, "scalability": 0.15, "cost_mvp": 0.05, "risk": 0.10
+    },
+    "servicio": {
+      "trend": 0.05, "market": 0.15, "competition": 0.15,
+      "financial": 0.20, "scalability": 0.15, "cost_mvp": 0.15, "risk": 0.15
+    }
+  }
+}

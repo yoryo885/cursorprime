@@ -1,0 +1,31 @@
+{
+  "agent": "FinancialAgent",
+  "confidence": 0.58,
+  "error_margin_pct": 25,
+  "sources": [],
+  "findings": [
+    "Unit economics tipo saas",
+    "Rangos min/max — no punto único"
+  ],
+  "metrics": {
+    "margen_neto_pct": {
+      "min": 55,
+      "max": 85,
+      "point": 73.33
+    },
+    "break_even_clientes": {
+      "min": 2,
+      "max": 15,
+      "point": 5
+    },
+    "comision_plataforma_pct": {
+      "min": 11,
+      "max": 15,
+      "point": 13
+    }
+  },
+  "warnings": [
+    "Validar con 3 clientes reales antes de escalar"
+  ],
+  "generated_at": "2026-06-28T01:17:25.857412+00:00"
+}

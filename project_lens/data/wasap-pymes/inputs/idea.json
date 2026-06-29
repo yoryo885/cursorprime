@@ -1,0 +1,38 @@
+{
+  "slug": "wasap-pymes",
+  "titulo": "Bot WhatsApp + cola de pedidos para pymes",
+  "problema": "Negocios locales con local físico no dan abasto en temporada alta: teléfono saturado, pedidos manuales, clientes preguntando lo mismo (horario, precios, estado).",
+  "cliente_objetivo": "Pymes Chile/LATAM que venden por WhatsApp o teléfono: comida, repuestos, ferretería, servicios",
+  "modelo_negocio": "SaaS B2B: setup + fee mensual. Planes Bajo (Sheet) / Medio (panel) / Alto (multiusuario + reportes). Yo opero servidor y APIs.",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "tipo_negocio": "saas",
+  "hipotesis": [
+    "MVP bot + Sheet en 2 semanas es vendible",
+    "Ticket mensual CLP 35-120k según plan",
+    "Primer cliente piloto valida antes de escalar",
+    "Margen SaaS > 50% si opero infraestructura"
+  ],
+  "mvp": [
+    "Bot FAQ + fuera de horario",
+    "Tomar pedido estructurado",
+    "Google Sheet o panel simple",
+    "Notificación al dueño",
+    "Aviso auto pedido listo"
+  ],
+  "planes": {
+    "bajo": {
+      "setup_clp": 150000,
+      "mensual_clp": 35000
+    },
+    "medio": {
+      "setup_clp": 350000,
+      "mensual_clp": 65000
+    },
+    "alto": {
+      "setup_clp": 650000,
+      "mensual_clp": 120000
+    }
+  },
+  "notas": "Caso real: negocio Instagram temporada alta sin tiempo para teléfono. Rama separada en proyectos/ cuando autorice construcción."
+}

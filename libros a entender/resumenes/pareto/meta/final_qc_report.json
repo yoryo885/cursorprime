@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "score": 1.0,
+  "tablas_score": 1.0,
+  "pdf_ok": true,
+  "issues": [
+    {
+      "severity": "error",
+      "category": "coherencia",
+      "message": "Término 'expediente' no corresponde al léxico psicopedagógico habitual en contexto escolar. Preferir 'legajo', 'historia pedagógica' o 'caso'.",
+      "tema": "Productividad personal"
+    },
+    {
+      "severity": "error",
+      "category": "coherencia",
+      "message": "Uso de 'maestra integradora' en lugar de 'docente de apoyo' o 'maestra de apoyo', término más extendido en el léxico del rol establecido.",
+      "tema": "Foco y concentración"
+    },
+    {
+      "severity": "error",
+      "category": "coherencia",
+      "message": "Término 'screening' es anglicismo innecesario. Sustituir por 'evaluación inicial', 'tamizaje' o 'detección grupal'.",
+      "tema": "Gestión del tiempo"
+    },
+    {
+      "severity": "warning",
+      "category": "coherencia",
+      "message": "La frase 'carpetas compartidas en línea' introduce terminología tecnológica genérica ajena al léxico psicopedagógico específico. Mejor 'registro compartido de seguimiento' o 'documentación interinstitucional'.",
+      "tema": "Eficiencia y eficacia"
+    },
+    {
+      "severity": "warning",
+      "category": "coherencia",
+      "message": "Expresión 'moviendo papeles' tiene tono coloquial de autoayuda. Sustituir por 'realizando tareas administrativas sin impacto pedagógico'.",
+      "tema": "Eliminar lo innecesario"
+    },
+    {
+      "severity": "warning",
+      "category": "coherencia",
+      "message": "Término 'banco de recursos institucional' es genérico. Preferir 'repositorio de materiales adaptados' o 'biblioteca de recursos psicopedagógicos'.",
+      "tema": "Decisiones estratégicas"
+    },
+    {
+      "severity": "error",
+      "category": "coherencia",
+      "message": "Uso repetido de 'screening' (segundo uso en mismo tema). Mantener coherencia terminológica con léxico del rol.",
+      "tema": "Gestión del tiempo"
+    },
+    {
+      "severity": "warning",
+      "category": "coherencia",
+      "message": "Frase 'abordaje' es término válido pero 'intervención' es más preciso según léxico preferido establecido para el rol.",
+      "tema": "Aplicación en la vida diaria"
+    },
+    {
+      "severity": "error",
+      "category": "coherencia",
+      "message": "Repetición de escenarios de 'revisión de agenda' y 'mapeo de casos' en al menos 6 de 10 temas. Falta diversidad: evaluaciones diagnósticas, diseño de adaptaciones curriculares, coordinación con equipos docentes, talleres preventivos, intervenciones grupales.",
+      "tema": "Múltiples temas"
+    },
+    {
+      "severity": "warning",
+      "category": "coherencia",
+      "message": "Término 'batería neuropsicológica' es clínico, no psicopedagógico escolar. Mejor 'evaluación psicopedagógica completa' o 'protocolo de valoración integral'.",
+      "tema": "Foco y concentración"
+    }
+  ],
+  "summary": "✅ Aprobado — score 1.0 | 10 tablas | 0 errores, 0 avisos",
+  "recommendations": [
+    "Revisa contexto_usuario.json y meta/instrucciones_tablas.json, luego vuelve a generar tablas.",
+    "Eliminar todos los anglicismos: 'screening' → 'evaluación inicial/tamizaje'; 'KPI' aparece solo en metadatos, no en ejemplos (correcto).",
+    "Diversificar escenarios en 'ejemplo_practico': incluir diseño de adaptaciones curriculares específicas, talleres preventivos con docentes, protocolos de observación áulica, entrevistas diagnósticas estructuradas, coordinación con equipos de salud. Actualmente 7 de 10 ejemplos repiten 'revisar agenda + identificar casos + reasignar tiempo'.",
+    "Sustituir léxico clínico por psicopedagógico escolar: 'batería neuropsicológica' → 'evaluación psicopedagógica integral'; 'terapeutas' → 'profesionales de apoyo'.",
+    "Reemplazar términos genéricos: 'expediente' → 'legajo escolar'; 'banco de recursos' → 'repositorio de materiales psicopedagógicos'; 'carpetas compartidas' → 'registro de seguimiento interinstitucional'.",
+    "Ajustar coherencia en uso de 'maestra integradora' vs 'docente de apoyo' vs 'maestra de apoyo': unificar en 'docente de apoyo' según léxico establecido."
+  ],
+  "llm_review": {
+    "passed": false,
+    "score": 0.72,
+    "issues": [
+      {
+        "severity": "error",
+        "tema": "Productividad personal",
+        "message": "Término 'expediente' no corresponde al léxico psicopedagógico habitual en contexto escolar. Preferir 'legajo', 'historia pedagógica' o 'caso'."
+      },
+      {
+        "severity": "error",
+        "tema": "Foco y concentración",
+        "message": "Uso de 'maestra integradora' en lugar de 'docente de apoyo' o 'maestra de apoyo', término más extendido en el léxico del rol establecido."
+      },
+      {
+        "severity": "error",
+        "tema": "Gestión del tiempo",
+        "message": "Término 'screening' es anglicismo innecesario. Sustituir por 'evaluación inicial', 'tamizaje' o 'detección grupal'."
+      },
+      {
+        "severity": "warning",
+        "tema": "Eficiencia y eficacia",
+        "message": "La frase 'carpetas compartidas en línea' introduce terminología tecnológica genérica ajena al léxico psicopedagógico específico. Mejor 'registro compartido de seguimiento' o 'documentación interinstitucional'."
+      },
+      {
+        "severity": "warning",
+        "tema": "Eliminar lo innecesario",
+        "message": "Expresión 'moviendo papeles' tiene tono coloquial de autoayuda. Sustituir por 'realizando tareas administrativas sin impacto pedagógico'."
+      },
+      {
+        "severity": "warning",
+        "tema": "Decisiones estratégicas",
+        "message": "Término 'banco de recursos institucional' es genérico. Preferir 'repositorio de materiales adaptados' o 'biblioteca de recursos psicopedagógicos'."
+      },
+      {
+        "severity": "error",
+        "tema": "Gestión del tiempo",
+        "message": "Uso repetido de 'screening' (segundo uso en mismo tema). Mantener coherencia terminológica con léxico del rol."
+      },
+      {
+        "severity": "warning",
+        "tema": "Aplicación en la vida diaria",
+        "message": "Frase 'abordaje' es término válido pero 'intervención' es más preciso según léxico preferido establecido para el rol."
+      },
+      {
+        "severity": "error",
+        "tema": "Múltiples temas",
+        "message": "Repetición de escenarios de 'revisión de agenda' y 'mapeo de casos' en al menos 6 de 10 temas. Falta diversidad: evaluaciones diagnósticas, diseño de adaptaciones curriculares, coordinación con equipos docentes, talleres preventivos, intervenciones grupales."
+      },
+      {
+        "severity": "warning",
+        "tema": "Foco y concentración",
+        "message": "Término 'batería neuropsicológica' es clínico, no psicopedagógico escolar. Mejor 'evaluación psicopedagógica completa' o 'protocolo de valoración integral'."
+      }
+    ],
+    "recommendations": [
+      "Eliminar todos los anglicismos: 'screening' → 'evaluación inicial/tamizaje'; 'KPI' aparece solo en metadatos, no en ejemplos (correcto).",
+      "Diversificar escenarios en 'ejemplo_practico': incluir diseño de adaptaciones curriculares específicas, talleres preventivos con docentes, protocolos de observación áulica, entrevistas diagnósticas estructuradas, coordinación con equipos de salud. Actualmente 7 de 10 ejemplos repiten 'revisar agenda + identificar casos + reasignar tiempo'.",
+      "Sustituir léxico clínico por psicopedagógico escolar: 'batería neuropsicológica' → 'evaluación psicopedagógica integral'; 'terapeutas' → 'profesionales de apoyo'.",
+      "Reemplazar términos genéricos: 'expediente' → 'legajo escolar'; 'banco de recursos' → 'repositorio de materiales psicopedagógicos'; 'carpetas compartidas' → 'registro de seguimiento interinstitucional'.",
+      "Ajustar coherencia en uso de 'maestra integradora' vs 'docente de apoyo' vs 'maestra de apoyo': unificar en 'docente de apoyo' según léxico establecido.",
+      "Evitar tono coloquial de autoayuda: 'moviendo papeles' → 'ejecutando tareas administrativas sin impacto en aprendizaje'; 'apagando incendios' es límite aceptable pero revisar.",
+      "En 'aplicacion_vida_real', todos los textos correctamente usan imperativo 'tú' (revisa, bloquea, identifica, deriva). Mantener.",
+      "Verificar que todos los KPIs mencionados correspondan al rol: 'avance lector', 'autonomía en aula', 'reducción de derivaciones', 'tiempo por caso crítico' aparecen correctamente en ejemplos. Eliminar cualquier referencia a ROI, rentabilidad, escalabilidad comercial (no detectadas: correcto).",
+      "Incorporar en al menos 3 ejemplos acciones de 'plasticidad neuronal' o 'hitos de aprendizaje' mencionados en léxico preferido pero ausentes en desarrollo de casos.",
+      "Añadir un ejemplo centrado exclusivamente en prevención/detección temprana en aula regular, no solo intervención sobre casos ya derivados."
+    ]
+  }
+}

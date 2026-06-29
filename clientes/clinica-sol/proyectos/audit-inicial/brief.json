@@ -1,0 +1,9 @@
+{
+  "nombre": "Audit inicial",
+  "slug": "audit-inicial",
+  "cliente_slug": "clinica-sol",
+  "pipeline_slug": "demo-clinica-sol",
+  "url": "https://clinica-sol-demo.cl",
+  "objetivo": "Demo pipeline audit — score + informe",
+  "estado": "demo"
+}

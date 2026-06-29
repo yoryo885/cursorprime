@@ -1,0 +1,39 @@
+{
+  "agent": "PlannerAgent",
+  "veredicto_base": "condicional",
+  "horizonte_semanas": {
+    "min": 4,
+    "max": 10
+  },
+  "fases": [
+    {
+      "id": 1,
+      "nombre": "Validación",
+      "semanas": 2,
+      "objetivo": "Validar disposición a pagar",
+      "tareas": [],
+      "criterio_exito": "3 señales de interés"
+    },
+    {
+      "id": 2,
+      "nombre": "MVP",
+      "semanas": 4,
+      "objetivo": "MVP testeable",
+      "tareas": [
+        {
+          "id": "2.1",
+          "tarea": "Prototipo core",
+          "prioridad": "media"
+        }
+      ],
+      "criterio_exito": "1 usuario piloto activo"
+    }
+  ],
+  "hitos": [
+    {
+      "semana": 4,
+      "hito": "MVP testeable"
+    }
+  ],
+  "siguiente_accion_inmediata": "Ejecutar plan_accion fase 1"
+}

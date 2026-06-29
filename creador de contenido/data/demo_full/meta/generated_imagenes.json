@@ -1,0 +1,19 @@
+{
+  "imagenes": [
+    {
+      "tema": "creatividad",
+      "archivo": "01-creatividad.png",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/imagenes/01-creatividad.png",
+      "modulo": "imagenes",
+      "generado_at": "2026-06-27T19:59:16.081157+00:00"
+    },
+    {
+      "tema": "energia",
+      "archivo": "02-energia.png",
+      "path": "/Users/yoryo/cursorprime/creador de contenido/data/demo_full/imagenes/02-energia.png",
+      "modulo": "imagenes",
+      "generado_at": "2026-06-27T19:59:16.144753+00:00"
+    }
+  ],
+  "count": 2
+}

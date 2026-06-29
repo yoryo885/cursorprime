@@ -1,0 +1,17 @@
+{
+  "nombre": "audit-marketing",
+  "tipo": "capacidad",
+  "proyecto": "ideas-de-proyectos",
+  "triggers": [
+    "auditar marketing",
+    "audit ecommerce",
+    "analisis competencia ads",
+    "usa audit-marketing",
+    "revisar anuncios"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T01:00:10.482935+00:00"
+}

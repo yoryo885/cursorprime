@@ -1,0 +1,43 @@
+---
+description: Gate diseño vs construcción — no crear proyectos hasta autorización
+alwaysApply: true
+---
+
+# Gate: diseño primero, construcción solo cuando el usuario lo pida
+
+## Fase DISEÑO (permitida siempre)
+
+- Leer `ideas/*.json` o idea en texto
+- Ejecutar pasos 1–4: brief, research, architecture, feasibility
+- Escribir solo en `borradores/{slug}/`
+- Generar `DISEÑO.md`, mermaid, `plan.json`, `feasibility.json`
+- Responder con resumen + veredicto + qué falta antes de construir
+
+## Fase CONSTRUCCIÓN (bloqueada por defecto)
+
+Solo si el usuario dice explícitamente una de:
+- `construye`
+- `armado`
+- `crea el proyecto`
+- `fase construcción`
+- `construir {slug}`
+
+Entonces:
+- Pasos 5–7: scaffold → packager → qc
+- Escribir en `proyectos/{slug}/`
+- No sobrescribir `proyectos/{slug}/` sin confirmación si ya existe
+
+## Prohibido sin autorización
+
+- Crear `{slug}_main.py` en `proyectos/`
+- Scaffolding de repos completos
+- `pip install`, deploy, credenciales de producción
+
+## Datos
+
+- No inventar métricas de mercado; usar `confidence`, `sources`, `pendiente_manual`
+- Commits solo si el usuario lo pide
+
+## Contexto
+
+Lee `AGENTS.md` y `meta/plan.json` al iniciar cualquier tarea en este workspace.

@@ -1,0 +1,63 @@
+⚡ Solo enriquecer: El principio de Pareto - Antoine Delers
+   🚀 Pipeline de enriquecimiento...
+   📊 Modo solo tablas: voz Yordy + diseño iconos + Playwright
+   📊 Agente Tablas: 3 sub-agentes + iconos + Playwright...
+      → Tarjeta: 'Principio 80/20' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: principio_80_20.png
+      → Tarjeta: 'Ley de Pareto' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: ley_de_pareto.png
+      → Tarjeta: 'Productividad personal' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: productividad_personal.png
+      → Tarjeta: 'Priorización de tareas' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: priorización_de_tareas.png
+      → Tarjeta: 'Foco y concentración' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: foco_y_concentración.png
+      → Tarjeta: 'Gestión del tiempo' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: gestión_del_tiempo.png
+      → Tarjeta: 'Eficiencia y eficacia' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: eficiencia_y_eficacia.png
+      → Tarjeta: 'Eliminar lo innecesario' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: eliminar_lo_innecesario.png
+      → Tarjeta: 'Decisiones estratégicas' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: decisiones_estratégicas.png
+      → Tarjeta: 'Aplicación en la vida diaria' [iconos]...
+         → Sub-agente 1/3: Idea clave
+         → Sub-agente 2/3: Ejemplo práctico
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 1/3...
+         ⚠️  Ejemplo (escenario numérico repetido) — reintento 2/3...
+         → Sub-agente 3/3: Aplicación en la vida real
+         → Playwright render: aplicación_en_la_vida_diaria.png
+   ⏭️  Markdown: no regenerado
+
+✅ Listo. Salida en: resumenes/pareto/

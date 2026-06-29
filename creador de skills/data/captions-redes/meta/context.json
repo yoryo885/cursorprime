@@ -1,0 +1,29 @@
+{
+  "nombre": "captions-redes",
+  "titulo": "Captions Redes",
+  "tipo": "capacidad",
+  "proyecto_destino": "creador-de-contenido",
+  "proyecto_nombre": "Creador de Contenido",
+  "proyecto_carpeta": "../creador de contenido",
+  "proceso": "Captions que convierten para Instagram, TikTok y YouTube: valor en primeras líneas, CTA claro, hashtags mínimos y legibles.",
+  "pasos": [],
+  "reglas": [
+    "Primera línea = gancho (reutilizar hooks-redes si existe)",
+    "150-300 palabras para IG; versión corta ≤500 caracteres para TikTok",
+    "1 CTA explícito (comenta, guarda, sigue, link en bio)",
+    "3-8 hashtags relevantes, no bloques de 30",
+    "Incluir versión A/B si el post es promocional"
+  ],
+  "triggers": [
+    "caption",
+    "descripcion instagram",
+    "copy redes",
+    "usa captions-redes",
+    "texto del post",
+    "cta redes"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T00:36:38.634704+00:00"
+}

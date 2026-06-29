@@ -1,0 +1,30 @@
+{
+  "slug": "demo_full",
+  "titulo": "Demo todo en uno",
+  "cantidad": 2,
+  "salidas_pedidas": [
+    "png",
+    "gif",
+    "pdf"
+  ],
+  "salidas_efectivas": [
+    "png",
+    "gif",
+    "pdf"
+  ],
+  "estilo": "yordy-minimal",
+  "temas": [
+    "creatividad",
+    "energia"
+  ],
+  "uso": "general",
+  "gif": {
+    "frames": 4,
+    "duration_ms": 300
+  },
+  "video": {
+    "fps": 2
+  },
+  "pdf": {},
+  "notas": "Prueba multi-módulo (video requiere ffmpeg)"
+}

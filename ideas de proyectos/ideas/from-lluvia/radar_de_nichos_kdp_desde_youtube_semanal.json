@@ -1,0 +1,16 @@
+{
+  "titulo": "Radar de nichos KDP desde YouTube semanal",
+  "slug": "radar_de_nichos_kdp_desde_youtube_semanal",
+  "tipo": "from_lluvia",
+  "categoria_lluvia": "informacion",
+  "origen_idea_id": "idea-86066e0f",
+  "problema": "La investigación es manual y no se repite en cadencia.",
+  "propuesta": "Pipeline investigación programable: queries fijas + informe JSON cada semana.",
+  "proyecto_destino": "lluvia-de-ideas",
+  "confidence_lluvia": 0.75,
+  "aprobada_at": "2026-06-28T23:01:58.812991+00:00",
+  "hipotesis": [
+    "Pipeline investigación programable: queries fijas + informe JSON cada semana."
+  ],
+  "notas": "Exportada desde lluvia-de-ideas cola (idea-86066e0f)"
+}

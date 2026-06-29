@@ -1,0 +1,11 @@
+{
+  "slug": "pdf-guion-video",
+  "tipo": "cursor",
+  "proyecto_destino": "creador-de-contenido",
+  "count": 1,
+  "qc_ok": true,
+  "archivos": [
+    "prompts.json",
+    "prompts.md"
+  ]
+}

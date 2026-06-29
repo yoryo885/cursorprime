@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "principios": [
+    "Cada mensaje mejora el prompt activo (meta/prompt-activo.json)",
+    "No cola de pendientes — lo que dice el usuario refina el prompt",
+    "Un prompt = plantilla + contexto + tema + mejoras acumuladas",
+    "Sin inventar datos en tipo evaluacion",
+    "Salida reutilizable por otros proyectos (JSON + MD)",
+    "INTEGRACION_EXTERNA=false hasta conectar pipelines"
+  ]
+}

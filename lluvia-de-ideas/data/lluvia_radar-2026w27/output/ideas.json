@@ -1,0 +1,79 @@
+{
+  "generado_at": "2026-06-29T03:04:44.032772+00:00",
+  "tema": "nichos kdp resumenes libros youtube",
+  "total": 6,
+  "ideas": [
+    {
+      "id": "idea-d30bf617",
+      "categoria": "visual",
+      "titulo": "Pack promocional automático post-investigación",
+      "problema": "Tras analizar un nicho no hay assets visuales listos para validar demanda.",
+      "propuesta": "Conectar análisis → creador de contenido (3 PNG + 1 GIF del nicho detectado).",
+      "proyecto_afectado": "creador de contenido",
+      "confidence": 0.7,
+      "estado": "pendiente_aprobacion",
+      "origen": "nichos kdp resumenes libros youtube",
+      "creado_at": "2026-06-29T03:04:44.032143+00:00"
+    },
+    {
+      "id": "idea-b3202b8c",
+      "categoria": "informacion",
+      "titulo": "Radar de nichos KDP desde YouTube semanal",
+      "problema": "La investigación es manual y no se repite en cadencia.",
+      "propuesta": "Pipeline investigación programable: queries fijas + informe JSON cada semana.",
+      "proyecto_afectado": "lluvia-de-ideas",
+      "confidence": 0.75,
+      "estado": "pendiente_aprobacion",
+      "origen": "nichos kdp resumenes libros youtube",
+      "creado_at": "2026-06-29T03:04:44.032711+00:00"
+    },
+    {
+      "id": "idea-9aa32414",
+      "categoria": "nuevo_proyecto",
+      "titulo": "Pipeline investigación → producto para: nichos kdp resumenes libros youtube",
+      "problema": "Oportunidad detectada en investigación sobre nichos kdp resumenes libros youtube.",
+      "propuesta": "Varios resultados muestran flujo manual replicable por agentes.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.65,
+      "estado": "pendiente_aprobacion",
+      "origen": "analisis",
+      "creado_at": "2026-06-29T03:04:44.032729+00:00"
+    },
+    {
+      "id": "idea-1cef147d",
+      "categoria": "nuevo_proyecto",
+      "titulo": "Empaquetar pipeline como producto vendible",
+      "problema": "Oportunidad detectada en investigación sobre nichos kdp resumenes libros youtube.",
+      "propuesta": "Foros y videos mencionan vender sistemas además del ebook.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.6,
+      "estado": "pendiente_aprobacion",
+      "origen": "analisis",
+      "creado_at": "2026-06-29T03:04:44.032740+00:00"
+    },
+    {
+      "id": "idea-9b1afa2f",
+      "categoria": "marketing",
+      "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
+      "problema": "No hay página que venda el sistema una vez validado el pipeline.",
+      "propuesta": "Copy + demo video corto del pipeline funcionando; precio fase beta.",
+      "proyecto_afectado": "cursorprime",
+      "confidence": 0.65,
+      "estado": "pendiente_aprobacion",
+      "origen": "nichos kdp resumenes libros youtube",
+      "creado_at": "2026-06-29T03:04:44.032750+00:00"
+    },
+    {
+      "id": "idea-b07c0c4f",
+      "categoria": "meta",
+      "titulo": "Enlace investigación → evaluar-idea → construir",
+      "problema": "Las ideas no fluyen solas hacia ideas de proyectos.",
+      "propuesta": "Al aprobar idea en cola, generar borrador JSON en ideas de proyectos automáticamente.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.8,
+      "estado": "pendiente_aprobacion",
+      "origen": "direccion",
+      "creado_at": "2026-06-29T03:04:44.032761+00:00"
+    }
+  ]
+}

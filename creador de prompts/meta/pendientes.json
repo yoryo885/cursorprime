@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "descripcion": "Archivo legacy — NO usar en flujo normal. El sistema usa meta/prompt-activo.json (mejora continua).",
+  "pendientes": []
+}

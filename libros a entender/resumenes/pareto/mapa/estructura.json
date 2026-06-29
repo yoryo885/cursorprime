@@ -1,0 +1,84 @@
+{
+  "libro_nombre": "El principio de Pareto - Antoine Delers",
+  "temas": [
+    "Principio 80/20",
+    "Ley de Pareto",
+    "Productividad personal",
+    "Priorización de tareas",
+    "Foco y concentración",
+    "Gestión del tiempo",
+    "Eficiencia y eficacia",
+    "Eliminar lo innecesario",
+    "Decisiones estratégicas",
+    "Aplicación en la vida diaria"
+  ],
+  "categorias": {
+    "Principio 80/20": "Fundamentos teóricos",
+    "Ley de Pareto": "Fundamentos teóricos",
+    "Productividad personal": "Resultados y optimización",
+    "Priorización de tareas": "Técnicas de implementación",
+    "Foco y concentración": "Técnicas de implementación",
+    "Gestión del tiempo": "Técnicas de implementación",
+    "Eficiencia y eficacia": "Resultados y optimización",
+    "Eliminar lo innecesario": "Técnicas de implementación",
+    "Decisiones estratégicas": "Aplicación práctica",
+    "Aplicación en la vida diaria": "Aplicación práctica"
+  },
+  "conexiones": [
+    {
+      "desde": "Ley de Pareto",
+      "hasta": "Principio 80/20",
+      "relacion": "es la base matemática que sustenta"
+    },
+    {
+      "desde": "Principio 80/20",
+      "hasta": "Priorización de tareas",
+      "relacion": "identifica el 20% de tareas vitales"
+    },
+    {
+      "desde": "Priorización de tareas",
+      "hasta": "Foco y concentración",
+      "relacion": "permite dirigir energía a lo importante"
+    },
+    {
+      "desde": "Eliminar lo innecesario",
+      "hasta": "Priorización de tareas",
+      "relacion": "descarta el 80% de bajo impacto"
+    },
+    {
+      "desde": "Foco y concentración",
+      "hasta": "Productividad personal",
+      "relacion": "multiplica resultados con menos esfuerzo"
+    },
+    {
+      "desde": "Gestión del tiempo",
+      "hasta": "Eficiencia y eficacia",
+      "relacion": "maximiza valor por unidad de tiempo"
+    },
+    {
+      "desde": "Principio 80/20",
+      "hasta": "Decisiones estratégicas",
+      "relacion": "orienta qué proyectos emprender o abandonar"
+    },
+    {
+      "desde": "Decisiones estratégicas",
+      "hasta": "Aplicación en la vida diaria",
+      "relacion": "transforma teoría en acciones concretas"
+    },
+    {
+      "desde": "Eficiencia y eficacia",
+      "hasta": "Productividad personal",
+      "relacion": "hacer lo correcto de manera óptima"
+    },
+    {
+      "desde": "Eliminar lo innecesario",
+      "hasta": "Gestión del tiempo",
+      "relacion": "libera horas para actividades de alto valor"
+    },
+    {
+      "desde": "Priorización de tareas",
+      "hasta": "Decisiones estratégicas",
+      "relacion": "define dónde invertir recursos limitados"
+    }
+  ]
+}

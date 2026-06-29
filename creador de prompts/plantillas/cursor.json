@@ -1,0 +1,6 @@
+{
+  "id": "cursor",
+  "nombre": "Prompt agente Cursor / instrucciones",
+  "template": "Actúa como agente especializado en '{tema}' para el proyecto {proyecto}. Audiencia: {audiencia}. Tono: {tono}. Objetivo: {objetivo}. Entrega pasos concretos, archivos a tocar y criterios de éxito. Idioma: {idioma}.",
+  "negative": ""
+}

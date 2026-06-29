@@ -1,0 +1,46 @@
+---
+description: Cada mensaje mejora el prompt activo — no acumular pendientes
+alwaysApply: true
+---
+
+# Creador de prompts — mejora continua
+
+En **todo cursorprime**, cada mensaje del usuario **refina el prompt activo**. No guardar cola de pendientes.
+
+## En cada mensaje
+
+1. Lee `~/.cursor/skills/creador-de-prompts/SKILL.md` y `meta/prompt-activo.json`.
+2. Clasifica:
+   - **Saludo / ack** → respuesta breve.
+   - **Tema nuevo explícito** → nuevo `slug`; pasa a ser el prompt activo.
+   - **Cualquier otra cosa** → **mejora** del prompt activo con lo que dijo el usuario.
+
+## Flujo de mejora (obligatorio)
+
+1. Leer prompt actual: `data/{slug}/output/prompts.md` + `inputs/solicitud.json`.
+2. Integrar el mensaje del usuario (aclaración, restricción, ejemplo, corrección).
+3. Actualizar `solicitud.json` (`contexto`, `temas`, `notas`, `mejoras[]`).
+4. Reescribir `prompts.md` enriquecido (no solo plantilla genérica).
+5. Opcional: correr pipeline si cambió tipo/temas base:
+   ```bash
+   cd "/Users/yoryo/cursorprime/creador de prompts"
+   python3 creador_prompts_main.py --slug {slug}
+   ```
+6. Actualizar `meta/prompt-activo.json` (`slug`, `version++`, última mejora).
+
+## Respuesta mínima
+
+- Qué mejoraste en el prompt (1–3 bullets)
+- Prompt actualizado listo para copiar
+- `slug` y ruta `data/{slug}/output/prompts.md`
+
+## Con router (pedidos de trabajo)
+
+Orden: **refinar prompt activo** → luego skill + pipeline del router.
+
+## Prohibido
+
+- Añadir a `meta/pendientes.json` salvo que el usuario lo pida explícitamente.
+- Responder solo como chat si el mensaje aporta mejora al prompt.
+- Reiniciar el prompt ignorando lo ya refinado en la conversación.
+- Commits salvo que el usuario lo pida.

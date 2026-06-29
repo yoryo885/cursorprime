@@ -1,0 +1,10 @@
+{
+  "propuestas": [
+    {
+      "tipo": "fuentes",
+      "detalle": "Activar MOCK_WEB=false para trend/market/competition real",
+      "prioridad": "media"
+    }
+  ],
+  "slug": "wasap-pymes"
+}

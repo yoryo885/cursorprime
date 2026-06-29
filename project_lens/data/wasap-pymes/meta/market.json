@@ -1,0 +1,36 @@
+{
+  "agent": "MarketResearchAgent",
+  "confidence": 0.4,
+  "error_margin_pct": 40,
+  "sources": [
+    {
+      "url": "https://example.com/market-CL",
+      "title": "Mercado CL (mock)",
+      "accessed_at": "2026-06-28T00:32:32.485528+00:00",
+      "mock": true
+    }
+  ],
+  "findings": [],
+  "metrics": {
+    "tam_usd": {
+      "min": 1000000,
+      "max": 50000000,
+      "point": 8000000
+    },
+    "crecimiento_anual_pct": {
+      "min": 3,
+      "max": 18,
+      "point": 8
+    },
+    "demanda_score": {
+      "min": 4,
+      "max": 8,
+      "point": 6
+    }
+  },
+  "warnings": [
+    "TAM estimado — ±40% sin fuentes premium",
+    "mock web activo"
+  ],
+  "generated_at": "2026-06-28T00:32:32.485546+00:00"
+}

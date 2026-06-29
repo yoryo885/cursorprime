@@ -1,0 +1,16 @@
+{
+  "dimension": "content",
+  "label": "Content & Messaging",
+  "score": 63,
+  "findings": [
+    {
+      "severity": "critical",
+      "title": "Sin meta description",
+      "detail": "Google autogenera snippets — baja CTR en búsqueda."
+    }
+  ],
+  "wins": [
+    "Título presente: Demo Business — Automatización para PYMEs"
+  ],
+  "confidence": "medio"
+}

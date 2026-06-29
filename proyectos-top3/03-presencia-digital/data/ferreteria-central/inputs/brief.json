@@ -1,0 +1,12 @@
+{
+  "negocio": "Ferretería Central (FICTICIO)",
+  "slug": "ferreteria-central",
+  "cliente": "ferreteria-central",
+  "proyecto": "web-inicial",
+  "headline": "Todo para tu obra, a dos cuadras de casa",
+  "subheadline": "Ferretería de barrio — stock, delivery y cotización por WhatsApp",
+  "beneficios": ["Stock permanente", "Precios de barrio", "Te ayudamos a elegir"],
+  "direccion": "Av. Providencia 1000, Santiago (ficticio)",
+  "whatsapp": "+56987654321 (ficticio)",
+  "colores": ["#1a472a", "#f5f5f5", "#e67e22"]
+}

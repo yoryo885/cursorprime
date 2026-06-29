@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "issues": [],
+  "revision_humana": [
+    {
+      "item": "¿Suena a trabajo real del rol (gabinete, aula, familia)?",
+      "checked": false
+    },
+    {
+      "item": "¿El KPI se puede anotar el viernes con un número o escala?",
+      "checked": false
+    },
+    {
+      "item": "¿La acción está ligada a la idea del capítulo?",
+      "checked": false
+    },
+    {
+      "item": "¿Los verbos de apertura varían entre semanas?",
+      "checked": false
+    },
+    {
+      "item": "¿Venderías esta tabla a una colega del mismo oficio?",
+      "checked": false
+    }
+  ]
+}

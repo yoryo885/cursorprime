@@ -1,0 +1,97 @@
+{
+  "id": "contenido",
+  "slug": "viabilidad-contenido",
+  "nombre": "Creador de contenido",
+  "carpeta": "creador de contenido",
+  "capa": "producto",
+  "tema": "ai content creation youtube faceless video automation",
+  "fetch": "live",
+  "fuentes": 13,
+  "youtube_n": 6,
+  "web_n": 7,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:17:20.043175+00:00",
+  "veredicto": "viable",
+  "score": 86,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «ai content creation youtube faceless video automation»: 6 YouTube · 7 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.77,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "How I Built an AI Agent with DeepSeek AI to Create ... - YouTube",
+      "url": "https://www.youtube.com/watch?v=K-cTuj_QVac",
+      "snippet": "The AndyNoCode AI Ecosystem — Start. Build. About Press Copyright Contact us Creators Advertise Developers Terms Privacy Policy & Safety How YouTube works Test new features.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "AutoShorts. ai | #1 Faceless Video Generator for TikTok & YouTube",
+      "url": "https://autoshorts.ai/",
+      "snippet": "Create and automate faceless videos effortlessly with AutoShorts. ai . Our AI -powered platform generates and posts fresh content daily to grow your TikTok and YouTube channels.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Ai Yt Automation Tutorial | TikTok",
+      "url": "https://www.tiktok.com/discover/ai-yt-automation-tutorial",
+      "snippet": "AI YouTube video automation , faceless YouTube content creation , quick YouTube automation tips, efficient video production techniques, YouTube content creation strategies Last updated 2026-04-20.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Free AI Short Video Generator:Auto Create Viral Videos | Short AI",
+      "url": "https://www.short.ai/",
+      "snippet": "Create viral faceless videos effortlessly! Generate AI story, Reddit story, fake text,and dialogue videos in clicks.ShortAI automates the entire video process, so you can generate faceless content , automatically generate subtitles attract thousands of views, and earn ad revenue.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Free AI YouTube Shorts Generator and Maker | Invideo AI",
+      "url": "https://invideo.io/make/ai-youtube-shorts-generator/",
+      "snippet": "AI YouTube Shorts Generator. Create faceless short videos for YouTube from simple text prompts within minutes. AI writes the script, creates scenes, adds generative media, voiceovers, subtitles, SFX and gives you a complete video .",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Create Faceless Videos for YouTube Using AI | FlexClip",
+      "url": "https://www.flexclip.com/create/faceless-youtube-video.html",
+      "snippet": "Free Online AI Faceless YouTube Video Maker. FlexClip's free online faceless YouTube video maker empowers you to craft high-quality, engaging content for your faceless YouTube channel, covering trending niches from motivational and relaxing themes to music and animation.",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "AutoShorts. ai | #1 Faceless Video Generator for TikTok & YouTube",
+      "url": "https://autoshorts.ai/",
+      "snippet": "Create and automate faceless videos effortlessly with AutoShorts. ai . Our AI -powered platform generates and posts fresh content daily to grow your TikTok and YouTube channels.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Free AI YouTube Shorts Generator and Maker | Invideo AI",
+      "url": "https://invideo.io/make/ai-youtube-shorts-generator/",
+      "snippet": "AI YouTube Shorts Generator. Create faceless short videos for YouTube from simple text prompts within minutes. AI writes the script, creates scenes, adds generative media, voiceovers, subtitles, SFX and gives you a complete video .",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Free AI Short Video Generator:Auto Create Viral Videos | Short AI",
+      "url": "https://www.short.ai/",
+      "snippet": "Create viral faceless videos effortlessly! Generate AI story, Reddit story, fake text,and dialogue videos in clicks.ShortAI automates the entire video process, so you can generate faceless content , automatically generate subtitles attract thousands of views, and earn ad revenue.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "AI Faceless YouTube Video Maker: A Revolution in Content Creation",
+      "url": "https://speechify.com/blog/ai-faceless-youtube-video-maker/",
+      "snippet": "A faceless YouTube video is one where the creator doesn't show their face. Instead, they might use animations, visuals, screen recordings, or other mediums to convey their message. This allows for privacy while still delivering content effectively.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Create Faceless Videos for YouTube Using AI | FlexClip",
+      "url": "https://www.flexclip.com/create/faceless-youtube-video.html",
+      "snippet": "Free Online AI Faceless YouTube Video Maker. FlexClip's free online faceless YouTube video maker empowers you to craft high-quality, engaging content for your faceless YouTube channel, covering trending niches from motivational and relaxing themes to music and animation.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "FacelessReels | AI Faceless Reels Generator on Auto-Pilot",
+      "url": "https://www.facelessreels.com/",
+      "snippet": "Create faceless reels on autopilot. AI generates and posts faceless videos to TikTok, Instagram & YouTube while you sleep. Trusted by thousands of creators .",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/contenido.md"
+}

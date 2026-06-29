@@ -1,0 +1,57 @@
+---
+description: Equipo de marketing — cuándo delegar a cada skill (nivel cliente)
+globs: clientes/slug-cliente/**
+alwaysApply: false
+---
+
+# Enrutamiento — equipo de marketing (cliente)
+
+Mapa de delegación inspirado en flujo estratega → creador → analista → visual.
+Complementa `router.py`; no lo reemplaza.
+
+## Tabla de delegación
+
+| Si el pedido es… | Rol | Skill | Acción |
+|------------------|-----|-------|--------|
+| Auditar web, competencia, ads, SEO rápido | Estratega | `audit-marketing` | Informe ligero markdown |
+| **Audit web completo + score** | Estratega | **`market-audit`** | 5 agentes → `MARKETING-AUDIT.md` |
+| **PDF audit cliente** | Estratega | **`market-report-pdf`** | Tras market-audit |
+| **Competencia profunda** | Estratega | **`market-competitors`** | `COMPETITOR-REPORT.md` |
+| **Propuesta retainer** | Estratega | **`market-proposal`** | Tras audit — `CLIENT-PROPOSAL.md` |
+| **Embudo / CRO profundo** | Estratega | **`market-funnel`** | `FUNNEL-ANALYSIS.md` |
+| Investigar nicho, YouTube, tendencias | Estratega | `analisis-de-proyectos` | `analisis_main.py --slug {pipeline_slug}` |
+| Landing, oferta, funnel | Estratega | `landing-lanzamiento` | Wireframe markdown en entregables |
+| Posts LinkedIn | Creador | `copy-linkedin` | Usar `perfil.json` de este cliente |
+| Captions Reels/Shorts/TikTok | Creador | `captions-redes` | Gancho + CTA según tono cliente |
+| Hooks de apertura | Creador | `hooks-redes` | Antes de guion si hay video |
+| Secuencia WhatsApp comercial | Creador | `whatsapp-marketing` | Copy corto LATAM |
+| Ganchos + guion + video | Visual | `hooks-redes` → `guion-a-video` | Slug en `brief.json` |
+| PNG, GIF, pack visual | Visual | `guion-a-video` / creador contenido | `creador_imagenes_main.py --slug {pipeline_slug}` |
+| Thumbnail YouTube / Reels | Visual | `thumbnail-social` | Brief visual on-brand |
+| Métricas, viabilidad negocio | Analista | `evaluar-idea` / `project-lens` | Solo si el brief lo pide |
+| Evaluar idea de producto nuevo | Analista | `evaluar-idea` | No confundir con campaña de marketing |
+
+## Orden recomendado — campaña completa
+
+```
+1. Estratega  → brief/audit en entregables/estrategia/
+2. Creador    → copy en entregables/copy/
+3. Visual     → pipeline con pipeline_slug → entregables/visual/
+4. QC humano  → revisar antes de publicar
+```
+
+## Community manager (limitación)
+
+cursorprime **no** programa posts en redes automáticamente. El rol CM termina en:
+
+- Calendario editorial markdown en `entregables/calendario.md`
+- Copy + assets listos para pegar en Buffer/Meta/manual
+
+## Comunicación entre “agentes”
+
+Equivalente a la carpeta compartida del video de Rodolfo Carrasco:
+
+- El estratega escribe plan en `proyectos/{slug}/CONTEXTO.md`
+- El creador lee `CONTEXTO.md` + `CLIENTE.md`
+- El visual usa `templates/creatividades/` + `brief.json`
+- El analista lee métricas si el usuario las deja en `proyectos/{slug}/datos/`

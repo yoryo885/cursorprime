@@ -1,0 +1,14 @@
+{
+  "nombre": "market-audit",
+  "titulo": "Market Audit (5 agentes)",
+  "tipo": "capacidad",
+  "proyecto_destino": "clientes",
+  "triggers": ["market audit", "audit completo web", "marketing score", "usa market-audit", "audit pdf cliente"],
+  "proceso": "Pipeline Python marketing_audit_main.py — 5 agentes ThreadPoolExecutor, score 0-100.",
+  "reglas": [
+    "CLI: python3 marketing_audit_main.py audit --url URL --slug SLUG",
+    "Agentes: Content, Conversion, Competitive, Technical, Strategy en paralelo",
+    "Bridge: --cliente --proyecto copia a clientes/",
+    "PDF: flag --pdf"
+  ]
+}

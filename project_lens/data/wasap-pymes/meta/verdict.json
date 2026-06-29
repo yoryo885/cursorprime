@@ -1,0 +1,55 @@
+{
+  "agent": "SynthesisAgent",
+  "score_global": {
+    "min": 49.2,
+    "max": 73.2,
+    "point": 61.2
+  },
+  "confidence_global": 0.52,
+  "veredicto": "condicional",
+  "veredicto_labels": [
+    "viable",
+    "condicional",
+    "descartar"
+  ],
+  "por_area": {
+    "trend": {
+      "score": 60.0,
+      "confidence": 0.45,
+      "weight": 0.1
+    },
+    "market": {
+      "score": 60.0,
+      "confidence": 0.4,
+      "weight": 0.15
+    },
+    "competition": {
+      "score": 35.0,
+      "confidence": 0.42,
+      "weight": 0.15
+    },
+    "financial": {
+      "score": 73.33,
+      "confidence": 0.58,
+      "weight": 0.2
+    },
+    "scalability": {
+      "score": 80.0,
+      "confidence": 0.55,
+      "weight": 0.2
+    },
+    "cost_mvp": {
+      "score": 40.0,
+      "confidence": 0.62,
+      "weight": 0.1
+    },
+    "risk": {
+      "score": 55.0,
+      "confidence": 0.6,
+      "weight": 0.1
+    }
+  },
+  "tipo_negocio": "saas",
+  "recomendacion": "Veredicto condicional — validar hipótesis clave antes de escalar",
+  "siguiente_paso": "Ejecutar plan_accion fase 1"
+}

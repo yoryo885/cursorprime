@@ -1,0 +1,62 @@
+{
+  "id": "panel",
+  "slug": "viabilidad-panel",
+  "nombre": "Centro de control",
+  "carpeta": "centro de control prime",
+  "capa": "creador",
+  "tema": "project dashboard control panel productivity software",
+  "fetch": "live",
+  "fuentes": 8,
+  "youtube_n": 0,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:47.982065+00:00",
+  "veredicto": "condicional",
+  "score": 63,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «project dashboard control panel productivity software»: 0 YouTube · 8 web. Demanda parcial — conviene nicho más específico o MVP pequeño.",
+  "confidence": 0.57,
+  "warnings": [
+    "YouTube «project dashboard control panel producti»: Búsqueda falló — ddgs: Unsupported protocol version 0x304"
+  ],
+  "youtube": [],
+  "web": [
+    {
+      "titulo": "Web Hosting Control Panel & Server Management Tools | cPanel",
+      "url": "https://www.cpanel.net/",
+      "snippet": "The industry's most trusted hosting control panel for server & website management. cPanel offers the most reliable and user-friendly platform for managing servers and websites at scale.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Aesthetic New Tab & Glass Chrome Dashboard | GNTD",
+      "url": "https://gntd.us/",
+      "snippet": "GNTD dashboard preview. Everything you need in a productivity new tab. A clean glass dashboard for Chrome, bookmarks, widgets, and focused browsing. Aesthetic Glass Dashboard . Arrange bookmarks and widgets in focused visual boards by topic, project , or daily routine.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "AdminLTE — #1 Free Bootstrap Admin Dashboard Template",
+      "url": "https://adminlte.io/",
+      "snippet": "AdminLTE Bootstrap Admin Dashboard Template. Best open source admin dashboard & control panel theme. Built on top of Bootstrap, AdminLTE provides a range of responsive, reusable, and commonly used components.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Encontre e salve ideias sobre dashboard control panel no Pinterest.",
+      "url": "https://br.pinterest.com/ideas/dashboard-control-panel/952536664766/",
+      "snippet": "Descubra as melhores ideias e inspirações de Dashboard control panel no Pinterest.Pharmacy Management Dashboard – Smart Medicine & Inventory Control | Software interface design, Dashboard design, Interactive web design.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Work & Project Management for Human-Agent Teams • Asana",
+      "url": "https://asana.com/",
+      "snippet": "Work management software for teams and AI agents. Plan, automate, and execute critical workflows together.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "30 Free Self-hosted Server and Hosting Control Panels for...",
+      "url": "https://medevel.com/os-server-control-panel/",
+      "snippet": "A Server Dashboard is an open-source server control panel that helps users manage their websites and servers efficiently. ControlPanel 's Dashboard is a dashboard application designed to offer clients a management tool to manage their Pterodactyl servers.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/panel.md"
+}

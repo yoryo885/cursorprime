@@ -1,0 +1,14 @@
+{
+  "id": "idea-806203b4",
+  "categoria": "marketing",
+  "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
+  "problema": "No hay página que venda el sistema una vez validado el pipeline.",
+  "propuesta": "Copy + demo video corto del pipeline funcionando; precio fase beta.",
+  "proyecto_afectado": "cursorprime",
+  "confidence": 0.65,
+  "estado": "en_espera",
+  "origen": "resumenes libros kdp",
+  "creado_at": "2026-06-28T22:56:50.879208+00:00",
+  "pospuesta_at": "2026-06-28T23:01:59.377862+00:00",
+  "nota_usuario": "revisar despues"
+}

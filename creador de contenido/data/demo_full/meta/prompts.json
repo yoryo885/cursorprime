@@ -1,0 +1,19 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "tema": "creatividad",
+      "slug": "creatividad",
+      "prompt": "Illustration for 'creatividad', style: Flat, líneas limpias, fondo claro, acento verde, flat design, clean lines, palette ['#1a1a2e', '#16a085', '#f5f5f5'], no text, square composition",
+      "archivo": "01-creatividad.png"
+    },
+    {
+      "id": 2,
+      "tema": "energia",
+      "slug": "energia",
+      "prompt": "Illustration for 'energia', style: Flat, líneas limpias, fondo claro, acento verde, flat design, clean lines, palette ['#1a1a2e', '#16a085', '#f5f5f5'], no text, square composition",
+      "archivo": "02-energia.png"
+    }
+  ],
+  "count": 2
+}

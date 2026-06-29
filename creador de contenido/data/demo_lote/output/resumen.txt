@@ -1,0 +1,4 @@
+Creador de Contenido — Pack demo productividad
+Salidas: png
+QC: OK
+Pack: demo_lote_contenido.zip

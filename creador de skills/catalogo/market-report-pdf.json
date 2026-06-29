@@ -1,0 +1,13 @@
+{
+  "nombre": "market-report-pdf",
+  "titulo": "Market Report PDF",
+  "tipo": "capacidad",
+  "proyecto_destino": "clientes",
+  "triggers": ["market report pdf", "informe pdf marketing", "client-ready report", "usa market-report-pdf"],
+  "proceso": "JSON desde MARKETING-AUDIT.md → generate_pdf_report.py → PDF cliente.",
+  "reglas": [
+    "Preferir audit previo",
+    "confidence bajo en revenue sin datos",
+    "Copiar PDF a entregables/estrategia/"
+  ]
+}

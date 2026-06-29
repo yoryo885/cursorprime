@@ -1,0 +1,526 @@
+[
+  {
+    "timestamp": "2026-06-06T17:04:55.609311+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Sistema 1 y Sistema 2",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de los sistemas de pensamiento, específicamente el Sistema 1 y el Sistema 2. El Sistema 1 es descrito como un sistema automático que opera de manera rápida y sin esfuerzo, mientras que el Sistema 2 es un sistema más lento y ",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T17:04:57.898588+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Emociones y razón",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de las emociones y la razón de manera profunda, destacando cómo las emociones influyen en nuestros procesos de pensamiento y toma de decisiones. Según Kahneman, las emociones desempeñan un papel crucial en la forma en que ev",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T17:08:53.704462+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Economía conductual",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99123, Requested 5945. Please try again in 1h12m58.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:12:49.576577+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Sesgos cognitivos",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98850, Requested 5302. Please try again in 59m47.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:16:45.464412+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Memoria y experiencia",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98577, Requested 5635. Please try again in 1h0m39.167999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:20:41.415986+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Confianza e intuición",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98304, Requested 5966. Please try again in 1h1m29.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:24:37.323491+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Toma de decisiones",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98031, Requested 5703. Please try again in 53m46.176s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:28:33.193724+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Comportamiento humano",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 97758, Requested 5675. Please try again in 49m26.112s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:29:34.947325+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Sistema 1 y Sistema 2",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 97686, Requested 5491. Please try again in 45m44.928s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:32:29.223451+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Heurísticas",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 97485, Requested 5153. Please try again in 37m59.232s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:33:31.061495+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Emociones y razón",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 97413, Requested 5197. Please try again in 37m35.04s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:36:25.178966+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Errores de juicio",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 97212, Requested 5767. Please try again in 42m53.856s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:37:27.010828+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Economía conductual",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99935, Requested 5945. Please try again in 1h24m40.32s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:40:22.459757+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Sistema 1 y Sistema 2",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de los sistemas de pensamiento, específicamente el Sistema 1 y el Sistema 2. El Sistema 1 se describe como un sistema automático que opera de manera rápida y sin esfuerzo, mientras que el Sistema 2 es un sistema más lento y ",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T17:40:22.463418+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Emociones y razón",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de las emociones y la razón de manera profunda, destacando cómo las emociones influyen en nuestros procesos de pensamiento y toma de decisiones. Según Kahneman, las emociones desempeñan un papel crucial en la forma en que ev",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T17:41:23.036043+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Sesgos cognitivos",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99662, Requested 4278. Please try again in 56m44.16s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:45:18.953474+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Memoria y experiencia",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99389, Requested 5635. Please try again in 1h12m20.736s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:49:15.065614+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Confianza e intuición",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99115, Requested 5966. Please try again in 1h13m9.984s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:53:10.950464+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Toma de decisiones",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98842, Requested 5703. Please try again in 1h5m26.879999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T17:57:06.874718+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Comportamiento humano",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98569, Requested 5675. Please try again in 1h1m6.816s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T18:01:02.911892+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Heurísticas",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98296, Requested 5153. Please try again in 49m39.936s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T18:04:58.789827+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Errores de juicio",
+    "tipo": "fallo",
+    "detalle": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ktewdg27ehdt6sypcmnbnwez` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98023, Requested 5767. Please try again in 54m34.56s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T21:03:22.722409+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Sistema 1 y Sistema 2",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman explora la interacción entre dos sistemas de la mente: el Sistema 1 y el Sistema 2. El Sistema 1 es automático y rápido, mientras que el Sistema 2 es lento y deliberado. El Sistema 1 actúa sin esfuerzo y sin control consciente, mientras qu",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:03:27.990130+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Emociones y razón",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de las emociones y la razón de manera profunda y detallada. Según el autor, las emociones juegan un papel fundamental en la toma de decisiones y en la percepción de la realidad. La heurística del afecto, que sugiere que las ",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:03:54.341183+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Economía conductual",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de la economía conductual de manera crítica y constructiva. Kahneman, junto con Amos Tversky, desarrolló la teoría de las perspectivas, que desafía el modelo racional de la teoría de la utilidad esperada y sugiere que las pe",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:04:16.774498+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Sesgos cognitivos",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de los sesgos cognitivos de manera exhaustiva y profunda. Según el autor, los sesgos cognitivos no solo afectan a los legos, sino también a investigadores experimentados que piensan de manera intuitiva. La heurística de la d",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:04:37.424802+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Memoria y experiencia",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman explora cómo nuestra memoria y experiencia influyen en nuestras decisiones y percepciones. El autor sostiene que la memoria y la experiencia no siempre coinciden con lo que realmente sucedió, lo que puede llevar a toma de decisiones subópt",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:05:06.176849+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Confianza e intuición",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de la confianza y la intuición de manera crítica y exhaustiva. El autor sostiene que la confianza subjetiva no es una guía segura para conocer la validez de una intuición, ya que puede ser influenciada por la coherencia de l",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:05:34.322398+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Toma de decisiones",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de la toma de decisiones de manera exhaustiva y profunda. El autor destaca la importancia de considerar la visión desde fuera y las políticas frente al riesgo como remedios para contrarrestar los sesgos que afectan a las dec",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:06:19.376978+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Heurísticas",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de las heurísticas como principios mentales que guían nuestros juicios y decisiones en situaciones de incertidumbre. Según el autor, las heurísticas son reglas generales que reducen tareas complejas a operaciones judicativas",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:06:46.743254+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Errores de juicio",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda el tema de los errores de juicio de manera profunda y detallada. El autor argumenta que los errores de juicio pueden ser reducidos si las fuentes de información son independientes y no influyen unas en otras. Kahneman también destac",
+    "razones": [
+      "mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.195737+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Sistema 1 y Sistema 2",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman explora la interacción entre dos sistemas de la mente: el Sistema 1 y el Sistema 2. El Sistema 1 es automático y rápido, mientras que el Sistema 2 es lento y deliberado. El Sistema 1 actúa sin esfuerzo y sin control consciente, mientras qu",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.198421+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Sesgos cognitivos",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro \"Pensar Rápido, Pensar Despacio\" de Daniel Kahneman aborda de manera exhaustiva y profunda el tema de los sesgos cognitivos. Según el autor, los sesgos cognitivos no solo afectan a las personas sin conocimientos especializados, sino también a investigadores experimentados que piensan de man",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.200866+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Toma de decisiones",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman aborda el tema de la toma de decisiones de manera exhaustiva y profunda. El autor destaca la importancia de considerar la visión desde fuera y las políticas frente al riesgo como remedios para contrarrestar los sesgos que afectan a las dec",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.202862+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Heurísticas",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman aborda el tema de las heurísticas como principios mentales que guían nuestros juicios y decisiones en situaciones de incertidumbre. Según el autor, las heurísticas son reglas generales que reducen tareas complejas a operaciones judicativas",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.204669+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Emociones y razón",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman aborda el tema de las emociones y la razón de manera profunda y detallada. Según el autor, las emociones desempeñan un papel fundamental en la toma de decisiones y en la percepción de la realidad. La heurística del afecto, que sugiere que ",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.206268+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Memoria y experiencia",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman explora cómo nuestra memoria y experiencia influyen en nuestras decisiones y percepciones. El autor sostiene que la memoria y la experiencia no siempre coinciden con lo que realmente sucedió, lo que puede llevar a la toma de decisiones sub",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.210250+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Errores de juicio",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman aborda el tema de los errores de juicio de manera profunda y detallada. El autor argumenta que los errores de juicio pueden reducirse si las fuentes de información son independientes y no influyen unas en otras. Kahneman también destaca la",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.212280+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Economía conductual",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman aborda el tema de la economía conductual de manera crítica y constructiva. Kahneman, junto con Amos Tversky, desarrolló la teoría de las perspectivas, que desafía el modelo racional de la teoría de la utilidad esperada y sugiere que las pe",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T21:08:00.214433+00:00",
+    "libro_slug": "kahneman",
+    "libro": "334- Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Confianza e intuición",
+    "tipo": "resumen_pobre",
+    "detalle": "El libro 'Pensar Rápido, Pensar Despacio' de Daniel Kahneman aborda el tema de la confianza y la intuición de manera crítica y exhaustiva. El autor sostiene que la confianza subjetiva no es una guía segura para conocer la validez de una intuición, ya que puede ser influenciada por la coherencia de l",
+    "razones": [
+      "post_correccion:mezcla_idiomas"
+    ]
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.249798+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 1,
+    "tema": "Economía conductual",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.368953+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Sesgos cognitivos",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.477774+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Memoria y experiencia",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.586403+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 2,
+    "tema": "Confianza e intuición",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.698069+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Toma de decisiones",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.800495+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 3,
+    "tema": "Comportamiento humano",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:45.908080+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Heurísticas",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  },
+  {
+    "timestamp": "2026-06-06T22:55:46.013924+00:00",
+    "libro_slug": "kahneman",
+    "libro": "Pensar Rápido, Pensar Despacio - Daniel Kahneman",
+    "subagente_id": 4,
+    "tema": "Errores de juicio",
+    "tipo": "fallo",
+    "detalle": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}",
+    "razones": []
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "slug": "slug-cliente",
+  "nombre": "Nombre del cliente o marca",
+  "cargo_representante": "",
+  "empresa": "",
+  "industria": "",
+  "ciudad": "Santiago, Chile",
+  "mercado": "CL",
+  "tono": "profesional pero cercano",
+  "idioma": "es",
+  "temas_experto": [],
+  "valores": [],
+  "publico_objetivo": "",
+  "prohibiciones_copy": [
+    "no inventar métricas",
+    "no prometer resultados garantizados"
+  ],
+  "cantidad_posts_default": 4,
+  "notas": "Usar este archivo para copy-linkedin y captions-redes"
+}

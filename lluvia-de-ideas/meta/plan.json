@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "pipelines": {
+    "investigacion": [
+      {"id": 1, "slug": "context", "agent": "ContextInvestigacionAgent"},
+      {"id": 2, "slug": "fetch", "agent": "FetchAgent"},
+      {"id": 3, "slug": "synthesis", "agent": "SynthesisAgent"},
+      {"id": 4, "slug": "qc", "agent": "QcInvestigacionAgent"},
+      {"id": 5, "slug": "packager", "agent": "PackagerInvestigacionAgent"}
+    ],
+    "lluvia": [
+      {"id": 1, "slug": "context", "agent": "ContextLluviaAgent"},
+      {"id": 2, "slug": "ideas", "agent": "IdeaGeneratorAgent"},
+      {"id": 3, "slug": "qc", "agent": "QcLluviaAgent"},
+      {"id": 4, "slug": "packager", "agent": "PackagerLluviaAgent"}
+    ]
+  },
+  "defaults": {"checkpoint": true}
+}

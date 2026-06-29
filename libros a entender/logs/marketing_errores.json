@@ -1,0 +1,27 @@
+[
+  {
+    "timestamp": "2026-06-21T01:56:26.751809+00:00",
+    "pdf_origen": "/Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf",
+    "titulo": "Pareto para psicopedagogas en 10 semanas: Prioriza casos y maximiza tu impacto en el aula con la regla 80/20",
+    "tipo": "qc_listing",
+    "score": 9.5,
+    "issues": [],
+    "warnings": [
+      "audiencia_no_mencionada_en_descripcion",
+      "serie_no_mencionada_en_descripcion",
+      "titulo_difiere_del_borrador_kdp_listing"
+    ]
+  },
+  {
+    "timestamp": "2026-06-21T02:12:58.959967+00:00",
+    "pdf_origen": "/Users/yoryo/libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.pdf",
+    "titulo": "Pareto para psicopedagogas en 10 semanas: Prioriza el 20% de estudiantes que generan el 80% del impacto en tu aula",
+    "tipo": "qc_listing",
+    "score": 9.5,
+    "issues": [],
+    "warnings": [
+      "audiencia_no_mencionada_en_descripcion",
+      "titulo_difiere_del_borrador_kdp_listing"
+    ]
+  }
+]

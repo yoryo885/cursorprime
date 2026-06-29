@@ -1,0 +1,14 @@
+{
+  "slug": "demo_investigacion",
+  "tema": "resumenes libros kdp",
+  "queries": [
+    "resumenes libros kdp youtube",
+    "resumenes libros kdp amazon kdp",
+    "resumenes libros kdp tendencias"
+  ],
+  "fuentes_pedidas": [
+    "youtube",
+    "web"
+  ],
+  "notas": ""
+}

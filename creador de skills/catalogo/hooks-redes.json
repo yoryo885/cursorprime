@@ -1,0 +1,15 @@
+{
+  "nombre": "hooks-redes",
+  "titulo": "Hooks Redes",
+  "tipo": "capacidad",
+  "proyecto_destino": "creador-de-contenido",
+  "triggers": ["hook", "gancho", "primeras lineas", "usa hooks-redes", "reels", "shorts", "tiktok"],
+  "proceso": "Genera ganchos de apertura para Reels, Shorts, TikTok e Instagram que detienen el scroll en los primeros 3 segundos. Base para guion antes de guion-a-video.",
+  "reglas": [
+    "3 variantes por brief: curiosidad, contrarian, historia",
+    "Máximo 2 líneas o 15 palabras en el hook principal",
+    "Sin clickbait vacío — promesa concreta alineada al contenido",
+    "Español LATAM natural; evitar jerga gringa forzada",
+    "Entregar hook + ángulo + CTA sugerido"
+  ]
+}

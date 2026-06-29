@@ -1,0 +1,6 @@
+{
+  "id": "evaluacion",
+  "nombre": "Prompt evaluación de idea (Project Lens)",
+  "template": "Evalúa la viabilidad de '{tema}' para {audiencia}. Analiza: mercado, competencia, margen estimado, escalabilidad, riesgos. Entrega veredicto (viable/condicional/descartar) con márgenes de error. Proyecto: {proyecto}.",
+  "negative": "No inventar datos sin marcar confidence bajo"
+}

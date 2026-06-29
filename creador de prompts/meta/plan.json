@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "pipeline": [
+    {"id": 1, "slug": "context", "agente": "ContextAgent"},
+    {"id": 2, "slug": "template", "agente": "TemplateAgent"},
+    {"id": 3, "slug": "compose", "agente": "ComposeAgent"},
+    {"id": 4, "slug": "qc", "agente": "QcAgent"},
+    {"id": 5, "slug": "packager", "agente": "PackagerAgent"}
+  ]
+}

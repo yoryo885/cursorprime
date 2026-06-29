@@ -1,0 +1,29 @@
+{
+  "imagenes": [
+    {
+      "tema": "enfoque",
+      "archivo": "01-enfoque.png",
+      "path": "/Users/yoryo/ideas de proyectos/creador-imagenes/data/demo_lote/imagenes/01-enfoque.png",
+      "prompt": "Illustration for 'enfoque', style: Flat, líneas limpias, fondo claro, acento verde, flat design, clean lines, palette ['#1a1a2e', '#16a085', '#f5f5f5'], no text, square composition",
+      "generado_at": "2026-06-27T19:18:52.314316+00:00",
+      "mock": true
+    },
+    {
+      "tema": "tiempo",
+      "archivo": "02-tiempo.png",
+      "path": "/Users/yoryo/ideas de proyectos/creador-imagenes/data/demo_lote/imagenes/02-tiempo.png",
+      "prompt": "Illustration for 'tiempo', style: Flat, líneas limpias, fondo claro, acento verde, flat design, clean lines, palette ['#1a1a2e', '#16a085', '#f5f5f5'], no text, square composition",
+      "generado_at": "2026-06-27T19:18:52.387760+00:00",
+      "mock": true
+    },
+    {
+      "tema": "prioridad",
+      "archivo": "03-prioridad.png",
+      "path": "/Users/yoryo/ideas de proyectos/creador-imagenes/data/demo_lote/imagenes/03-prioridad.png",
+      "prompt": "Illustration for 'prioridad', style: Flat, líneas limpias, fondo claro, acento verde, flat design, clean lines, palette ['#1a1a2e', '#16a085', '#f5f5f5'], no text, square composition",
+      "generado_at": "2026-06-27T19:18:52.459128+00:00",
+      "mock": true
+    }
+  ],
+  "count": 3
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "slug": "demo-idea",
+    "at": "2026-06-28T00:31:38.535554+00:00",
+    "propuestas": [
+      {
+        "tipo": "fuentes",
+        "detalle": "Activar MOCK_WEB=false para trend/market/competition real",
+        "prioridad": "media"
+      }
+    ]
+  },
+  {
+    "slug": "wasap-pymes",
+    "at": "2026-06-28T00:32:32.496760+00:00",
+    "propuestas": [
+      {
+        "tipo": "fuentes",
+        "detalle": "Activar MOCK_WEB=false para trend/market/competition real",
+        "prioridad": "media"
+      }
+    ]
+  },
+  {
+    "slug": "wasap-pymes",
+    "at": "2026-06-28T00:32:38.550704+00:00",
+    "propuestas": [
+      {
+        "tipo": "fuentes",
+        "detalle": "Activar MOCK_WEB=false para trend/market/competition real",
+        "prioridad": "media"
+      }
+    ]
+  },
+  {
+    "slug": "demo-idea",
+    "at": "2026-06-28T01:17:25.868082+00:00",
+    "propuestas": []
+  }
+]

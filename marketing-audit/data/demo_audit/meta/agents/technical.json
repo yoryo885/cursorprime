@@ -1,0 +1,21 @@
+{
+  "dimension": "technical",
+  "label": "SEO & Discoverability",
+  "score": 25,
+  "findings": [
+    {
+      "severity": "high",
+      "title": "Meta description ausente",
+      "detail": "Escribir meta única por página principal (150-160 chars)."
+    },
+    {
+      "severity": "medium",
+      "title": "3 imágenes sin alt",
+      "detail": "Añadir alt descriptivo para accesibilidad y SEO."
+    }
+  ],
+  "wins": [
+    "Viewport móvil OK"
+  ],
+  "confidence": "medio"
+}

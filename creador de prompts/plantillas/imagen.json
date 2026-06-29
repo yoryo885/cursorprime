@@ -1,0 +1,6 @@
+{
+  "id": "imagen",
+  "nombre": "Prompt imagen (Flux / Midjourney / DALL·E)",
+  "template": "Illustration about '{tema}' for {audiencia}. Style: {estilo}, {tono}. Flat design, clean composition, no text, square format. Project context: {proyecto}.",
+  "negative": "blurry, watermark, text, logo, low quality, distorted anatomy"
+}

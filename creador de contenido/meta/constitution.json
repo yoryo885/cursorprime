@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "proyecto": "creador-de-contenido",
+  "integracion_externa": {
+    "habilitada": false,
+    "nota": "Hooks preparados para conectar otros proyectos en el futuro. Por defecto apagado."
+  },
+  "reglas": [
+    "Cada salida (png/gif/video/pdf) funciona sola o combinada",
+    "Video y PDF consumen PNG internamente — no proyectos externos",
+    "MOCK_GENERATE=true en MVP; IA real pendiente V1",
+    "INTEGRACION_EXTERNA=false por defecto"
+  ],
+  "estilos": {
+    "yordy-minimal": {
+      "descripcion": "Flat, líneas limpias, fondo claro, acento verde",
+      "palette": ["#1a1a2e", "#16a085", "#f5f5f5"]
+    },
+    "yordy-dark": {
+      "descripcion": "Fondo oscuro, alto contraste",
+      "palette": ["#0d0d0d", "#e94560", "#ffffff"]
+    }
+  }
+}

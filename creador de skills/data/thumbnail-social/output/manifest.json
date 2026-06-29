@@ -1,0 +1,17 @@
+{
+  "nombre": "thumbnail-social",
+  "tipo": "workflow",
+  "proyecto": "creador-de-contenido",
+  "triggers": [
+    "thumbnail",
+    "miniatura",
+    "portada video",
+    "usa thumbnail-social",
+    "carátula youtube"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T00:36:38.860145+00:00"
+}

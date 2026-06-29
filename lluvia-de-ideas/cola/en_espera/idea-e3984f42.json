@@ -1,0 +1,14 @@
+{
+  "id": "idea-e3984f42",
+  "categoria": "nuevo_proyecto",
+  "titulo": "Pipeline investigación → producto para: resumenes libros kdp",
+  "problema": "Oportunidad detectada en investigación sobre resumenes libros kdp.",
+  "propuesta": "Varios resultados muestran flujo manual replicable por agentes.",
+  "proyecto_afectado": "ideas de proyectos",
+  "confidence": 0.65,
+  "estado": "en_espera",
+  "origen": "analisis",
+  "creado_at": "2026-06-28T22:56:50.879187+00:00",
+  "pospuesta_at": "2026-06-28T23:01:59.824976+00:00",
+  "nota_usuario": "revisar despues"
+}

@@ -1,0 +1,11 @@
+{
+  "titulo": "Conectar ChatGPT a WhatsApp",
+  "salidas": ["png", "video"],
+  "estilo": "papel-sketch",
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 2
+  },
+  "guion": "Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 24/7.\n\nEl primer paso es definir qué preguntas frecuentes responderá el bot.\n\nLuego conectas la API de WhatsApp Business con un flujo automatizado.\n\nFinalmente pruebas con clientes reales antes de escalar.",
+  "notas": "Modo animado — MOCK_KLING usa crossfade local; KIE_API_KEY para Kling real"
+}

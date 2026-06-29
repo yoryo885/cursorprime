@@ -1,0 +1,34 @@
+{
+  "nombre": "find-skills",
+  "titulo": "Find Skills",
+  "tipo": "workflow",
+  "proyecto_destino": "general",
+  "proyecto_nombre": "General",
+  "proyecto_carpeta": ".",
+  "proceso": "Descubre skills en el ecosistema abierto (skills.sh, anthropics/skills) antes de crear una nueva en cursorprime. Verifica calidad e instala o adapta al catálogo.",
+  "pasos": [
+    "Entender dominio y tarea del usuario.",
+    "Buscar: npx skills find {query} o revisar https://skills.sh/ (preferir 1K+ installs, fuentes oficiales).",
+    "Verificar repo: stars, autor (anthropics, vercel-labs, microsoft).",
+    "Si encaja: proponer npx skills add owner/repo@skill -g -y O adaptar a catalogo/*.json + creador-de-skills.",
+    "Si no hay match: ofrecer crear skill con usa creador-de-skills."
+  ],
+  "reglas": [
+    "No recomendar skills con <100 installs sin advertencia",
+    "No instalar skills de terceros sin revisar SKILL.md (seguridad)",
+    "Preferir adaptar al catálogo cursorprime antes de instalar genéricas",
+    "Cursor instala en ~/.cursor/skills/ — distinto de Claude .claude/skills/"
+  ],
+  "triggers": [
+    "find skill",
+    "buscar skill",
+    "existe skill para",
+    "usa find-skills",
+    "skills.sh",
+    "instalar skill"
+  ],
+  "ubicacion": "personal",
+  "instalar": true,
+  "incluir_reference": false,
+  "creado_at": "2026-06-28T00:36:39.084925+00:00"
+}

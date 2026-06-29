@@ -1,0 +1,38 @@
+{
+  "brief": "Quiero un resumen de El principio de Pareto dedicado a una psicopedagoga en escuela",
+  "libro_nombre": "El principio de Pareto - Antoine Delers",
+  "libro_slug": "pareto",
+  "pdf_path": "El principio de Pareto - Antoine Delers",
+  "temas": [
+    "Principio 80/20",
+    "Ley de Pareto",
+    "Productividad personal",
+    "Priorización de tareas",
+    "Foco y concentración",
+    "Gestión del tiempo",
+    "Eficiencia y eficacia",
+    "Eliminar lo innecesario",
+    "Decisiones estratégicas",
+    "Aplicación en la vida diaria"
+  ],
+  "audiencia": "psicopedagoga en escuela",
+  "contexto_usuario": {
+    "ocupacion": "psicopedagoga en escuela",
+    "reto": "Atender eficazmente a numerosos estudiantes con recursos y tiempo limitados",
+    "intento_fallido": "Intentar abordar todos los casos con la misma intensidad, dispersando esfuerzos sin resultados claros"
+  },
+  "pasos": [
+    "1. Resumir cada tema desde el PDF (Subagent + QualityScorer)",
+    "2. Generar tablas: Idea clave → Ejemplo práctico → Aplicación (3 sub-agentes)",
+    "3. Mapa conceptual",
+    "4. Ensamblar PDF editorial (Playwright)",
+    "5. Control de calidad final: tablas + PDF (FinalQCAgent)"
+  ],
+  "instrucciones_tablas": {
+    "idea_clave": "Frase directa sobre priorización en el gabinete psicopedagógico y el aula",
+    "ejemplo_practico": "Escenas escolares en tercera persona: psicopedagogas, docentes, orientadores con estudiantes. Sin creadores de contenido ni métricas de redes.",
+    "aplicacion_vida_real": "Plan imperativo en «tú»: Identifica, Prioriza, Registra. Pasos concretos en evaluación, intervención y seguimiento escolar."
+  },
+  "voz_lector": "Yordy",
+  "notas": "Resumen Pareto para psicopedagogas escolares: priorizar casos, intervenciones con impacto y menos dispersión administrativa."
+}

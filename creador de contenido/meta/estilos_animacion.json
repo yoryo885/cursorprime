@@ -1,0 +1,19 @@
+{
+  "estilos": [
+    {
+      "id": "papel-sketch",
+      "nombre": "Papel / sketch (estilo video YouTube)",
+      "descripcion": "Ilustración estilo papel, trazos suaves, colores cálidos"
+    },
+    {
+      "id": "yordy-minimal",
+      "nombre": "Minimal flat",
+      "descripcion": "Flat design, líneas limpias, paleta yordy"
+    },
+    {
+      "id": "realista",
+      "nombre": "Realista suave",
+      "descripcion": "Semi-realista, iluminación natural"
+    }
+  ]
+}

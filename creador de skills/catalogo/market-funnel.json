@@ -1,0 +1,9 @@
+{
+  "nombre": "market-funnel",
+  "titulo": "Market Funnel",
+  "tipo": "capacidad",
+  "proyecto_destino": "clientes",
+  "triggers": ["market funnel", "embudo ventas", "CRO profundo", "usa market-funnel"],
+  "proceso": "Mapa funnel paso a paso, FUNNEL-ANALYSIS.md. Spec vendor/ai-marketing-claude.",
+  "reglas": ["WebFetch pasos reales", "Priorizar por impacto", "Complementa landing-lanzamiento"]
+}

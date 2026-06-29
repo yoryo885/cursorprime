@@ -1,0 +1,25 @@
+{
+  "productos": [
+    {
+      "sku": "PAR-JBL-001",
+      "nombre": "Parlante JBL Flip 6",
+      "hogatodo_url": "https://www.hogatodo.cl/producto/mock-jbl-flip-6",
+      "precio_venta_ml_clp": 89990,
+      "categoria_ml": "electronica"
+    },
+    {
+      "sku": "PAR-SONY-002",
+      "nombre": "Parlante Sony SRS-XB13",
+      "hogatodo_url": "https://www.hogatodo.cl/producto/mock-sony-xb13",
+      "precio_venta_ml_clp": 54990,
+      "categoria_ml": "electronica"
+    },
+    {
+      "sku": "PAR-JBL-003",
+      "nombre": "Parlante JBL Go 3",
+      "hogatodo_url": "https://www.hogatodo.cl/producto/mock-jbl-go-3",
+      "precio_venta_ml_clp": 39990,
+      "categoria_ml": "electronica"
+    }
+  ]
+}

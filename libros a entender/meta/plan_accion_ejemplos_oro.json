@@ -1,0 +1,30 @@
+{
+  "psicopedagoga_educador": [
+    {
+      "concepto_libro": "Priorizar donde produce transformación real",
+      "escenario": "gabinete psicopedagógico",
+      "kpi_asignado": "reducción de derivaciones",
+      "accion_concreta": "En el gabinete audita casos que concentran crisis · Marca los de mayor impacto escolar · Registra: cuántas derivaciones urgentes evitaste"
+    },
+    {
+      "concepto_libro": "Concentrar energía donde realmente transformas",
+      "escenario": "aula",
+      "kpi_asignado": "autonomía en aula",
+      "accion_concreta": "Observa en aula qué intervenciones generan cambio · Clasifica por respuesta visible del estudiante · Mide: autonomía en aula (escala 1-5)"
+    },
+    {
+      "concepto_libro": "Identificar casos que concentran el impacto",
+      "escenario": "familia",
+      "kpi_asignado": "tiempo por caso crítico",
+      "accion_concreta": "Prioriza familias que multiplican demanda de seguimiento · Acuerda foco en casos vitales · Mide: minutos por caso crítico antes/después"
+    }
+  ],
+  "default": [
+    {
+      "concepto_libro": "El 20% de acciones genera el 80% del resultado",
+      "escenario": "escritorio de trabajo",
+      "kpi_asignado": "resultados medibles esta semana",
+      "accion_concreta": "Audita tareas de mayor impacto · Elimina una de bajo retorno · Registra: cuántos resultados medibles obtuviste"
+    }
+  ]
+}

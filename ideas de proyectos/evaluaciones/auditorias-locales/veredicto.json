@@ -1,0 +1,38 @@
+{
+  "slug": "auditorias-locales",
+  "titulo": "Auditorías marketing para negocios locales",
+  "evaluado_at": "2026-06-29T00:32:51.822118+00:00",
+  "tipo_negocio": "servicio_local",
+  "veredicto": "viable",
+  "score": 98,
+  "confidence": 0.5,
+  "margen": {
+    "min": 25,
+    "max": 55,
+    "point": 38,
+    "unidad": "margen_neto_pct"
+  },
+  "escala": {
+    "sirve": true,
+    "nota": "Escala por nicho (mismo dolor, distintos rubros)"
+  },
+  "riesgos": [
+    {
+      "nivel": "bajo",
+      "riesgo": "Dependencia WhatsApp/Meta"
+    },
+    {
+      "nivel": "medio",
+      "riesgo": "Mercado no validado con datos reales"
+    },
+    {
+      "nivel": "medio",
+      "riesgo": "MVP más largo de lo estimado"
+    }
+  ],
+  "siguiente_paso": "MVP: bot WhatsApp + cola de pedidos en 2 semanas",
+  "warnings": [
+    "Sin fuentes externas — confidence reducida"
+  ],
+  "constitution_version": 1
+}

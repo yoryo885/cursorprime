@@ -1,0 +1,79 @@
+{
+  "generado_at": "2026-06-28T23:10:09.895403+00:00",
+  "tema": "resumenes libros kdp",
+  "total": 6,
+  "ideas": [
+    {
+      "id": "idea-6bfe0201",
+      "categoria": "visual",
+      "titulo": "Pack promocional automático post-investigación",
+      "problema": "Tras analizar un nicho no hay assets visuales listos para validar demanda.",
+      "propuesta": "Conectar análisis → creador de contenido (3 PNG + 1 GIF del nicho detectado).",
+      "proyecto_afectado": "creador de contenido",
+      "confidence": 0.7,
+      "estado": "pendiente_aprobacion",
+      "origen": "resumenes libros kdp",
+      "creado_at": "2026-06-28T23:10:09.895025+00:00"
+    },
+    {
+      "id": "idea-fe081144",
+      "categoria": "informacion",
+      "titulo": "Radar de nichos KDP desde YouTube semanal",
+      "problema": "La investigación es manual y no se repite en cadencia.",
+      "propuesta": "Pipeline investigación programable: queries fijas + informe JSON cada semana.",
+      "proyecto_afectado": "lluvia-de-ideas",
+      "confidence": 0.75,
+      "estado": "pendiente_aprobacion",
+      "origen": "resumenes libros kdp",
+      "creado_at": "2026-06-28T23:10:09.895338+00:00"
+    },
+    {
+      "id": "idea-47901e19",
+      "categoria": "nuevo_proyecto",
+      "titulo": "Pipeline investigación → producto para: resumenes libros kdp",
+      "problema": "Oportunidad detectada en investigación sobre resumenes libros kdp.",
+      "propuesta": "Varios resultados muestran flujo manual replicable por agentes.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.65,
+      "estado": "pendiente_aprobacion",
+      "origen": "analisis",
+      "creado_at": "2026-06-28T23:10:09.895360+00:00"
+    },
+    {
+      "id": "idea-74de2741",
+      "categoria": "nuevo_proyecto",
+      "titulo": "Empaquetar pipeline como producto vendible",
+      "problema": "Oportunidad detectada en investigación sobre resumenes libros kdp.",
+      "propuesta": "Foros y videos mencionan vender sistemas además del ebook.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.6,
+      "estado": "pendiente_aprobacion",
+      "origen": "analisis",
+      "creado_at": "2026-06-28T23:10:09.895372+00:00"
+    },
+    {
+      "id": "idea-d2be9441",
+      "categoria": "marketing",
+      "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
+      "problema": "No hay página que venda el sistema una vez validado el pipeline.",
+      "propuesta": "Copy + demo video corto del pipeline funcionando; precio fase beta.",
+      "proyecto_afectado": "cursorprime",
+      "confidence": 0.65,
+      "estado": "pendiente_aprobacion",
+      "origen": "resumenes libros kdp",
+      "creado_at": "2026-06-28T23:10:09.895382+00:00"
+    },
+    {
+      "id": "idea-d8e4778a",
+      "categoria": "meta",
+      "titulo": "Enlace investigación → evaluar-idea → construir",
+      "problema": "Las ideas no fluyen solas hacia ideas de proyectos.",
+      "propuesta": "Al aprobar idea en cola, generar borrador JSON en ideas de proyectos automáticamente.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.8,
+      "estado": "pendiente_aprobacion",
+      "origen": "direccion",
+      "creado_at": "2026-06-28T23:10:09.895392+00:00"
+    }
+  ]
+}

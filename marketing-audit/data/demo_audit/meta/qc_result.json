@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "warnings": [
+    "Datos MOCK — re-ejecutar con MOCK_FETCH=false para live"
+  ],
+  "score": 55,
+  "qc_at": "2026-06-29T00:11:12.784348+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "mercado": "MX",
+  "fecha": "2026-06-14",
+  "notas": "Copia este archivo a market_research.json. Escribe en Amazon.mx o Amazon.es y anota el autocompletado.",
+  "busquedas": [
+    "pareto psicopedagog",
+    "productividad psicopedagog",
+    "priorizar casos escuela",
+    "regla 80 20 educación"
+  ],
+  "sugerencias_autocompletado": [
+    "pareto psicopedagogas escuela",
+    "pareto educación especial",
+    "productividad docente gabinete",
+    "priorizar intervenciones psicopedagogicas"
+  ]
+}

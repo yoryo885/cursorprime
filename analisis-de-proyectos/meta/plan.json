@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "pipeline": [
+    {"id": 1, "slug": "context", "agent": "ContextInvestigacionAgent"},
+    {"id": 2, "slug": "fetch", "agent": "FetchAgent"},
+    {"id": 3, "slug": "synthesis", "agent": "SynthesisAgent"},
+    {"id": 4, "slug": "qc", "agent": "QcInvestigacionAgent"},
+    {"id": 5, "slug": "packager", "agent": "PackagerInvestigacionAgent"}
+  ],
+  "salida": {
+    "analisis_json": "data/{slug}/meta/analisis.json",
+    "analisis_md": "data/{slug}/output/analisis.md",
+    "idea_proyecto": "../ideas de proyectos/ideas/from-analisis/{slug}.json"
+  }
+}

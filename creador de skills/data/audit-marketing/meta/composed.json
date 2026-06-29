@@ -1,0 +1,16 @@
+{
+  "nombre": "audit-marketing",
+  "description": "Mejora Audit Marketing con criterios específicos de calidad para Ideas de proyectos. Usar cuando el usuario pide auditar marketing, audit ecommerce, analisis competencia ads, usa audit-marketing, revisar anuncios o necesita resultado superior al default del modelo.",
+  "line_count": 29,
+  "tipo": "capacidad",
+  "triggers": [
+    "auditar marketing",
+    "audit ecommerce",
+    "analisis competencia ads",
+    "usa audit-marketing",
+    "revisar anuncios"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/audit-marketing/output/SKILL.md"
+  ]
+}

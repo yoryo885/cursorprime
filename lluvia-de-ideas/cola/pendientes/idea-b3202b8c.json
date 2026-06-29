@@ -1,0 +1,12 @@
+{
+  "id": "idea-b3202b8c",
+  "categoria": "informacion",
+  "titulo": "Radar de nichos KDP desde YouTube semanal",
+  "problema": "La investigación es manual y no se repite en cadencia.",
+  "propuesta": "Pipeline investigación programable: queries fijas + informe JSON cada semana.",
+  "proyecto_afectado": "lluvia-de-ideas",
+  "confidence": 0.75,
+  "estado": "pendiente_aprobacion",
+  "origen": "nichos kdp resumenes libros youtube",
+  "creado_at": "2026-06-29T03:04:44.032711+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "nombre": "copy-linkedin",
+  "titulo": "Copy LinkedIn",
+  "tipo": "capacidad",
+  "proyecto_destino": "linkedin-ghostwriter",
+  "triggers": ["post linkedin", "copy linkedin", "ghostwriter", "usa copy-linkedin", "posts del mes"],
+  "proceso": "Capa de criterio para posts LinkedIn al estilo del ejecutivo en ejecutivo_perfil.json — tono profesional chileno, gancho fuerte, primera persona, CTA con pregunta final. Batch mensual vía generar_posts.py o post único en chat.",
+  "reglas": [
+    "Leer ejecutivo_perfil.json antes de escribir (nombre, cargo, logros_recientes, tono, valores)",
+    "150-300 palabras (~800-1500 caracteres); máximo 1-2 emojis",
+    "Estructura: gancho → historia/dato concreto → lección → pregunta final",
+    "Primera persona, español chileno natural; usar logros reales del perfil, no inventar",
+    "Revisor mental: ¿suena humano? ¿gancho? ¿valor? ¿engagement? — objetivo ≥7/10",
+    "Proyecto aparte del workspace cursorprime: ~/cursorprime/linkedin-ghostwriter"
+  ]
+}

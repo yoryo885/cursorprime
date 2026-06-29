@@ -1,0 +1,39 @@
+{
+  "fetched_at": "2026-06-28T23:05:29.575856+00:00",
+  "mock": true,
+  "youtube": [
+    {
+      "titulo": "Cómo publicar resúmenes de libros en Amazon KDP (paso a paso)",
+      "url": "https://www.youtube.com/watch?v=mock-kdp-1",
+      "snippet": "Tutorial sobre nichos de no-ficción, portadas y listings optimizados.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Faceless channel: resúmenes de libros con IA — ¿sigue funcionando?",
+      "url": "https://www.youtube.com/watch?v=mock-kdp-2",
+      "snippet": "Análisis de canales que resumen bestsellers y monetizan con ebooks.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Automatizar ebooks KDP con ChatGPT y Canva",
+      "url": "https://www.youtube.com/watch?v=mock-kdp-3",
+      "snippet": "Pipeline manual: investigación → guion → diseño → publicación.",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Amazon KDP low content books trends",
+      "url": "https://example.com/kdp-trends",
+      "snippet": "Guías prácticas y resúmenes por profesión siguen en nichos long-tail.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Self publishing forum — book summary niche",
+      "url": "https://example.com/forum",
+      "snippet": "Autores venden sistemas + plantillas además del ebook suelto.",
+      "fuente": "web"
+    }
+  ],
+  "total": 5
+}

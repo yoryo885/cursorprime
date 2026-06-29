@@ -1,0 +1,32 @@
+{
+  "slug": "dropship_ml",
+  "confidence": "baja",
+  "pendiente_manual": true,
+  "fuentes": [
+    "https://www.hogatodo.cl",
+    "https://developers.mercadolibre.com"
+  ],
+  "checklist_investigacion": [
+    "Confirmar si proveedor tiene API oficial o solo web",
+    "Obtener comisiones reales vía API listing_prices ML (site MLC)",
+    "Muestrear 10–20 SKUs: precio compra vs precio venta ML",
+    "Identificar costo envío y devoluciones típicas",
+    "Validar ToS del proveedor para scraping"
+  ],
+  "integraciones_detectadas": {
+    "mercado_libre": "API oficial developers.mercadolibre.com",
+    "proveedor_web": "Scrape Playwright — sin API confirmada"
+  },
+  "stack_sugerido": [
+    "Python 3.9+",
+    "argparse",
+    "playwright",
+    "python-dotenv",
+    "anthropic (opcional)"
+  ],
+  "riesgos": [
+    "Proveedor sin API → scraping frágil",
+    "Márgenes finos en productos baratos",
+    "Stock desactualizado → cancelaciones ML"
+  ]
+}

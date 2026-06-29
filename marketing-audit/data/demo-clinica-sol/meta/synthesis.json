@@ -1,0 +1,100 @@
+{
+  "url": "https://clinica-sol-demo.cl",
+  "brand_name": "Clínica Sol (FICTICIO)",
+  "business_type": "local_business",
+  "overall_score": 55,
+  "grade": "C",
+  "categories": {
+    "Content & Messaging": {
+      "score": 63,
+      "weight": "25%"
+    },
+    "Conversion Optimization": {
+      "score": 61,
+      "weight": "20%"
+    },
+    "SEO & Discoverability": {
+      "score": 25,
+      "weight": "20%"
+    },
+    "Competitive Positioning": {
+      "score": 68,
+      "weight": "15%"
+    },
+    "Brand & Trust": {
+      "score": 59,
+      "weight": "10%"
+    },
+    "Growth & Strategy": {
+      "score": 55,
+      "weight": "10%"
+    }
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "title": "Sin meta description",
+      "detail": "Google autogenera snippets — baja CTR en búsqueda.",
+      "dimension": "Content & Messaging",
+      "client_title": "Cuando te buscan en Google, no aparece un mensaje claro",
+      "client_detail": "Google muestra un texto genérico o incompleto. Eso hace que menos personas hagan clic.",
+      "client_action": "Redactar 2–3 frases que digan qué haces, dónde estás y por qué contactarte."
+    },
+    {
+      "severity": "medium",
+      "title": "Revisar página de alternativas / vs",
+      "detail": "Comparar posicionamiento explícito vs competidores detectados.",
+      "dimension": "Competitive Positioning",
+      "client_title": "No se ve por qué elegirte frente a otros similares",
+      "client_detail": "Tu web no explica qué te hace diferente de la competencia de la zona.",
+      "client_action": "Añadir una sección corta: «Por qué elegirnos» con 3 razones concretas."
+    },
+    {
+      "severity": "medium",
+      "title": "3 imágenes sin alt",
+      "detail": "Añadir alt descriptivo para accesibilidad y SEO.",
+      "dimension": "SEO & Discoverability",
+      "client_title": "Algunas fotos no ayudan a que Google entienda tu negocio",
+      "client_detail": "Las imágenes no tienen descripción; Google y personas con discapacidad visual pierden contexto.",
+      "client_action": "Describir cada foto importante en pocas palabras (ej.: «Consultorio odontológico en Providencia»)."
+    },
+    {
+      "severity": "medium",
+      "title": "Sin schema markup detectado",
+      "detail": "Añadir JSON-LD (Organization, FAQ) para rich results.",
+      "dimension": "Brand & Growth Strategy",
+      "client_title": "Google no tiene datos completos de tu negocio",
+      "client_detail": "Faltan datos que ayudan a mostrar horario, dirección o preguntas frecuentes en Google.",
+      "client_action": "Completar ficha de Google Maps y datos de contacto visibles en la web."
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Competitor A",
+      "url": "https://example-a.com",
+      "tier": "direct",
+      "note": "mock"
+    },
+    {
+      "name": "Competitor B",
+      "url": "https://example-b.com",
+      "tier": "direct",
+      "note": "mock"
+    },
+    {
+      "name": "Market Leader",
+      "url": "https://example-leader.com",
+      "tier": "aspirational",
+      "note": "mock"
+    }
+  ],
+  "quick_wins": [
+    "Redactar 2–3 frases que digan qué haces, dónde estás y por qué contactarte.",
+    "Añadir una sección corta: «Por qué elegirnos» con 3 razones concretas.",
+    "Describir cada foto importante en pocas palabras (ej.: «Consultorio odontológico en Providencia»).",
+    "Completar ficha de Google Maps y datos de contacto visibles en la web."
+  ],
+  "mock": true,
+  "confidence": "medio",
+  "synthesized_at": "2026-06-29T01:21:42.343896+00:00"
+}

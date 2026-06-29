@@ -1,0 +1,13 @@
+{
+  "titulo": "Cola de pedidos + bot WhatsApp para negocios locales",
+  "problema": "Negocio con local físico en temporada alta no puede atender el teléfono. Pedidos se gestionan manualmente cuando hay tiempo. Clientes llaman por horarios y estado.",
+  "cliente_objetivo": "Negocios locales con pedidos por WhatsApp/teléfono (comida, repuestos, ferretería)",
+  "modelo_negocio": "SaaS mensual: bot FAQ + cola de pedidos + notificaciones automáticas al cliente",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "hipotesis": [
+    "El dolor es real en temporada alta",
+    "MVP bot + cola en 2 semanas es suficiente para validar",
+    "Margen SaaS > 60% si el ticket mensual es CLP 30-50k"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "at": "2026-06-29T00:41:46.864675+00:00",
+  "cliente_ficticio": "Empanadas Don Pedro (FICTICIO)",
+  "mensajes": [
+    {
+      "de": "cliente",
+      "texto": "Hola, qué empanadas tienen?"
+    },
+    {
+      "de": "bot",
+      "texto": "📋 Menú:\n• Empanada de pino — $2,500\n• Empanada napolitana — $2,800\n• Empanada de queso — $2,300\n\nEscribe cantidad x producto (ej: 2x pino)"
+    },
+    {
+      "de": "cliente",
+      "texto": "Quiero 2 pino y 1 napolitana"
+    },
+    {
+      "de": "bot",
+      "texto": "Pedido registrado #1001. Total $8.500. ¿Confirmas? (SI/NO)"
+    },
+    {
+      "de": "cliente",
+      "texto": "SI"
+    },
+    {
+      "de": "bot",
+      "texto": "✅ Listo! Te avisamos cuando esté. ~25 min."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "linkedin",
+  "slug": "viabilidad-linkedin",
+  "nombre": "LinkedIn ghostwriter",
+  "carpeta": "linkedin-ghostwriter",
+  "capa": "producto",
+  "tema": "linkedin ghostwriter b2b content automation posts",
+  "fetch": "live",
+  "fuentes": 14,
+  "youtube_n": 6,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:17:31.911506+00:00",
+  "veredicto": "viable",
+  "score": 82,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «linkedin ghostwriter b2b content automation posts»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.81,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "I Built an AI LinkedIn Ghostwriter That Writes 100s of Posts in...",
+      "url": "https://www.youtube.com/watch?v=OKgURjpIGkM",
+      "snippet": "Build an AI LinkedIn ghostwriter using n8n and generate trending content in minutes!If you found the video valuable, then please Like, Comment and Subscribe....",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "I've created a \"Newsjacking\" Linkedin Ghostwriter bot... - YouTub...",
+      "url": "https://www.youtube.com/watch?v=-ueJucfRV2I",
+      "snippet": "Try Motion's New AI Agents for Free: https://www.usemotion.com/?utm_source=motionpodep22This video shows how to build a powerful end-to-end system in n8n ...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to automation Linkedin Posts using N8N - YouTube",
+      "url": "https://www.youtube.com/watch?v=sSW3NFs4IQ4",
+      "snippet": "Learn how to build an n8n workflow that automatically creates and posts AI-generated content with custom infographics to LinkedIn - complete with human appro...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "LinkedIn Ghost Prospects: Close Clients Who Never... - YouTube",
+      "url": "https://www.youtube.com/watch?v=Tno7ueBd68k",
+      "snippet": "LinkedIn ghost prospects are the high-value B 2 B buyers who have already read your posts , evaluated your expertise, and decided whether you're worth their tim...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Become a LinkedIn Ghostwriter : 5 Steps To Land... - YouTube",
+      "url": "https://www.youtube.com/watch?v=kaFP40a8Y7g",
+      "snippet": "About Press Copyright Contact us Creators Advertise Developers Terms Privacy Policy & Safety How...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "I Built an n8n Automation That Writes Viral LinkedIn Posts ... - YouTube",
+      "url": "https://www.youtube.com/watch?v=BRsQqGWhjgU",
+      "snippet": "О сервисе Прессе Авторские права Связаться с нами Авторам Рекламодателям...",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "AI LinkedIn Ghostwriter for Founders and B2B Teams: How It ...",
+      "url": "https://www.linkedin.com/pulse/ai-linkedin-ghostwriter-founders-b2b-teams-how-works-what-luis-vale-v69pe",
+      "snippet": "Mar 22, 2026 · What even is an AI LinkedIn ghostwriter ? An AI LinkedIn ghostwriter for founders is a workflow or tool that turns founder notes, customer calls, transcripts, and product insight into...",
+      "fuente": "web"
+    },
+    {
+      "titulo": "LinkedIn AI Content Generator & Ghostwriter Tool (2025 ...",
+      "url": "https://www.ghostauthority.com/",
+      "snippet": "Generate viral LinkedIn posts , carousels, and DM replies in 30 seconds with AI. GhostAuthority is the #1 LinkedIn ghostwriting tool that learns your voice and creates content that sounds authentically human. 3-day free trial available.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "AI Ghostwriter for LinkedIn Post - generate ideas, posts and ...",
+      "url": "https://contentin.io/",
+      "snippet": "The AI LinkedIn Post Generator that helps you write memorable content . Generate post ideas and choose from 1000s of LinkedIn Templates to schedule weeks of content in one go.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Ridge-Bulaquena/B2B-LinkedIn-Ghostwriter - GitHub",
+      "url": "https://github.com/Ridge-Bulaquena/B2B-LinkedIn-Ghostwriter",
+      "snippet": "Daily personalized LinkedIn posts — written in your voice, powered by AI. B2B LinkedIn Ghostwriter helps busy founders and executives maintain a consistent, authentic presence on LinkedIn — without lifting a finger. Just connect your voice, your audience, and your ideas — and let the AI do the rest.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "LinkedIn Content Ghostwriting Service for B2B Companies",
+      "url": "https://www.cleverly.co/linkedin-content-ghostwriting",
+      "snippet": "Publish engaging LinkedIn content that turns likes and comments into constant revenue, done-for-you. We write and post engaging LinkedIn content for you that scales your personal brand and drives interested prospects to message you.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "AI Ghostwriter for LinkedIn — Write Posts That Sound Like You ...",
+      "url": "https://contentin.io/feature/ai-ghostwriter/",
+      "snippet": "Paste your best LinkedIn posts , and the Ghostwriter analyzes how you structure ideas, what words you use, and what makes your voice unique. Every draft it generates sounds like you wrote it — because it learned from you.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/linkedin.md"
+}

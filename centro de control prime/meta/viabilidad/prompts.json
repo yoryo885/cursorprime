@@ -1,0 +1,97 @@
+{
+  "id": "prompts",
+  "slug": "viabilidad-prompts",
+  "nombre": "Creador de prompts",
+  "carpeta": "creador de prompts",
+  "capa": "creador",
+  "tema": "ai prompt templates automation cursor pipeline",
+  "fetch": "live",
+  "fuentes": 14,
+  "youtube_n": 6,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:41.876143+00:00",
+  "veredicto": "viable",
+  "score": 82,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «ai prompt templates automation cursor pipeline»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.81,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "AI -Driven Test Automation with Playwright + Cursor ... - YouTube",
+      "url": "https://www.youtube.com/watch?v=cNh3_r6UjKk",
+      "snippet": "In this tutorial, we show QA engineers and developers how to build a complete Playwright test automation framework in Python using AI .",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "From Zero to Your First AI Agent in 25 Minutes (No Coding) - YouTube",
+      "url": "https://www.youtube.com/watch?v=EH5jx5qPabU",
+      "snippet": "Download the free AI Agents Resources: https://clickhubspot.com/39c59bMore from Futurepedia: Join the fastest-growing AI education platform!",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Use a Local LLM within Cursor - YouTube",
+      "url": "https://www.youtube.com/watch?v=Ssh3m_8RPlA",
+      "snippet": "I show you various ways to use a Local LLM inside of Cursor . This is a model that's running directly on your machine.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How I Win at GenAI Coding in Cursor and Windsurf (with Reusable...)",
+      "url": "https://www.youtube.com/watch?v=ZJsjeVy0k9A",
+      "snippet": "",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Use Gemini AI Templates & Automated Prompts to Save 20+...",
+      "url": "https://www.youtube.com/watch?v=R3iqEgzlDw4",
+      "snippet": "",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Thousands of Free Ai Automation Templates & Prompts ... - YouTube",
+      "url": "https://www.youtube.com/watch?v=TFER1Djqzug",
+      "snippet": "About Press Copyright Contact us Creators Advertise Developers Terms Privacy Policy & Safety How...",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Artificial intelligence - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+      "snippet": "Artificial intelligence (AI) is the capability of computational systems to perform tasks typically associated with human intelligence, such as learning, reasoning, problem-solving, perception, and decision …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "OpenAI | Research & Deployment",
+      "url": "https://openai.com/",
+      "snippet": "We believe our research will eventually lead to artificial general intelligence, a system that can solve human-level problems. Building safe and beneficial AGI is our mission.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Google Gemini",
+      "url": "https://gemini.google.com/",
+      "snippet": "Meet Gemini, Google’s AI assistant. Get help with writing, planning, brainstorming, and more. Experience the power of generative AI.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "ChatGPT",
+      "url": "https://chatgpt.com/",
+      "snippet": "Chat with the most advanced AI to explore ideas, solve problems, and learn faster.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "DeepAI",
+      "url": "https://deepai.org/",
+      "snippet": "Whether you are a hobbyist, a professional artist, or a developer integrating AI into your product, DeepAI delivers advanced technology with new video, music, and voice chat features.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Google AI - How we're making AI helpful for everyone",
+      "url": "https://ai.google/",
+      "snippet": "Discover how Google AI is committed to enriching knowledge, solving complex challenges and helping people grow by building useful AI tools and technologies.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/prompts.md"
+}

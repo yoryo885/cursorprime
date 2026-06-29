@@ -1,0 +1,97 @@
+{
+  "id": "marketing_audit",
+  "slug": "viabilidad-marketing_audit",
+  "nombre": "Marketing Audit",
+  "carpeta": "marketing-audit",
+  "capa": "producto",
+  "tema": "local business marketing audit digital presence 2026",
+  "fetch": "live",
+  "fuentes": 14,
+  "youtube_n": 6,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:51.100241+00:00",
+  "veredicto": "viable",
+  "score": 82,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «local business marketing audit digital presence 2026»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.81,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "Digital Presence 2026 Health Check Every Business ... - YouTube",
+      "url": "https://www.youtube.com/shorts/QDmddtEwEdE",
+      "snippet": "© 2026 Google LLC.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Marketing for Small Business : Effective Marketing Strategies for 2026",
+      "url": "https://www.youtube.com/watch?v=RX0Y2JbS9K4",
+      "snippet": "© 2026 Google LLC.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How To Get Customers | Local Business Marketing - YouTube",
+      "url": "https://www.youtube.com/watch?v=EW4t7F1no80",
+      "snippet": "© 2026 Google LLC.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "LarneBMA | Local Business Marketing Advertising - Customer Review",
+      "url": "https://www.youtube.com/watch?v=VBgU2tt-UqI",
+      "snippet": "",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Is Your Digital Presence Stagnating? We Are Offering a Free Digital ...",
+      "url": "https://www.youtube.com/watch?v=ARguAjQhh4E",
+      "snippet": "",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "LarneBMA | Local Business Marketing Consultants Larne NI 028...",
+      "url": "https://www.youtube.com/watch?v=JN644O5CvXw",
+      "snippet": "",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Center Point , AL Local News and More | NewsBreak",
+      "url": "https://www.newsbreak.com/center-point-al",
+      "snippet": "Stay updated with the latest Center Point, AL local news, trending, crime map, sports, celebrity updates, stock market trends, and more.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Install Local - Local",
+      "url": "https://localwp.com/help-docs/getting-started/installing-local/",
+      "snippet": "Local can be installed on macOS versions before macOS Monterey (12) and Windows 7, 8, and 8.1; however, users will not have the full …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "LOCAL Definition & Meaning - Merriam-Webster",
+      "url": "https://www.merriam-webster.com/dictionary/local",
+      "snippet": "Jun 21, 2026 · The meaning of LOCAL is characterized by or relating to position in space : having a definite spatial form or location. How …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Center Point , AL Weather Forecast | Local Weather Updates for Alabama …",
+      "url": "https://www.foxweather.com/local-weather/alabama/center-point",
+      "snippet": "Stay informed on local weather updates for Center Point, AL. Discover the weather conditions in Center Point & see if there is a chance …",
+      "fuente": "web"
+    },
+    {
+      "titulo": "LOCAL Definition & Meaning | Dictionary .com",
+      "url": "https://www.dictionary.com/browse/local",
+      "snippet": "LOCAL definition: pertaining to or characterized by place or position in space; spatial. See examples of local used in a sentence.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "LOCAL | English meaning - Cambridge Dictionary",
+      "url": "https://dictionary.cambridge.org/dictionary/english/local",
+      "snippet": "LOCAL definition: 1. from, existing in, serving, or responsible for a small area, especially of a country: 2…. Learn more.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/marketing_audit.md"
+}

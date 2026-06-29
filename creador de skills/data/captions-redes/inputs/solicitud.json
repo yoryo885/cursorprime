@@ -1,0 +1,15 @@
+{
+  "nombre": "captions-redes",
+  "titulo": "Captions Redes",
+  "tipo": "capacidad",
+  "proyecto_destino": "creador-de-contenido",
+  "triggers": ["caption", "descripcion instagram", "copy redes", "usa captions-redes", "texto del post", "cta redes"],
+  "proceso": "Captions que convierten para Instagram, TikTok y YouTube: valor en primeras líneas, CTA claro, hashtags mínimos y legibles.",
+  "reglas": [
+    "Primera línea = gancho (reutilizar hooks-redes si existe)",
+    "150-300 palabras para IG; versión corta ≤500 caracteres para TikTok",
+    "1 CTA explícito (comenta, guarda, sigue, link en bio)",
+    "3-8 hashtags relevantes, no bloques de 30",
+    "Incluir versión A/B si el post es promocional"
+  ]
+}

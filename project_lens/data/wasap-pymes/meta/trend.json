@@ -1,0 +1,31 @@
+{
+  "agent": "TrendAgent",
+  "confidence": 0.45,
+  "error_margin_pct": 35,
+  "sources": [
+    {
+      "url": "https://trends.google.com",
+      "title": "Google Trends (mock)",
+      "accessed_at": "2026-06-28T00:32:32.484875+00:00",
+      "mock": true
+    }
+  ],
+  "findings": [
+    "Dirección: estable"
+  ],
+  "metrics": {
+    "trend_score": {
+      "min": 5,
+      "max": 7,
+      "point": 6
+    }
+  },
+  "warnings": [
+    "datos mock — activar MOCK_WEB=false para V1 real"
+  ],
+  "generated_at": "2026-06-28T00:32:32.484897+00:00",
+  "direccion": "estable",
+  "keywords": [
+    "Bot WhatsApp + cola de pedidos para pymes"
+  ]
+}

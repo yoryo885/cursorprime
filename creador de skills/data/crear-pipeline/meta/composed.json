@@ -1,0 +1,16 @@
+{
+  "nombre": "crear-pipeline",
+  "description": "Diseña y construye pipelines Python con agentes, CLI y QC para General. Usar cuando el usuario pide crear pipeline, nuevo pipeline, scaffolding agentes, usa crear-pipeline, pipeline python, scaffolding, meta/plan.json o pipeline-project-creator.",
+  "line_count": 35,
+  "tipo": "pipeline-python",
+  "triggers": [
+    "crear pipeline",
+    "nuevo pipeline",
+    "scaffolding agentes",
+    "usa crear-pipeline",
+    "pipeline python"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/crear-pipeline/output/SKILL.md"
+  ]
+}

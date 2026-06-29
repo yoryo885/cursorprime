@@ -1,0 +1,97 @@
+{
+  "id": "wasap",
+  "slug": "viabilidad-wasap",
+  "nombre": "Bot WhatsApp pymes",
+  "carpeta": "proyectos-top3/02-wasap-pymes",
+  "capa": "producto",
+  "tema": "whatsapp bot small business latin america automation",
+  "fetch": "live",
+  "fuentes": 13,
+  "youtube_n": 6,
+  "web_n": 7,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:17:09.163109+00:00",
+  "veredicto": "viable",
+  "score": 84,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «whatsapp bot small business latin america automation»: 6 YouTube · 7 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.77,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "Any Business Will Beg You To Build This WhatsApp AI... - YouTube",
+      "url": "https://www.youtube.com/watch?v=rUToOzn5A1k",
+      "snippet": "FREE ' WhatsApp 24/7 Booking' AI Agent Setup Resources:https://fabimarkl.com/setup- whatsapp -ai/FULL ' WhatsApp 24/7 Booking' AI Agent Template for Instan...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Whatsapp бот. Наш печальный опыт # whatsapp ... - YouTube",
+      "url": "https://www.youtube.com/watch?v=5HDJq_rjGJQ",
+      "snippet": "Сегодня поговорим про whatsapp бот. Мы разработали уже более 7 чат-ботов в этом мессенджере через серые методы и делимся опытом что можно и чего нельзя делат...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "The WhatsApp Trick That’s Running My Business for Me - YouTube",
+      "url": "https://www.youtube.com/watch?v=BjqR3Ddb71k",
+      "snippet": "WhatsApp automation is now powerful enough to replace customer support. I’ll show you WhatsApp automation for business , WhatsApp marketing automation , and th...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "10 Dakikada Ücretsiz WhatsApp Botu! Evolution API ile... - YouTube",
+      "url": "https://www.youtube.com/watch?v=uKX303HXz0Q",
+      "snippet": "Bu videoda Evolution API kullanarak WhatsApp için tamamen ücretsiz AI chatbot nasıl yapacağınızı öğreneceksiniz. WhatsApp Business API'sının yüksek maliyetle...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "20 Hidden WhatsApp Tricks You Must Know in 2026 - YouTube",
+      "url": "https://www.youtube.com/watch?v=sMKNFuVE8fs",
+      "snippet": "Industry-ready learning starts here: https://pavanlalwani.com/Discover 20 mind-blowing WhatsApp tricks and hacks that will completely change the way you use ...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "WhatsApp Bot Automation for Businesses | 24/7 AI... - YouTube",
+      "url": "https://www.youtube.com/watch?v=yWLm2SuDo9Y",
+      "snippet": "О сервисе Прессе Авторские права Связаться с нами Авторам Рекламодателям...",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "The ultimate tool to build chatbots and automate communication on the...",
+      "url": "https://bothelp.io/",
+      "snippet": "Build sequences and chatbots to automate the sales or lead qualification process – without coding. Bots can help you give a coupon, ask common questions or share content.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Typebot",
+      "url": "https://typebot.com/",
+      "snippet": "Typebot is the leading multichannel chat builder, allowing you to build your bot once and deploy it anywhere, via custom domains, embedded containers, popups, chat bubbles, or even on WhatsApp .",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Скачать WhatsApp",
+      "url": "https://whatsapp.asvas.ru/",
+      "snippet": "WhatsApp — удобное приложение для быстрого и безопасного общения. Здесь есть чаты, групповые беседы, звонки и обмен файлами. Оно автоматически синхронизируется с контактами в телефоне...",
+      "fuente": "web"
+    },
+    {
+      "titulo": "whatsapp - bot · GitHub Topics · GitHub",
+      "url": "https://github.com/topics/whatsapp-bot?o=desc&s=updated",
+      "snippet": "Simple WhatsApp AI bot with Unofficial whatsapp API. Supports voice messages, video downloads from social networks, campaingns and automations .",
+      "fuente": "web"
+    },
+    {
+      "titulo": "AI WhatsApp Chatbot - Build WhatsApp Chatbots",
+      "url": "https://www.md5-to-string.softbaba.com/tools/ai-whatsapp-chatbot",
+      "snippet": "Free AI WhatsApp chatbot tool to create automated WhatsApp messaging bots .Connect WhatsApp Number: Link your business WhatsApp number securely to the tool. Create Chatbot Flow: Use the drag-and-drop builder to design conversation paths or use pre-built templates.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Telegram Vs WhatsApp : Which One Is Better In 2026?",
+      "url": "https://membertel.com/blog/telegram-vs-whatsapp/",
+      "snippet": "When analyzing Telegram vs WhatsApp in 2026, the debate is no longer about which app sends a faster notification. It is a fundamental strategic decision that determines how you protect your privacy, how you manage your data, and whether you can actually automate your daily workflow.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/wasap.md"
+}

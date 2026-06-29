@@ -1,0 +1,97 @@
+{
+  "id": "router",
+  "slug": "viabilidad-router",
+  "nombre": "Router + skills",
+  "carpeta": "router.py",
+  "capa": "creador",
+  "tema": "cursor ai agent skills automation workflow developer",
+  "fetch": "live",
+  "fuentes": 14,
+  "youtube_n": 6,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:21.203091+00:00",
+  "veredicto": "viable",
+  "score": 84,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «cursor ai agent skills automation workflow developer»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.81,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "I Built an Entire React Native App Using Only Cursor AI - YouTube",
+      "url": "https://www.youtube.com/watch?v=r50OELw_TCI",
+      "snippet": "About Press Copyright Contact us Creators Advertise Developers Terms Privacy Policy & Safety How YouTube works Test new features.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "8 Cursor AI Agent Tips for Laravel Projects - YouTube",
+      "url": "https://www.youtube.com/watch?v=-GHtHodbtxc",
+      "snippet": "I've used Cursor as primary IDE for a few months, and here's what I've learned.00:00 Intro00:43 1. Model Choice02:04 2. New Project OUTSIDE Cursor 03:44 3. DE...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Use Claude 3.7 Sonnet and Cursor AI Agent - YouTube",
+      "url": "https://www.youtube.com/watch?v=Y_Sk0nnJOuE",
+      "snippet": "Experience the revolutionary power of AI agents with Cloud 3.7 Sonnet and Cursor ! In this hands-on tutorial, I demonstrate how anyone—even without coding exp...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How To Get Unlimited Cursor Free Trials in 2026.. - YouTube",
+      "url": "https://www.youtube.com/watch?v=qDLePOI9LI0",
+      "snippet": "Learn how to get unlimited free trial accounts of Cursor AI . In this step-by-step tutorial, I’ll walk you through how to create multiple Cursor accounts and ...",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Build Selenium Automation Projects Using Cursor AI - YouTube",
+      "url": "https://www.youtube.com/watch?v=tsTmnw3giR8",
+      "snippet": "About Press Copyright Contact us Creators Advertise Developers Terms Privacy Policy & Safety How YouTube works Test new features.",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How to Build & Sell AI Agents : Ultimate Beginner’s Guide - YouTube",
+      "url": "https://www.youtube.com/watch?v=w0H1-b044KY",
+      "snippet": "About Press Copyright Contact us Creators Advertise Developers Terms Privacy Policy & Safety How YouTube works Test new features.",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [
+    {
+      "titulo": "Cursor: The AI Coding Platform - Cursor Automations",
+      "url": "https://www.bing.com/aclick?ld=e8KYx4LVLI_2Ie_cBfh3q7sDVUCUwikqCLA-xrTdwEQiu97aYzcU-pWMZUJ9uYnmefRL9GjEu5w8ATbjksRME5Stf2eLmF3Z97Wjv_zlQ6aqfC7Yg2E68hQZAEQwQBc4fXOq6peV3DxqAUKCUUvMi7a4xNK9ju1-1TT_9IMWrf1SlbLGEUsiIG700cR7zcGbSnvC-03UiZ8W1f9i_1PNipmBoGyv0&u=aHR0cHMlM2ElMmYlMmZjdXJzb3IuY29tJTJmYXV0b21hdGUlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9jYW1wYWlnbiUzZCU1YlNlYXJjaCU1ZCUyNTIwJTViQnJhbmQlNWQlMjUyMCU1YkVOJTVkJTI1MjAlNWJMQVRBTSU1ZCUyNTIwJTViQnJvYWQlNWQlMjUyMCU1YlZCQiU1ZCUyNTIwQnJhbmQlMjZ1dG1fdGVybSUzZGN1cnNvciUyNTIwYWdlbnQlMjUyMGF1dG9tYXRpb25zJTI2dXRtX21lZGl1bSUzZHBhaWQlMjZ1dG1fY29udGVudCUzZCUyNmNjX3BsYXRmb3JtJTNkZ29vZ2xlJTI2Y2NfY2FtcGFpZ25pZCUzZDQ4NzcyNDM3OSUyNmNjX2FkZ3JvdXBpZCUzZDEyMzU4NTI1MDMwMDYzOTQlMjZjY19hZGlkJTNkJTI2Y2Nfa2V5d29yZCUzZGN1cnNvciUyNTIwYWdlbnQlMjUyMGF1dG9tYXRpb25zJTI2Y2NfbWF0Y2h0eXBlJTNkcCUyNmNjX2RldmljZSUzZGMlMjZjY19uZXR3b3JrJTNkbyUyNmNjX3BsYWNlbWVudCUzZCUyNmNjX2xvY2F0aW9uJTNkMTQ3OTUwJTI2Y2NfYWRwb3NpdGlvbiUzZCUyNm1zY2xraWQlM2RlYzhiMGVmYTU4NmYxMDNlNDEyMzY0YmJiYmViOTM0MA&rlid=ec8b0efa586f103e412364bbbbeb9340",
+      "snippet": "Connect agents to Slack, GitHub, and PagerDuty. Automate the repetitive parts. Cursor Automations: agents that run on events, schedules, or custom webhooks. Types : AI Coding Agent, Tab Autocomplete, Bugbot Code Review, CLI Agent, Cloud Agents",
+      "fuente": "web"
+    },
+    {
+      "titulo": "No-Code AI Workflow Builder - Build Reusable AI Workflows",
+      "url": "https://www.bing.com/aclick?ld=e8jzzo4P_eUxHsnD9AEp_kYTVUCUxQpHXonCJFpYx-CgK88ThnYQpfNbfvCfot20oIUmroqTQQnSxP3cAoNdJDd8dFNwu2Z7qfbGdXDRjAVNnng2on1LLBATWlrydbxSCWIpfxPmHsTo1NJVytNvJTi_0M4Z7f3g07HGe-JGKSgx2jyPXXtc5IUH3I9vDuRDP7Lfp5Blb-uOcMPxyF0Q2N4Dio9o8&u=aHR0cHMlM2ElMmYlMmZwaWNzYXJ0LmNvbSUyZmZsb3clMmYlM2Z1dG1fc291cmNlJTNkbWljcm9zb2Z0X2FkcyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2Rtc2Fkcy1wZXJmLXdlYi11cy1tdWx0aS1scC1mbG93LWdlbmVyaWMlMjZ1dG1fY29udGVudCUzZGFpLXdvcmtmbG93LWF1dG9tYXRpb25fJTVicCU1ZCUyNnV0bV9vcHRpbWl6YXRpb24lM2RwdXJjaGFzZSUyNnV0bV91c2VyX3R5cGUlM2RuZXclMjZ1dG1fa2V5d29yZCUzZGFpJTI1MjB3b3JrZmxvdyUyNTIwYXV0b21hdGlvbiUyNm1zY2xraWQlM2Q4MzNhYzlhMDVjZGExOWY0MGMxZmEzZTFiZjVlOGYzMQ&rlid=833ac9a05cda19f40c1fa3e1bf5e8f31",
+      "snippet": "picsart.com has been visited by 100K+ users in the past month Design custom AI workflows and connect top models like Flux & Kling on an infinite canvas. Simplify your creative process with an intuitive no-code visual workflow builder. Try now! Remove Objects · High-quality downloads · Try Smart Background · Enhance Background",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Gain RAG and Agentic AI Skills - IBM Courses for Your AI Career",
+      "url": "https://www.bing.com/aclick?ld=e8qtWwZoTqXgwwFZdGwHHi5jVUCUykXzJU1JTreBwpMHp2SizhiC32P48TUHyR01NGO3HxxebEkqap0WNopxVsoPdXcrs4nfvQ3f1al7oxj91CmpZBUt1sV01wfIb47Pgjhil-8Gnuvvmijfozb3hvIOsIYzTvPMkKbLryivCHwp9J4_1FqtqyPETRs-vNBCw--Kou3TmONKqlr9PYccK-gyAfL3Q&u=aHR0cHMlM2ElMmYlMmZ3d3cuY291cnNlcmEub3JnJTJmcHJvZmVzc2lvbmFsLWNlcnRpZmljYXRlcyUyZmlibS1yYWctYW5kLWFnZW50aWMtYWklM2Z1dG1fbWVkaXVtJTNkc2VtJTI2dXRtX3NvdXJjZSUzZGJnJTI2dXRtX2NhbXBhaWduJTNkYjJjX2xhdGFtX2libS1yYWctYW5kLWFnZW50aWMtYWlfaWJtX2Z0Y29mX3Byb2Zlc3Npb25hbC1jZXJ0aWZpY2F0ZXNfcHhfZHJfYmF1X2JnX3NlbV9wci1iZF9zMS12Ml9lbl9tX3hfMjUtMDdfeCUyNmNhbXBhaWduaWQlM2Q2NjM0OTM3MzIlMjZhZGdyb3VwaWQlM2QxMjU2NzQzMTY5MjA2OTczJTI2ZGV2aWNlJTNkYyUyNmtleXdvcmQlM2RBSSUyNTIwZm9yJTI1MjBCdXNpbmVzcyUyNm1hdGNodHlwZSUzZHAlMjZuZXR3b3JrJTNkbyUyNmRldmljZW1vZGVsJTNkJTI2YWRwb3NpdGlvbiUzZCUyNmNyZWF0aXZlaWQlM2Q3ODU0NjU4MzY3Nzk1OCUyNmFkZ3JvdXAlM2RiMmNfbGF0YW1faWJtLXJhZy1hbmQtYWdlbnRpYy1haV9pYm1fY3hfYmF1X2JnX3MxLXYyX3hfeF9uYi1waF94X2h5Yl94X3hfcHJvZmVzc2lvbmFsLWNlcnRpZmljYXRlc19lbmdsaXNoX3glMjZxdWVyeXN0cmluZyUzZGN1cnNvciUyNTIwYWklMjUyMGFnZW50JTI1MjBza2lsbHMlMjUyMGF1dG9tYXRpb24lMjUyMHdvcmtmbG93JTI1MjBkZXZlbG9wZXIlMjZ0YXJnZXRpZCUzZGt3ZC03ODU0Njg0OTM4NzYxOCUzYWxvYy0zOCUyNmJpZG1hdGNodHlwZSUzZGJwJTI2ZXh0ZW5zaW9uaWQlM2QlMjZtc2Nsa2lkJTNkZWI0M2RhNzdkOWU1MTA5NDY0NzZiMDM2M2E2MTE3MmElMjZ1dG1fdGVybSUzZEFJJTI1MjBmb3IlMjUyMEJ1c2luZXNzJTI2dXRtX2NvbnRlbnQlM2RiMmNfbGF0YW1faWJtLXJhZy1hbmQtYWdlbnRpYy1haV9pYm1fY3hfYmF1X2JnX3MxLXYyX3hfeF9uYi1waF94X2h5Yl94X3hfcHJvZmVzc2lvbmFsLWNlcnRpZmljYXRlc19lbmdsaXNoX3g&rlid=eb43da77d9e510946476b0363a61172a",
+      "snippet": "Enroll Now Go beyond the basics of AI by building RAG and agentic systems with IBM as your guide. Get to know the IBM techniques that drive RAG and agentic AI adoption across industries. Free 7-Day Trial · 100% Online Courses · Earn a Course Certificate · 100% Online Types : Courses, Specializations, Professional Certificates, Coursera Plus",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Cursor Docs — Agent, Rules, MCP, Skills & CLI",
+      "url": "https://cursor.com/docs",
+      "snippet": "Official Cursor documentation. Covers Agent mode, Rules, Skills , MCP servers, CLI, models, and Teams & Enterprise setup. Start building in minutes.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Cursor · Automations",
+      "url": "https://cursor.com/automate",
+      "snippet": "We built our software factory using Cursor Automations with Runlayer MCP and plugins. We move faster than teams five times our size because our agents have the right tools, the right context, and the right guardrails.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "GitHub - spencerpauly/awesome-cursor-skills: A curated list ...",
+      "url": "https://github.com/spencerpauly/awesome-cursor-skills",
+      "snippet": "Apr 10, 2026 · A curated list of awesome skills for Cursor , the AI code editor. Skills are reusable SKILL.md instruction files that teach the AI agent how to perform specific tasks — from setting up analytics to scaffolding entire projects.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/router.md"
+}

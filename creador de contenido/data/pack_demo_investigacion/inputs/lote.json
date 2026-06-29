@@ -1,0 +1,23 @@
+{
+  "titulo": "Pack promocional — resumenes libros kdp",
+  "salidas": [
+    "png",
+    "gif"
+  ],
+  "estilo": "yordy-minimal",
+  "temas": [
+    "resmenes-guas-digitales-",
+    "sistemas-semi-automatiza",
+    "contenido-youtube-produc"
+  ],
+  "gif": {
+    "frames": 4,
+    "duration_ms": 300
+  },
+  "origen": {
+    "pipeline": "lluvia-de-ideas",
+    "analisis_slug": "demo_investigacion",
+    "idea_id": "idea-4f897bfa"
+  },
+  "notas": "Generado automáticamente post-investigación (3 PNG + GIF por tema)"
+}

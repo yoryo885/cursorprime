@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabla — Ley de Pareto</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #5c6b65;
+  --accent: #4caf7d;
+  --accent-emphasis: #1f6b47;
+  --accent-label: #3a9670;
+  --accent-light: #e8f8ef;
+  --green-card-bg: #e8f5e9;
+  --green-card-border: #4caf50;
+  --border: #d8e4de;
+  --paper: #f9faf8;
+  --cover-bg: #0a0a0a;
+  --cover-ink: #ffffff;
+  --cover-muted: rgba(255, 255, 255, 0.55);
+  --serif: 'Literata', Georgia, 'Palatino Linotype', 'Book Antiqua', serif;
+  --sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm 22mm 20mm;
+}
+
+@page :first {
+  margin: 0;
+  size: A4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+}
+
+body {
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--ink);
+  background: white;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page-break { page-break-after: always; }
+.avoid-break {
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+
+/* Bloque de 3 tarjetas: siempre juntas; si no caben tras el texto, van solas en la página siguiente */
+.tbl-editorial-block,
+.topic-tables {
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+  -webkit-column-break-inside: avoid;
+}
+.topic-tables {
+  margin-top: 1.25rem;
+  padding-top: 0.25rem;
+}
+.tbl-editorial-block .tbl-editorial-card {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+/* —— Portada (estilo 33.pdf: posiciones absolutas, label arriba-izq) —— */
+.cover {
+  background: var(--cover-bg);
+  color: var(--cover-ink);
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  height: 297mm;
+  margin: 0;
+  padding: 0;
+  page-break-after: always;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.cover-top {
+  margin: 0;
+  padding: 0;
+}
+
+.cover-label {
+  position: absolute;
+  top: 18mm;
+  left: 20mm;
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.cover-hero {
+  margin: 0;
+  line-height: 1;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.cover-hero-80 {
+  position: absolute;
+  top: 533px;
+  left: 84px;
+  display: block;
+  font-size: 172pt;
+  line-height: 1;
+  color: var(--cover-ink);
+  margin: 0;
+}
+
+.cover-hero-20 {
+  position: absolute;
+  top: 727px;
+  left: 80px;
+  display: block;
+  font-size: 172pt;
+  line-height: 1;
+  color: var(--accent);
+  margin: 0;
+}
+
+.cover-divider {
+  position: absolute;
+  top: 256.1mm;
+  left: 20.1mm;
+  right: 20mm;
+  width: auto;
+  height: 2px;
+  background: var(--accent);
+  margin: 0;
+}
+
+.cover-title {
+  position: absolute;
+  top: 258mm;
+  left: 20.4mm;
+  font-family: var(--sans);
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 16cm;
+  color: var(--cover-ink);
+}
+
+.cover-author {
+  position: absolute;
+  top: 266mm;
+  left: 20.4mm;
+  font-family: var(--sans);
+  font-size: 11.5pt;
+  font-weight: 400;
+  color: var(--cover-muted);
+  margin: 0;
+}
+
+.cover-bottom {
+  position: absolute;
+  top: 284.7mm;
+  left: 16.7mm;
+  right: 20mm;
+  width: auto;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cover-meta {
+  position: absolute;
+  left: 76px;
+  top: 1072px;
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--cover-muted);
+  line-height: 1.5;
+}
+
+.cover-dot {
+  position: absolute;
+  left: 705px;
+  top: 1071px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* —— Perfil del lector (página 2: el autor) —— */
+.perfil-lector {
+  page-break-before: always;
+  page-break-after: always;
+  padding: 3rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60%;
+}
+.perfil-rule {
+  width: 42px;
+  height: 4px;
+  background: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.perfil-titulo {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-label);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.perfil-nombre {
+  font-family: var(--serif);
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.perfil-intro {
+  font-family: var(--serif);
+  font-size: 11pt;
+  font-style: normal;
+  color: #3d4a44;
+  max-width: 92%;
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  line-height: 1.55;
+  margin-bottom: 2rem;
+}
+.perfil-audiencia {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #2a3d34;
+  max-width: 92%;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--accent-light);
+}
+
+/* —— Página para quién (página 3: audiencia) —— */
+.audiencia-page {
+  page-break-before: always;
+  page-break-after: always;
+  padding: 3rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 55%;
+}
+.audiencia-page .perfil-valor {
+  font-family: var(--serif);
+  font-size: 16pt;
+  font-weight: 600;
+  color: var(--ink);
+}
+.perfil-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.perfil-item {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+}
+.perfil-label {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 0.35rem;
+}
+.perfil-valor {
+  font-family: var(--serif);
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #2a332f;
+}
+
+/* —— Mapa conceptual —— */
+.map-section {
+  page-break-after: always;
+  padding-top: 0.5rem;
+}
+
+.section-kicker {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.section-title {
+  font-size: 20pt;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mindmap-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.mindmap-center {
+  text-align: center;
+  background: #37474F;
+  color: white;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 4px 18px rgba(55, 71, 79, 0.22);
+  page-break-inside: avoid;
+}
+
+.mindmap-center-icon {
+  font-size: 22px;
+  margin-bottom: 0.35rem;
+  line-height: 1;
+}
+
+.mindmap-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.mindmap-branch {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  border: 2px solid color-mix(in srgb, var(--branch-color, var(--accent)) 40%, white);
+  background: color-mix(in srgb, var(--branch-color, var(--accent)) 10%, white);
+  page-break-inside: avoid;
+  box-shadow: 0 2px 10px rgba(55, 71, 79, 0.07);
+}
+
+.mindmap-branch-title {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--branch-color, var(--accent));
+  color: white;
+  display: inline-block;
+}
+
+.mindmap-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mindmap-node {
+  font-size: 9pt;
+  line-height: 1.45;
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.82);
+  border-left: 3px solid var(--branch-color, var(--accent));
+}
+
+.mindmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-card {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  border: 2px solid color-mix(in srgb, var(--cat-color, var(--accent)) 35%, white);
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 8%, white);
+  page-break-inside: avoid;
+  box-shadow: 0 2px 10px rgba(55, 71, 79, 0.06);
+}
+
+.category-card h3 {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--cat-color, var(--accent));
+  color: white;
+  display: inline-block;
+}
+
+.category-card ul {
+  list-style: none;
+  font-size: 9pt;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.category-card li {
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+}
+
+.category-card li:last-child { margin-bottom: 0; }
+
+.connections {
+  margin-top: 0.5rem;
+}
+
+.connections h3 {
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.conn-list {
+  list-style: none;
+  font-size: 9pt;
+}
+
+.conn-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+}
+
+.conn-from, .conn-to {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.conn-arrow { color: var(--muted); }
+
+.conn-label {
+  flex: 1 1 100%;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 8.5pt;
+  padding-left: 0.5rem;
+}
+
+/* —— Página de tema (solo resumen) —— */
+.topic {
+  page-break-before: always;
+  padding-top: 0.25rem;
+}
+
+.topic-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.topic-number {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.topic-title {
+  font-family: var(--serif);
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.topic-voice {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--accent);
+}
+
+.summary {
+  text-align: justify;
+}
+
+.summary p {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #222;
+  margin-bottom: 0.85rem;
+}
+
+.summary p:last-child { margin-bottom: 0; }
+
+/* —— Página de tabla (imagen Playwright, página aparte) —— */
+.table-page {
+  page-break-before: always;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.table-page img {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+}
+
+/* —— Tabla —— */
+.concept-table-wrap {
+  margin-top: 0.5rem;
+  page-break-inside: avoid;
+}
+
+.concept-table-label {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.concept-table thead th {
+  font-family: var(--sans);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  background: var(--accent);
+  color: white;
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+}
+
+.concept-table tbody td {
+  padding: 0.6rem 0.65rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  background: white;
+}
+
+.concept-table tbody tr:nth-child(even) td {
+  background: var(--paper);
+}
+
+/* —— Tabla standalone (archivo individual) —— */
+.standalone-table-page {
+  padding: 1.5rem;
+  max-width: 18cm;
+  margin: 0 auto;
+}
+
+.standalone-table-page h1 {
+  font-size: 16pt;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+/* —— Base editorial (estilo tarjetas compartido) —— */
+.page-table {
+  background: #ffffff;
+  min-height: 100vh;
+}
+.page-table .standalone-table-page {
+  padding: 2.5rem 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.page-table .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+.page-table .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 2rem;
+  font-style: normal;
+}
+
+.tbl-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tbl-editorial-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: none;
+}
+.tbl-editorial-body {
+  flex: 1;
+  min-width: 0;
+}
+.tbl-editorial-card--idea,
+.tbl-editorial-card--ejemplo,
+.tbl-editorial-card--aplicacion {
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+}
+.tbl-editorial-badge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+}
+.tbl-editorial-badge--idea { background: #e8f4fc; }
+.tbl-editorial-badge--ejemplo { background: #e8f5e9; }
+.tbl-editorial-badge--aplicacion { background: #fef3e8; }
+.tbl-editorial-body strong {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green-card-border);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.tbl-editorial-body p {
+  font-family: var(--serif);
+  font-size: 10pt;
+  line-height: 1.55;
+  color: #2a2a2a;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+/* —— Variante ICONOS — infografía con bloques de color —— */
+.page-icons .tbl-editorial-card,
+.table-page-icons .tbl-editorial-card {
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+  box-shadow: none;
+  padding: 1.25rem 1.5rem;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.page-icons .tbl-editorial-card--idea,
+.table-page-icons .tbl-editorial-card--idea,
+.page-icons .tbl-editorial-card--ejemplo,
+.table-page-icons .tbl-editorial-card--ejemplo,
+.page-icons .tbl-editorial-card--aplicacion,
+.table-page-icons .tbl-editorial-card--aplicacion {
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+}
+.page-icons .tbl-editorial-badge,
+.table-page-icons .tbl-editorial-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 26px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.page-icons .tbl-editorial-badge--idea,
+.table-page-icons .tbl-editorial-badge--idea { background: var(--accent); }
+.page-icons .tbl-editorial-badge--ejemplo,
+.table-page-icons .tbl-editorial-badge--ejemplo { background: #2d6a4f; }
+.page-icons .tbl-editorial-badge--aplicacion,
+.table-page-icons .tbl-editorial-badge--aplicacion { background: #4a4a4a; }
+.page-icons .tbl-editorial-body strong,
+.table-page-icons .tbl-editorial-body strong {
+  color: var(--green-card-border);
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.page-icons .tbl-editorial-body p,
+.table-page-icons .tbl-editorial-body p {
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #2a2a2a;
+}
+.page-icons .tbl-editorial,
+.table-page-icons .tbl-editorial { gap: 0.5rem; }
+
+.table-page-icons {
+  page-break-before: always;
+  background: #ffffff;
+  padding: 2rem 0 1.5rem;
+}
+.table-page-icons .standalone-table-page {
+  padding: 0 0.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.table-page-icons .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.table-page-icons .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+}
+
+/* —— Variante MINIMALISTA: mismas tarjetas, sin icono —— */
+.page-minimal .tbl-editorial-card {
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.25rem 0;
+  gap: 0;
+}
+.page-minimal .tbl-editorial-card:first-child { padding-top: 0; }
+.page-minimal .tbl-editorial-badge { display: none; }
+.page-minimal .tbl-editorial-body strong { color: var(--accent-emphasis); font-size: 7pt; }
+.page-minimal .tbl-editorial-body p { font-size: 10.5pt; color: #333; }
+
+/* —— Variante COLORIDA (barras azul / verde / dorado) —— */
+.page-colorful .tbl-editorial-card,
+.table-page-colorful .tbl-editorial-card {
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+  background: var(--green-card-bg);
+  box-shadow: none;
+  padding: 1.25rem 1.5rem;
+  align-items: center;
+  gap: 1.15rem;
+}
+.page-colorful .tbl-editorial-card--idea,
+.table-page-colorful .tbl-editorial-card--idea,
+.page-colorful .tbl-editorial-card--ejemplo,
+.table-page-colorful .tbl-editorial-card--ejemplo,
+.page-colorful .tbl-editorial-card--aplicacion,
+.table-page-colorful .tbl-editorial-card--aplicacion {
+  --card-accent: var(--green-card-border);
+  --card-bg: var(--green-card-bg);
+}
+.page-colorful .tbl-editorial-badge,
+.table-page-colorful .tbl-editorial-badge {
+  width: auto;
+  height: auto;
+  min-width: 3.2rem;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--card-accent);
+  padding: 0;
+  border-radius: 0;
+  align-self: flex-start;
+  padding-top: 0.15rem;
+}
+.page-colorful .tbl-editorial-body strong,
+.table-page-colorful .tbl-editorial-body strong {
+  color: var(--green-card-border);
+  font-size: 7.5pt;
+  letter-spacing: 0.1em;
+}
+.page-colorful .tbl-editorial-body p,
+.table-page-colorful .tbl-editorial-body p {
+  font-size: 10.5pt;
+  line-height: 1.55;
+}
+
+.table-page-colorful {
+  page-break-before: always;
+  background: #ffffff;
+  padding: 2rem 0 1.5rem;
+}
+.table-page-colorful .standalone-table-page {
+  padding: 0 0.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.table-page-colorful .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.table-page-colorful .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+}
+.table-page-colorful .tbl-editorial { gap: 0.5rem; }
+
+/* —— Imágenes embebidas en PDF —— */
+.map-image-wrap, .table-image-wrap {
+  margin-top: 1rem;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+.map-image-wrap img, .table-image-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.map-image-wrap img { max-height: 240mm; }
+
+* {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+}
+
+.summary {
+  text-align: left;
+}
+</style>
+</head>
+<body class="page-icons page-table">
+
+<article class="standalone-table-page">
+  <h1>Ley de Pareto</h1>
+  <p class="book-ref">El principio de Pareto - Antoine Delers</p>
+  <div class="concept-table-wrap"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>El 20% de tus estudiantes genera el 80% de tus resultados reales en el gabinete. Tu error fue repartir tu energía por igual, creyendo que justicia significaba intensidad uniforme. Concentra tu atención donde realmente transformas, identifica ese 20% crítico y deja de fingir que todos los casos pesan lo mismo.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Registras durante quince días cada intervención del gabinete y descubres que cuatro estudiantes de segundo grado concentran trece de las diecinueve horas semanales que dedicas a evaluación diagnóstica, mientras los otros veintitrés casos avanzan con protocolos breves y seguimiento mensual. Decides mantener esas cuatro evaluaciones intensivas porque detectan trastornos del aprendizaje que cambian trayectorias completas, y derivas el resto de consultas leves a orientación grupal con la tutora. En un mes liberas seis horas que ahora inviertes en diseñar adaptaciones curriculares para esos cuatro casos críticos, multiplicando el impacto real sin añadir jornada extra.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Registra durante una semana completa cada intervención que realizas: anota nombre del estudiante, tipo de consulta, tiempo invertido y resultado observable (derivación, estrategia implementada, avance concreto). Al finalizar la semana, marca con color los cuatro o cinco casos que concentraron más del 60% de tu tiempo efectivo y clasifícalos en dos categorías: alto impacto transformador (diagnósticos complejos, adaptaciones curriculares que modifican trayectorias) o consumo reactivo sin avance (situaciones repetitivas, consultas administrativas, demandas que podrían resolverse con protocolo grupal). Identifica qué tres estudiantes del grupo de alto impacto requieren intensificar tu seguimiento esta quincena y cuáles cinco del grupo reactivo puedes derivar a orientación con tutores, trabajar mediante talleres grupales o protocolizar con evaluaciones mensuales en lugar de semanales. Reorganiza tu agenda bloqueando tres franjas fijas para esos casos críticos de alto impacto y establece un sistema de consulta por turnos para el resto, liberando al menos cuatro horas que destinarás exclusivamente a diseñar instrumentos de evaluación o adaptaciones para ese 20% que realmente transforma vidas escolares.</p>
+    </div>
+  </div></div></div>
+</article>
+</body>
+</html>

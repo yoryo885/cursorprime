@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El principio de Pareto - Antoine Delers</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #5c6b65;
+  --accent: #4caf7d;
+  --accent-emphasis: #1f6b47;
+  --accent-label: #3a9670;
+  --accent-light: #e8f8ef;
+  --green-card-bg: #e8f5e9;
+  --green-card-border: #4caf50;
+  --border: #d8e4de;
+  --paper: #f9faf8;
+  --cover-bg: #0a0a0a;
+  --cover-ink: #ffffff;
+  --cover-muted: rgba(255, 255, 255, 0.55);
+  --serif: 'Literata', Georgia, 'Palatino Linotype', 'Book Antiqua', serif;
+  --sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm 22mm 20mm;
+}
+
+@page action-plan {
+  size: A4;
+  margin: 10mm 11mm 10mm 11mm;
+}
+
+@page :first {
+  margin: 0;
+  size: A4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+}
+
+body {
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--ink);
+  background: white;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page-break { page-break-after: always; }
+.avoid-break {
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+
+/* Bloque de 3 tarjetas: siempre juntas; si no caben tras el texto, van solas en la página siguiente */
+.tbl-editorial-block,
+.topic-tables {
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+  -webkit-column-break-inside: avoid;
+}
+.topic-tables {
+  margin-top: 1.25rem;
+  padding-top: 0.25rem;
+}
+.tbl-editorial-block .tbl-editorial-card {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+/* —— Portada (estilo 33.pdf: posiciones absolutas, label arriba-izq) —— */
+.cover {
+  background: var(--cover-bg);
+  color: var(--cover-ink);
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  height: 297mm;
+  margin: 0;
+  padding: 0;
+  page-break-after: always;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.cover-top {
+  margin: 0;
+  padding: 0;
+}
+
+.cover-label {
+  position: absolute;
+  top: 18mm;
+  left: 20mm;
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.cover-hero {
+  margin: 0;
+  line-height: 1;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.cover-hero-80 {
+  position: absolute;
+  top: 533px;
+  left: 84px;
+  display: block;
+  font-size: 172pt;
+  line-height: 1;
+  color: var(--cover-ink);
+  margin: 0;
+}
+
+.cover-hero-20 {
+  position: absolute;
+  top: 727px;
+  left: 80px;
+  display: block;
+  font-size: 172pt;
+  line-height: 1;
+  color: var(--accent);
+  margin: 0;
+}
+
+.cover-divider {
+  position: absolute;
+  top: 256.1mm;
+  left: 20.1mm;
+  right: 20mm;
+  width: auto;
+  height: 2px;
+  background: var(--accent);
+  margin: 0;
+}
+
+.cover-title {
+  position: absolute;
+  top: 254mm;
+  left: 20.4mm;
+  font-family: var(--sans);
+  font-size: 19pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 0;
+  max-width: 16cm;
+  color: var(--cover-ink);
+}
+
+.cover-subtitle {
+  position: absolute;
+  top: 266mm;
+  left: 20.4mm;
+  font-family: var(--sans);
+  font-size: 10.5pt;
+  font-weight: 500;
+  color: var(--cover-muted);
+  margin: 0;
+  max-width: 16cm;
+  line-height: 1.3;
+}
+
+.cover-author {
+  position: absolute;
+  top: 272mm;
+  left: 20.4mm;
+  font-family: var(--sans);
+  font-size: 11.5pt;
+  font-weight: 400;
+  color: var(--cover-muted);
+  margin: 0;
+}
+
+.cover-bottom {
+  position: absolute;
+  top: 284.7mm;
+  left: 16.7mm;
+  right: 20mm;
+  width: auto;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cover-meta {
+  position: absolute;
+  left: 76px;
+  top: 1072px;
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--cover-muted);
+  line-height: 1.5;
+}
+
+.cover-dot {
+  position: absolute;
+  left: 705px;
+  top: 1071px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* —— Perfil del lector (página 2: el autor) —— */
+.perfil-lector {
+  page-break-before: always;
+  page-break-after: always;
+  padding: 3rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60%;
+}
+.perfil-rule {
+  width: 42px;
+  height: 4px;
+  background: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.perfil-titulo {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-label);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.perfil-nombre {
+  font-family: var(--serif);
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.perfil-intro {
+  font-family: var(--serif);
+  font-size: 11pt;
+  font-style: normal;
+  color: #3d4a44;
+  max-width: 92%;
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  line-height: 1.55;
+  margin-bottom: 2rem;
+}
+.perfil-audiencia {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #2a3d34;
+  max-width: 92%;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--accent-light);
+}
+
+.audiencia-aviso {
+  max-width: 92%;
+  margin-top: 1.75rem;
+  padding: 1.1rem 1.25rem;
+  background: #eef6f0;
+  border: 2px solid #2a5c45;
+  border-radius: 4px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.audiencia-aviso-label {
+  font-family: var(--sans);
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2a5c45;
+  margin-bottom: 0.45rem;
+}
+
+.audiencia-aviso-text {
+  font-family: var(--sans);
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #1a3d2e;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* —— Página para quién (página 3: audiencia) —— */
+.audiencia-page {
+  page-break-before: always;
+  page-break-after: always;
+  padding: 3rem 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: auto;
+}
+.audiencia-page .perfil-valor {
+  font-family: var(--serif);
+  font-size: 16pt;
+  font-weight: 600;
+  color: var(--ink);
+}
+.perfil-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.perfil-item {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.25rem;
+}
+.perfil-label {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 0.35rem;
+}
+.perfil-valor {
+  font-family: var(--serif);
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #2a332f;
+}
+
+/* —— Mapa conceptual —— */
+.map-section {
+  page-break-after: always;
+  padding-top: 0.5rem;
+}
+
+.section-kicker {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.section-title {
+  font-size: 20pt;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mindmap-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.mindmap-center {
+  text-align: center;
+  background: #37474F;
+  color: white;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 4px 18px rgba(55, 71, 79, 0.22);
+  page-break-inside: avoid;
+}
+
+.mindmap-center-icon {
+  font-size: 22px;
+  margin-bottom: 0.35rem;
+  line-height: 1;
+}
+
+.mindmap-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.mindmap-branch {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  border: 2px solid color-mix(in srgb, var(--branch-color, var(--accent)) 40%, white);
+  background: color-mix(in srgb, var(--branch-color, var(--accent)) 10%, white);
+  page-break-inside: avoid;
+  box-shadow: 0 2px 10px rgba(55, 71, 79, 0.07);
+}
+
+.mindmap-branch-title {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--branch-color, var(--accent));
+  color: white;
+  display: inline-block;
+}
+
+.mindmap-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mindmap-node {
+  font-size: 9pt;
+  line-height: 1.45;
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.82);
+  border-left: 3px solid var(--branch-color, var(--accent));
+}
+
+.mindmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-card {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  border: 2px solid color-mix(in srgb, var(--cat-color, var(--accent)) 35%, white);
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 8%, white);
+  page-break-inside: avoid;
+  box-shadow: 0 2px 10px rgba(55, 71, 79, 0.06);
+}
+
+.category-card h3 {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--cat-color, var(--accent));
+  color: white;
+  display: inline-block;
+}
+
+.category-card ul {
+  list-style: none;
+  font-size: 9pt;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.category-card li {
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+}
+
+.category-card li:last-child { margin-bottom: 0; }
+
+.connections {
+  margin-top: 0.5rem;
+}
+
+.connections h3 {
+  font-family: var(--sans);
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.conn-list {
+  list-style: none;
+  font-size: 9pt;
+}
+
+.conn-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+}
+
+.conn-from, .conn-to {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.conn-arrow { color: var(--muted); }
+
+.conn-label {
+  flex: 1 1 100%;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 8.5pt;
+  padding-left: 0.5rem;
+}
+
+/* —— Página de tema (solo resumen) —— */
+.topic {
+  page-break-before: always;
+  padding-top: 0.25rem;
+}
+
+.topic-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.topic-number {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.topic-title {
+  font-family: var(--serif);
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.topic-voice {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--accent);
+}
+
+.summary {
+  text-align: justify;
+}
+
+.summary p {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #222;
+  margin-bottom: 0.85rem;
+}
+
+.summary p:last-child { margin-bottom: 0; }
+
+/* —— Página de tabla (imagen Playwright, página aparte) —— */
+.table-page {
+  page-break-before: always;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.table-page img {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+}
+
+/* —— Tabla —— */
+.concept-table-wrap {
+  margin-top: 0.5rem;
+  page-break-inside: avoid;
+}
+
+.concept-table-label {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.concept-table thead th {
+  font-family: var(--sans);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  background: var(--accent);
+  color: white;
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+}
+
+.concept-table tbody td {
+  padding: 0.6rem 0.65rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  background: white;
+}
+
+.concept-table tbody tr:nth-child(even) td {
+  background: var(--paper);
+}
+
+/* —— Tabla standalone (archivo individual) —— */
+.standalone-table-page {
+  padding: 1.5rem;
+  max-width: 18cm;
+  margin: 0 auto;
+}
+
+.standalone-table-page h1 {
+  font-size: 16pt;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+/* —— Base editorial (estilo tarjetas compartido) —— */
+.page-table {
+  background: #ffffff;
+  min-height: 100vh;
+}
+.page-table .standalone-table-page {
+  padding: 2.5rem 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.page-table .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+.page-table .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 2rem;
+  font-style: normal;
+}
+
+.tbl-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.tbl-editorial-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: none;
+}
+.tbl-editorial-body {
+  flex: 1;
+  min-width: 0;
+}
+.tbl-editorial-card--idea,
+.tbl-editorial-card--ejemplo,
+.tbl-editorial-card--aplicacion {
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+}
+.tbl-editorial-badge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+}
+.tbl-editorial-badge--idea { background: #e8f4fc; }
+.tbl-editorial-badge--ejemplo { background: #e8f5e9; }
+.tbl-editorial-badge--aplicacion { background: #fef3e8; }
+.tbl-editorial-body strong {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green-card-border);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.tbl-editorial-body p {
+  font-family: var(--serif);
+  font-size: 10pt;
+  line-height: 1.55;
+  color: #2a2a2a;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+/* —— Variante ICONOS — infografía con bloques de color —— */
+.page-icons .tbl-editorial-card,
+.table-page-icons .tbl-editorial-card {
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+  box-shadow: none;
+  padding: 1.25rem 1.5rem;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.page-icons .tbl-editorial-card--idea,
+.table-page-icons .tbl-editorial-card--idea,
+.page-icons .tbl-editorial-card--ejemplo,
+.table-page-icons .tbl-editorial-card--ejemplo,
+.page-icons .tbl-editorial-card--aplicacion,
+.table-page-icons .tbl-editorial-card--aplicacion {
+  background: var(--green-card-bg);
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+}
+.page-icons .tbl-editorial-badge,
+.table-page-icons .tbl-editorial-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 26px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.page-icons .tbl-editorial-badge--idea,
+.table-page-icons .tbl-editorial-badge--idea { background: var(--accent); }
+.page-icons .tbl-editorial-badge--ejemplo,
+.table-page-icons .tbl-editorial-badge--ejemplo { background: #2d6a4f; }
+.page-icons .tbl-editorial-badge--aplicacion,
+.table-page-icons .tbl-editorial-badge--aplicacion { background: #4a4a4a; }
+.page-icons .tbl-editorial-body strong,
+.table-page-icons .tbl-editorial-body strong {
+  color: var(--green-card-border);
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.page-icons .tbl-editorial-body p,
+.table-page-icons .tbl-editorial-body p {
+  font-size: 10.5pt;
+  line-height: 1.6;
+  color: #2a2a2a;
+}
+.page-icons .tbl-editorial,
+.table-page-icons .tbl-editorial { gap: 0.5rem; }
+
+.table-page-icons {
+  page-break-before: always;
+  background: #ffffff;
+  padding: 2rem 0 1.5rem;
+}
+.table-page-icons .standalone-table-page {
+  padding: 0 0.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.table-page-icons .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.table-page-icons .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+}
+
+/* —— Variante MINIMALISTA: mismas tarjetas, sin icono —— */
+.page-minimal .tbl-editorial-card {
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.25rem 0;
+  gap: 0;
+}
+.page-minimal .tbl-editorial-card:first-child { padding-top: 0; }
+.page-minimal .tbl-editorial-badge { display: none; }
+.page-minimal .tbl-editorial-body strong { color: var(--accent-emphasis); font-size: 7pt; }
+.page-minimal .tbl-editorial-body p { font-size: 10.5pt; color: #333; }
+
+/* —— Variante COLORIDA (barras azul / verde / dorado) —— */
+.page-colorful .tbl-editorial-card,
+.table-page-colorful .tbl-editorial-card {
+  border: 2px solid var(--green-card-border);
+  border-radius: 10px;
+  background: var(--green-card-bg);
+  box-shadow: none;
+  padding: 1.25rem 1.5rem;
+  align-items: center;
+  gap: 1.15rem;
+}
+.page-colorful .tbl-editorial-card--idea,
+.table-page-colorful .tbl-editorial-card--idea,
+.page-colorful .tbl-editorial-card--ejemplo,
+.table-page-colorful .tbl-editorial-card--ejemplo,
+.page-colorful .tbl-editorial-card--aplicacion,
+.table-page-colorful .tbl-editorial-card--aplicacion {
+  --card-accent: var(--green-card-border);
+  --card-bg: var(--green-card-bg);
+}
+.page-colorful .tbl-editorial-badge,
+.table-page-colorful .tbl-editorial-badge {
+  width: auto;
+  height: auto;
+  min-width: 3.2rem;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--card-accent);
+  padding: 0;
+  border-radius: 0;
+  align-self: flex-start;
+  padding-top: 0.15rem;
+}
+.page-colorful .tbl-editorial-body strong,
+.table-page-colorful .tbl-editorial-body strong {
+  color: var(--green-card-border);
+  font-size: 7.5pt;
+  letter-spacing: 0.1em;
+}
+.page-colorful .tbl-editorial-body p,
+.table-page-colorful .tbl-editorial-body p {
+  font-size: 10.5pt;
+  line-height: 1.55;
+}
+
+.table-page-colorful {
+  page-break-before: always;
+  background: #ffffff;
+  padding: 2rem 0 1.5rem;
+}
+.table-page-colorful .standalone-table-page {
+  padding: 0 0.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.table-page-colorful .standalone-table-page h1 {
+  font-family: var(--serif);
+  font-size: 22pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+.table-page-colorful .standalone-table-page .book-ref {
+  font-family: var(--serif);
+  font-size: 10pt;
+  color: #888;
+  margin-bottom: 1.75rem;
+}
+.table-page-colorful .tbl-editorial { gap: 0.5rem; }
+
+/* —— Imágenes embebidas en PDF —— */
+.map-image-wrap, .table-image-wrap {
+  margin-top: 1rem;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+.map-image-wrap img, .table-image-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.map-image-wrap img { max-height: 240mm; }
+
+* {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+}
+
+.summary {
+  text-align: left;
+}
+
+/* —— Plan de acción (formato original, ligeramente más compacto, 1 página) —— */
+.action-plan-page {
+  page: action-plan;
+  page-break-before: always;
+  break-before: page;
+  page-break-after: avoid;
+  font-family: var(--sans);
+  color: #1a2e24;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.ap-sheet {
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+
+.ap-header {
+  background: #2a5c45;
+  color: #fff;
+  padding: 3.5mm 5mm 3mm;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ap-header h2 {
+  font-family: var(--sans);
+  font-size: 11.5pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 1.5mm;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ap-header .ap-libro-line {
+  font-size: 7pt;
+  opacity: 0.92;
+  margin-bottom: 1.5mm;
+}
+
+.ap-header .ap-instruccion {
+  font-size: 7pt;
+  font-style: italic;
+  opacity: 0.95;
+  margin-bottom: 1mm;
+}
+
+.ap-header .ap-cita {
+  font-size: 7.5pt;
+  color: #b8dcc8;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.ap-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 6.5pt;
+  line-height: 1.25;
+  flex-shrink: 0;
+}
+
+.ap-table col.ap-col-num { width: 6%; }
+.ap-table col.ap-col-tema { width: 15%; }
+.ap-table col.ap-col-accion { width: 35%; }
+.ap-table col.ap-col-check { width: 5%; }
+.ap-table col.ap-col-notas { width: 39%; }
+
+.ap-table thead th {
+  background: #2a5c45;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 1.5mm 1.5mm;
+  border: 1px solid #1e4535;
+  vertical-align: middle;
+  font-size: 6.2pt;
+  letter-spacing: 0.02em;
+}
+
+.ap-table tbody td {
+  border: 1px solid #c5d9cc;
+  padding: 1.2mm 1.5mm;
+  vertical-align: top;
+}
+
+.ap-table tbody td.ap-col-accion {
+  text-align: left;
+  padding: 1mm 0.5mm;
+}
+
+.ap-table tbody td.ap-col-notas {
+  text-align: center;
+  padding: 1.2mm 2.5mm;
+}
+
+.ap-table tbody tr:nth-child(even) td {
+  background: #eef6f0;
+}
+
+.ap-col-num { width: 6%; text-align: center; font-weight: 700; }
+.ap-col-tema { width: 15%; font-weight: 600; font-size: 6.2pt; text-align: center; vertical-align: top; }
+.ap-tema-name { font-weight: 700; margin-bottom: 0.8mm; font-size: 6.2pt; }
+.ap-tema-concepto {
+  font-weight: 400;
+  font-size: 5.8pt;
+  line-height: 1.2;
+  color: #3d5a4a;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ap-col-accion { width: 35%; text-align: center; }
+.ap-col-accion-steps {
+  text-align: left;
+  font-size: 6.2pt;
+  line-height: 1.35;
+  padding: 0.15mm 0.3mm;
+}
+.ap-col-accion-steps .ap-step {
+  display: block;
+  margin-bottom: 0.35mm;
+  padding-left: 0.3mm;
+}
+.ap-col-accion-steps .ap-step:last-child {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #1e5631;
+}
+.ap-col-check { width: 5%; text-align: center; vertical-align: middle; }
+.ap-check-box {
+  display: inline-block;
+  width: 4.5mm;
+  height: 4.5mm;
+  border: 1.5px solid #2a5c45;
+  background: #fff;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.ap-col-notas { width: 39%; min-height: 7mm; text-align: center; }
+
+.ap-table tbody td.ap-col-tema,
+.ap-table tbody td.ap-col-num,
+.ap-table tbody td.ap-col-check {
+  text-align: center;
+}
+
+.ap-section-title {
+  background: #2a5c45;
+  color: #fff;
+  font-size: 6.5pt;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 1.5mm 2.5mm;
+  margin: 2mm 0 0;
+  text-transform: uppercase;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ap-weeks {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0;
+  border: 1px solid #c5d9cc;
+  border-top: none;
+  flex-shrink: 0;
+}
+
+.ap-week-cell {
+  border-right: 1px solid #c5d9cc;
+  text-align: center;
+  min-height: 8mm;
+}
+
+.ap-week-cell:last-child { border-right: none; }
+
+.ap-week-label {
+  background: #2a5c45;
+  color: #fff;
+  font-size: 6.2pt;
+  font-weight: 700;
+  padding: 1mm 0;
+}
+
+.ap-week-box {
+  background: #fff;
+  min-height: 5mm;
+}
+
+.ap-vital-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #c5d9cc;
+  border-top: none;
+  flex-shrink: 0;
+}
+
+.ap-vital-col {
+  border-right: 1px solid #c5d9cc;
+  min-height: 11mm;
+}
+
+.ap-vital-col:last-child { border-right: none; }
+
+.ap-vital-label {
+  background: #d4e8dc;
+  color: #1a3d2e;
+  font-size: 5.8pt;
+  font-weight: 700;
+  text-align: center;
+  padding: 1.5mm 1mm;
+  line-height: 1.2;
+  min-height: 9mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ap-vital-box {
+  background: #fff;
+  min-height: 8mm;
+}
+
+.ap-notes-area {
+  border: 1px solid #c5d9cc;
+  border-top: none;
+  min-height: 10mm;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.ap-footer {
+  margin-top: 2mm;
+  text-align: center;
+  font-size: 5.8pt;
+  color: #6b7f75;
+  flex-shrink: 0;
+}
+
+.ap-disclaimer {
+  margin-top: 1.5mm;
+  text-align: center;
+  font-size: 5.8pt;
+  color: #5a6b63;
+  font-style: italic;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+/* —— Empieza aquí + mini guía —— */
+.guia-page {
+  page-break-before: always;
+  page-break-after: always;
+  padding: 2.5rem 0 2rem;
+  font-family: var(--sans);
+  color: #1a2e24;
+}
+
+.guia-header {
+  background: #2a5c45;
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.guia-header h2 {
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+}
+
+.guia-header p {
+  font-size: 9pt;
+  opacity: 0.92;
+  margin: 0;
+}
+
+.guia-block-title {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2a5c45;
+  margin: 0 0 0.75rem;
+}
+
+.guia-list {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+}
+
+.guia-list li {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #2a3d34;
+  padding: 0.55rem 0 0.55rem 1.5rem;
+  border-bottom: 1px solid #e8ece9;
+  position: relative;
+}
+
+.guia-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #2a5c45;
+  font-weight: 700;
+}
+
+.guia-pasos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guia-paso {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border: 2px solid #2a5c45;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  background: #f7fbf8;
+}
+
+.guia-paso-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #2a5c45;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guia-paso-text {
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.45;
+  color: #1a2e24;
+  margin: 0;
+  padding-top: 0.15rem;
+}
+
+/* —— Checklist Pareto (1 página) —— */
+.checklist-page {
+  page: action-plan;
+  page-break-before: always;
+  page-break-after: always;
+  font-family: var(--sans);
+  color: #1a2e24;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.cl-header {
+  background: #2a5c45;
+  color: #fff;
+  padding: 3mm 5mm 2.5mm;
+  text-align: center;
+}
+
+.cl-header h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 1mm;
+}
+
+.cl-header p {
+  font-size: 7pt;
+  opacity: 0.92;
+  margin: 0;
+  font-style: italic;
+}
+
+.cl-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 7pt;
+}
+
+.cl-table td {
+  border: 1px solid #c5d9cc;
+  padding: 2mm 2.5mm;
+  vertical-align: middle;
+}
+
+.cl-table tr:nth-child(even) td {
+  background: #eef6f0;
+}
+
+.cl-col-check {
+  width: 8%;
+  text-align: center;
+}
+
+.cl-col-item {
+  width: 92%;
+  font-family: var(--serif);
+  font-size: 8pt;
+  line-height: 1.35;
+}
+
+.cl-check-box {
+  display: inline-block;
+  width: 5mm;
+  height: 5mm;
+  border: 1.5px solid #2a5c45;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.cl-footer {
+  margin-top: 2mm;
+  text-align: center;
+  font-size: 6pt;
+  color: #6b7f75;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-top">
+    <div class="cover-label">Resumen personal</div>
+    <div class="cover-hero">
+      <span class="cover-hero-80">80</span>
+      <span class="cover-hero-20">/20</span>
+    </div><div class="cover-divider"></div>
+    
+  </div>
+  <h1 class="cover-title">Pareto para psicopedagogas en 10 semanas</h1><div class="cover-subtitle">El principio de Pareto · Antoine Delers</div>
+</section>
+<div class="cover-dot"></div>
+<div class="cover-meta">Por Yordy · 20/06/2026 · 10 temas</div>
+<section class="guia-page">
+  <header class="guia-header">
+    <h2>Empieza aquí</h2>
+    <p>Cómo usar este material en menos de 10 minutos</p>
+  </header>
+  <div class="guia-block-title">Mini guía</div>
+  <ul class="guia-list"><li>Lee un tema por vez; no intentes aplicar todo el mismo lunes.</li><li>Al final del PDF tienes un plan semanal listo para imprimir.</li><li>Una semana = una acción. Marca ✓ solo cuando haya evidencia real.</li><li>Usa la columna NOTAS del plan para anotar tus KPIs.</li><li>Si dudas, vuelve al mapa conceptual antes de la semana 1.</li></ul>
+  <div class="guia-block-title">Tus 3 primeros pasos</div>
+  <ol class="guia-pasos"><li class="guia-paso"><span class="guia-paso-num">1</span><p class="guia-paso-text">Lee «Para quién es este resumen» y el aviso legal (2 minutos).</p></li><li class="guia-paso"><span class="guia-paso-num">2</span><p class="guia-paso-text">Elige 2 casos críticos de tu carga en el gabinete y anótalos.</p></li><li class="guia-paso"><span class="guia-paso-num">3</span><p class="guia-paso-text">Abre la Semana 01 del plan de acción y complétala esta semana.</p></li></ol>
+</section>
+<section class="perfil-lector">
+  <div class="perfil-header">
+    <div class="perfil-rule"></div>
+    <div class="perfil-titulo">Por qué leí este libro</div>
+    <div class="perfil-nombre">Yordy</div>
+  </div>
+  <p class="perfil-intro">test</p>
+  <div class="perfil-items"><div class="perfil-item"><div class="perfil-label">¿Quién soy?</div><div class="perfil-valor">Leo, destilo y comparto ideas de libros para quien no tiene tiempo de leerlos enteros pero sí ganas de aplicar algo concreto.</div></div></div>
+</section>
+<section class="audiencia-page">
+  <div class="perfil-header">
+    <div class="perfil-rule"></div>
+    <div class="perfil-titulo">Para quién es este resumen</div>
+  </div>
+  <div class="perfil-items">
+    <div class="perfil-item">
+      <div class="perfil-label">Oficio</div>
+      <div class="perfil-valor">Psicopedagoga</div>
+    </div>
+    <div class="perfil-item"><div class="perfil-label">Su mayor reto</div><div class="perfil-valor">Atender eficazmente a numerosos estudiantes con recursos y tiempo limitados</div></div><div class="perfil-item"><div class="perfil-label">Lo que intentó</div><div class="perfil-valor">Intentar abordar todos los casos con la misma intensidad, dispersando esfuerzos sin resultados claros</div></div>
+  </div>
+  <p class="perfil-audiencia">Este resumen está diseñado para profesionales de la psicopedagogía que trabajan en entornos escolares y enfrentan el desafío constante de atender a decenas de estudiantes con necesidades diversas mientras los recursos y el tiempo son escasos. Si has intentado abordar cada caso con la misma dedicación y profundidad, probablemente has experimentado la frustración de sentir que tu esfuerzo se diluye sin generar avances significativos en quienes más lo necesitan. El principio de Pareto ofrece un marco práctico para identificar ese 20% de estudiantes o intervenciones que generarán el 80% de los resultados positivos en tu labor diaria, permitiéndote concentrar tu energía donde realmente marcará la diferencia. Este enfoque no se trata de abandonar a ningún alumno, sino de aplicar una estrategia de priorización inteligente que maximice el impacto de tu trabajo psicopedagógico.</p>
+  <div class="audiencia-aviso" role="note"><div class="audiencia-aviso-label">Aviso</div><p class="audiencia-aviso-text">Material de apoyo · No sustituye criterio profesional ni protocolo clínico.</p></div>
+</section>
+<section class="map-section avoid-break">
+  <div class="section-kicker">Visión general</div>
+  <h2 class="section-title">Mapa conceptual</h2>
+  <p style="font-size: 9.5pt; color: var(--accent); margin-bottom: 1.75rem;">El principio de Pareto - Antoine Delers</p>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:0;width:100%;">
+
+    <div style="background:#1a1a1a;color:#fff;padding:14px 36px;border-radius:14px;
+                font-family:var(--sans);font-size:13pt;font-weight:700;text-align:center;
+                box-shadow:0 3px 12px rgba(0,0,0,0.18);z-index:2;">
+      El principio de Pareto
+    </div>
+
+    <svg width="100%" height="52" style="display:block;overflow:visible;margin:0;"><line x1="50%" y1="0" x2="50%" y2="18" stroke="#ccc" stroke-width="2"/><line x1="12.5%" y1="18" x2="87.5%" y2="18" stroke="#ccc" stroke-width="2"/><line x1="12.5%" y1="18" x2="12.5%" y2="52" stroke="#ccc" stroke-width="2"/><line x1="37.5%" y1="18" x2="37.5%" y2="52" stroke="#ccc" stroke-width="2"/><line x1="62.5%" y1="18" x2="62.5%" y2="52" stroke="#ccc" stroke-width="2"/><line x1="87.5%" y1="18" x2="87.5%" y2="52" stroke="#ccc" stroke-width="2"/></svg>
+
+    <div style="display:flex;flex-direction:row;gap:20px;align-items:flex-start;width:100%;">
+      
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#085041;color:#9FE1CB;padding:10px 16px;border-radius:24px;
+              font-size:9.5pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.12);">Fundamentos teóricos</div>
+  <div style="width:2px;height:18px;background:#1D9E75;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:100%;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">es la base</div>
+  <div style="background:#E1F5EE;color:#085041;border:2px solid #1D9E75;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Principio 80/20</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  
+  <div style="background:#E1F5EE;color:#085041;border:2px solid #1D9E75;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Ley de Pareto</div>
+</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#3C3489;color:#CECBF6;padding:10px 16px;border-radius:24px;
+              font-size:9.5pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.12);">Resultados y optimización</div>
+  <div style="width:2px;height:18px;background:#7F77DD;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:100%;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">multiplica resultados con</div>
+  <div style="background:#EEEDFE;color:#26215C;border:2px solid #7F77DD;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Productividad personal</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">maximiza valor por</div>
+  <div style="background:#EEEDFE;color:#26215C;border:2px solid #7F77DD;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Eficiencia y eficacia</div>
+</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#712B13;color:#F5C4B3;padding:10px 16px;border-radius:24px;
+              font-size:9.5pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.12);">Técnicas de implementación</div>
+  <div style="width:2px;height:18px;background:#D85A30;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:100%;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">identifica el 20%</div>
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Priorización de tareas</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">permite dirigir energía</div>
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Foco y concentración</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">libera horas para</div>
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Gestión del tiempo</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  
+  <div style="background:#FAECE7;color:#4A1B0C;border:2px solid #D85A30;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Eliminar lo innecesario</div>
+</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;">
+  <div style="background:#72243E;color:#F4C0D1;padding:10px 16px;border-radius:24px;
+              font-size:9.5pt;font-weight:600;text-align:center;width:100%;box-sizing:border-box;
+              box-shadow:0 2px 8px rgba(0,0,0,0.12);">Aplicación práctica</div>
+  <div style="width:2px;height:18px;background:#D4537E;margin:0 auto;"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:100%;">
+    
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">orienta qué proyectos</div>
+  <div style="background:#FBEAF0;color:#4B1528;border:2px solid #D4537E;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Decisiones estratégicas</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+  <div style="font-size:8.5pt;color:#999;font-style:italic;margin-bottom:4px;text-align:center;line-height:1.3;">transforma teoría en</div>
+  <div style="background:#FBEAF0;color:#4B1528;border:2px solid #D4537E;padding:8px 14px;border-radius:20px;
+              font-size:9pt;font-weight:600;text-align:center;min-width:88px;max-width:140px;
+              box-shadow:0 1px 4px rgba(0,0,0,0.08);">Aplicación en la vida diaria</div>
+</div>
+  </div>
+</div>
+    </div>
+
+  </div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 01</div>
+    <h2 class="topic-title">Principio 80/20</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>El 20% de tus estudiantes genera el 80% de las crisis y oportunidades de cambio en tu escuela. No estás siendo injusta al priorizar: estás siendo efectiva cuando reconoces que tu tiempo limitado debe ir donde produce transformación real, no donde apenas sostiene.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Revisas tu agenda de marzo y descubres que cinco estudiantes acumulan diecisiete de las veintidós intervenciones urgentes: Lucas con crisis de ansiedad cada lunes, Marta desregulada tras cada recreo, y tres hermanos del segundo ciclo con absentismo crónico que arrastra el rendimiento de dos aulas completas. Decides reasignar: esos cinco casos reciben tu seguimiento intensivo semanal con plan personalizado, mientras el resto de derivaciones pasan a protocolo estándar con revisión quincenal. En seis semanas, las crisis bajan un sesenta por ciento y recuperas ocho horas mensuales que antes perdías apagando incendios sin estrategia.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Revisa tu registro de intervenciones de las últimas cuatro semanas y marca con color rojo los cinco estudiantes que más tiempo te demandaron en crisis, desregulaciones o derivaciones urgentes. Clasifícalos por frecuencia e intensidad del impacto en el funcionamiento escolar, no por simpatía ni urgencia aparente. Diseña para esos cinco casos un protocolo de seguimiento semanal personalizado: observación directa en aula, coordinación con docentes cada viernes, y reunión individual de quince minutos los martes. Delega o reduce la frecuencia de seguimiento del resto de casos a revisiones quincenales con protocolo estándar, liberando al menos seis horas mensuales. Registra cada semana cuántas crisis evitaste en esos cinco casos prioritarios y ajusta tu inversión de tiempo según resultados concretos, no según culpa o presión externa.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 02</div>
+    <h2 class="topic-title">Ley de Pareto</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>El 20% de tus estudiantes genera el 80% de tus resultados reales en el gabinete. Tu error fue repartir tu energía por igual, creyendo que justicia significaba intensidad uniforme. Concentra tu atención donde realmente transformas, identifica ese 20% crítico y deja de fingir que todos los casos pesan lo mismo.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Registras durante quince días cada intervención del gabinete y descubres que cuatro estudiantes de segundo grado concentran trece de las diecinueve horas semanales que dedicas a evaluación diagnóstica, mientras los otros veintitrés casos avanzan con protocolos breves y seguimiento mensual. Decides mantener esas cuatro evaluaciones intensivas porque detectan trastornos del aprendizaje que cambian trayectorias completas, y derivas el resto de consultas leves a orientación grupal con la tutora. En un mes liberas seis horas que ahora inviertes en diseñar adaptaciones curriculares para esos cuatro casos críticos, multiplicando el impacto real sin añadir jornada extra.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Registra durante una semana completa cada intervención que realizas: anota nombre del estudiante, tipo de consulta, tiempo invertido y resultado observable (derivación, estrategia implementada, avance concreto). Al finalizar la semana, marca con color los cuatro o cinco casos que concentraron más del 60% de tu tiempo efectivo y clasifícalos en dos categorías: alto impacto transformador (diagnósticos complejos, adaptaciones curriculares que modifican trayectorias) o consumo reactivo sin avance (situaciones repetitivas, consultas administrativas, demandas que podrían resolverse con protocolo grupal). Identifica qué tres estudiantes del grupo de alto impacto requieren intensificar tu seguimiento esta quincena y cuáles cinco del grupo reactivo puedes derivar a orientación con tutores, trabajar mediante talleres grupales o protocolizar con evaluaciones mensuales en lugar de semanales. Reorganiza tu agenda bloqueando tres franjas fijas para esos casos críticos de alto impacto y establece un sistema de consulta por turnos para el resto, liberando al menos cuatro horas que destinarás exclusivamente a diseñar instrumentos de evaluación o adaptaciones para ese 20% que realmente transforma vidas escolares.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 03</div>
+    <h2 class="topic-title">Productividad personal</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>No todos tus estudiantes pesan igual en tu impacto real. Tres o cuatro casos concentran el 80 % de los cambios que logras: identifícalos, dedícales tu mejor energía y deja de repartir tu tiempo como si cada expediente valiera lo mismo.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Mapeas durante tres semanas cada derivación del departamento de orientación y descubres que siete estudiantes de los cuarenta y cinco que atiendes concentran veintiuna de las veintiocho horas mensuales que dedicas a intervención directa: dos casos de conducta disruptiva que paralizan tres aulas, tres estudiantes con riesgo de desescolarización inminente y dos con sospecha de maltrato que requieren coordinación urgente con servicios sociales. Decides proteger esas siete intervenciones con sesiones semanales prioritarias y calendario blindado, mientras reasignas el resto de seguimientos a protocolos quincenales grupales con apoyo de tutores. En cinco semanas, cuatro de esos siete casos muestran avances documentables que evitan cronificación, y recuperas once horas al mes que antes fragmentabas atendiendo urgencias menores sin estrategia clara.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Abre tu agenda de las últimas cuatro semanas y marca con color rojo los ocho estudiantes de tu carga actual (supongamos que atiendes treinta y dos) que han concentrado las llamadas urgentes de dirección, las reuniones con familias en crisis o las coordinaciones con servicios externos: esos son tu veinte por ciento real. Bloquea en tu calendario de esta semana dos franjas de noventa minutos exclusivas para esos ocho casos: diseña planes de intervención individualizados, actualiza protocolos de seguimiento y coordina con sus tutores las acciones concretas para los próximos quince días. Reasigna los veinticuatro estudiantes restantes a sesiones grupales quincenales organizadas por problemática común (adaptaciones curriculares, habilidades sociales, orientación vocacional) y delega en los tutores el seguimiento semanal mediante una plantilla de observación que tú revisarás cada diez días. Establece un criterio claro y escrito para decidir qué nuevos casos entran en tu lista prioritaria: riesgo de desescolarización documentado, intervención de servicios sociales activa o impacto disruptivo en más de dos aulas; si un estudiante no cumple al menos uno de esos tres criterios, entra automáticamente en el circuito de atención grupal o diferida.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 04</div>
+    <h2 class="topic-title">Priorización de tareas</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>No todos tus estudiantes necesitan la misma intensidad de intervención ahora mismo. El 20% de tus acciones psicopedagógicas genera el 80% de los avances reales: identifica qué casos responden mejor a tu estrategia, concéntrate ahí, y redistribuye el resto sin culpa.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Auditas tus informes de abril y descubres que tres estudiantes de los dieciocho que sigues en intervención individual han completado el ochenta por ciento de los objetivos planteados en sus planes personalizados: Ana superó su bloqueo lector con estrategias multisensoriales, Diego redujo sus episodios de frustración matemática aplicando el protocolo de autorregulación que diseñaste, y Sofía avanzó dos niveles en comprensión lectora tras seis sesiones de trabajo fonológico. Decides blindar esos tres casos con sesiones quincenales garantizadas y evaluación continua, mientras el resto de estudiantes —que muestran avances lentos o nulos con tu metodología actual— pasan a modalidad grupal con la maestra de apoyo y revisión mensual contigo. En ocho semanas, esos tres casos consolidan logros que impactan su trayectoria escolar completa, y liberas doce horas mensuales que antes invertías repitiendo estrategias ineficaces con quien no respondía a ese abordaje.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Revisa tu lista completa de estudiantes en seguimiento y marca los tres que han mostrado avances medibles en el último mes: cambios en calificaciones, reducción de episodios disruptivos, mejora en comprensión lectora o cualquier objetivo cuantificable de su plan personalizado. Blinda esos tres casos en tu agenda semanal con sesiones fijas e innegociables, aumenta la frecuencia de evaluación a quincenal y documenta cada progreso en detalle. Redistribuye el resto de casos según esta clasificación: quienes avanzan lentamente pasan a modalidad grupal con el docente de apoyo y revisión mensual contigo; quienes no responden a tu estrategia actual los derivas a valoración con orientación o modificas radicalmente el abordaje. Registra en una planilla simple cuántas horas semanales dedicas ahora a cada categoría y compara resultados en cuatro semanas: tu impacto se concentrará donde realmente genera cambio y dejarás de agotarte repitiendo intervenciones ineficaces.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 05</div>
+    <h2 class="topic-title">Foco y concentración</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>Tu tiempo de psicopedagoga no vale lo mismo en cada estudiante. El 20% de tus casos genera el 80% del impacto real: tres estudiantes con trastornos severos transforman su trayectoria si concentras ahí tu energía, mientras veinte consultas menores diluyen tu especialización sin resultados visibles.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Analizas el último trimestre y descubres que seis estudiantes de los treinta y dos que atiendes concentran veintitrés de las treinta sesiones mensuales que dedicas a intervención directa: Joaquín con discalculia severa que bloqueaba su paso a cuarto grado, Valeria con dislexia no detectada que generaba rechazo escolar progresivo, dos hermanas con trastorno del procesamiento auditivo que necesitan adaptaciones urgentes, y dos casos de altas capacidades con desmotivación extrema que derivan en conductas disruptivas. Decides blindar esas seis intervenciones con dos sesiones semanales garantizadas y evaluación intensiva, mientras el resto de consultas leves pasan a seguimiento mensual compartido con la maestra integradora. En siete semanas, cinco de esos seis casos avanzan hacia diagnósticos claros que habilitan apoyos específicos, y recuperas catorce horas al mes que antes gastabas en orientaciones genéricas sin impacto medible.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Extrae de tu sistema de gestión la lista completa de estudiantes atendidos en los últimos dos meses y coloca frente a cada nombre dos datos: cantidad de sesiones invertidas y nivel de transformación observable en su desempeño escolar (usa escala simple: alto, medio, nulo). Identifica cuáles 7 casos de los 32 totales concentran avances significativos o presentan trastornos donde tu intervención directa es insustituible: discalculia severa, trastornos del lenguaje con impacto curricular, disgrafías que bloquean la escritura funcional, o situaciones de riesgo pedagógico inminente. Blinda en tu agenda estas siete intervenciones prioritarias asignándoles dos sesiones semanales fijas de cuarenta minutos cada una, y marca con color diferente esos bloques horarios para protegerlos de interrupciones administrativas. Deriva los veinticinco casos restantes hacia seguimiento mensual con la docente de apoyo, orientación grupal para familias, o monitoreo trimestral según corresponda, liberando así dieciocho horas mensuales que ahora destinarás exclusivamente a profundizar evaluaciones diagnósticas, diseñar adaptaciones curriculares específicas y documentar evolución detallada en esos siete estudiantes vitales.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 06</div>
+    <h2 class="topic-title">Gestión del tiempo</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>No todos tus estudiantes necesitan la misma cantidad de tu tiempo. El 20% de tus intervenciones resuelve el 80% de los problemas de aprendizaje: identifica cuáles son, duplica tu energía ahí, y deja de repartir tu esfuerzo como si todo fuera igual de urgente.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Examinas las fichas de seguimiento de mayo y descubres que nueve estudiantes de los cincuenta y dos que atiende el gabinete concentran treinta y una de las cuarenta y dos sesiones mensuales que dedicas a reevaluación diagnóstica: cinco casos con indicadores de dislexia que necesitan pruebas específicas complementarias, tres estudiantes derivados por sospecha de déficit atencional que requieren observación sistemática en distintos contextos, y uno con perfil disarmónico que necesita batería neuropsicológica completa para definir apoyos. Decides blindar esas nueve evaluaciones con protocolo intensivo quincenal y registro detallado, mientras el resto de consultas iniciales pasan a screening grupal con la orientadora y derivación selectiva posterior. En seis semanas, siete de esos nueve casos llegan a diagnóstico certero que habilita intervenciones específicas y adaptaciones curriculares efectivas, y recuperas dieciséis horas mensuales que antes gastabas en evaluaciones superficiales que terminaban en informes inconclusos.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Selecciona los diecisiete casos de los sesenta y tres que atiendes este trimestre y clasifícalos según recurrencia de demanda: marca cuáles han necesitado cuatro o más intervenciones en las últimas ocho semanas, identifica los tres patrones diagnósticos que se repiten (dificultades lectoras, desregulación emocional o desfase curricular) y determina qué seis estudiantes concentran la mayor cantidad de consultas docentes y familiares. Blinda en tu agenda tres bloques semanales de noventa minutos exclusivos para esos seis casos: diseña intervenciones específicas con objetivos medibles a cuatro semanas, coordina observaciones áulicas con los docentes de esos estudiantes y establece protocolos de seguimiento quincenal con registro de avance concreto. Deriva los once casos restantes de baja complejidad a intervenciones grupales con la orientadora, screening colectivo o seguimiento mensual diferido, liberando catorce horas mensuales que ahora invertirás en profundizar las estrategias del grupo prioritario.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 07</div>
+    <h2 class="topic-title">Eficiencia y eficacia</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>No todos tus casos pesan igual: el 20% de tus estudiantes genera el 80% de las crisis institucionales. Concentrar ahí tus recursos más potentes no es descuidar al resto, es entender que tu eficacia no viene de atender a todos por igual, sino de diferenciar intensidad según impacto real.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Clasificas las derivaciones del segundo trimestre y descubres que once estudiantes de los sesenta y cuatro que atiende el gabinete concentran treinta y seis de las cincuenta sesiones mensuales que dedicas a coordinación con equipos externos: cuatro casos con medidas de protección activas que requieren informes judiciales periódicos, tres estudiantes con trastornos del espectro autista que necesitan ajustes permanentes con integradoras y terapeutas, dos hermanos en acogimiento temporal que demandan seguimiento semanal con la trabajadora social, y dos casos de violencia escolar que obligan reuniones urgentes con inspección y familias. Decides blindar esas once situaciones con cronograma fijo, referente único y carpetas compartidas en línea para agilizar coordinaciones, mientras el resto de consultas rutinarias pasan a protocolo de orientación estándar con revisión bimestral y sin intermediación externa salvo emergencia documentada. En nueve semanas, ocho de esos once casos avanzan hacia acuerdos interinstitucionales que garantizan continuidad pedagógica sin improvisación constante, y recuperas dieciocho horas mensuales que antes perdías convocando reuniones masivas sin foco claro ni agenda definida.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Descarga todos tus registros de derivaciones y seguimientos del último trimestre. Ordena cada estudiante según tres criterios combinados: frecuencia de intervenciones urgentes, cantidad de actores externos que requiere coordinar y nivel de impacto que genera en el funcionamiento del aula o la institución. Identifica los seis estudiantes de cuarenta y dos que concentran la mayor densidad en esos tres indicadores: probablemente ahí está tu 20% crítico. Bloquea en tu agenda tres franjas semanales fijas exclusivamente para esos seis casos: una para intervención directa con cada estudiante, otra para coordinación con docentes y equipos externos sin interrupciones, y una tercera para registro y planificación anticipada de ajustes. Suspende durante cuatro semanas las consultas abiertas sin cita previa para el resto de casos y canalízalas mediante protocolo estándar de orientación con formulario previo y revisión quincenal grupal. Comunica el cambio a dirección y equipo docente explicando que concentrar recursos en el núcleo crítico garantiza estabilidad institucional medible, no abandono del resto. Mide al finalizar el mes: cuántas crisis imprevistas se redujeron, cuántas horas recuperaste de reuniones dispersas y cuántos de esos seis casos lograron acuerdos sostenibles con actores externos. Ajusta intensidad según resultados concretos, no según sensación de urgencia.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 08</div>
+    <h2 class="topic-title">Eliminar lo innecesario</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>Tu semana está llena de casos que consumen tiempo sin generar cambio real. Si no mapeas dónde tu intervención multiplica resultados y eliminas todo lo demás, seguirás agotada moviendo papeles en lugar de transformar trayectorias escolares.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Detectas durante octubre que doce estudiantes de los setenta y uno que gestiona el equipo de orientación concentran cuarenta y una de las cincuenta y seis horas mensuales que dedicas a elaborar informes psicopedagógicos extensos: ocho casos complejos con comorbilidad diagnóstica que exigen pruebas complementarias, tres estudiantes con historiales de cinco instituciones diferentes que necesitas reconstruir completos, y uno con perfil límite entre discapacidad intelectual leve y trastorno del aprendizaje que requiere batería completa para definir escolarización. Decides proteger esas doce evaluaciones con informes detallados de seguimiento trimestral y criterios claros de derivación a neuropsicología, mientras el resto de consultas reciben informes abreviados con protocolo estandarizado, observación áulica única y conclusiones operativas para el docente. En diez semanas, nueve de esos doce informes complejos habilitan apoyos específicos que modifican trayectorias educativas completas, y recuperas veintidós horas mensuales que antes gastabas redactando páginas que nadie volvía a leer porque no generaban decisiones concretas.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Bloquea dos horas esta semana y lista los dieciocho casos activos que tienes en seguimiento: separa en una columna aquellos donde tu última intervención específica (no el informe rutinario, sino tu aporte técnico diferencial) generó una decisión concreta del equipo docente o modificó algo en la trayectoria del estudiante, y en otra columna aquellos que consumen horas de tu agenda pero donde tus informes se archivan sin traducirse en cambios reales en el aula. Identifica los cinco casos donde tu expertise psicopedagógica marca diferencia medible: ese estudiante con disgrafía severa al que tus adaptaciones le permitieron aprobar lengua, la niña con mutismo selectivo que habló por primera vez después de tu protocolo gradual, el adolescente con TDAH cuyo plan de autorregulación diseñaste y ahora completa tareas. Esos cinco concentran tu intervención de máxima intensidad: informes detallados mensuales, observaciones áulicas quincenales, reuniones trimestrales con familia y docentes. Para los trece restantes, diseña un protocolo estandarizado de seguimiento: plantilla de informe breve con tres indicadores observables, una observación áulica por trimestre y derivación automática a otros profesionales cuando el caso exceda tu área de intervención directa. Elimina de tu agenda semanal toda reunión de seguimiento que no tenga como objetivo tomar una decisión operativa concreta antes de que termine el encuentro: si la reunión es solo para informar sin modificar nada, reemplázala por un correo de dos párrafos con tres recomendaciones puntuales que el docente pueda aplicar mañana mismo en el aula.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 09</div>
+    <h2 class="topic-title">Decisiones estratégicas</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>No todos tus estudiantes requieren la misma intensidad de intervención. Identifica el 20% de casos que concentran el 80% del impacto real y protege tu energía para ese núcleo vital. El resto puede esperar o resolverse con estrategias más ligeras.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Reúnes las planillas de intervención de junio y descubres que cinco estudiantes de los treinta y nueve que sigues en el gabinete concentran veintisiete de las treinta y cinco horas mensuales que dedicas a diseñar materiales adaptados: Tomás necesita cuadernillos multisensoriales para trabajar secuencias numéricas con base manipulativa, Camila requiere fichas de lectura global porque el método fonético le genera bloqueo total, dos mellizos con trastorno del lenguaje demandan pictogramas personalizados para cada área curricular, y uno con hipoacusia bilateral precisa guías con apoyo visual reforzado que las maestras puedan replicar en el aula. Decides blindar esos cinco casos con producción semanal garantizada y carpeta digital compartida con cada docente, mientras el resto de estudiantes recibe materiales estándar del banco de recursos institucional con ajustes mínimos según necesidad puntual. En ocho semanas, esos cinco estudiantes muestran avances sostenidos que justifican la inversión de tiempo en diseño específico, y recuperas trece horas mensuales que antes gastabas creando fichas genéricas que terminaban archivadas sin uso real en el aula.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Extrae la lista completa de estudiantes bajo tu seguimiento en este trimestre y contabiliza cuántas horas invertiste en cada uno durante las últimas cuatro semanas: intervenciones directas, diseño de materiales, reuniones con docentes y familia. Identifica los cuatro casos de dieciocho que consumieron más del 70% de tu tiempo efectivo de intervención y evalúa si ese tiempo se tradujo en avances medibles o solo en reuniones circulares sin cambio real en el aula. Selecciona los tres estudiantes cuyo progreso concreto transformaría la dinámica de su grupo escolar: ese niño cuya conducta disruptiva paraliza el trabajo de toda la clase, esa adolescente con dislexia cuyo fracaso lector arrastra todas las áreas, ese alumno con autismo cuya integración sensorial determina su permanencia en la institución. Blinda dos bloques semanales de noventa minutos exclusivos para diseñar, ejecutar y ajustar intervenciones profundas con esos tres casos vitales: materiales específicos, estrategias con evidencia, seguimiento semanal documentado con indicadores observables. Asigna al resto de estudiantes intervenciones estandarizadas del repositorio institucional, consultas quincenales en lugar de semanales, y delega el seguimiento rutinario en docentes de aula con protocolos simples que tú supervises mensualmente. Registra en una planilla semanal qué acciones ejecutaste dentro de ese 20% vital y cuáles fueron reacciones automáticas a urgencias que otros pueden resolver sin tu intervención directa.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="topic">
+  <header class="topic-header">
+    <div class="topic-number">Tema 10</div>
+    <h2 class="topic-title">Aplicación en la vida diaria</h2>
+    <div class="topic-voice">Para ti</div>
+  </header>
+  <div class="summary"><p>x</p></div>
+</section>
+<section class="topic-tables tbl-editorial-block avoid-break">
+  <div class="page-icons"><div class="tbl-editorial tbl-editorial-block avoid-break">
+  <div class="tbl-editorial-card tbl-editorial-card--idea">
+    <div class="tbl-editorial-badge tbl-editorial-badge--idea">💡</div>
+    <div class="tbl-editorial-body">
+      <strong>Idea clave</strong>
+      <p>No todos tus estudiantes requieren la misma intensidad de intervención. Identifica los dos o tres casos que concentran el mayor riesgo o impacto potencial y dedícales tu atención especializada; el resto puede funcionar con seguimiento básico sin que abandones a nadie.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--ejemplo">
+    <div class="tbl-editorial-badge tbl-editorial-badge--ejemplo">🔧</div>
+    <div class="tbl-editorial-body">
+      <strong>Ejemplo práctico</strong>
+      <p>Contabilizas las demandas de septiembre y descubres que cuatro estudiantes de los cincuenta y tres que atiende el gabinete acumulan treinta y dos de las cuarenta horas mensuales que dedicas a entrevistas con familias: la madre de Ramiro que llama cada dos días por crisis de conducta que no ceden con ningún abordaje, los padres de Lucía que necesitan contención permanente tras el diagnóstico de discapacidad intelectual moderada, el tutor legal de Ezequiel en situación de guarda que exige informes semanales para tribunales, y la abuela de Candela que solicita reuniones constantes porque no acepta la derivación a salud mental. Decides blindar esas cuatro familias con entrevista estructurada quincenal, agenda fija y límites claros de contacto fuera de ese espacio, mientras el resto de consultas familiares pasan a modalidad mensual con protocolo breve y derivación a orientación grupal cuando corresponda. En siete semanas, tres de esas cuatro situaciones avanzan hacia acuerdos sostenibles que reducen la demanda caótica, y recuperas veintiuna horas mensuales que antes perdías atendiendo llamadas de urgencia sin estrategia definida ni criterio de cierre.</p>
+    </div>
+  </div>
+  <div class="tbl-editorial-card tbl-editorial-card--aplicacion">
+    <div class="tbl-editorial-badge tbl-editorial-badge--aplicacion">🎯</div>
+    <div class="tbl-editorial-body">
+      <strong>Aplicación en la vida real</strong>
+      <p>Toma tu agenda de las últimas seis semanas y señala qué nueve estudiantes de los cuarenta y uno que sigues consumieron más del sesenta por ciento de tus horas de intervención directa. Pregúntate cuáles de esos nueve muestran avances documentables en evaluaciones, informes o cambios observables en el aula; separa los que avanzan de los que repiten crisis sin modificar conducta ni rendimiento. Asigna a los tres casos que más avanzan tu franja horaria de mayor lucidez —antes del recreo o a primera hora— con sesiones de cuarenta y cinco minutos semanales, protocolo de seguimiento con objetivos mensuales medibles y reunión trimestral con equipo docente. Reduce a veinte minutos quincenales y pauta grupal los casos que repiten demanda sin respuesta a intervención individual; deriva a equipos externos cuando la problemática exceda tu alcance institucional. Libera al menos siete horas mensuales que antes perdías en entrevistas circulares sin estrategia de cierre y úsalas para diseñar adaptaciones curriculares precisas en esos tres estudiantes vitales o para capacitar a docentes en detección temprana de alertas. Revisa cada mes si los casos críticos siguen siendo los mismos o si otros requieren subir de categoría; ajusta tu distribución sin culpa, porque priorizar no es abandonar sino garantizar que tu esfuerzo especializado llegue donde realmente transforma trayectorias escolares.</p>
+    </div>
+  </div></div></div>
+</section>
+<section class="checklist-page">
+  <header class="cl-header">
+    <h2>¿Estoy aplicando Pareto?</h2>
+    <p>Marca sí/no al cerrar cada semana · Reutiliza esta hoja</p>
+  </header>
+  <table class="cl-table">
+    <tbody>
+<tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Identifiqué mis casos críticos (el 20%) esta semana</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Dediqué más tiempo a esos casos que al resto de la carga</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Eliminé o reduje al menos una tarea de bajo impacto</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Registré un KPI medible (avance lector, derivaciones, tiempo…)</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Documenté el resultado en mi registro o NOTAS del plan</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Revisé si los casos prioritarios siguen siendo los mismos</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Coordiné con docentes o familia solo en casos vitales</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Protegí un bloque de tiempo para intervención profunda</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">No dispersé esfuerzo en urgencias que otros pueden resolver</td>
+</tr><tr>
+  <td class="cl-col-check"><span class="cl-check-box"></span></td>
+  <td class="cl-col-item">Cerré la semana sabiendo qué haré distinto la próxima</td>
+</tr>
+    </tbody>
+  </table>
+  <p class="cl-footer">Si marcaste 7 o más, estás aplicando el principio. Si no, ajusta la semana siguiente.</p>
+</section>
+<section class="action-plan-page">
+  <div class="ap-sheet">
+  <header class="ap-header">
+    <h2>PLAN DE ACCIÓN · PRINCIPIO DE PARETO APLICADO A INTERVENCIÓN PSICOPEDAGÓGICA</h2>
+    <div class="ap-libro-line">El principio de Pareto · Antoine Delers · Por Yordy</div>
+    <p class="ap-instruccion">Marca cada acción solo cuando hayas registrado evidencia observable del avance en el estudiante</p>
+    <p class="ap-cita">El 20% de tus intervenciones focalizadas genera el 80% de los avances cognitivos y conductuales en el aula</p>
+  </header>
+  <table class="ap-table">
+
+    <colgroup>
+      <col class="ap-col-num" style="width:6%">
+      <col class="ap-col-tema" style="width:15%">
+      <col class="ap-col-accion" style="width:35%">
+      <col class="ap-col-check" style="width:5%">
+      <col class="ap-col-notas" style="width:39%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="ap-col-num">#</th>
+        <th class="ap-col-tema">TEMA</th>
+        <th class="ap-col-accion">ACCIÓN CONCRETA</th>
+        <th class="ap-col-check">✓</th>
+        <th class="ap-col-notas">SEMANA NOTAS</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr>
+  <td class="ap-col-num">01</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Principio 80/20</div><div class="ap-tema-concepto">Priorizar donde produce transformación real</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• En el gabinete audita casos que concentran crisis</span><span class="ap-step">• Marca los de mayor impacto escolar</span><span class="ap-step">• Registra: casos con avance lector documentado</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">02</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Ley de Pareto</div><div class="ap-tema-concepto">Concentrar energía donde realmente transformas</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Observa en aula qué intervenciones generan cambio</span><span class="ap-step">• Clasifica por respuesta visible</span><span class="ap-step">• Mide: autonomía en aula (escala 1-5)</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">03</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Productividad personal</div><div class="ap-tema-concepto">Identificar casos que concentran el impacto</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Prioriza familias que multiplican demanda urgente</span><span class="ap-step">• Acuerda foco en casos vitales</span><span class="ap-step">• Registra: cuántas derivaciones evitaste esta semana</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">04</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Priorización de tareas</div><div class="ap-tema-concepto">Intensidad según respuesta a intervención</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Coordina con docentes casos de mayor respuesta</span><span class="ap-step">• Redistribuye seguimiento del resto</span><span class="ap-step">• Mide: minutos por caso crítico esta semana</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">05</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Foco y concentración</div><div class="ap-tema-concepto">Casos de mayor impacto vs consultas menores</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• En tu registro separa casos de impacto alto</span><span class="ap-step">• Protege bloques para esos casos</span><span class="ap-step">• Registra: casos con avance lector documentado</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">06</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Gestión del tiempo</div><div class="ap-tema-concepto">Duplicar energía en intervenciones que resuelven</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Segmenta en gabinete casos por urgencia cognitiva</span><span class="ap-step">• Automatiza seguimiento de estables</span><span class="ap-step">• Mide: autonomía en aula antes/después</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">07</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Eficiencia y eficacia</div><div class="ap-tema-concepto">Diferenciar intensidad según impacto en crisis</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Identifica en aula intervenciones reactivas</span><span class="ap-step">• Sustituye por protocolo grupal</span><span class="ap-step">• Registra: cuántas derivaciones urgentes evitaste</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">08</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Eliminar lo innecesario</div><div class="ap-tema-concepto">Eliminar tareas que no generan cambio real</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Con familia define límites de contacto</span><span class="ap-step">• Enfoca reuniones en casos transformadores</span><span class="ap-step">• Mide: minutos por caso crítico redistribuidos</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">09</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Decisiones estratégicas</div><div class="ap-tema-concepto">Proteger energía para el núcleo vital</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Blinda con docentes bloques para casos vitales</span><span class="ap-step">• Documenta intervenciones de alto impacto</span><span class="ap-step">• Registra: casos con avance lector documentado</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr><tr>
+  <td class="ap-col-num">10</td>
+  <td class="ap-col-tema"><div class="ap-tema-name">Aplicación en la vida diaria</div><div class="ap-tema-concepto">Casos de mayor riesgo o impacto potencial</div></td>
+  <td class="ap-col-accion"><div class="ap-col-accion-steps"><span class="ap-step">• Contabiliza casos de mayor impacto en registro</span><span class="ap-step">• Asigna franja óptima a prioritarios</span><span class="ap-step">• Mide: autonomía en aula (escala 1-5)</span></div></td>
+  <td class="ap-col-check"><span class="ap-check-box"></span></td>
+  <td class="ap-col-notas"></td>
+</tr>
+    </tbody>
+  </table>
+  <div class="ap-section-title">RASTREADOR DE SEMANAS</div>
+  <div class="ap-weeks"><div class="ap-week-cell"><div class="ap-week-label">S1</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S2</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S3</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S4</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S5</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S6</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S7</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S8</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S9</div><div class="ap-week-box"></div></div><div class="ap-week-cell"><div class="ap-week-label">S10</div><div class="ap-week-box"></div></div></div>
+  <div class="ap-section-title">MI 20% VITAL · Completa esto antes de empezar</div>
+  <div class="ap-vital-grid">
+    <div class="ap-vital-col"><div class="ap-vital-label">Casos vitales priorizados</div><div class="ap-vital-box"></div></div>
+    <div class="ap-vital-col"><div class="ap-vital-label">Qué dejar de hacer</div><div class="ap-vital-box"></div></div>
+    <div class="ap-vital-col"><div class="ap-vital-label">Lo aprendido</div><div class="ap-vital-box"></div></div>
+    <div class="ap-vital-col"><div class="ap-vital-label">Lo que cambiarás</div><div class="ap-vital-box"></div></div>
+  </div>
+  <div class="ap-section-title">MIS NOTAS</div>
+  <div class="ap-notes-area"></div>
+  <footer class="ap-footer">El principio de Pareto · Antoine Delers · Resumen y Plan de Acción por Yordy</footer>
+  <p class="ap-disclaimer">Material de apoyo · No sustituye criterio profesional ni protocolo clínico.</p>
+  </div>
+</section>
+</body>
+</html>

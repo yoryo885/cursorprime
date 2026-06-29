@@ -1,0 +1,17 @@
+{
+  "nombre": "gestion-proyecto",
+  "description": "Metodología sistema>prompts: brief → evaluar (opcional) → docs (PROYECTO.md, plan) → gate construye → entregables con QC. Sin magia, sin descargar plantillas externas. Proyecto: General. Usar cuando el usuario menciona gestionar proyecto, proyecto real, documentar proyecto, usa gestion-proyecto, yo sa, sistema proyecto, o pide seguir este flujo paso a paso.",
+  "line_count": 40,
+  "tipo": "workflow",
+  "triggers": [
+    "gestionar proyecto",
+    "proyecto real",
+    "documentar proyecto",
+    "usa gestion-proyecto",
+    "yo sa",
+    "sistema proyecto"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/gestion-proyecto/output/SKILL.md"
+  ]
+}

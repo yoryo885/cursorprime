@@ -1,0 +1,62 @@
+{
+  "id": "analisis",
+  "slug": "viabilidad-analisis",
+  "nombre": "Análisis de proyectos",
+  "carpeta": "analisis-de-proyectos",
+  "capa": "creador",
+  "tema": "market research pipeline digital product kdp youtube automation",
+  "fetch": "live",
+  "fuentes": 8,
+  "youtube_n": 0,
+  "web_n": 8,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:25.644213+00:00",
+  "veredicto": "viable",
+  "score": 75,
+  "oportunidades": 2,
+  "resumen": "Investigación sobre «market research pipeline digital product kdp youtube automation»: 0 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.",
+  "confidence": 0.57,
+  "warnings": [
+    "YouTube «market research pipeline digital product»: Búsqueda falló — ddgs: Unsupported protocol version 0x304"
+  ],
+  "youtube": [],
+  "web": [
+    {
+      "titulo": "zammaar/YouTube-AI-Automation-Pipeline - GitHub",
+      "url": "https://github.com/zammaar/YouTube-AI-Automation-Pipeline",
+      "snippet": "Sep 24, 2025 · The YouTube AI Automation Pipeline is a comprehensive system designed to automatically create, produce, and publish YouTube videos with minimal human intervention.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Step-By-Step Guide to YouTube Automation - gumlet.com",
+      "url": "https://www.gumlet.com/learn/youtube-automation/",
+      "snippet": "May 19, 2026 · YouTube automation is the use of tools and software to streamline tasks involved in managing a YouTube channel. This means handling tasks like video creation, editing, uploading, and promotion automatedly without performing everything manually.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "The Ultimate Guide to YouTube Automation (2026) - revid.ai",
+      "url": "https://www.revid.ai/blog/youtube-automation",
+      "snippet": "Dec 4, 2025 · What exactly is YouTube automation ? YouTube automation is using tools and processes to handle repetitive parts of running a channel (video creation, editing, uploading, promotion) so you can scale output without scaling hours proportionally.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "YouTube Automation: The Complete Guide (2026) - 1of10.com",
+      "url": "https://1of10.com/blog/youtube-automation-complete-guide/",
+      "snippet": "Jun 12, 2026 · It covers what YouTube automation actually is in 2026, how to build a channel that runs it properly, what the economics look like, and where most automation attempts break down.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Best YouTube Automation Tools in 2026 — Automate Research ...",
+      "url": "https://techtippr.com/youtube-automation-tools/",
+      "snippet": "Apr 19, 2026 · YouTube creators spend enormous time on tasks that aren’t making videos — keyword research , scripting, thumbnail design, caption editing, analytics review. AI tools in 2026 have made most of these automatable or significantly faster.",
+      "fuente": "web"
+    },
+    {
+      "titulo": "Top Niches for YouTube Automation 2026: 50+ Profitable Sub ...",
+      "url": "https://outlierkit.com/blog/youtube-automation-niches",
+      "snippet": "Jun 19, 2026 · This comprehensive guide is workflow-first: rather than just listing niches, it shows you how to systematize policy-compliant production across the top 10 niches for YouTube automation 2026 along with 50+ profitable sub-niches that align with YouTube 's current policies.",
+      "fuente": "web"
+    }
+  ],
+  "informe": "centro de control prime/meta/viabilidad/analisis.md"
+}

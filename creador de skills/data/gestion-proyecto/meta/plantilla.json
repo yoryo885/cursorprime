@@ -1,0 +1,5 @@
+{
+  "nombre": "workflow",
+  "description_template": "{proceso} Proyecto: {proyecto}. Usar cuando el usuario menciona {triggers}, o pide seguir este flujo paso a paso.",
+  "body_template": "# {titulo}\n\nSkill de **workflow** para {proyecto}.\n\n## Cuándo usar\n\nActivar cuando el usuario diga: {triggers}.\n\n## Proceso\n\n{proceso}\n\n## Pasos\n\n{pasos}\n\n## Reglas\n\n{reglas}\n\n## Proyecto\n\nCarpeta: `{proyecto_carpeta}`\n\n## Iteración\n\nSi el resultado no encaja, pedir feedback y actualizar esta skill (v2 en misma carpeta)."
+}

@@ -1,0 +1,17 @@
+{
+  "nombre": "captions-redes",
+  "description": "Mejora Captions Redes con criterios específicos de calidad para Creador de Contenido. Usar cuando el usuario pide caption, descripcion instagram, copy redes, usa captions-redes, texto del post, cta redes o necesita resultado superior al default del modelo.",
+  "line_count": 29,
+  "tipo": "capacidad",
+  "triggers": [
+    "caption",
+    "descripcion instagram",
+    "copy redes",
+    "usa captions-redes",
+    "texto del post",
+    "cta redes"
+  ],
+  "artifacts": [
+    "/Users/yoryo/cursorprime/creador de skills/data/captions-redes/output/SKILL.md"
+  ]
+}

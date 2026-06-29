@@ -1,0 +1,18 @@
+{
+  "nombre": "landing-lanzamiento",
+  "tipo": "workflow",
+  "proyecto": "general",
+  "triggers": [
+    "landing",
+    "lanzamiento",
+    "oferta",
+    "pagina ventas",
+    "usa landing-lanzamiento",
+    "copy lanzamiento"
+  ],
+  "qc_ok": true,
+  "archivos": [
+    "SKILL.md"
+  ],
+  "empaquetado_at": "2026-06-28T01:00:10.190500+00:00"
+}

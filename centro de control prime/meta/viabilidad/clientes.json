@@ -1,0 +1,60 @@
+{
+  "id": "clientes",
+  "slug": "viabilidad-clientes",
+  "nombre": "Capa clientes",
+  "carpeta": "clientes",
+  "capa": "producto",
+  "tema": "digital agency client onboarding local business",
+  "fetch": "live",
+  "fuentes": 6,
+  "youtube_n": 6,
+  "web_n": 0,
+  "fecha": "2026-06-29",
+  "generado_at": "2026-06-29T03:16:57.019174+00:00",
+  "veredicto": "condicional",
+  "score": 67,
+  "oportunidades": 1,
+  "resumen": "Investigación sobre «digital agency client onboarding local business»: 6 YouTube · 0 web. Demanda parcial — conviene nicho más específico o MVP pequeño.",
+  "confidence": 0.49,
+  "warnings": [],
+  "youtube": [
+    {
+      "titulo": "Centralize Client Work - Grow Your Marketing Agency",
+      "url": "https://www.bing.com/aclick?ld=e881zyiK9iBIpxOVzrxZ0DDDVUCUzzUrlDreLdqbOkVcUEZcDoSGsVr3uOER6HOeGpuFKey-izXC5Mc0e0oLfA-UvdrceRqd_eRluVoR8b2IZPgfOL6IjwFOsXHkHIdVDNwu7Hx4lXw66s1RSVFGH9ghfNjpqoZiyNdjMhQPriv47QQkNCPmM5EmsthMVUW2TaOdMSwcO3WQsdPMs6MlYjwjAI1FA&u=aHR0cHMlM2ElMmYlMmZ3d3cub2Rvby5jb20lMmZpbmR1c3RyaWVzJTJmbWFya2V0aW5nLWFnZW5jeSUzZm5ldHdvcmslM2RvJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkTkEtRU4tSW5kdXN0cnklMjZ1dG1fdGVybSUzZG1hcmtldGluZyUyNTIwYWdlbmN5JTI1MjBtb2Rlcm4lMjUyMGJ1c2luZXNzJTI1MjBzb2x1dGlvbnV0bV9nY2xpZCUzZCUyNm1zY2xraWQlM2RhMTgwMmQ5ZTI0NmQxNmM0MjkwZDQ3ZGZjN2M4MzEwMg&rlid=a1802d9e246d16c4290d47dfc7c83102",
+      "snippet": "odoo. com has been visited by 100K+ users in the past month Transform your marketing agency - manage clients , projects, billing, and more with Odoo. Run your ad agency with Odoo - organize campaigns, clients , & projects in one place. Integrated · Open Source · Free · Easy to Use",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "7-STEP Client Onboarding Checklist for Agencies! (+FREE ... Inside a Digital Marketing Agency: Client Onboarding ... The Ultimate Agency Client Onboarding Process - YouTube The Ultimate Client Onboard",
+      "url": "https://www.youtube.com/watch?v=BM-uvTzZfIc",
+      "snippet": "Sep 5, 2024 · Hey agency leaders! 👋 In this video, we dive into the essential steps of a 7-step client onboarding process that every agency leader should know. From securing signed contracts to setting... Jan 29, 2026 · Welcome to Social Geeks! 👋 Whether you’re a brand-new client getting ready to scale your business with us, a prospective partner curious about our workflow, or simply looking for i",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "Inside a Digital Marketing Agency: Client Onboarding ... The Ultimate Agency Client Onboarding Process - YouTube The Ultimate Client Onboarding Process | Seven Figure Agency How To Onboard Clients For",
+      "url": "https://www.youtube.com/watch?v=Efie3WeRdB8",
+      "snippet": "Jan 29, 2026 · Welcome to Social Geeks! 👋 Whether you’re a brand-new client getting ready to scale your business with us, a prospective partner curious about our workflow, or simply looking for insights ... Feb 25, 2025 · Struggling with client onboarding ? In this video, I break down the step-by-step process to onboard new agency clients fast and efficiently. Jul 31, 2024 · Are you looking to enh",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "The Ultimate Agency Client Onboarding Process - YouTube The Ultimate Client Onboarding Process | Seven Figure Agency How To Onboard Clients For Your Digital Marketing Agency ... How I Onboard Brand & ",
+      "url": "https://www.youtube.com/watch?v=L_Hnh-Zumow",
+      "snippet": "Feb 25, 2025 · Struggling with client onboarding ? In this video, I break down the step-by-step process to onboard new agency clients fast and efficiently. Jul 31, 2024 · Are you looking to enhance your client onboarding process and boost client retention? In this video, we'll share five essential steps to ensure a seamless and professional onboarding ... This video delves into the crucial client ",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "The Ultimate Client Onboarding Process | Seven Figure Agency How To Onboard Clients For Your Digital Marketing Agency ... How I Onboard Brand & Web Design Clients (Full Process ... Client Onboarding: ",
+      "url": "https://www.youtube.com/watch?v=YMnSuPwfvr8",
+      "snippet": "Jul 31, 2024 · Are you looking to enhance your client onboarding process and boost client retention? In this video, we'll share five essential steps to ensure a seamless and professional onboarding ... This video delves into the crucial client onboarding process for digital marketing agencies . Feb 22, 2026 · In this video, I’m walking you through exactly how I onboard brand and web design clients",
+      "fuente": "youtube"
+    },
+    {
+      "titulo": "How To Onboard Clients For Your Digital Marketing Agency ...",
+      "url": "https://www.youtube.com/watch?v=Qb3BietSY-E",
+      "snippet": "This video delves into the crucial client onboarding process for digital marketing agencies .",
+      "fuente": "youtube"
+    }
+  ],
+  "web": [],
+  "informe": "centro de control prime/meta/viabilidad/clientes.md"
+}

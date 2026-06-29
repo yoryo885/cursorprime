@@ -1,0 +1,6 @@
+{
+  "id": "animacion",
+  "nombre": "Escena animada (inicio + fin + motion)",
+  "template": "Scene {tema}. Start frame: {estilo}, {audiencia}. End frame: same characters, evolved state. Animation: {objetivo}, subtle professional motion.",
+  "negative": "blurry, watermark, inconsistent characters"
+}

@@ -1,0 +1,228 @@
+{
+  "generado_en": "2026-06-21T02:27:44.267279+00:00",
+  "modo": "post_listing",
+  "audiencia": {
+    "slug": "pareto",
+    "persona": {
+      "audiencia_oficial": "psicopedagoga en escuela",
+      "reto": "Atender eficazmente a numerosos estudiantes con recursos y tiempo limitados",
+      "intento_fallido": "Intentar abordar todos los casos con la misma intensidad, dispersando esfuerzos sin resultados claros",
+      "lexico": [
+        "procesos cognitivos",
+        "hitos de aprendizaje",
+        "intervención",
+        "seguimiento",
+        "gabinete",
+        "aula",
+        "plasticidad"
+      ],
+      "kpis": [
+        "avance lector",
+        "autonomía en aula",
+        "reducción de derivaciones",
+        "tiempo por caso crítico"
+      ],
+      "metodologia": "triaje de casos → priorizar por impacto en aprendizaje → intervención focalizada → registro de avances",
+      "prohibiciones": [
+        "clientes",
+        "ventas",
+        "ROI de negocio",
+        "activos financieros",
+        "escalabilidad comercial",
+        "superlativos vacíos (#1, el mejor, gratis)",
+        "afirmar afiliación con el autor o editorial original"
+      ],
+      "temas_plan": []
+    },
+    "producto": {
+      "titulo_pdf": "Pareto para psicopedagogas en 10 semanas",
+      "portada_aprobada": true,
+      "libro_fuente": "El principio de Pareto - Antoine Delers",
+      "elementos": [
+        "Resúmenes por tema adaptados al rol",
+        "Mapa conceptual",
+        "Tarjetas: idea clave, ejemplo y aplicación",
+        "Plan de acción de 10 semanas con acciones concretas",
+        "Plantilla en blanco para escribir tu propio plan semanal",
+        "Checklist imprimible: ¿Estoy aplicando Pareto?",
+        "Mini guía de inicio"
+      ],
+      "semanas_plan": 10,
+      "plantilla_vacia": true,
+      "serie_kdp": "Aplicar en tu rol"
+    },
+    "intencion_busqueda": {
+      "concepto_principal": "pareto",
+      "consultas_amazon_sugeridas": [
+        "pareto psicopedagoga",
+        "guía pareto psicopedagoga",
+        "aplicar pareto psicopedagoga en escuela",
+        "pareto educación",
+        "plan acción pareto",
+        "productividad psicopedagoga",
+        "pareto priorizar casos en el aula",
+        "pareto 10 semanas",
+        "avance lector psicopedagoga",
+        "autonomía en aula psicopedagoga",
+        "reducción de derivaciones psicopedagoga",
+        "procesos cognitivos pareto",
+        "hitos de aprendizaje pareto",
+        "intervención pareto",
+        "seguimiento pareto"
+      ],
+      "terminos_alta_intencion": [
+        "guía pareto psicopedagoga",
+        "aplicar pareto psicopedagoga en escuela",
+        "plan acción pareto",
+        "pareto priorizar casos en el aula"
+      ]
+    },
+    "hook_familia_rol": "priorizar casos en el aula",
+    "mercados": [
+      "MX",
+      "ES"
+    ],
+    "historial_qc": [
+      {
+        "timestamp": "2026-06-21T01:56:26.751809+00:00",
+        "score": 9.5,
+        "warnings": [
+          "audiencia_no_mencionada_en_descripcion",
+          "serie_no_mencionada_en_descripcion",
+          "titulo_difiere_del_borrador_kdp_listing"
+        ],
+        "issues": []
+      },
+      {
+        "timestamp": "2026-06-21T02:12:58.959967+00:00",
+        "score": 9.5,
+        "warnings": [
+          "audiencia_no_mencionada_en_descripcion",
+          "titulo_difiere_del_borrador_kdp_listing"
+        ],
+        "issues": []
+      }
+    ],
+    "roles_catalogo_disponibles": [
+      "psicopedagoga_en_escuela"
+    ]
+  },
+  "comparativa": {
+    "listing_actual": {
+      "presente": true,
+      "titulo": "Pareto para psicopedagogas en 10 semanas: Prioriza el 20% de estudiantes que generan el 80% del impacto en tu aula",
+      "keywords": [
+        "principio pareto psicopedagogía",
+        "priorizar intervenciones educativas",
+        "productividad para psicopedagogas",
+        "gestión tiempo aula",
+        "estrategias psicopedagógicas escolares",
+        "80 20 educación",
+        "intervención psicopedagoga"
+      ],
+      "qc_score": 9.5
+    },
+    "seed_kdp": {
+      "titulo": "Pareto para psicopedagogas: priorizar casos en el aula",
+      "keywords": [
+        "pareto psicopedagogas",
+        "guía pareto psicopedagoga",
+        "aplicar pareto trabajo",
+        "resumen el principio de pareto profesional",
+        "aplicar en tu rol",
+        "pareto educación",
+        "plan acción pareto"
+      ],
+      "obsoleto": true
+    },
+    "datos_externos": {
+      "market_research_presente": true,
+      "competitors_presente": false,
+      "busquedas_amazon": [
+        "pareto psicopedagog",
+        "productividad psicopedagog",
+        "priorizar casos escuela",
+        "regla 80 20 educacion",
+        "gestion tiempo psicopedagog",
+        "plan accion psicopedagog"
+      ],
+      "sugerencias_autocompletado": [
+        "pareto psicopedagogas escuela",
+        "pareto educacion especial",
+        "productividad psicopedagogica",
+        "priorizar intervenciones psicopedagogicas",
+        "regla 80 20 docentes",
+        "gestion casos gabinete psicopedagogico",
+        "plan semanal psicopedagog",
+        "eficiencia intervencion educativa"
+      ],
+      "competidores": [],
+      "notas": "Borrador inicial — validar autocompletado en Amazon.mx y Amazon.es"
+    },
+    "otros_libros_serie": [],
+    "gaps_keywords": {
+      "lexico_rol_ausente": [
+        "procesos cognitivos",
+        "hitos de aprendizaje",
+        "seguimiento",
+        "gabinete",
+        "plasticidad"
+      ],
+      "consultas_sin_cubrir": [],
+      "sugerencias_amazon_sin_cubrir": [
+        "pareto psicopedagogas escuela",
+        "pareto educacion especial",
+        "productividad psicopedagogica",
+        "priorizar intervenciones psicopedagogicas",
+        "regla 80 20 docentes",
+        "gestion casos gabinete psicopedagogico",
+        "plan semanal psicopedagog",
+        "eficiencia intervencion educativa"
+      ],
+      "terminos_competencia_sin_cubrir": [],
+      "keywords_listing": [
+        "principio pareto psicopedagogía",
+        "priorizar intervenciones educativas",
+        "productividad para psicopedagogas",
+        "gestión tiempo aula",
+        "estrategias psicopedagógicas escolares",
+        "80 20 educación",
+        "intervención psicopedagoga"
+      ],
+      "keywords_seed": [
+        "pareto psicopedagogas",
+        "guía pareto psicopedagoga",
+        "aplicar pareto trabajo",
+        "resumen el principio de pareto profesional",
+        "aplicar en tu rol",
+        "pareto educación",
+        "plan acción pareto"
+      ]
+    },
+    "discoverability_score": {
+      "score": 7.5,
+      "nivel": "alta",
+      "faltan_datos_externos": false
+    },
+    "recomendaciones": [
+      "Añade resumenes/pareto/kdp/competitors.json con 5 títulos rivales (ASIN, precio, keywords visibles) para comparar posicionamiento.",
+      "Incluir en keywords o título el término del rol: «procesos cognitivos».",
+      "Incluir en keywords o título el término del rol: «hitos de aprendizaje».",
+      "Incluir en keywords o título el término del rol: «seguimiento».",
+      "Título ideal para descubrimiento: «pareto para psicopedagoga en escuela» + beneficio concreto.",
+      "Mantener «10 semanas» visible en título o keywords — diferenciador frente a resúmenes genéricos."
+    ]
+  },
+  "keywords_prioritarias": [
+    "procesos cognitivos guía",
+    "hitos de aprendizaje guía",
+    "seguimiento guía",
+    "pareto psicopedagogas escuela",
+    "pareto educacion especial",
+    "productividad psicopedagogica",
+    "guía pareto psicopedagoga",
+    "aplicar pareto psicopedagoga en escuela",
+    "plan acción pareto",
+    "pareto priorizar casos en el aula"
+  ]
+}
