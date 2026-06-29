@@ -21,16 +21,23 @@ HUD_CSS = """
   --font: 'Inter', system-ui, sans-serif;
 }
 
-html, body { margin: 0; height: 100%; }
+html, body { margin: 0; min-height: 100%; min-height: -webkit-fill-available; }
 body {
   font-family: var(--font);
   background: var(--bg);
   color: var(--text);
   font-size: 13px;
   line-height: 1.45;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
-.app { max-width: 1280px; margin: 0 auto; padding: 16px 20px 40px; }
+.app {
+  max-width: 1280px; margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(40px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px));
+}
 
 /* —— Topbar —— */
 .topbar {
@@ -42,7 +49,8 @@ body {
 .topbar-actions { margin-left: auto; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .topbar-actions a, .topbar-actions code, .topbar-actions .quick-btn {
   font-size: 0.72rem; color: var(--accent); text-decoration: none;
-  padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface);
+  padding: 8px 12px; min-height: 44px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
 }
 .topbar-actions a:hover, .topbar-actions .quick-btn:hover { border-color: var(--accent); background: var(--surface2); cursor: pointer; }
 .topbar-actions .quick-btn { font-family: inherit; }
@@ -59,9 +67,10 @@ body {
   padding: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
 }
 .nav-btn {
-  padding: 7px 14px; font-size: 0.78rem; font-weight: 500; font-family: inherit;
+  padding: 10px 14px; min-height: 44px; font-size: 0.78rem; font-weight: 500; font-family: inherit;
   background: transparent; border: none; border-radius: 6px; color: var(--muted);
   cursor: pointer; transition: color .15s, background .15s;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
 }
 .nav-btn:hover { color: var(--text); background: var(--surface2); }
 .nav-btn.active { color: #fff; background: var(--accent); }
@@ -84,6 +93,14 @@ body {
 /* —— Grid layout —— */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 1024px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .analisis-heroes-grid { grid-template-columns: 1fr; }
+  .topbar-actions { margin-left: 0; width: 100%; }
+  .topbar-brand h1 { font-size: 1rem; }
+  .embudo-viewer { min-height: 60vh; }
+  .embudo-frame { min-height: 50vh; }
+}
 @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
 
 .card {
@@ -351,6 +368,13 @@ const ACCENT = '#58a6ff';
 const FONT = { family: 'Inter', size: 11 };
 
 function initCharts(D) {
+  if (typeof Chart === 'undefined') {
+    document.querySelectorAll('.chart-box').forEach(el => {
+      el.innerHTML = '<p class="empty">Gráficos no disponibles sin conexión a internet.</p>';
+    });
+    return;
+  }
+  try {
   Chart.defaults.color = '#8b949e';
   Chart.defaults.borderColor = '#30363d';
   const tip = {
@@ -397,6 +421,9 @@ function initCharts(D) {
       },
     },
   });
+  } catch (e) {
+    console.warn('Charts no disponibles', e);
+  }
 }
 
 function showView(v) {

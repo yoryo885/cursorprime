@@ -1,7 +1,7 @@
 {
   "version": 1,
   "nombre": "Centro de control prime",
-  "generado_at": "2026-06-29T03:55:28.555662+00:00",
+  "generado_at": "2026-06-29T21:21:56.178420+00:00",
   "resumen": {
     "analisis": 3,
     "radar_corridas": 3,
@@ -16,7 +16,7 @@
     "packs_contenido": 3,
     "lotes_prompts": 2,
     "skills_generadas": 13,
-    "skills_instaladas": 27,
+    "skills_instaladas": 0,
     "proyectos_activos": 9,
     "carpetas_total": 14,
     "modulos_hecho": 6,
@@ -159,36 +159,6 @@
     "items": {
       "pendientes": [
         {
-          "id": "idea-b07c0c4f",
-          "titulo": "Enlace investigación → evaluar-idea → construir",
-          "categoria": "meta"
-        },
-        {
-          "id": "idea-d2be9441",
-          "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
-          "categoria": "marketing"
-        },
-        {
-          "id": "idea-d8e4778a",
-          "titulo": "Enlace investigación → evaluar-idea → construir",
-          "categoria": "meta"
-        },
-        {
-          "id": "idea-6bfe0201",
-          "titulo": "Pack promocional automático post-investigación",
-          "categoria": "visual"
-        },
-        {
-          "id": "idea-fe081144",
-          "titulo": "Radar de nichos KDP desde YouTube semanal",
-          "categoria": "informacion"
-        },
-        {
-          "id": "idea-d30bf617",
-          "titulo": "Pack promocional automático post-investigación",
-          "categoria": "visual"
-        },
-        {
           "id": "idea-1cef147d",
           "titulo": "Empaquetar pipeline como producto vendible",
           "categoria": "nuevo_proyecto"
@@ -199,9 +169,9 @@
           "categoria": "nuevo_proyecto"
         },
         {
-          "id": "idea-b3202b8c",
-          "titulo": "Radar de nichos KDP desde YouTube semanal",
-          "categoria": "informacion"
+          "id": "idea-6bfe0201",
+          "titulo": "Pack promocional automático post-investigación",
+          "categoria": "visual"
         },
         {
           "id": "idea-74de2741",
@@ -217,19 +187,49 @@
           "id": "idea-9b1afa2f",
           "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
           "categoria": "marketing"
+        },
+        {
+          "id": "idea-b07c0c4f",
+          "titulo": "Enlace investigación → evaluar-idea → construir",
+          "categoria": "meta"
+        },
+        {
+          "id": "idea-b3202b8c",
+          "titulo": "Radar de nichos KDP desde YouTube semanal",
+          "categoria": "informacion"
+        },
+        {
+          "id": "idea-d2be9441",
+          "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
+          "categoria": "marketing"
+        },
+        {
+          "id": "idea-d30bf617",
+          "titulo": "Pack promocional automático post-investigación",
+          "categoria": "visual"
+        },
+        {
+          "id": "idea-d8e4778a",
+          "titulo": "Enlace investigación → evaluar-idea → construir",
+          "categoria": "meta"
+        },
+        {
+          "id": "idea-fe081144",
+          "titulo": "Radar de nichos KDP desde YouTube semanal",
+          "categoria": "informacion"
         }
       ],
       "aprobadas": [],
       "implementadas": [
         {
-          "id": "idea-8201d58d",
-          "titulo": "Enlace investigación → evaluar-idea → construir",
-          "categoria": "meta"
-        },
-        {
           "id": "idea-4f897bfa",
           "titulo": "Pack promocional automático post-investigación",
           "categoria": "visual"
+        },
+        {
+          "id": "idea-8201d58d",
+          "titulo": "Enlace investigación → evaluar-idea → construir",
+          "categoria": "meta"
         },
         {
           "id": "idea-86066e0f",
@@ -525,35 +525,7 @@
       "tipo": "capacidad"
     }
   ],
-  "skills_instaladas": [
-    "analisis-de-proyectos",
-    "audit-marketing",
-    "captions-redes",
-    "centro-de-control-prime",
-    "copy-linkedin",
-    "creador-de-prompts",
-    "creador-de-skills",
-    "crear-pipeline",
-    "cursorprime-router",
-    "evaluar-idea",
-    "find-skills",
-    "gestion-proyecto",
-    "guion-a-video",
-    "hooks-redes",
-    "landing-lanzamiento",
-    "lluvia-de-ideas",
-    "market-audit",
-    "market-competitors",
-    "market-funnel",
-    "market-proposal",
-    "market-report-pdf",
-    "pdf-resumidor",
-    "pipeline-project-creator",
-    "project-lens",
-    "resumidor-kdp",
-    "thumbnail-social",
-    "whatsapp-marketing"
-  ],
+  "skills_instaladas": [],
   "flujo": [
     {
       "paso": 1,
@@ -685,7 +657,6 @@
       "tipo": "pipeline",
       "has_cli": true,
       "subcarpetas": [
-        "config",
         "ejemplos de pdf",
         "libros",
         "logs",
@@ -782,7 +753,7 @@
       "capa": "creador",
       "estado": "parcial",
       "avance_pct": 85,
-      "hecho_count": 9,
+      "hecho_count": 8,
       "checks_total": 9,
       "pendientes": [
         "Síntesis con LLM (hoy heurística)",
@@ -988,7 +959,7 @@
     "falta": 0
   },
   "analisis_ecosistema": {
-    "generado_at": "2026-06-29T03:55:28.545835+00:00",
+    "generado_at": "2026-06-29T21:21:56.177625+00:00",
     "avance_global": 90,
     "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Marketing Audit**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
     "capas": [
@@ -1627,7 +1598,7 @@
     }
   },
   "viabilidad_proyectos": {
-    "generado_at": "2026-06-29T03:55:28.555599+00:00",
+    "generado_at": "2026-06-29T21:21:56.178397+00:00",
     "total": 16,
     "capas": [
       {
