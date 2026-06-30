@@ -252,7 +252,7 @@ def _embudo_mini(embudo: list[dict], *, href_prefix: str = "../", index_path: st
           <span style="text-align:right;color:var(--accent)">{pct}%</span>
         </div>"""
     idx = _href(href_prefix, index_path)
-    footer = f'<p class="embudo-mini-foot"><button type="button" class="link-btn" data-view="embudo">Ver plan producción →</button></p>' if index_path else ""
+    footer = f'<p class="embudo-mini-foot"><button type="button" class="link-btn" data-view="embudo">Ver presencia digital →</button></p>' if index_path else ""
     return f'<div class="embudo-mini">{rows}</div>{footer}'
 
 
@@ -261,7 +261,7 @@ def _embudo_produccion(plan: dict) -> str:
         return ""
     intro = escape(plan.get("intro", ""))
     cliente = escape(plan.get("cliente", "default"))
-    titulo = escape(plan.get("titulo", "Plan de producción"))
+    titulo = escape(plan.get("titulo", "Presencia digital"))
     bloques = ""
     for p in plan["pasos"]:
         apps = "".join(f'<span class="prod-app">{escape(a)}</span>' for a in p.get("apps", []))
@@ -315,7 +315,7 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str, produ
         for i, e in enumerate(embudo)
     )
     pendientes = _embudo_produccion(produccion or {})
-    prod_titulo = escape((produccion or {}).get("titulo", "Plan de producción"))
+    prod_titulo = escape((produccion or {}).get("titulo", "Presencia digital"))
     steps_json = json.dumps(step_urls, ensure_ascii=False).replace("</", "<\\/")
     return f"""
     <div id="embudo-shell" class="embudo-shell" data-index-url="{escape(idx)}" data-steps="{escape(steps_json)}">
@@ -344,7 +344,7 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str, produ
             <a id="embudo-external" class="embudo-tool embudo-tool-link" href="#" target="_blank" rel="noopener">Nueva pestaña ↗</a>
           </div>
         </div>
-        <iframe id="embudo-frame" class="embudo-frame" title="Vista previa embudo comercial"></iframe>
+        <iframe id="embudo-frame" class="embudo-frame" title="Vista previa presencia digital"></iframe>
       </div>
     </div>"""
 
@@ -480,7 +480,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
         <p>cursorprime · actualizado {gen}</p>
       </div>
       <div class="topbar-actions">
-        <button type="button" class="quick-btn" data-view="embudo">Plan producción</button>
+        <button type="button" class="quick-btn" data-view="embudo">Presencia digital</button>
         <button type="button" class="quick-btn" data-view="rentabilidad">Rentabilidad</button>
         <code>panel_main.py refresh</code>
       </div>
@@ -546,10 +546,10 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
       </div>
     </section>
 
-    <!-- EMBUDO / PLAN PRODUCCIÓN -->
+    <!-- PRESENCIA DIGITAL -->
     <section id="view-embudo" class="view">
       <div class="card">
-        <div class="card-head"><h2>Embudo comercial — Clínica Sol</h2><span class="hint">Demo + plan de producción</span></div>
+        <div class="card-head"><h2>Presencia digital — Clínica Sol</h2><span class="hint">4 pasos · informe → propuesta → web → WhatsApp</span></div>
         <div class="card-body">{embudo_full}</div>
       </div>
     </section>
@@ -566,7 +566,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     <section id="view-sistema" class="view">
       <div class="grid-2">
         <div class="card">
-          <div class="card-head"><h2>Embudo comercial</h2><span class="hint">demo clinica-sol</span></div>
+          <div class="card-head"><h2>Presencia digital</h2><span class="hint">demo clinica-sol</span></div>
           <div class="card-body">{_embudo_mini(embudo, href_prefix=href_prefix, index_path=embudo_index)}</div>
         </div>
         <div class="card">

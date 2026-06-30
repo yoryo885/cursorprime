@@ -171,7 +171,7 @@ def prepare_panel_data(inv: dict) -> dict:
         "modulos": "Tu fábrica (creador de proyectos) separada de los pipelines que ya construiste.",
         "analisis_proyectos": "Viabilidad por proyecto — YouTube + web, mismo formato que el radar KDP.",
         "carpetas": "Árbol de carpetas principales del ecosistema.",
-        "embudo": "Embudo comercial local: informe → propuesta → web → WhatsApp.",
+        "embudo": "Presencia digital: informe → propuesta → web → WhatsApp.",
         "clientes_tab": "Clientes con carpeta propia y proyectos activos.",
     }
 
