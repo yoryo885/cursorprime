@@ -244,6 +244,7 @@ def prepare_panel_data(inv: dict) -> dict:
         "modulos_resumen": inv.get("modulos_resumen", {}),
         "embudo_comercial": inv.get("embudo_comercial", []),
         "embudo_index": inv.get("embudo_index", ""),
+        "embudo_produccion": inv.get("embudo_produccion", {}),
         "rentabilidad": inv.get("rentabilidad", {}),
         "clientes": inv.get("clientes", []),
         "analisis_detalle": inv.get("analisis_detalle", []),
