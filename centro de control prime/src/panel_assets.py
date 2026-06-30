@@ -267,6 +267,35 @@ body {
 .embudo-step-meta { font-size: 0.65rem; }
 .embudo-pendientes { margin: 0; padding-left: 18px; font-size: 0.75rem; color: var(--muted); }
 .embudo-pendientes li { margin-bottom: 4px; }
+.prod-plan { display: grid; gap: 10px; }
+.prod-paso {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.prod-paso.done { border-color: rgba(63,185,80,0.35); }
+.prod-paso-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.prod-paso-head h3 { margin: 0; font-size: 0.82rem; font-weight: 600; flex: 1; }
+.prod-paso-progress { font-size: 0.68rem; color: var(--muted); }
+.prod-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; line-height: 1.45; }
+.prod-meta strong { color: var(--text); font-weight: 600; }
+.prod-apps { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+.prod-app {
+  font-size: 0.65rem; padding: 2px 8px; border-radius: 4px;
+  background: rgba(88,166,255,0.12); color: var(--accent); border: 1px solid rgba(88,166,255,0.25);
+}
+.prod-checklist { list-style: none; margin: 0; padding: 0; }
+.prod-checklist li { margin-bottom: 6px; }
+.prod-check {
+  display: flex; align-items: flex-start; gap: 10px; font-size: 0.75rem; color: var(--text);
+  cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.prod-check input {
+  width: 18px; height: 18px; min-width: 18px; margin-top: 1px; accent-color: var(--accent); cursor: pointer;
+}
+.prod-check.done span { color: var(--muted); text-decoration: line-through; }
+.prod-intro { font-size: 0.75rem; color: var(--muted); margin: 0 0 12px; line-height: 1.45; }
 .embudo-steps {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
 }
@@ -592,6 +621,38 @@ function initEmbudo() {
   });
 }
 
+function initEmbudoChecklist() {
+  const root = document.getElementById('embudo-produccion');
+  if (!root) return;
+  const key = 'cursorprime_embudo_prod_' + (root.dataset.cliente || 'default');
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch (_) { saved = {}; }
+
+  function updatePasoProgress(pasoEl) {
+    const checks = pasoEl.querySelectorAll('.prod-check input');
+    const done = [...checks].filter(c => c.checked).length;
+    const total = checks.length;
+    const prog = pasoEl.querySelector('.prod-paso-progress');
+    if (prog) prog.textContent = done + '/' + total;
+    pasoEl.classList.toggle('done', total > 0 && done === total);
+  }
+
+  root.querySelectorAll('.prod-paso').forEach(pasoEl => {
+    pasoEl.querySelectorAll('.prod-check input').forEach(inp => {
+      const id = inp.dataset.taskId;
+      if (id && saved[id]) inp.checked = true;
+      inp.closest('.prod-check')?.classList.toggle('done', inp.checked);
+      inp.addEventListener('change', () => {
+        if (id) saved[id] = inp.checked;
+        localStorage.setItem(key, JSON.stringify(saved));
+        inp.closest('.prod-check')?.classList.toggle('done', inp.checked);
+        updatePasoProgress(pasoEl);
+      });
+    });
+    updatePasoProgress(pasoEl);
+  });
+}
+
 function initNav() {
   document.querySelectorAll('.nav-btn, .quick-btn, .link-btn[data-view]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -647,6 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCharts(D);
   initNav();
   initEmbudo();
+  initEmbudoChecklist();
   initSubnav('operaciones');
   initFlujo();
   initExpandRows();

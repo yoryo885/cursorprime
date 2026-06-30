@@ -313,6 +313,13 @@ def embudo_index_path() -> str:
     return "clientes/clinica-sol/proyectos/audit-inicial/entregables/index.html"
 
 
+def embudo_produccion() -> dict:
+    path = CURSORPRIME / "clientes/clinica-sol/proyectos/audit-inicial/embudo-produccion.json"
+    if path.exists():
+        return load_json(path)
+    return {}
+
+
 def scan_carpetas() -> list[dict]:
     skip = frozenset({".git", ".cursor", "vendor", "node_modules", "__pycache__", ".venv"})
     tipo_map = {

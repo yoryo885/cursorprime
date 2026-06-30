@@ -252,11 +252,48 @@ def _embudo_mini(embudo: list[dict], *, href_prefix: str = "../", index_path: st
           <span style="text-align:right;color:var(--accent)">{pct}%</span>
         </div>"""
     idx = _href(href_prefix, index_path)
-    footer = f'<p class="embudo-mini-foot"><button type="button" class="link-btn" data-view="embudo">Ver embudo completo →</button></p>' if index_path else ""
+    footer = f'<p class="embudo-mini-foot"><button type="button" class="link-btn" data-view="embudo">Ver plan producción →</button></p>' if index_path else ""
     return f'<div class="embudo-mini">{rows}</div>{footer}'
 
 
-def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str) -> str:
+def _embudo_produccion(plan: dict) -> str:
+    if not plan or not plan.get("pasos"):
+        return ""
+    intro = escape(plan.get("intro", ""))
+    cliente = escape(plan.get("cliente", "default"))
+    titulo = escape(plan.get("titulo", "Plan de producción"))
+    bloques = ""
+    for p in plan["pasos"]:
+        apps = "".join(f'<span class="prod-app">{escape(a)}</span>' for a in p.get("apps", []))
+        tareas = ""
+        for t in p.get("tareas", []):
+            tid = escape(t.get("id", ""))
+            texto = escape(t.get("texto", ""))
+            tareas += f"""
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="{tid}" />
+                <span>{texto}</span>
+              </label>
+            </li>"""
+        bloques += f"""
+        <div class="prod-paso" data-paso="{p.get('paso', 0)}">
+          <div class="prod-paso-head">
+            <h3>Paso {p.get('paso', '')} · {escape(p.get('nombre', ''))}</h3>
+            <span class="prod-paso-progress">0/0</span>
+          </div>
+          <div class="prod-apps">{apps}</div>
+          <p class="prod-meta"><strong>Conexión:</strong> {escape(p.get('flujo', ''))}</p>
+          <ul class="prod-checklist">{tareas}</ul>
+        </div>"""
+    return f"""
+    <div id="embudo-produccion" class="prod-plan" data-cliente="{cliente}">
+      <p class="prod-intro">{intro}</p>
+      {bloques}
+    </div>"""
+
+
+def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str, produccion: dict | None = None) -> str:
     steps = ""
     step_urls: list[dict] = []
     for e in embudo:
@@ -277,9 +314,8 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str) -> st
         + ('<span class="embudo-flow-arrow">→</span>' if i < len(embudo) - 1 else "")
         for i, e in enumerate(embudo)
     )
-    pendientes = "".join(
-        f"<li><strong>Paso {e['paso']}:</strong> {escape(e.get('falta', ''))}</li>" for e in embudo if e.get("falta")
-    )
+    pendientes = _embudo_produccion(produccion or {})
+    prod_titulo = escape((produccion or {}).get("titulo", "Plan de producción"))
     steps_json = json.dumps(step_urls, ensure_ascii=False).replace("</", "<\\/")
     return f"""
     <div id="embudo-shell" class="embudo-shell" data-index-url="{escape(idx)}" data-steps="{escape(steps_json)}">
@@ -293,8 +329,8 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str) -> st
         <div class="embudo-flow">{flow}</div>
         <div class="embudo-steps">{steps}</div>
         <div class="card" style="margin-top:12px">
-          <div class="card-head"><h2>Para producción</h2><span class="hint">Qué falta en cada paso</span></div>
-          <div class="card-body"><ul class="embudo-pendientes">{pendientes}</ul></div>
+          <div class="card-head"><h2>{prod_titulo}</h2><span class="hint">Apps · conexión · checklist</span></div>
+          <div class="card-body">{pendientes}</div>
         </div>
       </div>
       <div id="embudo-viewer" class="embudo-viewer" hidden>
@@ -417,7 +453,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     viab_heroes = _viabilidad_heroes(viab, href_prefix=href_prefix)
     embudo = d.get("embudo_comercial", [])
     embudo_index = d.get("embudo_index", "")
-    embudo_full = _embudo_view(embudo, href_prefix=href_prefix, index_path=embudo_index)
+    embudo_full = _embudo_view(embudo, href_prefix=href_prefix, index_path=embudo_index, produccion=d.get("embudo_produccion"))
     rentabilidad = _rentabilidad_view(d.get("rentabilidad", {}))
 
     idea_cols = [("titulo", "Idea"), ("categoria", "Tipo")]
@@ -444,7 +480,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
         <p>cursorprime · actualizado {gen}</p>
       </div>
       <div class="topbar-actions">
-        <button type="button" class="quick-btn" data-view="embudo">Embudo demo</button>
+        <button type="button" class="quick-btn" data-view="embudo">Plan producción</button>
         <button type="button" class="quick-btn" data-view="rentabilidad">Rentabilidad</button>
         <code>panel_main.py refresh</code>
       </div>
@@ -510,10 +546,10 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
       </div>
     </section>
 
-    <!-- EMBUDO DEMO -->
+    <!-- EMBUDO / PLAN PRODUCCIÓN -->
     <section id="view-embudo" class="view">
       <div class="card">
-        <div class="card-head"><h2>Embudo comercial — Clínica Sol</h2><span class="hint">4 entregables HTML · DEMO</span></div>
+        <div class="card-head"><h2>Embudo comercial — Clínica Sol</h2><span class="hint">Demo + plan de producción</span></div>
         <div class="card-body">{embudo_full}</div>
       </div>
     </section>

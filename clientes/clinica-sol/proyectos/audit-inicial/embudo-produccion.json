@@ -1,0 +1,61 @@
+{
+  "cliente": "clinica-sol",
+  "proyecto": "audit-inicial",
+  "titulo": "Plan de producción — Presencia Local",
+  "intro": "Apps cursorprime conectadas en cadena. Marca cada tarea al completarla (se guarda en tu navegador).",
+  "pasos": [
+    {
+      "paso": 1,
+      "nombre": "Informe de marketing",
+      "apps": ["marketing-audit", "audit-marketing", "Playwright (opcional)"],
+      "flujo": "URL del negocio → marketing_audit_main.py → HTML paso-1-informe",
+      "tareas": [
+        {"id": "p1-url", "texto": "Conseguir URL real del negocio"},
+        {"id": "p1-env", "texto": "Configurar .env (MOCK_FETCH=false si audit real)"},
+        {"id": "p1-run", "texto": "Correr: python3 marketing_audit_main.py audit --url {url}"},
+        {"id": "p1-html", "texto": "Copiar output a entregables/paso-1-informe/"},
+        {"id": "p1-send", "texto": "Enviar informe al cliente"},
+        {"id": "p1-pago", "texto": "Cliente paga o confirma interés"}
+      ]
+    },
+    {
+      "paso": 2,
+      "nombre": "Propuesta comercial",
+      "apps": ["market-proposal", "market-report-pdf", "creador de prompts"],
+      "flujo": "audit.json (paso 1) → propuesta HTML → paso-2-propuesta",
+      "tareas": [
+        {"id": "p2-audit", "texto": "Importar hallazgos del informe (audit.json)"},
+        {"id": "p2-planes", "texto": "Definir 3 planes con precios reales"},
+        {"id": "p2-html", "texto": "Generar/actualizar paso-2-propuesta/index.html"},
+        {"id": "p2-pipe", "texto": "Encadenar pipeline: informe → propuesta automático"},
+        {"id": "p2-send", "texto": "Enviar propuesta tras respuesta del cliente"}
+      ]
+    },
+    {
+      "paso": 3,
+      "nombre": "Web presencia",
+      "apps": ["landing-lanzamiento", "hosting (Vercel/Netlify)", "Google Business Profile"],
+      "flujo": "Propuesta aceptada → landing paso-3-web → deploy → enlace en GBP",
+      "tareas": [
+        {"id": "p3-dominio", "texto": "Registrar dominio + hosting"},
+        {"id": "p3-deploy", "texto": "Deploy paso-3-web (SSL activo)"},
+        {"id": "p3-cta", "texto": "CTA WhatsApp y formulario funcionando"},
+        {"id": "p3-gbp", "texto": "Google Business Profile con URL de la web"},
+        {"id": "p3-test", "texto": "Probar móvil + velocidad de carga"}
+      ]
+    },
+    {
+      "paso": 4,
+      "nombre": "Bot WhatsApp",
+      "apps": ["whatsapp-marketing", "Meta Business API", "webhook"],
+      "flujo": "Web live → número WA Business → API + webhook → bot agenda citas",
+      "tareas": [
+        {"id": "p4-meta", "texto": "Cuenta Meta Business verificada"},
+        {"id": "p4-app", "texto": "App Meta + token en .env del proyecto"},
+        {"id": "p4-webhook", "texto": "Webhook configurado (URL pública)"},
+        {"id": "p4-flujos", "texto": "Flujos: saludo, agendar, derivar a humano"},
+        {"id": "p4-piloto", "texto": "Piloto con 1 cliente real"}
+      ]
+    }
+  ]
+}
