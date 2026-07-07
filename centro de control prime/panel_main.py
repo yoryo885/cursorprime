@@ -67,6 +67,76 @@ def cmd_resumen(_args) -> int:
     return 0
 
 
+def cmd_serve(args) -> int:
+    import re
+    import shutil
+    import subprocess
+    import time
+    from urllib.parse import quote
+
+    if args.refresh:
+        cmd_refresh(args)
+
+    port = args.port
+    root = CURSORPRIME
+    panel_path = quote("centro de control prime/output/panel.html", safe="/")
+    local = f"http://127.0.0.1:{port}/{panel_path}"
+
+    # HTTP server
+    if subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", local], capture_output=True, text=True).stdout.strip() != "200":
+        subprocess.Popen(
+            [sys.executable, "-m", "http.server", str(port), "--bind", "0.0.0.0"],
+            cwd=root,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+        for _ in range(20):
+            if subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", local], capture_output=True, text=True).stdout.strip() == "200":
+                break
+            time.sleep(0.25)
+
+    cloudflared = shutil.which("cloudflared") or "/tmp/cloudflared"
+    if not Path(cloudflared).exists():
+        print("cloudflared no encontrado. Instálalo o usa el enlace local en la misma red.")
+        print(f"  Local: {local}")
+        return 1
+
+    log = OUTPUT_DIR / "cloudflared.log"
+    url_file = OUTPUT_DIR / "panel-public-url.txt"
+    subprocess.Popen(
+        [cloudflared, "tunnel", "--url", f"http://127.0.0.1:{port}", "--no-autoupdate"],
+        stdout=open(log, "w", encoding="utf-8"),
+        stderr=subprocess.STDOUT,
+        start_new_session=True,
+    )
+
+    public = ""
+    for _ in range(40):
+        time.sleep(0.5)
+        if log.exists():
+            text = log.read_text(encoding="utf-8", errors="ignore")
+            m = re.search(r"https://[a-z0-9-]+\.trycloudflare\.com", text)
+            if m:
+                public = m.group(0)
+                break
+
+    if not public:
+        print("Servidor local activo, pero el túnel público tardó demasiado.")
+        print(f"  Local: {local}")
+        print(f"  Log: {log}")
+        return 1
+
+    public_panel = f"{public}/{panel_path}"
+    url_file.write_text(public_panel + "\n", encoding="utf-8")
+    print("Centro de control — enlace público listo")
+    print(f"  Android / iPad: {public_panel}")
+    print(f"  Local: {local}")
+    print(f"  Guardado en: {url_file}")
+    print("  Nota: el enlace trycloudflare.com es temporal mientras corra este proceso.")
+    return 0
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description="Centro de control prime — panel de inventario cursorprime")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -80,6 +150,10 @@ def main() -> int:
     v.add_argument("--refresh", action="store_true", help="Regenerar panel al terminar")
     v.set_defaults(func=cmd_viabilidad)
     sub.add_parser("resumen", help="Mostrar resumen del último inventario").set_defaults(func=cmd_resumen)
+    s = sub.add_parser("serve", help="Servir panel local + enlace público (Android/iPad)")
+    s.add_argument("--port", type=int, default=8765, help="Puerto HTTP local (default 8765)")
+    s.add_argument("--refresh", action="store_true", help="Regenerar panel antes de servir")
+    s.set_defaults(func=cmd_serve)
     args = p.parse_args()
     return args.func(args)
 
