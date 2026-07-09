@@ -1,0 +1,104 @@
+{
+  "slug": "portafolio-productos-vendibles",
+  "titulo": "Portafolio — productos digitales viables para armar y vender",
+  "problema": "Hay varias piezas en cursorprime (audit, embudo, web, WhatsApp) pero falta un portafolio claro: qué se vende, a quién, en qué orden y con qué Plan B cuando Meta, el scraper o el dominio frenan el proyecto.",
+  "cliente_objetivo": "Negocios locales Chile/LATAM — clínicas, dentistas, restaurantes, estética, ferreterías, servicios con plata pero presencia digital floja",
+  "modelo_negocio": "Portafolio de servicios encadenados (no SaaS genérico). Cada producto es entregable HTML + checklist. Prospección → informe → propuesta → web → bot.",
+  "mercado": "CL",
+  "moneda": "CLP",
+  "tipo_negocio": "servicio",
+  "marca": "Presencia digital / Presencia Local",
+  "productos_vendibles": [
+    {
+      "slug": "presencia-digital-360",
+      "nombre": "Presencia digital (paquete completo)",
+      "pasos": ["Informe marketing", "Propuesta 3 planes", "Web landing", "Bot WhatsApp"],
+      "ticket_estimado_clp": "80000-180000/mes",
+      "estado": "demo listo (clinica-sol)",
+      "viable": true,
+      "notas": "Embudo 4 pasos en panel + entregables HTML. Plan B en cada paso."
+    },
+    {
+      "slug": "audit-marketing-one-shot",
+      "nombre": "Informe de marketing (solo paso 1)",
+      "pasos": ["Audit / informe manual"],
+      "ticket_estimado_clp": "80000-120000 one-shot",
+      "estado": "pipeline marketing-audit hecho",
+      "viable": true,
+      "notas": "Gancho de venta. Si script falla → plantilla manual (web + Maps + WA)."
+    },
+    {
+      "slug": "web-presencia-basica",
+      "nombre": "Web + Google Business (paso 3)",
+      "pasos": ["Landing", "Deploy", "GBP"],
+      "ticket_estimado_clp": "120000-200000",
+      "estado": "demo HTML",
+      "viable": true,
+      "notas": "Plan B: subdominio tuyo primero; dominio cliente después."
+    },
+    {
+      "slug": "whatsapp-bot-local",
+      "nombre": "Bot WhatsApp (paso 4)",
+      "pasos": ["Ruta A Meta API", "Ruta B Evolution API"],
+      "ticket_estimado_clp": "50000+/mes add-on",
+      "estado": "demo simulada",
+      "viable": "condicional",
+      "notas": "Meta congela negocios informales. Evolution = Plan B."
+    },
+    {
+      "slug": "prospeccion-maps-bot",
+      "nombre": "Bot prospección — clientes que necesitan Presencia digital",
+      "pasos": ["Rubro + ciudad", "Buscar en Maps/API", "Filtrar señales débiles", "leads.json"],
+      "ticket_estimado_clp": "uso interno (no se vende)",
+      "estado": "idea — no construido",
+      "viable": "condicional",
+      "notas": "Paso 0 antes del informe. Google Places API recomendado; scraping frágil."
+    }
+  ],
+  "cuellos_botella": [
+    {"riesgo": "Meta Business verificación", "paso": 4, "plan_b": "Evolution API / Baileys"},
+    {"riesgo": "Audit script falla", "paso": 1, "plan_b": "Informe manual plantilla"},
+    {"riesgo": "Cliente no compra dominio", "paso": 3, "plan_b": "Subdominio temporal presencialocal.cl"}
+  ],
+  "paginas_plataformas_necesarias": [
+    "Web del cliente",
+    "Google Business (business.google.com)",
+    "WhatsApp del negocio",
+    "Vercel o Netlify",
+    "Registrador dominio",
+    "Meta Business (ruta A)",
+    "Evolution API (ruta B)"
+  ],
+  "rubros_prioridad": [
+    "Clínicas / dentistas / veterinarias",
+    "Restaurantes / cafeterías",
+    "Estética / peluquería",
+    "Ferreterías / talleres / hogar",
+    "Gimnasios / entrenadores"
+  ],
+  "hipotesis": [
+    "Portafolio claro vende más que servicios sueltos sin nombre",
+    "Paso 0 (bot leads) alimenta paso 1 sin buscar clientes a mano",
+    "Plan B en cada paso evita que el embudo se congele",
+    "1 informe gratis abre conversación; paquete 360 cierra retainer"
+  ],
+  "mvp": [
+    "Cerrar portafolio en 1 página (PDF o HTML índice)",
+    "3 productos con precio en propuesta (clinica-sol demo)",
+    "Checklist Presencia digital en panel (hecho)",
+    "Piloto: 1 cliente real paso 1",
+    "Opcional: evaluar paso 0 bot Maps con evaluar-idea"
+  ],
+  "relacionadas": [
+    "auditorias-locales",
+    "presencia-digital-locales",
+    "wasap-pymes"
+  ],
+  "cursorprime": {
+    "panel": "centro de control prime — Presencia digital",
+    "cliente_demo": "clientes/clinica-sol/proyectos/audit-inicial",
+    "checklist": "embudo-produccion.json",
+    "evaluar": "python3 evaluar.py ideas/portafolio-productos-vendibles.json"
+  },
+  "notas": "Guardado 2026-07-09. Idea madre: portafolio de lo que ya se puede armar y vender. No construir paso 0 bot hasta veredicto evaluar-idea o usuario diga construye."
+}
