@@ -1,0 +1,32 @@
+{
+  "slug": "evaluador-matices-factibilidad",
+  "titulo": "Mejorar evaluador — no contradecir técnico vs comercial",
+  "estado": "por_evaluar",
+  "problema_detectado": "El agente dijo 'imposible recaudar datos de clientes' y luego 'sí se puede con un bot'. Misma pregunta, respuestas opuestas sin matiz.",
+  "causa_raiz": [
+    "No se distingue factibilidad técnica de factibilidad comercial/legal",
+    "No hay regla en evaluador para respuestas con matices (API sí, lista de contactos no mágica)",
+    "Ideas y mejoras en carpetas distintas sin protocolo único"
+  ],
+  "mejoras_propuestas": [
+    {
+      "donde": "EVALUADOR.md + evaluator.py",
+      "que": "Campos: factibilidad_tecnica, factibilidad_comercial, limites_legales, plan_b",
+      "ejemplo": "Bot Maps: técnico=viable con Places API; comercial=requiere outreach humano; legal=ToS Google"
+    },
+    {
+      "donde": "meta/router.json + reglas agente",
+      "que": "Plantilla respuesta: 'Qué sí / Qué no / Qué hace falta / Plan B'"
+    },
+    {
+      "donde": "ideas de proyectos/mejoras/",
+      "que": "Cola de mejoras al sistema (esta carpeta) separada de ideas de negocio"
+    },
+    {
+      "donde": "evaluar-idea skill",
+      "que": "Si idea menciona datos externos, obligar checklist: fuente API, costo, límites, mock"
+    }
+  ],
+  "regla_nueva_sugerida": "Nunca decir 'imposible' sin especificar capa: ¿legal? ¿API? ¿sin herramienta? ¿sin trabajo humano?",
+  "siguiente_paso": "Aprobar mejora → actualizar EVALUADOR.md y evaluator.py con campos duales"
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "prospeccion-maps-bot",
+  "titulo": "Bot prospección — clientes viables para Presencia digital",
+  "problema": "Buscar manualmente en Maps quién necesita Presencia digital es lento. Falta Paso 0 automatizado antes del informe.",
+  "cliente_objetivo": "Uso interno — alimenta ventas Presencia digital",
+  "modelo_negocio": "Herramienta interna; no se vende. Output: leads.json con score de viabilidad.",
+  "mercado": "CL",
+  "tipo_negocio": "herramienta_interna",
+  "pipeline": "prospeccion-locales/prospeccion_main.py",
+  "cli": "python3 prospeccion_main.py buscar --rubro dentista --ciudad Providencia [--mock|--places]",
+  "hipotesis": [
+    "Filtrar por señales débiles (sin web, pocas reseñas) prioriza mejor que listas genéricas",
+    "Places API es estable; scraping Maps no",
+    "El bot encuentra candidatos; el humano cierra por WhatsApp"
+  ],
+  "limites": {
+    "tecnico": "viable con Google Places API o modo mock demo",
+    "comercial": "no entrega clientes que ya pagaron — solo candidatos",
+    "legal": "respetar ToS Google; no scrape masivo sin API"
+  },
+  "relacionadas": ["portafolio-productos-vendibles", "auditorias-locales", "presencia-digital-locales"],
+  "estado": "en_construccion",
+  "notas": "Paso 0 del portafolio Presencia digital. Evaluar después del MVP mock."
+}

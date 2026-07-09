@@ -1,0 +1,34 @@
+{
+  "slug": "presencia-digital-plan-b",
+  "titulo": "Mejoras Plan B — Presencia digital",
+  "estado": "por_evaluar",
+  "origen": "Cuellos de botella reales: Meta, audit script, dominio cliente",
+  "fecha": "2026-07-09",
+  "ya_en_panel": true,
+  "archivo_checklist": "clientes/clinica-sol/proyectos/audit-inicial/embudo-produccion.json",
+  "mejoras_propuestas": [
+    {
+      "paso": 1,
+      "problema": "marketing_audit_main.py puede fallar por scraping",
+      "plan_b": "Informe manual con plantilla (web + Maps + WhatsApp)",
+      "estado_implementacion": "en_checklist_panel",
+      "pendiente": "Plantilla HTML informe manual dedicada"
+    },
+    {
+      "paso": 3,
+      "problema": "Cliente tarda en comprar dominio / DNS confuso",
+      "plan_b": "Subdominio temporal presencialocal.cl antes del dominio propio",
+      "estado_implementacion": "en_checklist_panel",
+      "pendiente": "Script deploy subdominio automático"
+    },
+    {
+      "paso": 4,
+      "problema": "Meta Business verificación congela negocios informales",
+      "plan_b": "Ruta A Meta API vs Ruta B Evolution API",
+      "estado_implementacion": "en_checklist_panel",
+      "pendiente": "Integración Evolution en pipeline WhatsApp"
+    }
+  ],
+  "evaluar_con": "ideas/portafolio-productos-vendibles.json",
+  "siguiente_paso": "Revisar checklist en panel; aprobar mejoras pendientes una por una antes de construir"
+}

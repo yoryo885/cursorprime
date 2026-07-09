@@ -1,0 +1,94 @@
+{
+  "rubro": "dentista",
+  "ciudad": "Providencia",
+  "modo": "mock",
+  "generado_at": "2026-07-09T15:48:03.493331+00:00",
+  "generado_legible": "09/07/2026 15:48 UTC",
+  "total": 5,
+  "viables": 2,
+  "leads": [
+    {
+      "nombre": "Dentista Central Providencia",
+      "direccion": "Av. Principal 100, Providencia",
+      "telefono": "+56912345678",
+      "web": "",
+      "rating": 3.8,
+      "resenas": 6,
+      "maps_url": "https://maps.google.com/?q=mock1",
+      "place_id": "mock-1",
+      "score": 80,
+      "senales": [
+        "sin_web",
+        "pocas_resenas",
+        "rating_bajo",
+        "tiene_telefono"
+      ],
+      "viable": true
+    },
+    {
+      "nombre": "Dentista Familiar",
+      "direccion": "Providencia 800, Providencia",
+      "telefono": "",
+      "web": "",
+      "rating": 3.2,
+      "resenas": 3,
+      "maps_url": "https://maps.google.com/?q=mock4",
+      "place_id": "mock-4",
+      "score": 75,
+      "senales": [
+        "sin_web",
+        "pocas_resenas",
+        "rating_bajo",
+        "sin_telefono"
+      ],
+      "viable": true
+    },
+    {
+      "nombre": "Clínica Dentista Norte",
+      "direccion": "Los Leones 450, Providencia",
+      "telefono": "+56987654321",
+      "web": "https://facebook.com/clinica.demo",
+      "rating": 4.2,
+      "resenas": 18,
+      "maps_url": "https://maps.google.com/?q=mock2",
+      "place_id": "mock-2",
+      "score": 35,
+      "senales": [
+        "solo_red_social",
+        "resenas_medias",
+        "tiene_telefono"
+      ],
+      "viable": false
+    },
+    {
+      "nombre": "Servicios Dentista Express",
+      "direccion": "Mapocho 2200, Providencia",
+      "telefono": "+56222334455",
+      "web": "https://ejemplo-dental-antiguo.cl",
+      "rating": 4.5,
+      "resenas": 42,
+      "maps_url": "https://maps.google.com/?q=mock3",
+      "place_id": "mock-3",
+      "score": 5,
+      "senales": [
+        "tiene_telefono"
+      ],
+      "viable": false
+    },
+    {
+      "nombre": "Centro Dentista Premium",
+      "direccion": "Apoquindo 3000, Providencia",
+      "telefono": "+56911112222",
+      "web": "https://centro-premium.cl",
+      "rating": 4.8,
+      "resenas": 120,
+      "maps_url": "https://maps.google.com/?q=mock5",
+      "place_id": "mock-5",
+      "score": 5,
+      "senales": [
+        "tiene_telefono"
+      ],
+      "viable": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "descripcion": "Mejoras al ecosistema cursorprime — por evaluar antes de implementar",
+  "actualizado": "2026-07-09",
+  "estados": ["por_evaluar", "aprobada", "en_curso", "hecha", "descartada"],
+  "mejoras": [
+    {
+      "slug": "presencia-digital-plan-b",
+      "titulo": "Plan B en Presencia digital (checklist + embudo)",
+      "estado": "por_evaluar",
+      "archivo": "presencia-digital-plan-b.json"
+    },
+    {
+      "slug": "evaluador-matices-factibilidad",
+      "titulo": "Evaluador: separar factibilidad técnica vs comercial",
+      "estado": "por_evaluar",
+      "archivo": "evaluador-matices-factibilidad.json"
+    }
+  ]
+}
