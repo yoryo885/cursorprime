@@ -296,6 +296,13 @@ body {
 }
 .prod-check.done span { color: var(--muted); text-decoration: line-through; }
 .prod-intro { font-size: 0.75rem; color: var(--muted); margin: 0 0 12px; line-height: 1.45; }
+.prod-paginas { margin-bottom: 14px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); }
+.prod-paginas h4 { margin: 0 0 8px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.prod-paginas table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+.prod-paginas th, .prod-paginas td { padding: 5px 6px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.prod-paginas th { color: var(--muted); font-weight: 500; }
+.prod-paginas a { color: var(--accent); }
+.prod-planb { font-size: 0.7rem; color: var(--yellow); margin: 0 0 8px; line-height: 1.4; }
 .embudo-steps {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
 }

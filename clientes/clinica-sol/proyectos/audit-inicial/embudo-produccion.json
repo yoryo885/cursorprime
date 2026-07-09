@@ -2,18 +2,30 @@
   "cliente": "clinica-sol",
   "proyecto": "audit-inicial",
   "titulo": "Presencia digital — checklist",
-  "intro": "Apps cursorprime conectadas en cadena. Marca cada tarea al completarla (se guarda en tu navegador).",
+  "intro": "Marca cada tarea (se guarda en tu navegador). Si algo se traba, usa el Plan B — el embudo no debe detenerse.",
+  "paginas_necesarias": [
+    {"paso": 1, "nombre": "Web del cliente", "url": "URL del negocio", "para_que": "Auditar presencia y contenido"},
+    {"paso": 1, "nombre": "Google Maps / Business", "url": "https://business.google.com", "para_que": "Ficha, reseñas y visibilidad local"},
+    {"paso": 2, "nombre": "WhatsApp del cliente", "url": "wa.me/...", "para_que": "Enviar informe y propuesta"},
+    {"paso": 3, "nombre": "Vercel o Netlify", "url": "https://vercel.com", "para_que": "Hosting de la landing"},
+    {"paso": 3, "nombre": "Registrador de dominio", "url": "https://www.namecheap.com", "para_que": "Dominio propio (o subdominio tuyo primero)"},
+    {"paso": 4, "nombre": "Meta Business (ruta A)", "url": "https://business.facebook.com", "para_que": "API oficial WhatsApp — requiere empresa formal"},
+    {"paso": 4, "nombre": "Evolution API (ruta B)", "url": "https://evolution-api.com", "para_que": "Bot rápido sin burocracia Meta — negocios informales"}
+  ],
   "pasos": [
     {
       "paso": 1,
       "nombre": "Informe de marketing",
-      "apps": ["marketing-audit", "audit-marketing", "Playwright (opcional)"],
-      "flujo": "URL del negocio → marketing_audit_main.py → HTML paso-1-informe",
+      "apps": ["marketing-audit", "audit-marketing", "plantilla manual"],
+      "flujo": "URL → audit automático (o informe manual) → HTML paso-1 → enviar al cliente",
+      "plan_b": "Si el script falla: informe manual con plantilla (web + Maps + WhatsApp).",
       "tareas": [
         {"id": "p1-url", "texto": "Conseguir URL real del negocio"},
-        {"id": "p1-env", "texto": "Configurar .env (MOCK_FETCH=false si audit real)"},
-        {"id": "p1-run", "texto": "Correr: python3 marketing_audit_main.py audit --url {url}"},
-        {"id": "p1-html", "texto": "Copiar output a entregables/paso-1-informe/"},
+        {"id": "p1-maps", "texto": "Revisar Google Maps: ficha, reseñas, horario"},
+        {"id": "p1-wa", "texto": "Probar WhatsApp del negocio (responde / no responde)"},
+        {"id": "p1-run", "texto": "Correr audit: python3 marketing_audit_main.py audit --url {url}"},
+        {"id": "p1-manual", "texto": "Plan B: si audit falla → completar informe manual con plantilla"},
+        {"id": "p1-html", "texto": "Publicar en entregables/paso-1-informe/"},
         {"id": "p1-send", "texto": "Enviar informe al cliente"},
         {"id": "p1-pago", "texto": "Cliente paga o confirma interés"}
       ]
@@ -22,39 +34,45 @@
       "paso": 2,
       "nombre": "Propuesta comercial",
       "apps": ["market-proposal", "market-report-pdf", "creador de prompts"],
-      "flujo": "audit.json (paso 1) → propuesta HTML → paso-2-propuesta",
+      "flujo": "Hallazgos paso 1 → 3 planes con precio → HTML paso-2 → enviar si hay interés",
+      "plan_b": "Propuesta se envía solo si el cliente respondió al informe.",
       "tareas": [
-        {"id": "p2-audit", "texto": "Importar hallazgos del informe (audit.json)"},
+        {"id": "p2-audit", "texto": "Importar hallazgos (audit.json o notas manuales)"},
         {"id": "p2-planes", "texto": "Definir 3 planes con precios reales"},
-        {"id": "p2-html", "texto": "Generar/actualizar paso-2-propuesta/index.html"},
-        {"id": "p2-pipe", "texto": "Encadenar pipeline: informe → propuesta automático"},
-        {"id": "p2-send", "texto": "Enviar propuesta tras respuesta del cliente"}
+        {"id": "p2-html", "texto": "Actualizar paso-2-propuesta/index.html"},
+        {"id": "p2-send", "texto": "Enviar propuesta por WhatsApp o email"},
+        {"id": "p2-ok", "texto": "Cliente elige plan (verbal o por escrito)"}
       ]
     },
     {
       "paso": 3,
       "nombre": "Web presencia",
-      "apps": ["landing-lanzamiento", "hosting (Vercel/Netlify)", "Google Business Profile"],
-      "flujo": "Propuesta aceptada → landing paso-3-web → deploy → enlace en GBP",
+      "apps": ["landing-lanzamiento", "Vercel/Netlify", "Google Business Profile"],
+      "flujo": "Propuesta OK → landing paso-3 → deploy → enlace en Maps",
+      "plan_b": "Primero subdominio tuyo (cliente.presencialocal.cl); dominio del cliente después.",
       "tareas": [
-        {"id": "p3-dominio", "texto": "Registrar dominio + hosting"},
-        {"id": "p3-deploy", "texto": "Deploy paso-3-web (SSL activo)"},
+        {"id": "p3-sub", "texto": "Plan B: subdominio temporal live en 24h"},
+        {"id": "p3-landing", "texto": "Armar landing en paso-3-web"},
+        {"id": "p3-deploy", "texto": "Deploy en Vercel/Netlify (SSL activo)"},
+        {"id": "p3-dominio", "texto": "Dominio del cliente (tú compras/configuras DNS si hace falta)"},
         {"id": "p3-cta", "texto": "CTA WhatsApp y formulario funcionando"},
         {"id": "p3-gbp", "texto": "Google Business Profile con URL de la web"},
-        {"id": "p3-test", "texto": "Probar móvil + velocidad de carga"}
+        {"id": "p3-test", "texto": "Probar en móvil"}
       ]
     },
     {
       "paso": 4,
       "nombre": "Bot WhatsApp",
-      "apps": ["whatsapp-marketing", "Meta Business API", "webhook"],
-      "flujo": "Web live → número WA Business → API + webhook → bot agenda citas",
+      "apps": ["whatsapp-marketing", "Meta API (A)", "Evolution API (B)"],
+      "flujo": "Web live → elegir ruta A u B → bot agenda / responde",
+      "plan_b": "Ruta B (Evolution): sin verificación Meta; ideal negocio informal.",
       "tareas": [
-        {"id": "p4-meta", "texto": "Cuenta Meta Business verificada"},
-        {"id": "p4-app", "texto": "App Meta + token en .env del proyecto"},
-        {"id": "p4-webhook", "texto": "Webhook configurado (URL pública)"},
+        {"id": "p4-ruta", "texto": "Elegir ruta: A oficial (Meta) o B rápida (Evolution)"},
+        {"id": "p4-meta", "texto": "Ruta A: cuenta Meta Business + documentos legales"},
+        {"id": "p4-evolution", "texto": "Ruta B: Evolution API + número dedicado"},
+        {"id": "p4-webhook", "texto": "Webhook / servidor con URL pública"},
         {"id": "p4-flujos", "texto": "Flujos: saludo, agendar, derivar a humano"},
-        {"id": "p4-piloto", "texto": "Piloto con 1 cliente real"}
+        {"id": "p4-piloto", "texto": "Piloto 1 semana con cliente real"}
       ]
     }
   ]

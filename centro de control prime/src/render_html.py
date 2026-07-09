@@ -263,8 +263,22 @@ def _embudo_produccion(plan: dict) -> str:
     cliente = escape(plan.get("cliente", "default"))
     titulo = escape(plan.get("titulo", "Presencia digital"))
     bloques = ""
+    paginas = plan.get("paginas_necesarias") or []
+    paginas_html = ""
+    if paginas:
+        rows = ""
+        for pg in paginas:
+            url = pg.get("url", "")
+            link = f'<a href="{escape(url)}" target="_blank" rel="noopener">{escape(url)}</a>' if url.startswith("http") else escape(url)
+            rows += f"<tr><td>P{pg.get('paso','')}</td><td><strong>{escape(pg.get('nombre',''))}</strong></td><td>{link}</td><td>{escape(pg.get('para_que',''))}</td></tr>"
+        paginas_html = f"""
+    <div class="prod-paginas">
+      <h4>Páginas y plataformas que necesitas</h4>
+      <table><thead><tr><th>Paso</th><th>Plataforma</th><th>URL</th><th>Para qué</th></tr></thead><tbody>{rows}</tbody></table>
+    </div>"""
     for p in plan["pasos"]:
         apps = "".join(f'<span class="prod-app">{escape(a)}</span>' for a in p.get("apps", []))
+        plan_b = f'<p class="prod-planb"><strong>Plan B:</strong> {escape(p.get("plan_b", ""))}</p>' if p.get("plan_b") else ""
         tareas = ""
         for t in p.get("tareas", []):
             tid = escape(t.get("id", ""))
@@ -284,11 +298,13 @@ def _embudo_produccion(plan: dict) -> str:
           </div>
           <div class="prod-apps">{apps}</div>
           <p class="prod-meta"><strong>Conexión:</strong> {escape(p.get('flujo', ''))}</p>
+          {plan_b}
           <ul class="prod-checklist">{tareas}</ul>
         </div>"""
     return f"""
     <div id="embudo-produccion" class="prod-plan" data-cliente="{cliente}">
       <p class="prod-intro">{intro}</p>
+      {paginas_html}
       {bloques}
     </div>"""
 
