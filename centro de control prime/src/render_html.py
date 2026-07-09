@@ -331,6 +331,7 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
     slug = escape(str(ultima.get("slug", "")))
     cli = escape(cli_tpl.format(rubro=ultima.get("rubro", ""), ciudad=ultima.get("ciudad", "")) if cli_tpl else "")
     rows = ""
+    cards = ""
     for lead in ultima.get("leads", []):
         viable_cls = " viable" if lead.get("viable") else ""
         nombre = escape(str(lead.get("nombre", "—")))
@@ -345,11 +346,16 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
         maps = lead.get("maps_url") or ""
         maps_cell = f'<a href="{escape(maps)}" target="_blank" rel="noopener">Maps</a>' if maps else "—"
         viable_badge = _badge("viable", "viable") if lead.get("viable") else _badge("no", "")
+        tel_link = ""
+        if lead.get("telefono"):
+            tel_link = f'<a href="tel:{escape(str(lead.get("telefono")))}">{telefono}</a>'
+        else:
+            tel_link = telefono
         rows += f"""
         <tr class="{viable_cls.strip()}">
           <td>{nombre}</td>
           <td>{direccion}</td>
-          <td>{telefono}</td>
+          <td>{tel_link}</td>
           <td>{web_cell}</td>
           <td>{rating}</td>
           <td>{resenas}</td>
@@ -358,13 +364,37 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
           <td>{viable_badge}</td>
           <td>{maps_cell}</td>
         </tr>"""
+        maps_btn = (
+            f'<a class="lead-card-btn" href="{escape(maps)}" target="_blank" rel="noopener">Abrir Maps</a>'
+            if maps
+            else ""
+        )
+        cards += f"""
+        <article class="lead-card{viable_cls}">
+          <div class="lead-card-top">
+            <h4>{nombre}</h4>
+            {viable_badge}
+          </div>
+          <p class="lead-card-addr">{direccion}</p>
+          <div class="lead-card-stats">
+            <span class="score">{score} pts</span>
+            <span>★ {rating}</span>
+            <span>{resenas} reseñas</span>
+          </div>
+          <p class="lead-card-senales">{senales}</p>
+          <div class="lead-card-actions">
+            {f'<a class="lead-card-btn" href="tel:{escape(str(lead.get("telefono")))}">Llamar</a>' if lead.get("telefono") else ''}
+            {maps_btn}
+          </div>
+        </article>"""
     return f"""
     <div class="prod-leads">
       <p class="prod-leads-meta">
         Paso 0 · <strong>{rubro}</strong> en <strong>{ciudad}</strong> · {modo} · {fecha}
         · {viables} viables / {total} leads · slug <code>{slug}</code>
       </p>
-      <div class="tbl-wrap">
+      <div class="prod-leads-cards">{cards}</div>
+      <div class="tbl-wrap prod-leads-table">
         <table>
           <thead>
             <tr>

@@ -312,6 +312,26 @@ body {
 .prod-leads .score { font-weight: 700; color: var(--accent); }
 .prod-leads code, .prod-leads-cli { font-size: 0.65rem; color: var(--muted); display: block; margin-top: 6px; word-break: break-all; }
 .prod-leads-empty { font-size: 0.75rem; color: var(--muted); margin: 0 0 4px; }
+.prod-leads-cards { display: none; }
+.lead-card {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.lead-card.viable { border-color: rgba(63,185,80,0.35); }
+.lead-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.lead-card-top h4 { margin: 0; font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+.lead-card-addr { margin: 0 0 8px; font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+.lead-card-stats { display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 0.72rem; margin-bottom: 6px; }
+.lead-card-senales { margin: 0 0 10px; font-size: 0.68rem; color: var(--muted); line-height: 1.35; }
+.lead-card-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.lead-card-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 8px 14px; font-size: 0.78rem; font-weight: 500;
+  color: var(--accent); text-decoration: none; border: 1px solid var(--border);
+  border-radius: 8px; background: var(--surface);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.lead-card-btn:hover { border-color: var(--accent); }
 .embudo-flow-item.paso0 { border-color: var(--purple); color: var(--purple); }
 .embudo-steps {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
@@ -359,6 +379,33 @@ body {
 .embudo-frame {
   flex: 1; width: 100%; min-height: 480px; border: 1px solid var(--border);
   border-radius: var(--radius); background: #fff;
+}
+
+@media (max-width: 640px) {
+  .app { padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+  .nav {
+    flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; padding-bottom: 2px;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-btn { flex: 0 0 auto; white-space: nowrap; }
+  .kpi-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .embudo-steps { grid-template-columns: 1fr; }
+  .embudo-step { min-height: 44px; padding: 14px; }
+  .embudo-intro .btn-outline { width: 100%; text-align: center; min-height: 44px; padding: 10px 14px; }
+  .embudo-flow { justify-content: center; }
+  .embudo-flow-item { width: 32px; height: 32px; font-size: 0.78rem; }
+  .embudo-toolbar { position: sticky; top: max(0px, env(safe-area-inset-top, 0px)); }
+  .embudo-tool-group { width: 100%; }
+  .embudo-tool { flex: 1; justify-content: center; text-align: center; }
+  .embudo-frame { min-height: 65vh; min-height: 65dvh; }
+  .embudo-viewer { min-height: 70vh; min-height: 70dvh; }
+  .prod-leads-table { display: none; }
+  .prod-leads-cards { display: grid; gap: 10px; }
+  .prod-paginas .tbl-wrap { margin: 0 -4px; -webkit-overflow-scrolling: touch; }
+  .prod-paginas table { min-width: 520px; }
+  .card-head h2 { font-size: 0.78rem; }
+  .subnav button { min-height: 40px; padding: 8px 12px; }
 }
 
 .rent-top3 {
