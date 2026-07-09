@@ -10,7 +10,7 @@ from src.rentabilidad import load_rentabilidad
 from src.viabilidad_web import load_viabilidad_cache, viabilidad_por_capas
 from src.analisis_scan import scan_analisis_detalle
 from src.config import CURSORPRIME, PROYECTOS, SKILLS_USER, load_json
-from src.modulos import clientes_scan, embudo_comercial, embudo_produccion, modulos_estado, scan_carpetas
+from src.modulos import clientes_scan, embudo_comercial, embudo_produccion, modulos_estado, scan_carpetas, scan_prospeccion
 
 
 _RESERVED = frozenset({"inputs", "meta", "output", "logs", "cola", "cache"})
@@ -216,6 +216,7 @@ def scan() -> dict:
         "embudo_comercial": embudo,
         "embudo_index": "clientes/clinica-sol/proyectos/audit-inicial/entregables/index.html",
         "embudo_produccion": embudo_produccion(),
+        "prospeccion": scan_prospeccion(),
         "rentabilidad": load_rentabilidad(),
         "clientes": clientes,
     }

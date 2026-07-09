@@ -309,7 +309,84 @@ def _embudo_produccion(plan: dict) -> str:
     </div>"""
 
 
-def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str, produccion: dict | None = None) -> str:
+def _prospeccion_leads_html(prospeccion: dict | None) -> str:
+    ultima = (prospeccion or {}).get("ultima")
+    cli_tpl = (prospeccion or {}).get("cli", "")
+    if not ultima or not ultima.get("leads"):
+        rubro = "dentista"
+        ciudad = "Providencia"
+        cli = escape(cli_tpl.format(rubro=rubro, ciudad=ciudad) if cli_tpl else "")
+        return f"""
+        <div class="prod-leads">
+          <p class="prod-leads-meta">Paso 0 · Prospección Maps — sin búsqueda guardada aún.</p>
+          <p class="prod-leads-empty">Corre el bot para generar leads viables:</p>
+          <code class="prod-leads-cli">{cli}</code>
+        </div>"""
+    rubro = escape(str(ultima.get("rubro", "—")))
+    ciudad = escape(str(ultima.get("ciudad", "—")))
+    modo = escape(str(ultima.get("modo", "—")))
+    fecha = escape(str(ultima.get("generado_legible", ultima.get("generado_at", "—"))))
+    total = ultima.get("total", len(ultima.get("leads", [])))
+    viables = ultima.get("viables", sum(1 for l in ultima.get("leads", []) if l.get("viable")))
+    slug = escape(str(ultima.get("slug", "")))
+    cli = escape(cli_tpl.format(rubro=ultima.get("rubro", ""), ciudad=ultima.get("ciudad", "")) if cli_tpl else "")
+    rows = ""
+    for lead in ultima.get("leads", []):
+        viable_cls = " viable" if lead.get("viable") else ""
+        nombre = escape(str(lead.get("nombre", "—")))
+        direccion = escape(str(lead.get("direccion", "—")))
+        telefono = escape(str(lead.get("telefono") or "—"))
+        web = lead.get("web") or ""
+        web_cell = f'<a href="{escape(web)}" target="_blank" rel="noopener">web</a>' if web else "—"
+        rating = lead.get("rating", "—")
+        resenas = lead.get("resenas", "—")
+        score = lead.get("score", "—")
+        senales = ", ".join(escape(s) for s in (lead.get("senales") or [])[:4])
+        maps = lead.get("maps_url") or ""
+        maps_cell = f'<a href="{escape(maps)}" target="_blank" rel="noopener">Maps</a>' if maps else "—"
+        viable_badge = _badge("viable", "viable") if lead.get("viable") else _badge("no", "")
+        rows += f"""
+        <tr class="{viable_cls.strip()}">
+          <td>{nombre}</td>
+          <td>{direccion}</td>
+          <td>{telefono}</td>
+          <td>{web_cell}</td>
+          <td>{rating}</td>
+          <td>{resenas}</td>
+          <td class="score">{score}</td>
+          <td style="font-size:0.65rem;color:var(--muted)">{senales}</td>
+          <td>{viable_badge}</td>
+          <td>{maps_cell}</td>
+        </tr>"""
+    return f"""
+    <div class="prod-leads">
+      <p class="prod-leads-meta">
+        Paso 0 · <strong>{rubro}</strong> en <strong>{ciudad}</strong> · {modo} · {fecha}
+        · {viables} viables / {total} leads · slug <code>{slug}</code>
+      </p>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Negocio</th><th>Dirección</th><th>Tel</th><th>Web</th>
+              <th>★</th><th>Reseñas</th><th>Score</th><th>Señales</th><th></th><th></th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+      <p class="prod-leads-meta">Nueva búsqueda: <code>{cli}</code></p>
+    </div>"""
+
+
+def _embudo_view(
+    embudo: list[dict],
+    *,
+    href_prefix: str,
+    index_path: str,
+    produccion: dict | None = None,
+    prospeccion: dict | None = None,
+) -> str:
     steps = ""
     step_urls: list[dict] = []
     for e in embudo:
@@ -325,11 +402,15 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str, produ
           <span class="embudo-step-meta">{_badge('demo' if e.get('estado') == 'demo' else e.get('estado', '—'), 'mock')}</span>
         </button>"""
     idx = _href(href_prefix, index_path)
-    flow = "".join(
+    ultima = (prospeccion or {}).get("ultima") or {}
+    paso0_done = bool(ultima.get("viables", 0))
+    flow = f'<span class="embudo-flow-item paso0{" done" if paso0_done else ""}">0</span><span class="embudo-flow-arrow">→</span>'
+    flow += "".join(
         f'<span class="embudo-flow-item{" done" if e.get("listo") else ""}">{e["paso"]}</span>'
         + ('<span class="embudo-flow-arrow">→</span>' if i < len(embudo) - 1 else "")
         for i, e in enumerate(embudo)
     )
+    leads_html = _prospeccion_leads_html(prospeccion)
     pendientes = _embudo_produccion(produccion or {})
     prod_titulo = escape((produccion or {}).get("titulo", "Presencia digital"))
     steps_json = json.dumps(step_urls, ensure_ascii=False).replace("</", "<\\/")
@@ -337,12 +418,16 @@ def _embudo_view(embudo: list[dict], *, href_prefix: str, index_path: str, produ
     <div id="embudo-shell" class="embudo-shell" data-index-url="{escape(idx)}" data-steps="{escape(steps_json)}">
       <div id="embudo-overview">
         <div class="embudo-intro">
-          <p>Cliente demo <strong>Clínica Sol</strong> · flujo informe → propuesta → web → WhatsApp.
+          <p>Cliente demo <strong>Clínica Sol</strong> · flujo prospección → informe → propuesta → web → WhatsApp.
           Cada paso se abre aquí mismo; puedes seguir con anterior / siguiente.</p>
           <button type="button" class="btn-outline" data-embudo-url="{escape(idx)}"
             data-embudo-title="Índice del embudo" data-embudo-paso="0">Abrir índice del embudo</button>
         </div>
         <div class="embudo-flow">{flow}</div>
+        <div class="card" style="margin-top:12px">
+          <div class="card-head"><h2>Prospección · Paso 0</h2><span class="hint">Bot Maps · leads viables</span></div>
+          <div class="card-body">{leads_html}</div>
+        </div>
         <div class="embudo-steps">{steps}</div>
         <div class="card" style="margin-top:12px">
           <div class="card-head"><h2>{prod_titulo}</h2><span class="hint">Apps · conexión · checklist</span></div>
@@ -469,7 +554,13 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     viab_heroes = _viabilidad_heroes(viab, href_prefix=href_prefix)
     embudo = d.get("embudo_comercial", [])
     embudo_index = d.get("embudo_index", "")
-    embudo_full = _embudo_view(embudo, href_prefix=href_prefix, index_path=embudo_index, produccion=d.get("embudo_produccion"))
+    embudo_full = _embudo_view(
+        embudo,
+        href_prefix=href_prefix,
+        index_path=embudo_index,
+        produccion=d.get("embudo_produccion"),
+        prospeccion=d.get("prospeccion"),
+    )
     rentabilidad = _rentabilidad_view(d.get("rentabilidad", {}))
 
     idea_cols = [("titulo", "Idea"), ("categoria", "Tipo")]

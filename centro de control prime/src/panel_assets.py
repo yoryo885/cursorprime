@@ -303,6 +303,16 @@ body {
 .prod-paginas th { color: var(--muted); font-weight: 500; }
 .prod-paginas a { color: var(--accent); }
 .prod-planb { font-size: 0.7rem; color: var(--yellow); margin: 0 0 8px; line-height: 1.4; }
+.prod-leads { margin-bottom: 14px; }
+.prod-leads-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; }
+.prod-leads table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+.prod-leads th, .prod-leads td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.prod-leads th { color: var(--muted); font-weight: 500; font-size: 0.65rem; text-transform: uppercase; }
+.prod-leads tr.viable td { background: rgba(63,185,80,0.06); }
+.prod-leads .score { font-weight: 700; color: var(--accent); }
+.prod-leads code, .prod-leads-cli { font-size: 0.65rem; color: var(--muted); display: block; margin-top: 6px; word-break: break-all; }
+.prod-leads-empty { font-size: 0.75rem; color: var(--muted); margin: 0 0 4px; }
+.embudo-flow-item.paso0 { border-color: var(--purple); color: var(--purple); }
 .embudo-steps {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
 }

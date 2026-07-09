@@ -320,6 +320,30 @@ def embudo_produccion() -> dict:
     return {}
 
 
+def scan_prospeccion() -> dict:
+    base = CURSORPRIME / "prospeccion-locales" / "data"
+    busquedas: list[dict] = []
+    if base.is_dir():
+        for slug_dir in sorted(base.iterdir()):
+            if not slug_dir.is_dir():
+                continue
+            leads_file = slug_dir / "output" / "leads.json"
+            if not leads_file.exists():
+                continue
+            data = load_json(leads_file, {}) or {}
+            data["slug"] = slug_dir.name
+            busquedas.append(data)
+    ultima = None
+    if busquedas:
+        ultima = max(busquedas, key=lambda x: x.get("generado_at", ""))
+    return {
+        "busquedas": busquedas,
+        "ultima": ultima,
+        "total_busquedas": len(busquedas),
+        "cli": "cd prospeccion-locales && python3 prospeccion_main.py buscar --rubro {rubro} --ciudad {ciudad} --mock",
+    }
+
+
 def scan_carpetas() -> list[dict]:
     skip = frozenset({".git", ".cursor", "vendor", "node_modules", "__pycache__", ".venv"})
     tipo_map = {

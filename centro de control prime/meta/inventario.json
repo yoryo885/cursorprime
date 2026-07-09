@@ -1,7 +1,7 @@
 {
   "version": 1,
   "nombre": "Centro de control prime",
-  "generado_at": "2026-07-09T03:59:32.069557+00:00",
+  "generado_at": "2026-07-09T16:24:46.480238+00:00",
   "resumen": {
     "analisis": 3,
     "radar_corridas": 3,
@@ -18,7 +18,7 @@
     "skills_generadas": 13,
     "skills_instaladas": 0,
     "proyectos_activos": 9,
-    "carpetas_total": 14,
+    "carpetas_total": 15,
     "modulos_hecho": 6,
     "modulos_parcial": 10,
     "clientes_total": 4,
@@ -413,11 +413,27 @@
       "score": null
     },
     {
+      "archivo": "portafolio-productos-vendibles.json",
+      "path": "ideas de proyectos/ideas/portafolio-productos-vendibles.json",
+      "slug": "ideas",
+      "titulo": "Portafolio — productos digitales viables para armar y vender",
+      "estado": null,
+      "score": null
+    },
+    {
       "archivo": "presencia-digital-locales.json",
       "path": "ideas de proyectos/ideas/presencia-digital-locales.json",
       "slug": "ideas",
       "titulo": "Agencia de presencia digital para negocios locales",
       "estado": null,
+      "score": null
+    },
+    {
+      "archivo": "prospeccion-maps-bot.json",
+      "path": "ideas de proyectos/ideas/prospeccion-maps-bot.json",
+      "slug": "ideas",
+      "titulo": "Bot prospección — clientes viables para Presencia digital",
+      "estado": "en_construccion",
       "score": null
     },
     {
@@ -646,6 +662,7 @@
         "dropship_ml",
         "evaluaciones",
         "ideas",
+        "mejoras",
         "meta",
         "proyectos",
         "src"
@@ -717,6 +734,16 @@
         "logs",
         "meta",
         "scripts",
+        "src"
+      ]
+    },
+    {
+      "nombre": "prospeccion-locales",
+      "path": "prospeccion-locales",
+      "tipo": "otro",
+      "has_cli": true,
+      "subcarpetas": [
+        "data",
         "src"
       ]
     },
@@ -959,7 +986,7 @@
     "falta": 0
   },
   "analisis_ecosistema": {
-    "generado_at": "2026-07-09T03:59:32.068167+00:00",
+    "generado_at": "2026-07-09T16:24:46.479187+00:00",
     "avance_global": 90,
     "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Marketing Audit**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
     "capas": [
@@ -1598,7 +1625,7 @@
     }
   },
   "viabilidad_proyectos": {
-    "generado_at": "2026-07-09T03:59:32.069527+00:00",
+    "generado_at": "2026-07-09T16:24:46.480212+00:00",
     "total": 16,
     "capas": [
       {
@@ -6039,6 +6066,202 @@
         ]
       }
     ]
+  },
+  "prospeccion": {
+    "busquedas": [
+      {
+        "rubro": "dentista",
+        "ciudad": "Providencia",
+        "modo": "mock",
+        "generado_at": "2026-07-09T15:48:03.493331+00:00",
+        "generado_legible": "09/07/2026 15:48 UTC",
+        "total": 5,
+        "viables": 2,
+        "leads": [
+          {
+            "nombre": "Dentista Central Providencia",
+            "direccion": "Av. Principal 100, Providencia",
+            "telefono": "+56912345678",
+            "web": "",
+            "rating": 3.8,
+            "resenas": 6,
+            "maps_url": "https://maps.google.com/?q=mock1",
+            "place_id": "mock-1",
+            "score": 80,
+            "senales": [
+              "sin_web",
+              "pocas_resenas",
+              "rating_bajo",
+              "tiene_telefono"
+            ],
+            "viable": true
+          },
+          {
+            "nombre": "Dentista Familiar",
+            "direccion": "Providencia 800, Providencia",
+            "telefono": "",
+            "web": "",
+            "rating": 3.2,
+            "resenas": 3,
+            "maps_url": "https://maps.google.com/?q=mock4",
+            "place_id": "mock-4",
+            "score": 75,
+            "senales": [
+              "sin_web",
+              "pocas_resenas",
+              "rating_bajo",
+              "sin_telefono"
+            ],
+            "viable": true
+          },
+          {
+            "nombre": "Clínica Dentista Norte",
+            "direccion": "Los Leones 450, Providencia",
+            "telefono": "+56987654321",
+            "web": "https://facebook.com/clinica.demo",
+            "rating": 4.2,
+            "resenas": 18,
+            "maps_url": "https://maps.google.com/?q=mock2",
+            "place_id": "mock-2",
+            "score": 35,
+            "senales": [
+              "solo_red_social",
+              "resenas_medias",
+              "tiene_telefono"
+            ],
+            "viable": false
+          },
+          {
+            "nombre": "Servicios Dentista Express",
+            "direccion": "Mapocho 2200, Providencia",
+            "telefono": "+56222334455",
+            "web": "https://ejemplo-dental-antiguo.cl",
+            "rating": 4.5,
+            "resenas": 42,
+            "maps_url": "https://maps.google.com/?q=mock3",
+            "place_id": "mock-3",
+            "score": 5,
+            "senales": [
+              "tiene_telefono"
+            ],
+            "viable": false
+          },
+          {
+            "nombre": "Centro Dentista Premium",
+            "direccion": "Apoquindo 3000, Providencia",
+            "telefono": "+56911112222",
+            "web": "https://centro-premium.cl",
+            "rating": 4.8,
+            "resenas": 120,
+            "maps_url": "https://maps.google.com/?q=mock5",
+            "place_id": "mock-5",
+            "score": 5,
+            "senales": [
+              "tiene_telefono"
+            ],
+            "viable": false
+          }
+        ],
+        "slug": "demo-prov"
+      }
+    ],
+    "ultima": {
+      "rubro": "dentista",
+      "ciudad": "Providencia",
+      "modo": "mock",
+      "generado_at": "2026-07-09T15:48:03.493331+00:00",
+      "generado_legible": "09/07/2026 15:48 UTC",
+      "total": 5,
+      "viables": 2,
+      "leads": [
+        {
+          "nombre": "Dentista Central Providencia",
+          "direccion": "Av. Principal 100, Providencia",
+          "telefono": "+56912345678",
+          "web": "",
+          "rating": 3.8,
+          "resenas": 6,
+          "maps_url": "https://maps.google.com/?q=mock1",
+          "place_id": "mock-1",
+          "score": 80,
+          "senales": [
+            "sin_web",
+            "pocas_resenas",
+            "rating_bajo",
+            "tiene_telefono"
+          ],
+          "viable": true
+        },
+        {
+          "nombre": "Dentista Familiar",
+          "direccion": "Providencia 800, Providencia",
+          "telefono": "",
+          "web": "",
+          "rating": 3.2,
+          "resenas": 3,
+          "maps_url": "https://maps.google.com/?q=mock4",
+          "place_id": "mock-4",
+          "score": 75,
+          "senales": [
+            "sin_web",
+            "pocas_resenas",
+            "rating_bajo",
+            "sin_telefono"
+          ],
+          "viable": true
+        },
+        {
+          "nombre": "Clínica Dentista Norte",
+          "direccion": "Los Leones 450, Providencia",
+          "telefono": "+56987654321",
+          "web": "https://facebook.com/clinica.demo",
+          "rating": 4.2,
+          "resenas": 18,
+          "maps_url": "https://maps.google.com/?q=mock2",
+          "place_id": "mock-2",
+          "score": 35,
+          "senales": [
+            "solo_red_social",
+            "resenas_medias",
+            "tiene_telefono"
+          ],
+          "viable": false
+        },
+        {
+          "nombre": "Servicios Dentista Express",
+          "direccion": "Mapocho 2200, Providencia",
+          "telefono": "+56222334455",
+          "web": "https://ejemplo-dental-antiguo.cl",
+          "rating": 4.5,
+          "resenas": 42,
+          "maps_url": "https://maps.google.com/?q=mock3",
+          "place_id": "mock-3",
+          "score": 5,
+          "senales": [
+            "tiene_telefono"
+          ],
+          "viable": false
+        },
+        {
+          "nombre": "Centro Dentista Premium",
+          "direccion": "Apoquindo 3000, Providencia",
+          "telefono": "+56911112222",
+          "web": "https://centro-premium.cl",
+          "rating": 4.8,
+          "resenas": 120,
+          "maps_url": "https://maps.google.com/?q=mock5",
+          "place_id": "mock-5",
+          "score": 5,
+          "senales": [
+            "tiene_telefono"
+          ],
+          "viable": false
+        }
+      ],
+      "slug": "demo-prov"
+    },
+    "total_busquedas": 1,
+    "cli": "cd prospeccion-locales && python3 prospeccion_main.py buscar --rubro {rubro} --ciudad {ciudad} --mock"
   },
   "rentabilidad": {
     "version": 1,
