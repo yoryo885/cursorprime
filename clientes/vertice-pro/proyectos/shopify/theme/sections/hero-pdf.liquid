@@ -1,0 +1,25 @@
+<section class="vp-hero">
+  <div class="vp-hero-text">
+    <h1>{{ section.settings.heading | default: "Aplica libros famosos a tu trabajo esta semana" }}</h1>
+    <p>{{ section.settings.subheading | default: "Guías PDF prácticas para profesionales ocupados. Plan de 10 semanas, mapas conceptuales y checklists listos para usar." }}</p>
+    <a href="{{ section.settings.button_link | default: '#guias' }}" class="vp-btn vp-btn-primary">{{ section.settings.button_label | default: "Ver guías PDF" }}</a>
+  </div>
+  <div class="vp-hero-visual">
+    <div class="vp-book">
+      <small>Serie</small>
+      <strong>Aplicar en tu rol</strong>
+    </div>
+    <p class="vp-serie">Vértice Pro · Editorial digital</p>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Hero PDF",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Aplica libros famosos a tu trabajo esta semana" },
+    { "type": "textarea", "id": "subheading", "label": "Subtítulo", "default": "Guías PDF prácticas para profesionales ocupados. Plan de 10 semanas, mapas conceptuales y checklists listos para usar." },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Ver guías PDF" },
+    { "type": "url", "id": "button_link", "label": "Enlace botón" }
+  ]
+}
+{% endschema %}

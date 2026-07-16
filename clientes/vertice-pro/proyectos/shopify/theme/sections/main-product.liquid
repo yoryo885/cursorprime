@@ -1,0 +1,27 @@
+<section class="vp-product-page">
+  <div class="vp-product-grid">
+    <div class="vp-product-media">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+      {% endif %}
+    </div>
+    <div class="vp-product-info">
+      <span class="vp-badge">PDF · Descarga digital</span>
+      <h1>{{ product.title }}</h1>
+      <p class="vp-price-lg">{{ product.price | money }}</p>
+      <div class="vp-product-desc">{{ product.description }}</div>
+      {% form 'product', product %}
+        <button type="submit" name="add" class="vp-btn vp-btn-primary vp-btn-full" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}Comprar y descargar{% else %}Agotado{% endif %}
+        </button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Producto",
+  "settings": [],
+  "templates": ["product"]
+}
+{% endschema %}

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Vértice Pro PDF",
+    "theme_version": "1.0.0",
+    "theme_author": "Vértice Pro",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      { "type": "color", "id": "color_navy", "label": "Azul marino", "default": "#1e3a5f" },
+      { "type": "color", "id": "color_accent", "label": "Acento", "default": "#2563eb" }
+    ]
+  }
+]

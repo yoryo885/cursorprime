@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Vértice Pro — Guías PDF · Aplicar en tu rol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f8f9fb;
+      --surface: #ffffff;
+      --text: #1a2332;
+      --muted: #5c6b7a;
+      --navy: #1e3a5f;
+      --accent: #2563eb;
+      --green: #059669;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --font: 'Inter', system-ui, sans-serif;
+      --serif: 'Libre Baskerville', Georgia, serif;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    .announce {
+      background: var(--navy); color: #fff; text-align: center;
+      padding: 10px 16px; font-size: 0.78rem;
+    }
+    header {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .logo { font-weight: 700; font-size: 1.1rem; color: var(--navy); letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav a { margin-left: 20px; font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+    nav a:hover { color: var(--navy); }
+    .hero {
+      max-width: 1100px; margin: 0 auto; padding: 48px 20px 56px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    }
+    @media (max-width: 768px) { .hero { grid-template-columns: 1fr; padding: 32px 16px 40px; } nav { display: none; } }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(1.8rem, 5vw, 2.6rem);
+      line-height: 1.15; color: var(--navy); margin-bottom: 16px;
+    }
+    .hero p { font-size: 1.05rem; color: var(--muted); margin-bottom: 24px; max-width: 480px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { filter: brightness(1.08); }
+    .hero-visual {
+      background: linear-gradient(145deg, var(--navy) 0%, #2d4a6f 100%);
+      border-radius: var(--radius); padding: 32px; color: #fff; text-align: center;
+      box-shadow: 0 20px 40px rgba(30,58,95,0.2);
+    }
+    .book {
+      width: 160px; height: 220px; margin: 0 auto 16px;
+      background: linear-gradient(135deg, #fff 0%, #e8eef5 100%);
+      border-radius: 4px 8px 8px 4px;
+      box-shadow: -8px 8px 24px rgba(0,0,0,0.25);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 16px; color: var(--navy);
+    }
+    .book small { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+    .book strong { font-family: var(--serif); font-size: 0.85rem; text-align: center; margin-top: 8px; line-height: 1.3; }
+    .serie { font-size: 0.75rem; opacity: 0.85; margin-top: 8px; }
+    section { max-width: 1100px; margin: 0 auto; padding: 0 20px 56px; }
+    section h2 { font-size: 1.35rem; color: var(--navy); margin-bottom: 24px; text-align: center; }
+    .benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 768px) { .benefits { grid-template-columns: 1fr; } }
+    .benefit {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+    }
+    .benefit h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--navy); }
+    .benefit p { font-size: 0.85rem; color: var(--muted); }
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+    .product-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s;
+    }
+    .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .product-cover {
+      height: 200px; background: linear-gradient(160deg, #1e3a5f, #3b5998);
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+    }
+    .product-cover .mini-book {
+      width: 100px; height: 140px; background: #fff; border-radius: 3px 6px 6px 3px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      font-family: var(--serif); font-size: 0.65rem; padding: 8px; color: var(--navy);
+      box-shadow: -4px 4px 12px rgba(0,0,0,0.2);
+    }
+    .product-body { padding: 20px; }
+    .product-body h3 { font-size: 0.95rem; margin-bottom: 6px; }
+    .product-body p { font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; }
+    .price { font-weight: 700; color: var(--green); font-size: 1.1rem; }
+    .badge-digital {
+      display: inline-block; font-size: 0.65rem; font-weight: 600;
+      background: rgba(37,99,235,0.1); color: var(--accent);
+      padding: 3px 8px; border-radius: 4px; margin-bottom: 8px;
+    }
+    .about {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px; text-align: center; max-width: 640px; margin: 0 auto;
+    }
+    .about p { color: var(--muted); font-size: 0.9rem; }
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 20px;
+      text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="announce">Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol»</div>
+  <header>
+    <div class="logo">Vértice<span>Pro</span></div>
+    <nav>
+      <a href="#guias">Guías</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#nosotros">Nosotros</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Aplica libros famosos a tu trabajo esta semana</h1>
+      <p>Guías PDF prácticas para profesionales ocupados. Plan de 10 semanas, mapas conceptuales y checklists listos para usar.</p>
+      <a class="btn btn-primary" href="#guias">Ver guías PDF</a>
+    </div>
+    <div class="hero-visual">
+      <div class="book">
+        <small>Serie</small>
+        <strong>Aplicar en tu rol</strong>
+      </div>
+      <p class="serie">Vértice Pro · Editorial digital</p>
+    </div>
+  </div>
+
+  <section id="beneficios">
+    <h2>Qué incluye cada guía</h2>
+    <div class="benefits">
+      <div class="benefit">
+        <h3>Plan de 10 semanas</h3>
+        <p>Una acción concreta por semana, sin teoría de más.</p>
+      </div>
+      <div class="benefit">
+        <h3>Adaptado a tu rol</h3>
+        <p>No es un resumen genérico: está pensado para tu oficio.</p>
+      </div>
+      <div class="benefit">
+        <h3>Descarga al instante</h3>
+        <p>Compras, descargas y empiezas hoy en celular o tablet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="guias">
+    <h2>Guías disponibles</h2>
+    <div class="products">
+      <article class="product-card">
+        <div class="product-cover">
+          <div class="mini-book">Pareto para psicopedagogas</div>
+        </div>
+        <div class="product-body">
+          <span class="badge-digital">PDF · Descarga digital</span>
+          <h3>Pareto para psicopedagogas en 10 semanas</h3>
+          <p>Prioriza el 20% de casos que generan el 80% del impacto en el aula.</p>
+          <p class="price">$3.990 CLP</p>
+        </div>
+      </article>
+      <article class="product-card" style="opacity:0.55">
+        <div class="product-cover" style="background:linear-gradient(160deg,#64748b,#94a3b8)">
+          <div class="mini-book" style="color:#64748b">Próximamente</div>
+        </div>
+        <div class="product-body">
+          <span class="badge-digital">PDF</span>
+          <h3>Más guías en camino</h3>
+          <p>Nuevos roles y libros cada mes.</p>
+          <p class="price">—</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <h2>Vértice Pro</h2>
+    <div class="about">
+      <p>Editorial digital en español. Convertimos ideas de libros de productividad en guías accionables para profesionales: psicopedagogas, docentes, clínicos y emprendedores.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.</p>
+    <p style="margin-top:8px">© Vértice Pro · verticepro.myshopify.com</p>
+  </footer>
+</body>
+</html>
