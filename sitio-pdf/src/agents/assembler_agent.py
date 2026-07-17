@@ -1,4 +1,4 @@
-"""Ensambla preview.html + copia theme Shopify."""
+"""Ensambla preview.html estilo FILJÓS + theme Shopify."""
 
 from __future__ import annotations
 
@@ -14,20 +14,20 @@ from src.types import AgentResult, PipelineContext
 def _render_html(ctx: PipelineContext) -> str:
     c = ctx.copy
     m = ctx.marca
-    colors = m.get("colores", {})
+    col = m.get("colores", {})
     a = ctx.assets
     p = c.get("product", {})
-    benefits = c.get("benefits", [])
+    name = m.get("marca", "Vértice Pro").upper()
 
-    ben_html = ""
-    for b in benefits:
-        ben_html += f"""
-        <div class="benefit">
-          <h3>{escape(b.get('title', ''))}</h3>
-          <p>{escape(b.get('text', ''))}</p>
-        </div>"""
-
-    prod_ben = "".join(f"<li>{escape(x)}</li>" for x in p.get("beneficios", [])[:3])
+    reviews = [
+        ("María", "La guía me ayudó a priorizar casos en el gabinete. Muy práctica."),
+        ("Carolina", "Descarga al instante y el plan de 10 semanas es claro."),
+        ("Andrea", "Por fin un resumen adaptado a psicopedagogas, no genérico."),
+    ]
+    reviews_html = "".join(
+        f'<blockquote class="review"><p>«{escape(q)}»</p><cite>— {escape(n)}</cite></blockquote>'
+        for n, q in reviews
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="es">
@@ -35,88 +35,131 @@ def _render_html(ctx: PipelineContext) -> str:
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>{escape(m.get('marca', 'Vértice Pro'))} — Guías PDF</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {{
-      --navy:{colors.get('navy','#1e3a5f')}; --accent:{colors.get('accent','#2563eb')};
-      --green:{colors.get('green','#059669')}; --bg:{colors.get('bg','#f8f9fb')};
-      --surface:{colors.get('surface','#fff')}; --text:{colors.get('text','#1a2332')};
-      --muted:{colors.get('muted','#5c6b7a')}; --border:#e2e8f0; --radius:12px;
+      --bg:{col.get('bg','#faf8f5')}; --surface:{col.get('surface','#fff')};
+      --text:{col.get('text','#1a1a1a')}; --muted:{col.get('muted','#6b6560')};
+      --charcoal:{col.get('charcoal','#1a1a1a')}; --gold:{col.get('gold','#c9a962')};
+      --accent:{col.get('accent','#b8956a')}; --border:{col.get('border','#e8e4df')};
+      --cream:{col.get('cream_dark','#f0ebe3')};
     }}
     * {{ box-sizing:border-box; margin:0; }}
-    body {{ font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }}
-    .announce {{ background:var(--navy); color:#fff; text-align:center; padding:10px 16px; font-size:0.78rem; }}
-    header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }}
-    .logo {{ font-weight:700; font-size:1.15rem; color:var(--navy); }}
-    .logo span {{ color:var(--accent); }}
-    .hero {{ display:grid; grid-template-columns:1fr 1fr; gap:32px; max-width:1100px; margin:0 auto; padding:40px 20px; align-items:center; }}
-    .hero h1 {{ font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--navy); margin-bottom:12px; line-height:1.15; }}
-    .hero p {{ color:var(--muted); margin-bottom:20px; font-size:1rem; }}
-    .hero-img {{ width:100%; border-radius:var(--radius); box-shadow:0 16px 40px rgba(30,58,95,0.2); }}
-    .mockup {{ max-width:220px; margin:0 auto; display:block; }}
-    .btn {{ display:inline-flex; align-items:center; min-height:48px; padding:0 28px; background:var(--accent); color:#fff; border-radius:8px; font-weight:600; text-decoration:none; }}
-    section {{ max-width:1100px; margin:0 auto; padding:0 20px 48px; }}
-    section h2 {{ text-align:center; font-size:1.3rem; color:var(--navy); margin-bottom:24px; }}
-    .benefits {{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }}
-    .benefit {{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }}
-    .benefit h3 {{ font-size:0.95rem; margin-bottom:8px; color:var(--navy); }}
-    .benefit p {{ font-size:0.85rem; color:var(--muted); }}
-    .product-showcase {{ display:grid; grid-template-columns:280px 1fr; gap:32px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; align-items:start; }}
-    .portada {{ width:100%; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12); }}
-    .badge {{ font-size:0.65rem; font-weight:600; background:rgba(37,99,235,0.1); color:var(--accent); padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:8px; }}
-    .price {{ font-size:1.5rem; font-weight:700; color:var(--green); margin:12px 0; }}
-    .product-showcase ul {{ margin:12px 0; padding-left:18px; font-size:0.85rem; color:var(--muted); }}
-    .about {{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; text-align:center; max-width:640px; margin:0 auto; color:var(--muted); font-size:0.9rem; }}
-    footer {{ border-top:1px solid var(--border); padding:28px 20px; text-align:center; font-size:0.75rem; color:var(--muted); margin-top:32px; }}
+    body {{ font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }}
+    a {{ color:inherit; text-decoration:none; }}
+    .ticker {{ background:var(--charcoal); color:#fff; overflow:hidden; white-space:nowrap; font-size:0.72rem; letter-spacing:0.06em; padding:10px 0; }}
+    .ticker span {{ display:inline-block; padding-right:3rem; animation:scroll 28s linear infinite; }}
+    @keyframes scroll {{ from{{transform:translateX(0)}} to{{transform:translateX(-50%)}} }}
+    header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:18px 24px; text-align:center; position:sticky; top:0; z-index:20; }}
+    .logo {{ font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; letter-spacing:0.18em; font-weight:500; }}
+    nav {{ display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }}
+    nav a:hover {{ color:var(--text); }}
+    .hero-banner {{ position:relative; background:var(--cream); }}
+    .hero-banner img {{ width:100%; max-height:520px; object-fit:cover; display:block; }}
+    .hero-overlay {{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; background:rgba(250,248,245,0.15); }}
+    .hero-overlay .label {{ font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
+    .hero-overlay h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3.2rem); font-weight:400; letter-spacing:0.04em; margin-bottom:16px; }}
+    .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 32px; background:var(--charcoal); color:#fff; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; border:none; cursor:pointer; }}
+    .btn-outline {{ background:transparent; color:var(--charcoal); border:1px solid var(--charcoal); }}
+    .trust {{ text-align:center; padding:16px; font-size:0.78rem; color:var(--muted); letter-spacing:0.04em; }}
+    .trust strong {{ color:var(--gold); }}
+    section {{ padding:56px 24px; max-width:1200px; margin:0 auto; }}
+    section h2 {{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:400; text-align:center; letter-spacing:0.06em; margin-bottom:32px; }}
+    .grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:28px; }}
+    .card {{ background:var(--surface); text-align:center; }}
+    .card img {{ width:100%; aspect-ratio:3/4; object-fit:cover; background:var(--cream); }}
+    .card-body {{ padding:20px 16px 24px; }}
+    .card-brand {{ font-size:0.65rem; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }}
+    .card h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:500; margin-bottom:8px; line-height:1.3; }}
+    .price {{ font-size:1rem; font-weight:500; margin-bottom:14px; }}
+    .card .btn {{ width:100%; font-size:0.72rem; }}
+    .story {{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; background:var(--surface); padding:48px; border:1px solid var(--border); }}
+    .story img {{ width:100%; border-radius:2px; }}
+    .story h2 {{ text-align:left; margin-bottom:16px; }}
+    .story p {{ color:var(--muted); font-size:0.95rem; margin-bottom:20px; }}
+    .reviews {{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }}
+    .review {{ background:var(--surface); border:1px solid var(--border); padding:24px; font-size:0.88rem; color:var(--muted); }}
+    .review cite {{ display:block; margin-top:12px; font-style:normal; font-size:0.75rem; color:var(--text); letter-spacing:0.06em; }}
+    .newsletter {{ background:var(--cream); text-align:center; padding:48px 24px; max-width:1200px; margin:0 auto 48px; }}
+    .newsletter h2 {{ margin-bottom:8px; }}
+    .newsletter p {{ color:var(--muted); font-size:0.9rem; margin-bottom:20px; }}
+    footer {{ border-top:1px solid var(--border); padding:32px 24px; text-align:center; font-size:0.72rem; color:var(--muted); }}
     @media(max-width:768px) {{
-      .hero, .product-showcase, .benefits {{ grid-template-columns:1fr; }}
-      .mockup {{ max-width:180px; }}
+      nav {{ gap:16px; font-size:0.7rem; flex-wrap:wrap; }}
+      .story, .reviews {{ grid-template-columns:1fr; }}
+      .story {{ padding:24px; }}
     }}
   </style>
 </head>
 <body>
-  <div class="announce">{escape(c.get('announce',''))}</div>
+  <div class="ticker">
+    <span>{escape(c.get('announce',''))} &nbsp;·&nbsp; ★★★★★ Guías prácticas en español &nbsp;·&nbsp; Descarga instantánea &nbsp;·&nbsp; {escape(c.get('announce',''))} &nbsp;·&nbsp; </span>
+  </div>
   <header>
-    <div class="logo">{escape(m.get('marca','V'))}<span>Pro</span></div>
-    <a class="btn" href="#guias" style="font-size:0.85rem;padding:0 16px;min-height:40px;">Comprar</a>
+    <div class="logo">{escape(name)}</div>
+    <nav>
+      <a href="#bestsellers">Guías</a>
+      <a href="#historia">Nosotros</a>
+      <a href="#opiniones">Opiniones</a>
+    </nav>
   </header>
 
-  <div class="hero">
-    <div>
+  <div class="hero-banner">
+    <img src="{escape(a.get('hero',''))}" alt="Hero"/>
+    <div class="hero-overlay">
+      <p class="label">Nuevo · Serie Aplicar en tu rol</p>
       <h1>{escape(c.get('hero_title',''))}</h1>
-      <p>{escape(c.get('hero_subtitle',''))}</p>
-      <a class="btn" href="#guias">{escape(c.get('hero_cta',''))}</a>
-    </div>
-    <div>
-      <img class="hero-img" src="{escape(a.get('hero',''))}" alt="Vértice Pro hero"/>
-      <img class="mockup" src="{escape(a.get('mockup_movil',''))}" alt="Vista móvil"/>
+      <a class="btn" href="#bestsellers">{escape(c.get('hero_cta','Ver guías'))}</a>
     </div>
   </div>
+  <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
-  <section id="beneficios">
-    <h2>{escape(c.get('benefits_title',''))}</h2>
-    <div class="benefits">{ben_html}</div>
+  <section id="bestsellers">
+    <h2>Más vendidas</h2>
+    <div class="grid">
+      <article class="card">
+        <img src="{escape(a.get('portada',''))}" alt="{escape(p.get('titulo',''))}"/>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>{escape(p.get('titulo',''))}</h3>
+          <p class="price">{escape(p.get('precio',''))}</p>
+          <a class="btn" href="#">Añadir al carrito</a>
+        </div>
+      </article>
+      <article class="card" style="opacity:0.45">
+        <div style="aspect-ratio:3/4;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.85rem;">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro</p>
+          <h3>Nueva guía en camino</h3>
+          <p class="price">—</p>
+          <span class="btn btn-outline" style="display:block;line-height:48px;">Avísame</span>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section id="guias">
-    <h2>{escape(c.get('products_title',''))}</h2>
-    <div class="product-showcase">
-      <img class="portada" src="{escape(a.get('portada',''))}" alt="{escape(p.get('titulo',''))}"/>
+  <section id="historia">
+    <div class="story">
+      <img src="{escape(a.get('mockup_movil',''))}" alt="App móvil"/>
       <div>
-        <span class="badge">PDF · Descarga digital</span>
-        <h3 style="font-family:'Libre Baskerville',serif;font-size:1.2rem;color:var(--navy);margin-bottom:8px;">{escape(p.get('titulo',''))}</h3>
-        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:8px;">{escape(p.get('subtitulo',''))}</p>
-        <p class="price">{escape(p.get('precio',''))}</p>
-        <ul>{prod_ben}</ul>
-        <a class="btn" href="#">Comprar y descargar</a>
+        <h2>Inspiradas en tu trabajo real</h2>
+        <p>{escape(c.get('about_text',''))}</p>
+        <p>{escape(p.get('subtitulo',''))}</p>
+        <a class="btn btn-outline" href="#bestsellers">Ver colección</a>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>{escape(c.get('about_title',''))}</h2>
-    <div class="about"><p>{escape(c.get('about_text',''))}</p></div>
+  <section id="opiniones">
+    <h2>Lo que dicen</h2>
+    <div class="reviews">{reviews_html}</div>
   </section>
+
+  <div class="newsletter">
+    <h2>10% en tu primera guía</h2>
+    <p>Suscríbete y recibe el descuento en tu primer PDF.</p>
+    <a class="btn" href="#">Suscribirme</a>
+  </div>
 
   <footer><p>{escape(c.get('footer_legal',''))}</p></footer>
 </body>
@@ -131,7 +174,6 @@ class AssemblerAgent:
         preview = out / "preview.html"
         preview.write_text(html, encoding="utf-8")
 
-        # Copiar assets junto al preview
         theme_bundle = out / "shopify_bundle"
         if theme_bundle.exists():
             shutil.rmtree(theme_bundle)
@@ -160,5 +202,5 @@ class AssemblerAgent:
         return AgentResult(
             ok=True,
             data={"preview": str(preview), "zip": str(zip_path)},
-            warnings=["Importa vertice-pro-theme.zip en Shopify → Temas → Importar"],
+            warnings=["Estilo FILJÓS · paleta crema/dorado · sin azul"],
         )

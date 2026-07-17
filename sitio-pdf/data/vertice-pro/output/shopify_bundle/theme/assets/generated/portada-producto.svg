@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" role="img">
-  <rect width="400" height="560" fill="#1e3a5f"/>
-  <rect x="0" y="0" width="8" height="560" fill="#2563eb"/>
-  <text x="40" y="120" fill="#fff" font-family="Georgia,serif" font-size="22" font-weight="700">Pareto para psicopedagogas</text>
-  <text x="40" y="155" fill="#fff" font-family="Georgia,serif" font-size="22" font-weight="700"></text>
-  <text x="40" y="200" fill="#2563eb" font-family="system-ui" font-size="14">en 10 semanas</text>
-  <text x="40" y="480" fill="#94a3b8" font-family="system-ui" font-size="11">Serie Aplicar en tu rol</text>
-  <text x="40" y="500" fill="#64748b" font-family="system-ui" font-size="10">Vértice Pro</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img">
+  <rect width="480" height="640" fill="#f0ebe3"/>
+  <rect x="40" y="40" width="400" height="560" fill="#fff" stroke="#e8e4df"/>
+  <rect x="56" y="56" width="368" height="480" fill="#1a1a1a"/>
+  <rect x="48" y="48" width="368" height="480" fill="#fff"/>
+  <rect x="48" y="48" width="6" height="480" fill="#c9a962"/>
+  <text x="80" y="140" fill="#1a1a1a" font-family="Georgia,serif" font-size="20" font-weight="700">Pareto para psicopedagogas en </text>
+  <text x="80" y="175" fill="#1a1a1a" font-family="Georgia,serif" font-size="20" font-weight="700">10 semanas</text>
+  <text x="80" y="520" fill="#c9a962" font-family="system-ui" font-size="11" letter-spacing="0.1em">APLICAR EN TU ROL</text>
+  <text x="80" y="545" fill="#6b6560" font-family="system-ui" font-size="10">VÉRTICE PRO</text>
 </svg>

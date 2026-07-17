@@ -9,19 +9,22 @@
   "moneda_default": "USD",
   "precio_display": "$4.99",
   "colores": {
-    "navy": "#1e3a5f",
-    "accent": "#2563eb",
-    "green": "#059669",
-    "bg": "#f8f9fb",
+    "bg": "#faf8f5",
     "surface": "#ffffff",
-    "text": "#1a2332",
-    "muted": "#5c6b7a"
+    "text": "#1a1a1a",
+    "muted": "#6b6560",
+    "charcoal": "#1a1a1a",
+    "gold": "#c9a962",
+    "accent": "#b8956a",
+    "cream_dark": "#f0ebe3",
+    "border": "#e8e4df"
   },
   "tipografias": {
-    "titulos": "Libre Baskerville, Georgia, serif",
-    "cuerpo": "Inter, system-ui, sans-serif"
+    "titulos": "Cormorant Garamond, Georgia, serif",
+    "cuerpo": "DM Sans, system-ui, sans-serif"
   },
-  "estilo_visual": "editorial_profesional",
+  "estilo_visual": "premium_calido_filjos",
+  "referencia_diseno": "filjos.com — minimal, crema, serif, grid productos, historia de marca",
   "plataforma": "shopify",
   "shopify_domain": "verticepro.myshopify.com",
   "producto_piloto": {
@@ -39,7 +42,6 @@
     "og_image": false,
     "favicon": false
   },
-  "decisiones_pendientes": false,
-  "decisiones_confirmadas": "defaults ★ · mock primero · OPENAI después",
+  "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · sin azul",
   "modo_imagen": "mock"
 }

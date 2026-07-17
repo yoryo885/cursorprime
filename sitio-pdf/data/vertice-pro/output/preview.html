@@ -4,100 +4,131 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Vértice Pro — Guías PDF</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --navy:#1e3a5f; --accent:#2563eb;
-      --green:#059669; --bg:#f8f9fb;
-      --surface:#ffffff; --text:#1a2332;
-      --muted:#5c6b7a; --border:#e2e8f0; --radius:12px;
+      --bg:#faf8f5; --surface:#ffffff;
+      --text:#1a1a1a; --muted:#6b6560;
+      --charcoal:#1a1a1a; --gold:#c9a962;
+      --accent:#b8956a; --border:#e8e4df;
+      --cream:#f0ebe3;
     }
     * { box-sizing:border-box; margin:0; }
-    body { font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
-    .announce { background:var(--navy); color:#fff; text-align:center; padding:10px 16px; font-size:0.78rem; }
-    header { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
-    .logo { font-weight:700; font-size:1.15rem; color:var(--navy); }
-    .logo span { color:var(--accent); }
-    .hero { display:grid; grid-template-columns:1fr 1fr; gap:32px; max-width:1100px; margin:0 auto; padding:40px 20px; align-items:center; }
-    .hero h1 { font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--navy); margin-bottom:12px; line-height:1.15; }
-    .hero p { color:var(--muted); margin-bottom:20px; font-size:1rem; }
-    .hero-img { width:100%; border-radius:var(--radius); box-shadow:0 16px 40px rgba(30,58,95,0.2); }
-    .mockup { max-width:220px; margin:0 auto; display:block; }
-    .btn { display:inline-flex; align-items:center; min-height:48px; padding:0 28px; background:var(--accent); color:#fff; border-radius:8px; font-weight:600; text-decoration:none; }
-    section { max-width:1100px; margin:0 auto; padding:0 20px 48px; }
-    section h2 { text-align:center; font-size:1.3rem; color:var(--navy); margin-bottom:24px; }
-    .benefits { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .benefit { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
-    .benefit h3 { font-size:0.95rem; margin-bottom:8px; color:var(--navy); }
-    .benefit p { font-size:0.85rem; color:var(--muted); }
-    .product-showcase { display:grid; grid-template-columns:280px 1fr; gap:32px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; align-items:start; }
-    .portada { width:100%; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12); }
-    .badge { font-size:0.65rem; font-weight:600; background:rgba(37,99,235,0.1); color:var(--accent); padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:8px; }
-    .price { font-size:1.5rem; font-weight:700; color:var(--green); margin:12px 0; }
-    .product-showcase ul { margin:12px 0; padding-left:18px; font-size:0.85rem; color:var(--muted); }
-    .about { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; text-align:center; max-width:640px; margin:0 auto; color:var(--muted); font-size:0.9rem; }
-    footer { border-top:1px solid var(--border); padding:28px 20px; text-align:center; font-size:0.75rem; color:var(--muted); margin-top:32px; }
+    body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+    a { color:inherit; text-decoration:none; }
+    .ticker { background:var(--charcoal); color:#fff; overflow:hidden; white-space:nowrap; font-size:0.72rem; letter-spacing:0.06em; padding:10px 0; }
+    .ticker span { display:inline-block; padding-right:3rem; animation:scroll 28s linear infinite; }
+    @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    header { background:var(--surface); border-bottom:1px solid var(--border); padding:18px 24px; text-align:center; position:sticky; top:0; z-index:20; }
+    .logo { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; letter-spacing:0.18em; font-weight:500; }
+    nav { display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+    nav a:hover { color:var(--text); }
+    .hero-banner { position:relative; background:var(--cream); }
+    .hero-banner img { width:100%; max-height:520px; object-fit:cover; display:block; }
+    .hero-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; background:rgba(250,248,245,0.15); }
+    .hero-overlay .label { font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .hero-overlay h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3.2rem); font-weight:400; letter-spacing:0.04em; margin-bottom:16px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 32px; background:var(--charcoal); color:#fff; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; border:none; cursor:pointer; }
+    .btn-outline { background:transparent; color:var(--charcoal); border:1px solid var(--charcoal); }
+    .trust { text-align:center; padding:16px; font-size:0.78rem; color:var(--muted); letter-spacing:0.04em; }
+    .trust strong { color:var(--gold); }
+    section { padding:56px 24px; max-width:1200px; margin:0 auto; }
+    section h2 { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:400; text-align:center; letter-spacing:0.06em; margin-bottom:32px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:28px; }
+    .card { background:var(--surface); text-align:center; }
+    .card img { width:100%; aspect-ratio:3/4; object-fit:cover; background:var(--cream); }
+    .card-body { padding:20px 16px 24px; }
+    .card-brand { font-size:0.65rem; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
+    .card h3 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:500; margin-bottom:8px; line-height:1.3; }
+    .price { font-size:1rem; font-weight:500; margin-bottom:14px; }
+    .card .btn { width:100%; font-size:0.72rem; }
+    .story { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; background:var(--surface); padding:48px; border:1px solid var(--border); }
+    .story img { width:100%; border-radius:2px; }
+    .story h2 { text-align:left; margin-bottom:16px; }
+    .story p { color:var(--muted); font-size:0.95rem; margin-bottom:20px; }
+    .reviews { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .review { background:var(--surface); border:1px solid var(--border); padding:24px; font-size:0.88rem; color:var(--muted); }
+    .review cite { display:block; margin-top:12px; font-style:normal; font-size:0.75rem; color:var(--text); letter-spacing:0.06em; }
+    .newsletter { background:var(--cream); text-align:center; padding:48px 24px; max-width:1200px; margin:0 auto 48px; }
+    .newsletter h2 { margin-bottom:8px; }
+    .newsletter p { color:var(--muted); font-size:0.9rem; margin-bottom:20px; }
+    footer { border-top:1px solid var(--border); padding:32px 24px; text-align:center; font-size:0.72rem; color:var(--muted); }
     @media(max-width:768px) {
-      .hero, .product-showcase, .benefits { grid-template-columns:1fr; }
-      .mockup { max-width:180px; }
+      nav { gap:16px; font-size:0.7rem; flex-wrap:wrap; }
+      .story, .reviews { grid-template-columns:1fr; }
+      .story { padding:24px; }
     }
   </style>
 </head>
 <body>
-  <div class="announce">Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol»</div>
+  <div class="ticker">
+    <span>Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off &nbsp;·&nbsp; ★★★★★ Guías prácticas en español &nbsp;·&nbsp; Descarga instantánea &nbsp;·&nbsp; Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off &nbsp;·&nbsp; </span>
+  </div>
   <header>
-    <div class="logo">Vértice Pro<span>Pro</span></div>
-    <a class="btn" href="#guias" style="font-size:0.85rem;padding:0 16px;min-height:40px;">Comprar</a>
+    <div class="logo">VÉRTICE PRO</div>
+    <nav>
+      <a href="#bestsellers">Guías</a>
+      <a href="#historia">Nosotros</a>
+      <a href="#opiniones">Opiniones</a>
+    </nav>
   </header>
 
-  <div class="hero">
-    <div>
-      <h1>Aplica libros famosos a tu trabajo esta semana</h1>
-      <p>Guías PDF en español para profesionales ocupados</p>
-      <a class="btn" href="#guias">Ver guías PDF</a>
-    </div>
-    <div>
-      <img class="hero-img" src="assets/hero.svg" alt="Vértice Pro hero"/>
-      <img class="mockup" src="assets/mockup-movil.svg" alt="Vista móvil"/>
+  <div class="hero-banner">
+    <img src="assets/hero.svg" alt="Hero"/>
+    <div class="hero-overlay">
+      <p class="label">Nuevo · Serie Aplicar en tu rol</p>
+      <h1>Guías que aplicas esta semana</h1>
+      <a class="btn" href="#bestsellers">Ver colección</a>
     </div>
   </div>
+  <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
-  <section id="beneficios">
-    <h2>Qué incluye cada guía</h2>
-    <div class="benefits">
-        <div class="benefit">
-          <h3>Plan de 10 semanas</h3>
-          <p>Aplica un plan semanal concreto durante 10 semanas con acciones específicas</p>
+  <section id="bestsellers">
+    <h2>Más vendidas</h2>
+    <div class="grid">
+      <article class="card">
+        <img src="assets/portada-producto.svg" alt="Pareto para psicopedagogas en 10 semanas"/>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>Pareto para psicopedagogas en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <a class="btn" href="#">Añadir al carrito</a>
         </div>
-        <div class="benefit">
-          <h3>Adaptado a tu rol</h3>
-          <p>Identifica el 20% de estudiantes que requieren tu intervención prioritaria</p>
+      </article>
+      <article class="card" style="opacity:0.45">
+        <div style="aspect-ratio:3/4;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.85rem;">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro</p>
+          <h3>Nueva guía en camino</h3>
+          <p class="price">—</p>
+          <span class="btn btn-outline" style="display:block;line-height:48px;">Avísame</span>
         </div>
-        <div class="benefit">
-          <h3>Descarga al instante</h3>
-          <p>Compras, descargas y empiezas hoy.</p>
-        </div></div>
+      </article>
+    </div>
   </section>
 
-  <section id="guias">
-    <h2>Guías disponibles</h2>
-    <div class="product-showcase">
-      <img class="portada" src="assets/portada-producto.svg" alt="Pareto para psicopedagogas en 10 semanas"/>
+  <section id="historia">
+    <div class="story">
+      <img src="assets/mockup-movil.svg" alt="App móvil"/>
       <div>
-        <span class="badge">PDF · Descarga digital</span>
-        <h3 style="font-family:'Libre Baskerville',serif;font-size:1.2rem;color:var(--navy);margin-bottom:8px;">Pareto para psicopedagogas en 10 semanas</h3>
-        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:8px;">Prioriza el 20% de casos que generan el 80% del impacto en el aula</p>
-        <p class="price">$4.99</p>
-        <ul><li>Identifica el 20% de estudiantes que requieren tu intervención prioritaria</li><li>Redistribuye tu tiempo según indicadores medibles de impacto real</li><li>Reduce la sensación de agotamiento por dispersión de esfuerzos</li></ul>
-        <a class="btn" href="#">Comprar y descargar</a>
+        <h2>Inspiradas en tu trabajo real</h2>
+        <p>Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas en escuela.</p>
+        <p>Prioriza el 20% de casos que generan el 80% del impacto en el aula</p>
+        <a class="btn btn-outline" href="#bestsellers">Ver colección</a>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>Vértice Pro</h2>
-    <div class="about"><p>Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas en escuela.</p></div>
+  <section id="opiniones">
+    <h2>Lo que dicen</h2>
+    <div class="reviews"><blockquote class="review"><p>«La guía me ayudó a priorizar casos en el gabinete. Muy práctica.»</p><cite>— María</cite></blockquote><blockquote class="review"><p>«Descarga al instante y el plan de 10 semanas es claro.»</p><cite>— Carolina</cite></blockquote><blockquote class="review"><p>«Por fin un resumen adaptado a psicopedagogas, no genérico.»</p><cite>— Andrea</cite></blockquote></div>
   </section>
+
+  <div class="newsletter">
+    <h2>10% en tu primera guía</h2>
+    <p>Suscríbete y recibe el descuento en tu primer PDF.</p>
+    <a class="btn" href="#">Suscribirme</a>
+  </div>
 
   <footer><p>Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.</p></footer>
 </body>

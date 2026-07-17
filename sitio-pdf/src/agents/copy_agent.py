@@ -19,10 +19,10 @@ class CopyAgent:
         prod = marca.get("producto_piloto", {})
         beneficios = kdp.get("beneficios") or []
         copy = {
-            "announce": f"Descarga instantánea · Guías PDF en español · Serie «{marca.get('tagline', 'Aplicar en tu rol')}»",
-            "hero_title": "Aplica libros famosos a tu trabajo esta semana",
+            "announce": "Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off",
+            "hero_title": "Guías que aplicas esta semana",
             "hero_subtitle": marca.get("descripcion_corta", ""),
-            "hero_cta": "Ver guías PDF",
+            "hero_cta": "Ver colección",
             "benefits_title": "Qué incluye cada guía",
             "benefits": [
                 {"title": "Plan de 10 semanas", "text": beneficios[3] if len(beneficios) > 3 else "Una acción concreta por semana."},
