@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "announce": { "type": "announce-bar", "settings": {} },
+    "hero": { "type": "hero-pdf", "settings": {} },
+    "benefits": { "type": "benefits-pdf", "settings": {} },
+    "products": { "type": "featured-products", "settings": { "collection": "all" } },
+    "about": { "type": "about-pdf", "settings": {} }
+  },
+  "order": ["announce", "hero", "benefits", "products", "about"]
+}

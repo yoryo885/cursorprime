@@ -1,0 +1,23 @@
+{
+  "nombre": "sitio-pdf",
+  "version": "0.1.0",
+  "estado": "piloto_vertice_pro",
+  "pasos": [
+    {"id": 1, "slug": "context", "agente": "ContextAgent", "flag": "--solo-context"},
+    {"id": 2, "slug": "visual", "agente": "VisualAgent", "flag": "--solo-visual"},
+    {"id": 3, "slug": "copy", "agente": "CopyAgent", "flag": "--solo-copy"},
+    {"id": 4, "slug": "qc", "agente": "QCAgent", "flag": "--solo-qc"},
+    {"id": 5, "slug": "assemble", "agente": "AssemblerAgent", "flag": "--solo-assemble"}
+  ],
+  "integraciones": {
+    "kdp_listing": "libros a entender/resumenes/{producto}/kdp/",
+    "portada_pdf": "libros a entender/resumenes/{producto}/meta/producto.json",
+    "cliente": "clientes/vertice-pro/"
+  },
+  "salidas": [
+    "output/preview.html",
+    "output/theme.zip",
+    "output/assets/",
+    "output/copy/"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "issues": [],
+  "warnings": [],
+  "assets": [
+    "hero",
+    "portada",
+    "mockup_movil"
+  ]
+}

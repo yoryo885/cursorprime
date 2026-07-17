@@ -1,0 +1,12 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Ir al contenido"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Comprar y descargar"
+    }
+  }
+}

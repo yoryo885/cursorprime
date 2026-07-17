@@ -1,0 +1,45 @@
+{
+  "marca": "Vértice Pro",
+  "slug": "vertice-pro",
+  "tagline": "Aplicar en tu rol",
+  "descripcion_corta": "Guías PDF en español para profesionales ocupados",
+  "serie": "Aplicar en tu rol",
+  "voz": "directa, útil, sin relleno, profesional",
+  "mercados": ["CL", "MX", "ES"],
+  "moneda_default": "USD",
+  "precio_display": "$4.99",
+  "colores": {
+    "navy": "#1e3a5f",
+    "accent": "#2563eb",
+    "green": "#059669",
+    "bg": "#f8f9fb",
+    "surface": "#ffffff",
+    "text": "#1a2332",
+    "muted": "#5c6b7a"
+  },
+  "tipografias": {
+    "titulos": "Libre Baskerville, Georgia, serif",
+    "cuerpo": "Inter, system-ui, sans-serif"
+  },
+  "estilo_visual": "editorial_profesional",
+  "plataforma": "shopify",
+  "shopify_domain": "verticepro.myshopify.com",
+  "producto_piloto": {
+    "slug": "pareto",
+    "titulo": "Pareto para psicopedagogas en 10 semanas",
+    "subtitulo": "Prioriza el 20% de casos que generan el 80% del impacto en el aula",
+    "audiencia": "psicopedagogas en escuela"
+  },
+  "assets_solicitados": {
+    "hero": true,
+    "portada_producto": true,
+    "mockup_movil": true,
+    "logo": false,
+    "iconos_beneficios": false,
+    "og_image": false,
+    "favicon": false
+  },
+  "decisiones_pendientes": false,
+  "decisiones_confirmadas": "defaults ★ · mock primero · OPENAI después",
+  "modo_imagen": "mock"
+}

@@ -1,0 +1,15 @@
+<section class="vp-section" id="nosotros">
+  <h2>{{ section.settings.heading | default: "Vértice Pro" }}</h2>
+  <div class="vp-about">
+    <p>{{ section.settings.text | default: "Editorial digital en español. Convertimos ideas de libros de productividad en guías accionables para profesionales." }}</p>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Sobre nosotros",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Vértice Pro" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Editorial digital en español. Convertimos ideas de libros de productividad en guías accionables para profesionales: psicopedagogas, docentes, clínicos y emprendedores." }
+  ]
+}
+{% endschema %}

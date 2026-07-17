@@ -1,0 +1,40 @@
+{
+  "announce": "Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol»",
+  "hero_title": "Aplica libros famosos a tu trabajo esta semana",
+  "hero_subtitle": "Guías PDF en español para profesionales ocupados",
+  "hero_cta": "Ver guías PDF",
+  "benefits_title": "Qué incluye cada guía",
+  "benefits": [
+    {
+      "title": "Plan de 10 semanas",
+      "text": "Aplica un plan semanal concreto durante 10 semanas con acciones específicas"
+    },
+    {
+      "title": "Adaptado a tu rol",
+      "text": "Identifica el 20% de estudiantes que requieren tu intervención prioritaria"
+    },
+    {
+      "title": "Descarga al instante",
+      "text": "Compras, descargas y empiezas hoy."
+    }
+  ],
+  "products_title": "Guías disponibles",
+  "product": {
+    "titulo": "Pareto para psicopedagogas en 10 semanas",
+    "subtitulo": "Prioriza el 20% de casos que generan el 80% del impacto en el aula",
+    "precio": "$4.99",
+    "descripcion_corta": "Ayudar a profesionales de la psicopedagogía a identificar el 20% de estudiantes o intervenciones que generan el 80% de los resultados, permitiéndoles concentrar recursos limitados donde realmente tran",
+    "descripcion_html": "Si trabajas como psicopedagoga en una escuela, conoces la tensión constante: decenas de estudiantes requieren tu atención, pero tus recursos y tiempo son limitados. Intentar abordar cada caso con la misma intensidad te deja agotada sin generar los avances que esperas en quienes realmente lo necesitan.<br><br><b>Este resumen adaptado del principio de Pareto te enseña a identificar ese 20% de estudiantes o intervenciones que producirán el 80% de los resultados positivos en tu gabinete.</b> No se trata de abandonar casos, sino de aplicar una estrategia de priorización inteligente que maximice el impacto real de tu trabajo psicopedagógico.<br><br>Guía de la serie <b>Aplicar en tu rol</b> (Libros a Entender): aplica ideas de libros de negocio y productividad a tu rol profesional.<br><br><b>Qué encontrarás en estas 28 páginas:</b><br>• <b>Plan de acción de 10 semanas</b> con tareas concretas para aplicar Pareto en tu día a día<br>• <b>Resúmenes por tema</b> adaptados al contexto escolar y al trabajo de intervención psicopedagógica<br>• <b>Tarjetas prácticas</b> con idea clave, ejemplo y aplicación directa a tu rol<br>• <b>Mapa conceptual</b> para visualizar el sistema completo de priorización<br>• <b>Checklist imprimible</b>: ¿Estoy aplicando Pareto? para autoevaluar tu progreso<br>• <b>Plantilla en blanco</b> para diseñar tu propio plan semanal personalizado<br>• <b>Mini guía de inicio</b> para comenzar desde la primera semana<br><br>Aprenderás a redistribuir tu tiempo según indicadores medibles como avance lector, autonomía en aula, reducción de derivaciones y tiempo por caso crítico. Identificarás los procesos cognitivos y hitos de aprendizaje que concentran mayor impacto, protegerás tu energía de tareas dispersas y focalizarás intervenciones donde realmente transformas trayectorias escolares.<br><br>Este material está diseñado específicamente para profesionales de la psicopedagogía que necesitan resultados concretos con recursos escasos, respetando la plasticidad de cada estudiante sin diluir tu esfuerzo.<br><br><b>Importante:</b> Esta guía es un resumen independiente elaborado por Libros a Entender. No está afiliada, autorizada ni respaldada por el autor ni la editorial del libro original. Su objetivo es ayudarte a aplicar las ideas del libro en tu contexto profesional.<br><br><b>Para quién es:</b> psicopedagoga en escuela.",
+    "descripcion_plain": "Si trabajas como psicopedagoga en una escuela, conoces la tensión constante: decenas de estudiantes requieren tu atención, pero tus recursos y tiempo son limitados. Intentar abordar cada caso con la misma intensidad te deja agotada sin generar los avances que esperas en quienes realmente lo necesitan.\n\nEste resumen adaptado del principio de Pareto te enseña a identificar ese 20% de estudiantes o intervenciones que producirán el 80% de los resultados positivos en tu gabinete. No se trata de abandonar casos, sino de aplicar una estrategia de priorización inteligente que maximice el impacto real …",
+    "beneficios": [
+      "Identifica el 20% de estudiantes que requieren tu intervención prioritaria",
+      "Redistribuye tu tiempo según indicadores medibles de impacto real",
+      "Reduce la sensación de agotamiento por dispersión de esfuerzos",
+      "Aplica un plan semanal concreto durante 10 semanas con acciones específicas",
+      "Concentra recursos limitados donde realmente transformas trayectorias escolares"
+    ]
+  },
+  "about_title": "Vértice Pro",
+  "about_text": "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas en escuela.",
+  "footer_legal": "Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales."
+}
