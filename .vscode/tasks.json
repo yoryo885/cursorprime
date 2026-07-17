@@ -1,12 +1,33 @@
 {
   "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "openSimpleBrowser",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8768/tienda.html"]
+    }
+  ],
   "tasks": [
+    {
+      "label": "Vértice Pro: abrir en Browser",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Vértice Pro: servir preview",
+        "Vértice Pro: launch Simple Browser"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
     {
       "label": "Vértice Pro: servir preview",
       "type": "shell",
       "command": "python3 -m http.server 8768",
       "options": {
-        "cwd": "${workspaceFolder}/sitio-pdf/data/vertice-pro/output"
+        "cwd": "${workspaceFolder}/vertice-pro-preview"
       },
       "isBackground": true,
       "problemMatcher": {
@@ -20,16 +41,17 @@
       "presentation": {
         "reveal": "silent",
         "panel": "dedicated"
-      },
-      "runOptions": {
-        "runOn": "folderOpen"
       }
     },
     {
-      "label": "Vértice Pro: abrir preview en Cursor",
+      "label": "Vértice Pro: launch Simple Browser",
       "type": "shell",
-      "command": "echo Abre http://localhost:8768/preview.html en Simple Browser (Cmd/Ctrl+Shift+P → Simple Browser: Show)",
-      "dependsOn": ["Vértice Pro: servir preview"],
+      "command": "${input:openSimpleBrowser}",
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "close": true
+      },
       "problemMatcher": []
     }
   ]

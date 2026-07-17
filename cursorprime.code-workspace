@@ -19,10 +19,31 @@
     "remote.autoForwardPortsSource": "hybrid",
     "portsAttributes": {
       "8768": {
-        "label": "Vértice Pro — Preview tienda",
+        "label": "Vértice Pro — Browser",
         "onAutoForward": "openBrowser",
-        "protocol": "http"
+        "protocol": "http",
+        "elevateIfNeeded": true
       }
     }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Vértice Pro: abrir en Browser",
+        "dependsOrder": "sequence",
+        "dependsOn": [
+          "Vértice Pro: servir preview",
+          "Vértice Pro: launch Simple Browser"
+        ],
+        "group": { "kind": "build", "isDefault": true },
+        "problemMatcher": []
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.live-server"
+    ]
   }
 }
