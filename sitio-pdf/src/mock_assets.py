@@ -1,4 +1,4 @@
-"""SVG decorativos simples — sin texto (el copy va solo en HTML)."""
+"""SVG decorativos — portadas por guía + carrusel hero."""
 
 from __future__ import annotations
 
@@ -15,22 +15,10 @@ def _write(path: Path, svg: str) -> str:
     return path.name
 
 
-def hero_bg_svg(marca: dict) -> str:
-    """Fondo suave sin texto — opcional."""
-    bg = _c(marca, "cream_dark", "#f0ebe3")
-    gold = _c(marca, "gold", "#c9a962")
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="presentation">
-  <rect width="800" height="600" fill="{bg}"/>
-  <circle cx="650" cy="120" r="180" fill="{gold}" opacity="0.07"/>
-  <circle cx="100" cy="480" r="140" fill="{gold}" opacity="0.05"/>
-</svg>"""
-
-
-def portada_svg(marca: dict, producto: dict) -> str:
+def portada_svg(marca: dict, titulo: str, *, accent_bar: str | None = None) -> str:
     charcoal = _c(marca, "charcoal", "#1a1a1a")
-    gold = _c(marca, "gold", "#c9a962")
+    gold = accent_bar or _c(marca, "gold", "#c9a962")
     bg = _c(marca, "cream_dark", "#f0ebe3")
-    titulo = producto.get("titulo", "Guía PDF")
     line1 = titulo[:32]
     line2 = titulo[32:64] if len(titulo) > 32 else ""
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img">
@@ -54,7 +42,7 @@ def mockup_movil_svg(marca: dict) -> str:
   <text x="140" y="64" text-anchor="middle" fill="{charcoal}" font-family="Georgia,serif" font-size="9" letter-spacing="0.14em">VÉRTICE PRO</text>
   <rect x="52" y="88" width="176" height="120" fill="#fff" stroke="#e8e4df"/>
   <rect x="52" y="88" width="4" height="120" fill="{gold}"/>
-  <text x="140" y="155" text-anchor="middle" fill="{charcoal}" font-family="Georgia,serif" font-size="9">Pareto</text>
+  <text x="140" y="155" text-anchor="middle" fill="{charcoal}" font-family="Georgia,serif" font-size="9">PDF</text>
   <rect x="52" y="230" width="120" height="5" rx="2" fill="#e8e4df"/>
   <rect x="52" y="248" width="90" height="5" rx="2" fill="#e8e4df"/>
   <rect x="52" y="280" width="176" height="36" fill="{charcoal}"/>
@@ -63,9 +51,30 @@ def mockup_movil_svg(marca: dict) -> str:
 
 
 def generate_mock_assets(out_dir: Path, marca: dict) -> dict[str, str]:
-    producto = marca.get("producto_piloto", {})
-    return {
-        "hero_bg": _write(out_dir / "hero-bg.svg", hero_bg_svg(marca)),
-        "portada": _write(out_dir / "portada-producto.svg", portada_svg(marca, producto)),
-        "mockup_movil": _write(out_dir / "mockup-movil.svg", mockup_movil_svg(marca)),
-    }
+    catalogo = marca.get("catalogo_guias") or [marca.get("producto_piloto", {})]
+    accents = [_c(marca, "gold", "#c9a962"), "#a68b5b", "#8b7355"]
+    assets: dict[str, str] = {}
+    carousel: list[dict] = []
+
+    for i, guia in enumerate(catalogo):
+        slug = guia.get("slug", f"guia-{i}")
+        titulo = guia.get("titulo", "Guía PDF")
+        fname = _write(
+            out_dir / f"portada-{slug}.svg",
+            portada_svg(marca, titulo, accent_bar=accents[i % len(accents)]),
+        )
+        rel = f"assets/{fname}"
+        assets[f"portada_{slug}"] = rel
+        carousel.append({
+            "slug": slug,
+            "titulo": titulo,
+            "precio": guia.get("precio", marca.get("precio_display", "$4.99")),
+            "disponible": guia.get("disponible", True),
+            "src": rel,
+        })
+
+    piloto = catalogo[0].get("slug", "pareto") if catalogo else "pareto"
+    assets["portada"] = assets.get(f"portada_{piloto}", "")
+    assets["mockup_movil"] = f"assets/{_write(out_dir / 'mockup-movil.svg', mockup_movil_svg(marca))}"
+    assets["_carousel_json"] = carousel  # type: ignore[assignment]
+    return assets

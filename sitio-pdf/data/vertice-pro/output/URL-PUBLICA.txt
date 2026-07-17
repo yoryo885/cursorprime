@@ -1,1 +1,4 @@
-https://bags-oriental-apparent-painted.trycloudflare.com/preview.html
+Preview local: http://127.0.0.1:8768/preview.html
+Preview público: https://ninety-hotels-dress.loca.lt/preview.html
+
+Carrusel hero: 3 guías · auto-rotación · swipe · flechas · dots

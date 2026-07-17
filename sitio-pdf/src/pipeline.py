@@ -88,7 +88,8 @@ def _hydrate(ctx: PipelineContext, step_id: str) -> None:
         from src.config import kdp_listing_path
         ctx.kdp = load_json(kdp_listing_path(ctx.producto), {}) or {}
     if step_id in ("copy", "qc", "assemble"):
-        ctx.assets = (load_json(meta / "assets.json", {}) or {}).get("files", {})
+        assets_data = load_json(meta / "assets.json", {}) or {}
+        ctx.assets = assets_data.get("files", assets_data)
     if step_id in ("qc", "assemble"):
         from src.agents.copy_agent import CopyAgent
         CopyAgent().run(ctx)

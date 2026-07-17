@@ -2,13 +2,22 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 import zipfile
 from html import escape
 from pathlib import Path
 
-from src.config import shopify_theme_src, slug_output
+from src.config import load_json, shopify_theme_src, slug_meta, slug_output
 from src.types import AgentResult, PipelineContext
+
+
+def _carousel_slides(ctx: PipelineContext) -> list[dict]:
+    data = load_json(slug_meta(ctx.slug) / "assets.json", {}) or {}
+    slides = data.get("carousel") or ctx.marca.get("catalogo_guias") or []
+    if not slides:
+        slides = [{"titulo": ctx.marca.get("producto_piloto", {}).get("titulo", "Guía PDF"), "src": ctx.assets.get("portada", ""), "precio": "$4.99", "disponible": True}]
+    return slides
 
 
 def _render_html(ctx: PipelineContext) -> str:
@@ -18,8 +27,22 @@ def _render_html(ctx: PipelineContext) -> str:
     a = ctx.assets
     p = c.get("product", {})
     name = m.get("marca", "Vértice Pro").upper()
-    portada = a.get("portada", "assets/portada-producto.svg")
+    portada = a.get("portada", "assets/portada-pareto.svg")
     mockup = a.get("mockup_movil", "assets/mockup-movil.svg")
+    slides = _carousel_slides(ctx)
+
+    slides_html = ""
+    dots_html = ""
+    for i, s in enumerate(slides):
+        active = " is-active" if i == 0 else ""
+        soon = "" if s.get("disponible", True) else " is-soon"
+        slides_html += f"""
+        <figure class="carousel-slide{active}{soon}" data-index="{i}" data-title="{escape(str(s.get('titulo','')))}" data-price="{escape(str(s.get('precio','')))}">
+          <img src="{escape(str(s.get('src', portada)))}" alt="{escape(str(s.get('titulo','')))}" draggable="false"/>
+        </figure>"""
+        dots_html += f'<button type="button" class="carousel-dot{" is-active" if i == 0 else ""}" data-index="{i}" aria-label="Guía {i+1}"></button>'
+
+    carousel_json = json.dumps(slides, ensure_ascii=False).replace("</", "<\\/")
 
     reviews = [
         ("María", "Me ayudó a priorizar casos en el gabinete."),
@@ -66,8 +89,43 @@ def _render_html(ctx: PipelineContext) -> str:
     .hero-label {{ font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
     .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,5vw,2.75rem); font-weight:400; line-height:1.15; margin-bottom:16px; letter-spacing:0.02em; }}
     .hero-desc {{ color:var(--muted); font-size:0.95rem; margin-bottom:24px; max-width:36ch; }}
-    .hero-visual {{ display:flex; justify-content:center; align-items:center; }}
-    .hero-visual img {{ width:min(100%,320px); filter:drop-shadow(0 20px 40px rgba(0,0,0,0.12)); }}
+    .hero-visual {{ display:flex; flex-direction:column; align-items:center; gap:16px; }}
+    .hero-carousel {{ position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }}
+    .carousel-track {{ position:relative; width:100%; height:100%; }}
+    .carousel-slide {{
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:translateX(24px) scale(0.92) rotateY(-8deg);
+      transition:opacity 0.55s ease, transform 0.55s ease; pointer-events:none;
+    }}
+    .carousel-slide.is-active {{
+      opacity:1; transform:translateX(0) scale(1) rotateY(0); pointer-events:auto;
+      animation:floatBook 4s ease-in-out infinite;
+    }}
+    .carousel-slide.is-soon img {{ opacity:0.88; }}
+    .carousel-slide img {{
+      width:min(78%,280px); max-height:100%; object-fit:contain;
+      filter:drop-shadow(0 24px 48px rgba(0,0,0,0.14));
+    }}
+    @keyframes floatBook {{
+      0%,100% {{ transform:translateY(0) scale(1) rotateY(0); }}
+      50% {{ transform:translateY(-10px) scale(1.02) rotateY(2deg); }}
+    }}
+    .carousel-nav {{ display:flex; align-items:center; justify-content:center; gap:12px; }}
+    .carousel-btn {{
+      width:44px; height:44px; border:1px solid var(--border); background:var(--surface);
+      border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1; color:var(--charcoal);
+      display:inline-flex; align-items:center; justify-content:center;
+    }}
+    .carousel-btn:hover {{ border-color:var(--gold); }}
+    .carousel-dots {{ display:flex; gap:8px; }}
+    .carousel-dot {{
+      width:8px; height:8px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
+    }}
+    .carousel-dot.is-active {{ background:var(--gold); transform:scale(1.15); }}
+    .carousel-caption {{ text-align:center; min-height:3.2em; }}
+    .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--text); margin-bottom:4px; }}
+    .carousel-caption span {{ font-size:0.85rem; color:var(--muted); }}
+    .carousel-badge {{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }}
 
     .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px; background:var(--charcoal); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--charcoal); cursor:pointer; }}
     .btn-outline {{ background:transparent; color:var(--charcoal); }}
@@ -107,8 +165,8 @@ def _render_html(ctx: PipelineContext) -> str:
       .hero .wrap {{ grid-template-columns:1fr; text-align:center; }}
       .hero-copy {{ max-width:none; margin:0 auto; }}
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
-      .hero-visual {{ order:-1; }}
-      .hero-visual img {{ width:min(70vw,260px); }}
+      .hero-visual {{ order:-1; width:100%; }}
+      .hero-carousel {{ width:min(85vw,320px); height:clamp(280px,55vw,380px); margin:0 auto; }}
       .story {{ grid-template-columns:1fr; text-align:center; }}
       .story h2 {{ text-align:center; }}
       .story img {{ width:min(50vw,200px); }}
@@ -138,7 +196,19 @@ def _render_html(ctx: PipelineContext) -> str:
         <a class="btn" href="#bestsellers">{escape(c.get('hero_cta','Ver colección'))}</a>
       </div>
       <div class="hero-visual">
-        <img src="{escape(portada)}" alt="{escape(p.get('titulo',''))}"/>
+        <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
+          <div class="carousel-track">{slides_html}</div>
+        </div>
+        <div class="carousel-nav">
+          <button type="button" class="carousel-btn" id="carouselPrev" aria-label="Anterior">‹</button>
+          <div class="carousel-dots" id="carouselDots">{dots_html}</div>
+          <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
+        </div>
+        <div class="carousel-caption" id="carouselCaption">
+          <span class="carousel-badge">Serie Aplicar en tu rol</span>
+          <strong id="captionTitle">{escape(str(slides[0].get('titulo','')))}</strong>
+          <span id="captionPrice">{escape(str(slides[0].get('precio','')))}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -193,6 +263,47 @@ def _render_html(ctx: PipelineContext) -> str:
   </div>
 
   <footer><p>{escape(c.get('footer_legal',''))}</p></footer>
+  <script>
+(function() {{
+  const root = document.getElementById('heroCarousel');
+  if (!root) return;
+  const slides = root.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const titleEl = document.getElementById('captionTitle');
+  const priceEl = document.getElementById('captionPrice');
+  let idx = 0;
+  let timer;
+  let touchX = 0;
+
+  function show(i) {{
+    idx = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('is-active', n === idx));
+    dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
+    const s = slides[idx];
+    if (titleEl) titleEl.textContent = s.dataset.title || '';
+    if (priceEl) priceEl.textContent = s.dataset.price || '';
+  }}
+
+  function next() {{ show(idx + 1); }}
+  function prev() {{ show(idx - 1); }}
+  function resetTimer() {{
+    clearInterval(timer);
+    timer = setInterval(next, 4500);
+  }}
+
+  document.getElementById('carouselNext')?.addEventListener('click', () => {{ next(); resetTimer(); }});
+  document.getElementById('carouselPrev')?.addEventListener('click', () => {{ prev(); resetTimer(); }});
+  dots.forEach(d => d.addEventListener('click', () => {{ show(+d.dataset.index); resetTimer(); }}));
+
+  root.addEventListener('touchstart', e => {{ touchX = e.touches[0].clientX; }}, {{passive:true}});
+  root.addEventListener('touchend', e => {{
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) {{ dx < 0 ? next() : prev(); resetTimer(); }}
+  }}, {{passive:true}});
+
+  resetTimer();
+}})();
+  </script>
 </body>
 </html>"""
 

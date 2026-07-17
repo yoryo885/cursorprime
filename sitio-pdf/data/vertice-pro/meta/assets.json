@@ -1,8 +1,33 @@
 {
   "modo": "mock",
   "files": {
-    "hero_bg": "assets/hero-bg.svg",
-    "portada": "assets/portada-producto.svg",
+    "portada_pareto": "assets/portada-pareto.svg",
+    "portada_kahneman-docentes": "assets/portada-kahneman-docentes.svg",
+    "portada_habitos-enfermeras": "assets/portada-habitos-enfermeras.svg",
+    "portada": "assets/portada-pareto.svg",
     "mockup_movil": "assets/mockup-movil.svg"
-  }
+  },
+  "carousel": [
+    {
+      "slug": "pareto",
+      "titulo": "Pareto para psicopedagogas en 10 semanas",
+      "precio": "$4.99",
+      "disponible": true,
+      "src": "assets/portada-pareto.svg"
+    },
+    {
+      "slug": "kahneman-docentes",
+      "titulo": "Kahneman para docentes en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "src": "assets/portada-kahneman-docentes.svg"
+    },
+    {
+      "slug": "habitos-enfermeras",
+      "titulo": "Hábitos atómicos para enfermeras en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "src": "assets/portada-habitos-enfermeras.svg"
+    }
+  ]
 }
