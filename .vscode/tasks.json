@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Vértice Pro: servir preview",
+      "type": "shell",
+      "command": "python3 -m http.server 8768",
+      "options": {
+        "cwd": "${workspaceFolder}/sitio-pdf/data/vertice-pro/output"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Serving HTTP"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Vértice Pro: abrir preview en Cursor",
+      "type": "shell",
+      "command": "echo Abre http://localhost:8768/preview.html en Simple Browser (Cmd/Ctrl+Shift+P → Simple Browser: Show)",
+      "dependsOn": ["Vértice Pro: servir preview"],
+      "problemMatcher": []
+    }
+  ]
+}

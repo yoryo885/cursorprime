@@ -1,0 +1,11 @@
+{
+  "remote.autoForwardPorts": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "portsAttributes": {
+    "8768": {
+      "label": "Vértice Pro — Preview tienda",
+      "onAutoForward": "openBrowser",
+      "protocol": "http"
+    }
+  }
+}

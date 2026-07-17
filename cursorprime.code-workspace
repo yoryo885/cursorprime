@@ -3,6 +3,10 @@
     {
       "path": ".",
       "name": "cursorprime"
+    },
+    {
+      "path": "vertice-pro-preview",
+      "name": "▶ Vértice Pro Preview"
     }
   ],
   "settings": {
@@ -10,6 +14,15 @@
       "**/__pycache__": true,
       "**/.DS_Store": true,
       "**/.backup-organizacion": true
+    },
+    "remote.autoForwardPorts": true,
+    "remote.autoForwardPortsSource": "hybrid",
+    "portsAttributes": {
+      "8768": {
+        "label": "Vértice Pro — Preview tienda",
+        "onAutoForward": "openBrowser",
+        "protocol": "http"
+      }
     }
   }
 }
