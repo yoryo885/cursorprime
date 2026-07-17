@@ -11,7 +11,7 @@ class VisualAgent:
     def run(self, ctx: PipelineContext) -> AgentResult:
         assets_dir = slug_output(ctx.slug) / "assets"
         if ctx.mock:
-            raw = generate_mock_assets(assets_dir, ctx.marca)
+            raw = generate_mock_assets(assets_dir, ctx.marca, producto=ctx.producto)
             carousel = raw.pop("_carousel_json", [])
             ctx.assets = {k: v for k, v in raw.items() if isinstance(v, str)}
             save_json(slug_meta(ctx.slug) / "assets.json", {

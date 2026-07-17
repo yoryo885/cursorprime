@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
+
+from src.config import portada_imagen_path, producto_meta_path, load_json
 
 
 def _c(marca: dict, key: str, default: str) -> str:
@@ -50,20 +53,81 @@ def mockup_movil_svg(marca: dict) -> str:
 </svg>"""
 
 
-def generate_mock_assets(out_dir: Path, marca: dict) -> dict[str, str]:
-    catalogo = marca.get("catalogo_guias") or [marca.get("producto_piloto", {})]
+def portada_pareto_pdf_svg(titulo: str, subtitulo: str = "El principio de Pareto · Antoine Delers") -> str:
+    """Réplica web de la portada del PDF (fondo negro, 80/20, serie verde)."""
+    line1 = titulo[:34]
+    line2 = titulo[34:68] if len(titulo) > 34 else ""
+    accent = "#4caf7d"
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img" aria-label="{titulo}">
+  <defs>
+    <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d5a45"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="520" fill="#0a0a0a"/>
+  <text x="28" y="44" fill="{accent}" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.14em">APLICAR EN TU ROL</text>
+  <rect x="0" y="54" width="400" height="188" fill="#141414"/>
+  <rect x="0" y="54" width="400" height="188" fill="url(#pg)" opacity="0.75"/>
+  <rect x="0" y="54" width="402" height="190" fill="none" stroke="{accent}" stroke-width="2"/>
+  <ellipse cx="290" cy="148" rx="90" ry="68" fill="#252525" opacity="0.85"/>
+  <ellipse cx="310" cy="132" rx="36" ry="36" fill="#333"/>
+  <text x="24" y="300" fill="#ffffff" font-family="system-ui,sans-serif" font-size="76" font-weight="700" letter-spacing="-0.04em">80</text>
+  <text x="24" y="368" fill="{accent}" font-family="system-ui,sans-serif" font-size="58" font-weight="700">/20</text>
+  <text x="28" y="412" fill="#ffffff" font-family="system-ui,sans-serif" font-size="15" font-weight="700">{line1}</text>
+  <text x="28" y="434" fill="#ffffff" font-family="system-ui,sans-serif" font-size="15" font-weight="700">{line2}</text>
+  <text x="28" y="468" fill="rgba(255,255,255,0.55)" font-family="system-ui,sans-serif" font-size="10">{subtitulo}</text>
+  <text x="28" y="498" fill="rgba(255,255,255,0.4)" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.08em">VÉRTICE PRO · PDF</text>
+</svg>"""
+
+
+def _portada_for_guia(
+    out_dir: Path,
+    marca: dict,
+    guia: dict,
+    *,
+    producto: str,
+) -> tuple[str, str, bool]:
+    """Genera o copia portada. Retorna (filename, rel_path, es_portada_pdf)."""
+    slug = guia.get("slug", "guia")
+    titulo = guia.get("titulo", "Guía PDF")
+    use_pdf_cover = guia.get("portada_pdf") or slug == producto
+
+    if use_pdf_cover:
+        png_src = portada_imagen_path(producto)
+        if png_src:
+            dest = out_dir / f"portada-{slug}.png"
+            shutil.copy2(png_src, dest)
+            return dest.name, f"assets/{dest.name}", True
+
+        meta = load_json(producto_meta_path(producto), {}) or {}
+        subtitulo = meta.get("subtitulo_portada", "El principio de Pareto")
+        if meta.get("titulo_comercial"):
+            titulo = meta.get("titulo_comercial", titulo)
+        fname = _write(
+            out_dir / f"portada-{slug}.svg",
+            portada_pareto_pdf_svg(titulo, f"{subtitulo} · Antoine Delers"),
+        )
+        return fname, f"assets/{fname}", True
+
     accents = [_c(marca, "gold", "#c9a962"), "#a68b5b", "#8b7355"]
+    idx = hash(slug) % len(accents)
+    fname = _write(
+        out_dir / f"portada-{slug}.svg",
+        portada_svg(marca, titulo, accent_bar=accents[idx]),
+    )
+    return fname, f"assets/{fname}", False
+
+
+def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto") -> dict[str, str]:
+    catalogo = marca.get("catalogo_guias") or [marca.get("producto_piloto", {})]
     assets: dict[str, str] = {}
     carousel: list[dict] = []
 
     for i, guia in enumerate(catalogo):
         slug = guia.get("slug", f"guia-{i}")
         titulo = guia.get("titulo", "Guía PDF")
-        fname = _write(
-            out_dir / f"portada-{slug}.svg",
-            portada_svg(marca, titulo, accent_bar=accents[i % len(accents)]),
-        )
-        rel = f"assets/{fname}"
+        _, rel, _ = _portada_for_guia(out_dir, marca, guia, producto=producto)
         assets[f"portada_{slug}"] = rel
         carousel.append({
             "slug": slug,
@@ -71,6 +135,7 @@ def generate_mock_assets(out_dir: Path, marca: dict) -> dict[str, str]:
             "precio": guia.get("precio", marca.get("precio_display", "$4.99")),
             "disponible": guia.get("disponible", True),
             "src": rel,
+            "portada_pdf": slug == producto or guia.get("portada_pdf", False),
         })
 
     piloto = catalogo[0].get("slug", "pareto") if catalogo else "pareto"

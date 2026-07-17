@@ -38,7 +38,8 @@
       "slug": "pareto",
       "titulo": "Pareto para psicopedagogas en 10 semanas",
       "precio": "$4.99",
-      "disponible": true
+      "disponible": true,
+      "portada_pdf": true
     },
     {
       "slug": "kahneman-docentes",

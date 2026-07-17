@@ -1,2 +1,5 @@
-https://gene-pgp-interval-look.trycloudflare.com/tienda.html
-https://gene-pgp-interval-look.trycloudflare.com/
+Preview móvil: https://lovely-ghosts-melt.loca.lt/tienda.html
+
+Si localtunnel pide contraseña, usa la IP pública del servidor (ver mensaje en pantalla).
+
+Local: http://localhost:8768/tienda.html

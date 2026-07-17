@@ -4,5 +4,11 @@
     "step": "context",
     "error": "marca.json incompleto",
     "at": "2026-07-17T00:20:59.422834+00:00"
+  },
+  {
+    "slug": "vertice-pro",
+    "step": "assemble",
+    "error": "name 'json' is not defined\nTraceback (most recent call last):\n  File \"/workspace/sitio-pdf/src/pipeline.py\", line 68, in run_pipeline\n    result: AgentResult = agent.run(ctx)\n                          ^^^^^^^^^^^^^^\n  File \"/workspace/sitio-pdf/src/agents/assembler_agent.py\", line 315, in run\n    preview.write_text(_render_html(ctx), encoding=\"utf-8\")\n                       ^^^^^^^^^^^^^^^^^\n  File \"/workspace/sitio-pdf/src/agents/assembler_agent.py\", line 44, in _render_html\n    carousel_json = json.dumps(slides, ensure_ascii=False).replace(\"</\", \"<\\\\/\")\n                    ^^^^\nNameError: name 'json' is not defined. Did you forget to import 'json'\n",
+    "at": "2026-07-17T00:36:46.832825+00:00"
   }
 ]

@@ -41,5 +41,19 @@ def kdp_listing_path(producto: str) -> Path:
     return LIBROS / "resumenes" / producto / "kdp" / "amazon_listing.json"
 
 
+def producto_meta_path(producto: str) -> Path:
+    return LIBROS / "resumenes" / producto / "meta" / "producto.json"
+
+
+def portada_imagen_path(producto: str) -> Path | None:
+    """Ruta a la portada PNG del resumen PDF si existe."""
+    meta = load_json(producto_meta_path(producto), {}) or {}
+    rel = meta.get("imagen_portada")
+    if not rel:
+        return None
+    path = LIBROS / "resumenes" / producto / rel
+    return path if path.is_file() else None
+
+
 def shopify_theme_src() -> Path:
     return CLIENTES / "vertice-pro" / "proyectos" / "shopify" / "theme"
