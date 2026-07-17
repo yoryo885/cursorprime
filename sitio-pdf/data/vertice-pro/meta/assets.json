@@ -1,7 +1,7 @@
 {
   "modo": "mock",
   "files": {
-    "hero": "assets/hero.svg",
+    "hero_bg": "assets/hero-bg.svg",
     "portada": "assets/portada-producto.svg",
     "mockup_movil": "assets/mockup-movil.svg"
   }

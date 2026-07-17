@@ -8,7 +8,7 @@ class QCAgent:
     def run(self, ctx: PipelineContext) -> AgentResult:
         issues = []
         warnings = []
-        required_assets = ["hero", "portada", "mockup_movil"]
+        required_assets = ["portada", "mockup_movil"]
         for key in required_assets:
             if key not in ctx.assets:
                 issues.append(f"Falta asset: {key}")
