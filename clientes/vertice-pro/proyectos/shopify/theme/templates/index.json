@@ -1,10 +1,59 @@
 {
   "sections": {
     "announce": { "type": "announce-bar", "settings": {} },
-    "hero": { "type": "hero-pdf", "settings": {} },
-    "benefits": { "type": "benefits-pdf", "settings": {} },
-    "products": { "type": "featured-products", "settings": { "collection": "all" } },
-    "about": { "type": "about-pdf", "settings": {} }
+    "header": { "type": "header", "settings": {} },
+    "hero": {
+      "type": "hero-pdf",
+      "blocks": {
+        "guide-1": {
+          "type": "guide",
+          "settings": {
+            "title": "Pareto para psicopedagogas en 10 semanas",
+            "price": "$4.99",
+            "available": true,
+            "asset_file": "portada-pareto.svg"
+          }
+        },
+        "guide-2": {
+          "type": "guide",
+          "settings": {
+            "title": "Kahneman para docentes en 10 semanas",
+            "price": "$4.99",
+            "available": false,
+            "asset_file": "portada-kahneman-docentes.svg"
+          }
+        },
+        "guide-3": {
+          "type": "guide",
+          "settings": {
+            "title": "Hábitos atómicos para enfermeras en 10 semanas",
+            "price": "$4.99",
+            "available": false,
+            "asset_file": "portada-habitos-enfermeras.svg"
+          }
+        }
+      },
+      "block_order": ["guide-1", "guide-2", "guide-3"],
+      "settings": {
+        "heading": "Guías que aplicas esta semana",
+        "subheading": "Guías PDF en español para profesionales ocupados"
+      }
+    },
+    "trust": { "type": "trust-bar", "settings": {} },
+    "products": { "type": "featured-products", "settings": { "heading": "Más vendidas" } },
+    "about": { "type": "about-pdf", "settings": {} },
+    "reviews": {
+      "type": "reviews-pdf",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "quote": "Me ayudó a priorizar casos en el gabinete.", "author": "María" } },
+        "r2": { "type": "review", "settings": { "quote": "Descarga al instante y plan de 10 semanas claro.", "author": "Carolina" } },
+        "r3": { "type": "review", "settings": { "quote": "Resumen adaptado a psicopedagogas, no genérico.", "author": "Andrea" } }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {}
+    },
+    "newsletter": { "type": "newsletter-pdf", "settings": {} },
+    "footer": { "type": "footer", "settings": {} }
   },
-  "order": ["announce", "hero", "benefits", "products", "about"]
+  "order": ["announce", "header", "hero", "trust", "products", "about", "reviews", "newsletter", "footer"]
 }

@@ -323,7 +323,9 @@ class AssemblerAgent:
         if theme_src.is_dir():
             shutil.copytree(theme_src, theme_bundle / "theme", dirs_exist_ok=True)
         if assets_src.is_dir():
-            shutil.copytree(assets_src, theme_bundle / "theme" / "assets" / "generated", dirs_exist_ok=True)
+            for f in assets_src.iterdir():
+                if f.is_file() and f.suffix.lower() in {".svg", ".png", ".jpg", ".webp"}:
+                    shutil.copy2(f, theme_bundle / "theme" / "assets" / f.name)
 
         zip_path = out / "vertice-pro-theme.zip"
         if zip_path.exists():
@@ -334,9 +336,5 @@ class AssemblerAgent:
                 for f in theme_dir.rglob("*"):
                     if f.is_file():
                         zf.write(f, f.relative_to(theme_dir))
-            for f in assets_src.glob("*"):
-                if f.is_file():
-                    zf.write(f, f"assets/{f.name}")
-            zf.write(preview, "preview.html")
 
         return AgentResult(ok=True, data={"preview": str(preview), "zip": str(zip_path)})

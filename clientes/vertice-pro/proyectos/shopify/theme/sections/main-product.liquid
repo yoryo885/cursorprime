@@ -2,19 +2,22 @@
   <div class="vp-product-grid">
     <div class="vp-product-media">
       {% if product.featured_image %}
-        <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" width="600" height="800" loading="eager"/>
+      {% else %}
+        <img src="{{ 'portada-pareto.svg' | asset_url }}" alt="{{ product.title | escape }}" width="600" height="800"/>
       {% endif %}
     </div>
     <div class="vp-product-info">
       <span class="vp-badge">PDF · Descarga digital</span>
       <h1>{{ product.title }}</h1>
       <p class="vp-price-lg">{{ product.price | money }}</p>
-      <div class="vp-product-desc">{{ product.description }}</div>
+      <div class="vp-product-desc rte">{{ product.description }}</div>
       {% form 'product', product %}
-        <button type="submit" name="add" class="vp-btn vp-btn-primary vp-btn-full" {% unless product.available %}disabled{% endunless %}>
+        <button type="submit" name="add" class="vp-btn vp-btn-full" {% unless product.available %}disabled{% endunless %}>
           {% if product.available %}Comprar y descargar{% else %}Agotado{% endif %}
         </button>
       {% endform %}
+      <p style="margin-top:16px;font-size:0.8rem;color:var(--vp-muted)">Descarga instantánea tras el pago · Formato PDF</p>
     </div>
   </div>
 </section>

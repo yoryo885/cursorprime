@@ -1,15 +1,32 @@
 <section class="vp-section" id="nosotros">
-  <h2>{{ section.settings.heading | default: "Vértice Pro" }}</h2>
-  <div class="vp-about">
-    <p>{{ section.settings.text | default: "Editorial digital en español. Convertimos ideas de libros de productividad en guías accionables para profesionales." }}</p>
+  <div class="vp-wrap">
+    <div class="vp-story">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 480 }}" alt="Vista móvil de la guía" loading="lazy" width="240" height="320"/>
+      {% else %}
+        <img src="{{ 'mockup-movil.svg' | asset_url }}" alt="Vista móvil de la guía" loading="lazy" width="240" height="320"/>
+      {% endif %}
+      <div>
+        <h2>{{ section.settings.heading | default: "Inspiradas en tu trabajo real" }}</h2>
+        <p>{{ section.settings.text | default: "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para profesionales." }}</p>
+        {% if section.settings.text_secondary != blank %}
+          <p>{{ section.settings.text_secondary }}</p>
+        {% endif %}
+        <a href="{{ section.settings.button_link | default: '#guias' }}" class="vp-btn vp-btn-outline">{{ section.settings.button_label | default: "Ver colección" }}</a>
+      </div>
+    </div>
   </div>
 </section>
 {% schema %}
 {
-  "name": "Sobre nosotros",
+  "name": "Historia / Nosotros",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Título", "default": "Vértice Pro" },
-    { "type": "textarea", "id": "text", "label": "Texto", "default": "Editorial digital en español. Convertimos ideas de libros de productividad en guías accionables para profesionales: psicopedagogas, docentes, clínicos y emprendedores." }
+    { "type": "text", "id": "heading", "label": "Título", "default": "Inspiradas en tu trabajo real" },
+    { "type": "textarea", "id": "text", "label": "Texto principal", "default": "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas, docentes y profesionales de salud." },
+    { "type": "textarea", "id": "text_secondary", "label": "Texto secundario", "default": "Prioriza el 20% de casos que generan el 80% del impacto en el aula." },
+    { "type": "image_picker", "id": "image", "label": "Imagen (opcional)" },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Ver colección" },
+    { "type": "url", "id": "button_link", "label": "Enlace botón" }
   ]
 }
 {% endschema %}

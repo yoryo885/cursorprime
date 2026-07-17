@@ -1,15 +1,17 @@
 <!doctype html>
-<html lang="es">
+<html lang="{{ request.locale.iso_code }}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page_title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>{{ page_title }}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Página {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
   {{ content_for_header }}
   {{ 'vertice-pro.css' | asset_url | stylesheet_tag }}
 </head>
 <body class="vp-body">
-  {% section 'header' %}
+  {% unless template.name == 'index' or template.name == 'password' %}
+    {% section 'announce-bar' %}
+    {% section 'header' %}
+  {% endunless %}
   <main>{{ content_for_layout }}</main>
-  {% section 'footer' %}
 </body>
 </html>

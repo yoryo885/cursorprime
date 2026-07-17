@@ -1,0 +1,37 @@
+<section class="vp-main-page">
+  <h1>Buscar</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search" style="margin-bottom:32px;display:flex;gap:8px;flex-wrap:wrap">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Buscar guías…" style="flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--vp-border);font-family:inherit"/>
+    <button type="submit" class="vp-btn">Buscar</button>
+  </form>
+  {% if search.performed %}
+    <div class="vp-products">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          <article class="vp-product">
+            <a href="{{ item.url }}">
+              {% if item.featured_image %}
+                <img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title | escape }}" class="vp-product-img" loading="lazy"/>
+              {% else %}
+                <div class="vp-product-placeholder"><span>{{ item.title }}</span></div>
+              {% endif %}
+              <div class="vp-product-body">
+                <h3>{{ item.title }}</h3>
+                <p class="vp-price">{{ item.price | money }}</p>
+              </div>
+            </a>
+          </article>
+        {% endif %}
+      {% else %}
+        <p class="vp-empty">Sin resultados para «{{ search.terms | escape }}».</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+{% schema %}
+{
+  "name": "Búsqueda",
+  "settings": [],
+  "templates": ["search"]
+}
+{% endschema %}

@@ -1,32 +1,52 @@
 <section class="vp-section" id="guias">
-  <h2>{{ section.settings.heading | default: "Guías disponibles" }}</h2>
-  <div class="vp-products">
-    {% assign col = collections[section.settings.collection] | default: collections.all %}
-    {% for product in col.products limit: section.settings.limit %}
-      <article class="vp-product">
-        <a href="{{ product.url }}">
-          {% if product.featured_image %}
-            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="vp-product-img" loading="lazy">
-          {% else %}
-            <div class="vp-product-placeholder"><span>{{ product.title | truncate: 40 }}</span></div>
-          {% endif %}
+  <div class="vp-wrap">
+    <h2>{{ section.settings.heading | default: "Más vendidas" }}</h2>
+    <div class="vp-products">
+      {% assign col = collections[section.settings.collection] | default: collections.all %}
+      {% for product in col.products limit: section.settings.limit %}
+        <article class="vp-product">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" class="vp-product-img" loading="lazy" width="400" height="533"/>
+            {% else %}
+              <div class="vp-product-placeholder"><span>{{ product.title | truncate: 50 }}</span></div>
+            {% endif %}
+            <div class="vp-product-body">
+              <p class="vp-product-brand">Vértice Pro · PDF</p>
+              <h3>{{ product.title }}</h3>
+              <p class="vp-price">{{ product.price | money }}</p>
+              <span class="vp-btn vp-btn-full">Ver guía</span>
+            </div>
+          </a>
+        </article>
+      {% else %}
+        <article class="vp-product">
+          <img src="{{ 'portada-pareto.svg' | asset_url }}" alt="Pareto para psicopedagogas" class="vp-product-img" loading="lazy" width="400" height="533"/>
           <div class="vp-product-body">
-            <span class="vp-badge">PDF · Digital</span>
-            <h3>{{ product.title }}</h3>
-            <p class="vp-price">{{ product.price | money }}</p>
+            <p class="vp-product-brand">Vértice Pro · PDF</p>
+            <h3>Pareto para psicopedagogas en 10 semanas</h3>
+            <p class="vp-price">$4.99</p>
+            <span class="vp-btn vp-btn-full" style="opacity:0.6">Añade el producto en Admin</span>
           </div>
-        </a>
-      </article>
-    {% else %}
-      <p class="vp-empty">Añade productos en Shopify Admin → Productos</p>
-    {% endfor %}
+        </article>
+        <article class="vp-product" style="opacity:0.55">
+          <div class="vp-product-placeholder">Próximamente</div>
+          <div class="vp-product-body">
+            <p class="vp-product-brand">Vértice Pro</p>
+            <h3>Nueva guía en camino</h3>
+            <p class="vp-price">—</p>
+            <span class="vp-btn vp-btn-outline vp-btn-full" style="line-height:46px">Avísame</span>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 {% schema %}
 {
   "name": "Productos destacados",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Título", "default": "Guías disponibles" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Más vendidas" },
     { "type": "collection", "id": "collection", "label": "Colección" },
     { "type": "range", "id": "limit", "min": 2, "max": 12, "step": 1, "default": 6, "label": "Máximo productos" }
   ]

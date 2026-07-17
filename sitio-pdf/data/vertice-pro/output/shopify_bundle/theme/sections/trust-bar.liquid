@@ -1,0 +1,14 @@
+<p class="vp-trust">{{ section.settings.text | default: "★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante" }}</p>
+{% schema %}
+{
+  "name": "Barra confianza",
+  "settings": [
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Texto",
+      "default": "★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante"
+    }
+  ]
+}
+{% endschema %}

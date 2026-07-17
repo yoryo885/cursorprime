@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Vértice Pro PDF",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_author": "Vértice Pro",
     "theme_documentation_url": "https://help.shopify.com",
     "theme_support_url": "https://help.shopify.com"
@@ -10,8 +10,9 @@
   {
     "name": "Colores",
     "settings": [
-      { "type": "color", "id": "color_navy", "label": "Azul marino", "default": "#1e3a5f" },
-      { "type": "color", "id": "color_accent", "label": "Acento", "default": "#2563eb" }
+      { "type": "color", "id": "color_bg", "label": "Fondo crema", "default": "#faf8f5" },
+      { "type": "color", "id": "color_gold", "label": "Dorado", "default": "#c9a962" },
+      { "type": "color", "id": "color_text", "label": "Texto", "default": "#1a1a1a" }
     ]
   }
 ]

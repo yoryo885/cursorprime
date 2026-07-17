@@ -1,0 +1,21 @@
+<div class="vp-newsletter">
+  <div class="vp-wrap">
+    <h2>{{ section.settings.heading | default: "10% en tu primera guía" }}</h2>
+    <p>{{ section.settings.text | default: "Suscríbete y recibe el descuento en tu primer PDF." }}</p>
+    {% form 'customer', class: 'vp-newsletter-form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter"/>
+      <input type="email" name="contact[email]" placeholder="Tu email" required style="padding:12px 16px;border:1px solid var(--vp-border);margin-right:8px;min-width:220px;font-family:inherit"/>
+      <button type="submit" class="vp-btn">{{ section.settings.button_label | default: "Suscribirme" }}</button>
+    {% endform %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "10% en tu primera guía" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Suscríbete y recibe el descuento en tu primer PDF." },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Suscribirme" }
+  ]
+}
+{% endschema %}

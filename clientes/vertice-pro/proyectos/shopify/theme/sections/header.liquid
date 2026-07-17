@@ -1,7 +1,24 @@
 <header class="vp-header">
-  <a href="/" class="vp-logo">Vértice<span>Pro</span></a>
-  <nav class="vp-nav">
-    <a href="#guias">Guías</a>
-    <a href="#beneficios">Beneficios</a>
-  </nav>
+  <div class="vp-wrap">
+    <a href="{{ routes.root_url }}" class="vp-logo">{{ section.settings.logo_text | default: shop.name | upcase }}</a>
+    <nav class="vp-nav">
+      <a href="{{ section.settings.link_guides | default: '#guias' }}">{{ section.settings.label_guides | default: "Guías" }}</a>
+      <a href="{{ section.settings.link_about | default: '#nosotros' }}">{{ section.settings.label_about | default: "Nosotros" }}</a>
+      <a href="{{ section.settings.link_reviews | default: '#opiniones' }}">{{ section.settings.label_reviews | default: "Opiniones" }}</a>
+    </nav>
+  </div>
 </header>
+{% schema %}
+{
+  "name": "Cabecera",
+  "settings": [
+    { "type": "text", "id": "logo_text", "label": "Logo (texto)", "default": "VÉRTICE PRO" },
+    { "type": "text", "id": "label_guides", "label": "Nav — Guías", "default": "Guías" },
+    { "type": "url", "id": "link_guides", "label": "Enlace guías" },
+    { "type": "text", "id": "label_about", "label": "Nav — Nosotros", "default": "Nosotros" },
+    { "type": "url", "id": "link_about", "label": "Enlace nosotros" },
+    { "type": "text", "id": "label_reviews", "label": "Nav — Opiniones", "default": "Opiniones" },
+    { "type": "url", "id": "link_reviews", "label": "Enlace opiniones" }
+  ]
+}
+{% endschema %}

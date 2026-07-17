@@ -1,46 +1,65 @@
-# Cómo publicar tu tienda Vértice Pro en Shopify
+# Cómo publicar Vértice Pro en Shopify
 
-**No necesitas GitHub.** Tienes dos caminos; el **A** es el más fácil.
-
----
-
-## Camino A — Usar Horizon (ya lo tienes) + copiar textos
-
-1. En Shopify app → **Tienda online** → **Temas** → **Editar tema**.
-2. Quita la contraseña: **Preferencias** → desactiva «Proteger tienda con contraseña».
-3. En la home, edita sección por sección y pega los textos de `entregables/copy-home.md`.
-4. **Productos** → **Añadir producto**:
-   - Nombre: `Pareto para psicopedagogas en 10 semanas`
-   - Marca: `Vértice Pro`
-   - Precio: ej. $3.990 CLP o $4.99 USD
-   - **Medios**: sube la portada del PDF
-   - Descripción: copia de `entregables/copy-producto-pareto.md`
-   - Abajo en **Tipo de producto** → marca **Digital** o instala app **Digital Downloads**
-   - Sube el archivo PDF en la app de descargas
-5. **Guardar** y **Vista previa**.
+**Archivo listo:** `sitio-pdf/data/vertice-pro/output/vertice-pro-theme.zip`
 
 ---
 
-## Camino B — Subir tema custom (ZIP)
+## Paso 1 — Importar tema
 
-1. En tu Mac/PC, comprime la carpeta `theme/` en un `.zip` (solo el contenido dentro de `theme/`, no la carpeta padre).
-2. Shopify → **Temas** → **Importar** → **Subir archivo zip**.
-3. **Publicar** el tema «Vértice Pro PDF».
-4. Crea el producto PDF como en el paso 4 del Camino A.
+1. Shopify Admin → **Tienda online** → **Temas**
+2. **Importar tema** → sube `vertice-pro-theme.zip`
+3. **Publicar** el tema «Vértice Pro PDF v2»
+
+Incluye: carrusel hero, paleta crema/dorado, portadas SVG, carrito, colección, 404, búsqueda y páginas.
+
+---
+
+## Paso 2 — Quitar contraseña
+
+**Preferencias** → desactiva «Proteger tienda con contraseña».
+
+---
+
+## Paso 3 — Crear producto PDF
+
+**Productos** → **Añadir producto**:
+
+| Campo | Valor |
+|-------|--------|
+| Nombre | Pareto para psicopedagogas en 10 semanas |
+| Marca | Vértice Pro |
+| Precio | $4.99 USD (o $3.990 CLP) |
+| Imagen | Sube `portada-pareto.svg` o PNG |
+| Descripción | Copia de `entregables/copy-producto-pareto.md` |
+| Tipo | Digital |
+
+Instala app **Digital Downloads** (o Shopify Files) y sube el PDF.
+
+---
+
+## Paso 4 — Colección
+
+Crea colección **Todas las guías** y añade el producto. En el editor del tema, sección **Más vendidas** → elige esa colección.
+
+---
+
+## Paso 5 — Páginas legales (recomendado)
+
+**Páginas** → crea Privacidad y Términos de descarga digital.
+
+---
+
+## Regenerar zip
+
+```bash
+cd sitio-pdf
+python3 sitio_pdf_main.py generar --slug vertice-pro --producto pareto --mock --reset-checkpoint
+```
+
+Salida: `data/vertice-pro/output/vertice-pro-theme.zip`
 
 ---
 
 ## ¿GitHub?
 
-Solo si más adelante contratas a un desarrollador para cambiar código del tema. **Para vender PDFs no lo necesitas.**
-
----
-
-## Archivos incluidos
-
-| Archivo | Para qué |
-|---------|----------|
-| `entregables/preview.html` | Ver el diseño en el navegador antes de Shopify |
-| `entregables/copy-home.md` | Textos de la home para pegar |
-| `entregables/copy-producto-pareto.md` | Descripción del primer PDF |
-| `theme/` | Tema Shopify listo para zip |
+No necesario para vender PDFs. Solo si contratas desarrollo del tema.

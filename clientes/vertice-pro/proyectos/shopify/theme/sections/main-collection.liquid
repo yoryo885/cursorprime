@@ -1,0 +1,33 @@
+<section class="vp-main-page">
+  <h1>{{ collection.title }}</h1>
+  {% if collection.description != blank %}
+    <div class="rte" style="margin-bottom:32px">{{ collection.description }}</div>
+  {% endif %}
+  <div class="vp-products">
+    {% for product in collection.products %}
+      <article class="vp-product">
+        <a href="{{ product.url }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" class="vp-product-img" loading="lazy" width="400" height="533"/>
+          {% else %}
+            <div class="vp-product-placeholder"><span>{{ product.title }}</span></div>
+          {% endif %}
+          <div class="vp-product-body">
+            <p class="vp-product-brand">Vértice Pro · PDF</p>
+            <h3>{{ product.title }}</h3>
+            <p class="vp-price">{{ product.price | money }}</p>
+          </div>
+        </a>
+      </article>
+    {% else %}
+      <p class="vp-empty">No hay productos en esta colección.</p>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Colección",
+  "settings": [],
+  "templates": ["collection"]
+}
+{% endschema %}
