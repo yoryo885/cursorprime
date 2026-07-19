@@ -6,8 +6,8 @@
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 10,
-    "ultima_mejora": "usuario no veía imágenes — entregar links GitHub raw",
+    "version": 11,
+    "ultima_mejora": "preferencia imágenes 2 y 3; pedir 3 más misma vibra",
     "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
     "resumen_simple": "meta/radar-mejoras-resumen-simple.md"
   }
