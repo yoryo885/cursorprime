@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Vista previa — cómo se verían 6 · 7 · 8 en la landing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f4f0ea;
+      --ink: #14110f;
+      --muted: #6a635c;
+      --cream: #faf6f0;
+      --gold: #b8954a;
+      --max: 1100px;
+      --pad: clamp(16px, 4vw, 40px);
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: #e8e2d8;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .note {
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+      padding: 12px var(--pad);
+      font-size: 0.8rem;
+    }
+    .note strong { color: var(--gold); }
+    .block-label {
+      max-width: var(--max);
+      margin: 28px auto 10px;
+      padding: 0 var(--pad);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .block-label em { font-style: normal; color: var(--ink); }
+
+    /* —— Opción 6: hero full-bleed —— */
+    .hero {
+      position: relative;
+      min-height: min(88vh, 720px);
+      display: flex;
+      align-items: flex-end;
+      background: #1a1816 center/cover no-repeat;
+      background-image: linear-gradient(90deg, rgba(12,10,9,0.82) 0%, rgba(12,10,9,0.35) 55%, rgba(12,10,9,0.15) 100%),
+        url("https://raw.githubusercontent.com/yoryo885/cursorprime/cursor/mejoras-emprendimientos-radar-9f18/meta/imagenes-landing-opciones/landing-opcion-06-lectura-lado.png");
+      color: #fff;
+    }
+    .hero-inner {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(40px, 8vw, 80px) var(--pad);
+    }
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.18em;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.45rem, 3.5vw, 2.1rem);
+      max-width: 16ch;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      max-width: 34ch;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 26px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* —— Opción 7: sección producto / mockup —— */
+    .product {
+      background: var(--cream);
+      padding: clamp(48px, 8vw, 80px) var(--pad);
+    }
+    .product .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(24px, 5vw, 56px);
+      align-items: center;
+    }
+    .product-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border: 1px solid #ddd5c8;
+    }
+    .product h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 12px;
+    }
+    .product .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; max-width: 36ch; }
+    .price { font-size: 1.35rem; font-weight: 600; margin-bottom: 18px; }
+    .btn-dark { background: var(--ink); color: #fff; }
+
+    /* —— Opción 8: banda lifestyle —— */
+    .band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+      background: #fff;
+    }
+    .band img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+    }
+    .band-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(32px, 6vw, 64px);
+      background: var(--bg);
+    }
+    .band-copy h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      margin-bottom: 12px;
+    }
+    .band-copy p { color: var(--muted); max-width: 34ch; margin-bottom: 20px; }
+
+    .compare {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px var(--pad) 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .compare figure {
+      background: #fff;
+      border: 1px solid #ddd5c8;
+      padding: 10px;
+    }
+    .compare img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .compare figcaption {
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 10px 4px 4px;
+      color: var(--muted);
+    }
+
+    footer.info {
+      background: var(--ink);
+      color: rgba(255,255,255,0.85);
+      padding: 32px var(--pad) 48px;
+      font-size: 0.9rem;
+    }
+    footer.info .wrap { max-width: var(--max); margin: 0 auto; }
+    footer.info h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    footer.info ul { margin: 12px 0 0 18px; }
+    footer.info li { margin-bottom: 8px; }
+    footer.info a { color: var(--gold); }
+
+    @media (max-width: 800px) {
+      .product .wrap,
+      .band,
+      .compare { grid-template-columns: 1fr; }
+      .hero { align-items: center; min-height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+  <p class="note">VISTA PREVIA · <strong>no es la tienda final</strong> · así se verían las opciones <strong>6 · 7 · 8</strong> en la landing</p>
+
+  <p class="block-label">Bloque A — Opción <em>6</em> como fondo del hero (arriba de la página)</p>
+  <section class="hero" aria-label="Hero con imagen 6">
+    <div class="hero-inner">
+      <div class="brand">VÉRTICE PRO</div>
+      <h1>Guías PDF para tu rol profesional</h1>
+      <p>Ideas de libros aplicadas a tu oficio. Plan de 10 semanas. Descarga al instante.</p>
+      <button type="button" class="btn">Ver colección</button>
+    </div>
+  </section>
+
+  <p class="block-label">Bloque B — Opción <em>7</em> en la ficha del producto (mockup)</p>
+  <section class="product">
+    <div class="wrap">
+      <img class="product-img" src="https://raw.githubusercontent.com/yoryo885/cursorprime/cursor/mejoras-emprendimientos-radar-9f18/meta/imagenes-landing-opciones/landing-opcion-07-mockup-ipad-plano.png" alt="Mockup guía en tablet"/>
+      <div>
+        <h2>Pareto para psicopedagogas en 10 semanas</h2>
+        <p class="meta">Serie Aplicar en tu rol · PDF · descarga inmediata</p>
+        <div class="price">$9.990</div>
+        <button type="button" class="btn btn-dark">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="block-label">Bloque C — Opción <em>8</em> como banda de confianza / “cómo se usa”</p>
+  <section class="band" aria-label="Banda con imagen 8">
+    <img src="https://raw.githubusercontent.com/yoryo885/cursorprime/cursor/mejoras-emprendimientos-radar-9f18/meta/imagenes-landing-opciones/landing-opcion-08-manos-tablet-guia.png" alt="Persona usando la guía en tablet"/>
+    <div class="band-copy">
+      <h2>Léela donde trabajas</h2>
+      <p>En el escritorio, en el tablet o entre casos. Una guía corta, aplicada a tu rol — no un resumen genérico.</p>
+      <button type="button" class="btn btn-dark">Ver guías</button>
+    </div>
+  </section>
+
+  <p class="block-label">Las tres juntas (referencia rápida)</p>
+  <div class="compare">
+    <figure>
+      <img src="https://raw.githubusercontent.com/yoryo885/cursorprime/cursor/mejoras-emprendimientos-radar-9f18/meta/imagenes-landing-opciones/landing-opcion-06-lectura-lado.png" alt="Opción 6"/>
+      <figcaption>6 · Hero / lifestyle</figcaption>
+    </figure>
+    <figure>
+      <img src="https://raw.githubusercontent.com/yoryo885/cursorprime/cursor/mejoras-emprendimientos-radar-9f18/meta/imagenes-landing-opciones/landing-opcion-07-mockup-ipad-plano.png" alt="Opción 7"/>
+      <figcaption>7 · Producto / mockup</figcaption>
+    </figure>
+    <figure>
+      <img src="https://raw.githubusercontent.com/yoryo885/cursorprime/cursor/mejoras-emprendimientos-radar-9f18/meta/imagenes-landing-opciones/landing-opcion-08-manos-tablet-guia.png" alt="Opción 8"/>
+      <figcaption>8 · Banda / uso real</figcaption>
+    </figure>
+  </div>
+
+  <footer class="info">
+    <div class="wrap">
+      <h3>¿De dónde salen estas imágenes?</h3>
+      <p>Las generé yo aquí en <strong>Cursor</strong> con IA (herramienta de imagen del agente). No son de Unsplash ni de un fotógrafo: se crean con un prompt (descripción del estilo).</p>
+      <ul>
+        <li><strong>En esta sesión (Cursor Cloud / agente):</strong> el costo va incluido en el uso del agente; tú no pagas por imagen aparte al pedírmelas aquí.</li>
+        <li><strong>Si las generas tú fuera</strong> (referencia aproximada 2026):
+          <ul>
+            <li>ChatGPT / DALL·E: ~USD 0.04–0.08 por imagen (según calidad)</li>
+            <li>Midjourney: plan desde ~USD 10/mes</li>
+            <li>Unsplash / Pexels: <strong>gratis</strong> (fotos reales de stock)</li>
+          </ul>
+        </li>
+        <li>Estas 3 (~2 MB c/u) están en la carpeta del repo; en Shopify se suben como archivos de la tienda.</li>
+      </ul>
+      <p style="margin-top:16px">Archivo de esta vista: <code>meta/imagenes-landing-opciones/preview-como-se-veria.html</code></p>
+    </div>
+  </footer>
+</body>
+</html>
