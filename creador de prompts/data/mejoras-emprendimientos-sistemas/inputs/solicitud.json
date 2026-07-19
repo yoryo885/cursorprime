@@ -29,7 +29,14 @@
     {
       "mensaje": "dame la informacion que la pueda entender y resumida",
       "cambio": "Tono simple; respuesta corta primero; 3 pasos + 1 decisión"
+    },
+    {
+      "mensaje": "la los pdf con rol le ves potencial ?",
+      "cambio": "Incluir línea Vértice Pro / PDF libro×rol como producto con potencial condicionado a 1 venta real"
     }
+  ],
+  "temas_extra": [
+    "PDF Aplicar en tu rol (libro × profesión) — potencial sí, escala solo tras primera venta"
   ],
   "variantes": 1
 }

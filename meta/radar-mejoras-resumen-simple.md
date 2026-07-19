@@ -52,6 +52,21 @@ Más tecnología ahora no ayuda tanto. Cobrar y probar con un negocio real sí.
 
 ---
 
+## PDF con rol (Vértice Pro) — ¿tiene potencial?
+
+**Sí.** Es de lo más claro del ecosistema: un libro famoso adaptado a un oficio  
+(ej. *Pareto para psicopedagogas*).
+
+| A favor | En contra si se hace mal |
+|---------|--------------------------|
+| No es genérico: la gente compra “para mi trabajo” | Sacar 20 roles sin vender el primero |
+| Encaja con Amazon + tienda propia | Competir con resúmenes baratos sin plan de 10 semanas |
+| El pipeline ya lo genera | Mezclar esto con la agencia local y no priorizar |
+
+**Regla:** 1 libro × 1 rol → vender → recién ahí agregar roles.
+
+---
+
 ## Una decisión
 
-¿Empezamos por **conseguir el primer cobro**, por **mejorar el informe**, o por **WhatsApp en vivo**?
+¿Empezamos por **conseguir el primer cobro** (agencia), por **vender el primer PDF con rol**, o por **WhatsApp en vivo**?
