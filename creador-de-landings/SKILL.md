@@ -1,10 +1,10 @@
 ---
 name: creador-de-landings
 description: >-
-  Genera landings HTML en segundos: empieza con preguntas de brief, propone
-  3 estilos (editorial, mockup, oferta) y construye preview.html. Usar cuando
-  el usuario pide crear landing, generador de landings, landing en segundos,
-  entrevista landing, usa creador-de-landings.
+  Genera landings HTML en segundos: entrevista de brief, propone estilos
+  (editorial, tienda tipo Filjós, mockup, oferta) y construye preview.html
+  multiproducto. Usar cuando pide crear landing, generador de landings,
+  landing en segundos, tienda/colección, filjos, usa creador-de-landings.
 ---
 
 # Creador de Landings
@@ -18,16 +18,18 @@ Triggers: crear landing, generador landings, landing en segundos, entrevista lan
 ## Flujo
 
 1. Entrevista (`meta/preguntas.json`)
-2. 3 ejemplos de estilo → usuario elige
+2. Estilos → usuario elige (`editorial` | `tienda` | `mockup` | `oferta`)
 3. Brief + HTML (`preview.html`) + QC
+
+Estilo **tienda** = look colección ecommerce (ref. estructura [filjos.com](https://filjos.com/)): barra, nav, hero “Ahora nuevo”, bestsellers, historia, newsletter. Ver `meta/referencias/filjos.md`.
 
 ## Comandos
 
 ```bash
 cd creador-de-landings
-python3 landings_main.py demo
+python3 landings_main.py demo --ejemplo tienda
 python3 landings_main.py entrevista --slug mi-marca
-python3 landings_main.py generar --slug mi-marca --ejemplo editorial
+python3 landings_main.py generar --slug mi-marca --ejemplo tienda
 python3 landings_main.py aprender --mensaje "..." --cambio "..."
 ```
 

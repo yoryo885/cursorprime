@@ -22,6 +22,13 @@
       "mensaje": "la landing tiene que ofrecer los diferentes productos que tendremos no solo el de pareto; iremos modificando el proyecto le vaya aprendiendo las mejoras",
       "cambio": "catalogo multiproducto + grid + filtros por rol + log de aprendizaje",
       "aplicado": true
+    },
+    {
+      "id": "m004",
+      "at": "2026-07-19T20:53:13.083424+00:00",
+      "mensaje": "https://filjos.com/ mira esa es una idea de pagina o landing que se podrian aser en el sistema",
+      "cambio": "estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md",
+      "aplicado": true
     }
   ]
 }

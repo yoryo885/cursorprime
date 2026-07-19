@@ -14,6 +14,14 @@ ESTILOS = [
         "mejor_si": ["editorial", "profesional", "pdf", "curso", "guia"],
     },
     {
+        "id": "tienda",
+        "nombre": "Tienda / marca (tipo Filjós)",
+        "cuando": "Colección con varios productos, look de ecommerce de marca",
+        "look": "Barra aviso + nav colecciones + hero 'Ahora nuevo' + bestsellers + historia + newsletter (ref. filjos.com)",
+        "mejor_si": ["tienda", "coleccion", "catalogo", "shop", "filjos", "marca", "ecommerce"],
+        "referencia": "https://filjos.com/",
+    },
+    {
         "id": "mockup",
         "nombre": "Mockup producto",
         "cuando": "Quieres que se vea el PDF/app en tablet",
@@ -32,10 +40,12 @@ ESTILOS = [
 
 def _recomendar(respuestas: dict) -> str:
     pref = (respuestas.get("estilo_preferido") or "").lower().strip()
-    if pref in ("editorial", "mockup", "oferta"):
+    if pref in ("editorial", "mockup", "oferta", "tienda"):
         return pref
     blob = " ".join(str(v).lower() for v in respuestas.values())
     tono = (respuestas.get("tono") or "").lower()
+    if any(k in blob for k in ("tienda", "filjos", "coleccion", "catálogo", "catalogo", "shop", "ecommerce")):
+        return "tienda"
     if tono == "directo" or "ads" in blob:
         return "oferta"
     if "mockup" in pref or "tablet" in blob:
@@ -68,8 +78,10 @@ class ExamplesAgent:
             ]
         lines += [
             "---",
-            "Elige con: `--ejemplo editorial|mockup|oferta`",
-            "O escribe en respuestas.json: `\"ejemplo_elegido\": \"editorial\"`",
+            "Referencia tienda: https://filjos.com/ (estructura, no copy).",
+            "",
+            "Elige con: `--ejemplo editorial|tienda|mockup|oferta`",
+            "O escribe en respuestas.json: `\"ejemplo_elegido\": \"tienda\"`",
         ]
 
         md = "\n".join(lines)
@@ -81,4 +93,4 @@ class ExamplesAgent:
         save_json(ctx.paths["meta"] / "ejemplos.json", payload)
 
         print(f"     recomendado: {recomendado} · usando: {ctx.ejemplo}")
-        return AgentResult(ok=True, artifacts=[str(out_md)], notes="3 ejemplos")
+        return AgentResult(ok=True, artifacts=[str(out_md)], notes=f"{len(ESTILOS)} ejemplos")

@@ -6,7 +6,7 @@
   "cta": "Ver colección",
   "precio": "desde $4.99",
   "tono": "editorial",
-  "estilo": "editorial",
+  "estilo": "tienda",
   "serie_libros": [
     {
       "slug": "pareto",
@@ -103,6 +103,9 @@
     }
   ],
   "mostrar_catalogo": true,
+  "barra_aviso": "Guías PDF · descarga al instante · colección libro × rol",
+  "historia": "Vértice Pro traduce ideas de libros clásicos a tu oficio. No es un solo PDF: es una colección que irá creciendo.",
+  "mision": "",
   "beneficios": [
     "Varias guías: elige libro × tu rol",
     "Plan de acción de 10 semanas por guía",
@@ -134,6 +137,8 @@
   ],
   "aprendizaje": [
     "Catálogo multi-producto (libro×rol) + grid con filtros + log de aprendizaje",
-    "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json"
+    "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json",
+    "catalogo multiproducto + grid + filtros por rol + log de aprendizaje",
+    "estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md"
   ]
 }

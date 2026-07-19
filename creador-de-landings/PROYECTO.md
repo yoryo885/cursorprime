@@ -19,13 +19,13 @@ flowchart LR
 cd creador-de-landings
 
 # Demo como cliente (Vértice Pro — catálogo completo)
-python3 landings_main.py demo
+python3 landings_main.py demo --ejemplo tienda
 
 # Entrevista interactiva
 python3 landings_main.py entrevista --slug mi-marca
 
 # Generar (usa data/{slug}/inputs/catalogo.json si existe)
-python3 landings_main.py generar --slug mi-marca --ejemplo editorial
+python3 landings_main.py generar --slug mi-marca --ejemplo tienda
 
 # Registrar mejora (aprendizaje continuo)
 python3 landings_main.py aprender --mensaje "..." --cambio "..."
@@ -45,7 +45,8 @@ Cada mejora del usuario → `logs/mejoras.json` → se reinyecta en el brief (`a
 
 - Preguntas en `meta/preguntas.json`
 - Respuestas: `data/{slug}/inputs/respuestas.json`
-- Estilo elegido: `ejemplo` = `editorial` | `mockup` | `oferta`
+- Estilo elegido: `ejemplo` = `editorial` | `tienda` | `mockup` | `oferta`
+- Ref. tienda (estructura Filjós): `meta/referencias/filjos.md`
 
 ## Salida
 

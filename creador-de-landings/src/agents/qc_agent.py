@@ -15,7 +15,7 @@ class QcAgent:
             "tiene_marca": bool(brief.get("marca")),
             "tiene_headline": bool(brief.get("promesa") or brief.get("producto")),
             "tiene_cta": bool(brief.get("cta")),
-            "tiene_estilo": brief.get("estilo") in ("editorial", "mockup", "oferta"),
+            "tiene_estilo": brief.get("estilo") in ("editorial", "mockup", "oferta", "tienda"),
             "tiene_catalogo": len(brief.get("productos") or []) >= 2,
         }
         if preview.exists():

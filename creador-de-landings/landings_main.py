@@ -105,7 +105,7 @@ def main() -> None:
 
     g = sub.add_parser("generar", help="Generar landing desde respuestas")
     g.add_argument("--slug", required=True)
-    g.add_argument("--ejemplo", choices=["editorial", "mockup", "oferta"], default="")
+    g.add_argument("--ejemplo", choices=["editorial", "tienda", "mockup", "oferta"], default="")
     g.add_argument("--reset-checkpoint", action="store_true")
     g.add_argument("--solo", choices=["interview", "examples", "brief", "build", "qc", "packager"])
     g.set_defaults(func=cmd_generar)
@@ -117,7 +117,7 @@ def main() -> None:
 
     d = sub.add_parser("demo", help="Correr como cliente demo (Vértice Pro)")
     d.add_argument("--slug", default="demo-cliente")
-    d.add_argument("--ejemplo", choices=["editorial", "mockup", "oferta"], default="editorial")
+    d.add_argument("--ejemplo", choices=["editorial", "tienda", "mockup", "oferta"], default="editorial")
     d.set_defaults(func=cmd_demo)
 
     a = sub.add_parser("aprender", help="Registrar mejora para próximas generaciones")

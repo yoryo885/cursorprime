@@ -4,7 +4,8 @@
   "proyecto_destino": "creador-de-landings",
   "temas": [
     "entrevista breve de brief",
-    "3 ejemplos de estilo",
+    "estilos editorial | tienda | mockup | oferta",
+    "estilo tienda tipo Filjós (colección ecommerce)",
     "generación HTML en segundos",
     "demo como cliente",
     "catálogo libro×rol multi-producto",
@@ -14,7 +15,8 @@
     "audiencia": "operador cursorprime / cliente demo",
     "tono": "claro y accionable",
     "idioma": "español",
-    "objetivo": "Pipeline que pregunta cómo quiere la landing, muestra ejemplos y genera preview.html"
+    "objetivo": "Pipeline que pregunta cómo quiere la landing, muestra ejemplos (incl. tienda tipo filjos.com) y genera preview.html multiproducto",
+    "referencias_estructura": ["https://filjos.com/"]
   },
   "mejoras": [
     {
@@ -28,7 +30,11 @@
     {
       "fecha": "2026-07-19",
       "texto": "Landing con varios productos (no solo Pareto) y aprendizaje continuo de mejoras"
+    },
+    {
+      "fecha": "2026-07-19",
+      "texto": "filjos.com como idea de página/landing que el sistema puede generar (estilo tienda)"
     }
   ],
-  "notas": "Catálogo multiproducto + logs/mejoras.json; regenerar demo con --slug demo-cliente"
+  "notas": "Estilo tienda (ref. Filjós) + catálogo multiproducto; demo: python3 landings_main.py demo --ejemplo tienda"
 }

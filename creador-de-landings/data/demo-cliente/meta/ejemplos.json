@@ -1,6 +1,6 @@
 {
   "recomendado": "editorial",
-  "elegido": "editorial",
+  "elegido": "tienda",
   "estilos": [
     {
       "id": "editorial",
@@ -14,6 +14,22 @@
         "curso",
         "guia"
       ]
+    },
+    {
+      "id": "tienda",
+      "nombre": "Tienda / marca (tipo Filjós)",
+      "cuando": "Colección con varios productos, look de ecommerce de marca",
+      "look": "Barra aviso + nav colecciones + hero 'Ahora nuevo' + bestsellers + historia + newsletter (ref. filjos.com)",
+      "mejor_si": [
+        "tienda",
+        "coleccion",
+        "catalogo",
+        "shop",
+        "filjos",
+        "marca",
+        "ecommerce"
+      ],
+      "referencia": "https://filjos.com/"
     },
     {
       "id": "mockup",

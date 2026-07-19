@@ -1,6 +1,6 @@
 # Landing brief — Vértice Pro
 
-- **Estilo:** editorial
+- **Estilo:** tienda
 - **Promesa:** Ideas de libros aplicadas a tu rol — elige tu guía
 - **CTA:** Ver colección
 - **Productos en catálogo:** 6
@@ -21,3 +21,5 @@
 ## Aprendizaje activo
 - Catálogo multi-producto (libro×rol) + grid con filtros + log de aprendizaje
 - Catálogo multi-producto libro×rol + filtros + logs/mejoras.json
+- catalogo multiproducto + grid + filtros por rol + log de aprendizaje
+- estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md

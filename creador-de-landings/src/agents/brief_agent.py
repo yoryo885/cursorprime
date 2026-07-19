@@ -31,6 +31,14 @@ class BriefAgent:
             "roles": roles,
             "productos": guias,
             "mostrar_catalogo": True,
+            "barra_aviso": r.get("barra_aviso")
+            or "Guías PDF · descarga al instante · colección libro × rol",
+            "historia": r.get("historia")
+            or (
+                f"{r.get('marca') or ctx.slug} traduce ideas de libros clásicos a tu oficio. "
+                "No es un solo PDF: es una colección que irá creciendo."
+            ),
+            "mision": r.get("mision") or "",
             "beneficios": [
                 "Varias guías: elige libro × tu rol",
                 "Plan de acción de 10 semanas por guía",

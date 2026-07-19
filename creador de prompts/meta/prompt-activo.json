@@ -1,13 +1,13 @@
 {
-  "version": 3,
+  "version": 4,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Sistema creador de landings",
-    "version": 1,
-    "ultima_mejora": "desarrollar proyecto entrevista → ejemplos → HTML"
+    "version": 4,
+    "ultima_mejora": "estilo tienda tipo Filjós (filjos.com) como referencia de landing"
   },
   "historial": [
     {
@@ -36,6 +36,6 @@
     }
   ],
   "slug": "creador-de-landings",
-  "ultima_mejora": "multiproducto: catálogo completo + aprendizaje continuo",
-  "updated_at": "2026-07-19T19:15:00Z"
+  "ultima_mejora": "estilo tienda tipo Filjós (filjos.com) como referencia de landing",
+  "updated_at": "2026-07-19T20:55:00Z"
 }

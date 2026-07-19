@@ -1,6 +1,6 @@
 {
   "titulo": "Brief rápido — tu landing",
-  "intro": "Responde en una línea. Con eso te muestro 3 estilos y genero la página.",
+  "intro": "Responde en una línea. Con eso te muestro estilos (incluye tienda tipo Filjós) y genero la página.",
   "preguntas": [
     {
       "id": "marca",
@@ -44,8 +44,8 @@
     },
     {
       "id": "estilo_preferido",
-      "texto": "Si ya sabes el estilo visual: editorial | mockup | oferta (o 'ver ejemplos')",
-      "ejemplo": "ver ejemplos"
+      "texto": "Si ya sabes el estilo: editorial | tienda | mockup | oferta (o 'ver ejemplos'). tienda = look colección tipo filjos.com",
+      "ejemplo": "tienda"
     }
   ]
 }

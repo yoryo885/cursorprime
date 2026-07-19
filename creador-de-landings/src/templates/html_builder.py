@@ -17,6 +17,8 @@ def build_html(brief: dict) -> str:
         return _tpl_mockup(brief)
     if estilo == "oferta":
         return _tpl_oferta(brief)
+    if estilo == "tienda":
+        return _tpl_tienda(brief)
     return _tpl_editorial(brief)
 
 
@@ -230,6 +232,240 @@ def _tpl_mockup(b: dict) -> str:
     </div>
   </section>
   {_catalog_block(b)}
+</body>
+</html>
+"""
+
+
+def _tpl_tienda(b: dict) -> str:
+    """Estilo inspirado en landings tipo Filjós: barra, colección, bestsellers, historia, newsletter."""
+    marca = b.get("marca")
+    producto = b.get("producto")
+    promesa = b.get("promesa")
+    cta = b.get("cta")
+    productos = b.get("productos") or []
+    roles = b.get("roles") or []
+    historia = b.get("historia") or (
+        f"{marca} aplica ideas de grandes libros a tu oficio. "
+        "Elige libro × rol y baja la guía lista para usar."
+    )
+    barra = b.get("barra_aviso") or "Colección de guías · PDF al instante"
+    mision = b.get("mision") or ""
+    testimonios = b.get("testimonios") or []
+
+    disponible = next((p for p in productos if p.get("disponible")), productos[0] if productos else None)
+    nuevo_titulo = (disponible or {}).get("titulo") or producto
+    nuevo_precio = (disponible or {}).get("precio") or b.get("precio") or ""
+
+    nav = ['<a href="#guias">Colección</a>']
+    for r in roles[:6]:
+        nav.append(f'<a href="#guias" data-nav-rol="{_e(r.get("slug"))}">{_e(r.get("nombre"))}</a>')
+    nav.append('<a href="#historia">Marca</a>')
+
+    best = []
+    for p in productos[:8]:
+        disp = bool(p.get("disponible"))
+        badge = "Disponible" if disp else "Próximamente"
+        btn = (
+            '<a class="btn btn-dark btn-block" href="#">Añadir al carrito</a>'
+            if disp
+            else '<span class="btn btn-outline btn-block">Avísame</span>'
+        )
+        best.append(
+            f"""
+      <article class="card" data-rol-card="{_e(p.get('rol'))}"{' style="opacity:0.55"' if not disp else ''}>
+        <div class="card-cover">{badge}</div>
+        <div class="card-body">
+          <p class="card-brand">{_e(marca)} · PDF</p>
+          <h3>{_e(p.get('titulo'))}</h3>
+          <p class="price">{_e(p.get('precio') or '—')}</p>
+          {btn}
+        </div>
+      </article>"""
+        )
+
+    chips = ['<button type="button" class="role-chip is-active" data-rol="todos">Todos</button>']
+    for r in roles:
+        chips.append(
+            f'<button type="button" class="role-chip" data-rol="{_e(r.get("slug"))}">{_e(r.get("nombre"))}</button>'
+        )
+
+    testi_html = ""
+    for t in testimonios[:4]:
+        texto = t.get("texto") or ""
+        if "[PENDIENTE" in texto:
+            continue
+        testi_html += (
+            f'<blockquote class="quote"><p>{_e(texto)}</p>'
+            f"<cite>— {_e(t.get('autor') or 'Cliente')}</cite></blockquote>"
+        )
+    if not testi_html:
+        testi_html = (
+            '<p class="muted center">Cuando tengamos reseñas reales, aparecen aquí. '
+            "No inventamos testimonios.</p>"
+        )
+
+    mision_html = ""
+    if mision:
+        mision_html = f"""
+  <section id="mision" class="band">
+    <h2>Por qué importa</h2>
+    <p class="story">{_e(mision)}</p>
+  </section>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{_e(marca)} — Colección</title>
+  <meta name="description" content="{_e(promesa or producto)}"/>
+  {_fonts()}
+  <style>
+    :root {{
+      --ink:#12151a; --paper:#f6f3ee; --sand:#ebe6de; --muted:#7a746c;
+      --pad:clamp(16px,4vw,40px); --max:1120px;
+    }}
+    * {{ box-sizing:border-box; margin:0; }}
+    body {{ font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }}
+    .announce {{
+      background:var(--ink); color:#f4f0ea; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+      text-align:center; padding:10px var(--pad);
+    }}
+    .top {{
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px var(--pad); border-bottom:1px solid #e4dfd6; background:rgba(246,243,238,.92);
+      position:sticky; top:0; z-index:5; backdrop-filter:blur(8px);
+    }}
+    .logo {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.5rem,3vw,2rem);
+      letter-spacing:.18em; font-weight:600; text-decoration:none; color:var(--ink);
+    }}
+    .nav {{ display:flex; flex-wrap:wrap; gap:14px; }}
+    .nav a {{ color:var(--muted); text-decoration:none; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }}
+    .nav a:hover {{ color:var(--ink); }}
+    .hero-nuevo {{
+      min-height:min(88svh,760px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+      background:
+        linear-gradient(120deg, rgba(12,14,18,.9) 0%, rgba(12,14,18,.35) 55%, rgba(12,14,18,.15) 100%),
+        radial-gradient(ellipse at 75% 35%, #314155 0%, #12151a 70%);
+      color:#fff; animation: rise .85s ease both;
+    }}
+    @keyframes rise {{ from {{ opacity:0; transform:translateY(12px); }} to {{ opacity:1; transform:none; }} }}
+    .hero-copy {{ padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:34rem; }}
+    .eyebrow {{ font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:14px; }}
+    .hero-copy h1 {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+      font-size:clamp(1.6rem,3.6vw,2.35rem); max-width:16ch; margin-bottom:12px; line-height:1.15;
+    }}
+    .hero-copy .sub {{ color:rgba(255,255,255,.78); margin-bottom:10px; max-width:36ch; }}
+    .hero-copy .price-lg {{ font-size:1.15rem; font-weight:600; margin-bottom:22px; }}
+    .hero-visual {{
+      display:flex; align-items:center; justify-content:center; padding:var(--pad);
+      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.12em; font-size:clamp(1.4rem,3vw,2rem);
+      color:rgba(255,255,255,.35); text-align:center;
+    }}
+    .btn {{
+      display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
+      background:#fff; color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em;
+      text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
+    }}
+    .btn-dark {{ background:var(--ink); color:#fff; }}
+    .btn-outline {{
+      background:transparent; color:var(--ink); border:1px solid var(--ink);
+      display:inline-flex; align-items:center; justify-content:center; min-height:48px;
+      font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    }}
+    .btn-block {{ width:100%; }}
+    section {{ padding:clamp(48px,8vw,80px) var(--pad); max-width:var(--max); margin:0 auto; }}
+    section.band {{ max-width:none; background:var(--sand); }}
+    section.band > * {{ max-width:var(--max); margin-left:auto; margin-right:auto; }}
+    h2 {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+      font-size:clamp(1.45rem,3vw,2rem); margin-bottom:22px; text-align:center;
+    }}
+    .story {{ max-width:48ch; margin:0 auto; text-align:center; color:var(--muted); }}
+    .center {{ text-align:center; }}
+    .muted {{ color:var(--muted); }}
+    .quotes {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }}
+    .quote {{ background:#fff; border:1px solid #e4dfd6; padding:20px; }}
+    .quote p {{ font-size:.95rem; margin-bottom:12px; }}
+    .quote cite {{ font-style:normal; font-size:.75rem; color:var(--muted); letter-spacing:.04em; }}
+    .news {{
+      text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
+      background:var(--ink); color:#f4f0ea;
+    }}
+    .news h2 {{ color:#f4f0ea; }}
+    .news p {{ color:rgba(244,240,234,.72); max-width:36ch; margin:0 auto 20px; }}
+    .news .btn {{ background:#f4f0ea; color:var(--ink); }}
+    footer {{ text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }}
+    {_catalog_css()}
+    @media (max-width:860px) {{
+      .hero-nuevo {{ grid-template-columns:1fr; min-height:auto; }}
+      .hero-visual {{ min-height:220px; order:-1; }}
+    }}
+  </style>
+</head>
+<body>
+  <div class="announce">{_e(barra)}</div>
+  <div class="top">
+    <a class="logo" href="#">{_e(marca)}</a>
+    <nav class="nav">{"".join(nav)}</nav>
+  </div>
+
+  <section class="hero-nuevo">
+    <div class="hero-copy">
+      <p class="eyebrow">Ahora nuevo</p>
+      <div class="logo" style="color:#fff;margin-bottom:16px;font-size:clamp(2rem,5vw,3rem)">{_e(marca)}</div>
+      <h1>{_e(nuevo_titulo)}</h1>
+      <p class="sub">{_e(promesa or producto)}</p>
+      <p class="price-lg">{_e(nuevo_precio)}</p>
+      <a class="btn" href="#guias">{_e(cta)}</a>
+    </div>
+    <div class="hero-visual">Colección<br/>libro × rol</div>
+  </section>
+
+  <section id="guias">
+    <h2>Bestsellers</h2>
+    <div class="role-filters" id="roleFilters">{"".join(chips)}</div>
+    <div class="grid" id="guiasGrid">{"".join(best)}</div>
+  </section>
+
+  <section id="historia" class="band">
+    <h2>La marca</h2>
+    <p class="story">{_e(historia)}</p>
+    <p class="center" style="margin-top:22px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
+  </section>
+
+  <section>
+    <h2>Lo que dicen</h2>
+    <div class="quotes">{testi_html}</div>
+  </section>
+  {mision_html}
+
+  <div class="news" id="newsletter">
+    <h2>10% en tu primera guía</h2>
+    <p>Suscríbete al newsletter. Te avisamos cuando salgan nuevas combinaciones libro × rol.</p>
+    <a class="btn" href="#guias">Quiero el descuento</a>
+  </div>
+
+  <footer>Generado con creador-de-landings · estilo tienda (ref. estructura tipo Filjós)</footer>
+  <script>
+  (function() {{
+    const chips = document.querySelectorAll('.role-chip');
+    const cards = document.querySelectorAll('[data-rol-card]');
+    const filter = (rol) => {{
+      chips.forEach(c => c.classList.toggle('is-active', c.dataset.rol === rol));
+      cards.forEach(card => {{
+        card.hidden = !(rol === 'todos' || card.dataset.rolCard === rol);
+      }});
+    }};
+    chips.forEach(chip => chip.addEventListener('click', () => filter(chip.dataset.rol)));
+    document.querySelectorAll('[data-nav-rol]').forEach(a => {{
+      a.addEventListener('click', (e) => {{ e.preventDefault(); filter(a.dataset.navRol); location.hash = 'guias'; }});
+    }});
+  }})();
+  </script>
 </body>
 </html>
 """
