@@ -198,35 +198,44 @@ def _render_html(ctx: PipelineContext) -> str:
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {{
-      --bg:{col.get('bg','#faf8f5')}; --surface:{col.get('surface','#fff')};
-      --text:{col.get('text','#1a1a1a')}; --muted:{col.get('muted','#6b6560')};
-      --charcoal:{col.get('charcoal','#1a1a1a')};
-      --border:{col.get('border','#e8e4df')}; --cream:{col.get('cream_dark','#f0ebe3')};
+      --bg:{col.get('bg','#faf7f2')}; --surface:{col.get('surface','#fff')};
+      --text:{col.get('text','#1f1c18')}; --muted:{col.get('muted','#736b63')};
+      --charcoal:{col.get('charcoal','#2c2824')};
+      --accent:{col.get('accent','#a8896a')}; --accent-soft:{col.get('accent_soft','#e8dfd4')};
+      --accent-tint:{col.get('accent_tint','#f4ede4')}; --sage:{col.get('sage','#8f9d86')};
+      --sage-tint:{col.get('sage_tint','#eef2ea')}; --blush:{col.get('blush','#f5ede6')};
+      --border:{col.get('border','#e4ddd4')}; --cream:{col.get('cream_dark','#ede6dc')};
       --max:1120px; --pad:clamp(16px,4vw,32px);
     }}
     *,*::before,*::after {{ box-sizing:border-box; margin:0; }}
     html {{ -webkit-text-size-adjust:100%; }}
-    body {{ font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; overflow-x:hidden; }}
+    body {{
+      font-family:'DM Sans',system-ui,sans-serif; color:var(--text); line-height:1.55; overflow-x:hidden;
+      background:linear-gradient(180deg, var(--accent-tint) 0%, var(--bg) 28%, var(--bg) 100%);
+    }}
     img {{ max-width:100%; height:auto; display:block; }}
     a {{ color:inherit; text-decoration:none; }}
     .wrap {{ width:100%; max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }}
 
-    .ticker {{ background:var(--cream); color:var(--muted); font-size:0.68rem; letter-spacing:0.06em; padding:9px var(--pad); text-align:center; border-bottom:1px solid var(--border); }}
-    header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:20px var(--pad) 16px; position:sticky; top:0; z-index:50; }}
+    header {{ background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); padding:20px var(--pad) 16px; position:sticky; top:0; z-index:50; }}
     header .wrap {{ display:flex; flex-direction:column; align-items:center; gap:14px; }}
     .logo {{
       font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.15rem,3.5vw,1.5rem);
       letter-spacing:0.22em; font-weight:500; color:var(--charcoal); line-height:1.2;
     }}
     nav {{ display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(20px,4vw,36px); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }}
-    nav a {{ padding:6px 0; min-height:44px; display:inline-flex; align-items:center; }}
+    nav a {{ padding:6px 0; min-height:44px; display:inline-flex; align-items:center; transition:color 0.2s ease; }}
+    nav a:hover {{ color:var(--accent); }}
 
-    .hero {{ background:var(--bg); border-bottom:none; }}
+    .ticker {{ background:var(--sage-tint); color:var(--muted); font-size:0.68rem; letter-spacing:0.06em; padding:9px var(--pad); text-align:center; border-bottom:1px solid var(--border); }}
+    .ticker-star {{ color:var(--accent); }}
+
+    .hero {{ background:transparent; border-bottom:none; }}
     .hero .wrap {{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,80px); align-items:center; padding-top:clamp(48px,8vw,88px); padding-bottom:clamp(48px,8vw,88px); }}
     .hero-copy {{ max-width:420px; }}
     .hero-series {{
       font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase;
-      color:var(--muted); margin-bottom:20px;
+      color:var(--sage); margin-bottom:20px;
     }}
     .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,2.75rem); font-weight:400; line-height:1.15; margin-bottom:18px; letter-spacing:0.01em; }}
     .hero-desc {{ color:var(--muted); font-size:0.95rem; margin-bottom:28px; max-width:36ch; line-height:1.6; }}
@@ -269,26 +278,33 @@ def _render_html(ctx: PipelineContext) -> str:
     .carousel-dot {{
       width:7px; height:7px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
     }}
-    .carousel-dot.is-active {{ background:var(--charcoal); }}
+    .carousel-dot.is-active {{ background:var(--accent); }}
     .carousel-caption {{ text-align:center; padding-top:8px; }}
-    .carousel-caption .caption-series {{ display:block; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }}
+    .carousel-caption .caption-series {{ display:block; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); margin-bottom:8px; }}
     .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500; color:var(--text); margin-bottom:6px; line-height:1.35; max-width:28ch; margin-left:auto; margin-right:auto; }}
-    .carousel-caption .caption-price {{ font-size:0.9rem; color:var(--text); font-weight:500; }}
+    .carousel-caption .caption-price {{ font-size:0.9rem; color:var(--accent); font-weight:500; }}
     .carousel-cta {{ display:none; }}
 
     .grid-mas-vendidas {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(20px,4vw,32px); max-width:720px; margin:0 auto; }}
-    .about {{ background:var(--bg); }}
+    #guias-por-rol {{ background:var(--surface); }}
+    .about {{ background:var(--sage-tint); }}
     .about .wrap {{ max-width:640px; text-align:center; }}
     .about h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,4vw,2rem); font-weight:400; margin-bottom:20px; letter-spacing:0.02em; }}
     .about p {{ color:var(--muted); font-size:0.92rem; line-height:1.65; margin-bottom:14px; }}
-    .about-tagline {{ color:var(--text); font-size:0.92rem; margin:20px 0 28px; }}
+    .about-tagline {{ color:var(--sage); font-size:0.92rem; margin:20px 0 28px; }}
     .about .btn-outline {{ background:var(--surface); }}
 
     section {{ padding:clamp(56px,10vw,96px) var(--pad); }}
     section h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); font-weight:400; text-align:center; letter-spacing:0.04em; margin-bottom:clamp(32px,6vw,48px); }}
 
-    .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px; background:var(--charcoal); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--charcoal); cursor:pointer; }}
-    .btn-outline {{ background:var(--surface); color:var(--charcoal); }}
+    .btn {{
+      display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px;
+      background:var(--accent); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;
+      border:1px solid var(--accent); cursor:pointer; transition:background 0.2s ease, border-color 0.2s ease;
+    }}
+    .btn:hover {{ background:#96785c; border-color:#96785c; }}
+    .btn-outline {{ background:var(--surface); color:var(--charcoal); border-color:var(--border); }}
+    .btn-outline:hover {{ border-color:var(--accent); color:var(--accent); }}
     .btn-block {{ width:100%; }}
 
     .grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)); gap:24px; max-width:var(--max); margin:0 auto; }}
@@ -298,12 +314,12 @@ def _render_html(ctx: PipelineContext) -> str:
       position:absolute; top:12px; left:12px; z-index:2; background:var(--charcoal); color:#fff;
       font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 8px;
     }}
-    .card-img {{ aspect-ratio:3/4; object-fit:contain; background:var(--cream); padding:16px; width:100%; }}
+    .card-img {{ aspect-ratio:3/4; object-fit:contain; background:var(--accent-tint); padding:16px; width:100%; }}
     .card-body {{ padding:20px; text-align:center; flex:1; display:flex; flex-direction:column; }}
     .card-brand {{ font-size:0.62rem; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }}
     .card h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500; line-height:1.35; margin-bottom:10px; flex:1; }}
-    .price {{ font-size:1.05rem; font-weight:600; margin-bottom:16px; }}
-    .card-soon {{ aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }}
+    .price {{ font-size:1.05rem; font-weight:600; margin-bottom:16px; color:var(--accent); }}
+    .card-soon {{ aspect-ratio:3/4; background:var(--blush); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }}
 
     .newsletter-form {{ display:flex; flex-wrap:wrap; gap:0; justify-content:center; max-width:440px; margin:0 auto; }}
     .newsletter-form input {{
@@ -313,11 +329,18 @@ def _render_html(ctx: PipelineContext) -> str:
     .newsletter-form .btn {{ min-width:140px; border-left:none; }}
     .newsletter-micro {{ display:none; }}
 
+    #opiniones {{ background:var(--accent-tint); }}
     .reviews {{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; max-width:900px; margin:0 auto; }}
-    .review {{ background:var(--surface); border:1px solid var(--border); padding:24px 20px; font-size:0.88rem; color:var(--muted); text-align:left; }}
-    .review cite {{ display:block; margin-top:12px; font-style:normal; font-size:0.78rem; color:var(--text); }}
+    .review {{
+      background:var(--surface); border:1px solid var(--border); border-top:3px solid var(--accent-soft);
+      padding:24px 20px; font-size:0.88rem; color:var(--muted); text-align:left;
+    }}
+    .review cite {{ display:block; margin-top:12px; font-style:normal; font-size:0.78rem; color:var(--accent); }}
 
-    .newsletter {{ background:var(--cream); border-top:none; border-bottom:none; padding:clamp(56px,10vw,96px) var(--pad); text-align:center; }}
+    .newsletter {{
+      background:linear-gradient(180deg, var(--blush) 0%, var(--accent-tint) 100%);
+      border-top:1px solid var(--border); border-bottom:none; padding:clamp(56px,10vw,96px) var(--pad); text-align:center;
+    }}
     .newsletter h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); margin-bottom:10px; font-weight:400; }}
     .newsletter p {{ color:var(--muted); font-size:0.9rem; margin-bottom:24px; }}
 
@@ -340,7 +363,7 @@ def _render_html(ctx: PipelineContext) -> str:
   </style>
 </head>
 <body>
-  <div class="ticker">★ 4.9 · Descarga instantánea · 10% primera compra</div>
+  <div class="ticker"><span class="ticker-star">★</span> 4.9 · Descarga instantánea · 10% primera compra</div>
 
   <header>
     <div class="wrap">

@@ -9,15 +9,20 @@
   "moneda_default": "USD",
   "precio_display": "$4.99",
   "colores": {
-    "bg": "#faf8f5",
+    "bg": "#faf7f2",
     "surface": "#ffffff",
-    "text": "#1a1a1a",
-    "muted": "#6b6560",
-    "charcoal": "#1a1a1a",
-    "gold": "#c9a962",
-    "accent": "#b8956a",
-    "cream_dark": "#f0ebe3",
-    "border": "#e8e4df"
+    "text": "#1f1c18",
+    "muted": "#736b63",
+    "charcoal": "#2c2824",
+    "gold": "#b8956a",
+    "accent": "#a8896a",
+    "accent_soft": "#e8dfd4",
+    "accent_tint": "#f4ede4",
+    "sage": "#8f9d86",
+    "sage_tint": "#eef2ea",
+    "blush": "#f5ede6",
+    "cream_dark": "#ede6dc",
+    "border": "#e4ddd4"
   },
   "tipografias": {
     "titulos": "Cormorant Garamond, Georgia, serif",
