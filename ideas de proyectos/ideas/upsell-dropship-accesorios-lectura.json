@@ -1,8 +1,17 @@
 {
   "slug": "upsell-dropship-accesorios-lectura",
   "titulo": "Upsell dropshipping — accesorios del nicho lectura / PDF por rol",
-  "estado": "idea_guardada",
+  "estado": "analizada_condicional",
   "prioridad": "despues_de_landing",
+  "veredicto_mercado": {
+    "resultado": "condicional",
+    "score_humano": 62,
+    "score_auto_evaluar_py": 98,
+    "usar_score": "humano",
+    "resumen": "Nicho de accesorios de lectura existe; en Chile dropship viable con proveedor local (no AliExpress lento). Solo como upsell tras vender el PDF. Evitar repisas grandes al inicio; preferir lámpara clip, atril, bookends.",
+    "informe": "evaluaciones/upsell-dropship-accesorios-lectura/analisis-mercado.md"
+  },
+
   "problema": "Después de vender guías PDF (Aplicar en tu rol) en Shopify, el ticket es solo digital. Falta ampliar con productos físicos del mismo nicho (repisas, lámparas de lectura, organizadores, etc.) vía dropshipping, sin stock propio.",
   "cliente_objetivo": "Compradores de guías PDF Vértice Pro / profesionales que leen y estudian (psicopedagogas, docentes, abogados, etc.)",
   "modelo_negocio": "Shopify: PDF digital ahora → más adelante catálogo físico dropship (AliExpress / CJ / proveedores LATAM) de productos que acompañan lectura y estudio",

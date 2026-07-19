@@ -72,8 +72,9 @@ Más tecnología ahora no ayuda tanto. Cobrar y probar con un negocio real sí.
 1. **Terminar la landing Shopify** (aprender + dejar lista para vender)  
 2. **Videos después** — con el sistema de creador de contenido, para traer gente  
 3. El PDF libro×rol **sí se reutiliza**: otro rol o otro libro con el mismo pipeline  
-4. **Después (idea guardada):** dropshipping del nicho — repisas, lámparas de lectura, atriles, etc.  
-   → `ideas de proyectos/ideas/upsell-dropship-accesorios-lectura.json`  
+4. **Después (analizada):** dropshipping del nicho — **viable con condiciones** (score 62/100)  
+   → Informe: `ideas de proyectos/evaluaciones/upsell-dropship-accesorios-lectura/analisis-mercado.md`  
+   → Mejor empezar con lámpara/atril (no repisas grandes); proveedor local, no China lento  
 
 Sin videos la venta es más lenta, no imposible: se puede empezar con posts, WhatsApp, o gente conocida mientras llega el sistema de video.
 

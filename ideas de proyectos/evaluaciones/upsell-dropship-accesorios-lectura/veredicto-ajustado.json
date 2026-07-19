@@ -1,0 +1,24 @@
+{
+  "slug": "upsell-dropship-accesorios-lectura",
+  "veredicto": "condicional",
+  "score": 62,
+  "confidence": 0.55,
+  "nota": "Ajusta/corrige evaluar.py (98/100 genérico). Ver analisis-mercado.md",
+  "viable_si": [
+    "Landing Shopify lista",
+    "Al menos ventas o tráfico al PDF",
+    "Proveedor local LATAM/CL (Dropi u homólogo)",
+    "Solo 3–5 SKUs livianos"
+  ],
+  "no_viable_si": [
+    "Se usa solo AliExpress con envíos 15–45 días a Chile",
+    "Se prioriza antes de terminar la landing",
+    "Catálogo grande de repisas pesadas"
+  ],
+  "siguiente_paso": "Terminar landing + PDF. Luego testear 3 SKUs livianos con proveedor local.",
+  "productos_prioridad": [
+    "lampara_clip_lectura",
+    "atril_soporte_libro",
+    "bookends_u_organizador"
+  ]
+}
