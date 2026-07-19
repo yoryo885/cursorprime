@@ -131,7 +131,20 @@
       "priority": 86,
       "match": {
         "any": ["evaluar", "viabilidad", "idea de", "negocio", "rentable", "escalable", "margen", "veredicto", "sirve la idea"],
-        "none": ["project-lens", "investigacion profunda", "mercado real", "competencia"]
+        "none": [
+          "project-lens",
+          "investigacion profunda",
+          "mercado real",
+          "competencia",
+          "tienda web",
+          "idea de tienda",
+          "idea de landing",
+          "landing",
+          "hazme una landing",
+          "hazme una tienda",
+          "filjos",
+          "ecommerce"
+        ]
       },
       "skill": "evaluar-idea",
       "proyecto": "ideas-de-proyectos",
@@ -223,7 +236,7 @@
     },
     {
       "id": "creador-de-landings",
-      "priority": 88,
+      "priority": 93,
       "match": {
         "any": [
           "creador de landings",
@@ -234,24 +247,36 @@
           "entrevista landing",
           "sistema de landings",
           "crear landings",
-          "usa creador-de-landings"
+          "usa creador-de-landings",
+          "tienda web",
+          "idea de tienda",
+          "idea de landing",
+          "pagina como",
+          "página como",
+          "hazme una landing",
+          "hazme una tienda",
+          "crear tienda",
+          "landing como",
+          "ecommerce",
+          "filjos"
         ],
-        "none": ["evaluar idea", "solo copy"]
+        "none": ["evaluar idea", "solo copy", "viabilidad", "rentable"]
       },
       "skill": "creador-de-landings",
       "proyecto": "creador-de-landings",
       "prompt": { "tipo": "marketing", "proyecto_destino": "creador-de-landings", "auto": false },
       "pipeline": {
         "cwd": "creador-de-landings",
-        "cmd": "python3 landings_main.py demo"
-      }
+        "cmd": "python3 landings_main.py preguntas"
+      },
+      "nota": "Ante idea de tienda/landing: primero entrevista estándar (preguntas.json), luego generar"
     },
     {
       "id": "landing-lanzamiento-route",
       "priority": 81,
       "match": {
-        "any": ["landing", "lanzamiento", "pagina ventas", "página ventas", "copy lanzamiento", "oferta", "funnel"],
-        "none": ["evaluar idea", "libro", "kdp", "creador de landings", "generar landing", "landing en segundos", "sistema de landings"]
+        "any": ["lanzamiento", "copy lanzamiento", "funnel copy", "solo copy landing"],
+        "none": ["evaluar idea", "libro", "kdp", "creador de landings", "generar landing", "landing en segundos", "sistema de landings", "tienda web", "idea de landing", "idea de tienda"]
       },
       "skill": "landing-lanzamiento",
       "proyecto": "general",

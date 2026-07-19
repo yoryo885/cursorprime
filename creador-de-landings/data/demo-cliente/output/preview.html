@@ -8,13 +8,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --ink:#12151a; --paper:#f6f3ee; --sand:#ebe6de; --muted:#7a746c;
+      --ink:#0f1419; --paper:#f7f4ef; --accent:#1a1a1a; --muted:#8a847c; --sand:color-mix(in srgb, var(--paper) 85%, var(--muted));
       --pad:clamp(16px,4vw,40px); --max:1120px;
     }
     * { box-sizing:border-box; margin:0; }
     body { font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }
     .announce {
-      background:var(--ink); color:#f4f0ea; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--ink); color:var(--paper); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
       text-align:center; padding:10px var(--pad);
     }
     .top {
@@ -52,10 +52,10 @@
     }
     .btn {
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
-      background:#fff; color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em;
+      background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em;
       text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
     }
-    .btn-dark { background:var(--ink); color:#fff; }
+    .btn-dark { background:var(--ink); color:var(--paper); }
     .btn-outline {
       background:transparent; color:var(--ink); border:1px solid var(--ink);
       display:inline-flex; align-items:center; justify-content:center; min-height:48px;
@@ -73,16 +73,16 @@
     .center { text-align:center; }
     .muted { color:var(--muted); }
     .quotes { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
-    .quote { background:#fff; border:1px solid #e4dfd6; padding:20px; }
+    .quote { background:#fff; border:1px solid color-mix(in srgb, var(--muted) 35%, transparent); padding:20px; }
     .quote p { font-size:.95rem; margin-bottom:12px; }
     .quote cite { font-style:normal; font-size:.75rem; color:var(--muted); letter-spacing:.04em; }
     .news {
       text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
-      background:var(--ink); color:#f4f0ea;
+      background:var(--ink); color:var(--paper);
     }
-    .news h2 { color:#f4f0ea; }
-    .news p { color:rgba(244,240,234,.72); max-width:36ch; margin:0 auto 20px; }
-    .news .btn { background:#f4f0ea; color:var(--ink); }
+    .news h2 { color:var(--paper); }
+    .news p { color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:36ch; margin:0 auto 20px; }
+    .news .btn { background:var(--paper); color:var(--ink); }
     footer { text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }
     
     .serie-line { text-align:center; color:var(--muted); font-size:.85rem; margin:-8px 0 20px; }

@@ -9,15 +9,21 @@ from src.config import load_json, preguntas_path, save_json, slug_inputs
 
 
 DEMO_RESPUESTAS = {
+    "idea": "Tienda de guías PDF por oficio, look colección tipo Filjós",
     "marca": "Vértice Pro",
     "producto": "Guías PDF para tu rol profesional",
     "cliente": "Profesionales por oficio (psicopedagogas, docentes, abogados…)",
     "promesa": "Ideas de libros aplicadas a tu rol — elige tu guía",
-    "usa_catalogo": "si",
+    "catalogo": "si — catálogo default libro×rol",
     "cta": "Ver colección",
     "precio": "desde $4.99",
     "tono": "editorial",
-    "estilo_preferido": "editorial",
+    "estilo": "tienda",
+    "estilo_preferido": "tienda",
+    "clima_color": "auto",
+    "paleta": "auto",
+    "referencia": "https://filjos.com/",
+    "extra": "filtros por rol + newsletter",
     "_cliente_demo": True,
 }
 

@@ -3,19 +3,24 @@
 ```
 Usa el proyecto creador-de-landings.
 
-Contexto activo:
-- Catálogo multiproducto (libro×rol).
-- Estilos: editorial | tienda | mockup | oferta (tienda ≈ estructura Filjós).
-- COLORES (automático + elección fácil):
-  1) Pregunta 1: clima de marca (cálido / frío / neutro / oscuro) o "auto".
-  2) Sistema propone 3 paletas (nombre + ink/paper/accent/muted) según tono+estilo+clima.
-  3) Usuario elige A/B/C o acepta la recomendada.
-  4) HTML usa solo CSS variables (--ink --paper --accent --muted).
-  5) Aprender: si corrige colores → logs/mejoras.json + preset guardado por marca.
-- No preguntar hex a mano salvo override.
-- Aprendizaje continuo con landings_main.py aprender.
+REGLA DE ORO:
+Cada vez que el usuario mande una idea de tienda web / landing / ecommerce:
+1) NO generar HTML todavía.
+2) Hacer la ENTREVISTA ESTÁNDAR completa (meta/preguntas.json) — siempre las mismas preguntas.
+3) Proponer 3 paletas A/B/C y marcar la recomendada.
+4) Cuando responda → generar preview.html con estilo + paleta (CSS vars).
 
-CLI (objetivo):
-  python3 landings_main.py demo --ejemplo tienda --paleta auto
-  python3 landings_main.py generar --slug {slug} --ejemplo tienda --paleta B
+Preguntas estándar (IDs): idea, marca, producto, cliente, promesa, catalogo,
+cta, precio, tono, estilo, clima_color, paleta, referencia, extra.
+
+Contexto:
+- Catálogo multiproducto (libro×rol) por defecto.
+- Estilos: editorial | tienda | mockup | oferta.
+- Colores: presets por clima; HTML usa --ink --paper --accent --muted.
+- Aprendizaje: landings_main.py aprender.
+
+CLI:
+  python3 landings_main.py preguntas
+  python3 landings_main.py demo --ejemplo tienda
+  python3 landings_main.py generar --slug {slug} --ejemplo tienda
 ```

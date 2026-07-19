@@ -29,6 +29,15 @@ def _fonts() -> str:
     )
 
 
+def _palette_vars(b: dict) -> str:
+    p = b.get("paleta") or {}
+    ink = p.get("ink") or "#0f1419"
+    paper = p.get("paper") or "#f7f4ef"
+    accent = p.get("accent") or ink
+    muted = p.get("muted") or "#8a847c"
+    return f"--ink:{ink}; --paper:{paper}; --accent:{accent}; --muted:{muted};"
+
+
 def _catalog_block(b: dict) -> str:
     productos = b.get("productos") or []
     roles = b.get("roles") or []
@@ -135,7 +144,7 @@ def _tpl_editorial(b: dict) -> str:
   <meta name="description" content="{_e(promesa or producto)}"/>
   {_fonts()}
   <style>
-    :root {{ --ink:#0f1419; --paper:#f7f4ef; --muted:#8a847c; --pad:clamp(18px,4vw,40px); --max:1100px; }}
+    :root {{ {_palette_vars(b)} --pad:clamp(18px,4vw,40px); --max:1100px; }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }}
     .hero {{
@@ -150,8 +159,8 @@ def _tpl_editorial(b: dict) -> str:
     .brand {{ font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(2.2rem,6vw,3.8rem); letter-spacing:.16em; font-weight:600; margin-bottom:18px; }}
     h1 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(1.35rem,3vw,1.85rem); max-width:18ch; margin-bottom:12px; }}
     .sub {{ max-width:38ch; color:rgba(255,255,255,.78); margin-bottom:24px; }}
-    .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 28px; background:#fff; color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border:none; }}
-    .btn-dark {{ background:var(--ink); color:#fff; }}
+    .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 28px; background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border:none; }}
+    .btn-dark {{ background:var(--ink); color:var(--paper); }}
     section {{ padding:clamp(48px,8vw,72px) var(--pad); max-width:var(--max); margin:0 auto; }}
     h2 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:20px; text-align:center; }}
     ul.benefits {{ list-style:none; padding:0; max-width:40ch; margin:0 auto 28px; }}
@@ -199,7 +208,7 @@ def _tpl_mockup(b: dict) -> str:
   <title>{_e(marca)}</title>
   {_fonts()}
   <style>
-    :root {{ --ink:#14110f; --bg:#faf6f0; --muted:#6a635c; --pad:clamp(16px,4vw,36px); --max:1100px; }}
+    :root {{ {_palette_vars(b)} --bg:var(--paper); --pad:clamp(16px,4vw,36px); --max:1100px; }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--bg); color:var(--ink); }}
     header {{ padding:20px var(--pad); text-align:center; font-family:"Cormorant Garamond",serif; letter-spacing:.14em; font-size:1.2rem; }}
@@ -323,13 +332,13 @@ def _tpl_tienda(b: dict) -> str:
   {_fonts()}
   <style>
     :root {{
-      --ink:#12151a; --paper:#f6f3ee; --sand:#ebe6de; --muted:#7a746c;
+      {_palette_vars(b)} --sand:color-mix(in srgb, var(--paper) 85%, var(--muted));
       --pad:clamp(16px,4vw,40px); --max:1120px;
     }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }}
     .announce {{
-      background:var(--ink); color:#f4f0ea; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--ink); color:var(--paper); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
       text-align:center; padding:10px var(--pad);
     }}
     .top {{
@@ -367,10 +376,10 @@ def _tpl_tienda(b: dict) -> str:
     }}
     .btn {{
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
-      background:#fff; color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em;
+      background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em;
       text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
     }}
-    .btn-dark {{ background:var(--ink); color:#fff; }}
+    .btn-dark {{ background:var(--ink); color:var(--paper); }}
     .btn-outline {{
       background:transparent; color:var(--ink); border:1px solid var(--ink);
       display:inline-flex; align-items:center; justify-content:center; min-height:48px;
@@ -388,16 +397,16 @@ def _tpl_tienda(b: dict) -> str:
     .center {{ text-align:center; }}
     .muted {{ color:var(--muted); }}
     .quotes {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }}
-    .quote {{ background:#fff; border:1px solid #e4dfd6; padding:20px; }}
+    .quote {{ background:#fff; border:1px solid color-mix(in srgb, var(--muted) 35%, transparent); padding:20px; }}
     .quote p {{ font-size:.95rem; margin-bottom:12px; }}
     .quote cite {{ font-style:normal; font-size:.75rem; color:var(--muted); letter-spacing:.04em; }}
     .news {{
       text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
-      background:var(--ink); color:#f4f0ea;
+      background:var(--ink); color:var(--paper);
     }}
-    .news h2 {{ color:#f4f0ea; }}
-    .news p {{ color:rgba(244,240,234,.72); max-width:36ch; margin:0 auto 20px; }}
-    .news .btn {{ background:#f4f0ea; color:var(--ink); }}
+    .news h2 {{ color:var(--paper); }}
+    .news p {{ color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:36ch; margin:0 auto 20px; }}
+    .news .btn {{ background:var(--paper); color:var(--ink); }}
     footer {{ text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }}
     {_catalog_css()}
     @media (max-width:860px) {{
@@ -487,7 +496,7 @@ def _tpl_oferta(b: dict) -> str:
   <title>{_e(marca)} — Colección</title>
   {_fonts()}
   <style>
-    :root {{ --ink:#111; --accent:#0f1419; --bg:#fff; --soft:#f3f1ec; --muted:#666; --pad:20px; --max:960px; }}
+    :root {{ {_palette_vars(b)} --bg:var(--paper); --soft:color-mix(in srgb, var(--paper) 88%, var(--muted)); --pad:20px; --max:960px; }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--bg); color:var(--ink); }}
     .hero {{ background:var(--soft); padding:clamp(40px,8vw,72px) 20px; text-align:center; }}
@@ -495,7 +504,7 @@ def _tpl_oferta(b: dict) -> str:
     h1 {{ font-family:"Cormorant Garamond",serif; font-size:clamp(1.8rem,4vw,2.6rem); max-width:18ch; margin:0 auto 14px; line-height:1.15; }}
     .sub {{ color:var(--muted); max-width:40ch; margin:0 auto 22px; }}
     .btn {{ display:inline-flex; min-height:52px; padding:0 32px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; align-items:center; justify-content:center; }}
-    .btn-dark {{ background:var(--ink); color:#fff; }}
+    .btn-dark {{ background:var(--ink); color:var(--paper); }}
     section {{ max-width:var(--max); margin:0 auto; padding:40px 20px; }}
     h2 {{ font-family:"Cormorant Garamond",serif; text-align:center; margin-bottom:18px; }}
     ul {{ list-style:none; padding:0; max-width:480px; margin:0 auto; }}

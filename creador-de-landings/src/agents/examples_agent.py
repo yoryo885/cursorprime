@@ -39,9 +39,16 @@ ESTILOS = [
 
 
 def _recomendar(respuestas: dict) -> str:
-    pref = (respuestas.get("estilo_preferido") or "").lower().strip()
+    pref = (
+        respuestas.get("estilo")
+        or respuestas.get("estilo_preferido")
+        or respuestas.get("ejemplo_elegido")
+        or ""
+    ).lower().strip()
     if pref in ("editorial", "mockup", "oferta", "tienda"):
         return pref
+    if pref == "auto":
+        return "tienda"
     blob = " ".join(str(v).lower() for v in respuestas.values())
     tono = (respuestas.get("tono") or "").lower()
     if any(k in blob for k in ("tienda", "filjos", "coleccion", "catálogo", "catalogo", "shop", "ecommerce")):

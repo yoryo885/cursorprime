@@ -1,6 +1,7 @@
 # Landing brief — Vértice Pro
 
 - **Estilo:** tienda
+- **Paleta:** Editorial (neutro/A)
 - **Promesa:** Ideas de libros aplicadas a tu rol — elige tu guía
 - **CTA:** Ver colección
 - **Productos en catálogo:** 6
@@ -23,3 +24,4 @@
 - Catálogo multi-producto libro×rol + filtros + logs/mejoras.json
 - catalogo multiproducto + grid + filtros por rol + log de aprendizaje
 - estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md
+- flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional

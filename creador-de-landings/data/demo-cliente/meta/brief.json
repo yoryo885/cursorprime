@@ -7,6 +7,17 @@
   "precio": "desde $4.99",
   "tono": "editorial",
   "estilo": "tienda",
+  "paleta": {
+    "nombre": "Editorial",
+    "ink": "#0f1419",
+    "paper": "#f7f4ef",
+    "accent": "#1a1a1a",
+    "muted": "#8a847c",
+    "id": "A",
+    "clima": "neutro"
+  },
+  "idea": "Tienda de guías PDF por oficio, look colección tipo Filjós",
+  "referencia": "https://filjos.com/",
   "serie_libros": [
     {
       "slug": "pareto",
@@ -139,6 +150,7 @@
     "Catálogo multi-producto (libro×rol) + grid con filtros + log de aprendizaje",
     "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json",
     "catalogo multiproducto + grid + filtros por rol + log de aprendizaje",
-    "estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md"
+    "estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md",
+    "flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional"
   ]
 }

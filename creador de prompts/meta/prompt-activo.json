@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "creador-de-landings",
@@ -36,6 +36,6 @@
     }
   ],
   "slug": "creador-de-landings",
-  "ultima_mejora": "paleta: 1 pregunta clima + 3 opciones auto (CSS vars)",
-  "updated_at": "2026-07-19T21:37:26Z"
+  "ultima_mejora": "entrevista estándar fija ante cada idea tienda/landing + paletas",
+  "updated_at": "2026-07-19T21:41:39Z"
 }

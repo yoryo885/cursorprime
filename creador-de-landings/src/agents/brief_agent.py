@@ -5,17 +5,21 @@ from __future__ import annotations
 from src.catalog import ensure_catalog, guias_from_catalog, roles_from_catalog, serie_from_catalog
 from src.config import save_json
 from src.learning import aplicar_al_brief
+from src.palettes import elegir_paleta
 from src.types import AgentResult, PipelineContext
 
 
 class BriefAgent:
     def run(self, ctx: PipelineContext) -> AgentResult:
         r = ctx.respuestas
-        ejemplo = ctx.ejemplo or "editorial"
+        ejemplo = ctx.ejemplo or r.get("estilo") or r.get("estilo_preferido") or "editorial"
+        if ejemplo == "auto":
+            ejemplo = "tienda"
         catalog = ensure_catalog(ctx.slug)
         guias = guias_from_catalog(catalog)
         roles = roles_from_catalog(catalog)
         serie = serie_from_catalog(catalog)
+        paleta = elegir_paleta(r)
 
         brief = {
             "marca": r.get("marca") or ctx.slug,
@@ -27,6 +31,9 @@ class BriefAgent:
             "precio": r.get("precio") or "",
             "tono": r.get("tono") or "editorial",
             "estilo": ejemplo,
+            "paleta": paleta,
+            "idea": r.get("idea") or "",
+            "referencia": r.get("referencia") or "",
             "serie_libros": serie,
             "roles": roles,
             "productos": guias,
@@ -73,6 +80,7 @@ class BriefAgent:
             f"# Landing brief — {brief['marca']}",
             "",
             f"- **Estilo:** {brief['estilo']}",
+            f"- **Paleta:** {paleta.get('nombre')} ({paleta.get('clima')}/{paleta.get('id')})",
             f"- **Promesa:** {brief['promesa']}",
             f"- **CTA:** {brief['cta']}",
             f"- **Productos en catálogo:** {len(guias)}",

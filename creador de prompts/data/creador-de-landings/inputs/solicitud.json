@@ -11,7 +11,10 @@
     "catálogo libro×rol multi-producto",
     "aprendizaje continuo logs/mejoras.json",
     "paleta de colores auto + 3 opciones",
-    "pregunta clima marca (1)"
+    "pregunta clima marca (1)",
+    "entrevista estándar fija preguntas.json",
+    "cada idea tienda/landing dispara mismas preguntas",
+    "agente propone paletas A/B/C"
   ],
   "contexto": {
     "audiencia": "operador cursorprime / cliente demo",
@@ -42,7 +45,11 @@
     {
       "fecha": "2026-07-19",
       "texto": "paleta de colores: sistema recomienda 3 y usuario elige (o auto)"
+    },
+    {
+      "fecha": "2026-07-19",
+      "texto": "Preguntas estándar vienen del sistema; cada idea de tienda/landing dispara la misma entrevista"
     }
   ],
-  "notas": "Paletas: clima marca → 3 presets → CSS vars; default auto por tono/estilo"
+  "notas": "Fuente única: creador-de-landings/meta/preguntas.json + regla entrevista-landing-estandar.mdc"
 }

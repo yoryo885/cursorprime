@@ -11,10 +11,28 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 from src.catalog import ensure_catalog  # noqa: E402
-from src.config import load_json, save_json, slug_inputs, slug_output  # noqa: E402
+from src.config import load_json, preguntas_path, save_json, slug_inputs, slug_output  # noqa: E402
 from src.interview import DEMO_RESPUESTAS, run_interview  # noqa: E402
 from src.learning import load_mejoras, registrar_mejora  # noqa: E402
+from src.palettes import formato_chat_paletas  # noqa: E402
 from src.pipeline import run_pipeline  # noqa: E402
+
+
+def cmd_preguntas(_args: argparse.Namespace) -> None:
+    """Imprime la entrevista estándar (para chat / agente)."""
+    spec = load_json(preguntas_path(), {}) or {}
+    print(f"\n{spec.get('titulo', 'Entrevista estándar')}")
+    print(spec.get("intro", ""))
+    print()
+    for i, q in enumerate(spec.get("preguntas") or [], 1):
+        req = " *" if q.get("obligatoria") else ""
+        print(f"{i}. {q['texto']}{req}")
+        if q.get("ejemplo"):
+            print(f"   ej: {q['ejemplo']}")
+    print()
+    print(formato_chat_paletas({"clima_color": "auto", "tono": "editorial", "estilo": "tienda"}))
+    print()
+    print("Fuente: meta/preguntas.json · Protocolo: meta/ENTREVISTA_ESTANDAR.md\n")
 
 
 def cmd_entrevista(args: argparse.Namespace) -> None:
@@ -79,7 +97,7 @@ def cmd_demo(args: argparse.Namespace) -> None:
     ok = run_pipeline(
         slug=slug,
         respuestas=dict(DEMO_RESPUESTAS),
-        ejemplo=args.ejemplo or "editorial",
+        ejemplo=args.ejemplo or DEMO_RESPUESTAS.get("estilo") or "tienda",
         reset=True,
     )
     if not ok:
@@ -117,8 +135,11 @@ def main() -> None:
 
     d = sub.add_parser("demo", help="Correr como cliente demo (Vértice Pro)")
     d.add_argument("--slug", default="demo-cliente")
-    d.add_argument("--ejemplo", choices=["editorial", "tienda", "mockup", "oferta"], default="editorial")
+    d.add_argument("--ejemplo", choices=["editorial", "tienda", "mockup", "oferta"], default="tienda")
     d.set_defaults(func=cmd_demo)
+
+    q = sub.add_parser("preguntas", help="Mostrar entrevista estándar (chat)")
+    q.set_defaults(func=cmd_preguntas)
 
     a = sub.add_parser("aprender", help="Registrar mejora para próximas generaciones")
     a.add_argument("--mensaje", required=True, help="Qué dijo el usuario")

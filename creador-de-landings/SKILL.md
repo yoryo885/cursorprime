@@ -1,39 +1,40 @@
 ---
 name: creador-de-landings
 description: >-
-  Genera landings HTML en segundos: entrevista de brief, propone estilos
-  (editorial, tienda tipo Filjós, mockup, oferta) y construye preview.html
-  multiproducto. Usar cuando pide crear landing, generador de landings,
-  landing en segundos, tienda/colección, filjos, usa creador-de-landings.
+  Genera landings HTML: ante cualquier idea de tienda/landing hace la entrevista
+  estándar fija (meta/preguntas.json), recomienda 3 paletas, y genera preview.
+  Usar con tienda web, idea de landing, ecommerce, filjos, usa creador-de-landings.
 ---
 
 # Creador de Landings
 
-## Cuándo usar
+## Protocolo chat (obligatorio)
 
-Triggers: crear landing, generador landings, landing en segundos, entrevista landing, usa creador-de-landings.
+Si el usuario manda una **idea de tienda / landing / página web**:
 
-**Distinto de** `landing-lanzamiento` (solo copy markdown). Este proyecto **genera HTML**.
+1. **No** generar HTML aún.
+2. Leer `meta/preguntas.json`.
+3. En **un mensaje**, hacer **todas** las preguntas obligatorias (numeradas, siempre iguales).
+4. Proponer **3 paletas A/B/C** (`python3 landings_main.py preguntas` o `src/palettes.py`).
+5. Cuando responda → `generar` / pipeline → `preview.html`.
 
-## Flujo
-
-1. Entrevista (`meta/preguntas.json`)
-2. Estilos → usuario elige (`editorial` | `tienda` | `mockup` | `oferta`)
-3. Brief + HTML (`preview.html`) + QC
-
-Estilo **tienda** = look colección ecommerce (ref. estructura [filjos.com](https://filjos.com/)): barra, nav, hero “Ahora nuevo”, bestsellers, historia, newsletter. Ver `meta/referencias/filjos.md`.
+Fuente única de preguntas: `meta/preguntas.json`  
+Regla Cursor: `.cursor/rules/entrevista-landing-estandar.mdc`
 
 ## Comandos
 
 ```bash
 cd creador-de-landings
+python3 landings_main.py preguntas          # entrevista estándar + paletas
 python3 landings_main.py demo --ejemplo tienda
 python3 landings_main.py entrevista --slug mi-marca
 python3 landings_main.py generar --slug mi-marca --ejemplo tienda
 python3 landings_main.py aprender --mensaje "..." --cambio "..."
 ```
 
-La landing ofrece **catálogo** (varias guías libro×rol), no un solo PDF.
+## Estilos
+
+`editorial` | `tienda` (tipo Filjós) | `mockup` | `oferta`
 
 ## Salida
 

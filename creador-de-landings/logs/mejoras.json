@@ -36,6 +36,13 @@
       "mensaje": "quiero paleta de colores; que me preguntes/recomiendes o idea más automática; resumido",
       "cambio": "flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional",
       "aplicado": true
+    },
+    {
+      "id": "m006",
+      "at": "2026-07-19T21:41:39.519936+00:00",
+      "mensaje": "las preguntas tienen que venir de ti; cada vez que mande idea de tienda/landing hacer esas preguntas estandar",
+      "cambio": "preguntas.json v2 + regla cursor + router priority 93 + paletas en HTML",
+      "aplicado": true
     }
   ]
 }
