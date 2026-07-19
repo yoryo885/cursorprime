@@ -6,7 +6,9 @@
     "tiene_headline": true,
     "tiene_cta": true,
     "tiene_estilo": true,
+    "tiene_catalogo": true,
     "html_tiene_cta": true,
-    "html_tiene_marca": true
+    "html_tiene_marca": true,
+    "html_tiene_grid": true
   }
 }

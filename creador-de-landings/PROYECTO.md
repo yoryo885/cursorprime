@@ -18,18 +18,28 @@ flowchart LR
 ```bash
 cd creador-de-landings
 
-# Demo como cliente (Vértice Pro / PDF por rol)
+# Demo como cliente (Vértice Pro — catálogo completo)
 python3 landings_main.py demo
 
 # Entrevista interactiva
 python3 landings_main.py entrevista --slug mi-marca
 
-# Con respuestas ya guardadas
-python3 landings_main.py generar --slug mi-marca
+# Generar (usa data/{slug}/inputs/catalogo.json si existe)
+python3 landings_main.py generar --slug mi-marca --ejemplo editorial
 
-# Solo ejemplos a partir de respuestas
-python3 landings_main.py ejemplos --slug mi-marca
+# Registrar mejora (aprendizaje continuo)
+python3 landings_main.py aprender --mensaje "..." --cambio "..."
 ```
+
+## Catálogo (no solo Pareto)
+
+- Default: `meta/catalogo_default.json` (libros × roles)
+- Por marca: `data/{slug}/inputs/catalogo.json`
+- La landing muestra **grid + filtros por rol** (disponibles y próximamente)
+
+## Aprendizaje
+
+Cada mejora del usuario → `logs/mejoras.json` → se reinyecta en el brief (`aprendizaje[]`).
 
 ## Entrada
 

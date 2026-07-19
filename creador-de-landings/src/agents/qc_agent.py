@@ -16,11 +16,13 @@ class QcAgent:
             "tiene_headline": bool(brief.get("promesa") or brief.get("producto")),
             "tiene_cta": bool(brief.get("cta")),
             "tiene_estilo": brief.get("estilo") in ("editorial", "mockup", "oferta"),
+            "tiene_catalogo": len(brief.get("productos") or []) >= 2,
         }
         if preview.exists():
             html = preview.read_text(encoding="utf-8")
             checks["html_tiene_cta"] = 'class="btn"' in html or "btn " in html
             checks["html_tiene_marca"] = bool(brief.get("marca")) and brief["marca"] in html
+            checks["html_tiene_grid"] = 'id="guias"' in html or "data-rol-card" in html
 
         ok = all(checks.values())
         report = {"ok": ok, "checks": checks}

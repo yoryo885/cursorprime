@@ -14,13 +14,18 @@
     },
     {
       "id": "cliente",
-      "texto": "¿Para quién es? (rol u oficio)",
-      "ejemplo": "Psicopedagogas en escuela"
+      "texto": "¿Público general de la tienda? (varios oficios)",
+      "ejemplo": "Profesionales por oficio (psicopedagogas, docentes, abogados…)"
     },
     {
       "id": "promesa",
-      "texto": "¿Qué logra el cliente en resultado concreto?",
-      "ejemplo": "Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas"
+      "texto": "¿Promesa de la marca (no de un solo PDF)?",
+      "ejemplo": "Ideas de libros aplicadas a tu rol — elige tu guía"
+    },
+    {
+      "id": "usa_catalogo",
+      "texto": "¿Mostrar catálogo de varias guías (libro×rol)? (si / no)",
+      "ejemplo": "si"
     },
     {
       "id": "cta",

@@ -6,7 +6,9 @@
     "entrevista breve de brief",
     "3 ejemplos de estilo",
     "generación HTML en segundos",
-    "demo como cliente"
+    "demo como cliente",
+    "catálogo libro×rol multi-producto",
+    "aprendizaje continuo logs/mejoras.json"
   ],
   "contexto": {
     "audiencia": "operador cursorprime / cliente demo",
@@ -18,6 +20,10 @@
     {
       "mensaje": "desarrollar sistema landings con preguntas y ejemplos como cliente usando crear-pipeline",
       "cambio": "Proyecto creador-de-landings MVP construido"
+    },
+    {
+      "mensaje": "landing debe ofrecer diferentes productos no solo Pareto; iremos modificando y aprendiendo mejoras",
+      "cambio": "Catálogo multi-producto + aprender CLI + filtros por rol"
     }
   ]
 }

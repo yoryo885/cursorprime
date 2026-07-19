@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "descripcion": "El proyecto aprende: cada mejora del usuario se registra y se aplica en la siguiente generación.",
+  "mejoras": [
+    {
+      "id": "m001",
+      "at": "2026-07-19T19:12:00+00:00",
+      "mensaje": "la landing debe ofrecer los diferentes productos no solo Pareto; iremos modificando y aprendiendo mejoras",
+      "cambio": "Catálogo multi-producto (libro×rol) + grid con filtros + log de aprendizaje",
+      "aplicado": true
+    },
+    {
+      "id": "m002",
+      "at": "2026-07-19T19:13:36.146607+00:00",
+      "mensaje": "la landing debe ofrecer los diferentes productos no solo Pareto; iremos modificando y aprendiendo",
+      "cambio": "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json",
+      "aplicado": true
+    }
+  ]
+}

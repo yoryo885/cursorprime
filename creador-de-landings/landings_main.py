@@ -10,8 +10,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from src.config import load_json, save_json, slug_inputs, slug_output, slugify  # noqa: E402
+from src.catalog import ensure_catalog  # noqa: E402
+from src.config import load_json, save_json, slug_inputs, slug_output  # noqa: E402
 from src.interview import DEMO_RESPUESTAS, run_interview  # noqa: E402
+from src.learning import load_mejoras, registrar_mejora  # noqa: E402
 from src.pipeline import run_pipeline  # noqa: E402
 
 
@@ -52,17 +54,28 @@ def cmd_generar(args: argparse.Namespace) -> None:
     sys.exit(1)
 
 
+def cmd_aprender(args: argparse.Namespace) -> None:
+    entry = registrar_mejora(args.mensaje, args.cambio or args.mensaje, aplicado=True)
+    print(f"\n🧠 Mejora registrada: {entry['id']}")
+    print(f"   {entry['cambio']}\n")
+    print("Se aplicará en la próxima generación (brief + HTML).\n")
+    data = load_mejoras()
+    print(f"Total mejoras: {len(data.get('mejoras', []))}")
+
+
 def cmd_demo(args: argparse.Namespace) -> None:
     slug = args.slug or "demo-cliente"
-    print("\n👤 Demo cliente — Vértice Pro (como si fueras el cliente)\n")
+    print("\n👤 Demo cliente — Vértice Pro (catálogo multi-producto)\n")
     dest = slug_inputs(slug)
     dest.mkdir(parents=True, exist_ok=True)
     save_json(dest / "respuestas.json", DEMO_RESPUESTAS)
+    cat = ensure_catalog(slug)
+    print(f"  · catálogo: {len(cat.get('catalogo_guias', []))} guías · {len(cat.get('roles', []))} roles")
     for k, v in DEMO_RESPUESTAS.items():
         if not k.startswith("_"):
             print(f"  · {k}: {v}")
     print()
-    print("📋 Generando 3 ejemplos y la landing recomendada (editorial)...\n")
+    print("📋 Generando ejemplos + landing con colección completa...\n")
     ok = run_pipeline(
         slug=slug,
         respuestas=dict(DEMO_RESPUESTAS),
@@ -106,6 +119,11 @@ def main() -> None:
     d.add_argument("--slug", default="demo-cliente")
     d.add_argument("--ejemplo", choices=["editorial", "mockup", "oferta"], default="editorial")
     d.set_defaults(func=cmd_demo)
+
+    a = sub.add_parser("aprender", help="Registrar mejora para próximas generaciones")
+    a.add_argument("--mensaje", required=True, help="Qué dijo el usuario")
+    a.add_argument("--cambio", default="", help="Cómo se aplica en el sistema")
+    a.set_defaults(func=cmd_aprender)
 
     args = p.parse_args()
     args.func(args)

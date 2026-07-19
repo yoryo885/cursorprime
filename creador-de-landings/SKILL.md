@@ -28,7 +28,10 @@ cd creador-de-landings
 python3 landings_main.py demo
 python3 landings_main.py entrevista --slug mi-marca
 python3 landings_main.py generar --slug mi-marca --ejemplo editorial
+python3 landings_main.py aprender --mensaje "..." --cambio "..."
 ```
+
+La landing ofrece **catálogo** (varias guías libro×rol), no un solo PDF.
 
 ## Salida
 

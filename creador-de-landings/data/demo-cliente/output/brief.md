@@ -1,16 +1,23 @@
 # Landing brief — Vértice Pro
 
 - **Estilo:** editorial
-- **Headline base:** Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas
+- **Promesa:** Ideas de libros aplicadas a tu rol — elige tu guía
 - **CTA:** Ver colección
-- **Precio:** $4.99
+- **Productos en catálogo:** 6
 
-## Beneficios
-- Hecho para Psicopedagogas en escuela
-- Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas
-- Descarga al instante
+## Serie (libros)
+- El principio de Pareto (pareto)
+- Hábitos atómicos (habitos)
+- Pensar rápido, pensar despacio (kahneman)
 
-## FAQ
-**¿Qué recibo?** — Guías PDF para tu rol profesional
-**¿Para quién es?** — Psicopedagogas en escuela
-**¿Cómo lo recibo?** — Descarga inmediata tras la compra.
+## Guías (libro × rol)
+- **Pareto para psicopedagogas en 10 semanas** — $4.99 · disponible
+- **Pareto para abogados en 10 semanas** — $4.99 · próximamente
+- **Hábitos atómicos para enfermeras en 10 semanas** — $4.99 · próximamente
+- **Kahneman para docentes en 10 semanas** — $4.99 · próximamente
+- **Pareto para soldadores en 10 semanas** — $4.99 · próximamente
+- **Hábitos atómicos para abogados en 10 semanas** — $4.99 · próximamente
+
+## Aprendizaje activo
+- Catálogo multi-producto (libro×rol) + grid con filtros + log de aprendizaje
+- Catálogo multi-producto libro×rol + filtros + logs/mejoras.json

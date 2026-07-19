@@ -1,8 +1,9 @@
-"""Genera HTML de landing en segundos (3 plantillas)."""
+"""Genera HTML de landing en segundos (3 plantillas + catálogo multi-producto)."""
 
 from __future__ import annotations
 
 import html
+import json
 from typing import Any
 
 
@@ -26,16 +27,103 @@ def _fonts() -> str:
     )
 
 
+def _catalog_block(b: dict) -> str:
+    productos = b.get("productos") or []
+    roles = b.get("roles") or []
+    serie = b.get("serie_libros") or []
+    if not productos:
+        return ""
+
+    chips = ['<button type="button" class="role-chip is-active" data-rol="todos">Todos</button>']
+    for r in roles:
+        chips.append(
+            f'<button type="button" class="role-chip" data-rol="{_e(r.get("slug"))}">{_e(r.get("nombre"))}</button>'
+        )
+
+    cards = []
+    for p in productos:
+        disp = bool(p.get("disponible"))
+        opacity = "" if disp else ' style="opacity:0.55"'
+        badge = "Disponible" if disp else "Próximamente"
+        precio = p.get("precio") or "—"
+        btn = (
+            f'<a class="btn btn-dark btn-block" href="#">Añadir al carrito</a>'
+            if disp
+            else '<span class="btn btn-outline btn-block">Avísame</span>'
+        )
+        cards.append(
+            f"""
+      <article class="card" data-rol-card="{_e(p.get('rol'))}"{opacity}>
+        <div class="card-cover">{_e(badge)}</div>
+        <div class="card-body">
+          <p class="card-brand">{_e(b.get('marca'))} · PDF</p>
+          <h3>{_e(p.get('titulo'))}</h3>
+          <p class="price">{_e(precio)}</p>
+          {btn}
+        </div>
+      </article>"""
+        )
+
+    serie_line = " · ".join(_e(s.get("titulo", s.get("slug"))) for s in serie[:5])
+    return f"""
+  <section id="guias">
+    <h2>Guías para tu rol</h2>
+    <p class="serie-line">Serie: {serie_line}</p>
+    <div class="role-filters" id="roleFilters">{"".join(chips)}</div>
+    <div class="grid" id="guiasGrid">{"".join(cards)}</div>
+  </section>
+  <script>
+  (function() {{
+    const chips = document.querySelectorAll('.role-chip');
+    const cards = document.querySelectorAll('[data-rol-card]');
+    chips.forEach(chip => chip.addEventListener('click', () => {{
+      chips.forEach(c => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const rol = chip.dataset.rol;
+      cards.forEach(card => {{
+        card.hidden = !(rol === 'todos' || card.dataset.rolCard === rol);
+      }});
+    }}));
+  }})();
+  </script>
+"""
+
+
+def _catalog_css() -> str:
+    return """
+    .serie-line { text-align:center; color:var(--muted); font-size:.85rem; margin:-8px 0 20px; }
+    .role-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:28px; }
+    .role-chip {
+      padding:10px 16px; border:1px solid #e7e1d8; background:#fff; font-size:.72rem;
+      letter-spacing:.06em; text-transform:uppercase; cursor:pointer; color:var(--muted); border-radius:999px;
+    }
+    .role-chip.is-active { background:var(--ink); color:#fff; border-color:var(--ink); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr)); gap:20px; }
+    .card { background:#fff; border:1px solid #e7e1d8; display:flex; flex-direction:column; }
+    .card-cover {
+      aspect-ratio:3/4; background:#efeae3; display:flex; align-items:center; justify-content:center;
+      color:var(--muted); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    }
+    .card-body { padding:18px; text-align:center; flex:1; display:flex; flex-direction:column; }
+    .card-brand { font-size:.62rem; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }
+    .card h3 { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.05rem; font-weight:500; line-height:1.35; margin-bottom:10px; flex:1; }
+    .price { font-size:1.05rem; font-weight:600; margin-bottom:14px; }
+    .btn-block { width:100%; }
+    .btn-outline { background:transparent; color:var(--ink); border:1px solid var(--ink); display:inline-flex; align-items:center; justify-content:center; min-height:48px; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+    .card[hidden] { display:none !important; }
+"""
+
+
 def _tpl_editorial(b: dict) -> str:
     marca, producto, promesa, cta = b.get("marca"), b.get("producto"), b.get("promesa"), b.get("cta")
-    precio = b.get("precio") or ""
     benefits = b.get("beneficios") or []
     faqs = b.get("faq") or []
     ben_html = "".join(f"<li>{_e(x)}</li>" for x in benefits)
     faq_html = "".join(
         f"<details><summary>{_e(f.get('q'))}</summary><p>{_e(f.get('a'))}</p></details>" for f in faqs
     )
-    precio_line = f'<p class="price">{_e(precio)}</p>' if precio and precio.lower() != "oculto" else ""
+    n = len(b.get("productos") or [])
+    sub = f"{_e(producto)} · {n} guías libro × rol" if n else f"{_e(producto)} · Para {_e(b.get('cliente'))}"
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -59,38 +147,37 @@ def _tpl_editorial(b: dict) -> str:
     @keyframes fade {{ from {{ opacity:0; transform:translateY(16px); }} to {{ opacity:1; transform:none; }} }}
     .brand {{ font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(2.2rem,6vw,3.8rem); letter-spacing:.16em; font-weight:600; margin-bottom:18px; }}
     h1 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(1.35rem,3vw,1.85rem); max-width:18ch; margin-bottom:12px; }}
-    .sub {{ max-width:36ch; color:rgba(255,255,255,.78); margin-bottom:24px; }}
+    .sub {{ max-width:38ch; color:rgba(255,255,255,.78); margin-bottom:24px; }}
     .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 28px; background:#fff; color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border:none; }}
     .btn-dark {{ background:var(--ink); color:#fff; }}
     section {{ padding:clamp(48px,8vw,72px) var(--pad); max-width:var(--max); margin:0 auto; }}
     h2 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:20px; text-align:center; }}
-    ul {{ list-style:none; padding:0; max-width:40ch; margin:0 auto 28px; }}
-    ul li {{ padding:10px 0; border-bottom:1px solid #e7e1d8; color:var(--muted); }}
-    .price {{ text-align:center; font-size:1.4rem; font-weight:600; margin:16px 0 24px; }}
+    ul.benefits {{ list-style:none; padding:0; max-width:40ch; margin:0 auto 28px; }}
+    ul.benefits li {{ padding:10px 0; border-bottom:1px solid #e7e1d8; color:var(--muted); }}
     details {{ background:#fff; border:1px solid #e7e1d8; padding:14px 16px; margin-bottom:10px; }}
     summary {{ cursor:pointer; font-weight:500; }}
     details p {{ margin-top:8px; color:var(--muted); font-size:.92rem; }}
     .cta-wrap {{ text-align:center; margin-top:28px; }}
     footer {{ text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }}
+    {_catalog_css()}
   </style>
 </head>
 <body>
   <section class="hero">
     <div class="brand">{_e(marca)}</div>
     <h1>{_e(promesa or producto)}</h1>
-    <p class="sub">{_e(producto)} · Para {_e(b.get('cliente'))}</p>
-    <a class="btn" href="#comprar">{_e(cta)}</a>
+    <p class="sub">{sub}</p>
+    <a class="btn" href="#guias">{_e(cta)}</a>
   </section>
-  <section id="comprar">
-    <h2>Qué incluye</h2>
-    <ul>{ben_html}</ul>
-    {precio_line}
-    <div class="cta-wrap"><a class="btn btn-dark" href="#">{_e(cta)}</a></div>
+  {_catalog_block(b)}
+  <section id="incluye">
+    <h2>Por qué estas guías</h2>
+    <ul class="benefits">{ben_html}</ul>
   </section>
   <section>
     <h2>Preguntas frecuentes</h2>
     {faq_html}
-    <div class="cta-wrap"><a class="btn btn-dark" href="#">{_e(cta)}</a></div>
+    <div class="cta-wrap"><a class="btn btn-dark" href="#guias">{_e(cta)}</a></div>
   </section>
   <footer>Generado con creador-de-landings · cursorprime</footer>
 </body>
@@ -100,9 +187,8 @@ def _tpl_editorial(b: dict) -> str:
 
 def _tpl_mockup(b: dict) -> str:
     marca, producto, promesa, cta = b.get("marca"), b.get("producto"), b.get("promesa"), b.get("cta")
-    precio = b.get("precio") or ""
-    precio_html = f"<p class='price'>{_e(precio)}</p>" if precio and str(precio).lower() != "oculto" else ""
     benefits = "".join(f"<li>{_e(x)}</li>" for x in (b.get("beneficios") or []))
+    n = len(b.get("productos") or [])
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -111,38 +197,39 @@ def _tpl_mockup(b: dict) -> str:
   <title>{_e(marca)}</title>
   {_fonts()}
   <style>
-    :root {{ --ink:#14110f; --bg:#faf6f0; --muted:#6a635c; --pad:clamp(16px,4vw,36px); }}
+    :root {{ --ink:#14110f; --bg:#faf6f0; --muted:#6a635c; --pad:clamp(16px,4vw,36px); --max:1100px; }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--bg); color:var(--ink); }}
     header {{ padding:20px var(--pad); text-align:center; font-family:"Cormorant Garamond",serif; letter-spacing:.14em; font-size:1.2rem; }}
-    .hero {{ display:grid; grid-template-columns:1.1fr .9fr; gap:32px; max-width:1100px; margin:0 auto; padding:clamp(32px,6vw,64px) var(--pad); align-items:center; }}
+    .hero {{ display:grid; grid-template-columns:1.1fr .9fr; gap:32px; max-width:var(--max); margin:0 auto; padding:clamp(32px,6vw,64px) var(--pad); align-items:center; }}
     .mock {{
       aspect-ratio:4/3; background:linear-gradient(145deg,#1e293b,#0f172a); border-radius:12px;
       display:flex; align-items:center; justify-content:center; color:#fff; font-family:"Cormorant Garamond",serif;
-      font-size:1.4rem; letter-spacing:.08em; box-shadow:0 24px 60px rgba(0,0,0,.18);
-      animation: up .8s ease both;
+      font-size:1.2rem; letter-spacing:.08em; box-shadow:0 24px 60px rgba(0,0,0,.18); text-align:center; padding:20px;
     }}
-    @keyframes up {{ from {{ opacity:0; transform:translateY(20px); }} to {{ opacity:1; transform:none; }} }}
     h1 {{ font-family:"Cormorant Garamond",serif; font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:12px; }}
     .sub {{ color:var(--muted); margin-bottom:20px; max-width:36ch; }}
     .btn {{ display:inline-flex; min-height:48px; padding:0 24px; align-items:center; background:var(--ink); color:#fff; text-decoration:none; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; }}
-    .price {{ font-size:1.35rem; font-weight:600; margin:16px 0; }}
+    .btn-dark {{ background:var(--ink); color:#fff; }}
+    section {{ padding:clamp(40px,7vw,64px) var(--pad); max-width:var(--max); margin:0 auto; }}
+    h2 {{ font-family:"Cormorant Garamond",serif; font-weight:500; text-align:center; margin-bottom:20px; }}
     ul {{ margin:20px 0; padding-left:18px; color:var(--muted); }}
+    {_catalog_css()}
     @media (max-width:800px) {{ .hero {{ grid-template-columns:1fr; }} }}
   </style>
 </head>
 <body>
   <header>{_e(marca)}</header>
   <section class="hero">
-    <div class="mock">PDF · Preview</div>
+    <div class="mock">{n} guías<br/>libro × rol</div>
     <div>
       <h1>{_e(promesa or producto)}</h1>
-      <p class="sub">{_e(producto)} para {_e(b.get('cliente'))}</p>
-      {precio_html}
-      <a class="btn" href="#">{_e(cta)}</a>
+      <p class="sub">{_e(producto)} — elige tu oficio</p>
+      <a class="btn" href="#guias">{_e(cta)}</a>
       <ul>{benefits}</ul>
     </div>
   </section>
+  {_catalog_block(b)}
 </body>
 </html>
 """
@@ -150,52 +237,52 @@ def _tpl_mockup(b: dict) -> str:
 
 def _tpl_oferta(b: dict) -> str:
     marca, producto, promesa, cta = b.get("marca"), b.get("producto"), b.get("promesa"), b.get("cta")
-    precio = b.get("precio") or ""
     benefits = "".join(f"<li>✓ {_e(x)}</li>" for x in (b.get("beneficios") or []))
     faqs = "".join(
         f"<div class='faq'><strong>{_e(f.get('q'))}</strong><p>{_e(f.get('a'))}</p></div>"
         for f in (b.get("faq") or [])
     )
+    n = len(b.get("productos") or [])
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>{_e(marca)} — Oferta</title>
+  <title>{_e(marca)} — Colección</title>
   {_fonts()}
   <style>
-    :root {{ --ink:#111; --accent:#0f1419; --bg:#fff; --soft:#f3f1ec; --muted:#666; }}
+    :root {{ --ink:#111; --accent:#0f1419; --bg:#fff; --soft:#f3f1ec; --muted:#666; --pad:20px; --max:960px; }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--bg); color:var(--ink); }}
     .hero {{ background:var(--soft); padding:clamp(40px,8vw,72px) 20px; text-align:center; }}
     .brand {{ font-size:.75rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
     h1 {{ font-family:"Cormorant Garamond",serif; font-size:clamp(1.8rem,4vw,2.6rem); max-width:18ch; margin:0 auto 14px; line-height:1.15; }}
     .sub {{ color:var(--muted); max-width:40ch; margin:0 auto 22px; }}
-    .price {{ font-size:1.6rem; font-weight:700; margin-bottom:18px; }}
-    .btn {{ display:inline-flex; min-height:52px; padding:0 32px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }}
-    section {{ max-width:720px; margin:0 auto; padding:40px 20px; }}
-    ul {{ list-style:none; padding:0; }}
+    .btn {{ display:inline-flex; min-height:52px; padding:0 32px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; align-items:center; justify-content:center; }}
+    .btn-dark {{ background:var(--ink); color:#fff; }}
+    section {{ max-width:var(--max); margin:0 auto; padding:40px 20px; }}
+    h2 {{ font-family:"Cormorant Garamond",serif; text-align:center; margin-bottom:18px; }}
+    ul {{ list-style:none; padding:0; max-width:480px; margin:0 auto; }}
     ul li {{ padding:12px 0; border-bottom:1px solid #eee; }}
     .faq {{ background:var(--soft); padding:16px; margin-bottom:10px; }}
     .faq p {{ color:var(--muted); margin-top:6px; font-size:.92rem; }}
     .sticky {{ position:sticky; bottom:0; background:#fff; border-top:1px solid #eee; padding:14px; text-align:center; }}
+    {_catalog_css()}
   </style>
 </head>
 <body>
   <section class="hero">
     <p class="brand">{_e(marca)}</p>
     <h1>{_e(promesa or producto)}</h1>
-    <p class="sub">Para {_e(b.get('cliente'))}. {_e(producto)}</p>
-    {"<p class='price'>" + _e(precio) + "</p>" if precio and str(precio).lower() != "oculto" else ""}
-    <a class="btn" href="#faq">{_e(cta)}</a>
+    <p class="sub">{n} guías · elige libro × tu rol</p>
+    <a class="btn" href="#guias">{_e(cta)}</a>
   </section>
+  {_catalog_block(b)}
   <section>
     <ul>{benefits}</ul>
   </section>
-  <section id="faq">
-    {faqs}
-  </section>
-  <div class="sticky"><a class="btn" href="#">{_e(cta)}</a></div>
+  <section id="faq">{faqs}</section>
+  <div class="sticky"><a class="btn" href="#guias">{_e(cta)}</a></div>
 </body>
 </html>
 """
