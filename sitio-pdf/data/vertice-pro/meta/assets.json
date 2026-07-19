@@ -1,9 +1,9 @@
 {
   "modo": "mock",
   "files": {
-    "libro_pareto": "assets/libro-pareto.svg",
-    "libro_habitos": "assets/libro-habitos.svg",
-    "libro_kahneman": "assets/libro-kahneman.svg",
+    "libro_pareto": "assets/libro-pareto.png",
+    "libro_habitos": "assets/libro-habitos.png",
+    "libro_kahneman": "assets/libro-kahneman.png",
     "portada_pareto-psicopedagogas": "assets/portada-pareto-psicopedagogas.png",
     "portada_habitos-psicopedagogas": "assets/portada-habitos-psicopedagogas.svg",
     "portada_pareto-abogados": "assets/portada-pareto-abogados.svg",
@@ -13,7 +13,9 @@
     "portada_kahneman-docentes": "assets/portada-kahneman-docentes.svg",
     "portada_habitos-enfermeras": "assets/portada-habitos-enfermeras.svg",
     "portada": "assets/portada-pareto-psicopedagogas.png",
-    "mockup_movil": "assets/mockup-movil.svg"
+    "mockup_movil": "assets/mockup-movil.svg",
+    "imagen_lectura": "assets/landing-lectura-lado.png",
+    "hero_lifestyle": "assets/landing-lectura-lado.png"
   },
   "carousel": [
     {
@@ -23,7 +25,7 @@
       "subtitulo": "Antoine Delers",
       "precio": "",
       "disponible": true,
-      "src": "assets/libro-pareto.svg"
+      "src": "assets/libro-pareto.png"
     },
     {
       "tipo": "libro",
@@ -32,7 +34,7 @@
       "subtitulo": "James Clear",
       "precio": "",
       "disponible": false,
-      "src": "assets/libro-habitos.svg"
+      "src": "assets/libro-habitos.png"
     },
     {
       "tipo": "libro",
@@ -41,7 +43,7 @@
       "subtitulo": "Daniel Kahneman",
       "precio": "",
       "disponible": false,
-      "src": "assets/libro-kahneman.svg"
+      "src": "assets/libro-kahneman.png"
     }
   ],
   "catalogo_guias": [

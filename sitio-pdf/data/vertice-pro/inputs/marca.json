@@ -9,15 +9,20 @@
   "moneda_default": "USD",
   "precio_display": "$4.99",
   "colores": {
-    "bg": "#faf8f5",
+    "bg": "#fbfaf8",
     "surface": "#ffffff",
-    "text": "#1a1a1a",
-    "muted": "#6b6560",
-    "charcoal": "#1a1a1a",
-    "gold": "#c9a962",
-    "accent": "#b8956a",
-    "cream_dark": "#f0ebe3",
-    "border": "#e8e4df"
+    "text": "#34302c",
+    "muted": "#9a948c",
+    "charcoal": "#3a3632",
+    "gold": "#b5a898",
+    "accent": "#a69b8f",
+    "accent_soft": "#ebe8e4",
+    "accent_tint": "#f6f4f1",
+    "sage": "#9c9890",
+    "sage_tint": "#f4f3f1",
+    "blush": "#f9f7f5",
+    "cream_dark": "#f2efeb",
+    "border": "#ece9e4"
   },
   "tipografias": {
     "titulos": "Cormorant Garamond, Georgia, serif",
@@ -39,6 +44,7 @@
     {
       "slug": "pareto",
       "titulo": "El principio de Pareto",
+      "titulo_corto": "Pareto",
       "autor": "Antoine Delers",
       "tagline": "Prioriza el 20% que genera el 80% del impacto",
       "disponible": true
@@ -46,6 +52,7 @@
     {
       "slug": "habitos",
       "titulo": "Hábitos atómicos",
+      "titulo_corto": "Hábitos",
       "autor": "James Clear",
       "tagline": "Pequeños cambios, resultados notables",
       "disponible": false
@@ -53,17 +60,18 @@
     {
       "slug": "kahneman",
       "titulo": "Pensar rápido, pensar despacio",
+      "titulo_corto": "Kahneman",
       "autor": "Daniel Kahneman",
       "tagline": "Decisiones más claras en tu trabajo",
       "disponible": false
     }
   ],
   "roles": [
-    { "slug": "psicopedagogas", "nombre": "Psicopedagogas" },
-    { "slug": "abogados", "nombre": "Abogados" },
-    { "slug": "soldadores", "nombre": "Soldadores" },
-    { "slug": "docentes", "nombre": "Docentes" },
-    { "slug": "enfermeras", "nombre": "Enfermeras" }
+    { "slug": "psicopedagogas", "nombre": "Psicopedagogas", "ejemplo": "Prioriza el 20% de casos que generan el 80% del impacto en tu gabinete." },
+    { "slug": "abogados", "nombre": "Abogados", "ejemplo": "Enfoca tu semana en los expedientes que más mueven el bufete." },
+    { "slug": "soldadores", "nombre": "Soldadores", "ejemplo": "Organiza turnos y tareas para reducir retrabajo en obra." },
+    { "slug": "docentes", "nombre": "Docentes", "ejemplo": "Decide qué lecciones y alumnos merecen tu energía esta semana." },
+    { "slug": "enfermeras", "nombre": "Enfermeras", "ejemplo": "Ordena turnos y protocolos sin quemarte en lo urgente." }
   ],
   "catalogo_guias": [
     {
@@ -141,6 +149,112 @@
     "og_image": false,
     "favicon": false
   },
-  "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · catálogo libro×rol",
-  "modo_imagen": "mock"
+  "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · catálogo libro×rol · UX benchmark nicho",
+  "modo_imagen": "mock",
+  "ux_landing": {
+    "mercado_benchmark": {
+      "fuentes": ["Gumroad 146k productos", "Shortform", "Blinkist", "Seedprod 2026"],
+      "patrones_clave": [
+        "Titular de resultado para persona concreta en <5 segundos",
+        "Mockup + portada + interior — el producto digital debe verse tangible",
+        "Bullets de outcome, no de features",
+        "Comparación explícita vs suscripción (Blinkist/Shortform)",
+        "Para quién es + 3 pasos + FAQ de objeciones",
+        "Garantía visible cerca del CTA",
+        "Testimonios con rol y resultado específico"
+      ]
+    },
+    "copy_catalogo": {
+      "hero_brand": "VÉRTICE PRO",
+      "hero_series": "Nuevo · Serie Aplicar en tu rol",
+      "hero_problem": "",
+      "hero_title": "Guías que aplicas esta semana",
+      "hero_title_em": "",
+      "hero_subtitle": "Guías PDF en español para profesionales ocupados",
+      "hero_cta": "Ver colección",
+      "hero_cta_secondary": "",
+      "hero_trust": "",
+      "guias_title": "Más vendidas",
+      "about_title": "Inspiradas en tu trabajo real",
+      "compare_titulo": "Por qué no es otra app de resúmenes",
+      "compare_lead": "Pagas una vez. El PDF es tuyo. Sin renovación automática.",
+      "compare_items": [
+        { "nosotros": "Compra única desde $4.99", "ellos": "Suscripción $15–20/mes" },
+        { "nosotros": "Adaptado a tu oficio concreto", "ellos": "Resumen genérico para todos" },
+        { "nosotros": "Plan de 10 semanas incluido", "ellos": "Solo lectura, sin plan de acción" }
+      ],
+      "como_funciona_titulo": "Cómo funciona",
+      "para_quien_titulo": "¿Para quién es?",
+      "para_quien_lead": "Profesionales que quieren aplicar ideas famosas sin leer 300 páginas ni pagar suscripción.",
+      "preview_titulo": "Así se ve tu guía",
+      "preview_lead": "PDF descargable · Lee en móvil, tablet o imprime · Empiezas hoy",
+      "garantia_titulo": "Garantía de 7 días",
+      "garantia_texto": "Si la guía no te sirve para tu rol, te devolvemos el 100%. Sin preguntas incómodas.",
+      "featured_label": "Más vendida",
+      "lifestyle_caption": "",
+      "guias_lead": "Elige tu profesión. Filtra por libro si quieres.",
+      "benefits_title": "Qué incluye cada guía",
+      "benefits": [
+        {
+          "title": "Plan de 10 semanas",
+          "text": "Una acción concreta por semana. Empiezas hoy, avanzas sin improvisar."
+        },
+        {
+          "title": "Adaptado a tu rol",
+          "text": "Ejemplos, casos y lenguaje de tu profesión — no un resumen genérico de librería."
+        },
+        {
+          "title": "PDF tuyo para siempre",
+          "text": "Compra única. Descarga al instante. Lee en móvil, tablet o imprime."
+        }
+      ],
+      "plan_titulo": "Estructura del plan · 10 semanas",
+      "plan_intro_default": "Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.",
+      "plan_intro_rol": "Así se aplica en tu oficio cuando elijas una guía:",
+      "about_text": "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas, docentes y profesionales de salud.",
+      "about_tagline": "Prioriza el 20% de casos que generan el 80% del impacto en el aula."
+    },
+    "flujo_pasos": [
+      { "titulo": "Elige tu profesión", "texto": "Filtra el catálogo por tu oficio." },
+      { "titulo": "Elige tu libro", "texto": "Pareto, Hábitos, Kahneman y más en camino." },
+      { "titulo": "Descarga y aplica", "texto": "PDF al instante. Plan de 10 semanas incluido." }
+    ],
+    "trust_badges": [
+      { "icon": "pdf", "label": "PDF descargable", "hint": "Tuyo para siempre" },
+      { "icon": "bolt", "label": "Descarga al instante", "hint": "Sin esperas" },
+      { "icon": "calendar", "label": "Plan 10 semanas", "hint": "Una acción por semana" },
+      { "icon": "role", "label": "Adaptado a tu rol", "hint": "No genérico" }
+    ],
+    "hero_bullets": [],
+    "show_lifestyle": false,
+    "incluye_semanas": [
+      "Semanas 1–2: Mapa de tu semana laboral y primeros focos",
+      "Semanas 3–5: Aplicar las ideas del libro a casos reales de tu rol",
+      "Semanas 6–8: Rutinas que sostienen el cambio en el día a día",
+      "Semanas 9–10: Medir resultados y ajustar el plan"
+    ],
+    "faq": [
+      {
+        "q": "¿Es una suscripción como Blinkist o Shortform?",
+        "a": "No. Pagas una vez por guía y el PDF es tuyo. Sin cuota mensual ni renovación automática."
+      },
+      {
+        "q": "¿Cómo recibo el PDF?",
+        "a": "Tras el pago recibes un enlace de descarga inmediato por email. También disponible en tu cuenta de Shopify."
+      },
+      {
+        "q": "¿En qué se diferencia de un resumen genérico?",
+        "a": "Cada guía traduce las ideas del libro a situaciones concretas de tu profesión — casos, lenguaje y plan de 10 semanas incluidos."
+      },
+      {
+        "q": "¿Qué pasa si no me sirve para mi rol?",
+        "a": "Tienes 7 días de garantía. Escríbenos y te devolvemos el 100%."
+      },
+      {
+        "q": "¿Está afiliada al autor original?",
+        "a": "No. Son resúmenes independientes para aplicar ideas en tu trabajo. No sustituyen el libro completo."
+      }
+    ],
+    "newsletter_microcopy": "Solo tu descuento · Sin spam · Cancela cuando quieras"
+  }
 }

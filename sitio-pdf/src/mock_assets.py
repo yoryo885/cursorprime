@@ -18,6 +18,23 @@ def _write(path: Path, svg: str) -> str:
     return path.name
 
 
+def _source_assets_dir() -> Path:
+    return Path(__file__).resolve().parent.parent / "data" / "vertice-pro" / "assets"
+
+
+def _copy_raster_if_exists(out_dir: Path, base_name: str) -> str | None:
+    """Copia PNG/JPG/WebP desde assets fuente o out_dir si ya existe."""
+    for folder in (out_dir, _source_assets_dir()):
+        for ext in (".png", ".webp", ".jpg", ".jpeg"):
+            src = folder / f"{base_name}{ext}"
+            if src.is_file():
+                dest = out_dir / src.name
+                if src.resolve() != dest.resolve():
+                    shutil.copy2(src, dest)
+                return f"assets/{dest.name}"
+    return None
+
+
 def portada_svg(marca: dict, titulo: str, *, accent_bar: str | None = None) -> str:
     charcoal = _c(marca, "charcoal", "#1a1a1a")
     gold = accent_bar or _c(marca, "gold", "#c9a962")
@@ -100,6 +117,11 @@ def _portada_for_guia(
             shutil.copy2(png_src, dest)
             return dest.name, f"assets/{dest.name}", True
 
+        copied = _copy_raster_if_exists(out_dir, f"portada-{slug}")
+        if copied:
+            fname = copied.replace("assets/", "")
+            return fname, copied, True
+
         meta = load_json(producto_meta_path(producto), {}) or {}
         subtitulo = meta.get("subtitulo_portada", "El principio de Pareto")
         if meta.get("titulo_comercial"):
@@ -120,22 +142,22 @@ def _portada_for_guia(
 
 
 def portada_libro_svg(marca: dict, titulo: str, autor: str = "") -> str:
-    """Portada genérica de la serie (libro fuente, sin rol)."""
+    """Portada serie — tono crema suave, sin marco blanco grueso."""
     charcoal = _c(marca, "charcoal", "#1a1a1a")
     gold = _c(marca, "gold", "#c9a962")
-    bg = _c(marca, "cream_dark", "#f0ebe3")
+    muted = _c(marca, "muted", "#6b6560")
+    cover = _c(marca, "surface", "#faf8f5")
     line1 = titulo[:36]
     line2 = titulo[36:72] if len(titulo) > 36 else ""
     autor_line = autor[:40] if autor else "Serie Aplicar en tu rol"
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img">
-  <rect width="400" height="520" fill="{bg}"/>
-  <rect x="24" y="24" width="352" height="472" fill="#fff" stroke="#e8e4df"/>
-  <rect x="24" y="24" width="5" height="472" fill="{gold}"/>
-  <text x="48" y="100" fill="{gold}" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
-  <text x="48" y="140" fill="{charcoal}" font-family="Georgia,serif" font-size="17" font-weight="700">{line1}</text>
-  <text x="48" y="168" fill="{charcoal}" font-family="Georgia,serif" font-size="17" font-weight="700">{line2}</text>
-  <text x="48" y="420" fill="{charcoal}" font-family="system-ui,sans-serif" font-size="11">{autor_line}</text>
-  <text x="48" y="448" fill="{gold}" font-family="system-ui,sans-serif" font-size="10" letter-spacing="0.12em">APLICAR EN TU ROL</text>
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img">
+  <rect x="0" y="0" width="320" height="440" fill="{cover}" rx="3"/>
+  <rect x="0" y="0" width="5" height="440" fill="{gold}"/>
+  <text x="20" y="72" fill="{gold}" font-family="system-ui,sans-serif" font-size="8" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
+  <text x="20" y="108" fill="{charcoal}" font-family="Georgia,serif" font-size="16" font-weight="700">{line1}</text>
+  <text x="20" y="134" fill="{charcoal}" font-family="Georgia,serif" font-size="16" font-weight="700">{line2}</text>
+  <text x="20" y="360" fill="{muted}" font-family="system-ui,sans-serif" font-size="10">{autor_line}</text>
+  <text x="20" y="384" fill="{gold}" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.12em">APLICAR EN TU ROL</text>
 </svg>"""
 
 
@@ -150,11 +172,13 @@ def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto"
         slug = libro.get("slug", f"libro-{i}")
         titulo = libro.get("titulo", "Libro")
         autor = libro.get("autor", "")
-        fname = _write(
-            out_dir / f"libro-{slug}.svg",
-            portada_libro_svg(marca, titulo, autor),
-        )
-        rel = f"assets/{fname}"
+        rel = _copy_raster_if_exists(out_dir, f"libro-{slug}")
+        if not rel:
+            fname = _write(
+                out_dir / f"libro-{slug}.svg",
+                portada_libro_svg(marca, titulo, autor),
+            )
+            rel = f"assets/{fname}"
         assets[f"libro_{slug}"] = rel
         carousel.append({
             "tipo": "libro",
@@ -198,6 +222,12 @@ def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto"
 
     assets["portada"] = assets.get(f"portada_{piloto_slug}", "")
     assets["mockup_movil"] = f"assets/{_write(out_dir / 'mockup-movil.svg', mockup_movil_svg(marca))}"
+    for hero_name in ("landing-lectura-lado", "hero-lifestyle-tenue"):
+        hero_rel = _copy_raster_if_exists(out_dir, hero_name)
+        if hero_rel:
+            assets["imagen_lectura"] = hero_rel
+            assets["hero_lifestyle"] = hero_rel
+            break
     assets["_carousel_json"] = carousel  # type: ignore[assignment]
     assets["_catalogo_guias_json"] = catalogo  # type: ignore[assignment]
     return assets

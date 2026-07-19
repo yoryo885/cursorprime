@@ -5,7 +5,7 @@
       "id": "openSimpleBrowser",
       "type": "command",
       "command": "simpleBrowser.show",
-      "args": ["http://localhost:8768/index.html"]
+      "args": ["http://localhost:8768/versiones.html"]
     }
   ],
   "tasks": [

@@ -17,17 +17,23 @@ class CopyAgent:
         kdp = ctx.kdp
         marca = ctx.marca
         prod = marca.get("producto_piloto", {})
+        ux = marca.get("ux_landing", {})
+        cat = ux.get("copy_catalogo", {})
         beneficios = kdp.get("beneficios") or []
         copy = {
             "announce": "Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off",
-            "hero_title": "Guías que aplicas esta semana",
-            "hero_subtitle": marca.get("descripcion_corta", ""),
-            "hero_cta": "Ver colección",
-            "benefits_title": "Qué incluye cada guía",
-            "benefits": [
-                {"title": "Plan de 10 semanas", "text": beneficios[3] if len(beneficios) > 3 else "Una acción concreta por semana."},
-                {"title": "Adaptado a tu rol", "text": beneficios[0] if beneficios else "Pensado para tu oficio."},
-                {"title": "Descarga al instante", "text": "Compras, descargas y empiezas hoy."},
+            "hero_title": cat.get("hero_title", "Guías PDF para tu rol profesional"),
+            "hero_subtitle": cat.get("hero_subtitle", marca.get("descripcion_corta", "")),
+            "hero_cta": cat.get("hero_cta", "Ver guías"),
+            "hero_brand": cat.get("hero_brand", marca.get("marca", "Vértice Pro").upper()),
+            "hero_series": cat.get("hero_series", f"Serie · {marca.get('serie', 'Aplicar en tu rol')}"),
+            "hero_label": cat.get("hero_label", marca.get("marca", "Vértice Pro").upper()),
+            "guias_lead": cat.get("guias_lead", ""),
+            "benefits_title": cat.get("benefits_title", "Qué incluye cada guía"),
+            "benefits": cat.get("benefits") or [
+                {"title": "Plan de 10 semanas", "text": "Una acción concreta por semana."},
+                {"title": "Adaptado a tu rol", "text": "Pensado para tu oficio, no genérico."},
+                {"title": "PDF tuyo para siempre", "text": "Compras, descargas y empiezas hoy."},
             ],
             "products_title": "Guías disponibles",
             "product": {
@@ -40,7 +46,8 @@ class CopyAgent:
                 "beneficios": beneficios[:5],
             },
             "about_title": marca.get("marca", "Vértice Pro"),
-            "about_text": f"Editorial digital en español. Serie «{marca.get('serie', 'Aplicar en tu rol')}». Guías accionables para {prod.get('audiencia', 'profesionales')}.",
+            "about_text": cat.get("about_text", f"Editorial digital en español. Serie «{marca.get('serie', 'Aplicar en tu rol')}»."),
+            "about_tagline": cat.get("about_tagline", ""),
             "footer_legal": "Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.",
         }
         ctx.copy = copy
