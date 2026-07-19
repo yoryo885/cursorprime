@@ -151,9 +151,11 @@
       "hero_brand": "VÉRTICE PRO",
       "hero_series": "Serie · Aplicar en tu rol",
       "hero_label": "VÉRTICE PRO",
-      "hero_title": "Guías PDF para tu rol profesional",
-      "hero_subtitle": "Ideas de libros famosos, adaptadas a tu oficio. Plan de 10 semanas · Compra única, sin suscripción.",
-      "hero_cta": "Ver guías",
+      "hero_title": "Los mejores libros,",
+      "hero_title_em": "aplicados a tu oficio",
+      "hero_subtitle": "",
+      "hero_cta": "Explorar catálogo",
+      "hero_cta_secondary": "Qué incluye",
       "hero_trust": "★ 4.9 · Desde $4.99 · PDF al instante",
       "lifestyle_caption": "",
       "guias_lead": "Elige tu profesión. Filtra por libro si quieres.",
@@ -190,9 +192,9 @@
       { "icon": "role", "label": "Adaptado a tu rol", "hint": "No genérico" }
     ],
     "hero_bullets": [
-      "Libros famosos traducidos a acciones de tu oficio",
-      "Compra única — sin suscripción mensual",
-      "PDF listo para leer en móvil o imprimir"
+      "Plan de 10 semanas — una acción por semana",
+      "Compra única, sin suscripción",
+      "PDF al instante en móvil o impreso"
     ],
     "incluye_semanas": [
       "Semanas 1–2: Mapa de tu semana laboral y primeros focos",

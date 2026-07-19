@@ -120,14 +120,16 @@ def _portada_for_guia(
 
 
 def portada_libro_svg(marca: dict, titulo: str, autor: str = "") -> str:
-    """Portada serie — sin marco blanco; fondo transparente para el carrusel."""
+    """Portada serie — tono crema suave, sin marco blanco grueso."""
     charcoal = _c(marca, "charcoal", "#1a1a1a")
     gold = _c(marca, "gold", "#c9a962")
     muted = _c(marca, "muted", "#6b6560")
+    cover = _c(marca, "surface", "#faf8f5")
     line1 = titulo[:36]
     line2 = titulo[36:72] if len(titulo) > 36 else ""
     autor_line = autor[:40] if autor else "Serie Aplicar en tu rol"
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img">
+  <rect x="0" y="0" width="320" height="440" fill="{cover}" rx="3"/>
   <rect x="0" y="0" width="5" height="440" fill="{gold}"/>
   <text x="20" y="72" fill="{gold}" font-family="system-ui,sans-serif" font-size="8" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
   <text x="20" y="108" fill="{charcoal}" font-family="Georgia,serif" font-size="16" font-weight="700">{line1}</text>

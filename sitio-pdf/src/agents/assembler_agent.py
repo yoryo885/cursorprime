@@ -71,7 +71,16 @@ def _render_html(ctx: PipelineContext) -> str:
     first_sub = slides[0].get("subtitulo") or slides[0].get("autor") or "Elige tu rol abajo" if slides else ""
 
     hero_bullets = ux.get("hero_bullets") or []
-    _ = hero_bullets  # reservado; bullets viven en sección Qué incluye
+    hero_bullets_html = ""
+    for bullet in hero_bullets[:3]:
+        hero_bullets_html += f"<li>{escape(str(bullet))}</li>"
+    hero_title_em = cat.get("hero_title_em") or c.get("hero_title_em", "")
+    hero_title = c.get("hero_title", cat.get("hero_title", ""))
+    hero_title_html = escape(hero_title)
+    if hero_title_em:
+        hero_title_html += f'<br/><em class="hero-accent">{escape(hero_title_em)}</em>'
+    hero_subtitle = c.get("hero_subtitle", cat.get("hero_subtitle", ""))
+    hero_cta_secondary = cat.get("hero_cta_secondary", "Qué incluye")
 
     trust_badges = ux.get("trust_badges") or []
     trust_html = ""
@@ -199,16 +208,27 @@ def _render_html(ctx: PipelineContext) -> str:
 
     .hero {{ background:var(--cream); border-bottom:1px solid var(--border); }}
     .hero .wrap {{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,64px); align-items:center; padding-top:clamp(40px,7vw,72px); padding-bottom:clamp(40px,7vw,72px); }}
-    .hero-copy {{ max-width:460px; }}
-    .hero-brand {{
-      font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.6rem,4.5vw,2.25rem);
-      letter-spacing:0.22em; font-weight:500; color:var(--charcoal); margin-bottom:6px; line-height:1.1;
+    .hero-copy {{ max-width:480px; }}
+    .hero-series {{
+      display:inline-block; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--charcoal); background:rgba(255,255,255,0.55); border:1px solid var(--border);
+      padding:6px 12px; margin-bottom:18px;
     }}
-    .hero-series {{ font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }}
     .hero-label {{ font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
-    .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.85rem,5vw,3rem); font-weight:400; line-height:1.12; margin-bottom:16px; letter-spacing:0.02em; }}
-    .hero-desc {{ color:var(--muted); font-size:0.98rem; margin-bottom:28px; max-width:38ch; line-height:1.6; }}
-    .hero-trust {{ font-size:0.78rem; color:var(--muted); margin-top:14px; letter-spacing:0.02em; }}
+    .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5.5vw,3.15rem); font-weight:400; line-height:1.08; margin-bottom:14px; letter-spacing:0.01em; }}
+    .hero-accent {{ font-style:italic; color:var(--gold); font-weight:500; }}
+    .hero-desc {{ color:var(--muted); font-size:0.92rem; margin-bottom:18px; max-width:42ch; line-height:1.55; }}
+    .hero-bullets {{ list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:8px; }}
+    .hero-bullets li {{
+      position:relative; padding-left:18px; font-size:0.88rem; color:var(--text); line-height:1.45;
+    }}
+    .hero-bullets li::before {{
+      content:''; position:absolute; left:0; top:0.55em; width:6px; height:6px; border-radius:50%; background:var(--gold);
+    }}
+    .hero-actions {{ display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }}
+    .hero-link {{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); padding-bottom:2px; }}
+    .hero-link:hover {{ color:var(--gold); }}
+    .hero-trust {{ font-size:0.78rem; color:var(--muted); margin-top:16px; letter-spacing:0.02em; }}
     .hero-trust strong {{ color:var(--gold); }}
     .hero-visual {{
       display:flex; flex-direction:column; align-items:center; gap:14px;
@@ -363,6 +383,9 @@ def _render_html(ctx: PipelineContext) -> str:
       .hero .wrap {{ grid-template-columns:1fr; text-align:center; }}
       .hero-copy {{ max-width:none; margin:0 auto; }}
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
+      .hero-bullets {{ align-items:center; }}
+      .hero-bullets li {{ text-align:left; max-width:28ch; }}
+      .hero-actions {{ justify-content:center; }}
       .hero-visual {{ order:-1; width:100%; max-width:min(92vw,400px); margin:0 auto; }}
       .hero-carousel {{ width:min(85vw,340px); height:clamp(260px,50vw,360px); margin:0 auto; }}
       body {{ padding-bottom:72px; }}
@@ -386,11 +409,14 @@ def _render_html(ctx: PipelineContext) -> str:
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="hero-brand">{escape(cat.get('hero_brand', name))}</p>
         <p class="hero-series">{escape(cat.get('hero_series', m.get('serie', 'Aplicar en tu rol')))}</p>
-        <h1>{escape(c.get('hero_title', cat.get('hero_title','')))}</h1>
-        <p class="hero-desc">{escape(c.get('hero_subtitle', cat.get('hero_subtitle','')))}</p>
-        <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Ver guías')))}</a>
+        <h1>{hero_title_html}</h1>
+        {f'<p class="hero-desc">{escape(hero_subtitle)}</p>' if hero_subtitle else ''}
+        {f'<ul class="hero-bullets">{hero_bullets_html}</ul>' if hero_bullets_html else ''}
+        <div class="hero-actions">
+          <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Explorar catálogo')))}</a>
+          <a class="hero-link" href="#incluye">{escape(hero_cta_secondary)}</a>
+        </div>
         <p class="hero-trust">{escape(cat.get('hero_trust', c.get('hero_trust', '★ 4.9 · Descarga al instante')))}</p>
       </div>
       <div class="hero-visual">

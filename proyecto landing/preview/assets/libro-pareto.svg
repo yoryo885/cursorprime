@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img">
+  <rect x="0" y="0" width="320" height="440" fill="#ffffff" rx="3"/>
   <rect x="0" y="0" width="5" height="440" fill="#c9a962"/>
   <text x="20" y="72" fill="#c9a962" font-family="system-ui,sans-serif" font-size="8" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
   <text x="20" y="108" fill="#1a1a1a" font-family="Georgia,serif" font-size="16" font-weight="700">El principio de Pareto</text>

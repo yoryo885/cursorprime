@@ -33,16 +33,27 @@
 
     .hero { background:var(--cream); border-bottom:1px solid var(--border); }
     .hero .wrap { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,64px); align-items:center; padding-top:clamp(40px,7vw,72px); padding-bottom:clamp(40px,7vw,72px); }
-    .hero-copy { max-width:460px; }
-    .hero-brand {
-      font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.6rem,4.5vw,2.25rem);
-      letter-spacing:0.22em; font-weight:500; color:var(--charcoal); margin-bottom:6px; line-height:1.1;
+    .hero-copy { max-width:480px; }
+    .hero-series {
+      display:inline-block; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--charcoal); background:rgba(255,255,255,0.55); border:1px solid var(--border);
+      padding:6px 12px; margin-bottom:18px;
     }
-    .hero-series { font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
     .hero-label { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
-    .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.85rem,5vw,3rem); font-weight:400; line-height:1.12; margin-bottom:16px; letter-spacing:0.02em; }
-    .hero-desc { color:var(--muted); font-size:0.98rem; margin-bottom:28px; max-width:38ch; line-height:1.6; }
-    .hero-trust { font-size:0.78rem; color:var(--muted); margin-top:14px; letter-spacing:0.02em; }
+    .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5.5vw,3.15rem); font-weight:400; line-height:1.08; margin-bottom:14px; letter-spacing:0.01em; }
+    .hero-accent { font-style:italic; color:var(--gold); font-weight:500; }
+    .hero-desc { color:var(--muted); font-size:0.92rem; margin-bottom:18px; max-width:42ch; line-height:1.55; }
+    .hero-bullets { list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:8px; }
+    .hero-bullets li {
+      position:relative; padding-left:18px; font-size:0.88rem; color:var(--text); line-height:1.45;
+    }
+    .hero-bullets li::before {
+      content:''; position:absolute; left:0; top:0.55em; width:6px; height:6px; border-radius:50%; background:var(--gold);
+    }
+    .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }
+    .hero-link { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); padding-bottom:2px; }
+    .hero-link:hover { color:var(--gold); }
+    .hero-trust { font-size:0.78rem; color:var(--muted); margin-top:16px; letter-spacing:0.02em; }
     .hero-trust strong { color:var(--gold); }
     .hero-visual {
       display:flex; flex-direction:column; align-items:center; gap:14px;
@@ -197,6 +208,9 @@
       .hero .wrap { grid-template-columns:1fr; text-align:center; }
       .hero-copy { max-width:none; margin:0 auto; }
       .hero-desc { margin-left:auto; margin-right:auto; }
+      .hero-bullets { align-items:center; }
+      .hero-bullets li { text-align:left; max-width:28ch; }
+      .hero-actions { justify-content:center; }
       .hero-visual { order:-1; width:100%; max-width:min(92vw,400px); margin:0 auto; }
       .hero-carousel { width:min(85vw,340px); height:clamp(260px,50vw,360px); margin:0 auto; }
       body { padding-bottom:72px; }
@@ -220,11 +234,14 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="hero-brand">VÉRTICE PRO</p>
         <p class="hero-series">Serie · Aplicar en tu rol</p>
-        <h1>Guías PDF para tu rol profesional</h1>
-        <p class="hero-desc">Ideas de libros famosos, adaptadas a tu oficio. Plan de 10 semanas · Compra única, sin suscripción.</p>
-        <a class="btn" href="#guias-por-rol">Ver guías</a>
+        <h1>Los mejores libros,<br/><em class="hero-accent">aplicados a tu oficio</em></h1>
+        
+        <ul class="hero-bullets"><li>Plan de 10 semanas — una acción por semana</li><li>Compra única, sin suscripción</li><li>PDF al instante en móvil o impreso</li></ul>
+        <div class="hero-actions">
+          <a class="btn" href="#guias-por-rol">Explorar catálogo</a>
+          <a class="hero-link" href="#incluye">Qué incluye</a>
+        </div>
         <p class="hero-trust">★ 4.9 · Desde $4.99 · PDF al instante</p>
       </div>
       <div class="hero-visual">
