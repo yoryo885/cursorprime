@@ -1,13 +1,13 @@
 {
-  "version": 3,
+  "version": 4,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "mejoras-emprendimientos-sistemas",
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 1,
-    "ultima_mejora": "buscar YouTube/web mejoras para todos los emprendimientos; perspectiva profesional e innovadora; progreso en sistemas"
+    "version": 2,
+    "ultima_mejora": "información fácil de entender y resumida"
   },
   "historial": [
     {
@@ -25,8 +25,14 @@
     {
       "version": 3,
       "slug": "mejoras-emprendimientos-sistemas",
-      "mensaje": "buscar en youtube o otros sitios mejoras para todos los emprendimientos; qué aumenta el progreso en los sistemas; perspectiva profesional e innovadora",
-      "cambio": "Tema nuevo: radar P0–P3 por sistema + fuentes live 2026"
+      "mensaje": "buscar mejoras YouTube/web para emprendimientos",
+      "cambio": "Radar P0–P3 por sistema"
+    },
+    {
+      "version": 4,
+      "slug": "mejoras-emprendimientos-sistemas",
+      "mensaje": "dame la informacion que la pueda entender y resumida",
+      "cambio": "Tono simple; 3 acciones + 1 decisión; resumen en meta/radar-mejoras-resumen-simple.md"
     }
   ]
 }

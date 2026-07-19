@@ -10,20 +10,25 @@
   ],
   "contexto": {
     "audiencia": "operador de cursorprime / agencia presencia digital LATAM",
-    "tono": "profesional, directo, orientado a decisión",
-    "estilo": "matriz sistema→mejora→impacto; evitar radar genérico KDP",
+    "tono": "simple, claro, sin jerga innecesaria",
+    "estilo": "resumen corto primero; luego 3 pasos; una sola decisión; evitar radar genérico KDP",
     "idioma": "español",
     "objetivo": "Cada mensaje del usuario refina el radar: qué acelerar en los sistemas existentes para aumentar progreso real"
   },
   "notas": [
     "Inventario base: top3 (audit, wasap, presencia), marketing-audit, creador contenido, KDP, LinkedIn, lluvia, clientes/",
     "Cuello principal: capacidad alta, cierre comercial bajo",
-    "Video reciente revisado: CRM WhatsApp open source WACRM (Andy Cruz)"
+    "Video reciente revisado: CRM WhatsApp open source WACRM (Andy Cruz)",
+    "Preferencia: explicar para que se entienda fácil y resumido"
   ],
   "mejoras": [
     {
       "mensaje": "buscar en youtube/otros sitios mejoras para todos los emprendimientos, perspectiva profesional e innovadora, qué aumenta progreso en los sistemas",
       "cambio": "Slug nuevo; radar P0–P3 mapeado a sistemas reales + fuentes live 2026"
+    },
+    {
+      "mensaje": "dame la informacion que la pueda entender y resumida",
+      "cambio": "Tono simple; respuesta corta primero; 3 pasos + 1 decisión"
     }
   ],
   "variantes": 1
