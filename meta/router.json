@@ -222,11 +222,36 @@
       "pipeline": null
     },
     {
+      "id": "creador-de-landings",
+      "priority": 88,
+      "match": {
+        "any": [
+          "creador de landings",
+          "creador-de-landings",
+          "generar landing",
+          "generador de landings",
+          "landing en segundos",
+          "entrevista landing",
+          "sistema de landings",
+          "crear landings",
+          "usa creador-de-landings"
+        ],
+        "none": ["evaluar idea", "solo copy"]
+      },
+      "skill": "creador-de-landings",
+      "proyecto": "creador-de-landings",
+      "prompt": { "tipo": "marketing", "proyecto_destino": "creador-de-landings", "auto": false },
+      "pipeline": {
+        "cwd": "creador-de-landings",
+        "cmd": "python3 landings_main.py demo"
+      }
+    },
+    {
       "id": "landing-lanzamiento-route",
       "priority": 81,
       "match": {
         "any": ["landing", "lanzamiento", "pagina ventas", "página ventas", "copy lanzamiento", "oferta", "funnel"],
-        "none": ["evaluar idea", "libro", "kdp"]
+        "none": ["evaluar idea", "libro", "kdp", "creador de landings", "generar landing", "landing en segundos", "sistema de landings"]
       },
       "skill": "landing-lanzamiento",
       "proyecto": "general",

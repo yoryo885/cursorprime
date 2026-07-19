@@ -1,0 +1,23 @@
+{
+  "titulo": "Sistema creador de landings (entrevista → ejemplos → HTML)",
+  "tipo": "pipeline",
+  "proyecto_destino": "creador-de-landings",
+  "temas": [
+    "entrevista breve de brief",
+    "3 ejemplos de estilo",
+    "generación HTML en segundos",
+    "demo como cliente"
+  ],
+  "contexto": {
+    "audiencia": "operador cursorprime / cliente demo",
+    "tono": "claro y accionable",
+    "idioma": "español",
+    "objetivo": "Pipeline que pregunta cómo quiere la landing, muestra ejemplos y genera preview.html"
+  },
+  "mejoras": [
+    {
+      "mensaje": "desarrollar sistema landings con preguntas y ejemplos como cliente usando crear-pipeline",
+      "cambio": "Proyecto creador-de-landings MVP construido"
+    }
+  ]
+}

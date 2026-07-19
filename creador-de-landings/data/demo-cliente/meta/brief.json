@@ -1,0 +1,35 @@
+{
+  "marca": "Vértice Pro",
+  "producto": "Guías PDF para tu rol profesional",
+  "cliente": "Psicopedagogas en escuela",
+  "promesa": "Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas",
+  "cta": "Ver colección",
+  "precio": "$4.99",
+  "tono": "editorial",
+  "estilo": "editorial",
+  "beneficios": [
+    "Hecho para Psicopedagogas en escuela",
+    "Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas",
+    "Descarga al instante"
+  ],
+  "testimonios": [
+    {
+      "texto": "[PENDIENTE: testimonio real]",
+      "autor": "Cliente"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué recibo?",
+      "a": "Guías PDF para tu rol profesional"
+    },
+    {
+      "q": "¿Para quién es?",
+      "a": "Psicopedagogas en escuela"
+    },
+    {
+      "q": "¿Cómo lo recibo?",
+      "a": "Descarga inmediata tras la compra."
+    }
+  ]
+}

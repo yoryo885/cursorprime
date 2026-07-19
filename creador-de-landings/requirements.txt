@@ -1,0 +1,2 @@
+# MVP sin dependencias de pago
+# Python 3.10+

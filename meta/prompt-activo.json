@@ -1,14 +1,13 @@
 {
-  "version": 15,
+  "version": 16,
   "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
-    "slug": "mejoras-emprendimientos-sistemas",
-    "tipo": "evaluacion",
-    "proyecto_destino": "lluvia-de-ideas",
-    "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 6,
-    "ultima_mejora": "investigación mercado landings que venden 2026",
-    "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
-    "informe_landings": "meta/investigacion-landings-que-venden-2026.md"
+    "slug": "creador-de-landings",
+    "tipo": "pipeline",
+    "proyecto_destino": "creador-de-landings",
+    "titulo": "Sistema creador de landings",
+    "version": 1,
+    "ultima_mejora": "desarrollar proyecto entrevista → ejemplos → HTML",
+    "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }

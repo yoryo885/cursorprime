@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "checks": {
+    "archivo_html": true,
+    "tiene_marca": true,
+    "tiene_headline": true,
+    "tiene_cta": true,
+    "tiene_estilo": true,
+    "html_tiene_cta": true,
+    "html_tiene_marca": true
+  }
+}

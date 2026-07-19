@@ -1,0 +1,46 @@
+{
+  "titulo": "Brief rápido — tu landing",
+  "intro": "Responde en una línea. Con eso te muestro 3 estilos y genero la página.",
+  "preguntas": [
+    {
+      "id": "marca",
+      "texto": "¿Nombre de la marca o producto?",
+      "ejemplo": "Vértice Pro"
+    },
+    {
+      "id": "producto",
+      "texto": "¿Qué vendes en una frase?",
+      "ejemplo": "Guías PDF para tu rol profesional"
+    },
+    {
+      "id": "cliente",
+      "texto": "¿Para quién es? (rol u oficio)",
+      "ejemplo": "Psicopedagogas en escuela"
+    },
+    {
+      "id": "promesa",
+      "texto": "¿Qué logra el cliente en resultado concreto?",
+      "ejemplo": "Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas"
+    },
+    {
+      "id": "cta",
+      "texto": "¿Texto del botón principal?",
+      "ejemplo": "Ver colección"
+    },
+    {
+      "id": "precio",
+      "texto": "¿Precio visible? (o escribe 'oculto')",
+      "ejemplo": "$4.99"
+    },
+    {
+      "id": "tono",
+      "texto": "¿Tono? (editorial | cercano | directo)",
+      "ejemplo": "editorial"
+    },
+    {
+      "id": "estilo_preferido",
+      "texto": "Si ya sabes el estilo visual: editorial | mockup | oferta (o 'ver ejemplos')",
+      "ejemplo": "ver ejemplos"
+    }
+  ]
+}

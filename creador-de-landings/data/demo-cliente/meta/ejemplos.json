@@ -1,0 +1,43 @@
+{
+  "recomendado": "editorial",
+  "elegido": "editorial",
+  "estilos": [
+    {
+      "id": "editorial",
+      "nombre": "Editorial hero",
+      "cuando": "Marca seria, PDF/guías, profesional",
+      "look": "Foto lifestyle full-bleed + marca grande + 1 CTA (como Vértice Pro imagen 6)",
+      "mejor_si": [
+        "editorial",
+        "profesional",
+        "pdf",
+        "curso",
+        "guia"
+      ]
+    },
+    {
+      "id": "mockup",
+      "nombre": "Mockup producto",
+      "cuando": "Quieres que se vea el PDF/app en tablet",
+      "look": "Producto centrado, fondo claro, ficha de compra debajo",
+      "mejor_si": [
+        "mockup",
+        "digital",
+        "ebook",
+        "template"
+      ]
+    },
+    {
+      "id": "oferta",
+      "nombre": "Oferta directa",
+      "cuando": "Tráfico de ads, quieres cerrar rápido",
+      "look": "Promesa fuerte, bullets, precio, FAQ, CTA repetido",
+      "mejor_si": [
+        "directo",
+        "ads",
+        "oferta",
+        "lanzamiento"
+      ]
+    }
+  ]
+}

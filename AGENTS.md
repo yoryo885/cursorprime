@@ -19,6 +19,7 @@ Workspace único. Guía de apertura: [COMO_ABRIR.md](./COMO_ABRIR.md)
 | nuevo pipeline Python | diseño → `construye` | `usa crear-pipeline` | brief YAML | `{proyecto}/` + CLI |
 | gestión proyecto | docs → gate | `usa gestion-proyecto` | brief YAML/JSON | PROYECTO.md + plan |
 | landing / lanzamiento | chat + prompts | `usa landing-lanzamiento` | brief producto | landing-brief.md |
+| **creador de landings** | `python3 landings_main.py demo` | `usa creador-de-landings` | entrevista / respuestas.json | `data/{slug}/output/preview.html` |
 | WhatsApp comercial | chat | `usa whatsapp-marketing` | negocio + objetivo | secuencia copy |
 | audit marketing | chat + web | `usa audit-marketing` | URL + competidores | informe-audit.md |
 | market audit (completo) | `python3 marketing_audit_main.py audit --url {url}` | `usa market-audit` | `brief.json` + URL | MARKETING-AUDIT.md + PDF |

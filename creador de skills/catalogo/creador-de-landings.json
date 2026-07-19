@@ -1,0 +1,14 @@
+{
+  "nombre": "creador-de-landings",
+  "descripcion": "Pipeline entrevista → ejemplos → landing HTML en segundos",
+  "triggers": [
+    "crear landing",
+    "generador de landings",
+    "landing en segundos",
+    "entrevista landing",
+    "usa creador-de-landings",
+    "sistema de landings"
+  ],
+  "proyecto": "creador-de-landings",
+  "cli": "python3 landings_main.py demo"
+}

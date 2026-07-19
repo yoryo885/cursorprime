@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Vértice Pro — Guías PDF para tu rol profesional</title>
+  <meta name="description" content="Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --ink:#0f1419; --paper:#f7f4ef; --muted:#8a847c; --pad:clamp(18px,4vw,40px); --max:1100px; }
+    * { box-sizing:border-box; margin:0; }
+    body { font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }
+    .hero {
+      min-height:100svh; color:#fff; display:flex; flex-direction:column; justify-content:flex-end;
+      background:
+        linear-gradient(105deg, rgba(8,10,14,.88) 0%, rgba(8,10,14,.45) 50%, rgba(8,10,14,.2) 100%),
+        radial-gradient(ellipse at 70% 40%, #2a3544 0%, #0f1419 70%);
+      padding: clamp(48px,10vh,96px) var(--pad);
+      animation: fade .9s ease both;
+    }
+    @keyframes fade { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+    .brand { font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(2.2rem,6vw,3.8rem); letter-spacing:.16em; font-weight:600; margin-bottom:18px; }
+    h1 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(1.35rem,3vw,1.85rem); max-width:18ch; margin-bottom:12px; }
+    .sub { max-width:36ch; color:rgba(255,255,255,.78); margin-bottom:24px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 28px; background:#fff; color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border:none; }
+    .btn-dark { background:var(--ink); color:#fff; }
+    section { padding:clamp(48px,8vw,72px) var(--pad); max-width:var(--max); margin:0 auto; }
+    h2 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:20px; text-align:center; }
+    ul { list-style:none; padding:0; max-width:40ch; margin:0 auto 28px; }
+    ul li { padding:10px 0; border-bottom:1px solid #e7e1d8; color:var(--muted); }
+    .price { text-align:center; font-size:1.4rem; font-weight:600; margin:16px 0 24px; }
+    details { background:#fff; border:1px solid #e7e1d8; padding:14px 16px; margin-bottom:10px; }
+    summary { cursor:pointer; font-weight:500; }
+    details p { margin-top:8px; color:var(--muted); font-size:.92rem; }
+    .cta-wrap { text-align:center; margin-top:28px; }
+    footer { text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="brand">Vértice Pro</div>
+    <h1>Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas</h1>
+    <p class="sub">Guías PDF para tu rol profesional · Para Psicopedagogas en escuela</p>
+    <a class="btn" href="#comprar">Ver colección</a>
+  </section>
+  <section id="comprar">
+    <h2>Qué incluye</h2>
+    <ul><li>Hecho para Psicopedagogas en escuela</li><li>Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas</li><li>Descarga al instante</li></ul>
+    <p class="price">$4.99</p>
+    <div class="cta-wrap"><a class="btn btn-dark" href="#">Ver colección</a></div>
+  </section>
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Qué recibo?</summary><p>Guías PDF para tu rol profesional</p></details><details><summary>¿Para quién es?</summary><p>Psicopedagogas en escuela</p></details><details><summary>¿Cómo lo recibo?</summary><p>Descarga inmediata tras la compra.</p></details>
+    <div class="cta-wrap"><a class="btn btn-dark" href="#">Ver colección</a></div>
+  </section>
+  <footer>Generado con creador-de-landings · cursorprime</footer>
+</body>
+</html>
