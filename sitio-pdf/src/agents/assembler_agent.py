@@ -109,7 +109,7 @@ def _render_html(ctx: PipelineContext) -> str:
         {badge}
         {img}
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF · {escape(rol_label)}</p>
+          <p class="card-brand">{escape(rol_label)}</p>
           <h3>{escape(g.get("titulo",""))}</h3>
           <p class="price">{escape(g.get("precio", m.get("precio_display", "$4.99")))}</p>
           {btn}
@@ -120,32 +120,24 @@ def _render_html(ctx: PipelineContext) -> str:
         else:
             guias_proximamente += card
 
+    soon_count = sum(1 for g in catalogo if not g.get("disponible", True))
+    soon_block = ""
+    if guias_proximamente:
+        soon_block = f"""<details class="soon-section">
+      <summary>Próximamente · {soon_count} guía{"s" if soon_count != 1 else ""}</summary>
+      <div class="grid">{guias_proximamente}</div>
+    </details>"""
+
     incluye = ux.get("incluye_semanas") or []
     incluye_html = "".join(f"<li>{escape(x)}</li>" for x in incluye[:6])
-
-    benefits_html = ""
-    for b in benefits[:4]:
-        benefits_html += f"""<article class="benefit-card">
-          <h3>{escape(b.get('title',''))}</h3>
-          <p>{escape(b.get('text',''))}</p>
-        </article>"""
 
     faq_items = ux.get("faq") or []
     faq_html = ""
     for i, item in enumerate(faq_items):
-        faq_html += f"""<details class="faq-item"{" open" if i == 0 else ""}>
+        faq_html += f"""<details class="faq-item">
           <summary>{escape(item.get('q',''))}</summary>
           <p>{escape(item.get('a',''))}</p>
         </details>"""
-
-    flujo = ux.get("flujo_pasos") or []
-    flujo_html = ""
-    for i, step in enumerate(flujo[:3], 1):
-        flujo_html += f"""<article class="flow-step">
-          <span class="flow-num">{i}</span>
-          <h3>{escape(step.get('titulo',''))}</h3>
-          <p>{escape(step.get('texto',''))}</p>
-        </article>"""
 
     roles_map = {
         r.get("slug", ""): {"nombre": r.get("nombre", ""), "ejemplo": r.get("ejemplo", "")}
@@ -155,10 +147,11 @@ def _render_html(ctx: PipelineContext) -> str:
 
     lifestyle_html = ""
     if imagen_lectura:
-        cap = cat.get("lifestyle_caption", "Para profesionales que compran ebooks")
+        cap = cat.get("lifestyle_caption", "")
+        cap_html = f"<figcaption>{escape(cap)}</figcaption>" if cap else ""
         lifestyle_html = f"""<figure class="hero-lifestyle">
       <img src="{escape(imagen_lectura)}" alt="Profesional leyendo guía PDF"/>
-      <figcaption>{escape(cap)}</figcaption>
+      {cap_html}
     </figure>"""
 
     reviews = [
@@ -222,16 +215,11 @@ def _render_html(ctx: PipelineContext) -> str:
       padding:clamp(20px,4vw,28px); background:var(--surface);
       border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.06);
     }}
-    .hero-visual-label {{ font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }}
-    .hero-visual-label strong {{ color:var(--charcoal); font-weight:600; letter-spacing:0.12em; }}
+    .hero-visual-label {{ display:none; }}
+    .hero-lifestyle figcaption {{ display:none; }}
     .hero-lifestyle {{ position:relative; margin:0; border-bottom:1px solid var(--border); overflow:hidden; }}
-    .hero-lifestyle img {{ width:100%; height:clamp(180px,26vw,300px); object-fit:cover; object-position:center 30%; display:block; }}
-    .hero-lifestyle figcaption {{
-      position:absolute; inset:auto 0 0 0; padding:clamp(16px,4vw,24px) var(--pad);
-      background:linear-gradient(transparent, rgba(22,20,18,0.72));
-      color:#fff; font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,2.5vw,1.25rem);
-      text-align:center; letter-spacing:0.03em;
-    }}
+    .hero-lifestyle img {{ width:100%; height:clamp(160px,22vw,260px); object-fit:cover; object-position:center 30%; display:block; }}
+    .hero-lifestyle figcaption {{ display:none; }}
     .hero-carousel {{ position:relative; width:min(100%,360px); height:clamp(280px,38vw,400px); perspective:900px; touch-action:pan-y; user-select:none; }}
     .carousel-track {{ position:relative; width:100%; height:100%; }}
     .carousel-slide {{
@@ -264,10 +252,9 @@ def _render_html(ctx: PipelineContext) -> str:
       width:8px; height:8px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
     }}
     .carousel-dot.is-active {{ background:var(--gold); transform:scale(1.15); }}
-    .carousel-caption {{ text-align:center; min-height:3.2em; }}
+    .carousel-caption {{ text-align:center; min-height:2.4em; }}
     .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--text); margin-bottom:4px; }}
     .carousel-caption span {{ font-size:0.85rem; color:var(--muted); }}
-    .carousel-badge {{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }}
     .carousel-cta {{ margin-top:10px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; padding:0 0 2px; }}
     .carousel-cta:hover {{ color:var(--gold); }}
 
@@ -284,9 +271,6 @@ def _render_html(ctx: PipelineContext) -> str:
     .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px; background:var(--charcoal); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--charcoal); cursor:pointer; }}
     .btn-outline {{ background:transparent; color:var(--charcoal); }}
     .btn-block {{ width:100%; }}
-
-    .trust {{ text-align:center; padding:14px var(--pad); font-size:0.75rem; color:var(--muted); background:var(--surface); border-bottom:1px solid var(--border); }}
-    .trust strong {{ color:var(--gold); }}
 
     section {{ padding:clamp(40px,8vw,64px) var(--pad); }}
     section h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); font-weight:400; text-align:center; letter-spacing:0.04em; margin-bottom:clamp(24px,5vw,36px); }}
@@ -305,40 +289,27 @@ def _render_html(ctx: PipelineContext) -> str:
     .price {{ font-size:1.05rem; font-weight:600; margin-bottom:16px; }}
     .card-soon {{ aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }}
 
-    .role-filters, .book-filters {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 16px; padding:0 var(--pad); }}
-    .book-filters {{ margin-bottom:28px; }}
+    .role-filters, .book-filters, .filters-row {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 12px; padding:0 var(--pad); }}
+    .book-filters, .filters-row.book-filters {{ margin-bottom:24px; }}
     .role-chip, .book-chip {{
       padding:10px 18px; border:1px solid var(--border); background:var(--surface);
       font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
       color:var(--muted); border-radius:999px;
     }}
     .role-chip.is-active, .book-chip.is-active {{ background:var(--charcoal); color:#fff; border-color:var(--charcoal); }}
-    .filter-label {{ text-align:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }}
-    .grid-heading {{ font-family:'Cormorant Garamond',serif; font-size:1.05rem; text-align:center; margin:8px auto 20px; color:var(--muted); letter-spacing:0.06em; }}
-    .grid-heading--soon {{ opacity:0.75; }}
+    .filters-row {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 12px; padding:0 var(--pad); }}
+    .filters-row.book-filters {{ margin-bottom:24px; }}
     .guia-card[hidden] {{ display:none !important; }}
     .empty-state {{ text-align:center; color:var(--muted); font-size:0.9rem; padding:24px; grid-column:1/-1; display:none; }}
     .empty-state.is-visible {{ display:block; }}
-    .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:46ch; margin:-12px auto 28px; padding:0 var(--pad); }}
-
-    .flow-steps {{
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
-      gap:16px; max-width:var(--max); margin:0 auto 8px;
+    .soon-section {{ max-width:var(--max); margin:32px auto 0; padding:0 var(--pad); }}
+    .soon-section summary {{
+      cursor:pointer; text-align:center; font-size:0.78rem; letter-spacing:0.08em;
+      text-transform:uppercase; color:var(--muted); padding:12px; list-style:none;
     }}
-    .flow-step {{
-      background:var(--surface); border:1px solid var(--border); padding:20px; text-align:center;
-    }}
-    .flow-num {{
-      display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center;
-      border-radius:50%; background:var(--charcoal); color:#fff; font-size:0.75rem; margin-bottom:10px;
-    }}
-    .flow-step h3 {{ font-family:'Cormorant Garamond',serif; font-size:1rem; margin-bottom:6px; font-weight:500; }}
-    .flow-step p {{ font-size:0.82rem; color:var(--muted); }}
-
-    .benefits-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:16px; max-width:var(--max); margin:0 auto 32px; }}
-    .benefit-card {{ background:var(--surface); border:1px solid var(--border); padding:20px; }}
-    .benefit-card h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-bottom:8px; font-weight:500; }}
-    .benefit-card p {{ font-size:0.86rem; color:var(--muted); }}
+    .soon-section summary::-webkit-details-marker {{ display:none; }}
+    .soon-section[open] summary {{ margin-bottom:20px; color:var(--text); }}
+    .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:40ch; margin:-12px auto 24px; padding:0 var(--pad); }}
 
     .incluye-box {{
       max-width:640px; margin:0 auto; background:var(--surface); border:1px solid var(--border);
@@ -378,11 +349,6 @@ def _render_html(ctx: PipelineContext) -> str:
     }}
     .newsletter-micro {{ font-size:0.72rem; color:var(--muted); margin-top:12px; }}
 
-    .story {{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:var(--max); margin:0 auto; background:var(--surface); border:1px solid var(--border); padding:clamp(24px,5vw,48px); }}
-    .story img {{ width:min(100%,240px); margin:0 auto; }}
-    .story h2 {{ text-align:left; font-size:clamp(1.3rem,3vw,1.75rem); margin-bottom:12px; }}
-    .story p {{ color:var(--muted); font-size:0.92rem; margin-bottom:16px; }}
-
     .reviews {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:20px; max-width:var(--max); margin:0 auto; }}
     .review {{ background:var(--surface); border:1px solid var(--border); padding:20px; font-size:0.86rem; color:var(--muted); }}
     .review cite {{ display:block; margin-top:10px; font-style:normal; font-size:0.72rem; color:var(--text); }}
@@ -401,21 +367,17 @@ def _render_html(ctx: PipelineContext) -> str:
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
       .hero-visual {{ order:-1; width:100%; max-width:min(92vw,400px); margin:0 auto; }}
       .hero-carousel {{ width:min(85vw,340px); height:clamp(260px,50vw,360px); margin:0 auto; }}
-      .story {{ grid-template-columns:1fr; text-align:center; }}
-      .story h2 {{ text-align:center; }}
-      .story img {{ width:min(50vw,200px); }}
       body {{ padding-bottom:72px; }}
     }}
   </style>
 </head>
 <body>
-  <div class="ticker">{escape(m.get('marca', 'Vértice Pro'))} · {escape(m.get('serie', 'Aplicar en tu rol'))} · Descarga instantánea · 10% primera compra</div>
+  <div class="ticker">★ 4.9 · Descarga instantánea · 10% primera compra</div>
 
   <header>
     <div class="wrap">
       <div class="logo">{escape(name)}</div>
       <nav>
-        <a href="#como-funciona">Cómo funciona</a>
         <a href="#guias-por-rol">Catálogo</a>
         <a href="#incluye">Qué incluye</a>
         <a href="#faq">FAQ</a>
@@ -434,7 +396,6 @@ def _render_html(ctx: PipelineContext) -> str:
         <p class="hero-trust">{escape(cat.get('hero_trust', c.get('hero_trust', '★ 4.9 · Descarga al instante')))}</p>
       </div>
       <div class="hero-visual">
-        <p class="hero-visual-label"><strong>{escape(m.get('marca', 'Vértice Pro'))}</strong> · Libros de la serie</p>
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
           <div class="carousel-track">{slides_html}</div>
         </div>
@@ -444,7 +405,6 @@ def _render_html(ctx: PipelineContext) -> str:
           <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
         </div>
         <div class="carousel-caption" id="carouselCaption">
-          <span class="carousel-badge">Libros de la serie</span>
           <strong id="captionTitle">{escape(str(slides[0].get('titulo','')))}</strong>
           <span id="captionSubtitle">{escape(str(first_sub))}</span>
           <button type="button" class="carousel-cta" id="carouselBookCta">Ver guías de este libro</button>
@@ -456,49 +416,23 @@ def _render_html(ctx: PipelineContext) -> str:
 
   <div class="trust-badges">{trust_html}</div>
 
-  <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
-
-  <section id="como-funciona">
-    <h2>Cómo funciona</h2>
-    <p class="section-lead">Tres pasos — igual para abogados, docentes, psicopedagogas o cualquier oficio.</p>
-    <div class="flow-steps">{flujo_html}</div>
-  </section>
-
   <section id="guias-por-rol">
-    <h2>Encuentra tu guía</h2>
-    <p class="section-lead">{escape(c.get('guias_lead', cat.get('guias_lead', 'Elige tu profesión y descubre la versión del libro para ti.')))}</p>
-    <p class="filter-label">1 · Elige tu profesión</p>
-    <div class="role-filters" id="roleFilters">{role_chips}</div>
-    <p class="filter-label">2 · Opcional: filtra por libro</p>
-    <div class="book-filters" id="bookFilters">{book_chips}</div>
-    <p class="grid-heading">Disponibles ahora</p>
+    <h2>Catálogo</h2>
+    <p class="section-lead">{escape(c.get('guias_lead', cat.get('guias_lead', 'Elige tu profesión.')))}</p>
+    <div class="filters-row role-filters" id="roleFilters">{role_chips}</div>
+    <div class="filters-row book-filters" id="bookFilters">{book_chips}</div>
     <div class="grid" id="guiasDisponibles">{guias_disponibles or '<p class="empty-state is-visible" id="emptyDisponibles">Ninguna guía disponible con estos filtros.</p>'}</div>
-    <p class="grid-heading grid-heading--soon">Próximamente</p>
-    <div class="grid" id="guiasProximamente">{guias_proximamente}</div>
+    {soon_block}
     <p class="empty-state" id="emptyAll">No hay guías con esta combinación. Prueba otro rol o libro.</p>
   </section>
 
   <section id="incluye">
     <h2>{escape(c.get('benefits_title', cat.get('benefits_title','Qué incluye cada guía')))}</h2>
-    <p class="section-lead">Mismo formato en todos los libros y profesiones. El contenido se adapta cuando eliges tu rol arriba.</p>
-    <div class="benefits-grid">{benefits_html}</div>
     <div class="incluye-box">
       <h3 id="incluyePlanTitulo">{escape(cat.get('plan_titulo','Estructura del plan · 10 semanas'))}</h3>
       <p class="incluye-intro" id="incluyeIntro">{escape(cat.get('plan_intro_default','Todas las guías siguen la misma estructura.'))}</p>
       <p class="incluye-ejemplo" id="incluyeEjemplo" hidden></p>
       <ul>{incluye_html}</ul>
-    </div>
-  </section>
-
-  <section id="historia">
-    <div class="story">
-      <img src="{escape(mockup)}" alt="Vista móvil"/>
-      <div>
-        <h2>Inspiradas en tu trabajo real</h2>
-        <p>{escape(c.get('about_text', cat.get('about_text','')))}</p>
-        <p>{escape(c.get('about_tagline', cat.get('about_tagline','')))}</p>
-        <a class="btn btn-outline" href="#guias-por-rol">Encontrar mi guía</a>
-      </div>
     </div>
   </section>
 
@@ -525,7 +459,7 @@ def _render_html(ctx: PipelineContext) -> str:
   <div class="sticky-cta" id="stickyCta">
     <div class="wrap">
       <p><strong>Desde {escape(precio_display)}</strong> · PDF al instante</p>
-      <a class="btn" href="#guias-por-rol">Encontrar mi guía</a>
+      <a class="btn" href="#guias-por-rol">Ver guías</a>
     </div>
   </div>
 
