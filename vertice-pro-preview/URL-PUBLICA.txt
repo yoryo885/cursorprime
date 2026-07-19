@@ -1,5 +1,9 @@
-Preview móvil: https://lovely-ghosts-melt.loca.lt/tienda.html
+Preview: https://pink-carrots-rule.loca.lt/tienda.html
+Index:   https://pink-carrots-rule.loca.lt/index.html
 
-Si localtunnel pide contraseña, usa la IP pública del servidor (ver mensaje en pantalla).
+Si localtunnel pide clic/IP, usa el aviso de la pantalla.
 
 Local: http://localhost:8768/tienda.html
+
+Nota: regenerada con UNA sola imagen de hero (opción 6 → assets/hero-lifestyle.png).
+El túnel anterior modern-lies-return.loca.lt ya no está activo.

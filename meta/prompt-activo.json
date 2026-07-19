@@ -6,8 +6,8 @@
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 12,
-    "ultima_mejora": "preview HTML 6/7/8 + origen/costo de imágenes IA",
+    "version": 13,
+    "ultima_mejora": "landing regenerada con sola imagen 6 (hero full-bleed)",
     "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
     "resumen_simple": "meta/radar-mejoras-resumen-simple.md"
   }
