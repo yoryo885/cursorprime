@@ -39,6 +39,8 @@
     }
     .hero-bullets li::before { content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:600; }
     .hero-micro { font-size:0.72rem; color:var(--muted); margin-top:10px; }
+    .landing-photo { padding:0 var(--pad) clamp(24px,4vw,40px); background:var(--cream); border-bottom:1px solid var(--border); }
+    .landing-photo img { width:100%; max-width:var(--max); margin:0 auto; display:block; object-fit:cover; max-height:min(52vw,480px); }
     .hero-visual { display:flex; flex-direction:column; align-items:center; gap:16px; }
     .hero-carousel { position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }
     .carousel-track { position:relative; width:100%; height:100%; }
@@ -222,10 +224,10 @@
     <div class="wrap">
       <div class="logo">VÉRTICE PRO</div>
       <nav>
-        <a href="#guias-por-rol">Guías</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#guias-por-rol">Catálogo</a>
         <a href="#incluye">Qué incluye</a>
         <a href="#faq">FAQ</a>
-        <a href="#opiniones">Opiniones</a>
       </nav>
     </div>
   </header>
@@ -267,6 +269,7 @@
       </div>
     </div>
   </section>
+  <figure class="landing-photo wrap"><img src="assets/landing-lectura-lado.png" alt="Profesional leyendo guía PDF Vértice Pro"/></figure>
 
   <div class="trust-badges"><div class="trust-badge">
           <span class="trust-icon" aria-hidden="true">pdf</span>
@@ -559,6 +562,9 @@
     activeRol = btn.dataset.rol;
     roleChips.forEach(c => c.classList.toggle('is-active', c === btn));
     applyFilters();
+    if (activeRol !== 'todos') {
+      document.getElementById('guiasDisponibles')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }));
 
   bookChips.forEach(btn => btn.addEventListener('click', () => {
