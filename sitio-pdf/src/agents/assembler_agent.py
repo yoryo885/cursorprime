@@ -208,8 +208,7 @@ def _render_html(ctx: PipelineContext) -> str:
     }}
     .hero-bullets li::before {{ content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:600; }}
     .hero-micro {{ font-size:0.72rem; color:var(--muted); margin-top:10px; }}
-    .landing-photo {{ padding:0 var(--pad) clamp(24px,4vw,40px); background:var(--cream); border-bottom:1px solid var(--border); }}
-    .landing-photo img {{ width:100%; max-width:var(--max); margin:0 auto; display:block; object-fit:cover; max-height:min(52vw,480px); }}
+    .hero-photo {{ width:min(100%,420px); margin:0 auto; display:block; object-fit:cover; object-position:center; aspect-ratio:3/2; }}
     .hero-visual {{ display:flex; flex-direction:column; align-items:center; gap:16px; }}
     .hero-carousel {{ position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }}
     .carousel-track {{ position:relative; width:100%; height:100%; }}
@@ -412,6 +411,7 @@ def _render_html(ctx: PipelineContext) -> str:
         <p class="hero-micro">Para cualquier profesional · Pago único · PDF al instante</p>
       </div>
       <div class="hero-visual">
+        {f'<img class="hero-photo" src="{escape(imagen_lectura)}" alt="Profesional leyendo guía PDF Vértice Pro"/>' if imagen_lectura else ''}
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
           <div class="carousel-track">{slides_html}</div>
         </div>
@@ -429,7 +429,6 @@ def _render_html(ctx: PipelineContext) -> str:
       </div>
     </div>
   </section>
-{f'  <figure class="landing-photo wrap"><img src="{escape(imagen_lectura)}" alt="Profesional leyendo guía PDF Vértice Pro"/></figure>' if imagen_lectura else ''}
 
   <div class="trust-badges">{trust_html}</div>
 

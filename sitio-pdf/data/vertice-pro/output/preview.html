@@ -39,8 +39,7 @@
     }
     .hero-bullets li::before { content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:600; }
     .hero-micro { font-size:0.72rem; color:var(--muted); margin-top:10px; }
-    .landing-photo { padding:0 var(--pad) clamp(24px,4vw,40px); background:var(--cream); border-bottom:1px solid var(--border); }
-    .landing-photo img { width:100%; max-width:var(--max); margin:0 auto; display:block; object-fit:cover; max-height:min(52vw,480px); }
+    .hero-photo { width:min(100%,420px); margin:0 auto; display:block; object-fit:cover; object-position:center; aspect-ratio:3/2; }
     .hero-visual { display:flex; flex-direction:column; align-items:center; gap:16px; }
     .hero-carousel { position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }
     .carousel-track { position:relative; width:100%; height:100%; }
@@ -243,6 +242,7 @@
         <p class="hero-micro">Para cualquier profesional · Pago único · PDF al instante</p>
       </div>
       <div class="hero-visual">
+        <img class="hero-photo" src="assets/landing-lectura-lado.png" alt="Profesional leyendo guía PDF Vértice Pro"/>
         <div class="hero-carousel" id="heroCarousel" data-slides="[{&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;pareto&quot;, &quot;titulo&quot;: &quot;El principio de Pareto&quot;, &quot;subtitulo&quot;: &quot;Antoine Delers&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: true, &quot;src&quot;: &quot;assets/libro-pareto.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;habitos&quot;, &quot;titulo&quot;: &quot;Hábitos atómicos&quot;, &quot;subtitulo&quot;: &quot;James Clear&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-habitos.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;kahneman&quot;, &quot;titulo&quot;: &quot;Pensar rápido, pensar despacio&quot;, &quot;subtitulo&quot;: &quot;Daniel Kahneman&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-kahneman.svg&quot;}]">
           <div class="carousel-track">
         <figure class="carousel-slide is-active" data-index="0" data-slug="pareto" data-title="El principio de Pareto" data-subtitle="Antoine Delers">
@@ -269,7 +269,6 @@
       </div>
     </div>
   </section>
-  <figure class="landing-photo wrap"><img src="assets/landing-lectura-lado.png" alt="Profesional leyendo guía PDF Vértice Pro"/></figure>
 
   <div class="trust-badges"><div class="trust-badge">
           <span class="trust-icon" aria-hidden="true">pdf</span>
