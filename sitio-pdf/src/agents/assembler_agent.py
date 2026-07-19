@@ -265,6 +265,7 @@ def _render_html(ctx: PipelineContext) -> str:
       font-size:0.92rem; color:var(--muted); margin-bottom:12px; max-width:38ch; line-height:1.5;
       border-left:3px solid var(--gold); padding-left:14px;
     }}
+    .hero-series {{
       display:inline-block; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase;
       color:var(--charcoal); background:rgba(255,255,255,0.55); border:1px solid var(--border);
       padding:6px 12px; margin-bottom:18px;
