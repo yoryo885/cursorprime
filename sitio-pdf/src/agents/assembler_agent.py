@@ -14,10 +14,21 @@ from src.types import AgentResult, PipelineContext
 
 def _carousel_slides(ctx: PipelineContext) -> list[dict]:
     data = load_json(slug_meta(ctx.slug) / "assets.json", {}) or {}
-    slides = data.get("carousel") or ctx.marca.get("catalogo_guias") or []
+    slides = data.get("carousel") or ctx.marca.get("serie_libros") or []
     if not slides:
-        slides = [{"titulo": ctx.marca.get("producto_piloto", {}).get("titulo", "Guía PDF"), "src": ctx.assets.get("portada", ""), "precio": "$4.99", "disponible": True}]
+        piloto = ctx.marca.get("producto_piloto", {})
+        slides = [{"titulo": piloto.get("titulo", "Guía PDF"), "src": ctx.assets.get("portada", ""), "subtitulo": "Aplica en tu rol"}]
     return slides
+
+
+def _catalogo_guias(ctx: PipelineContext) -> list[dict]:
+    data = load_json(slug_meta(ctx.slug) / "assets.json", {}) or {}
+    return data.get("catalogo_guias") or ctx.marca.get("catalogo_guias") or []
+
+
+def _guia_src(assets: dict, guia: dict, fallback: str) -> str:
+    slug = guia.get("slug", "")
+    return assets.get(f"portada_{slug}") or fallback
 
 
 def _render_html(ctx: PipelineContext) -> str:
@@ -30,19 +41,48 @@ def _render_html(ctx: PipelineContext) -> str:
     portada = a.get("portada", "assets/portada-pareto.svg")
     mockup = a.get("mockup_movil", "assets/mockup-movil.svg")
     slides = _carousel_slides(ctx)
+    catalogo = _catalogo_guias(ctx)
+    roles = m.get("roles") or []
 
     slides_html = ""
     dots_html = ""
     for i, s in enumerate(slides):
         active = " is-active" if i == 0 else ""
         soon = "" if s.get("disponible", True) else " is-soon"
+        sub = s.get("subtitulo") or s.get("autor") or "Serie Aplicar en tu rol"
         slides_html += f"""
-        <figure class="carousel-slide{active}{soon}" data-index="{i}" data-title="{escape(str(s.get('titulo','')))}" data-price="{escape(str(s.get('precio','')))}">
+        <figure class="carousel-slide{active}{soon}" data-index="{i}" data-title="{escape(str(s.get('titulo','')))}" data-subtitle="{escape(str(sub))}">
           <img src="{escape(str(s.get('src', portada)))}" alt="{escape(str(s.get('titulo','')))}" draggable="false"/>
         </figure>"""
-        dots_html += f'<button type="button" class="carousel-dot{" is-active" if i == 0 else ""}" data-index="{i}" aria-label="Guía {i+1}"></button>'
+        dots_html += f'<button type="button" class="carousel-dot{" is-active" if i == 0 else ""}" data-index="{i}" aria-label="Libro {i+1}"></button>'
 
     carousel_json = json.dumps(slides, ensure_ascii=False).replace("</", "<\\/")
+    first_sub = slides[0].get("subtitulo") or slides[0].get("autor") or "Elige tu rol abajo" if slides else ""
+
+    role_chips = '<button type="button" class="role-chip is-active" data-rol="todos">Todos</button>'
+    for r in roles:
+        role_chips += f'<button type="button" class="role-chip" data-rol="{escape(r.get("slug",""))}">{escape(r.get("nombre",""))}</button>'
+
+    role_names = {r.get("slug", ""): r.get("nombre", "") for r in roles}
+    guias_html = ""
+    for g in catalogo:
+        gsrc = _guia_src(a, g, portada)
+        rol = g.get("rol", "")
+        rol_label = role_names.get(rol, rol.replace("-", " ").title())
+        dis = g.get("disponible", True)
+        opacity = "" if dis else ' style="opacity:0.55"'
+        btn = '<a class="btn btn-block" href="#">Añadir al carrito</a>' if dis else '<span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>'
+        img = f'<img class="card-img" src="{escape(gsrc)}" alt="{escape(g.get("titulo",""))}"/>' if dis else '<div class="card-soon">Próximamente</div>'
+        guias_html += f"""
+      <article class="card guia-card" data-rol-card="{escape(rol)}"{opacity}>
+        {img}
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · {escape(rol_label)}</p>
+          <h3>{escape(g.get("titulo",""))}</h3>
+          <p class="price">{escape(g.get("precio", m.get("precio_display", "$4.99")))}</p>
+          {btn}
+        </div>
+      </article>"""
 
     reviews = [
         ("María", "Me ayudó a priorizar casos en el gabinete."),
@@ -146,6 +186,16 @@ def _render_html(ctx: PipelineContext) -> str:
     .price {{ font-size:1.05rem; font-weight:600; margin-bottom:16px; }}
     .card-soon {{ aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }}
 
+    .role-filters {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 28px; padding:0 var(--pad); }}
+    .role-chip {{
+      padding:10px 18px; border:1px solid var(--border); background:var(--surface);
+      font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
+      color:var(--muted); border-radius:999px;
+    }}
+    .role-chip.is-active {{ background:var(--charcoal); color:#fff; border-color:var(--charcoal); }}
+    .guia-card[hidden] {{ display:none !important; }}
+    .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:42ch; margin:-12px auto 28px; padding:0 var(--pad); }}
+
     .story {{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:var(--max); margin:0 auto; background:var(--surface); border:1px solid var(--border); padding:clamp(24px,5vw,48px); }}
     .story img {{ width:min(100%,240px); margin:0 auto; }}
     .story h2 {{ text-align:left; font-size:clamp(1.3rem,3vw,1.75rem); margin-bottom:12px; }}
@@ -180,7 +230,7 @@ def _render_html(ctx: PipelineContext) -> str:
     <div class="wrap">
       <div class="logo">{escape(name)}</div>
       <nav>
-        <a href="#bestsellers">Guías</a>
+        <a href="#guias-por-rol">Guías</a>
         <a href="#historia">Nosotros</a>
         <a href="#opiniones">Opiniones</a>
       </nav>
@@ -193,7 +243,7 @@ def _render_html(ctx: PipelineContext) -> str:
         <p class="hero-label">Nuevo · Serie Aplicar en tu rol</p>
         <h1>{escape(c.get('hero_title',''))}</h1>
         <p class="hero-desc">{escape(c.get('hero_subtitle',''))}</p>
-        <a class="btn" href="#bestsellers">{escape(c.get('hero_cta','Ver colección'))}</a>
+        <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta','Ver colección'))}</a>
       </div>
       <div class="hero-visual">
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
@@ -205,9 +255,9 @@ def _render_html(ctx: PipelineContext) -> str:
           <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
         </div>
         <div class="carousel-caption" id="carouselCaption">
-          <span class="carousel-badge">Serie Aplicar en tu rol</span>
+          <span class="carousel-badge">Libros de la serie</span>
           <strong id="captionTitle">{escape(str(slides[0].get('titulo','')))}</strong>
-          <span id="captionPrice">{escape(str(slides[0].get('precio','')))}</span>
+          <span id="captionSubtitle">{escape(str(first_sub))}</span>
         </div>
       </div>
     </div>
@@ -215,25 +265,23 @@ def _render_html(ctx: PipelineContext) -> str:
 
   <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
+  <section id="guias-por-rol">
+    <h2>Guías para tu rol</h2>
+    <p class="section-lead">Cada libro famoso adaptado a tu oficio. Elige tu profesión y encuentra tu PDF.</p>
+    <div class="role-filters" id="roleFilters">{role_chips}</div>
+    <div class="grid" id="guiasGrid">{guias_html}</div>
+  </section>
+
   <section id="bestsellers">
-    <h2>Más vendidas</h2>
+    <h2>Destacada</h2>
     <div class="grid">
       <article class="card">
         <img class="card-img" src="{escape(portada)}" alt="{escape(p.get('titulo',''))}"/>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · PDF · Más vendida</p>
           <h3>{escape(p.get('titulo',''))}</h3>
           <p class="price">{escape(p.get('precio',''))}</p>
           <a class="btn btn-block" href="#">Añadir al carrito</a>
-        </div>
-      </article>
-      <article class="card" style="opacity:0.5">
-        <div class="card-soon">Próximamente</div>
-        <div class="card-body">
-          <p class="card-brand">Vértice Pro</p>
-          <h3>Nueva guía en camino</h3>
-          <p class="price">—</p>
-          <span class="btn btn-outline btn-block" style="line-height:46px;">Avísame</span>
         </div>
       </article>
     </div>
@@ -246,7 +294,7 @@ def _render_html(ctx: PipelineContext) -> str:
         <h2>Inspiradas en tu trabajo real</h2>
         <p>{escape(c.get('about_text',''))}</p>
         <p>{escape(p.get('subtitulo',''))}</p>
-        <a class="btn btn-outline" href="#bestsellers">Ver colección</a>
+        <a class="btn btn-outline" href="#guias-por-rol">Ver colección</a>
       </div>
     </div>
   </section>
@@ -270,7 +318,7 @@ def _render_html(ctx: PipelineContext) -> str:
   const slides = root.querySelectorAll('.carousel-slide');
   const dots = document.querySelectorAll('.carousel-dot');
   const titleEl = document.getElementById('captionTitle');
-  const priceEl = document.getElementById('captionPrice');
+  const priceEl = document.getElementById('captionSubtitle');
   let idx = 0;
   let timer;
   let touchX = 0;
@@ -281,7 +329,7 @@ def _render_html(ctx: PipelineContext) -> str:
     dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
     const s = slides[idx];
     if (titleEl) titleEl.textContent = s.dataset.title || '';
-    if (priceEl) priceEl.textContent = s.dataset.price || '';
+    if (priceEl) priceEl.textContent = s.dataset.subtitle || '';
   }}
 
   function next() {{ show(idx + 1); }}
@@ -302,6 +350,17 @@ def _render_html(ctx: PipelineContext) -> str:
   }}, {{passive:true}});
 
   resetTimer();
+}})();
+(function() {{
+  const chips = document.querySelectorAll('.role-chip');
+  const cards = document.querySelectorAll('.guia-card');
+  chips.forEach(btn => btn.addEventListener('click', () => {{
+    const rol = btn.dataset.rol;
+    chips.forEach(c => c.classList.toggle('is-active', c === btn));
+    cards.forEach(card => {{
+      card.hidden = rol !== 'todos' && card.dataset.rolCard !== rol;
+    }});
+  }}));
 }})();
   </script>
 </body>

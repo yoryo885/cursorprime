@@ -119,27 +119,85 @@ def _portada_for_guia(
     return fname, f"assets/{fname}", False
 
 
+def portada_libro_svg(marca: dict, titulo: str, autor: str = "") -> str:
+    """Portada genérica de la serie (libro fuente, sin rol)."""
+    charcoal = _c(marca, "charcoal", "#1a1a1a")
+    gold = _c(marca, "gold", "#c9a962")
+    bg = _c(marca, "cream_dark", "#f0ebe3")
+    line1 = titulo[:36]
+    line2 = titulo[36:72] if len(titulo) > 36 else ""
+    autor_line = autor[:40] if autor else "Serie Aplicar en tu rol"
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img">
+  <rect width="400" height="520" fill="{bg}"/>
+  <rect x="24" y="24" width="352" height="472" fill="#fff" stroke="#e8e4df"/>
+  <rect x="24" y="24" width="5" height="472" fill="{gold}"/>
+  <text x="48" y="100" fill="{gold}" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
+  <text x="48" y="140" fill="{charcoal}" font-family="Georgia,serif" font-size="17" font-weight="700">{line1}</text>
+  <text x="48" y="168" fill="{charcoal}" font-family="Georgia,serif" font-size="17" font-weight="700">{line2}</text>
+  <text x="48" y="420" fill="{charcoal}" font-family="system-ui,sans-serif" font-size="11">{autor_line}</text>
+  <text x="48" y="448" fill="{gold}" font-family="system-ui,sans-serif" font-size="10" letter-spacing="0.12em">APLICAR EN TU ROL</text>
+</svg>"""
+
+
 def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto") -> dict[str, str]:
     catalogo = marca.get("catalogo_guias") or [marca.get("producto_piloto", {})]
+    serie = marca.get("serie_libros") or catalogo
     assets: dict[str, str] = {}
     carousel: list[dict] = []
 
+    # Carrusel = solo libros de la serie
+    for i, libro in enumerate(serie):
+        slug = libro.get("slug", f"libro-{i}")
+        titulo = libro.get("titulo", "Libro")
+        autor = libro.get("autor", "")
+        fname = _write(
+            out_dir / f"libro-{slug}.svg",
+            portada_libro_svg(marca, titulo, autor),
+        )
+        rel = f"assets/{fname}"
+        assets[f"libro_{slug}"] = rel
+        carousel.append({
+            "tipo": "libro",
+            "slug": slug,
+            "titulo": titulo,
+            "subtitulo": autor or libro.get("tagline", "Aplica en tu rol"),
+            "precio": "",
+            "disponible": libro.get("disponible", True),
+            "src": rel,
+        })
+
+    # Portadas por guía (libro × rol) — productos reales
+    piloto_slug = marca.get("producto_piloto", {}).get("slug", "pareto-psicopedagogas")
+    accents = [_c(marca, "gold", "#c9a962"), "#a68b5b", "#8b7355"]
     for i, guia in enumerate(catalogo):
         slug = guia.get("slug", f"guia-{i}")
         titulo = guia.get("titulo", "Guía PDF")
-        _, rel, _ = _portada_for_guia(out_dir, marca, guia, producto=producto)
+        if guia.get("portada_pdf") or slug == piloto_slug:
+            _, rel, _ = _portada_for_guia(
+                out_dir, marca,
+                {"slug": "pareto", "titulo": titulo, "portada_pdf": True},
+                producto="pareto",
+            )
+            # Renombrar a slug de la guía
+            src_path = out_dir / rel.replace("assets/", "")
+            dest_path = out_dir / f"portada-{slug}.png"
+            if src_path.exists() and src_path.suffix == ".png":
+                shutil.copy2(src_path, dest_path)
+                rel = f"assets/portada-{slug}.png"
+            elif src_path.exists():
+                dest_path = out_dir / f"portada-{slug}.svg"
+                shutil.copy2(src_path, dest_path)
+                rel = f"assets/portada-{slug}.svg"
+        else:
+            fname = _write(
+                out_dir / f"portada-{slug}.svg",
+                portada_svg(marca, titulo, accent_bar=accents[i % len(accents)]),
+            )
+            rel = f"assets/{fname}"
         assets[f"portada_{slug}"] = rel
-        carousel.append({
-            "slug": slug,
-            "titulo": titulo,
-            "precio": guia.get("precio", marca.get("precio_display", "$4.99")),
-            "disponible": guia.get("disponible", True),
-            "src": rel,
-            "portada_pdf": slug == producto or guia.get("portada_pdf", False),
-        })
 
-    piloto = catalogo[0].get("slug", "pareto") if catalogo else "pareto"
-    assets["portada"] = assets.get(f"portada_{piloto}", "")
+    assets["portada"] = assets.get(f"portada_{piloto_slug}", "")
     assets["mockup_movil"] = f"assets/{_write(out_dir / 'mockup-movil.svg', mockup_movil_svg(marca))}"
     assets["_carousel_json"] = carousel  # type: ignore[assignment]
+    assets["_catalogo_guias_json"] = catalogo  # type: ignore[assignment]
     return assets

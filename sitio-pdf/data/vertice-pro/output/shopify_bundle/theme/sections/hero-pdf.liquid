@@ -10,7 +10,7 @@
       <div class="vp-carousel" id="vpHeroCarousel" data-interval="{{ section.settings.autoplay_seconds | default: 5 | times: 1000 }}">
         <div class="vp-carousel-track">
           {% for block in section.blocks %}
-            {% assign asset_key = block.settings.asset_file | default: 'portada-pareto.svg' %}
+            {% assign asset_key = block.settings.asset_file | default: 'portada-pareto.png' %}
             {% assign cover_url = block.settings.cover | image_url: width: 560 %}
             {% if block.settings.cover == blank %}
               {% assign cover_url = asset_key | asset_url %}
@@ -123,7 +123,7 @@
             { "value": "portada-habitos-enfermeras.svg", "label": "Hábitos enfermeras" },
             { "value": "portada-producto.svg", "label": "Genérica" }
           ],
-          "default": "portada-pareto.svg"
+          "default": "portada-pareto.png"
         }
       ]
     }

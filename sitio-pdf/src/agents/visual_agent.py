@@ -13,11 +13,13 @@ class VisualAgent:
         if ctx.mock:
             raw = generate_mock_assets(assets_dir, ctx.marca, producto=ctx.producto)
             carousel = raw.pop("_carousel_json", [])
+            catalogo = raw.pop("_catalogo_guias_json", [])
             ctx.assets = {k: v for k, v in raw.items() if isinstance(v, str)}
             save_json(slug_meta(ctx.slug) / "assets.json", {
                 "modo": "mock",
                 "files": ctx.assets,
                 "carousel": carousel,
+                "catalogo_guias": catalogo or ctx.marca.get("catalogo_guias", []),
             })
             return AgentResult(ok=True, data={"carousel_count": len(carousel)}, warnings=["Mock SVG — activa OPENAI_API_KEY para imágenes reales"])
         return AgentResult(ok=False, notes="Modo OpenAI pendiente — usa --mock por ahora")

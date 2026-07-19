@@ -1,36 +1,114 @@
 {
   "modo": "mock",
   "files": {
-    "portada_pareto": "assets/portada-pareto.png",
+    "libro_pareto": "assets/libro-pareto.svg",
+    "libro_habitos": "assets/libro-habitos.svg",
+    "libro_kahneman": "assets/libro-kahneman.svg",
+    "portada_pareto-psicopedagogas": "assets/portada-pareto-psicopedagogas.png",
+    "portada_habitos-psicopedagogas": "assets/portada-habitos-psicopedagogas.svg",
+    "portada_pareto-abogados": "assets/portada-pareto-abogados.svg",
+    "portada_habitos-abogados": "assets/portada-habitos-abogados.svg",
+    "portada_pareto-soldadores": "assets/portada-pareto-soldadores.svg",
+    "portada_habitos-soldadores": "assets/portada-habitos-soldadores.svg",
     "portada_kahneman-docentes": "assets/portada-kahneman-docentes.svg",
     "portada_habitos-enfermeras": "assets/portada-habitos-enfermeras.svg",
-    "portada": "assets/portada-pareto.png",
+    "portada": "assets/portada-pareto-psicopedagogas.png",
     "mockup_movil": "assets/mockup-movil.svg"
   },
   "carousel": [
     {
+      "tipo": "libro",
       "slug": "pareto",
+      "titulo": "El principio de Pareto",
+      "subtitulo": "Antoine Delers",
+      "precio": "",
+      "disponible": true,
+      "src": "assets/libro-pareto.svg"
+    },
+    {
+      "tipo": "libro",
+      "slug": "habitos",
+      "titulo": "Hábitos atómicos",
+      "subtitulo": "James Clear",
+      "precio": "",
+      "disponible": false,
+      "src": "assets/libro-habitos.svg"
+    },
+    {
+      "tipo": "libro",
+      "slug": "kahneman",
+      "titulo": "Pensar rápido, pensar despacio",
+      "subtitulo": "Daniel Kahneman",
+      "precio": "",
+      "disponible": false,
+      "src": "assets/libro-kahneman.svg"
+    }
+  ],
+  "catalogo_guias": [
+    {
+      "slug": "pareto-psicopedagogas",
+      "libro": "pareto",
+      "rol": "psicopedagogas",
       "titulo": "Pareto para psicopedagogas en 10 semanas",
       "precio": "$4.99",
       "disponible": true,
-      "src": "assets/portada-pareto.png",
       "portada_pdf": true
     },
     {
+      "slug": "habitos-psicopedagogas",
+      "libro": "habitos",
+      "rol": "psicopedagogas",
+      "titulo": "Hábitos atómicos para psicopedagogas en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false
+    },
+    {
+      "slug": "pareto-abogados",
+      "libro": "pareto",
+      "rol": "abogados",
+      "titulo": "Pareto para abogados en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false
+    },
+    {
+      "slug": "habitos-abogados",
+      "libro": "habitos",
+      "rol": "abogados",
+      "titulo": "Hábitos atómicos para abogados en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false
+    },
+    {
+      "slug": "pareto-soldadores",
+      "libro": "pareto",
+      "rol": "soldadores",
+      "titulo": "Pareto para soldadores en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false
+    },
+    {
+      "slug": "habitos-soldadores",
+      "libro": "habitos",
+      "rol": "soldadores",
+      "titulo": "Hábitos atómicos para soldadores en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false
+    },
+    {
       "slug": "kahneman-docentes",
+      "libro": "kahneman",
+      "rol": "docentes",
       "titulo": "Kahneman para docentes en 10 semanas",
       "precio": "$4.99",
-      "disponible": false,
-      "src": "assets/portada-kahneman-docentes.svg",
-      "portada_pdf": false
+      "disponible": false
     },
     {
       "slug": "habitos-enfermeras",
+      "libro": "habitos",
+      "rol": "enfermeras",
       "titulo": "Hábitos atómicos para enfermeras en 10 semanas",
       "precio": "$4.99",
-      "disponible": false,
-      "src": "assets/portada-habitos-enfermeras.svg",
-      "portada_pdf": false
+      "disponible": false
     }
   ]
 }

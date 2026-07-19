@@ -90,6 +90,16 @@
     .price { font-size:1.05rem; font-weight:600; margin-bottom:16px; }
     .card-soon { aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }
 
+    .role-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 28px; padding:0 var(--pad); }
+    .role-chip {
+      padding:10px 18px; border:1px solid var(--border); background:var(--surface);
+      font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
+      color:var(--muted); border-radius:999px;
+    }
+    .role-chip.is-active { background:var(--charcoal); color:#fff; border-color:var(--charcoal); }
+    .guia-card[hidden] { display:none !important; }
+    .section-lead { text-align:center; color:var(--muted); font-size:0.9rem; max-width:42ch; margin:-12px auto 28px; padding:0 var(--pad); }
+
     .story { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:var(--max); margin:0 auto; background:var(--surface); border:1px solid var(--border); padding:clamp(24px,5vw,48px); }
     .story img { width:min(100%,240px); margin:0 auto; }
     .story h2 { text-align:left; font-size:clamp(1.3rem,3vw,1.75rem); margin-bottom:12px; }
@@ -124,7 +134,7 @@
     <div class="wrap">
       <div class="logo">VÉRTICE PRO</div>
       <nav>
-        <a href="#bestsellers">Guías</a>
+        <a href="#guias-por-rol">Guías</a>
         <a href="#historia">Nosotros</a>
         <a href="#opiniones">Opiniones</a>
       </nav>
@@ -137,30 +147,30 @@
         <p class="hero-label">Nuevo · Serie Aplicar en tu rol</p>
         <h1>Guías que aplicas esta semana</h1>
         <p class="hero-desc">Guías PDF en español para profesionales ocupados</p>
-        <a class="btn" href="#bestsellers">Ver colección</a>
+        <a class="btn" href="#guias-por-rol">Ver colección</a>
       </div>
       <div class="hero-visual">
-        <div class="hero-carousel" id="heroCarousel" data-slides="[{&quot;slug&quot;: &quot;pareto&quot;, &quot;titulo&quot;: &quot;Pareto para psicopedagogas en 10 semanas&quot;, &quot;precio&quot;: &quot;$4.99&quot;, &quot;disponible&quot;: true, &quot;src&quot;: &quot;assets/portada-pareto.png&quot;, &quot;portada_pdf&quot;: true}, {&quot;slug&quot;: &quot;kahneman-docentes&quot;, &quot;titulo&quot;: &quot;Kahneman para docentes en 10 semanas&quot;, &quot;precio&quot;: &quot;$4.99&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/portada-kahneman-docentes.svg&quot;, &quot;portada_pdf&quot;: false}, {&quot;slug&quot;: &quot;habitos-enfermeras&quot;, &quot;titulo&quot;: &quot;Hábitos atómicos para enfermeras en 10 semanas&quot;, &quot;precio&quot;: &quot;$4.99&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/portada-habitos-enfermeras.svg&quot;, &quot;portada_pdf&quot;: false}]">
+        <div class="hero-carousel" id="heroCarousel" data-slides="[{&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;pareto&quot;, &quot;titulo&quot;: &quot;El principio de Pareto&quot;, &quot;subtitulo&quot;: &quot;Antoine Delers&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: true, &quot;src&quot;: &quot;assets/libro-pareto.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;habitos&quot;, &quot;titulo&quot;: &quot;Hábitos atómicos&quot;, &quot;subtitulo&quot;: &quot;James Clear&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-habitos.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;kahneman&quot;, &quot;titulo&quot;: &quot;Pensar rápido, pensar despacio&quot;, &quot;subtitulo&quot;: &quot;Daniel Kahneman&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-kahneman.svg&quot;}]">
           <div class="carousel-track">
-        <figure class="carousel-slide is-active" data-index="0" data-title="Pareto para psicopedagogas en 10 semanas" data-price="$4.99">
-          <img src="assets/portada-pareto.png" alt="Pareto para psicopedagogas en 10 semanas" draggable="false"/>
+        <figure class="carousel-slide is-active" data-index="0" data-title="El principio de Pareto" data-subtitle="Antoine Delers">
+          <img src="assets/libro-pareto.svg" alt="El principio de Pareto" draggable="false"/>
         </figure>
-        <figure class="carousel-slide is-soon" data-index="1" data-title="Kahneman para docentes en 10 semanas" data-price="$4.99">
-          <img src="assets/portada-kahneman-docentes.svg" alt="Kahneman para docentes en 10 semanas" draggable="false"/>
+        <figure class="carousel-slide is-soon" data-index="1" data-title="Hábitos atómicos" data-subtitle="James Clear">
+          <img src="assets/libro-habitos.svg" alt="Hábitos atómicos" draggable="false"/>
         </figure>
-        <figure class="carousel-slide is-soon" data-index="2" data-title="Hábitos atómicos para enfermeras en 10 semanas" data-price="$4.99">
-          <img src="assets/portada-habitos-enfermeras.svg" alt="Hábitos atómicos para enfermeras en 10 semanas" draggable="false"/>
+        <figure class="carousel-slide is-soon" data-index="2" data-title="Pensar rápido, pensar despacio" data-subtitle="Daniel Kahneman">
+          <img src="assets/libro-kahneman.svg" alt="Pensar rápido, pensar despacio" draggable="false"/>
         </figure></div>
         </div>
         <div class="carousel-nav">
           <button type="button" class="carousel-btn" id="carouselPrev" aria-label="Anterior">‹</button>
-          <div class="carousel-dots" id="carouselDots"><button type="button" class="carousel-dot is-active" data-index="0" aria-label="Guía 1"></button><button type="button" class="carousel-dot" data-index="1" aria-label="Guía 2"></button><button type="button" class="carousel-dot" data-index="2" aria-label="Guía 3"></button></div>
+          <div class="carousel-dots" id="carouselDots"><button type="button" class="carousel-dot is-active" data-index="0" aria-label="Libro 1"></button><button type="button" class="carousel-dot" data-index="1" aria-label="Libro 2"></button><button type="button" class="carousel-dot" data-index="2" aria-label="Libro 3"></button></div>
           <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
         </div>
         <div class="carousel-caption" id="carouselCaption">
-          <span class="carousel-badge">Serie Aplicar en tu rol</span>
-          <strong id="captionTitle">Pareto para psicopedagogas en 10 semanas</strong>
-          <span id="captionPrice">$4.99</span>
+          <span class="carousel-badge">Libros de la serie</span>
+          <strong id="captionTitle">El principio de Pareto</strong>
+          <span id="captionSubtitle">Antoine Delers</span>
         </div>
       </div>
     </div>
@@ -168,25 +178,95 @@
 
   <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
-  <section id="bestsellers">
-    <h2>Más vendidas</h2>
-    <div class="grid">
-      <article class="card">
-        <img class="card-img" src="assets/portada-pareto.png" alt="Pareto para psicopedagogas en 10 semanas"/>
+  <section id="guias-por-rol">
+    <h2>Guías para tu rol</h2>
+    <p class="section-lead">Cada libro famoso adaptado a tu oficio. Elige tu profesión y encuentra tu PDF.</p>
+    <div class="role-filters" id="roleFilters"><button type="button" class="role-chip is-active" data-rol="todos">Todos</button><button type="button" class="role-chip" data-rol="psicopedagogas">Psicopedagogas</button><button type="button" class="role-chip" data-rol="abogados">Abogados</button><button type="button" class="role-chip" data-rol="soldadores">Soldadores</button><button type="button" class="role-chip" data-rol="docentes">Docentes</button><button type="button" class="role-chip" data-rol="enfermeras">Enfermeras</button></div>
+    <div class="grid" id="guiasGrid">
+      <article class="card guia-card" data-rol-card="psicopedagogas">
+        <img class="card-img" src="assets/portada-pareto-psicopedagogas.png" alt="Pareto para psicopedagogas en 10 semanas"/>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · PDF · Psicopedagogas</p>
           <h3>Pareto para psicopedagogas en 10 semanas</h3>
           <p class="price">$4.99</p>
           <a class="btn btn-block" href="#">Añadir al carrito</a>
         </div>
       </article>
-      <article class="card" style="opacity:0.5">
+      <article class="card guia-card" data-rol-card="psicopedagogas" style="opacity:0.55">
         <div class="card-soon">Próximamente</div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro</p>
-          <h3>Nueva guía en camino</h3>
-          <p class="price">—</p>
-          <span class="btn btn-outline btn-block" style="line-height:46px;">Avísame</span>
+          <p class="card-brand">Vértice Pro · PDF · Psicopedagogas</p>
+          <h3>Hábitos atómicos para psicopedagogas en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="abogados" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Abogados</p>
+          <h3>Pareto para abogados en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="abogados" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Abogados</p>
+          <h3>Hábitos atómicos para abogados en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="soldadores" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Soldadores</p>
+          <h3>Pareto para soldadores en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="soldadores" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Soldadores</p>
+          <h3>Hábitos atómicos para soldadores en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="docentes" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Docentes</p>
+          <h3>Kahneman para docentes en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="enfermeras" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Enfermeras</p>
+          <h3>Hábitos atómicos para enfermeras en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article></div>
+  </section>
+
+  <section id="bestsellers">
+    <h2>Destacada</h2>
+    <div class="grid">
+      <article class="card">
+        <img class="card-img" src="assets/portada-pareto-psicopedagogas.png" alt="Pareto para psicopedagogas en 10 semanas"/>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Más vendida</p>
+          <h3>Pareto para psicopedagogas en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <a class="btn btn-block" href="#">Añadir al carrito</a>
         </div>
       </article>
     </div>
@@ -199,7 +279,7 @@
         <h2>Inspiradas en tu trabajo real</h2>
         <p>Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas en escuela.</p>
         <p>Prioriza el 20% de casos que generan el 80% del impacto en el aula</p>
-        <a class="btn btn-outline" href="#bestsellers">Ver colección</a>
+        <a class="btn btn-outline" href="#guias-por-rol">Ver colección</a>
       </div>
     </div>
   </section>
@@ -223,7 +303,7 @@
   const slides = root.querySelectorAll('.carousel-slide');
   const dots = document.querySelectorAll('.carousel-dot');
   const titleEl = document.getElementById('captionTitle');
-  const priceEl = document.getElementById('captionPrice');
+  const priceEl = document.getElementById('captionSubtitle');
   let idx = 0;
   let timer;
   let touchX = 0;
@@ -234,7 +314,7 @@
     dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
     const s = slides[idx];
     if (titleEl) titleEl.textContent = s.dataset.title || '';
-    if (priceEl) priceEl.textContent = s.dataset.price || '';
+    if (priceEl) priceEl.textContent = s.dataset.subtitle || '';
   }
 
   function next() { show(idx + 1); }
@@ -255,6 +335,17 @@
   }, {passive:true});
 
   resetTimer();
+})();
+(function() {
+  const chips = document.querySelectorAll('.role-chip');
+  const cards = document.querySelectorAll('.guia-card');
+  chips.forEach(btn => btn.addEventListener('click', () => {
+    const rol = btn.dataset.rol;
+    chips.forEach(c => c.classList.toggle('is-active', c === btn));
+    cards.forEach(card => {
+      card.hidden = rol !== 'todos' && card.dataset.rolCard !== rol;
+    });
+  }));
 })();
   </script>
 </body>
