@@ -6,9 +6,60 @@
       "type": "command",
       "command": "simpleBrowser.show",
       "args": ["http://localhost:8768/index.html"]
+    },
+    {
+      "id": "openLandingsPreview",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8777/preview.html"]
     }
   ],
   "tasks": [
+    {
+      "label": "Landings: abrir preview en Browser",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Landings: servir preview 8777",
+        "Landings: launch Simple Browser"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Landings: servir preview 8777",
+      "type": "shell",
+      "command": "python3 -m http.server 8777 --bind 0.0.0.0",
+      "options": {
+        "cwd": "${workspaceFolder}/creador-de-landings/data/demo-cliente/output"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Serving HTTP"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Landings: launch Simple Browser",
+      "type": "shell",
+      "command": "${input:openLandingsPreview}",
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "close": true
+      },
+      "problemMatcher": []
+    },
     {
       "label": "Vértice Pro: abrir en Browser",
       "dependsOrder": "sequence",
@@ -16,10 +67,6 @@
         "Vértice Pro: servir preview",
         "Vértice Pro: launch Simple Browser"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": []
     },
     {
