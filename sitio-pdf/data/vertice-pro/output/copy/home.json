@@ -1,21 +1,25 @@
 {
   "announce": "Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off",
-  "hero_title": "Guías que aplicas esta semana",
-  "hero_subtitle": "Guías PDF en español para profesionales ocupados",
-  "hero_cta": "Ver colección",
+  "hero_title": "Guías PDF para tu rol profesional",
+  "hero_subtitle": "Ideas de libros famosos, adaptadas a tu oficio. Plan de 10 semanas · Compra única, sin suscripción.",
+  "hero_cta": "Ver guías",
+  "hero_brand": "VÉRTICE PRO",
+  "hero_series": "Serie · Aplicar en tu rol",
+  "hero_label": "VÉRTICE PRO",
+  "guias_lead": "Elige tu profesión. Filtra por libro si quieres.",
   "benefits_title": "Qué incluye cada guía",
   "benefits": [
     {
       "title": "Plan de 10 semanas",
-      "text": "Aplica un plan semanal concreto durante 10 semanas con acciones específicas"
+      "text": "Una acción concreta por semana. Empiezas hoy, avanzas sin improvisar."
     },
     {
       "title": "Adaptado a tu rol",
-      "text": "Identifica el 20% de estudiantes que requieren tu intervención prioritaria"
+      "text": "Ejemplos, casos y lenguaje de tu profesión — no un resumen genérico de librería."
     },
     {
-      "title": "Descarga al instante",
-      "text": "Compras, descargas y empiezas hoy."
+      "title": "PDF tuyo para siempre",
+      "text": "Compra única. Descarga al instante. Lee en móvil, tablet o imprime."
     }
   ],
   "products_title": "Guías disponibles",
@@ -35,6 +39,7 @@
     ]
   },
   "about_title": "Vértice Pro",
-  "about_text": "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas en escuela.",
+  "about_text": "Editorial digital en español. Adaptamos libros de no-ficción a oficios concretos: salud, educación, derecho, oficios técnicos y más.",
+  "about_tagline": "Para quien compra ebooks y quiere aplicarlos el lunes, no guardarlos en la carpeta de descargas.",
   "footer_legal": "Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales."
 }

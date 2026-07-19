@@ -212,11 +212,9 @@ def _render_html(ctx: PipelineContext) -> str:
     .hero-trust strong {{ color:var(--gold); }}
     .hero-visual {{
       display:flex; flex-direction:column; align-items:center; gap:14px;
-      padding:clamp(20px,4vw,28px); background:var(--surface);
-      border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.06);
+      padding:0;
     }}
     .hero-visual-label {{ display:none; }}
-    .hero-lifestyle figcaption {{ display:none; }}
     .hero-lifestyle {{ position:relative; margin:0; border-bottom:1px solid var(--border); overflow:hidden; }}
     .hero-lifestyle img {{ width:100%; height:clamp(160px,22vw,260px); object-fit:cover; object-position:center 30%; display:block; }}
     .hero-lifestyle figcaption {{ display:none; }}
