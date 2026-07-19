@@ -120,22 +120,20 @@ def _portada_for_guia(
 
 
 def portada_libro_svg(marca: dict, titulo: str, autor: str = "") -> str:
-    """Portada genérica de la serie (libro fuente, sin rol)."""
+    """Portada serie — sin marco blanco; fondo transparente para el carrusel."""
     charcoal = _c(marca, "charcoal", "#1a1a1a")
     gold = _c(marca, "gold", "#c9a962")
-    bg = _c(marca, "cream_dark", "#f0ebe3")
+    muted = _c(marca, "muted", "#6b6560")
     line1 = titulo[:36]
     line2 = titulo[36:72] if len(titulo) > 36 else ""
     autor_line = autor[:40] if autor else "Serie Aplicar en tu rol"
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img">
-  <rect width="400" height="520" fill="{bg}"/>
-  <rect x="24" y="24" width="352" height="472" fill="#fff" stroke="#e8e4df"/>
-  <rect x="24" y="24" width="5" height="472" fill="{gold}"/>
-  <text x="48" y="100" fill="{gold}" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
-  <text x="48" y="140" fill="{charcoal}" font-family="Georgia,serif" font-size="17" font-weight="700">{line1}</text>
-  <text x="48" y="168" fill="{charcoal}" font-family="Georgia,serif" font-size="17" font-weight="700">{line2}</text>
-  <text x="48" y="420" fill="{charcoal}" font-family="system-ui,sans-serif" font-size="11">{autor_line}</text>
-  <text x="48" y="448" fill="{gold}" font-family="system-ui,sans-serif" font-size="10" letter-spacing="0.12em">APLICAR EN TU ROL</text>
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img">
+  <rect x="0" y="0" width="5" height="440" fill="{gold}"/>
+  <text x="20" y="72" fill="{gold}" font-family="system-ui,sans-serif" font-size="8" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
+  <text x="20" y="108" fill="{charcoal}" font-family="Georgia,serif" font-size="16" font-weight="700">{line1}</text>
+  <text x="20" y="134" fill="{charcoal}" font-family="Georgia,serif" font-size="16" font-weight="700">{line2}</text>
+  <text x="20" y="360" fill="{muted}" font-family="system-ui,sans-serif" font-size="10">{autor_line}</text>
+  <text x="20" y="384" fill="{gold}" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.12em">APLICAR EN TU ROL</text>
 </svg>"""
 
 
