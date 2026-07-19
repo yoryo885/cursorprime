@@ -222,7 +222,7 @@ def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto"
 
     assets["portada"] = assets.get(f"portada_{piloto_slug}", "")
     assets["mockup_movil"] = f"assets/{_write(out_dir / 'mockup-movil.svg', mockup_movil_svg(marca))}"
-    for hero_name in ("hero-lifestyle-tenue", "landing-lectura-lado"):
+    for hero_name in ("landing-lectura-lado", "hero-lifestyle-tenue"):
         hero_rel = _copy_raster_if_exists(out_dir, hero_name)
         if hero_rel:
             assets["imagen_lectura"] = hero_rel

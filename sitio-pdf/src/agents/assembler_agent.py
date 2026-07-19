@@ -225,10 +225,17 @@ def _render_html(ctx: PipelineContext) -> str:
     about_tagline = cat.get("about_tagline") or m.get("producto_piloto", {}).get("subtitulo", "")
 
     hero_banner = ""
-    hero_img = a.get("hero_lifestyle") or a.get("imagen_lectura", "")
+    hero_img = a.get("imagen_lectura") or a.get("hero_lifestyle", "")
     if hero_img:
         hero_banner = f"""<figure class="hero-banner">
       <img src="{escape(hero_img)}" alt="Profesional aplicando guía PDF en su trabajo"/>
+    </figure>"""
+
+    about_visual = ""
+    about_img = a.get("portada") or a.get("portada_pareto-psicopedagogas", "")
+    if about_img:
+        about_visual = f"""<figure class="about-visual">
+      <img src="{escape(about_img)}" alt="Guía Pareto aplicada en el aula"/>
     </figure>"""
 
     return f"""<!DOCTYPE html>
@@ -345,6 +352,10 @@ def _render_html(ctx: PipelineContext) -> str:
 
     .about {{ background:var(--accent-tint); }}
     .about .wrap {{ max-width:680px; text-align:center; }}
+    .about-visual {{
+      max-width:min(100%,420px); margin:0 auto clamp(28px,5vw,40px); border-radius:2px; overflow:hidden;
+    }}
+    .about-visual img {{ width:100%; display:block; aspect-ratio:4/5; object-fit:cover; }}
     .about h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,4vw,2.15rem); font-weight:400; margin-bottom:20px; letter-spacing:0.02em; color:var(--charcoal); }}
     .about p {{ color:var(--muted); font-size:0.92rem; line-height:1.7; margin-bottom:14px; }}
     .about-tagline {{ color:var(--text); font-size:0.92rem; margin:20px 0 28px; font-style:italic; }}
@@ -478,6 +489,7 @@ def _render_html(ctx: PipelineContext) -> str:
 
   <section id="nosotros" class="about">
     <div class="wrap">
+      {about_visual}
       <h2>{escape(cat.get('about_title', 'Inspiradas en tu trabajo real'))}</h2>
       <p>{escape(cat.get('about_text', ''))}</p>
       {f'<p class="about-tagline">{escape(about_tagline)}</p>' if about_tagline else ''}
