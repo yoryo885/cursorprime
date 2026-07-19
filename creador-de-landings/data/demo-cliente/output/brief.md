@@ -25,3 +25,6 @@
 - catalogo multiproducto + grid + filtros por rol + log de aprendizaje
 - estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md
 - flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional
+- preguntas.json v2 + regla cursor + router priority 93 + paletas en HTML
+- referencia visual activa; entrevista estándar pendiente de respuestas
+- entrevista v3 solo letras A/B/C/D + CLI responder

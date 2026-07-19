@@ -1,6 +1,2 @@
-Preview (los 2 dispositivos): https://vertice-landings-8777.loca.lt/preview.html
-
-Local (solo en esta máquina / puerto reenviado): http://localhost:8777/preview.html
-
-Nota: localhost NO funciona en el teléfono ni en otro PC.
-Si localtunnel pide clic/IP la primera vez, acepta el aviso y recarga.
+http://localhost:8777/preview.html
+https://vertice-landings-8777.loca.lt/preview.html

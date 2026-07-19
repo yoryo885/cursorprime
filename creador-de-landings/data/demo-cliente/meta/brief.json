@@ -1,7 +1,7 @@
 {
   "marca": "Vértice Pro",
-  "producto": "Guías PDF para tu rol profesional",
-  "cliente": "Profesionales por oficio (psicopedagogas, docentes, abogados…)",
+  "producto": "Guías PDF libro × rol (colección)",
+  "cliente": "Profesionales por oficio (psicopedagogas, docentes…)",
   "promesa": "Ideas de libros aplicadas a tu rol — elige tu guía",
   "cta": "Ver colección",
   "precio": "desde $4.99",
@@ -16,7 +16,7 @@
     "id": "A",
     "clima": "neutro"
   },
-  "idea": "Tienda de guías PDF por oficio, look colección tipo Filjós",
+  "idea": "Tienda Vértice Pro — look colección tipo Filjós",
   "referencia": "https://filjos.com/",
   "serie_libros": [
     {
@@ -151,6 +151,9 @@
     "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json",
     "catalogo multiproducto + grid + filtros por rol + log de aprendizaje",
     "estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md",
-    "flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional"
+    "flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional",
+    "preguntas.json v2 + regla cursor + router priority 93 + paletas en HTML",
+    "referencia visual activa; entrevista estándar pendiente de respuestas",
+    "entrevista v3 solo letras A/B/C/D + CLI responder"
   ]
 }
