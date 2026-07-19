@@ -161,14 +161,16 @@
     },
     "copy_catalogo": {
       "hero_brand": "VÉRTICE PRO",
-      "hero_series": "Serie · Aplicar en tu rol",
-      "hero_problem": "Lees libros de productividad… pero el lunes sigues igual.",
-      "hero_title": "Aplica las mejores ideas",
-      "hero_title_em": "en tu oficio en 10 semanas",
-      "hero_subtitle": "",
-      "hero_cta": "Ver guías desde $4.99",
-      "hero_cta_secondary": "Qué incluye",
-      "hero_trust": "★ 4.9 · PDF al instante · Sin suscripción mensual",
+      "hero_series": "Nuevo · Serie Aplicar en tu rol",
+      "hero_problem": "",
+      "hero_title": "Guías que aplicas esta semana",
+      "hero_title_em": "",
+      "hero_subtitle": "Guías PDF en español para profesionales ocupados",
+      "hero_cta": "Ver colección",
+      "hero_cta_secondary": "",
+      "hero_trust": "",
+      "guias_title": "Más vendidas",
+      "about_title": "Inspiradas en tu trabajo real",
       "compare_titulo": "Por qué no es otra app de resúmenes",
       "compare_lead": "Pagas una vez. El PDF es tuyo. Sin renovación automática.",
       "compare_items": [
@@ -204,8 +206,8 @@
       "plan_titulo": "Estructura del plan · 10 semanas",
       "plan_intro_default": "Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.",
       "plan_intro_rol": "Así se aplica en tu oficio cuando elijas una guía:",
-      "about_text": "Editorial digital en español. Adaptamos libros de no-ficción a oficios concretos: salud, educación, derecho, oficios técnicos y más.",
-      "about_tagline": "Para quien compra ebooks y quiere aplicarlos el lunes, no guardarlos en la carpeta de descargas."
+      "about_text": "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas, docentes y profesionales de salud.",
+      "about_tagline": "Prioriza el 20% de casos que generan el 80% del impacto en el aula."
     },
     "flujo_pasos": [
       { "titulo": "Elige tu profesión", "texto": "Filtra el catálogo por tu oficio." },
@@ -218,11 +220,8 @@
       { "icon": "calendar", "label": "Plan 10 semanas", "hint": "Una acción por semana" },
       { "icon": "role", "label": "Adaptado a tu rol", "hint": "No genérico" }
     ],
-    "hero_bullets": [
-      "Pareto, Hábitos, Kahneman… traducidos a tu profesión",
-      "Una acción concreta por semana — 10 semanas",
-      "PDF tuyo para siempre, sin cuota mensual"
-    ],
+    "hero_bullets": [],
+    "show_lifestyle": false,
     "incluye_semanas": [
       "Semanas 1–2: Mapa de tu semana laboral y primeros focos",
       "Semanas 3–5: Aplicar las ideas del libro a casos reales de tu rol",

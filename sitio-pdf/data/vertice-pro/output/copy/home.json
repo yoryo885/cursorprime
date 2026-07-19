@@ -1,10 +1,10 @@
 {
   "announce": "Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off",
-  "hero_title": "Aplica las mejores ideas",
-  "hero_subtitle": "",
-  "hero_cta": "Ver guías desde $4.99",
+  "hero_title": "Guías que aplicas esta semana",
+  "hero_subtitle": "Guías PDF en español para profesionales ocupados",
+  "hero_cta": "Ver colección",
   "hero_brand": "VÉRTICE PRO",
-  "hero_series": "Serie · Aplicar en tu rol",
+  "hero_series": "Nuevo · Serie Aplicar en tu rol",
   "hero_label": "VÉRTICE PRO",
   "guias_lead": "Elige tu profesión. Filtra por libro si quieres.",
   "benefits_title": "Qué incluye cada guía",
@@ -39,7 +39,7 @@
     ]
   },
   "about_title": "Vértice Pro",
-  "about_text": "Editorial digital en español. Adaptamos libros de no-ficción a oficios concretos: salud, educación, derecho, oficios técnicos y más.",
-  "about_tagline": "Para quien compra ebooks y quiere aplicarlos el lunes, no guardarlos en la carpeta de descargas.",
+  "about_text": "Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas, docentes y profesionales de salud.",
+  "about_tagline": "Prioriza el 20% de casos que generan el 80% del impacto en el aula.",
   "footer_legal": "Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales."
 }

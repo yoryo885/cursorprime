@@ -111,17 +111,18 @@ def _render_html(ctx: PipelineContext) -> str:
         rol_label = role_names.get(rol, rol.replace("-", " ").title())
         dis = g.get("disponible", True)
         opacity = "" if dis else ' style="opacity:0.55"'
-        btn = '<a class="btn btn-block" href="#">Comprar PDF</a>' if dis else '<span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>'
-        badge = '<span class="card-badge">Disponible</span>' if dis else ""
+        btn = '<a class="btn btn-block" href="#">Comprar PDF</a>' if dis else '<span class="btn btn-outline btn-block" style="line-height:46px">Avísame</span>'
+        badge = ""
         img = f'<img class="card-img" src="{escape(gsrc)}" alt="{escape(g.get("titulo",""))}"/>' if dis else '<div class="card-soon">Próximamente</div>'
+        brand_label = f"{escape(name)} · PDF" if dis else escape(name)
         card = f"""
       <article class="card guia-card" data-rol-card="{escape(rol)}" data-libro-card="{escape(libro)}"{opacity}>
         {badge}
         {img}
         <div class="card-body">
-          <p class="card-brand">{escape(rol_label)}</p>
-          <h3>{escape(g.get("titulo",""))}</h3>
-          <p class="price">{escape(g.get("precio", m.get("precio_display", "$4.99")))}</p>
+          <p class="card-brand">{brand_label}</p>
+          <h3>{escape(g.get("titulo","") if dis else "Nueva guía en camino")}</h3>
+          <p class="price">{escape(g.get("precio", precio_display) if dis else "—")}</p>
           {btn}
         </div>
       </article>"""
@@ -156,7 +157,7 @@ def _render_html(ctx: PipelineContext) -> str:
     roles_json = json.dumps(roles_map, ensure_ascii=False).replace("</", "<\\/")
 
     lifestyle_html = ""
-    if imagen_lectura:
+    if imagen_lectura and ux.get("show_lifestyle", True):
         cap = cat.get("lifestyle_caption", "")
         cap_html = f"<figcaption>{escape(cap)}</figcaption>" if cap else ""
         lifestyle_html = f"""<figure class="hero-lifestyle">
@@ -164,15 +165,29 @@ def _render_html(ctx: PipelineContext) -> str:
       {cap_html}
     </figure>"""
 
+    soon_placeholder = f"""
+      <article class="card guia-card card-placeholder" data-rol-card="todos" data-libro-card="todos">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">{escape(name)}</p>
+          <h3>Nueva guía en camino</h3>
+          <p class="price">—</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Avísame</span>
+        </div>
+      </article>"""
+
+    mas_vendidas_html = guias_disponibles + soon_placeholder if guias_disponibles else soon_placeholder
+
     reviews = [
-        ("María G.", "Psicopedagogas", "Prioricé sin leer 300 páginas. Plan claro para el gabinete."),
-        ("Roberto L.", "Abogados", "Ejemplos de expedientes reales, no teoría de librería."),
-        ("Carmen V.", "Enfermeras", "Lo apliqué en el turno. PDF al instante y sin suscripción."),
+        ("María", "«Me ayudó a priorizar casos en el gabinete.»"),
+        ("Carolina", "«Descarga al instante y plan de 10 semanas claro.»"),
+        ("Andrea", "«Resumen adaptado a psicopedagogas, no genérico.»"),
     ]
     reviews_html = "".join(
-        f'<blockquote class="review"><p>«{escape(q)}»</p><cite>— {escape(n)} · {escape(rol)}</cite></blockquote>'
-        for n, rol, q in reviews
+        f'<blockquote class="review"><p>{escape(q)}</p><cite>— {escape(n)}</cite></blockquote>'
+        for n, q in reviews
     )
+    about_tagline = cat.get("about_tagline") or m.get("producto_piloto", {}).get("subtitulo", "")
 
     return f"""<!DOCTYPE html>
 <html lang="es">
@@ -197,44 +212,25 @@ def _render_html(ctx: PipelineContext) -> str:
     .wrap {{ width:100%; max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }}
 
     .ticker {{ background:var(--charcoal); color:#fff; font-size:0.7rem; letter-spacing:0.05em; padding:10px var(--pad); text-align:center; }}
-    header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:16px var(--pad); position:sticky; top:0; z-index:50; }}
-    header .wrap {{ display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; }}
+    header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:20px var(--pad) 16px; position:sticky; top:0; z-index:50; }}
+    header .wrap {{ display:flex; flex-direction:column; align-items:center; gap:14px; }}
     .logo {{
-      font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.05rem,3vw,1.35rem);
-      letter-spacing:0.2em; font-weight:500; color:var(--charcoal);
-      border-bottom:2px solid var(--gold); padding-bottom:4px; line-height:1.2;
+      font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.15rem,3.5vw,1.5rem);
+      letter-spacing:0.22em; font-weight:500; color:var(--charcoal); line-height:1.2;
     }}
-    nav {{ display:flex; flex-wrap:wrap; justify-content:flex-end; gap:clamp(12px,3vw,24px); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }}
+    nav {{ display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(20px,4vw,36px); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }}
     nav a {{ padding:6px 0; min-height:44px; display:inline-flex; align-items:center; }}
 
-    .hero {{ background:var(--cream); border-bottom:1px solid var(--border); }}
-    .hero .wrap {{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,64px); align-items:center; padding-top:clamp(40px,7vw,72px); padding-bottom:clamp(40px,7vw,72px); }}
-    .hero-copy {{ max-width:480px; }}
-    .hero-problem {{
-      font-size:0.92rem; color:var(--muted); margin-bottom:12px; max-width:38ch; line-height:1.5;
-      border-left:3px solid var(--gold); padding-left:14px;
-    }}
+    .hero {{ background:var(--bg); border-bottom:none; }}
+    .hero .wrap {{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,80px); align-items:center; padding-top:clamp(48px,8vw,88px); padding-bottom:clamp(48px,8vw,88px); }}
+    .hero-copy {{ max-width:420px; }}
     .hero-series {{
-      display:inline-block; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase;
-      color:var(--charcoal); background:rgba(255,255,255,0.55); border:1px solid var(--border);
-      padding:6px 12px; margin-bottom:18px;
+      font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:20px;
     }}
-    .hero-label {{ font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
-    .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5.5vw,3.15rem); font-weight:400; line-height:1.08; margin-bottom:14px; letter-spacing:0.01em; }}
-    .hero-accent {{ font-style:italic; color:var(--gold); font-weight:500; }}
-    .hero-desc {{ color:var(--muted); font-size:0.92rem; margin-bottom:18px; max-width:42ch; line-height:1.55; }}
-    .hero-bullets {{ list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:8px; }}
-    .hero-bullets li {{
-      position:relative; padding-left:18px; font-size:0.88rem; color:var(--text); line-height:1.45;
-    }}
-    .hero-bullets li::before {{
-      content:''; position:absolute; left:0; top:0.55em; width:6px; height:6px; border-radius:50%; background:var(--gold);
-    }}
-    .hero-actions {{ display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }}
-    .hero-link {{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); padding-bottom:2px; }}
-    .hero-link:hover {{ color:var(--gold); }}
-    .hero-trust {{ font-size:0.78rem; color:var(--muted); margin-top:16px; letter-spacing:0.02em; }}
-    .hero-trust strong {{ color:var(--gold); }}
+    .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,2.75rem); font-weight:400; line-height:1.15; margin-bottom:18px; letter-spacing:0.01em; }}
+    .hero-desc {{ color:var(--muted); font-size:0.95rem; margin-bottom:28px; max-width:36ch; line-height:1.6; }}
+    .hero-actions {{ display:flex; flex-wrap:wrap; align-items:center; gap:12px; }}
     .hero-visual {{
       display:flex; flex-direction:column; align-items:center; gap:14px;
       padding:0;
@@ -259,16 +255,11 @@ def _render_html(ctx: PipelineContext) -> str:
     }}
     .carousel-slide.is-active {{
       opacity:1; transform:translateX(0) scale(1) rotateY(0); pointer-events:auto;
-      animation:floatBook 4s ease-in-out infinite;
     }}
-    .carousel-slide.is-soon img {{ opacity:0.88; }}
+    .carousel-slide.is-soon img {{ opacity:0.75; }}
     .carousel-slide img {{
-      width:min(78%,280px); max-height:100%; object-fit:contain;
-      filter:drop-shadow(0 24px 48px rgba(0,0,0,0.14));
-    }}
-    @keyframes floatBook {{
-      0%,100% {{ transform:translateY(0) scale(1) rotateY(0); }}
-      50% {{ transform:translateY(-10px) scale(1.02) rotateY(2deg); }}
+      width:min(72%,240px); max-height:100%; object-fit:contain;
+      filter:drop-shadow(0 12px 32px rgba(0,0,0,0.08));
     }}
     .carousel-nav {{ display:flex; align-items:center; justify-content:center; gap:12px; }}
     .carousel-btn {{
@@ -282,32 +273,30 @@ def _render_html(ctx: PipelineContext) -> str:
       width:8px; height:8px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
     }}
     .carousel-dot.is-active {{ background:var(--gold); transform:scale(1.15); }}
-    .carousel-caption {{ text-align:center; min-height:2.4em; }}
-    .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--text); margin-bottom:4px; }}
-    .carousel-caption span {{ font-size:0.85rem; color:var(--muted); }}
-    .carousel-cta {{ margin-top:10px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; padding:0 0 2px; }}
-    .carousel-cta:hover {{ color:var(--gold); }}
+    .carousel-caption {{ text-align:center; padding-top:8px; }}
+    .carousel-caption .caption-series {{ display:block; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }}
+    .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500; color:var(--text); margin-bottom:6px; line-height:1.35; max-width:28ch; margin-left:auto; margin-right:auto; }}
+    .carousel-caption .caption-price {{ font-size:0.9rem; color:var(--text); font-weight:500; }}
+    .carousel-cta {{ display:none; }}
 
-    .trust-badges {{
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));
-      gap:12px; max-width:var(--max); margin:0 auto; padding:20px var(--pad);
-      background:var(--surface); border-bottom:1px solid var(--border);
-    }}
-    .trust-badge {{ text-align:center; padding:12px 8px; border:1px solid var(--border); background:var(--bg); }}
-    .trust-badge strong {{ display:block; font-size:0.72rem; letter-spacing:0.04em; margin-bottom:4px; }}
-    .trust-badge span {{ font-size:0.68rem; color:var(--muted); }}
-    .trust-icon {{ display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }}
+    .grid-mas-vendidas {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(20px,4vw,32px); max-width:720px; margin:0 auto; }}
+    .about {{ background:var(--bg); }}
+    .about .wrap {{ max-width:640px; text-align:center; }}
+    .about h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,4vw,2rem); font-weight:400; margin-bottom:20px; letter-spacing:0.02em; }}
+    .about p {{ color:var(--muted); font-size:0.92rem; line-height:1.65; margin-bottom:14px; }}
+    .about-tagline {{ color:var(--text); font-size:0.92rem; margin:20px 0 28px; }}
+    .about .btn-outline {{ background:var(--surface); }}
+
+    section {{ padding:clamp(56px,10vw,96px) var(--pad); }}
+    section h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); font-weight:400; text-align:center; letter-spacing:0.04em; margin-bottom:clamp(32px,6vw,48px); }}
 
     .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px; background:var(--charcoal); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--charcoal); cursor:pointer; }}
-    .btn-outline {{ background:transparent; color:var(--charcoal); }}
+    .btn-outline {{ background:var(--surface); color:var(--charcoal); }}
     .btn-block {{ width:100%; }}
 
-    section {{ padding:clamp(40px,8vw,64px) var(--pad); }}
-    section h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); font-weight:400; text-align:center; letter-spacing:0.04em; margin-bottom:clamp(24px,5vw,36px); }}
-
     .grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)); gap:24px; max-width:var(--max); margin:0 auto; }}
-    .card {{ background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; transition:transform 0.2s ease, box-shadow 0.2s ease; position:relative; }}
-    .card:hover {{ transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.06); }}
+    .card {{ background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; transition:box-shadow 0.2s ease; position:relative; }}
+    .card:hover {{ box-shadow:0 8px 24px rgba(0,0,0,0.04); }}
     .card-badge {{
       position:absolute; top:12px; left:12px; z-index:2; background:var(--charcoal); color:#fff;
       font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 8px;
@@ -372,35 +361,37 @@ def _render_html(ctx: PipelineContext) -> str:
     .sticky-cta p {{ font-size:0.78rem; color:var(--muted); margin:0; }}
     .sticky-cta .btn {{ min-width:auto; padding:0 18px; min-height:44px; }}
 
-    .newsletter-form {{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:420px; margin:0 auto; }}
+    .newsletter-form {{ display:flex; flex-wrap:wrap; gap:0; justify-content:center; max-width:440px; margin:0 auto; }}
     .newsletter-form input {{
-      flex:1 1 200px; min-height:48px; border:1px solid var(--border); padding:0 14px;
+      flex:1 1 180px; min-height:48px; border:1px solid var(--border); border-right:none; padding:0 14px;
       font:inherit; background:var(--surface);
     }}
-    .newsletter-micro {{ font-size:0.72rem; color:var(--muted); margin-top:12px; }}
+    .newsletter-form .btn {{ min-width:140px; border-left:none; }}
+    .newsletter-micro {{ display:none; }}
 
-    .reviews {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:20px; max-width:var(--max); margin:0 auto; }}
-    .review {{ background:var(--surface); border:1px solid var(--border); padding:20px; font-size:0.86rem; color:var(--muted); }}
-    .review cite {{ display:block; margin-top:10px; font-style:normal; font-size:0.72rem; color:var(--text); }}
+    .reviews {{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; max-width:900px; margin:0 auto; }}
+    .review {{ background:var(--surface); border:1px solid var(--border); padding:24px 20px; font-size:0.88rem; color:var(--muted); text-align:left; }}
+    .review cite {{ display:block; margin-top:12px; font-style:normal; font-size:0.78rem; color:var(--text); }}
 
-    .newsletter {{ background:var(--cream); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:clamp(36px,6vw,56px) var(--pad); text-align:center; }}
-    .newsletter h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,4vw,1.75rem); margin-bottom:8px; }}
-    .newsletter p {{ color:var(--muted); font-size:0.9rem; margin-bottom:20px; }}
+    .newsletter {{ background:var(--cream); border-top:none; border-bottom:none; padding:clamp(56px,10vw,96px) var(--pad); text-align:center; }}
+    .newsletter h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); margin-bottom:10px; font-weight:400; }}
+    .newsletter p {{ color:var(--muted); font-size:0.9rem; margin-bottom:24px; }}
 
-    footer {{ padding:28px var(--pad); text-align:center; font-size:0.7rem; color:var(--muted); line-height:1.5; }}
+    footer {{ padding:32px var(--pad) 40px; text-align:center; font-size:0.72rem; color:var(--muted); line-height:1.6; background:var(--bg); }}
+    footer p + p {{ margin-top:8px; }}
 
     @media (max-width:768px) {{
-      header .wrap {{ flex-direction:column; align-items:center; }}
-      nav {{ justify-content:center; }}
       .hero .wrap {{ grid-template-columns:1fr; text-align:center; }}
       .hero-copy {{ max-width:none; margin:0 auto; }}
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
-      .hero-bullets {{ align-items:center; }}
-      .hero-bullets li {{ text-align:left; max-width:28ch; }}
       .hero-actions {{ justify-content:center; }}
-      .hero-visual {{ order:-1; width:100%; max-width:min(92vw,400px); margin:0 auto; }}
-      .hero-showcase .hero-carousel {{ width:min(85vw,320px); height:clamp(260px,50vw,380px); }}
-      body {{ padding-bottom:72px; }}
+      .hero-visual {{ order:-1; width:100%; max-width:min(92vw,360px); margin:0 auto; }}
+      .hero-showcase .hero-carousel {{ width:min(85vw,300px); height:clamp(260px,50vw,360px); }}
+      .grid-mas-vendidas {{ grid-template-columns:1fr; max-width:320px; }}
+      .reviews {{ grid-template-columns:1fr; max-width:360px; }}
+      .newsletter-form {{ flex-direction:column; }}
+      .newsletter-form input {{ border-right:1px solid var(--border); }}
+      .newsletter-form .btn {{ border-left:1px solid var(--charcoal); width:100%; }}
     }}
   </style>
 </head>
@@ -411,9 +402,9 @@ def _render_html(ctx: PipelineContext) -> str:
     <div class="wrap">
       <div class="logo">{escape(name)}</div>
       <nav>
-        <a href="#guias-por-rol">Catálogo</a>
-        <a href="#incluye">Qué incluye</a>
-        <a href="#faq">FAQ</a>
+        <a href="#guias-por-rol">Guías</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#opiniones">Opiniones</a>
       </nav>
     </div>
   </header>
@@ -422,15 +413,11 @@ def _render_html(ctx: PipelineContext) -> str:
     <div class="wrap">
       <div class="hero-copy">
         <p class="hero-series">{escape(cat.get('hero_series', m.get('serie', 'Aplicar en tu rol')))}</p>
-        {f'<p class="hero-problem">{escape(hero_problem)}</p>' if hero_problem else ''}
         <h1>{hero_title_html}</h1>
         {f'<p class="hero-desc">{escape(hero_subtitle)}</p>' if hero_subtitle else ''}
-        {f'<ul class="hero-bullets">{hero_bullets_html}</ul>' if hero_bullets_html else ''}
         <div class="hero-actions">
-          <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Ver guías')))}</a>
-          <a class="hero-link" href="#incluye">{escape(hero_cta_secondary)}</a>
+          <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Ver colección')))}</a>
         </div>
-        <p class="hero-trust">{escape(cat.get('hero_trust', c.get('hero_trust', '★ 4.9 · Descarga al instante')))}</p>
       </div>
       <div class="hero-visual">
         <div class="hero-showcase">
@@ -444,34 +431,26 @@ def _render_html(ctx: PipelineContext) -> str:
           <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
         </div>
         <div class="carousel-caption" id="carouselCaption">
+          <span class="caption-series">Serie · Aplicar en tu rol</span>
           <strong id="captionTitle">{escape(str(slides[0].get('titulo','')))}</strong>
-          <span id="captionSubtitle">{escape(str(first_sub))}</span>
-          <button type="button" class="carousel-cta" id="carouselBookCta">Ver guías de este libro</button>
+          <span class="caption-price" id="captionPrice">{escape(precio_display)}</span>
         </div>
       </div>
     </div>
   </section>
 {lifestyle_html}
 
-  <div class="trust-badges">{trust_html}</div>
-
   <section id="guias-por-rol">
-    <h2>Catálogo</h2>
-    <p class="section-lead">{escape(c.get('guias_lead', cat.get('guias_lead', 'Elige tu profesión.')))}</p>
-    <div class="filters-row role-filters" id="roleFilters">{role_chips}</div>
-    <div class="filters-row book-filters" id="bookFilters">{book_chips}</div>
-    <div class="grid" id="guiasDisponibles">{guias_disponibles or '<p class="empty-state is-visible" id="emptyDisponibles">Ninguna guía disponible con estos filtros.</p>'}</div>
-    {soon_block}
-    <p class="empty-state" id="emptyAll">No hay guías con esta combinación. Prueba otro rol o libro.</p>
+    <h2>{escape(cat.get('guias_title', c.get('guias_title', 'Más vendidas')))}</h2>
+    <div class="grid grid-mas-vendidas" id="guiasDisponibles">{mas_vendidas_html}</div>
   </section>
 
-  <section id="incluye">
-    <h2>{escape(c.get('benefits_title', cat.get('benefits_title','Qué incluye cada guía')))}</h2>
-    <div class="incluye-box">
-      <h3 id="incluyePlanTitulo">{escape(cat.get('plan_titulo','Estructura del plan · 10 semanas'))}</h3>
-      <p class="incluye-intro" id="incluyeIntro">{escape(cat.get('plan_intro_default','Todas las guías siguen la misma estructura.'))}</p>
-      <p class="incluye-ejemplo" id="incluyeEjemplo" hidden></p>
-      <ul>{incluye_html}</ul>
+  <section id="nosotros" class="about">
+    <div class="wrap">
+      <h2>{escape(cat.get('about_title', 'Inspiradas en tu trabajo real'))}</h2>
+      <p>{escape(cat.get('about_text', ''))}</p>
+      {f'<p class="about-tagline">{escape(about_tagline)}</p>' if about_tagline else ''}
+      <a class="btn btn-outline" href="#guias-por-rol">Ver colección</a>
     </div>
   </section>
 
@@ -480,40 +459,26 @@ def _render_html(ctx: PipelineContext) -> str:
     <div class="reviews">{reviews_html}</div>
   </section>
 
-  <section id="faq">
-    <h2>Preguntas frecuentes</h2>
-    <div class="faq">{faq_html}</div>
-  </section>
-
   <div class="newsletter wrap">
     <h2>10% en tu primera guía</h2>
     <p>Suscríbete y recibe el descuento en tu primer PDF.</p>
     <form class="newsletter-form" action="#" onsubmit="return false;">
-      <input type="email" placeholder="tu@email.com" aria-label="Email"/>
-      <button type="submit" class="btn">Quiero el 10%</button>
+      <input type="email" placeholder="Tu email" aria-label="Email"/>
+      <button type="submit" class="btn">Suscribirme</button>
     </form>
-    <p class="newsletter-micro">{escape(ux.get('newsletter_microcopy',''))}</p>
   </div>
 
-  <div class="sticky-cta" id="stickyCta">
-    <div class="wrap">
-      <p><strong>Desde {escape(precio_display)}</strong> · PDF al instante</p>
-      <a class="btn" href="#guias-por-rol">Ver guías</a>
-    </div>
-  </div>
-
-  <footer><p><strong>{escape(m.get('marca', 'Vértice Pro'))}</strong> · {escape(m.get('tagline', 'Aplicar en tu rol'))} · {escape(m.get('descripcion_corta', ''))}</p><p>{escape(c.get('footer_legal',''))}</p></footer>
+  <footer>
+    <p>{escape(c.get('footer_legal','Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.'))}</p>
+    <p>© {escape(m.get('marca', 'Vértice Pro'))}</p>
+  </footer>
   <script>
-  const ROLES_DATA = {roles_json};
-  const INCLUYE_DEFAULT = {json.dumps(cat.get('plan_intro_default',''), ensure_ascii=False)};
-  const INCLUYE_ROL_PREFIX = {json.dumps(cat.get('plan_intro_rol',''), ensure_ascii=False)};
 (function() {{
   const root = document.getElementById('heroCarousel');
   if (!root) return;
   const slides = root.querySelectorAll('.carousel-slide');
   const dots = document.querySelectorAll('.carousel-dot');
   const titleEl = document.getElementById('captionTitle');
-  const priceEl = document.getElementById('captionSubtitle');
   let idx = 0;
   let timer;
   let touchX = 0;
@@ -524,15 +489,13 @@ def _render_html(ctx: PipelineContext) -> str:
     dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
     const s = slides[idx];
     if (titleEl) titleEl.textContent = s.dataset.title || '';
-    if (priceEl) priceEl.textContent = s.dataset.subtitle || '';
-    root.dataset.activeSlug = s.dataset.slug || '';
   }}
 
   function next() {{ show(idx + 1); }}
   function prev() {{ show(idx - 1); }}
   function resetTimer() {{
     clearInterval(timer);
-    timer = setInterval(next, 4500);
+    timer = setInterval(next, 5000);
   }}
 
   document.getElementById('carouselNext')?.addEventListener('click', () => {{ next(); resetTimer(); }});
@@ -546,80 +509,6 @@ def _render_html(ctx: PipelineContext) -> str:
   }}, {{passive:true}});
 
   resetTimer();
-  if (slides[0]) root.dataset.activeSlug = slides[0].dataset.slug || '';
-}})();
-(function() {{
-  const roleChips = document.querySelectorAll('.role-chip');
-  const bookChips = document.querySelectorAll('.book-chip');
-  const cards = document.querySelectorAll('.guia-card');
-  const emptyAll = document.getElementById('emptyAll');
-  let activeRol = 'todos';
-  let activeLibro = 'todos';
-
-  function applyFilters() {{
-    let visible = 0;
-    cards.forEach(card => {{
-      const matchRol = activeRol === 'todos' || card.dataset.rolCard === activeRol;
-      const matchLibro = activeLibro === 'todos' || card.dataset.libroCard === activeLibro;
-      const show = matchRol && matchLibro;
-      card.hidden = !show;
-      if (show) visible++;
-    }});
-    if (emptyAll) emptyAll.classList.toggle('is-visible', visible === 0);
-    updateIncluye(activeRol);
-  }}
-
-  function updateIncluye(rol) {{
-    const intro = document.getElementById('incluyeIntro');
-    const ej = document.getElementById('incluyeEjemplo');
-    if (!intro || !ej) return;
-    if (rol === 'todos' || !ROLES_DATA[rol]) {{
-      intro.textContent = INCLUYE_DEFAULT;
-      ej.hidden = true;
-      ej.textContent = '';
-      return;
-    }}
-    const data = ROLES_DATA[rol];
-    intro.textContent = INCLUYE_ROL_PREFIX + ' ' + (data.nombre || rol) + '.';
-    ej.textContent = data.ejemplo || '';
-    ej.hidden = !data.ejemplo;
-  }}
-
-  roleChips.forEach(btn => btn.addEventListener('click', () => {{
-    activeRol = btn.dataset.rol;
-    roleChips.forEach(c => c.classList.toggle('is-active', c === btn));
-    applyFilters();
-    if (activeRol !== 'todos') {{
-      document.getElementById('guiasDisponibles')?.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
-    }}
-  }}));
-
-  bookChips.forEach(btn => btn.addEventListener('click', () => {{
-    activeLibro = btn.dataset.libro;
-    bookChips.forEach(c => c.classList.toggle('is-active', c === btn));
-    applyFilters();
-  }}));
-
-  document.getElementById('carouselBookCta')?.addEventListener('click', () => {{
-    const slug = document.getElementById('heroCarousel')?.dataset.activeSlug;
-    if (slug) {{
-      activeLibro = slug;
-      bookChips.forEach(c => c.classList.toggle('is-active', c.dataset.libro === slug));
-      applyFilters();
-    }}
-    document.getElementById('guias-por-rol')?.scrollIntoView({{ behavior: 'smooth' }});
-  }});
-
-  applyFilters();
-}})();
-(function() {{
-  const bar = document.getElementById('stickyCta');
-  const hero = document.querySelector('.hero');
-  if (!bar || !hero) return;
-  const obs = new IntersectionObserver(([e]) => {{
-    bar.classList.toggle('is-visible', !e.isIntersecting);
-  }}, {{ threshold: 0.1 }});
-  obs.observe(hero);
 }})();
   </script>
 </body>
