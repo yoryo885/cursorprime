@@ -39,6 +39,7 @@
     {
       "slug": "pareto",
       "titulo": "El principio de Pareto",
+      "titulo_corto": "Pareto",
       "autor": "Antoine Delers",
       "tagline": "Prioriza el 20% que genera el 80% del impacto",
       "disponible": true
@@ -46,6 +47,7 @@
     {
       "slug": "habitos",
       "titulo": "Hábitos atómicos",
+      "titulo_corto": "Hábitos",
       "autor": "James Clear",
       "tagline": "Pequeños cambios, resultados notables",
       "disponible": false
@@ -53,6 +55,7 @@
     {
       "slug": "kahneman",
       "titulo": "Pensar rápido, pensar despacio",
+      "titulo_corto": "Kahneman",
       "autor": "Daniel Kahneman",
       "tagline": "Decisiones más claras en tu trabajo",
       "disponible": false
@@ -141,6 +144,44 @@
     "og_image": false,
     "favicon": false
   },
-  "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · catálogo libro×rol",
-  "modo_imagen": "mock"
+  "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · catálogo libro×rol · UX benchmark nicho",
+  "modo_imagen": "mock",
+  "ux_landing": {
+    "trust_badges": [
+      { "icon": "pdf", "label": "PDF descargable", "hint": "Tuyo para siempre" },
+      { "icon": "bolt", "label": "Descarga al instante", "hint": "Sin esperas" },
+      { "icon": "calendar", "label": "Plan 10 semanas", "hint": "Una acción por semana" },
+      { "icon": "role", "label": "Adaptado a tu rol", "hint": "No genérico" }
+    ],
+    "hero_bullets": [
+      "Libros famosos traducidos a acciones de tu oficio",
+      "Compra única — sin suscripción mensual",
+      "PDF listo para leer en móvil o imprimir"
+    ],
+    "incluye_semanas": [
+      "Semana 1–2: Diagnóstico rápido de tu semana laboral",
+      "Semana 3–5: Aplicar el 80/20 a casos reales",
+      "Semana 6–8: Rutinas que sostienen el cambio",
+      "Semana 9–10: Medir impacto y ajustar"
+    ],
+    "faq": [
+      {
+        "q": "¿Es una suscripción como Blinkist o Shortform?",
+        "a": "No. Pagas una vez por guía y el PDF es tuyo. Sin cuota mensual ni renovación automática."
+      },
+      {
+        "q": "¿Cómo recibo el PDF?",
+        "a": "Tras el pago recibes un enlace de descarga inmediato por email. También disponible en tu cuenta de Shopify."
+      },
+      {
+        "q": "¿En qué se diferencia de un resumen genérico?",
+        "a": "Cada guía traduce las ideas del libro a situaciones concretas de tu profesión — casos, lenguaje y plan de 10 semanas incluidos."
+      },
+      {
+        "q": "¿Está afiliada al autor original?",
+        "a": "No. Son resúmenes independientes para aplicar ideas en tu trabajo. No sustituyen el libro completo."
+      }
+    ],
+    "newsletter_microcopy": "Solo tu descuento · Sin spam · Cancela cuando quieras"
+  }
 }

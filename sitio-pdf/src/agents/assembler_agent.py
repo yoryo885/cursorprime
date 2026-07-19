@@ -26,6 +26,10 @@ def _catalogo_guias(ctx: PipelineContext) -> list[dict]:
     return data.get("catalogo_guias") or ctx.marca.get("catalogo_guias") or []
 
 
+def _ux(ctx: PipelineContext) -> dict:
+    return ctx.marca.get("ux_landing") or {}
+
+
 def _guia_src(assets: dict, guia: dict, fallback: str) -> str:
     slug = guia.get("slug", "")
     return assets.get(f"portada_{slug}") or fallback
@@ -43,15 +47,19 @@ def _render_html(ctx: PipelineContext) -> str:
     slides = _carousel_slides(ctx)
     catalogo = _catalogo_guias(ctx)
     roles = m.get("roles") or []
+    serie = m.get("serie_libros") or []
+    ux = _ux(ctx)
+    benefits = c.get("benefits") or []
 
     slides_html = ""
     dots_html = ""
     for i, s in enumerate(slides):
         active = " is-active" if i == 0 else ""
         soon = "" if s.get("disponible", True) else " is-soon"
+        slug = s.get("slug", "")
         sub = s.get("subtitulo") or s.get("autor") or "Serie Aplicar en tu rol"
         slides_html += f"""
-        <figure class="carousel-slide{active}{soon}" data-index="{i}" data-title="{escape(str(s.get('titulo','')))}" data-subtitle="{escape(str(sub))}">
+        <figure class="carousel-slide{active}{soon}" data-index="{i}" data-slug="{escape(str(slug))}" data-title="{escape(str(s.get('titulo','')))}" data-subtitle="{escape(str(sub))}">
           <img src="{escape(str(s.get('src', portada)))}" alt="{escape(str(s.get('titulo','')))}" draggable="false"/>
         </figure>"""
         dots_html += f'<button type="button" class="carousel-dot{" is-active" if i == 0 else ""}" data-index="{i}" aria-label="Libro {i+1}"></button>'
@@ -59,22 +67,47 @@ def _render_html(ctx: PipelineContext) -> str:
     carousel_json = json.dumps(slides, ensure_ascii=False).replace("</", "<\\/")
     first_sub = slides[0].get("subtitulo") or slides[0].get("autor") or "Elige tu rol abajo" if slides else ""
 
-    role_chips = '<button type="button" class="role-chip is-active" data-rol="todos">Todos</button>'
+    hero_bullets = ux.get("hero_bullets") or [
+        "Libros famosos adaptados a tu oficio",
+        "Compra única, sin suscripción",
+        "PDF listo al instante",
+    ]
+    hero_bullets_html = "".join(f"<li>{escape(b)}</li>" for b in hero_bullets[:4])
+
+    trust_badges = ux.get("trust_badges") or []
+    trust_html = ""
+    for b in trust_badges:
+        trust_html += f"""<div class="trust-badge">
+          <span class="trust-icon" aria-hidden="true">{escape(b.get('icon','•')[:4])}</span>
+          <strong>{escape(b.get('label',''))}</strong>
+          <span>{escape(b.get('hint',''))}</span>
+        </div>"""
+
+    role_chips = '<button type="button" class="role-chip is-active" data-rol="todos">Todos los roles</button>'
     for r in roles:
         role_chips += f'<button type="button" class="role-chip" data-rol="{escape(r.get("slug",""))}">{escape(r.get("nombre",""))}</button>'
 
+    book_chips = '<button type="button" class="book-chip is-active" data-libro="todos">Todos los libros</button>'
+    for s in serie:
+        chip_label = s.get("titulo_corto") or s.get("titulo", "") or s.get("slug", "")
+        book_chips += f'<button type="button" class="book-chip" data-libro="{escape(s.get("slug",""))}">{escape(chip_label)}</button>'
+
     role_names = {r.get("slug", ""): r.get("nombre", "") for r in roles}
-    guias_html = ""
+    guias_disponibles = ""
+    guias_proximamente = ""
     for g in catalogo:
         gsrc = _guia_src(a, g, portada)
         rol = g.get("rol", "")
+        libro = g.get("libro", "")
         rol_label = role_names.get(rol, rol.replace("-", " ").title())
         dis = g.get("disponible", True)
         opacity = "" if dis else ' style="opacity:0.55"'
-        btn = '<a class="btn btn-block" href="#">Añadir al carrito</a>' if dis else '<span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>'
+        btn = '<a class="btn btn-block" href="#">Comprar PDF</a>' if dis else '<span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>'
+        badge = '<span class="card-badge">Disponible</span>' if dis else ""
         img = f'<img class="card-img" src="{escape(gsrc)}" alt="{escape(g.get("titulo",""))}"/>' if dis else '<div class="card-soon">Próximamente</div>'
-        guias_html += f"""
-      <article class="card guia-card" data-rol-card="{escape(rol)}"{opacity}>
+        card = f"""
+      <article class="card guia-card" data-rol-card="{escape(rol)}" data-libro-card="{escape(libro)}"{opacity}>
+        {badge}
         {img}
         <div class="card-body">
           <p class="card-brand">Vértice Pro · PDF · {escape(rol_label)}</p>
@@ -83,6 +116,28 @@ def _render_html(ctx: PipelineContext) -> str:
           {btn}
         </div>
       </article>"""
+        if dis:
+            guias_disponibles += card
+        else:
+            guias_proximamente += card
+
+    incluye = ux.get("incluye_semanas") or []
+    incluye_html = "".join(f"<li>{escape(x)}</li>" for x in incluye[:6])
+
+    benefits_html = ""
+    for b in benefits[:4]:
+        benefits_html += f"""<article class="benefit-card">
+          <h3>{escape(b.get('title',''))}</h3>
+          <p>{escape(b.get('text',''))}</p>
+        </article>"""
+
+    faq_items = ux.get("faq") or []
+    faq_html = ""
+    for i, item in enumerate(faq_items):
+        faq_html += f"""<details class="faq-item"{" open" if i == 0 else ""}>
+          <summary>{escape(item.get('q',''))}</summary>
+          <p>{escape(item.get('a',''))}</p>
+        </details>"""
 
     reviews = [
         ("María", "Me ayudó a priorizar casos en el gabinete."),
@@ -128,7 +183,13 @@ def _render_html(ctx: PipelineContext) -> str:
     .hero-copy {{ max-width:480px; }}
     .hero-label {{ font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
     .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,5vw,2.75rem); font-weight:400; line-height:1.15; margin-bottom:16px; letter-spacing:0.02em; }}
-    .hero-desc {{ color:var(--muted); font-size:0.95rem; margin-bottom:24px; max-width:36ch; }}
+    .hero-desc {{ color:var(--muted); font-size:0.95rem; margin-bottom:16px; max-width:36ch; }}
+    .hero-bullets {{ list-style:none; margin:0 0 24px; padding:0; text-align:left; }}
+    .hero-bullets li {{
+      position:relative; padding-left:1.35em; margin-bottom:8px; font-size:0.88rem; color:var(--text);
+    }}
+    .hero-bullets li::before {{ content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:600; }}
+    .hero-micro {{ font-size:0.72rem; color:var(--muted); margin-top:10px; }}
     .hero-visual {{ display:flex; flex-direction:column; align-items:center; gap:16px; }}
     .hero-carousel {{ position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }}
     .carousel-track {{ position:relative; width:100%; height:100%; }}
@@ -166,6 +227,18 @@ def _render_html(ctx: PipelineContext) -> str:
     .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--text); margin-bottom:4px; }}
     .carousel-caption span {{ font-size:0.85rem; color:var(--muted); }}
     .carousel-badge {{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }}
+    .carousel-cta {{ margin-top:10px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; padding:0 0 2px; }}
+    .carousel-cta:hover {{ color:var(--gold); }}
+
+    .trust-badges {{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));
+      gap:12px; max-width:var(--max); margin:0 auto; padding:20px var(--pad);
+      background:var(--surface); border-bottom:1px solid var(--border);
+    }}
+    .trust-badge {{ text-align:center; padding:12px 8px; border:1px solid var(--border); background:var(--bg); }}
+    .trust-badge strong {{ display:block; font-size:0.72rem; letter-spacing:0.04em; margin-bottom:4px; }}
+    .trust-badge span {{ font-size:0.68rem; color:var(--muted); }}
+    .trust-icon {{ display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }}
 
     .btn {{ display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px; background:var(--charcoal); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--charcoal); cursor:pointer; }}
     .btn-outline {{ background:transparent; color:var(--charcoal); }}
@@ -178,7 +251,12 @@ def _render_html(ctx: PipelineContext) -> str:
     section h2 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); font-weight:400; text-align:center; letter-spacing:0.04em; margin-bottom:clamp(24px,5vw,36px); }}
 
     .grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)); gap:24px; max-width:var(--max); margin:0 auto; }}
-    .card {{ background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; }}
+    .card {{ background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; transition:transform 0.2s ease, box-shadow 0.2s ease; position:relative; }}
+    .card:hover {{ transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.06); }}
+    .card-badge {{
+      position:absolute; top:12px; left:12px; z-index:2; background:var(--charcoal); color:#fff;
+      font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 8px;
+    }}
     .card-img {{ aspect-ratio:3/4; object-fit:contain; background:var(--cream); padding:16px; width:100%; }}
     .card-body {{ padding:20px; text-align:center; flex:1; display:flex; flex-direction:column; }}
     .card-brand {{ font-size:0.62rem; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }}
@@ -186,15 +264,58 @@ def _render_html(ctx: PipelineContext) -> str:
     .price {{ font-size:1.05rem; font-weight:600; margin-bottom:16px; }}
     .card-soon {{ aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }}
 
-    .role-filters {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 28px; padding:0 var(--pad); }}
-    .role-chip {{
+    .role-filters, .book-filters {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 16px; padding:0 var(--pad); }}
+    .book-filters {{ margin-bottom:28px; }}
+    .role-chip, .book-chip {{
       padding:10px 18px; border:1px solid var(--border); background:var(--surface);
       font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
       color:var(--muted); border-radius:999px;
     }}
-    .role-chip.is-active {{ background:var(--charcoal); color:#fff; border-color:var(--charcoal); }}
+    .role-chip.is-active, .book-chip.is-active {{ background:var(--charcoal); color:#fff; border-color:var(--charcoal); }}
+    .filter-label {{ text-align:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }}
+    .grid-heading {{ font-family:'Cormorant Garamond',serif; font-size:1.05rem; text-align:center; margin:8px auto 20px; color:var(--muted); letter-spacing:0.06em; }}
+    .grid-heading--soon {{ opacity:0.75; }}
     .guia-card[hidden] {{ display:none !important; }}
-    .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:42ch; margin:-12px auto 28px; padding:0 var(--pad); }}
+    .empty-state {{ text-align:center; color:var(--muted); font-size:0.9rem; padding:24px; grid-column:1/-1; display:none; }}
+    .empty-state.is-visible {{ display:block; }}
+    .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:46ch; margin:-12px auto 28px; padding:0 var(--pad); }}
+
+    .benefits-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:16px; max-width:var(--max); margin:0 auto 32px; }}
+    .benefit-card {{ background:var(--surface); border:1px solid var(--border); padding:20px; }}
+    .benefit-card h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-bottom:8px; font-weight:500; }}
+    .benefit-card p {{ font-size:0.86rem; color:var(--muted); }}
+
+    .incluye-box {{
+      max-width:640px; margin:0 auto; background:var(--surface); border:1px solid var(--border);
+      padding:clamp(20px,4vw,32px); text-align:left;
+    }}
+    .incluye-box h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.15rem; margin-bottom:12px; font-weight:500; }}
+    .incluye-box ul {{ margin:0; padding-left:1.2em; color:var(--muted); font-size:0.88rem; }}
+    .incluye-box li {{ margin-bottom:8px; }}
+
+    .faq {{ max-width:720px; margin:0 auto; }}
+    .faq-item {{ border:1px solid var(--border); background:var(--surface); margin-bottom:10px; }}
+    .faq-item summary {{ cursor:pointer; padding:16px 18px; font-size:0.9rem; font-weight:500; list-style:none; }}
+    .faq-item summary::-webkit-details-marker {{ display:none; }}
+    .faq-item p {{ padding:0 18px 16px; font-size:0.86rem; color:var(--muted); }}
+
+    .sticky-cta {{
+      position:fixed; bottom:0; left:0; right:0; z-index:60; background:var(--surface);
+      border-top:1px solid var(--border); padding:10px var(--pad); display:none;
+      transform:translateY(100%); transition:transform 0.25s ease;
+      box-shadow:0 -8px 24px rgba(0,0,0,0.06);
+    }}
+    .sticky-cta.is-visible {{ display:block; transform:translateY(0); }}
+    .sticky-cta .wrap {{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0; }}
+    .sticky-cta p {{ font-size:0.78rem; color:var(--muted); margin:0; }}
+    .sticky-cta .btn {{ min-width:auto; padding:0 18px; min-height:44px; }}
+
+    .newsletter-form {{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:420px; margin:0 auto; }}
+    .newsletter-form input {{
+      flex:1 1 200px; min-height:48px; border:1px solid var(--border); padding:0 14px;
+      font:inherit; background:var(--surface);
+    }}
+    .newsletter-micro {{ font-size:0.72rem; color:var(--muted); margin-top:12px; }}
 
     .story {{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:var(--max); margin:0 auto; background:var(--surface); border:1px solid var(--border); padding:clamp(24px,5vw,48px); }}
     .story img {{ width:min(100%,240px); margin:0 auto; }}
@@ -215,11 +336,13 @@ def _render_html(ctx: PipelineContext) -> str:
       .hero .wrap {{ grid-template-columns:1fr; text-align:center; }}
       .hero-copy {{ max-width:none; margin:0 auto; }}
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
+      .hero-bullets {{ max-width:28ch; margin-left:auto; margin-right:auto; }}
       .hero-visual {{ order:-1; width:100%; }}
       .hero-carousel {{ width:min(85vw,320px); height:clamp(280px,55vw,380px); margin:0 auto; }}
       .story {{ grid-template-columns:1fr; text-align:center; }}
       .story h2 {{ text-align:center; }}
       .story img {{ width:min(50vw,200px); }}
+      body {{ padding-bottom:72px; }}
     }}
   </style>
 </head>
@@ -231,7 +354,8 @@ def _render_html(ctx: PipelineContext) -> str:
       <div class="logo">{escape(name)}</div>
       <nav>
         <a href="#guias-por-rol">Guías</a>
-        <a href="#historia">Nosotros</a>
+        <a href="#incluye">Qué incluye</a>
+        <a href="#faq">FAQ</a>
         <a href="#opiniones">Opiniones</a>
       </nav>
     </div>
@@ -243,7 +367,9 @@ def _render_html(ctx: PipelineContext) -> str:
         <p class="hero-label">Nuevo · Serie Aplicar en tu rol</p>
         <h1>{escape(c.get('hero_title',''))}</h1>
         <p class="hero-desc">{escape(c.get('hero_subtitle',''))}</p>
+        <ul class="hero-bullets">{hero_bullets_html}</ul>
         <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta','Ver colección'))}</a>
+        <p class="hero-micro">Pago único · Sin suscripción · Descarga inmediata</p>
       </div>
       <div class="hero-visual">
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
@@ -258,18 +384,37 @@ def _render_html(ctx: PipelineContext) -> str:
           <span class="carousel-badge">Libros de la serie</span>
           <strong id="captionTitle">{escape(str(slides[0].get('titulo','')))}</strong>
           <span id="captionSubtitle">{escape(str(first_sub))}</span>
+          <button type="button" class="carousel-cta" id="carouselBookCta">Ver guías de este libro</button>
         </div>
       </div>
     </div>
   </section>
 
+  <div class="trust-badges">{trust_html}</div>
+
   <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
   <section id="guias-por-rol">
     <h2>Guías para tu rol</h2>
-    <p class="section-lead">Cada libro famoso adaptado a tu oficio. Elige tu profesión y encuentra tu PDF.</p>
+    <p class="section-lead">Como Blinkist o Shortform, pero en PDF y adaptado a tu oficio — sin cuota mensual.</p>
+    <p class="filter-label">1 · Elige tu profesión</p>
     <div class="role-filters" id="roleFilters">{role_chips}</div>
-    <div class="grid" id="guiasGrid">{guias_html}</div>
+    <p class="filter-label">2 · Opcional: filtra por libro</p>
+    <div class="book-filters" id="bookFilters">{book_chips}</div>
+    <p class="grid-heading">Disponibles ahora</p>
+    <div class="grid" id="guiasDisponibles">{guias_disponibles or '<p class="empty-state is-visible" id="emptyDisponibles">Ninguna guía disponible con estos filtros.</p>'}</div>
+    <p class="grid-heading grid-heading--soon">Próximamente</p>
+    <div class="grid" id="guiasProximamente">{guias_proximamente}</div>
+    <p class="empty-state" id="emptyAll">No hay guías con esta combinación. Prueba otro rol o libro.</p>
+  </section>
+
+  <section id="incluye">
+    <h2>{escape(c.get('benefits_title','Qué incluye cada guía'))}</h2>
+    <div class="benefits-grid">{benefits_html}</div>
+    <div class="incluye-box">
+      <h3>Plan de 10 semanas · {escape(p.get('titulo','Guía piloto'))}</h3>
+      <ul>{incluye_html}</ul>
+    </div>
   </section>
 
   <section id="bestsellers">
@@ -304,10 +449,26 @@ def _render_html(ctx: PipelineContext) -> str:
     <div class="reviews">{reviews_html}</div>
   </section>
 
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">{faq_html}</div>
+  </section>
+
   <div class="newsletter wrap">
     <h2>10% en tu primera guía</h2>
     <p>Suscríbete y recibe el descuento en tu primer PDF.</p>
-    <a class="btn" href="#">Suscribirme</a>
+    <form class="newsletter-form" action="#" onsubmit="return false;">
+      <input type="email" placeholder="tu@email.com" aria-label="Email"/>
+      <button type="submit" class="btn">Quiero el 10%</button>
+    </form>
+    <p class="newsletter-micro">{escape(ux.get('newsletter_microcopy',''))}</p>
+  </div>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div class="wrap">
+      <p><strong>{escape(p.get('precio','$4.99'))}</strong> · PDF al instante</p>
+      <a class="btn" href="#guias-por-rol">Ver guías</a>
+    </div>
   </div>
 
   <footer><p>{escape(c.get('footer_legal',''))}</p></footer>
@@ -330,6 +491,7 @@ def _render_html(ctx: PipelineContext) -> str:
     const s = slides[idx];
     if (titleEl) titleEl.textContent = s.dataset.title || '';
     if (priceEl) priceEl.textContent = s.dataset.subtitle || '';
+    root.dataset.activeSlug = s.dataset.slug || '';
   }}
 
   function next() {{ show(idx + 1); }}
@@ -350,17 +512,60 @@ def _render_html(ctx: PipelineContext) -> str:
   }}, {{passive:true}});
 
   resetTimer();
+  if (slides[0]) root.dataset.activeSlug = slides[0].dataset.slug || '';
 }})();
 (function() {{
-  const chips = document.querySelectorAll('.role-chip');
+  const roleChips = document.querySelectorAll('.role-chip');
+  const bookChips = document.querySelectorAll('.book-chip');
   const cards = document.querySelectorAll('.guia-card');
-  chips.forEach(btn => btn.addEventListener('click', () => {{
-    const rol = btn.dataset.rol;
-    chips.forEach(c => c.classList.toggle('is-active', c === btn));
+  const emptyAll = document.getElementById('emptyAll');
+  let activeRol = 'todos';
+  let activeLibro = 'todos';
+
+  function applyFilters() {{
+    let visible = 0;
     cards.forEach(card => {{
-      card.hidden = rol !== 'todos' && card.dataset.rolCard !== rol;
+      const matchRol = activeRol === 'todos' || card.dataset.rolCard === activeRol;
+      const matchLibro = activeLibro === 'todos' || card.dataset.libroCard === activeLibro;
+      const show = matchRol && matchLibro;
+      card.hidden = !show;
+      if (show) visible++;
     }});
+    if (emptyAll) emptyAll.classList.toggle('is-visible', visible === 0);
+  }}
+
+  roleChips.forEach(btn => btn.addEventListener('click', () => {{
+    activeRol = btn.dataset.rol;
+    roleChips.forEach(c => c.classList.toggle('is-active', c === btn));
+    applyFilters();
   }}));
+
+  bookChips.forEach(btn => btn.addEventListener('click', () => {{
+    activeLibro = btn.dataset.libro;
+    bookChips.forEach(c => c.classList.toggle('is-active', c === btn));
+    applyFilters();
+  }}));
+
+  document.getElementById('carouselBookCta')?.addEventListener('click', () => {{
+    const slug = document.getElementById('heroCarousel')?.dataset.activeSlug;
+    if (slug) {{
+      activeLibro = slug;
+      bookChips.forEach(c => c.classList.toggle('is-active', c.dataset.libro === slug));
+      applyFilters();
+    }}
+    document.getElementById('guias-por-rol')?.scrollIntoView({{ behavior: 'smooth' }});
+  }});
+
+  applyFilters();
+}})();
+(function() {{
+  const bar = document.getElementById('stickyCta');
+  const hero = document.querySelector('.hero');
+  if (!bar || !hero) return;
+  const obs = new IntersectionObserver(([e]) => {{
+    bar.classList.toggle('is-visible', !e.isIntersecting);
+  }}, {{ threshold: 0.1 }});
+  obs.observe(hero);
 }})();
   </script>
 </body>
