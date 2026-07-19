@@ -67,6 +67,16 @@ Más tecnología ahora no ayuda tanto. Cobrar y probar con un negocio real sí.
 
 ---
 
+## Prioridad del usuario (actual)
+
+1. **Terminar la landing Shopify** (aprender + dejar lista para vender)  
+2. **Videos después** — con el sistema de creador de contenido, para traer gente  
+3. El PDF libro×rol **sí se reutiliza**: otro rol o otro libro con el mismo pipeline  
+
+Sin videos la venta es más lenta, no imposible: se puede empezar con posts, WhatsApp, o gente conocida mientras llega el sistema de video.
+
+---
+
 ## Una decisión
 
-¿Empezamos por **conseguir el primer cobro** (agencia), por **vender el primer PDF con rol**, o por **WhatsApp en vivo**?
+¿Seguimos con **terminar la landing Shopify** (siguiente paso concreto), o quieres el checklist de qué falta en la landing?

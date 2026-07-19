@@ -6,8 +6,8 @@
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 3,
-    "ultima_mejora": "potencial PDF con rol (Vértice Pro / libro×profesión)",
+    "version": 4,
+    "ultima_mejora": "prioridad: terminar landing Shopify; videos después; PDF reutilizable libro×rol",
     "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
     "resumen_simple": "meta/radar-mejoras-resumen-simple.md"
   }
