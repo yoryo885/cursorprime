@@ -1,0 +1,79 @@
+{
+  "generado_at": "2026-07-19T18:45:19.487057+00:00",
+  "tema": "mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks",
+  "total": 6,
+  "ideas": [
+    {
+      "id": "idea-af825bba",
+      "categoria": "visual",
+      "titulo": "Pack promocional automático post-investigación",
+      "problema": "Tras analizar un nicho no hay assets visuales listos para validar demanda.",
+      "propuesta": "Conectar análisis → creador de contenido (3 PNG + 1 GIF del nicho detectado).",
+      "proyecto_afectado": "creador de contenido",
+      "confidence": 0.7,
+      "estado": "pendiente_aprobacion",
+      "origen": "mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks",
+      "creado_at": "2026-07-19T18:45:19.487017+00:00"
+    },
+    {
+      "id": "idea-d8ebd9f7",
+      "categoria": "informacion",
+      "titulo": "Radar de nichos KDP desde YouTube semanal",
+      "problema": "La investigación es manual y no se repite en cadencia.",
+      "propuesta": "Pipeline investigación programable: queries fijas + informe JSON cada semana.",
+      "proyecto_afectado": "lluvia-de-ideas",
+      "confidence": 0.75,
+      "estado": "pendiente_aprobacion",
+      "origen": "mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks",
+      "creado_at": "2026-07-19T18:45:19.487034+00:00"
+    },
+    {
+      "id": "idea-9fe9b12d",
+      "categoria": "nuevo_proyecto",
+      "titulo": "Pipeline investigación → producto para: mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks",
+      "problema": "Oportunidad detectada en investigación sobre mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks.",
+      "propuesta": "Varios resultados muestran flujo manual replicable por agentes.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.65,
+      "estado": "pendiente_aprobacion",
+      "origen": "analisis",
+      "creado_at": "2026-07-19T18:45:19.487040+00:00"
+    },
+    {
+      "id": "idea-9d5ac470",
+      "categoria": "nuevo_proyecto",
+      "titulo": "Empaquetar pipeline como producto vendible",
+      "problema": "Oportunidad detectada en investigación sobre mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks.",
+      "propuesta": "Foros y videos mencionan vender sistemas además del ebook.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.6,
+      "estado": "pendiente_aprobacion",
+      "origen": "analisis",
+      "creado_at": "2026-07-19T18:45:19.487045+00:00"
+    },
+    {
+      "id": "idea-3ca4df45",
+      "categoria": "marketing",
+      "titulo": "Landing «vende tu pipeline» para primer sistema empaquetado",
+      "problema": "No hay página que venda el sistema una vez validado el pipeline.",
+      "propuesta": "Copy + demo video corto del pipeline funcionando; precio fase beta.",
+      "proyecto_afectado": "cursorprime",
+      "confidence": 0.65,
+      "estado": "pendiente_aprobacion",
+      "origen": "mejores landing pages ecommerce Shopify conversion 2026 high revenue digital products PDF what makes a landing page sell CRO benchmarks",
+      "creado_at": "2026-07-19T18:45:19.487048+00:00"
+    },
+    {
+      "id": "idea-e228fc63",
+      "categoria": "meta",
+      "titulo": "Enlace investigación → evaluar-idea → construir",
+      "problema": "Las ideas no fluyen solas hacia ideas de proyectos.",
+      "propuesta": "Al aprobar idea en cola, generar borrador JSON en ideas de proyectos automáticamente.",
+      "proyecto_afectado": "ideas de proyectos",
+      "confidence": 0.8,
+      "estado": "pendiente_aprobacion",
+      "origen": "direccion",
+      "creado_at": "2026-07-19T18:45:19.487052+00:00"
+    }
+  ]
+}

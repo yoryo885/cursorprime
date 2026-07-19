@@ -1,14 +1,14 @@
 {
-  "version": 14,
+  "version": 15,
   "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
     "slug": "mejoras-emprendimientos-sistemas",
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 5,
-    "ultima_mejora": "avance autónomo nocturno landing Shopify",
+    "version": 6,
+    "ultima_mejora": "investigación mercado landings que venden 2026",
     "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
-    "resumen_simple": "meta/radar-mejoras-resumen-simple.md"
+    "informe_landings": "meta/investigacion-landings-que-venden-2026.md"
   }
 }
