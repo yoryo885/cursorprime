@@ -236,9 +236,6 @@ def _render_html(ctx: PipelineContext) -> str:
       padding:0;
     }}
     .hero-visual-label {{ display:none; }}
-    .hero-lifestyle {{ position:relative; margin:0; border-bottom:1px solid var(--border); overflow:hidden; }}
-    .hero-lifestyle img {{ width:100%; height:clamp(160px,22vw,260px); object-fit:cover; object-position:center 30%; display:block; }}
-    .hero-lifestyle figcaption {{ display:none; }}
     .hero-showcase {{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       width:min(100%,360px); margin:0 auto;
@@ -267,12 +264,12 @@ def _render_html(ctx: PipelineContext) -> str:
       border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1; color:var(--charcoal);
       display:inline-flex; align-items:center; justify-content:center;
     }}
-    .carousel-btn:hover {{ border-color:var(--gold); }}
+    .carousel-btn:hover {{ border-color:var(--charcoal); }}
     .carousel-dots {{ display:flex; gap:8px; }}
     .carousel-dot {{
-      width:8px; height:8px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
+      width:7px; height:7px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
     }}
-    .carousel-dot.is-active {{ background:var(--gold); transform:scale(1.15); }}
+    .carousel-dot.is-active {{ background:var(--charcoal); }}
     .carousel-caption {{ text-align:center; padding-top:8px; }}
     .carousel-caption .caption-series {{ display:block; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }}
     .carousel-caption strong {{ display:block; font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500; color:var(--text); margin-bottom:6px; line-height:1.35; max-width:28ch; margin-left:auto; margin-right:auto; }}
@@ -307,59 +304,6 @@ def _render_html(ctx: PipelineContext) -> str:
     .card h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500; line-height:1.35; margin-bottom:10px; flex:1; }}
     .price {{ font-size:1.05rem; font-weight:600; margin-bottom:16px; }}
     .card-soon {{ aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }}
-
-    .role-filters, .book-filters, .filters-row {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 12px; padding:0 var(--pad); }}
-    .book-filters, .filters-row.book-filters {{ margin-bottom:24px; }}
-    .role-chip, .book-chip {{
-      padding:10px 18px; border:1px solid var(--border); background:var(--surface);
-      font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
-      color:var(--muted); border-radius:999px;
-    }}
-    .role-chip.is-active, .book-chip.is-active {{ background:var(--charcoal); color:#fff; border-color:var(--charcoal); }}
-    .filters-row {{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 12px; padding:0 var(--pad); }}
-    .filters-row.book-filters {{ margin-bottom:24px; }}
-    .guia-card[hidden] {{ display:none !important; }}
-    .empty-state {{ text-align:center; color:var(--muted); font-size:0.9rem; padding:24px; grid-column:1/-1; display:none; }}
-    .empty-state.is-visible {{ display:block; }}
-    .soon-section {{ max-width:var(--max); margin:32px auto 0; padding:0 var(--pad); }}
-    .soon-section summary {{
-      cursor:pointer; text-align:center; font-size:0.78rem; letter-spacing:0.08em;
-      text-transform:uppercase; color:var(--muted); padding:12px; list-style:none;
-    }}
-    .soon-section summary::-webkit-details-marker {{ display:none; }}
-    .soon-section[open] summary {{ margin-bottom:20px; color:var(--text); }}
-    .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:40ch; margin:-12px auto 24px; padding:0 var(--pad); }}
-
-    .incluye-box {{
-      max-width:640px; margin:0 auto; background:var(--surface); border:1px solid var(--border);
-      padding:clamp(20px,4vw,32px); text-align:left;
-    }}
-    .incluye-box h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.15rem; margin-bottom:12px; font-weight:500; }}
-    .incluye-intro {{ font-size:0.88rem; color:var(--muted); margin-bottom:12px; }}
-    .incluye-ejemplo {{
-      font-size:0.9rem; color:var(--text); background:var(--cream); border-left:3px solid var(--gold);
-      padding:12px 14px; margin-bottom:16px;
-    }}
-    .incluye-ejemplo[hidden] {{ display:none !important; }}
-    .incluye-box ul {{ margin:0; padding-left:1.2em; color:var(--muted); font-size:0.88rem; }}
-    .incluye-box li {{ margin-bottom:8px; }}
-
-    .faq {{ max-width:720px; margin:0 auto; }}
-    .faq-item {{ border:1px solid var(--border); background:var(--surface); margin-bottom:10px; }}
-    .faq-item summary {{ cursor:pointer; padding:16px 18px; font-size:0.9rem; font-weight:500; list-style:none; }}
-    .faq-item summary::-webkit-details-marker {{ display:none; }}
-    .faq-item p {{ padding:0 18px 16px; font-size:0.86rem; color:var(--muted); }}
-
-    .sticky-cta {{
-      position:fixed; bottom:0; left:0; right:0; z-index:60; background:var(--surface);
-      border-top:1px solid var(--border); padding:10px var(--pad); display:none;
-      transform:translateY(100%); transition:transform 0.25s ease;
-      box-shadow:0 -8px 24px rgba(0,0,0,0.06);
-    }}
-    .sticky-cta.is-visible {{ display:block; transform:translateY(0); }}
-    .sticky-cta .wrap {{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0; }}
-    .sticky-cta p {{ font-size:0.78rem; color:var(--muted); margin:0; }}
-    .sticky-cta .btn {{ min-width:auto; padding:0 18px; min-height:44px; }}
 
     .newsletter-form {{ display:flex; flex-wrap:wrap; gap:0; justify-content:center; max-width:440px; margin:0 auto; }}
     .newsletter-form input {{
