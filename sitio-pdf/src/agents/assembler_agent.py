@@ -70,12 +70,8 @@ def _render_html(ctx: PipelineContext) -> str:
     carousel_json = json.dumps(slides, ensure_ascii=False).replace("</", "<\\/")
     first_sub = slides[0].get("subtitulo") or slides[0].get("autor") or "Elige tu rol abajo" if slides else ""
 
-    hero_bullets = ux.get("hero_bullets") or [
-        "Libros famosos adaptados a tu oficio",
-        "Compra única, sin suscripción",
-        "PDF listo al instante",
-    ]
-    hero_bullets_html = "".join(f"<li>{escape(b)}</li>" for b in hero_bullets[:4])
+    hero_bullets = ux.get("hero_bullets") or []
+    _ = hero_bullets  # reservado; bullets viven en sección Qué incluye
 
     trust_badges = ux.get("trust_badges") or []
     trust_html = ""
@@ -157,13 +153,13 @@ def _render_html(ctx: PipelineContext) -> str:
     }
     roles_json = json.dumps(roles_map, ensure_ascii=False).replace("</", "<\\/")
 
-    hero_class = "hero hero--bg" if imagen_lectura else "hero"
-    hero_bg_html = ""
+    lifestyle_html = ""
     if imagen_lectura:
-        hero_bg_html = f"""<div class="hero-bg" aria-hidden="true">
-      <img src="{escape(imagen_lectura)}" alt=""/>
-      <div class="hero-bg-scrim"></div>
-    </div>"""
+        cap = cat.get("lifestyle_caption", "Para profesionales que compran ebooks")
+        lifestyle_html = f"""<figure class="hero-lifestyle">
+      <img src="{escape(imagen_lectura)}" alt="Profesional leyendo guía PDF"/>
+      <figcaption>{escape(cap)}</figcaption>
+    </figure>"""
 
     reviews = [
         ("María G.", "Psicopedagogas", "Prioricé sin leer 300 páginas. Plan claro para el gabinete."),
@@ -204,48 +200,29 @@ def _render_html(ctx: PipelineContext) -> str:
     nav {{ display:flex; flex-wrap:wrap; justify-content:center; gap:20px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }}
     nav a {{ padding:6px 0; min-height:44px; display:inline-flex; align-items:center; }}
 
-    .hero {{ background:var(--cream); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }}
-    .hero--bg {{ min-height:clamp(520px,72vh,760px); display:flex; align-items:center; }}
-    .hero--bg .wrap {{ width:100%; }}
-    .hero-bg {{ position:absolute; inset:0; z-index:0; pointer-events:none; }}
-    .hero-bg img {{ width:100%; height:100%; object-fit:cover; object-position:center 35%; }}
-    .hero-bg-scrim {{
-      position:absolute; inset:0;
-      background:linear-gradient(105deg, rgba(22,20,18,0.78) 0%, rgba(22,20,18,0.52) 40%, rgba(250,248,245,0.08) 62%, rgba(250,248,245,0.02) 100%);
-    }}
-    .hero .wrap {{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,5vw,48px); align-items:center; padding-top:clamp(32px,6vw,64px); padding-bottom:clamp(32px,6vw,64px); }}
-    .hero-copy {{ max-width:480px; }}
-    .hero--bg .hero-copy {{
-      background:transparent; border:none; backdrop-filter:none; -webkit-backdrop-filter:none; padding:0;
-      color:#fff;
-    }}
-    .hero--bg .hero-label {{ color:rgba(255,255,255,0.75); }}
-    .hero--bg .hero h1 {{ color:#fff; }}
-    .hero--bg .hero-desc, .hero--bg .hero-micro {{ color:rgba(255,255,255,0.88); }}
-    .hero--bg .hero-bullets li {{ color:rgba(255,255,255,0.92); }}
-    .hero--bg .btn {{ background:#fff; color:var(--charcoal); border-color:#fff; }}
-    .hero--bg .btn:hover {{ background:var(--gold); border-color:var(--gold); color:#fff; }}
+    .hero {{ background:var(--cream); border-bottom:1px solid var(--border); }}
+    .hero .wrap {{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,64px); align-items:center; padding-top:clamp(40px,7vw,72px); padding-bottom:clamp(40px,7vw,72px); }}
+    .hero-copy {{ max-width:460px; }}
     .hero-label {{ font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
-    .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,5vw,2.75rem); font-weight:400; line-height:1.15; margin-bottom:16px; letter-spacing:0.02em; }}
-    .hero-desc {{ color:var(--muted); font-size:0.95rem; margin-bottom:16px; max-width:36ch; }}
-    .hero-bullets {{ list-style:none; margin:0 0 24px; padding:0; text-align:left; }}
-    .hero-bullets li {{
-      position:relative; padding-left:1.35em; margin-bottom:8px; font-size:0.88rem; color:var(--text);
-    }}
-    .hero-bullets li::before {{ content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:600; }}
-    .hero-micro {{ font-size:0.72rem; color:var(--muted); margin-top:10px; }}
+    .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.85rem,5vw,3rem); font-weight:400; line-height:1.12; margin-bottom:16px; letter-spacing:0.02em; }}
+    .hero-desc {{ color:var(--muted); font-size:0.98rem; margin-bottom:28px; max-width:38ch; line-height:1.6; }}
+    .hero-trust {{ font-size:0.78rem; color:var(--muted); margin-top:14px; letter-spacing:0.02em; }}
+    .hero-trust strong {{ color:var(--gold); }}
     .hero-visual {{
-      display:flex; flex-direction:column; align-items:center; gap:12px;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+      padding:clamp(20px,4vw,28px); background:var(--surface);
+      border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.06);
     }}
-    .hero--bg .hero-visual {{
-      background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.6); padding:clamp(18px,3vw,22px);
-      box-shadow:0 24px 64px rgba(0,0,0,0.22); border-radius:2px;
-      max-width:360px; margin-left:auto; width:100%;
+    .hero-visual-label {{ font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }}
+    .hero-lifestyle {{ position:relative; margin:0; border-bottom:1px solid var(--border); overflow:hidden; }}
+    .hero-lifestyle img {{ width:100%; height:clamp(180px,26vw,300px); object-fit:cover; object-position:center 30%; display:block; }}
+    .hero-lifestyle figcaption {{
+      position:absolute; inset:auto 0 0 0; padding:clamp(16px,4vw,24px) var(--pad);
+      background:linear-gradient(transparent, rgba(22,20,18,0.72));
+      color:#fff; font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,2.5vw,1.25rem);
+      text-align:center; letter-spacing:0.03em;
     }}
-    .hero--bg .hero-carousel {{ width:100%; height:clamp(240px,32vw,320px); }}
-    .hero--bg .carousel-btn {{ background:#fff; }}
-    .hero-carousel {{ position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }}
+    .hero-carousel {{ position:relative; width:min(100%,360px); height:clamp(280px,38vw,400px); perspective:900px; touch-action:pan-y; user-select:none; }}
     .carousel-track {{ position:relative; width:100%; height:100%; }}
     .carousel-slide {{
       position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -408,15 +385,10 @@ def _render_html(ctx: PipelineContext) -> str:
 
     @media (max-width:768px) {{
       .hero .wrap {{ grid-template-columns:1fr; text-align:center; }}
-      .hero-bg-scrim {{
-        background:linear-gradient(180deg, rgba(22,20,18,0.35) 0%, rgba(22,20,18,0.72) 42%, rgba(22,20,18,0.88) 100%);
-      }}
-      .hero-copy {{ max-width:none; margin:0 auto; text-align:center; }}
-      .hero--bg .hero-visual {{ margin:0 auto; max-width:min(92vw,360px); }}
+      .hero-copy {{ max-width:none; margin:0 auto; }}
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
-      .hero-bullets {{ max-width:28ch; margin-left:auto; margin-right:auto; }}
-      .hero-visual {{ order:-1; width:100%; }}
-      .hero-carousel {{ width:min(85vw,320px); height:clamp(280px,55vw,380px); margin:0 auto; }}
+      .hero-visual {{ order:-1; width:100%; max-width:min(92vw,400px); margin:0 auto; }}
+      .hero-carousel {{ width:min(85vw,340px); height:clamp(260px,50vw,360px); margin:0 auto; }}
       .story {{ grid-template-columns:1fr; text-align:center; }}
       .story h2 {{ text-align:center; }}
       .story img {{ width:min(50vw,200px); }}
@@ -439,18 +411,17 @@ def _render_html(ctx: PipelineContext) -> str:
     </div>
   </header>
 
-  <section class="{hero_class}">
-    {hero_bg_html}
+  <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
         <p class="hero-label">{escape(c.get('hero_label', cat.get('hero_label', 'Serie · Aplicar en tu rol')))}</p>
         <h1>{escape(c.get('hero_title', cat.get('hero_title','')))}</h1>
         <p class="hero-desc">{escape(c.get('hero_subtitle', cat.get('hero_subtitle','')))}</p>
-        <ul class="hero-bullets">{hero_bullets_html}</ul>
-        <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Encontrar mi guía')))}</a>
-        <p class="hero-micro">Para cualquier profesional · Pago único · PDF al instante</p>
+        <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Ver guías')))}</a>
+        <p class="hero-trust">{escape(cat.get('hero_trust', c.get('hero_trust', '★ 4.9 · Descarga al instante')))}</p>
       </div>
       <div class="hero-visual">
+        <p class="hero-visual-label">Libros de la serie</p>
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
           <div class="carousel-track">{slides_html}</div>
         </div>
@@ -468,6 +439,7 @@ def _render_html(ctx: PipelineContext) -> str:
       </div>
     </div>
   </section>
+{lifestyle_html}
 
   <div class="trust-badges">{trust_html}</div>
 
