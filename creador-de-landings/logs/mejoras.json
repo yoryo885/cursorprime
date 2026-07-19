@@ -15,6 +15,13 @@
       "mensaje": "la landing debe ofrecer los diferentes productos no solo Pareto; iremos modificando y aprendiendo",
       "cambio": "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json",
       "aplicado": true
+    },
+    {
+      "id": "m003",
+      "at": "2026-07-19T19:14:13.951443+00:00",
+      "mensaje": "la landing tiene que ofrecer los diferentes productos que tendremos no solo el de pareto; iremos modificando el proyecto le vaya aprendiendo las mejoras",
+      "cambio": "catalogo multiproducto + grid + filtros por rol + log de aprendizaje",
+      "aplicado": true
     }
   ]
 }

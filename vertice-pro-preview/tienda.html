@@ -294,8 +294,17 @@
 
   <section id="guias">
     <h2>Guías para tu rol</h2>
-    <div class="grid">
-      <article class="card">
+    <p style="text-align:center;color:var(--muted);font-size:0.85rem;margin:-12px 0 22px">Serie: Pareto · Hábitos atómicos · Kahneman</p>
+    <div class="role-filters" id="roleFilters" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px">
+      <button type="button" class="role-chip is-active" data-rol="todos" style="padding:10px 16px;border:1px solid #e7e1d8;background:#fff;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:999px">Todos</button>
+      <button type="button" class="role-chip" data-rol="psicopedagogas" style="padding:10px 16px;border:1px solid #e7e1d8;background:#fff;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:999px;color:var(--muted)">Psicopedagogas</button>
+      <button type="button" class="role-chip" data-rol="abogados" style="padding:10px 16px;border:1px solid #e7e1d8;background:#fff;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:999px;color:var(--muted)">Abogados</button>
+      <button type="button" class="role-chip" data-rol="docentes" style="padding:10px 16px;border:1px solid #e7e1d8;background:#fff;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:999px;color:var(--muted)">Docentes</button>
+      <button type="button" class="role-chip" data-rol="enfermeras" style="padding:10px 16px;border:1px solid #e7e1d8;background:#fff;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:999px;color:var(--muted)">Enfermeras</button>
+      <button type="button" class="role-chip" data-rol="soldadores" style="padding:10px 16px;border:1px solid #e7e1d8;background:#fff;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:999px;color:var(--muted)">Soldadores</button>
+    </div>
+    <div class="grid" id="guiasGrid">
+      <article class="card" data-rol-card="psicopedagogas">
         <img class="card-img" src="assets/portada-pareto.png" alt="Pareto para psicopedagogas en 10 semanas"/>
         <div class="card-body">
           <p class="card-brand">Vértice Pro · PDF</p>
@@ -304,17 +313,65 @@
           <a class="btn btn-dark btn-block" href="#">Añadir al carrito</a>
         </div>
       </article>
-      <article class="card" style="opacity:0.55">
+      <article class="card" data-rol-card="abogados" style="opacity:0.55">
         <div class="card-soon">Próximamente</div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro</p>
-          <h3>Nueva guía en camino</h3>
-          <p class="price">—</p>
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>Pareto para abogados en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:48px;">Avísame</span>
+        </div>
+      </article>
+      <article class="card" data-rol-card="enfermeras" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>Hábitos atómicos para enfermeras en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:48px;">Avísame</span>
+        </div>
+      </article>
+      <article class="card" data-rol-card="docentes" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>Kahneman para docentes en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:48px;">Avísame</span>
+        </div>
+      </article>
+      <article class="card" data-rol-card="soldadores" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>Pareto para soldadores en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:48px;">Avísame</span>
+        </div>
+      </article>
+      <article class="card" data-rol-card="abogados" style="opacity:0.55">
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF</p>
+          <h3>Hábitos atómicos para abogados en 10 semanas</h3>
+          <p class="price">$4.99</p>
           <span class="btn btn-outline btn-block" style="line-height:48px;">Avísame</span>
         </div>
       </article>
     </div>
   </section>
+  <script>
+  (function(){
+    const chips=document.querySelectorAll('.role-chip');
+    const cards=document.querySelectorAll('[data-rol-card]');
+    chips.forEach(chip=>chip.addEventListener('click',()=>{
+      chips.forEach(c=>{c.classList.remove('is-active'); c.style.background='#fff'; c.style.color='';});
+      chip.classList.add('is-active'); chip.style.background='#0f1419'; chip.style.color='#fff';
+      const rol=chip.dataset.rol;
+      cards.forEach(card=>{ card.hidden=!(rol==='todos'||card.dataset.rolCard===rol); });
+    }));
+  })();
+  </script>
 
   <section id="nosotros">
     <div class="story-wrap">

@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "creador-de-landings",
@@ -34,5 +34,8 @@
       "mensaje": "dame la informacion que la pueda entender y resumida",
       "cambio": "Tono simple; 3 acciones + 1 decisión; resumen en meta/radar-mejoras-resumen-simple.md"
     }
-  ]
+  ],
+  "slug": "creador-de-landings",
+  "ultima_mejora": "multiproducto: catálogo completo + aprendizaje continuo",
+  "updated_at": "2026-07-19T19:15:00Z"
 }

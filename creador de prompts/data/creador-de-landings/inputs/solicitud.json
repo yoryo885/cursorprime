@@ -24,6 +24,11 @@
     {
       "mensaje": "landing debe ofrecer diferentes productos no solo Pareto; iremos modificando y aprendiendo mejoras",
       "cambio": "Catálogo multi-producto + aprender CLI + filtros por rol"
+    },
+    {
+      "fecha": "2026-07-19",
+      "texto": "Landing con varios productos (no solo Pareto) y aprendizaje continuo de mejoras"
     }
-  ]
+  ],
+  "notas": "Catálogo multiproducto + logs/mejoras.json; regenerar demo con --slug demo-cliente"
 }
