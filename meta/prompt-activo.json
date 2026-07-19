@@ -6,8 +6,8 @@
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 9,
-    "ultima_mejora": "5 opciones de imagen para landing (sin meter en HTML)",
+    "version": 10,
+    "ultima_mejora": "usuario no veía imágenes — entregar links GitHub raw",
     "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
     "resumen_simple": "meta/radar-mejoras-resumen-simple.md"
   }
