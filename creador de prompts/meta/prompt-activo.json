@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "creador-de-landings",
@@ -36,6 +36,6 @@
     }
   ],
   "slug": "creador-de-landings",
-  "ultima_mejora": "estilo tienda tipo Filjós (filjos.com) como referencia de landing",
-  "updated_at": "2026-07-19T20:55:00Z"
+  "ultima_mejora": "paleta: 1 pregunta clima + 3 opciones auto (CSS vars)",
+  "updated_at": "2026-07-19T21:37:26Z"
 }

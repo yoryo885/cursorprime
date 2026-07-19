@@ -9,14 +9,18 @@
     "generación HTML en segundos",
     "demo como cliente",
     "catálogo libro×rol multi-producto",
-    "aprendizaje continuo logs/mejoras.json"
+    "aprendizaje continuo logs/mejoras.json",
+    "paleta de colores auto + 3 opciones",
+    "pregunta clima marca (1)"
   ],
   "contexto": {
     "audiencia": "operador cursorprime / cliente demo",
     "tono": "claro y accionable",
     "idioma": "español",
     "objetivo": "Pipeline que pregunta cómo quiere la landing, muestra ejemplos (incl. tienda tipo filjos.com) y genera preview.html multiproducto",
-    "referencias_estructura": ["https://filjos.com/"]
+    "referencias_estructura": [
+      "https://filjos.com/"
+    ]
   },
   "mejoras": [
     {
@@ -34,7 +38,11 @@
     {
       "fecha": "2026-07-19",
       "texto": "filjos.com como idea de página/landing que el sistema puede generar (estilo tienda)"
+    },
+    {
+      "fecha": "2026-07-19",
+      "texto": "paleta de colores: sistema recomienda 3 y usuario elige (o auto)"
     }
   ],
-  "notas": "Estilo tienda (ref. Filjós) + catálogo multiproducto; demo: python3 landings_main.py demo --ejemplo tienda"
+  "notas": "Paletas: clima marca → 3 presets → CSS vars; default auto por tono/estilo"
 }
