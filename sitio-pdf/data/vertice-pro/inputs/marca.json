@@ -147,16 +147,43 @@
   "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · catálogo libro×rol · UX benchmark nicho",
   "modo_imagen": "mock",
   "ux_landing": {
+    "mercado_benchmark": {
+      "fuentes": ["Gumroad 146k productos", "Shortform", "Blinkist", "Seedprod 2026"],
+      "patrones_clave": [
+        "Titular de resultado para persona concreta en <5 segundos",
+        "Mockup + portada + interior — el producto digital debe verse tangible",
+        "Bullets de outcome, no de features",
+        "Comparación explícita vs suscripción (Blinkist/Shortform)",
+        "Para quién es + 3 pasos + FAQ de objeciones",
+        "Garantía visible cerca del CTA",
+        "Testimonios con rol y resultado específico"
+      ]
+    },
     "copy_catalogo": {
       "hero_brand": "VÉRTICE PRO",
       "hero_series": "Serie · Aplicar en tu rol",
-      "hero_label": "VÉRTICE PRO",
-      "hero_title": "Los mejores libros,",
-      "hero_title_em": "aplicados a tu oficio",
+      "hero_problem": "Lees libros de productividad… pero el lunes sigues igual.",
+      "hero_title": "Aplica las mejores ideas",
+      "hero_title_em": "en tu oficio en 10 semanas",
       "hero_subtitle": "",
-      "hero_cta": "Explorar catálogo",
-      "hero_cta_secondary": "Qué incluye",
-      "hero_trust": "★ 4.9 · Desde $4.99 · PDF al instante",
+      "hero_cta": "Ver guías desde $4.99",
+      "hero_cta_secondary": "Ver cómo funciona",
+      "hero_trust": "★ 4.9 · PDF al instante · Sin suscripción mensual",
+      "compare_titulo": "Por qué no es otra app de resúmenes",
+      "compare_lead": "Pagas una vez. El PDF es tuyo. Sin renovación automática.",
+      "compare_items": [
+        { "nosotros": "Compra única desde $4.99", "ellos": "Suscripción $15–20/mes" },
+        { "nosotros": "Adaptado a tu oficio concreto", "ellos": "Resumen genérico para todos" },
+        { "nosotros": "Plan de 10 semanas incluido", "ellos": "Solo lectura, sin plan de acción" }
+      ],
+      "como_funciona_titulo": "Cómo funciona",
+      "para_quien_titulo": "¿Para quién es?",
+      "para_quien_lead": "Profesionales que quieren aplicar ideas famosas sin leer 300 páginas ni pagar suscripción.",
+      "preview_titulo": "Así se ve tu guía",
+      "preview_lead": "PDF descargable · Lee en móvil, tablet o imprime · Empiezas hoy",
+      "garantia_titulo": "Garantía de 7 días",
+      "garantia_texto": "Si la guía no te sirve para tu rol, te devolvemos el 100%. Sin preguntas incómodas.",
+      "featured_label": "Más vendida",
       "lifestyle_caption": "",
       "guias_lead": "Elige tu profesión. Filtra por libro si quieres.",
       "benefits_title": "Qué incluye cada guía",
@@ -192,9 +219,9 @@
       { "icon": "role", "label": "Adaptado a tu rol", "hint": "No genérico" }
     ],
     "hero_bullets": [
-      "Plan de 10 semanas — una acción por semana",
-      "Compra única, sin suscripción",
-      "PDF al instante en móvil o impreso"
+      "Pareto, Hábitos, Kahneman… traducidos a tu profesión",
+      "Una acción concreta por semana — 10 semanas",
+      "PDF tuyo para siempre, sin cuota mensual"
     ],
     "incluye_semanas": [
       "Semanas 1–2: Mapa de tu semana laboral y primeros focos",
@@ -214,6 +241,10 @@
       {
         "q": "¿En qué se diferencia de un resumen genérico?",
         "a": "Cada guía traduce las ideas del libro a situaciones concretas de tu profesión — casos, lenguaje y plan de 10 semanas incluidos."
+      },
+      {
+        "q": "¿Qué pasa si no me sirve para mi rol?",
+        "a": "Tienes 7 días de garantía. Escríbenos y te devolvemos el 100%."
       },
       {
         "q": "¿Está afiliada al autor original?",
