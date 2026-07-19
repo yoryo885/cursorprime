@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Vértice Pro — Colección</title>
-  <meta name="description" content="Ideas de libros aplicadas a tu rol — elige tu guía"/>
+  <title>Vértice Pro — Colección profesional de guías</title>
+  <meta name="description" content="Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -14,12 +14,12 @@
     * { box-sizing:border-box; margin:0; }
     body { font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }
     .announce {
-      background:var(--ink); color:var(--paper); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--ink); color:var(--paper); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
       text-align:center; padding:10px var(--pad);
     }
     .top {
       display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px var(--pad); border-bottom:1px solid #e4dfd6; background:rgba(246,243,238,.92);
+      padding:14px var(--pad); border-bottom:1px solid #e4dfd6; background:color-mix(in srgb, var(--paper) 92%, transparent);
       position:sticky; top:0; z-index:5; backdrop-filter:blur(8px);
     }
     .logo {
@@ -30,25 +30,33 @@
     .nav a { color:var(--muted); text-decoration:none; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }
     .nav a:hover { color:var(--ink); }
     .hero-nuevo {
-      min-height:min(88svh,760px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+      min-height:min(88svh,760px); display:grid; grid-template-columns:1.1fr .9fr; gap:0;
       background:
-        linear-gradient(120deg, rgba(12,14,18,.9) 0%, rgba(12,14,18,.35) 55%, rgba(12,14,18,.15) 100%),
+        linear-gradient(120deg, rgba(12,14,18,.92) 0%, rgba(12,14,18,.4) 55%, rgba(12,14,18,.18) 100%),
         radial-gradient(ellipse at 75% 35%, #314155 0%, #12151a 70%);
       color:#fff; animation: rise .85s ease both;
     }
     @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
-    .hero-copy { padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:34rem; }
+    .hero-copy { padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:36rem; }
     .eyebrow { font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:14px; }
+    .hero-copy .brand-hero {
+      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.18em; font-weight:600;
+      font-size:clamp(2.2rem,5.5vw,3.6rem); margin-bottom:14px; color:#fff;
+    }
     .hero-copy h1 {
       font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.6rem,3.6vw,2.35rem); max-width:16ch; margin-bottom:12px; line-height:1.15;
+      font-size:clamp(1.35rem,2.8vw,1.75rem); max-width:22ch; margin-bottom:14px; line-height:1.2;
     }
-    .hero-copy .sub { color:rgba(255,255,255,.78); margin-bottom:10px; max-width:36ch; }
-    .hero-copy .price-lg { font-size:1.15rem; font-weight:600; margin-bottom:22px; }
+    .hero-copy .sub { color:rgba(255,255,255,.8); margin-bottom:14px; max-width:42ch; font-size:.98rem; }
+    .hero-copy .badge-q {
+      font-size:.72rem; letter-spacing:.06em; color:rgba(255,255,255,.7); margin-bottom:18px; max-width:40ch;
+    }
+    .hero-copy .price-lg { font-size:1.05rem; font-weight:600; margin-bottom:20px; }
+    .spotlight { margin-top:18px; font-size:.85rem; color:rgba(255,255,255,.72); max-width:40ch; }
     .hero-visual {
       display:flex; align-items:center; justify-content:center; padding:var(--pad);
-      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.12em; font-size:clamp(1.4rem,3vw,2rem);
-      color:rgba(255,255,255,.35); text-align:center;
+      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.1em; font-size:clamp(1.2rem,2.6vw,1.7rem);
+      color:rgba(255,255,255,.38); text-align:center; line-height:1.4;
     }
     .btn {
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
@@ -67,23 +75,35 @@
     section.band > * { max-width:var(--max); margin-left:auto; margin-right:auto; }
     h2 {
       font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.45rem,3vw,2rem); margin-bottom:22px; text-align:center;
+      font-size:clamp(1.45rem,3vw,2rem); margin-bottom:12px; text-align:center;
     }
-    .story { max-width:48ch; margin:0 auto; text-align:center; color:var(--muted); }
+    .sec-sub { text-align:center; color:var(--muted); max-width:48ch; margin:0 auto 28px; font-size:.95rem; }
+    .story { max-width:52ch; margin:0 auto; text-align:center; color:var(--muted); }
     .center { text-align:center; }
     .muted { color:var(--muted); }
-    .quotes { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
-    .quote { background:#fff; border:1px solid color-mix(in srgb, var(--muted) 35%, transparent); padding:20px; }
-    .quote p { font-size:.95rem; margin-bottom:12px; }
-    .quote cite { font-style:normal; font-size:.75rem; color:var(--muted); letter-spacing:.04em; }
+    .pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:8px; }
+    .pillar { background:#fff; border:1px solid #e4dfd6; padding:22px 20px; }
+    .pillar h3 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:1.15rem; margin-bottom:8px; }
+    .pillar p { color:var(--muted); font-size:.92rem; }
+    .incluye { max-width:40ch; margin:0 auto; list-style:none; padding:0; }
+    .incluye li { padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }
+    .serie-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .serie-card { background:#fff; border:1px solid #e4dfd6; padding:22px; text-align:center; }
+    .serie-card h3 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:1.1rem; margin:8px 0; }
+    .bens { max-width:52ch; margin:0 auto; list-style:none; padding:0; }
+    .bens li { padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }
+    details { background:#fff; border:1px solid #e4dfd6; padding:14px 16px; margin-bottom:10px; }
+    summary { cursor:pointer; font-weight:500; }
+    details p { margin-top:8px; color:var(--muted); font-size:.92rem; }
     .news {
       text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
       background:var(--ink); color:var(--paper);
     }
     .news h2 { color:var(--paper); }
-    .news p { color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:36ch; margin:0 auto 20px; }
+    .news p { color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:38ch; margin:0 auto 20px; }
     .news .btn { background:var(--paper); color:var(--ink); }
     footer { text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }
+    .card-sub { font-size:.78rem; color:var(--muted); line-height:1.4; margin-bottom:12px; min-height:2.6em; }
     
     .serie-line { text-align:center; color:var(--muted); font-size:.85rem; margin:-8px 0 20px; }
     .role-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:28px; }
@@ -108,108 +128,136 @@
 
     @media (max-width:860px) {
       .hero-nuevo { grid-template-columns:1fr; min-height:auto; }
-      .hero-visual { min-height:220px; order:-1; }
+      .hero-visual { min-height:200px; order:-1; }
     }
   </style>
 </head>
 <body>
-  <div class="announce">Guías PDF · descarga al instante · colección libro × rol</div>
+  <div class="announce">Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99</div>
   <div class="top">
     <a class="logo" href="#">Vértice Pro</a>
-    <nav class="nav"><a href="#guias">Colección</a><a href="#guias" data-nav-rol="psicopedagogas">Psicopedagogas</a><a href="#guias" data-nav-rol="abogados">Abogados</a><a href="#guias" data-nav-rol="docentes">Docentes</a><a href="#guias" data-nav-rol="enfermeras">Enfermeras</a><a href="#guias" data-nav-rol="soldadores">Soldadores</a><a href="#historia">Marca</a></nav>
+    <nav class="nav"><a href="#guias">Colección</a><a href="#calidad">Calidad</a><a href="#serie">Libros</a><a href="#historia">Marca</a><a href="#faq">FAQ</a></nav>
   </div>
 
   <section class="hero-nuevo">
     <div class="hero-copy">
-      <p class="eyebrow">Ahora nuevo</p>
-      <div class="logo" style="color:#fff;margin-bottom:16px;font-size:clamp(2rem,5vw,3rem)">Vértice Pro</div>
-      <h1>Pareto para psicopedagogas en 10 semanas</h1>
-      <p class="sub">Ideas de libros aplicadas a tu rol — elige tu guía</p>
-      <p class="price-lg">$4.99</p>
+      <p class="eyebrow">Colección profesional</p>
+      <div class="brand-hero">Vértice Pro</div>
+      <h1>Vértice Pro: guías hechas para tu rol</h1>
+      <p class="sub">No es un solo PDF. Es una línea de 6+ guías libro × oficio, diseñadas para aplicar con claridad, método y resultados medibles.</p>
+      <p class="badge-q">Edición profesional · plan 10 semanas · listo para usar</p>
+      <p class="price-lg">desde $4.99</p>
       <a class="btn" href="#guias">Ver colección</a>
+      <p class="spotlight">Destacada ahora: <strong>Pareto para psicopedagogas en 10 semanas</strong> · desde $4.99 · + 5 guías en camino</p>
     </div>
-    <div class="hero-visual">Colección<br/>libro × rol</div>
+    <div class="hero-visual">1 disponible<br/>+ 5 próximamente<br/><span style="font-size:.85em;letter-spacing:.16em">COLECCIÓN</span></div>
+  </section>
+
+  <section id="calidad">
+    <h2>Por qué la calidad importa</h2>
+    <p class="sec-sub">Promovemos guías con criterio editorial: útiles, precisas y hechas para profesionales.</p>
+    <div class="pillars"><article class="pillar"><h3>Hecha para tu oficio</h3><p>Ejemplos, lenguaje y prioridades de tu rol — no teoría genérica.</p></article><article class="pillar"><h3>Método claro en 10 semanas</h3><p>Plan semanal accionable: sabes qué hacer cada semana, sin relleno.</p></article><article class="pillar"><h3>Formato profesional</h3><p>PDF editable en la práctica diaria: denso, ordenado y listo para imprimir o digital.</p></article><article class="pillar"><h3>Colección que crece</h3><p>Más libros × más roles. Empiezas con una guía y amplías cuando lo necesites.</p></article></div>
+  </section>
+
+  <section class="band" id="incluye">
+    <h2>Qué incluye cada guía</h2>
+    <ul class="incluye"><li>Marco del libro aplicado a tu rol</li><li>Plan de acción de 10 semanas</li><li>Checklist y prioridades 80/20</li><li>Descarga inmediata en PDF</li></ul>
   </section>
 
   <section id="guias">
-    <h2>Bestsellers</h2>
-    <div class="role-filters" id="roleFilters"><button type="button" class="role-chip is-active" data-rol="todos">Todos</button><button type="button" class="role-chip" data-rol="psicopedagogas">Psicopedagogas</button><button type="button" class="role-chip" data-rol="abogados">Abogados</button><button type="button" class="role-chip" data-rol="docentes">Docentes</button><button type="button" class="role-chip" data-rol="enfermeras">Enfermeras</button><button type="button" class="role-chip" data-rol="soldadores">Soldadores</button></div>
+    <h2>Explora la colección</h2>
+    <p class="sec-sub">6 guías · 5 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.</p>
+    <div class="role-filters" id="roleFilters"><button type="button" class="role-chip is-active" data-rol="todos">Todos los roles</button><button type="button" class="role-chip" data-rol="psicopedagogas">Psicopedagogas</button><button type="button" class="role-chip" data-rol="abogados">Abogados</button><button type="button" class="role-chip" data-rol="docentes">Docentes</button><button type="button" class="role-chip" data-rol="enfermeras">Enfermeras</button><button type="button" class="role-chip" data-rol="soldadores">Soldadores</button></div>
     <div class="grid" id="guiasGrid">
       <article class="card" data-rol-card="psicopedagogas">
-        <div class="card-cover">Disponible</div>
+        <div class="card-cover"><span>Disponible ahora</span></div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · Guía profesional</p>
           <h3>Pareto para psicopedagogas en 10 semanas</h3>
+          <p class="card-sub">Basada en El principio de Pareto · Antoine Delers · Edición profesional · Plan 10 semanas</p>
           <p class="price">$4.99</p>
-          <a class="btn btn-dark btn-block" href="#">Añadir al carrito</a>
+          <a class="btn btn-dark btn-block" href="#">Comprar · $4.99</a>
         </div>
       </article>
-      <article class="card" data-rol-card="abogados" style="opacity:0.55">
-        <div class="card-cover">Próximamente</div>
+      <article class="card" data-rol-card="abogados" style="opacity:0.72">
+        <div class="card-cover"><span>Próximamente</span></div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · Guía profesional</p>
           <h3>Pareto para abogados en 10 semanas</h3>
+          <p class="card-sub">Próximo lanzamiento · El principio de Pareto · Antoine Delers · Misma calidad de la colección</p>
           <p class="price">$4.99</p>
-          <span class="btn btn-outline btn-block">Avísame</span>
+          <span class="btn btn-outline btn-block">Avísame al lanzar</span>
         </div>
       </article>
-      <article class="card" data-rol-card="enfermeras" style="opacity:0.55">
-        <div class="card-cover">Próximamente</div>
+      <article class="card" data-rol-card="enfermeras" style="opacity:0.72">
+        <div class="card-cover"><span>Próximamente</span></div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · Guía profesional</p>
           <h3>Hábitos atómicos para enfermeras en 10 semanas</h3>
+          <p class="card-sub">Próximo lanzamiento · Hábitos atómicos · James Clear · Misma calidad de la colección</p>
           <p class="price">$4.99</p>
-          <span class="btn btn-outline btn-block">Avísame</span>
+          <span class="btn btn-outline btn-block">Avísame al lanzar</span>
         </div>
       </article>
-      <article class="card" data-rol-card="docentes" style="opacity:0.55">
-        <div class="card-cover">Próximamente</div>
+      <article class="card" data-rol-card="docentes" style="opacity:0.72">
+        <div class="card-cover"><span>Próximamente</span></div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · Guía profesional</p>
           <h3>Kahneman para docentes en 10 semanas</h3>
+          <p class="card-sub">Próximo lanzamiento · Pensar rápido, pensar despacio · Daniel Kahneman · Misma calidad de la colección</p>
           <p class="price">$4.99</p>
-          <span class="btn btn-outline btn-block">Avísame</span>
+          <span class="btn btn-outline btn-block">Avísame al lanzar</span>
         </div>
       </article>
-      <article class="card" data-rol-card="soldadores" style="opacity:0.55">
-        <div class="card-cover">Próximamente</div>
+      <article class="card" data-rol-card="soldadores" style="opacity:0.72">
+        <div class="card-cover"><span>Próximamente</span></div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · Guía profesional</p>
           <h3>Pareto para soldadores en 10 semanas</h3>
+          <p class="card-sub">Próximo lanzamiento · El principio de Pareto · Antoine Delers · Misma calidad de la colección</p>
           <p class="price">$4.99</p>
-          <span class="btn btn-outline btn-block">Avísame</span>
+          <span class="btn btn-outline btn-block">Avísame al lanzar</span>
         </div>
       </article>
-      <article class="card" data-rol-card="abogados" style="opacity:0.55">
-        <div class="card-cover">Próximamente</div>
+      <article class="card" data-rol-card="abogados" style="opacity:0.72">
+        <div class="card-cover"><span>Próximamente</span></div>
         <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF</p>
+          <p class="card-brand">Vértice Pro · Guía profesional</p>
           <h3>Hábitos atómicos para abogados en 10 semanas</h3>
+          <p class="card-sub">Próximo lanzamiento · Hábitos atómicos · James Clear · Misma calidad de la colección</p>
           <p class="price">$4.99</p>
-          <span class="btn btn-outline btn-block">Avísame</span>
+          <span class="btn btn-outline btn-block">Avísame al lanzar</span>
         </div>
       </article></div>
   </section>
 
-  <section id="historia" class="band">
-    <h2>La marca</h2>
-    <p class="story">Vértice Pro traduce ideas de libros clásicos a tu oficio. No es un solo PDF: es una colección que irá creciendo.</p>
-    <p class="center" style="margin-top:22px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
+  <section id="serie" class="band">
+    <h2>Basadas en libros que ya funcionan</h2>
+    <p class="sec-sub">Cada guía toma un libro de referencia y lo traduce a tu realidad laboral.</p>
+    <div class="serie-grid"><article class="serie-card"><p class="card-brand">Libro base</p><h3>El principio de Pareto</h3><p class="card-sub">Antoine Delers</p></article><article class="serie-card"><p class="card-brand">Libro base</p><h3>Hábitos atómicos</h3><p class="card-sub">James Clear</p></article><article class="serie-card"><p class="card-brand">Libro base</p><h3>Pensar rápido, pensar despacio</h3><p class="card-sub">Daniel Kahneman</p></article></div>
   </section>
 
-  <section>
-    <h2>Lo que dicen</h2>
-    <div class="quotes"><p class="muted center">Cuando tengamos reseñas reales, aparecen aquí. No inventamos testimonios.</p></div>
+  <section id="historia">
+    <h2>La marca</h2>
+    <p class="story">Vértice Pro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.</p>
+    <ul class="bens" style="margin-top:28px"><li>Colección multiproducto: varias guías libro × rol, no un único PDF</li><li>Calidad editorial: estructura clara, sin relleno, lista para aplicar</li><li>Enfocada en tu oficio: ejemplos y prioridades de tu día a día</li><li>Plan de 10 semanas con avance medible</li><li>Precio accesible de entrada profesional</li><li>Nuevas combinaciones en camino — avísame cuando salgan</li></ul>
+    <p class="center" style="margin-top:28px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
   </section>
-  
+  <section id="mision" class="band"><h2>Nuestra misión</h2><p class="story">Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.</p></section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <p class="sec-sub">Las reseñas reales de clientes aparecerán aquí. No publicamos testimonios inventados.</p>
+    <details><summary>¿Solo venden una guía?</summary><p>No. Ofrecemos una colección de guías (libro × rol). Algunas ya están disponibles y otras se lanzan pronto; puedes filtrar por oficio.</p></details><details><summary>¿En qué se diferencia de un resumen genérico?</summary><p>Cada guía está escrita para un rol concreto: lenguaje, ejemplos y plan de 10 semanas pensados para tu práctica profesional.</p></details><details><summary>¿Qué calidad puedo esperar?</summary><p>Edición profesional: estructura clara, método accionable y PDF listo para usar en el trabajo o estudio. Sin relleno.</p></details><details><summary>¿Puedo comprar más de una?</summary><p>Sí. La colección está pensada para ampliar: empieza por tu rol y suma otras guías cuando las necesites.</p></details><details><summary>¿Cómo la recibo?</summary><p>Descarga inmediata en PDF tras la compra. Sin esperas ni envíos físicos.</p></details><details><summary>¿Hay más productos próximamente?</summary><p>Sí. Seguimos abriendo combinaciones libro × rol. Usa “Avísame” en las guías próximas o el newsletter.</p></details>
+  </section>
 
   <div class="news" id="newsletter">
-    <h2>10% en tu primera guía</h2>
-    <p>Suscríbete al newsletter. Te avisamos cuando salgan nuevas combinaciones libro × rol.</p>
-    <a class="btn" href="#guias">Quiero el descuento</a>
+    <h2>Acceso anticipado a nuevas guías</h2>
+    <p>Te avisamos cuando salga tu rol o libro. Sin spam: solo lanzamientos de la colección.</p>
+    <a class="btn" href="#guias">Quiero avisos de la colección</a>
   </div>
 
-  <footer>Generado con creador-de-landings · estilo tienda (ref. estructura tipo Filjós)</footer>
+  <footer>Vértice Pro · Colección profesional de guías · PDF de calidad</footer>
   <script>
   (function() {
     const chips = document.querySelectorAll('.role-chip');
