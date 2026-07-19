@@ -1,0 +1,17 @@
+{
+  "id": "idea-upsell-dropship-lectura",
+  "categoria": "nuevo_proyecto",
+  "titulo": "Upsell dropship — repisas y accesorios del nicho lectura/PDF",
+  "problema": "Tras vender PDFs en Shopify, falta ampliar ticket con productos físicos del mismo nicho sin stock propio.",
+  "propuesta": "Cuando la landing y el PDF estén vendiendo: buscar 3–5 productos dropship (repisas, lámparas de lectura, atriles, organizadores) que encajen con 'Aplicar en tu rol' y listarlos en Shopify como upsell.",
+  "proyecto_afectado": "sitio-pdf / Vértice Pro",
+  "confidence": 0.55,
+  "estado": "en_espera",
+  "origen": "usuario — guarda como ideas después de landing",
+  "creado_at": "2026-07-19T06:10:00+00:00",
+  "idea_json": "ideas de proyectos/ideas/upsell-dropship-accesorios-lectura.json",
+  "bloquear_hasta": [
+    "Landing Shopify terminada",
+    "PDF listo en venta"
+  ]
+}
