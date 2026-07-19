@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "creador-de-landings",
@@ -36,6 +36,6 @@
     }
   ],
   "slug": "creador-de-landings",
-  "ultima_mejora": "idea filjos.com → entrevista estándar abierta",
-  "updated_at": "2026-07-19T21:54:12Z"
+  "ultima_mejora": "entrevista A/B/C/D — usuario responde solo letras",
+  "updated_at": "2026-07-19T22:03:29Z"
 }

@@ -50,6 +50,13 @@
       "mensaje": "https://filjos.com/",
       "cambio": "referencia visual activa; entrevista estándar pendiente de respuestas",
       "aplicado": true
+    },
+    {
+      "id": "m008",
+      "at": "2026-07-19T22:03:29.367456+00:00",
+      "mensaje": "las preguntas que lleven respuestas a b c d",
+      "cambio": "entrevista v3 solo letras A/B/C/D + CLI responder",
+      "aplicado": true
     }
   ]
 }

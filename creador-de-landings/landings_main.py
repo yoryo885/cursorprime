@@ -14,25 +14,56 @@ from src.catalog import ensure_catalog  # noqa: E402
 from src.config import load_json, preguntas_path, save_json, slug_inputs, slug_output  # noqa: E402
 from src.interview import DEMO_RESPUESTAS, run_interview  # noqa: E402
 from src.learning import load_mejoras, registrar_mejora  # noqa: E402
+from src.answers import resolver_respuestas  # noqa: E402
 from src.palettes import formato_chat_paletas  # noqa: E402
 from src.pipeline import run_pipeline  # noqa: E402
 
 
+def cmd_responder(args: argparse.Namespace) -> None:
+    """Guarda respuestas desde letras A/B/C/D y opcionalmente genera."""
+    slug = args.slug
+    resolved = resolver_respuestas(args.letras)
+    dest = slug_inputs(slug)
+    dest.mkdir(parents=True, exist_ok=True)
+    save_json(dest / "respuestas.json", resolved)
+    print(f"\n✅ Respuestas → {dest / 'respuestas.json'}")
+    for k, v in resolved.items():
+        if not k.startswith("_"):
+            print(f"  · {k}: {v}")
+    if args.generar:
+        estilo = resolved.get("estilo") or resolved.get("ejemplo_elegido") or "tienda"
+        ok = run_pipeline(slug=slug, respuestas=resolved, ejemplo=estilo, reset=True)
+        if ok:
+            print(f"\n✅ Landing: {slug_output(slug) / 'preview.html'}\n")
+            sys.exit(0)
+        sys.exit(1)
+    print(f"\nSiguiente: python3 landings_main.py generar --slug {slug}\n")
+
+
 def cmd_preguntas(_args: argparse.Namespace) -> None:
-    """Imprime la entrevista estándar (para chat / agente)."""
+    """Imprime la entrevista estándar con opciones A/B/C/D."""
     spec = load_json(preguntas_path(), {}) or {}
     print(f"\n{spec.get('titulo', 'Entrevista estándar')}")
     print(spec.get("intro", ""))
     print()
     for i, q in enumerate(spec.get("preguntas") or [], 1):
-        req = " *" if q.get("obligatoria") else ""
-        print(f"{i}. {q['texto']}{req}")
-        if q.get("ejemplo"):
-            print(f"   ej: {q['ejemplo']}")
+        rec = (q.get("recomendado") or "A").upper()
+        print(f"{i}. {q['texto']}")
+        for let in ("A", "B", "C", "D"):
+            opt = (q.get("opciones") or {}).get(let)
+            if not opt:
+                continue
+            mark = " ★" if let == rec else ""
+            print(f"   {let}) {opt}{mark if '★' not in opt else ''}")
+        print()
+    recs = (spec.get("recomendacion_default") or {}).get("letras_recomendadas", "")
+    if recs:
+        print(f"Recomendado: {recs}")
+        print("Atajo: responde `todo A` (o pega la línea recomendada).")
     print()
-    print(formato_chat_paletas({"clima_color": "auto", "tono": "editorial", "estilo": "tienda"}))
+    print(formato_chat_paletas({"clima_color": "neutro", "tono": "editorial", "estilo": "tienda"}))
     print()
-    print("Fuente: meta/preguntas.json · Protocolo: meta/ENTREVISTA_ESTANDAR.md\n")
+    print("Fuente: meta/preguntas.json\n")
 
 
 def cmd_entrevista(args: argparse.Namespace) -> None:
@@ -138,8 +169,14 @@ def main() -> None:
     d.add_argument("--ejemplo", choices=["editorial", "tienda", "mockup", "oferta"], default="tienda")
     d.set_defaults(func=cmd_demo)
 
-    q = sub.add_parser("preguntas", help="Mostrar entrevista estándar (chat)")
+    q = sub.add_parser("preguntas", help="Mostrar entrevista estándar A/B/C/D")
     q.set_defaults(func=cmd_preguntas)
+
+    r = sub.add_parser("responder", help="Guardar respuestas desde letras (1A 2B…)")
+    r.add_argument("--slug", default="demo-cliente")
+    r.add_argument("--letras", required=True, help="Ej: '1A 2A 3A…' o 'todo A'")
+    r.add_argument("--generar", action="store_true")
+    r.set_defaults(func=cmd_responder)
 
     a = sub.add_parser("aprender", help="Registrar mejora para próximas generaciones")
     a.add_argument("--mensaje", required=True, help="Qué dijo el usuario")

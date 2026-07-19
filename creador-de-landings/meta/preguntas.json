@@ -1,98 +1,182 @@
 {
   "titulo": "Entrevista estándar — tienda / landing",
-  "version": 2,
-  "intro": "Siempre las mismas preguntas. Responde en una línea cada una (o 'auto' donde aplique).",
+  "version": 3,
+  "intro": "Responde solo con letras. Ejemplo: 1A 2A 3B 4A 5A 6A 7A 8B 9A 10A 11C 12A 13A 14A",
+  "formato_respuesta": "Por pregunta: número+letra (1A) o lista de letras en orden (A A B A...). Si dices 'todo A' = todas las recomendadas.",
   "protocolo_chat": [
-    "Si el usuario manda una idea de tienda web, landing, página de ventas o ecommerce → NO generar HTML aún.",
-    "Hacer TODAS las preguntas de este archivo, numeradas, en un solo mensaje.",
-    "En colores: proponer 3 paletas (A/B/C) según la idea + clima; marcar la recomendada.",
-    "Cuando responda → guardar respuestas.json y generar preview."
+    "Si el usuario manda idea de tienda/landing → NO generar HTML aún.",
+    "Hacer TODAS las preguntas con opciones A B C D (marcar ★ la recomendada).",
+    "Usuario responde solo letras.",
+    "Resolver letras → valores y generar preview."
   ],
   "preguntas": [
     {
       "id": "idea",
-      "texto": "¿En una frase, qué tienda o landing quieres? (pega URL de referencia si hay)",
-      "ejemplo": "Tienda de guías PDF por oficio, look tipo filjos.com",
-      "obligatoria": true
+      "texto": "¿Qué tienda / landing quieres?",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Tienda Vértice Pro — look colección tipo Filjós",
+        "B": "Landing de 1 solo producto (PDF estrella)",
+        "C": "Tienda genérica multiproducto (otra marca)",
+        "D": "Otra (escribe en una frase)"
+      }
     },
     {
       "id": "marca",
       "texto": "¿Nombre de la marca?",
-      "ejemplo": "Vértice Pro",
-      "obligatoria": true
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Vértice Pro",
+        "B": "Usar el nombre de la URL/referencia",
+        "C": "Marca nueva (la escribes tú)",
+        "D": "Sin marca aún (poner 'Tu marca')"
+      }
     },
     {
       "id": "producto",
-      "texto": "¿Qué vendes? (productos / colección)",
-      "ejemplo": "Guías PDF libro × rol profesional",
-      "obligatoria": true
+      "texto": "¿Qué vendes?",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Guías PDF libro × rol (colección)",
+        "B": "Un solo PDF / ebook",
+        "C": "Producto físico + digital",
+        "D": "Otro (escribe qué)"
+      }
     },
     {
       "id": "cliente",
       "texto": "¿Para quién es?",
-      "ejemplo": "Profesionales por oficio (psicopedagogas, docentes…)",
-      "obligatoria": true
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Profesionales por oficio (psicopedagogas, docentes…)",
+        "B": "Emprendedores / dueños de negocio",
+        "C": "Público general",
+        "D": "Otro (escribe quién)"
+      }
     },
     {
       "id": "promesa",
-      "texto": "¿Promesa de la marca (una línea)?",
-      "ejemplo": "Ideas de libros aplicadas a tu rol — elige tu guía",
-      "obligatoria": true
+      "texto": "¿Promesa de la marca?",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Ideas de libros aplicadas a tu rol — elige tu guía",
+        "B": "Resultados claros en poco tiempo",
+        "C": "Diseño y calidad que se nota",
+        "D": "Otra (escríbela)"
+      }
     },
     {
       "id": "catalogo",
-      "texto": "¿Varios productos en la página? (si / no). Si sí, ¿cuáles o 'usar catálogo default'?",
-      "ejemplo": "si — catálogo default libro×rol",
-      "obligatoria": true
+      "texto": "¿Cómo mostrar productos?",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Varios — catálogo default libro×rol",
+        "B": "Varios — yo paso la lista después",
+        "C": "Solo 1 producto destacado",
+        "D": "Grid sin filtros"
+      }
     },
     {
       "id": "cta",
       "texto": "¿Texto del botón principal?",
-      "ejemplo": "Ver colección",
-      "obligatoria": true
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Ver colección",
+        "B": "Comprar ahora",
+        "C": "Empezar",
+        "D": "Otro (escribe el texto)"
+      }
     },
     {
       "id": "precio",
-      "texto": "¿Precio visible? (ej. desde $4.99 / oculto)",
-      "ejemplo": "desde $4.99",
-      "obligatoria": true
+      "texto": "¿Precio visible?",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "desde $4.99",
+        "B": "Precio fijo $9.99",
+        "C": "Oculto (sin precio en la web)",
+        "D": "Otro (escribe el precio)"
+      }
     },
     {
       "id": "tono",
-      "texto": "¿Tono? (editorial | cercano | directo)",
-      "ejemplo": "editorial",
-      "obligatoria": true
+      "texto": "¿Tono de la página?",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "editorial",
+        "B": "cercano",
+        "C": "directo",
+        "D": "auto (elige el sistema)"
+      }
     },
     {
       "id": "estilo",
-      "texto": "¿Estilo de página? (editorial | tienda | mockup | oferta | auto)",
-      "ejemplo": "tienda",
+      "texto": "¿Estilo de página?",
       "obligatoria": true,
-      "notas": "tienda = colección tipo Filjós"
+      "recomendado": "A",
+      "opciones": {
+        "A": "tienda (colección tipo Filjós)",
+        "B": "editorial (hero grande)",
+        "C": "mockup (producto en tablet)",
+        "D": "oferta (ads / cierre rápido)"
+      }
     },
     {
       "id": "clima_color",
-      "texto": "¿Clima de color? (cálido | frío | neutro | oscuro | auto)",
-      "ejemplo": "auto",
-      "obligatoria": true
+      "texto": "¿Clima de color?",
+      "obligatoria": true,
+      "recomendado": "C",
+      "opciones": {
+        "A": "cálido",
+        "B": "frío",
+        "C": "neutro ★",
+        "D": "oscuro"
+      }
     },
     {
       "id": "paleta",
-      "texto": "¿Paleta? (A | B | C | auto). El agente propone 3 al preguntar.",
-      "ejemplo": "auto",
-      "obligatoria": true
+      "texto": "¿Paleta? (según el clima de la pregunta 11)",
+      "obligatoria": true,
+      "recomendado": "A",
+      "opciones": {
+        "A": "A — recomendada del clima",
+        "B": "B — segunda opción",
+        "C": "C — tercera opción",
+        "D": "auto (= A)"
+      }
     },
     {
       "id": "referencia",
-      "texto": "¿URL o marca de referencia visual? (o 'ninguna')",
-      "ejemplo": "https://filjos.com/",
-      "obligatoria": false
+      "texto": "¿Referencia visual?",
+      "obligatoria": false,
+      "recomendado": "A",
+      "opciones": {
+        "A": "https://filjos.com/",
+        "B": "Ninguna",
+        "C": "Otra URL (pégala)",
+        "D": "Solo el look que ya generamos"
+      }
     },
     {
       "id": "extra",
-      "texto": "¿Algo que NO puede faltar? (o 'nada')",
-      "ejemplo": "filtros por rol + newsletter",
-      "obligatoria": false
+      "texto": "¿Qué NO puede faltar?",
+      "obligatoria": false,
+      "recomendado": "A",
+      "opciones": {
+        "A": "Filtros por rol + newsletter",
+        "B": "FAQ + beneficios",
+        "C": "Testimonios (cuando haya reales)",
+        "D": "Nada extra"
+      }
     }
   ],
   "paletas_preset": {
@@ -120,6 +204,7 @@
   "recomendacion_default": {
     "clima_si_auto": "neutro",
     "paleta_si_auto": "A",
-    "estilo_si_auto": "tienda"
+    "estilo_si_auto": "tienda",
+    "letras_recomendadas": "1A 2A 3A 4A 5A 6A 7A 8A 9A 10A 11C 12A 13A 14A"
   }
 }
