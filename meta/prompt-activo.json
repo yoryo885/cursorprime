@@ -6,8 +6,8 @@
     "tipo": "evaluacion",
     "proyecto_destino": "lluvia-de-ideas",
     "titulo": "Radar de mejoras para emprendimientos cursorprime",
-    "version": 6,
-    "ultima_mejora": "idea guardada: dropship accesorios lectura (repisas) después de landing",
+    "version": 7,
+    "ultima_mejora": "imágenes faltantes son de la landing Shopify, no del PDF",
     "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md",
     "resumen_simple": "meta/radar-mejoras-resumen-simple.md"
   }
