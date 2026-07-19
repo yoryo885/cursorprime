@@ -295,15 +295,11 @@ def _render_html(ctx: PipelineContext) -> str:
     .hero-lifestyle img {{ width:100%; height:clamp(160px,22vw,260px); object-fit:cover; object-position:center 30%; display:block; }}
     .hero-lifestyle figcaption {{ display:none; }}
     .hero-showcase {{
-      position:relative; display:grid; place-items:center;
-      width:min(100%,420px); min-height:clamp(300px,42vw,440px);
-    }}
-    .hero-mockup {{
-      position:absolute; right:0; bottom:0; width:min(42%,160px);
-      filter:drop-shadow(0 16px 32px rgba(0,0,0,0.12)); z-index:1;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      width:min(100%,360px); margin:0 auto;
     }}
     .hero-showcase .hero-carousel {{
-      position:relative; z-index:2; width:min(72%,300px); height:clamp(260px,36vw,380px);
+      position:relative; width:min(100%,320px); height:clamp(280px,38vw,400px);
       perspective:900px; touch-action:pan-y; user-select:none;
     }}
     .carousel-track {{ position:relative; width:100%; height:100%; }}
@@ -530,8 +526,7 @@ def _render_html(ctx: PipelineContext) -> str:
       .hero-bullets li {{ text-align:left; max-width:28ch; }}
       .hero-actions {{ justify-content:center; }}
       .hero-visual {{ order:-1; width:100%; max-width:min(92vw,400px); margin:0 auto; }}
-      .hero-showcase .hero-carousel {{ width:min(78vw,300px); height:clamp(240px,48vw,340px); }}
-      .hero-mockup {{ width:min(38%,130px); }}
+      .hero-showcase .hero-carousel {{ width:min(85vw,320px); height:clamp(260px,50vw,380px); }}
       .compare-row {{ grid-template-columns:1fr; text-align:center; gap:6px; }}
       .compare-us, .compare-them {{ text-align:center; }}
       .preview-box {{ grid-template-columns:1fr; text-align:center; }}
@@ -571,7 +566,6 @@ def _render_html(ctx: PipelineContext) -> str:
       </div>
       <div class="hero-visual">
         <div class="hero-showcase">
-          <img class="hero-mockup" src="{escape(mockup)}" alt="Vista previa PDF en móvil" width="160" height="300"/>
           <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
             <div class="carousel-track">{slides_html}</div>
           </div>
