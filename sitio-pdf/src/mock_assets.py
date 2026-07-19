@@ -18,6 +18,23 @@ def _write(path: Path, svg: str) -> str:
     return path.name
 
 
+def _source_assets_dir() -> Path:
+    return Path(__file__).resolve().parent.parent / "data" / "vertice-pro" / "assets"
+
+
+def _copy_raster_if_exists(out_dir: Path, base_name: str) -> str | None:
+    """Copia PNG/JPG/WebP desde assets fuente o out_dir si ya existe."""
+    for folder in (out_dir, _source_assets_dir()):
+        for ext in (".png", ".webp", ".jpg", ".jpeg"):
+            src = folder / f"{base_name}{ext}"
+            if src.is_file():
+                dest = out_dir / src.name
+                if src.resolve() != dest.resolve():
+                    shutil.copy2(src, dest)
+                return f"assets/{dest.name}"
+    return None
+
+
 def portada_svg(marca: dict, titulo: str, *, accent_bar: str | None = None) -> str:
     charcoal = _c(marca, "charcoal", "#1a1a1a")
     gold = accent_bar or _c(marca, "gold", "#c9a962")
@@ -100,6 +117,11 @@ def _portada_for_guia(
             shutil.copy2(png_src, dest)
             return dest.name, f"assets/{dest.name}", True
 
+        copied = _copy_raster_if_exists(out_dir, f"portada-{slug}")
+        if copied:
+            fname = copied.replace("assets/", "")
+            return fname, copied, True
+
         meta = load_json(producto_meta_path(producto), {}) or {}
         subtitulo = meta.get("subtitulo_portada", "El principio de Pareto")
         if meta.get("titulo_comercial"):
@@ -150,11 +172,13 @@ def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto"
         slug = libro.get("slug", f"libro-{i}")
         titulo = libro.get("titulo", "Libro")
         autor = libro.get("autor", "")
-        fname = _write(
-            out_dir / f"libro-{slug}.svg",
-            portada_libro_svg(marca, titulo, autor),
-        )
-        rel = f"assets/{fname}"
+        rel = _copy_raster_if_exists(out_dir, f"libro-{slug}")
+        if not rel:
+            fname = _write(
+                out_dir / f"libro-{slug}.svg",
+                portada_libro_svg(marca, titulo, autor),
+            )
+            rel = f"assets/{fname}"
         assets[f"libro_{slug}"] = rel
         carousel.append({
             "tipo": "libro",
@@ -198,10 +222,12 @@ def generate_mock_assets(out_dir: Path, marca: dict, *, producto: str = "pareto"
 
     assets["portada"] = assets.get(f"portada_{piloto_slug}", "")
     assets["mockup_movil"] = f"assets/{_write(out_dir / 'mockup-movil.svg', mockup_movil_svg(marca))}"
-    lectura_src = Path(__file__).resolve().parent.parent / "data" / "vertice-pro" / "assets" / "landing-lectura-lado.png"
-    if lectura_src.is_file():
-        shutil.copy2(lectura_src, out_dir / "landing-lectura-lado.png")
-        assets["imagen_lectura"] = "assets/landing-lectura-lado.png"
+    for hero_name in ("hero-lifestyle-tenue", "landing-lectura-lado"):
+        hero_rel = _copy_raster_if_exists(out_dir, hero_name)
+        if hero_rel:
+            assets["imagen_lectura"] = hero_rel
+            assets["hero_lifestyle"] = hero_rel
+            break
     assets["_carousel_json"] = carousel  # type: ignore[assignment]
     assets["_catalogo_guias_json"] = catalogo  # type: ignore[assignment]
     return assets

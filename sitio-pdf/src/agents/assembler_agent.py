@@ -187,11 +187,14 @@ def _render_html(ctx: PipelineContext) -> str:
             if dis
             else '<span class="btn btn-card btn-outline btn-block" style="line-height:42px">Avísame</span>'
         )
-        img = (
-            f'<img class="card-img" src="{escape(gsrc)}" alt="{escape(g.get("titulo",""))}"/>'
-            if dis
-            else f'<div class="card-soon">{escape(g.get("titulo_corto") or "Próximamente")}</div>'
-        )
+        libro_slug = g.get("libro", "")
+        libro_src = a.get(f"libro_{libro_slug}", "")
+        if dis:
+            img = f'<img class="card-img" src="{escape(gsrc)}" alt="{escape(g.get("titulo",""))}"/>'
+        elif libro_src:
+            img = f'<img class="card-img card-img-soon" src="{escape(libro_src)}" alt="{escape(g.get("titulo",""))}"/>'
+        else:
+            img = f'<div class="card-soon">{escape(g.get("titulo_corto") or "Próximamente")}</div>'
         brand_label = f"{escape(name)} · PDF" if dis else escape(name)
         return f"""
       <article class="card guia-card" data-rol-card="{escape(rol)}" data-libro-card="{escape(libro)}"{opacity}>
@@ -220,6 +223,13 @@ def _render_html(ctx: PipelineContext) -> str:
         for n, q in reviews
     )
     about_tagline = cat.get("about_tagline") or m.get("producto_piloto", {}).get("subtitulo", "")
+
+    hero_banner = ""
+    hero_img = a.get("hero_lifestyle") or a.get("imagen_lectura", "")
+    if hero_img:
+        hero_banner = f"""<figure class="hero-banner">
+      <img src="{escape(hero_img)}" alt="Profesional aplicando guía PDF en su trabajo"/>
+    </figure>"""
 
     return f"""<!DOCTYPE html>
 <html lang="es">
@@ -268,7 +278,12 @@ def _render_html(ctx: PipelineContext) -> str:
     nav a {{ padding:4px 0; min-height:40px; display:inline-flex; align-items:center; transition:color 0.2s ease; }}
     nav a:hover {{ color:var(--charcoal); }}
 
-    .hero-editorial {{ padding:clamp(32px,6vw,56px) 0 clamp(48px,8vw,72px); background:var(--surface); }}
+    .hero-editorial {{ padding:0 0 clamp(48px,8vw,72px); background:var(--surface); }}
+    .hero-banner {{
+      width:100%; max-height:clamp(180px,28vw,320px); overflow:hidden; margin-bottom:clamp(24px,4vw,36px);
+      border-bottom:1px solid var(--border);
+    }}
+    .hero-banner img {{ width:100%; height:clamp(180px,28vw,320px); object-fit:cover; object-position:center 30%; display:block; }}
     .hero-visual {{ display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:clamp(28px,5vw,40px); }}
     .hero-showcase {{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -357,7 +372,8 @@ def _render_html(ctx: PipelineContext) -> str:
     .btn-block {{ width:100%; }}
 
     .card {{ background:transparent; border:none; display:flex; flex-direction:column; }}
-    .card-img {{ aspect-ratio:1; object-fit:contain; background:var(--accent-tint); padding:18px; width:100%; border-radius:2px; }}
+    .card-img {{ aspect-ratio:1; object-fit:cover; background:var(--accent-tint); padding:0; width:100%; border-radius:2px; }}
+    .card-img-soon {{ opacity:0.82; filter:saturate(0.85); }}
     .card-body {{ padding:14px 2px 0; text-align:center; flex:1; display:flex; flex-direction:column; gap:4px; }}
     .card-brand {{ font-size:0.58rem; letter-spacing:0.14em; color:var(--muted); text-transform:uppercase; margin-bottom:4px; }}
     .card h3 {{
@@ -430,6 +446,7 @@ def _render_html(ctx: PipelineContext) -> str:
   </header>
 
   <section class="hero hero-editorial">
+    {hero_banner}
     <div class="hero-visual wrap">
       <div class="hero-showcase">
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
