@@ -19,6 +19,8 @@ cursorprime/
 ├── creador de contenido/    ← pipeline PNG · GIF · Video · PDF
 ├── libros a entender/       ← PDFs, resúmenes, maquetación
 ├── ideas de proyectos/      ← evaluación de ideas
+├── proyecto landing/        ← Vértice Pro · landing HTML + Shopify zip
+├── sitio-pdf/               ← pipeline que genera la landing
 └── linkedin-ghostwriter/    ← proyecto aparte (ver abajo)
 ```
 

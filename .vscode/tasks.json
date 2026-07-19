@@ -5,7 +5,7 @@
       "id": "openSimpleBrowser",
       "type": "command",
       "command": "simpleBrowser.show",
-      "args": ["http://localhost:8768/tienda.html"]
+      "args": ["http://localhost:8768/index.html"]
     }
   ],
   "tasks": [
@@ -27,7 +27,7 @@
       "type": "shell",
       "command": "python3 -m http.server 8768",
       "options": {
-        "cwd": "${workspaceFolder}/clientes/vertice-pro/proyectos/landing/preview"
+        "cwd": "${workspaceFolder}/proyecto landing/preview"
       },
       "isBackground": true,
       "problemMatcher": {

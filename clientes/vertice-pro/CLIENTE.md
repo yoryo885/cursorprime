@@ -1,15 +1,14 @@
 # Vértice Pro
 
-Tienda Shopify de guías PDF digitales — serie **Aplicar en tu rol**.
+Tienda Shopify de guías PDF — serie **Aplicar en tu rol**.
 
-- Dominio Shopify: `verticepro.myshopify.com`
-- Producto: guías PDF descargables para profesionales (español)
-- Primer producto demo: Pareto para psicopedagogas
+- Dominio: `verticepro.myshopify.com`
+- Primer producto: Pareto para psicopedagogas
 
-## Proyectos
+## Dónde está todo
 
-| Carpeta | Qué es |
-|---------|--------|
-| **[proyectos/landing/](./proyectos/landing/)** | Landing de venta — preview HTML + zip Shopify (**empieza aquí**) |
-| `proyectos/shopify/` | Código fuente del theme Liquid (desarrollo) |
-| `proyectos/web/` | *(futuro)* Sitio web completo |
+| Qué | Carpeta |
+|-----|---------|
+| **Landing (preview + Shopify zip)** | [`../../proyecto landing/`](../../proyecto%20landing/) |
+| Pipeline que genera el diseño | [`../../sitio-pdf/`](../../sitio-pdf/) |
+| Web completa *(futuro)* | `proyecto web/` *(aún no creada)* |

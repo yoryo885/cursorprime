@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Regenera sitio-pdf y copia todo a esta carpeta landing.
+# Regenera sitio-pdf y copia entregables a esta carpeta.
 set -euo pipefail
 LANDING="$(cd "$(dirname "$0")/.." && pwd)"
-WORKSPACE="$(cd "$LANDING/../../../.." && pwd)"
+WORKSPACE="$(cd "$LANDING/.." && pwd)"
 SITIO="$WORKSPACE/sitio-pdf"
 OUT="$SITIO/data/vertice-pro/output"
 
@@ -13,4 +13,4 @@ cp "$OUT/preview.html" "$LANDING/preview/index.html"
 cp -r "$OUT/assets/"* "$LANDING/preview/assets/"
 cp "$OUT/vertice-pro-theme.zip" "$LANDING/shopify/"
 
-echo "✅ Landing actualizada: $LANDING"
+echo "✅ proyecto landing actualizado: $LANDING"

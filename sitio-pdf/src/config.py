@@ -56,4 +56,4 @@ def portada_imagen_path(producto: str) -> Path | None:
 
 
 def shopify_theme_src() -> Path:
-    return CLIENTES / "vertice-pro" / "proyectos" / "shopify" / "theme"
+    return CURSORPRIME / "proyecto landing" / "shopify" / "theme"
