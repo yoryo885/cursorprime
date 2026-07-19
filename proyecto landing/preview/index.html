@@ -129,6 +129,20 @@
     .empty-state.is-visible { display:block; }
     .section-lead { text-align:center; color:var(--muted); font-size:0.9rem; max-width:46ch; margin:-12px auto 28px; padding:0 var(--pad); }
 
+    .flow-steps {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
+      gap:16px; max-width:var(--max); margin:0 auto 8px;
+    }
+    .flow-step {
+      background:var(--surface); border:1px solid var(--border); padding:20px; text-align:center;
+    }
+    .flow-num {
+      display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center;
+      border-radius:50%; background:var(--charcoal); color:#fff; font-size:0.75rem; margin-bottom:10px;
+    }
+    .flow-step h3 { font-family:'Cormorant Garamond',serif; font-size:1rem; margin-bottom:6px; font-weight:500; }
+    .flow-step p { font-size:0.82rem; color:var(--muted); }
+
     .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:16px; max-width:var(--max); margin:0 auto 32px; }
     .benefit-card { background:var(--surface); border:1px solid var(--border); padding:20px; }
     .benefit-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-bottom:8px; font-weight:500; }
@@ -139,6 +153,12 @@
       padding:clamp(20px,4vw,32px); text-align:left;
     }
     .incluye-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; margin-bottom:12px; font-weight:500; }
+    .incluye-intro { font-size:0.88rem; color:var(--muted); margin-bottom:12px; }
+    .incluye-ejemplo {
+      font-size:0.9rem; color:var(--text); background:var(--cream); border-left:3px solid var(--gold);
+      padding:12px 14px; margin-bottom:16px;
+    }
+    .incluye-ejemplo[hidden] { display:none !important; }
     .incluye-box ul { margin:0; padding-left:1.2em; color:var(--muted); font-size:0.88rem; }
     .incluye-box li { margin-bottom:8px; }
 
@@ -213,12 +233,12 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="hero-label">Nuevo · Serie Aplicar en tu rol</p>
-        <h1>Guías que aplicas esta semana</h1>
-        <p class="hero-desc">Guías PDF en español para profesionales ocupados</p>
+        <p class="hero-label">Serie · Aplicar en tu rol</p>
+        <h1>Libros que aplicas en tu trabajo</h1>
+        <p class="hero-desc">Guías PDF en español para profesionales. Un bestseller adaptado a tu oficio — sin suscripción.</p>
         <ul class="hero-bullets"><li>Libros famosos traducidos a acciones de tu oficio</li><li>Compra única — sin suscripción mensual</li><li>PDF listo para leer en móvil o imprimir</li></ul>
-        <a class="btn" href="#guias-por-rol">Ver colección</a>
-        <p class="hero-micro">Pago único · Sin suscripción · Descarga inmediata</p>
+        <a class="btn" href="#guias-por-rol">Encontrar mi guía</a>
+        <p class="hero-micro">Para cualquier profesional · Pago único · PDF al instante</p>
       </div>
       <div class="hero-visual">
         <div class="hero-carousel" id="heroCarousel" data-slides="[{&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;pareto&quot;, &quot;titulo&quot;: &quot;El principio de Pareto&quot;, &quot;subtitulo&quot;: &quot;Antoine Delers&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: true, &quot;src&quot;: &quot;assets/libro-pareto.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;habitos&quot;, &quot;titulo&quot;: &quot;Hábitos atómicos&quot;, &quot;subtitulo&quot;: &quot;James Clear&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-habitos.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;kahneman&quot;, &quot;titulo&quot;: &quot;Pensar rápido, pensar despacio&quot;, &quot;subtitulo&quot;: &quot;Daniel Kahneman&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-kahneman.svg&quot;}]">
@@ -268,9 +288,27 @@
 
   <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
+  <section id="como-funciona">
+    <h2>Cómo funciona</h2>
+    <p class="section-lead">Tres pasos — igual para abogados, docentes, psicopedagogas o cualquier oficio.</p>
+    <div class="flow-steps"><article class="flow-step">
+          <span class="flow-num">1</span>
+          <h3>Elige tu profesión</h3>
+          <p>Filtra el catálogo por tu oficio.</p>
+        </article><article class="flow-step">
+          <span class="flow-num">2</span>
+          <h3>Elige tu libro</h3>
+          <p>Pareto, Hábitos, Kahneman y más en camino.</p>
+        </article><article class="flow-step">
+          <span class="flow-num">3</span>
+          <h3>Descarga y aplica</h3>
+          <p>PDF al instante. Plan de 10 semanas incluido.</p>
+        </article></div>
+  </section>
+
   <section id="guias-por-rol">
-    <h2>Guías para tu rol</h2>
-    <p class="section-lead">Como Blinkist o Shortform, pero en PDF y adaptado a tu oficio — sin cuota mensual.</p>
+    <h2>Encuentra tu guía</h2>
+    <p class="section-lead">Elige tu profesión y descubre la versión del libro para ti. Mismo formato en todos los oficios.</p>
     <p class="filter-label">1 · Elige tu profesión</p>
     <div class="role-filters" id="roleFilters"><button type="button" class="role-chip is-active" data-rol="todos">Todos los roles</button><button type="button" class="role-chip" data-rol="psicopedagogas">Psicopedagogas</button><button type="button" class="role-chip" data-rol="abogados">Abogados</button><button type="button" class="role-chip" data-rol="soldadores">Soldadores</button><button type="button" class="role-chip" data-rol="docentes">Docentes</button><button type="button" class="role-chip" data-rol="enfermeras">Enfermeras</button></div>
     <p class="filter-label">2 · Opcional: filtra por libro</p>
@@ -364,34 +402,22 @@
 
   <section id="incluye">
     <h2>Qué incluye cada guía</h2>
+    <p class="section-lead">Mismo formato en todos los libros y profesiones. El contenido se adapta cuando eliges tu rol arriba.</p>
     <div class="benefits-grid"><article class="benefit-card">
           <h3>Plan de 10 semanas</h3>
-          <p>Aplica un plan semanal concreto durante 10 semanas con acciones específicas</p>
+          <p>Una acción concreta por semana. Empiezas hoy, avanzas sin improvisar.</p>
         </article><article class="benefit-card">
           <h3>Adaptado a tu rol</h3>
-          <p>Identifica el 20% de estudiantes que requieren tu intervención prioritaria</p>
+          <p>Ejemplos, casos y lenguaje de tu profesión — no un resumen genérico de librería.</p>
         </article><article class="benefit-card">
-          <h3>Descarga al instante</h3>
-          <p>Compras, descargas y empiezas hoy.</p>
+          <h3>PDF tuyo para siempre</h3>
+          <p>Compra única. Descarga al instante. Lee en móvil, tablet o imprime.</p>
         </article></div>
     <div class="incluye-box">
-      <h3>Plan de 10 semanas · Pareto para psicopedagogas en 10 semanas</h3>
-      <ul><li>Semana 1–2: Diagnóstico rápido de tu semana laboral</li><li>Semana 3–5: Aplicar el 80/20 a casos reales</li><li>Semana 6–8: Rutinas que sostienen el cambio</li><li>Semana 9–10: Medir impacto y ajustar</li></ul>
-    </div>
-  </section>
-
-  <section id="bestsellers">
-    <h2>Destacada</h2>
-    <div class="grid">
-      <article class="card">
-        <img class="card-img" src="assets/portada-pareto-psicopedagogas.png" alt="Pareto para psicopedagogas en 10 semanas"/>
-        <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF · Más vendida</p>
-          <h3>Pareto para psicopedagogas en 10 semanas</h3>
-          <p class="price">$4.99</p>
-          <a class="btn btn-block" href="#">Añadir al carrito</a>
-        </div>
-      </article>
+      <h3 id="incluyePlanTitulo">Estructura del plan · 10 semanas</h3>
+      <p class="incluye-intro" id="incluyeIntro">Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.</p>
+      <p class="incluye-ejemplo" id="incluyeEjemplo" hidden></p>
+      <ul><li>Semanas 1–2: Mapa de tu semana laboral y primeros focos</li><li>Semanas 3–5: Aplicar las ideas del libro a casos reales de tu rol</li><li>Semanas 6–8: Rutinas que sostienen el cambio en el día a día</li><li>Semanas 9–10: Medir resultados y ajustar el plan</li></ul>
     </div>
   </section>
 
@@ -400,16 +426,16 @@
       <img src="assets/mockup-movil.svg" alt="Vista móvil"/>
       <div>
         <h2>Inspiradas en tu trabajo real</h2>
-        <p>Editorial digital en español. Serie «Aplicar en tu rol». Guías accionables para psicopedagogas en escuela.</p>
-        <p>Prioriza el 20% de casos que generan el 80% del impacto en el aula</p>
-        <a class="btn btn-outline" href="#guias-por-rol">Ver colección</a>
+        <p>Editorial digital en español. Adaptamos libros de no-ficción a oficios concretos: salud, educación, derecho, oficios técnicos y más.</p>
+        <p>Para quien compra ebooks y quiere aplicarlos el lunes, no guardarlos en la carpeta de descargas.</p>
+        <a class="btn btn-outline" href="#guias-por-rol">Encontrar mi guía</a>
       </div>
     </div>
   </section>
 
   <section id="opiniones">
     <h2>Lo que dicen</h2>
-    <div class="reviews"><blockquote class="review"><p>«Me ayudó a priorizar casos en el gabinete.»</p><cite>— María</cite></blockquote><blockquote class="review"><p>«Descarga al instante y plan de 10 semanas claro.»</p><cite>— Carolina</cite></blockquote><blockquote class="review"><p>«Resumen adaptado a psicopedagogas, no genérico.»</p><cite>— Andrea</cite></blockquote></div>
+    <div class="reviews"><blockquote class="review"><p>«Prioricé sin leer 300 páginas. Plan claro para el gabinete.»</p><cite>— María G. · Psicopedagogas</cite></blockquote><blockquote class="review"><p>«Ejemplos de expedientes reales, no teoría de librería.»</p><cite>— Roberto L. · Abogados</cite></blockquote><blockquote class="review"><p>«Lo apliqué en el turno. PDF al instante y sin suscripción.»</p><cite>— Carmen V. · Enfermeras</cite></blockquote></div>
   </section>
 
   <section id="faq">
@@ -441,13 +467,16 @@
 
   <div class="sticky-cta" id="stickyCta">
     <div class="wrap">
-      <p><strong>$4.99</strong> · PDF al instante</p>
-      <a class="btn" href="#guias-por-rol">Ver guías</a>
+      <p><strong>Desde $4.99</strong> · PDF al instante</p>
+      <a class="btn" href="#guias-por-rol">Encontrar mi guía</a>
     </div>
   </div>
 
   <footer><p>Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.</p></footer>
   <script>
+  const ROLES_DATA = {"psicopedagogas": {"nombre": "Psicopedagogas", "ejemplo": "Prioriza el 20% de casos que generan el 80% del impacto en tu gabinete."}, "abogados": {"nombre": "Abogados", "ejemplo": "Enfoca tu semana en los expedientes que más mueven el bufete."}, "soldadores": {"nombre": "Soldadores", "ejemplo": "Organiza turnos y tareas para reducir retrabajo en obra."}, "docentes": {"nombre": "Docentes", "ejemplo": "Decide qué lecciones y alumnos merecen tu energía esta semana."}, "enfermeras": {"nombre": "Enfermeras", "ejemplo": "Ordena turnos y protocolos sin quemarte en lo urgente."}};
+  const INCLUYE_DEFAULT = "Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.";
+  const INCLUYE_ROL_PREFIX = "Así se aplica en tu oficio cuando elijas una guía:";
 (function() {
   const root = document.getElementById('heroCarousel');
   if (!root) return;
@@ -507,6 +536,23 @@
       if (show) visible++;
     });
     if (emptyAll) emptyAll.classList.toggle('is-visible', visible === 0);
+    updateIncluye(activeRol);
+  }
+
+  function updateIncluye(rol) {
+    const intro = document.getElementById('incluyeIntro');
+    const ej = document.getElementById('incluyeEjemplo');
+    if (!intro || !ej) return;
+    if (rol === 'todos' || !ROLES_DATA[rol]) {
+      intro.textContent = INCLUYE_DEFAULT;
+      ej.hidden = true;
+      ej.textContent = '';
+      return;
+    }
+    const data = ROLES_DATA[rol];
+    intro.textContent = INCLUYE_ROL_PREFIX + ' ' + (data.nombre || rol) + '.';
+    ej.textContent = data.ejemplo || '';
+    ej.hidden = !data.ejemplo;
   }
 
   roleChips.forEach(btn => btn.addEventListener('click', () => {

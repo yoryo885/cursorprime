@@ -62,11 +62,11 @@
     }
   ],
   "roles": [
-    { "slug": "psicopedagogas", "nombre": "Psicopedagogas" },
-    { "slug": "abogados", "nombre": "Abogados" },
-    { "slug": "soldadores", "nombre": "Soldadores" },
-    { "slug": "docentes", "nombre": "Docentes" },
-    { "slug": "enfermeras", "nombre": "Enfermeras" }
+    { "slug": "psicopedagogas", "nombre": "Psicopedagogas", "ejemplo": "Prioriza el 20% de casos que generan el 80% del impacto en tu gabinete." },
+    { "slug": "abogados", "nombre": "Abogados", "ejemplo": "Enfoca tu semana en los expedientes que más mueven el bufete." },
+    { "slug": "soldadores", "nombre": "Soldadores", "ejemplo": "Organiza turnos y tareas para reducir retrabajo en obra." },
+    { "slug": "docentes", "nombre": "Docentes", "ejemplo": "Decide qué lecciones y alumnos merecen tu energía esta semana." },
+    { "slug": "enfermeras", "nombre": "Enfermeras", "ejemplo": "Ordena turnos y protocolos sin quemarte en lo urgente." }
   ],
   "catalogo_guias": [
     {
@@ -147,6 +147,38 @@
   "decisiones_confirmadas": "defaults ★ · mock · estilo filjos · catálogo libro×rol · UX benchmark nicho",
   "modo_imagen": "mock",
   "ux_landing": {
+    "copy_catalogo": {
+      "hero_label": "Serie · Aplicar en tu rol",
+      "hero_title": "Libros que aplicas en tu trabajo",
+      "hero_subtitle": "Guías PDF en español para profesionales. Un bestseller adaptado a tu oficio — sin suscripción.",
+      "hero_cta": "Encontrar mi guía",
+      "guias_lead": "Elige tu profesión y descubre la versión del libro para ti. Mismo formato en todos los oficios.",
+      "benefits_title": "Qué incluye cada guía",
+      "benefits": [
+        {
+          "title": "Plan de 10 semanas",
+          "text": "Una acción concreta por semana. Empiezas hoy, avanzas sin improvisar."
+        },
+        {
+          "title": "Adaptado a tu rol",
+          "text": "Ejemplos, casos y lenguaje de tu profesión — no un resumen genérico de librería."
+        },
+        {
+          "title": "PDF tuyo para siempre",
+          "text": "Compra única. Descarga al instante. Lee en móvil, tablet o imprime."
+        }
+      ],
+      "plan_titulo": "Estructura del plan · 10 semanas",
+      "plan_intro_default": "Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.",
+      "plan_intro_rol": "Así se aplica en tu oficio cuando elijas una guía:",
+      "about_text": "Editorial digital en español. Adaptamos libros de no-ficción a oficios concretos: salud, educación, derecho, oficios técnicos y más.",
+      "about_tagline": "Para quien compra ebooks y quiere aplicarlos el lunes, no guardarlos en la carpeta de descargas."
+    },
+    "flujo_pasos": [
+      { "titulo": "Elige tu profesión", "texto": "Filtra el catálogo por tu oficio." },
+      { "titulo": "Elige tu libro", "texto": "Pareto, Hábitos, Kahneman y más en camino." },
+      { "titulo": "Descarga y aplica", "texto": "PDF al instante. Plan de 10 semanas incluido." }
+    ],
     "trust_badges": [
       { "icon": "pdf", "label": "PDF descargable", "hint": "Tuyo para siempre" },
       { "icon": "bolt", "label": "Descarga al instante", "hint": "Sin esperas" },
@@ -159,10 +191,10 @@
       "PDF listo para leer en móvil o imprimir"
     ],
     "incluye_semanas": [
-      "Semana 1–2: Diagnóstico rápido de tu semana laboral",
-      "Semana 3–5: Aplicar el 80/20 a casos reales",
-      "Semana 6–8: Rutinas que sostienen el cambio",
-      "Semana 9–10: Medir impacto y ajustar"
+      "Semanas 1–2: Mapa de tu semana laboral y primeros focos",
+      "Semanas 3–5: Aplicar las ideas del libro a casos reales de tu rol",
+      "Semanas 6–8: Rutinas que sostienen el cambio en el día a día",
+      "Semanas 9–10: Medir resultados y ajustar el plan"
     ],
     "faq": [
       {

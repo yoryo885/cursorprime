@@ -49,7 +49,9 @@ def _render_html(ctx: PipelineContext) -> str:
     roles = m.get("roles") or []
     serie = m.get("serie_libros") or []
     ux = _ux(ctx)
-    benefits = c.get("benefits") or []
+    cat = ux.get("copy_catalogo") or {}
+    benefits = c.get("benefits") or cat.get("benefits") or []
+    precio_display = m.get("precio_display", "$4.99")
 
     slides_html = ""
     dots_html = ""
@@ -139,14 +141,29 @@ def _render_html(ctx: PipelineContext) -> str:
           <p>{escape(item.get('a',''))}</p>
         </details>"""
 
+    flujo = ux.get("flujo_pasos") or []
+    flujo_html = ""
+    for i, step in enumerate(flujo[:3], 1):
+        flujo_html += f"""<article class="flow-step">
+          <span class="flow-num">{i}</span>
+          <h3>{escape(step.get('titulo',''))}</h3>
+          <p>{escape(step.get('texto',''))}</p>
+        </article>"""
+
+    roles_map = {
+        r.get("slug", ""): {"nombre": r.get("nombre", ""), "ejemplo": r.get("ejemplo", "")}
+        for r in roles
+    }
+    roles_json = json.dumps(roles_map, ensure_ascii=False).replace("</", "<\\/")
+
     reviews = [
-        ("María", "Me ayudó a priorizar casos en el gabinete."),
-        ("Carolina", "Descarga al instante y plan de 10 semanas claro."),
-        ("Andrea", "Resumen adaptado a psicopedagogas, no genérico."),
+        ("María G.", "Psicopedagogas", "Prioricé sin leer 300 páginas. Plan claro para el gabinete."),
+        ("Roberto L.", "Abogados", "Ejemplos de expedientes reales, no teoría de librería."),
+        ("Carmen V.", "Enfermeras", "Lo apliqué en el turno. PDF al instante y sin suscripción."),
     ]
     reviews_html = "".join(
-        f'<blockquote class="review"><p>«{escape(q)}»</p><cite>— {escape(n)}</cite></blockquote>'
-        for n, q in reviews
+        f'<blockquote class="review"><p>«{escape(q)}»</p><cite>— {escape(n)} · {escape(rol)}</cite></blockquote>'
+        for n, rol, q in reviews
     )
 
     return f"""<!DOCTYPE html>
@@ -280,6 +297,20 @@ def _render_html(ctx: PipelineContext) -> str:
     .empty-state.is-visible {{ display:block; }}
     .section-lead {{ text-align:center; color:var(--muted); font-size:0.9rem; max-width:46ch; margin:-12px auto 28px; padding:0 var(--pad); }}
 
+    .flow-steps {{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
+      gap:16px; max-width:var(--max); margin:0 auto 8px;
+    }}
+    .flow-step {{
+      background:var(--surface); border:1px solid var(--border); padding:20px; text-align:center;
+    }}
+    .flow-num {{
+      display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center;
+      border-radius:50%; background:var(--charcoal); color:#fff; font-size:0.75rem; margin-bottom:10px;
+    }}
+    .flow-step h3 {{ font-family:'Cormorant Garamond',serif; font-size:1rem; margin-bottom:6px; font-weight:500; }}
+    .flow-step p {{ font-size:0.82rem; color:var(--muted); }}
+
     .benefits-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:16px; max-width:var(--max); margin:0 auto 32px; }}
     .benefit-card {{ background:var(--surface); border:1px solid var(--border); padding:20px; }}
     .benefit-card h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-bottom:8px; font-weight:500; }}
@@ -290,6 +321,12 @@ def _render_html(ctx: PipelineContext) -> str:
       padding:clamp(20px,4vw,32px); text-align:left;
     }}
     .incluye-box h3 {{ font-family:'Cormorant Garamond',serif; font-size:1.15rem; margin-bottom:12px; font-weight:500; }}
+    .incluye-intro {{ font-size:0.88rem; color:var(--muted); margin-bottom:12px; }}
+    .incluye-ejemplo {{
+      font-size:0.9rem; color:var(--text); background:var(--cream); border-left:3px solid var(--gold);
+      padding:12px 14px; margin-bottom:16px;
+    }}
+    .incluye-ejemplo[hidden] {{ display:none !important; }}
     .incluye-box ul {{ margin:0; padding-left:1.2em; color:var(--muted); font-size:0.88rem; }}
     .incluye-box li {{ margin-bottom:8px; }}
 
@@ -353,10 +390,10 @@ def _render_html(ctx: PipelineContext) -> str:
     <div class="wrap">
       <div class="logo">{escape(name)}</div>
       <nav>
-        <a href="#guias-por-rol">Guías</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#guias-por-rol">Catálogo</a>
         <a href="#incluye">Qué incluye</a>
         <a href="#faq">FAQ</a>
-        <a href="#opiniones">Opiniones</a>
       </nav>
     </div>
   </header>
@@ -364,12 +401,12 @@ def _render_html(ctx: PipelineContext) -> str:
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="hero-label">Nuevo · Serie Aplicar en tu rol</p>
-        <h1>{escape(c.get('hero_title',''))}</h1>
-        <p class="hero-desc">{escape(c.get('hero_subtitle',''))}</p>
+        <p class="hero-label">{escape(c.get('hero_label', cat.get('hero_label', 'Serie · Aplicar en tu rol')))}</p>
+        <h1>{escape(c.get('hero_title', cat.get('hero_title','')))}</h1>
+        <p class="hero-desc">{escape(c.get('hero_subtitle', cat.get('hero_subtitle','')))}</p>
         <ul class="hero-bullets">{hero_bullets_html}</ul>
-        <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta','Ver colección'))}</a>
-        <p class="hero-micro">Pago único · Sin suscripción · Descarga inmediata</p>
+        <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Encontrar mi guía')))}</a>
+        <p class="hero-micro">Para cualquier profesional · Pago único · PDF al instante</p>
       </div>
       <div class="hero-visual">
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
@@ -394,9 +431,15 @@ def _render_html(ctx: PipelineContext) -> str:
 
   <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
 
+  <section id="como-funciona">
+    <h2>Cómo funciona</h2>
+    <p class="section-lead">Tres pasos — igual para abogados, docentes, psicopedagogas o cualquier oficio.</p>
+    <div class="flow-steps">{flujo_html}</div>
+  </section>
+
   <section id="guias-por-rol">
-    <h2>Guías para tu rol</h2>
-    <p class="section-lead">Como Blinkist o Shortform, pero en PDF y adaptado a tu oficio — sin cuota mensual.</p>
+    <h2>Encuentra tu guía</h2>
+    <p class="section-lead">{escape(c.get('guias_lead', cat.get('guias_lead', 'Elige tu profesión y descubre la versión del libro para ti.')))}</p>
     <p class="filter-label">1 · Elige tu profesión</p>
     <div class="role-filters" id="roleFilters">{role_chips}</div>
     <p class="filter-label">2 · Opcional: filtra por libro</p>
@@ -409,26 +452,14 @@ def _render_html(ctx: PipelineContext) -> str:
   </section>
 
   <section id="incluye">
-    <h2>{escape(c.get('benefits_title','Qué incluye cada guía'))}</h2>
+    <h2>{escape(c.get('benefits_title', cat.get('benefits_title','Qué incluye cada guía')))}</h2>
+    <p class="section-lead">Mismo formato en todos los libros y profesiones. El contenido se adapta cuando eliges tu rol arriba.</p>
     <div class="benefits-grid">{benefits_html}</div>
     <div class="incluye-box">
-      <h3>Plan de 10 semanas · {escape(p.get('titulo','Guía piloto'))}</h3>
+      <h3 id="incluyePlanTitulo">{escape(cat.get('plan_titulo','Estructura del plan · 10 semanas'))}</h3>
+      <p class="incluye-intro" id="incluyeIntro">{escape(cat.get('plan_intro_default','Todas las guías siguen la misma estructura.'))}</p>
+      <p class="incluye-ejemplo" id="incluyeEjemplo" hidden></p>
       <ul>{incluye_html}</ul>
-    </div>
-  </section>
-
-  <section id="bestsellers">
-    <h2>Destacada</h2>
-    <div class="grid">
-      <article class="card">
-        <img class="card-img" src="{escape(portada)}" alt="{escape(p.get('titulo',''))}"/>
-        <div class="card-body">
-          <p class="card-brand">Vértice Pro · PDF · Más vendida</p>
-          <h3>{escape(p.get('titulo',''))}</h3>
-          <p class="price">{escape(p.get('precio',''))}</p>
-          <a class="btn btn-block" href="#">Añadir al carrito</a>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -437,9 +468,9 @@ def _render_html(ctx: PipelineContext) -> str:
       <img src="{escape(mockup)}" alt="Vista móvil"/>
       <div>
         <h2>Inspiradas en tu trabajo real</h2>
-        <p>{escape(c.get('about_text',''))}</p>
-        <p>{escape(p.get('subtitulo',''))}</p>
-        <a class="btn btn-outline" href="#guias-por-rol">Ver colección</a>
+        <p>{escape(c.get('about_text', cat.get('about_text','')))}</p>
+        <p>{escape(c.get('about_tagline', cat.get('about_tagline','')))}</p>
+        <a class="btn btn-outline" href="#guias-por-rol">Encontrar mi guía</a>
       </div>
     </div>
   </section>
@@ -466,13 +497,16 @@ def _render_html(ctx: PipelineContext) -> str:
 
   <div class="sticky-cta" id="stickyCta">
     <div class="wrap">
-      <p><strong>{escape(p.get('precio','$4.99'))}</strong> · PDF al instante</p>
-      <a class="btn" href="#guias-por-rol">Ver guías</a>
+      <p><strong>Desde {escape(precio_display)}</strong> · PDF al instante</p>
+      <a class="btn" href="#guias-por-rol">Encontrar mi guía</a>
     </div>
   </div>
 
   <footer><p>{escape(c.get('footer_legal',''))}</p></footer>
   <script>
+  const ROLES_DATA = {roles_json};
+  const INCLUYE_DEFAULT = {json.dumps(cat.get('plan_intro_default',''), ensure_ascii=False)};
+  const INCLUYE_ROL_PREFIX = {json.dumps(cat.get('plan_intro_rol',''), ensure_ascii=False)};
 (function() {{
   const root = document.getElementById('heroCarousel');
   if (!root) return;
@@ -532,12 +566,32 @@ def _render_html(ctx: PipelineContext) -> str:
       if (show) visible++;
     }});
     if (emptyAll) emptyAll.classList.toggle('is-visible', visible === 0);
+    updateIncluye(activeRol);
+  }}
+
+  function updateIncluye(rol) {{
+    const intro = document.getElementById('incluyeIntro');
+    const ej = document.getElementById('incluyeEjemplo');
+    if (!intro || !ej) return;
+    if (rol === 'todos' || !ROLES_DATA[rol]) {{
+      intro.textContent = INCLUYE_DEFAULT;
+      ej.hidden = true;
+      ej.textContent = '';
+      return;
+    }}
+    const data = ROLES_DATA[rol];
+    intro.textContent = INCLUYE_ROL_PREFIX + ' ' + (data.nombre || rol) + '.';
+    ej.textContent = data.ejemplo || '';
+    ej.hidden = !data.ejemplo;
   }}
 
   roleChips.forEach(btn => btn.addEventListener('click', () => {{
     activeRol = btn.dataset.rol;
     roleChips.forEach(c => c.classList.toggle('is-active', c === btn));
     applyFilters();
+    if (activeRol !== 'todos') {{
+      document.getElementById('guiasDisponibles')?.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+    }}
   }}));
 
   bookChips.forEach(btn => btn.addEventListener('click', () => {{
