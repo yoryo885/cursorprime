@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" role="img">
+  <rect width="1400" height="720" fill="#f0ebe3"/>
+  <rect x="0" y="580" width="1400" height="140" fill="#fff" opacity="0.6"/>
+  <circle cx="200" cy="360" r="280" fill="#c9a962" opacity="0.08"/>
+  <circle cx="1200" cy="200" r="200" fill="#c9a962" opacity="0.06"/>
+  <rect x="80" y="80" width="520" height="560" rx="2" fill="#fff" stroke="#e8e4df" stroke-width="1"/>
+  <rect x="100" y="100" width="480" height="400" fill="#f0ebe3"/>
+  <rect x="180" y="180" width="160" height="220" rx="3" fill="#1a1a1a"/>
+  <rect x="172" y="188" width="160" height="220" rx="3" fill="#fff"/>
+  <text x="252" y="280" text-anchor="middle" fill="#1a1a1a" font-family="Georgia,serif" font-size="14" font-weight="700">PDF</text>
+  <text x="252" y="310" text-anchor="middle" fill="#c9a962" font-family="system-ui" font-size="10">Guía</text>
+  <text x="680" y="280" fill="#1a1a1a" font-family="Georgia,serif" font-size="48" font-weight="400" letter-spacing="0.08em">VÉRTICE PRO</text>
+  <text x="680" y="340" fill="#6b6560" font-family="system-ui,sans-serif" font-size="22">Aplicar en tu rol</text>
+  <text x="680" y="400" fill="#6b6560" font-family="system-ui" font-size="16">Guías PDF · Descarga instantánea</text>
+  <rect x="680" y="440" width="180" height="48" fill="#1a1a1a"/>
+  <text x="770" y="470" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" letter-spacing="0.06em">VER GUÍAS</text>
+</svg>
