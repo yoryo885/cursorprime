@@ -247,87 +247,103 @@ def _tpl_mockup(b: dict) -> str:
 
 
 def _tpl_tienda(b: dict) -> str:
-    """Estilo inspirado en landings tipo Filjós: barra, colección, bestsellers, historia, newsletter."""
+    """Landing tienda con copy profesional de marketing + colección multiproducto."""
     marca = b.get("marca")
     producto = b.get("producto")
     promesa = b.get("promesa")
     cta = b.get("cta")
     productos = b.get("productos") or []
     roles = b.get("roles") or []
-    historia = b.get("historia") or (
-        f"{marca} aplica ideas de grandes libros a tu oficio. "
-        "Elige libro × rol y baja la guía lista para usar."
-    )
-    barra = b.get("barra_aviso") or "Colección de guías · PDF al instante"
+    serie = b.get("serie_libros") or []
+    historia = b.get("historia") or ""
     mision = b.get("mision") or ""
-    testimonios = b.get("testimonios") or []
+    barra = b.get("barra_aviso") or ""
+    hero_eyebrow = b.get("hero_eyebrow") or "Colección profesional"
+    hero_titulo = b.get("hero_titulo") or f"{marca}: guías para tu rol"
+    hero_sub = b.get("hero_sub") or promesa or producto
+    hero_badge = b.get("hero_badge_calidad") or ""
+    precio = b.get("precio") or ""
+    calidad = b.get("calidad") or []
+    incluye = b.get("incluye") or []
+    beneficios = b.get("beneficios") or []
+    faqs = b.get("faq") or []
+    n_disp = sum(1 for p in productos if p.get("disponible"))
+    n_prox = len(productos) - n_disp
 
-    disponible = next((p for p in productos if p.get("disponible")), productos[0] if productos else None)
-    nuevo_titulo = (disponible or {}).get("titulo") or producto
-    nuevo_precio = (disponible or {}).get("precio") or b.get("precio") or ""
+    disponible = next((p for p in productos if p.get("disponible")), None)
+    spotlight = (disponible or {}).get("titulo") or ""
 
-    nav = ['<a href="#guias">Colección</a>']
-    for r in roles[:6]:
-        nav.append(f'<a href="#guias" data-nav-rol="{_e(r.get("slug"))}">{_e(r.get("nombre"))}</a>')
-    nav.append('<a href="#historia">Marca</a>')
+    nav = [
+        '<a href="#guias">Colección</a>',
+        '<a href="#calidad">Calidad</a>',
+        '<a href="#serie">Libros</a>',
+        '<a href="#historia">Marca</a>',
+        '<a href="#faq">FAQ</a>',
+    ]
 
     best = []
-    for p in productos[:8]:
+    for p in productos:
         disp = bool(p.get("disponible"))
-        badge = "Disponible" if disp else "Próximamente"
+        badge = p.get("badge_marketing") or ("Disponible ahora" if disp else "Próximamente")
         btn = (
-            '<a class="btn btn-dark btn-block" href="#">Añadir al carrito</a>'
+            f'<a class="btn btn-dark btn-block" href="#">Comprar · {_e(p.get("precio") or "")}</a>'
             if disp
-            else '<span class="btn btn-outline btn-block">Avísame</span>'
+            else '<span class="btn btn-outline btn-block">Avísame al lanzar</span>'
         )
+        sub = p.get("subtitulo") or ""
         best.append(
             f"""
-      <article class="card" data-rol-card="{_e(p.get('rol'))}"{' style="opacity:0.55"' if not disp else ''}>
-        <div class="card-cover">{badge}</div>
+      <article class="card" data-rol-card="{_e(p.get('rol'))}"{' style="opacity:0.72"' if not disp else ''}>
+        <div class="card-cover"><span>{_e(badge)}</span></div>
         <div class="card-body">
-          <p class="card-brand">{_e(marca)} · PDF</p>
+          <p class="card-brand">{_e(marca)} · Guía profesional</p>
           <h3>{_e(p.get('titulo'))}</h3>
+          <p class="card-sub">{_e(sub)}</p>
           <p class="price">{_e(p.get('precio') or '—')}</p>
           {btn}
         </div>
       </article>"""
         )
 
-    chips = ['<button type="button" class="role-chip is-active" data-rol="todos">Todos</button>']
+    chips = ['<button type="button" class="role-chip is-active" data-rol="todos">Todos los roles</button>']
     for r in roles:
         chips.append(
             f'<button type="button" class="role-chip" data-rol="{_e(r.get("slug"))}">{_e(r.get("nombre"))}</button>'
         )
 
-    testi_html = ""
-    for t in testimonios[:4]:
-        texto = t.get("texto") or ""
-        if "[PENDIENTE" in texto:
-            continue
-        testi_html += (
-            f'<blockquote class="quote"><p>{_e(texto)}</p>'
-            f"<cite>— {_e(t.get('autor') or 'Cliente')}</cite></blockquote>"
-        )
-    if not testi_html:
-        testi_html = (
-            '<p class="muted center">Cuando tengamos reseñas reales, aparecen aquí. '
-            "No inventamos testimonios.</p>"
-        )
-
-    mision_html = ""
-    if mision:
-        mision_html = f"""
-  <section id="mision" class="band">
-    <h2>Por qué importa</h2>
-    <p class="story">{_e(mision)}</p>
-  </section>"""
+    calidad_html = "".join(
+        f'<article class="pillar"><h3>{_e(c.get("titulo"))}</h3><p>{_e(c.get("texto"))}</p></article>'
+        for c in calidad
+    )
+    incluye_html = "".join(f"<li>{_e(x)}</li>" for x in incluye)
+    ben_html = "".join(f"<li>{_e(x)}</li>" for x in beneficios)
+    faq_html = "".join(
+        f"<details><summary>{_e(f.get('q'))}</summary><p>{_e(f.get('a'))}</p></details>" for f in faqs
+    )
+    serie_html = "".join(
+        f'<article class="serie-card"><p class="card-brand">Libro base</p>'
+        f'<h3>{_e(s.get("titulo"))}</h3><p class="card-sub">{_e(s.get("autor") or "")}</p></article>'
+        for s in serie
+    )
+    mision_html = (
+        f'<section id="mision" class="band"><h2>Nuestra misión</h2>'
+        f'<p class="story">{_e(mision)}</p></section>'
+        if mision
+        else ""
+    )
+    spotlight_html = (
+        f'<p class="spotlight">Destacada ahora: <strong>{_e(spotlight)}</strong> · '
+        f"{_e(precio)} · + {n_prox} guías en camino</p>"
+        if spotlight
+        else ""
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>{_e(marca)} — Colección</title>
+  <title>{_e(marca)} — Colección profesional de guías</title>
   <meta name="description" content="{_e(promesa or producto)}"/>
   {_fonts()}
   <style>
@@ -338,12 +354,12 @@ def _tpl_tienda(b: dict) -> str:
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }}
     .announce {{
-      background:var(--ink); color:var(--paper); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--ink); color:var(--paper); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
       text-align:center; padding:10px var(--pad);
     }}
     .top {{
       display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px var(--pad); border-bottom:1px solid #e4dfd6; background:rgba(246,243,238,.92);
+      padding:14px var(--pad); border-bottom:1px solid #e4dfd6; background:color-mix(in srgb, var(--paper) 92%, transparent);
       position:sticky; top:0; z-index:5; backdrop-filter:blur(8px);
     }}
     .logo {{
@@ -354,25 +370,33 @@ def _tpl_tienda(b: dict) -> str:
     .nav a {{ color:var(--muted); text-decoration:none; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }}
     .nav a:hover {{ color:var(--ink); }}
     .hero-nuevo {{
-      min-height:min(88svh,760px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+      min-height:min(88svh,760px); display:grid; grid-template-columns:1.1fr .9fr; gap:0;
       background:
-        linear-gradient(120deg, rgba(12,14,18,.9) 0%, rgba(12,14,18,.35) 55%, rgba(12,14,18,.15) 100%),
+        linear-gradient(120deg, rgba(12,14,18,.92) 0%, rgba(12,14,18,.4) 55%, rgba(12,14,18,.18) 100%),
         radial-gradient(ellipse at 75% 35%, #314155 0%, #12151a 70%);
       color:#fff; animation: rise .85s ease both;
     }}
     @keyframes rise {{ from {{ opacity:0; transform:translateY(12px); }} to {{ opacity:1; transform:none; }} }}
-    .hero-copy {{ padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:34rem; }}
+    .hero-copy {{ padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:36rem; }}
     .eyebrow {{ font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:14px; }}
+    .hero-copy .brand-hero {{
+      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.18em; font-weight:600;
+      font-size:clamp(2.2rem,5.5vw,3.6rem); margin-bottom:14px; color:#fff;
+    }}
     .hero-copy h1 {{
       font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.6rem,3.6vw,2.35rem); max-width:16ch; margin-bottom:12px; line-height:1.15;
+      font-size:clamp(1.35rem,2.8vw,1.75rem); max-width:22ch; margin-bottom:14px; line-height:1.2;
     }}
-    .hero-copy .sub {{ color:rgba(255,255,255,.78); margin-bottom:10px; max-width:36ch; }}
-    .hero-copy .price-lg {{ font-size:1.15rem; font-weight:600; margin-bottom:22px; }}
+    .hero-copy .sub {{ color:rgba(255,255,255,.8); margin-bottom:14px; max-width:42ch; font-size:.98rem; }}
+    .hero-copy .badge-q {{
+      font-size:.72rem; letter-spacing:.06em; color:rgba(255,255,255,.7); margin-bottom:18px; max-width:40ch;
+    }}
+    .hero-copy .price-lg {{ font-size:1.05rem; font-weight:600; margin-bottom:20px; }}
+    .spotlight {{ margin-top:18px; font-size:.85rem; color:rgba(255,255,255,.72); max-width:40ch; }}
     .hero-visual {{
       display:flex; align-items:center; justify-content:center; padding:var(--pad);
-      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.12em; font-size:clamp(1.4rem,3vw,2rem);
-      color:rgba(255,255,255,.35); text-align:center;
+      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.1em; font-size:clamp(1.2rem,2.6vw,1.7rem);
+      color:rgba(255,255,255,.38); text-align:center; line-height:1.4;
     }}
     .btn {{
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
@@ -391,27 +415,39 @@ def _tpl_tienda(b: dict) -> str:
     section.band > * {{ max-width:var(--max); margin-left:auto; margin-right:auto; }}
     h2 {{
       font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.45rem,3vw,2rem); margin-bottom:22px; text-align:center;
+      font-size:clamp(1.45rem,3vw,2rem); margin-bottom:12px; text-align:center;
     }}
-    .story {{ max-width:48ch; margin:0 auto; text-align:center; color:var(--muted); }}
+    .sec-sub {{ text-align:center; color:var(--muted); max-width:48ch; margin:0 auto 28px; font-size:.95rem; }}
+    .story {{ max-width:52ch; margin:0 auto; text-align:center; color:var(--muted); }}
     .center {{ text-align:center; }}
     .muted {{ color:var(--muted); }}
-    .quotes {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }}
-    .quote {{ background:#fff; border:1px solid color-mix(in srgb, var(--muted) 35%, transparent); padding:20px; }}
-    .quote p {{ font-size:.95rem; margin-bottom:12px; }}
-    .quote cite {{ font-style:normal; font-size:.75rem; color:var(--muted); letter-spacing:.04em; }}
+    .pillars {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:8px; }}
+    .pillar {{ background:#fff; border:1px solid #e4dfd6; padding:22px 20px; }}
+    .pillar h3 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:1.15rem; margin-bottom:8px; }}
+    .pillar p {{ color:var(--muted); font-size:.92rem; }}
+    .incluye {{ max-width:40ch; margin:0 auto; list-style:none; padding:0; }}
+    .incluye li {{ padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }}
+    .serie-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }}
+    .serie-card {{ background:#fff; border:1px solid #e4dfd6; padding:22px; text-align:center; }}
+    .serie-card h3 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:1.1rem; margin:8px 0; }}
+    .bens {{ max-width:52ch; margin:0 auto; list-style:none; padding:0; }}
+    .bens li {{ padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }}
+    details {{ background:#fff; border:1px solid #e4dfd6; padding:14px 16px; margin-bottom:10px; }}
+    summary {{ cursor:pointer; font-weight:500; }}
+    details p {{ margin-top:8px; color:var(--muted); font-size:.92rem; }}
     .news {{
       text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
       background:var(--ink); color:var(--paper);
     }}
     .news h2 {{ color:var(--paper); }}
-    .news p {{ color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:36ch; margin:0 auto 20px; }}
+    .news p {{ color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:38ch; margin:0 auto 20px; }}
     .news .btn {{ background:var(--paper); color:var(--ink); }}
     footer {{ text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }}
+    .card-sub {{ font-size:.78rem; color:var(--muted); line-height:1.4; margin-bottom:12px; min-height:2.6em; }}
     {_catalog_css()}
     @media (max-width:860px) {{
       .hero-nuevo {{ grid-template-columns:1fr; min-height:auto; }}
-      .hero-visual {{ min-height:220px; order:-1; }}
+      .hero-visual {{ min-height:200px; order:-1; }}
     }}
   </style>
 </head>
@@ -424,41 +460,63 @@ def _tpl_tienda(b: dict) -> str:
 
   <section class="hero-nuevo">
     <div class="hero-copy">
-      <p class="eyebrow">Ahora nuevo</p>
-      <div class="logo" style="color:#fff;margin-bottom:16px;font-size:clamp(2rem,5vw,3rem)">{_e(marca)}</div>
-      <h1>{_e(nuevo_titulo)}</h1>
-      <p class="sub">{_e(promesa or producto)}</p>
-      <p class="price-lg">{_e(nuevo_precio)}</p>
+      <p class="eyebrow">{_e(hero_eyebrow)}</p>
+      <div class="brand-hero">{_e(marca)}</div>
+      <h1>{_e(hero_titulo)}</h1>
+      <p class="sub">{_e(hero_sub)}</p>
+      <p class="badge-q">{_e(hero_badge)}</p>
+      <p class="price-lg">{_e(precio)}</p>
       <a class="btn" href="#guias">{_e(cta)}</a>
+      {spotlight_html}
     </div>
-    <div class="hero-visual">Colección<br/>libro × rol</div>
+    <div class="hero-visual">{n_disp} disponible<br/>+ {n_prox} próximamente<br/><span style="font-size:.85em;letter-spacing:.16em">COLECCIÓN</span></div>
+  </section>
+
+  <section id="calidad">
+    <h2>{_e(b.get('calidad_titulo') or 'Por qué la calidad importa')}</h2>
+    <p class="sec-sub">Promovemos guías con criterio editorial: útiles, precisas y hechas para profesionales.</p>
+    <div class="pillars">{calidad_html}</div>
+  </section>
+
+  <section class="band" id="incluye">
+    <h2>{_e(b.get('incluye_titulo') or 'Qué incluye cada guía')}</h2>
+    <ul class="incluye">{incluye_html}</ul>
   </section>
 
   <section id="guias">
-    <h2>Bestsellers</h2>
+    <h2>{_e(b.get('catalogo_titulo') or 'Explora la colección')}</h2>
+    <p class="sec-sub">{_e(b.get('catalogo_sub') or '')}</p>
     <div class="role-filters" id="roleFilters">{"".join(chips)}</div>
     <div class="grid" id="guiasGrid">{"".join(best)}</div>
   </section>
 
-  <section id="historia" class="band">
-    <h2>La marca</h2>
-    <p class="story">{_e(historia)}</p>
-    <p class="center" style="margin-top:22px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
+  <section id="serie" class="band">
+    <h2>{_e(b.get('serie_titulo') or 'Basadas en libros que ya funcionan')}</h2>
+    <p class="sec-sub">{_e(b.get('serie_sub') or '')}</p>
+    <div class="serie-grid">{serie_html}</div>
   </section>
 
-  <section>
-    <h2>Lo que dicen</h2>
-    <div class="quotes">{testi_html}</div>
+  <section id="historia">
+    <h2>La marca</h2>
+    <p class="story">{_e(historia)}</p>
+    <ul class="bens" style="margin-top:28px">{ben_html}</ul>
+    <p class="center" style="margin-top:28px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
   </section>
   {mision_html}
 
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <p class="sec-sub">{_e(b.get('social_proof_nota') or '')}</p>
+    {faq_html}
+  </section>
+
   <div class="news" id="newsletter">
-    <h2>10% en tu primera guía</h2>
-    <p>Suscríbete al newsletter. Te avisamos cuando salgan nuevas combinaciones libro × rol.</p>
-    <a class="btn" href="#guias">Quiero el descuento</a>
+    <h2>{_e(b.get('newsletter_titulo') or 'Acceso anticipado')}</h2>
+    <p>{_e(b.get('newsletter_sub') or '')}</p>
+    <a class="btn" href="#guias">{_e(b.get('newsletter_cta') or cta)}</a>
   </div>
 
-  <footer>Generado con creador-de-landings · estilo tienda (ref. estructura tipo Filjós)</footer>
+  <footer>{_e(marca)} · Colección profesional de guías · PDF de calidad</footer>
   <script>
   (function() {{
     const chips = document.querySelectorAll('.role-chip');

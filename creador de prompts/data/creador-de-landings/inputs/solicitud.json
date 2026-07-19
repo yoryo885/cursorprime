@@ -14,7 +14,9 @@
     "pregunta clima marca (1)",
     "entrevista estándar fija preguntas.json",
     "cada idea tienda/landing dispara mismas preguntas",
-    "agente propone paletas A/B/C"
+    "agente propone paletas A/B/C",
+    "copy profesional marketing",
+    "promoción calidad colección"
   ],
   "contexto": {
     "audiencia": "operador cursorprime / cliente demo",
@@ -57,6 +59,10 @@
     {
       "fecha": "2026-07-19",
       "texto": "Preguntas con opciones A B C D; respuesta solo letras"
+    },
+    {
+      "fecha": "2026-07-19",
+      "texto": "Copy profesional marketing: calidad, multiproducto, FAQ, serie de libros"
     }
   ],
   "notas": "Respuesta: 1A 2A 3A… o todo A"
