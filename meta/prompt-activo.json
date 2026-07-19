@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
+  "activo": {
+    "slug": "mejoras-emprendimientos-sistemas",
+    "tipo": "evaluacion",
+    "proyecto_destino": "lluvia-de-ideas",
+    "titulo": "Radar de mejoras para emprendimientos cursorprime",
+    "version": 1,
+    "ultima_mejora": "buscar YouTube/web mejoras para todos los emprendimientos; perspectiva profesional e innovadora; progreso en sistemas",
+    "ruta": "creador de prompts/data/mejoras-emprendimientos-sistemas/output/prompts.md"
+  }
+}

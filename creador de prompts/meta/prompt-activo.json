@@ -1,23 +1,32 @@
 {
-  "version": 1,
+  "version": 3,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
-    "slug": "pdf-guion-video",
-    "tipo": "cursor",
-    "proyecto_destino": "creador-de-contenido",
-    "titulo": "PDF + guiones de video",
-    "version": 2
+    "slug": "mejoras-emprendimientos-sistemas",
+    "tipo": "evaluacion",
+    "proyecto_destino": "lluvia-de-ideas",
+    "titulo": "Radar de mejoras para emprendimientos cursorprime",
+    "version": 1,
+    "ultima_mejora": "buscar YouTube/web mejoras para todos los emprendimientos; perspectiva profesional e innovadora; progreso en sistemas"
   },
   "historial": [
     {
       "version": 1,
-      "mensaje": "La parte PDF debería crear guiones para video, no solo PDF",
-      "cambio": "Prompt inicial en data/pdf-guion-video/output/"
+      "slug": "pdf-guion-video",
+      "mensaje": "La parte PDF debería crear guiones para video",
+      "cambio": "Prompt inicial PDF+guion"
     },
     {
       "version": 2,
+      "slug": "pdf-guion-video",
       "mensaje": "No pendientes — cada mensaje mejora el prompt",
-      "cambio": "Flujo cambiado a mejora continua (prompt-activo.json); pendientes.json deprecado"
+      "cambio": "Flujo mejora continua"
+    },
+    {
+      "version": 3,
+      "slug": "mejoras-emprendimientos-sistemas",
+      "mensaje": "buscar en youtube o otros sitios mejoras para todos los emprendimientos; qué aumenta el progreso en los sistemas; perspectiva profesional e innovadora",
+      "cambio": "Tema nuevo: radar P0–P3 por sistema + fuentes live 2026"
     }
   ]
 }

@@ -10,6 +10,14 @@
 
 **Implementar después:** Google Business Profile en audit, local SEO phases (plugin mshahiddigital).
 
+### Actualización radar 2026-07-19
+
+| Recurso | Para qué |
+|---------|----------|
+| [Local SEO Automation Claude Code](https://ccforseo.com/blog/local-seo-automation-claude-code) | GBP + NAP + schema LocalBusiness a escala |
+| [Manage 20 SEO clients](https://ccforseo.com/blog/manage-20-seo-clients-claude-code) | Patrón multi-cliente (alineado a `clientes/`) |
+| [GEO + IA LATAM](https://www.themarkethink.com/mkt-digital/5-agencias-geo-ia-latam/) | Capa innovadora en informe de audit |
+
 ---
 
 ## 2. Bot WhatsApp + pedidos
@@ -21,6 +29,15 @@
 | Workflow n8n pedidos+Sheets | [n8n template 16175](https://n8n.io/workflows/16175-handle-whatsapp-orders-faqs-and-tracking-with-gpt-4o-pinecone-and-sheets/) | Cola + stock + confirmación — **patrón cola_pedidos** |
 
 **Implementar después:** Meta Cloud API real, webhook, Google Sheet sync.
+
+### Actualización radar 2026-07-19
+
+| Video / recurso | Para qué |
+|-----------------|----------|
+| [CRM WhatsApp OSS WACRM (Andy Cruz)](https://youtu.be/ef69Z36ai9M) | Self-host Meta API + Supabase — upsell inbox, no MVP |
+| [WACRM + Coolify + n8n + Groq](https://www.youtube.com/watch?v=rJe0ccJu2eQ) | IA task-scoped encima del CRM |
+| [n8n + Meta API free (GitHub)](https://github.com/YousefAutomates/whatsapp-api-free-n8n-automation) | Piloto rápido oficial |
+| [Playbook conversacional 2026](https://www.digitalapplied.com/blog/whatsapp-business-conversational-marketing-playbook-2026) | Bots por tarea; evitar genéricos |
 
 ---
 

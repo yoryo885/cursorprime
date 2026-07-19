@@ -1,0 +1,30 @@
+{
+  "titulo": "Radar de mejoras para emprendimientos cursorprime",
+  "tipo": "evaluacion",
+  "proyecto_destino": "lluvia-de-ideas",
+  "temas": [
+    "mejoras por sistema (audit, WhatsApp, presencia, contenido, KDP, LinkedIn)",
+    "priorización por progreso (cobro + piloto) no por features",
+    "fuentes YouTube/web 2026 LATAM",
+    "WACRM / Meta API / n8n / GBP / GEO"
+  ],
+  "contexto": {
+    "audiencia": "operador de cursorprime / agencia presencia digital LATAM",
+    "tono": "profesional, directo, orientado a decisión",
+    "estilo": "matriz sistema→mejora→impacto; evitar radar genérico KDP",
+    "idioma": "español",
+    "objetivo": "Cada mensaje del usuario refina el radar: qué acelerar en los sistemas existentes para aumentar progreso real"
+  },
+  "notas": [
+    "Inventario base: top3 (audit, wasap, presencia), marketing-audit, creador contenido, KDP, LinkedIn, lluvia, clientes/",
+    "Cuello principal: capacidad alta, cierre comercial bajo",
+    "Video reciente revisado: CRM WhatsApp open source WACRM (Andy Cruz)"
+  ],
+  "mejoras": [
+    {
+      "mensaje": "buscar en youtube/otros sitios mejoras para todos los emprendimientos, perspectiva profesional e innovadora, qué aumenta progreso en los sistemas",
+      "cambio": "Slug nuevo; radar P0–P3 mapeado a sistemas reales + fuentes live 2026"
+    }
+  ],
+  "variantes": 1
+}
