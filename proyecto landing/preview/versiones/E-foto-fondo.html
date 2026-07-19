@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Vértice Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#faf8f5; --surface:#ffffff;
+      --text:#1a1a1a; --muted:#6b6560;
+      --charcoal:#1a1a1a; --gold:#c9a962;
+      --border:#e8e4df; --cream:#f0ebe3;
+      --max:1120px; --pad:clamp(16px,4vw,32px);
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; }
+    html { -webkit-text-size-adjust:100%; }
+    body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; overflow-x:hidden; }
+    img { max-width:100%; height:auto; display:block; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:100%; max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
+
+    .ticker { background:var(--charcoal); color:#fff; font-size:0.7rem; letter-spacing:0.05em; padding:10px var(--pad); text-align:center; }
+    header { background:var(--surface); border-bottom:1px solid var(--border); padding:16px var(--pad); position:sticky; top:0; z-index:50; }
+    header .wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .logo { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.15rem,4vw,1.45rem); letter-spacing:0.16em; font-weight:500; }
+    nav { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+    nav a { padding:6px 0; min-height:44px; display:inline-flex; align-items:center; }
+
+    .hero { background:var(--cream); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .hero--bg { min-height:clamp(520px,72vh,760px); display:flex; align-items:center; }
+    .hero--bg .wrap { width:100%; }
+    .hero-bg { position:absolute; inset:0; z-index:0; pointer-events:none; }
+    .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 35%; }
+    .hero-bg-scrim {
+      position:absolute; inset:0;
+      background:linear-gradient(105deg, rgba(22,20,18,0.78) 0%, rgba(22,20,18,0.52) 40%, rgba(250,248,245,0.08) 62%, rgba(250,248,245,0.02) 100%);
+    }
+    .hero .wrap { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,5vw,48px); align-items:center; padding-top:clamp(32px,6vw,64px); padding-bottom:clamp(32px,6vw,64px); }
+    .hero-copy { max-width:480px; }
+    .hero--bg .hero-copy {
+      background:transparent; border:none; backdrop-filter:none; -webkit-backdrop-filter:none; padding:0;
+      color:#fff;
+    }
+    .hero--bg .hero-label { color:rgba(255,255,255,0.75); }
+    .hero--bg .hero h1 { color:#fff; }
+    .hero--bg .hero-desc, .hero--bg .hero-micro { color:rgba(255,255,255,0.88); }
+    .hero--bg .hero-bullets li { color:rgba(255,255,255,0.92); }
+    .hero--bg .btn { background:#fff; color:var(--charcoal); border-color:#fff; }
+    .hero--bg .btn:hover { background:var(--gold); border-color:var(--gold); color:#fff; }
+    .hero-label { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.75rem,5vw,2.75rem); font-weight:400; line-height:1.15; margin-bottom:16px; letter-spacing:0.02em; }
+    .hero-desc { color:var(--muted); font-size:0.95rem; margin-bottom:16px; max-width:36ch; }
+    .hero-bullets { list-style:none; margin:0 0 24px; padding:0; text-align:left; }
+    .hero-bullets li {
+      position:relative; padding-left:1.35em; margin-bottom:8px; font-size:0.88rem; color:var(--text);
+    }
+    .hero-bullets li::before { content:"✓"; position:absolute; left:0; color:var(--gold); font-weight:600; }
+    .hero-micro { font-size:0.72rem; color:var(--muted); margin-top:10px; }
+    .hero-visual {
+      display:flex; flex-direction:column; align-items:center; gap:12px;
+    }
+    .hero--bg .hero-visual {
+      background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.6); padding:clamp(18px,3vw,22px);
+      box-shadow:0 24px 64px rgba(0,0,0,0.22); border-radius:2px;
+      max-width:360px; margin-left:auto; width:100%;
+    }
+    .hero--bg .hero-carousel { width:100%; height:clamp(240px,32vw,320px); }
+    .hero--bg .carousel-btn { background:#fff; }
+    .hero-carousel { position:relative; width:min(100%,340px); height:clamp(300px,42vw,440px); perspective:900px; touch-action:pan-y; user-select:none; }
+    .carousel-track { position:relative; width:100%; height:100%; }
+    .carousel-slide {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:translateX(24px) scale(0.92) rotateY(-8deg);
+      transition:opacity 0.55s ease, transform 0.55s ease; pointer-events:none;
+    }
+    .carousel-slide.is-active {
+      opacity:1; transform:translateX(0) scale(1) rotateY(0); pointer-events:auto;
+      animation:floatBook 4s ease-in-out infinite;
+    }
+    .carousel-slide.is-soon img { opacity:0.88; }
+    .carousel-slide img {
+      width:min(78%,280px); max-height:100%; object-fit:contain;
+      filter:drop-shadow(0 24px 48px rgba(0,0,0,0.14));
+    }
+    @keyframes floatBook {
+      0%,100% { transform:translateY(0) scale(1) rotateY(0); }
+      50% { transform:translateY(-10px) scale(1.02) rotateY(2deg); }
+    }
+    .carousel-nav { display:flex; align-items:center; justify-content:center; gap:12px; }
+    .carousel-btn {
+      width:44px; height:44px; border:1px solid var(--border); background:var(--surface);
+      border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1; color:var(--charcoal);
+      display:inline-flex; align-items:center; justify-content:center;
+    }
+    .carousel-btn:hover { border-color:var(--gold); }
+    .carousel-dots { display:flex; gap:8px; }
+    .carousel-dot {
+      width:8px; height:8px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
+    }
+    .carousel-dot.is-active { background:var(--gold); transform:scale(1.15); }
+    .carousel-caption { text-align:center; min-height:3.2em; }
+    .carousel-caption strong { display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--text); margin-bottom:4px; }
+    .carousel-caption span { font-size:0.85rem; color:var(--muted); }
+    .carousel-badge { font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+    .carousel-cta { margin-top:10px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--gold); cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; padding:0 0 2px; }
+    .carousel-cta:hover { color:var(--gold); }
+
+    .trust-badges {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));
+      gap:12px; max-width:var(--max); margin:0 auto; padding:20px var(--pad);
+      background:var(--surface); border-bottom:1px solid var(--border);
+    }
+    .trust-badge { text-align:center; padding:12px 8px; border:1px solid var(--border); background:var(--bg); }
+    .trust-badge strong { display:block; font-size:0.72rem; letter-spacing:0.04em; margin-bottom:4px; }
+    .trust-badge span { font-size:0.68rem; color:var(--muted); }
+    .trust-icon { display:block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; min-width:160px; padding:0 28px; background:var(--charcoal); color:#fff; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--charcoal); cursor:pointer; }
+    .btn-outline { background:transparent; color:var(--charcoal); }
+    .btn-block { width:100%; }
+
+    .trust { text-align:center; padding:14px var(--pad); font-size:0.75rem; color:var(--muted); background:var(--surface); border-bottom:1px solid var(--border); }
+    .trust strong { color:var(--gold); }
+
+    section { padding:clamp(40px,8vw,64px) var(--pad); }
+    section h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,4vw,1.85rem); font-weight:400; text-align:center; letter-spacing:0.04em; margin-bottom:clamp(24px,5vw,36px); }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)); gap:24px; max-width:var(--max); margin:0 auto; }
+    .card { background:var(--surface); border:1px solid var(--border); display:flex; flex-direction:column; transition:transform 0.2s ease, box-shadow 0.2s ease; position:relative; }
+    .card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.06); }
+    .card-badge {
+      position:absolute; top:12px; left:12px; z-index:2; background:var(--charcoal); color:#fff;
+      font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 8px;
+    }
+    .card-img { aspect-ratio:3/4; object-fit:contain; background:var(--cream); padding:16px; width:100%; }
+    .card-body { padding:20px; text-align:center; flex:1; display:flex; flex-direction:column; }
+    .card-brand { font-size:0.62rem; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }
+    .card h3 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500; line-height:1.35; margin-bottom:10px; flex:1; }
+    .price { font-size:1.05rem; font-weight:600; margin-bottom:16px; }
+    .card-soon { aspect-ratio:3/4; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }
+
+    .role-filters, .book-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:var(--max); margin:0 auto 16px; padding:0 var(--pad); }
+    .book-filters { margin-bottom:28px; }
+    .role-chip, .book-chip {
+      padding:10px 18px; border:1px solid var(--border); background:var(--surface);
+      font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
+      color:var(--muted); border-radius:999px;
+    }
+    .role-chip.is-active, .book-chip.is-active { background:var(--charcoal); color:#fff; border-color:var(--charcoal); }
+    .filter-label { text-align:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+    .grid-heading { font-family:'Cormorant Garamond',serif; font-size:1.05rem; text-align:center; margin:8px auto 20px; color:var(--muted); letter-spacing:0.06em; }
+    .grid-heading--soon { opacity:0.75; }
+    .guia-card[hidden] { display:none !important; }
+    .empty-state { text-align:center; color:var(--muted); font-size:0.9rem; padding:24px; grid-column:1/-1; display:none; }
+    .empty-state.is-visible { display:block; }
+    .section-lead { text-align:center; color:var(--muted); font-size:0.9rem; max-width:46ch; margin:-12px auto 28px; padding:0 var(--pad); }
+
+    .flow-steps {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
+      gap:16px; max-width:var(--max); margin:0 auto 8px;
+    }
+    .flow-step {
+      background:var(--surface); border:1px solid var(--border); padding:20px; text-align:center;
+    }
+    .flow-num {
+      display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center;
+      border-radius:50%; background:var(--charcoal); color:#fff; font-size:0.75rem; margin-bottom:10px;
+    }
+    .flow-step h3 { font-family:'Cormorant Garamond',serif; font-size:1rem; margin-bottom:6px; font-weight:500; }
+    .flow-step p { font-size:0.82rem; color:var(--muted); }
+
+    .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:16px; max-width:var(--max); margin:0 auto 32px; }
+    .benefit-card { background:var(--surface); border:1px solid var(--border); padding:20px; }
+    .benefit-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-bottom:8px; font-weight:500; }
+    .benefit-card p { font-size:0.86rem; color:var(--muted); }
+
+    .incluye-box {
+      max-width:640px; margin:0 auto; background:var(--surface); border:1px solid var(--border);
+      padding:clamp(20px,4vw,32px); text-align:left;
+    }
+    .incluye-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; margin-bottom:12px; font-weight:500; }
+    .incluye-intro { font-size:0.88rem; color:var(--muted); margin-bottom:12px; }
+    .incluye-ejemplo {
+      font-size:0.9rem; color:var(--text); background:var(--cream); border-left:3px solid var(--gold);
+      padding:12px 14px; margin-bottom:16px;
+    }
+    .incluye-ejemplo[hidden] { display:none !important; }
+    .incluye-box ul { margin:0; padding-left:1.2em; color:var(--muted); font-size:0.88rem; }
+    .incluye-box li { margin-bottom:8px; }
+
+    .faq { max-width:720px; margin:0 auto; }
+    .faq-item { border:1px solid var(--border); background:var(--surface); margin-bottom:10px; }
+    .faq-item summary { cursor:pointer; padding:16px 18px; font-size:0.9rem; font-weight:500; list-style:none; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item p { padding:0 18px 16px; font-size:0.86rem; color:var(--muted); }
+
+    .sticky-cta {
+      position:fixed; bottom:0; left:0; right:0; z-index:60; background:var(--surface);
+      border-top:1px solid var(--border); padding:10px var(--pad); display:none;
+      transform:translateY(100%); transition:transform 0.25s ease;
+      box-shadow:0 -8px 24px rgba(0,0,0,0.06);
+    }
+    .sticky-cta.is-visible { display:block; transform:translateY(0); }
+    .sticky-cta .wrap { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0; }
+    .sticky-cta p { font-size:0.78rem; color:var(--muted); margin:0; }
+    .sticky-cta .btn { min-width:auto; padding:0 18px; min-height:44px; }
+
+    .newsletter-form { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:420px; margin:0 auto; }
+    .newsletter-form input {
+      flex:1 1 200px; min-height:48px; border:1px solid var(--border); padding:0 14px;
+      font:inherit; background:var(--surface);
+    }
+    .newsletter-micro { font-size:0.72rem; color:var(--muted); margin-top:12px; }
+
+    .story { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:var(--max); margin:0 auto; background:var(--surface); border:1px solid var(--border); padding:clamp(24px,5vw,48px); }
+    .story img { width:min(100%,240px); margin:0 auto; }
+    .story h2 { text-align:left; font-size:clamp(1.3rem,3vw,1.75rem); margin-bottom:12px; }
+    .story p { color:var(--muted); font-size:0.92rem; margin-bottom:16px; }
+
+    .reviews { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:20px; max-width:var(--max); margin:0 auto; }
+    .review { background:var(--surface); border:1px solid var(--border); padding:20px; font-size:0.86rem; color:var(--muted); }
+    .review cite { display:block; margin-top:10px; font-style:normal; font-size:0.72rem; color:var(--text); }
+
+    .newsletter { background:var(--cream); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:clamp(36px,6vw,56px) var(--pad); text-align:center; }
+    .newsletter h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,4vw,1.75rem); margin-bottom:8px; }
+    .newsletter p { color:var(--muted); font-size:0.9rem; margin-bottom:20px; }
+
+    footer { padding:28px var(--pad); text-align:center; font-size:0.7rem; color:var(--muted); line-height:1.5; }
+
+    @media (max-width:768px) {
+      .hero .wrap { grid-template-columns:1fr; text-align:center; }
+      .hero-bg-scrim {
+        background:linear-gradient(180deg, rgba(22,20,18,0.35) 0%, rgba(22,20,18,0.72) 42%, rgba(22,20,18,0.88) 100%);
+      }
+      .hero-copy { max-width:none; margin:0 auto; text-align:center; }
+      .hero--bg .hero-visual { margin:0 auto; max-width:min(92vw,360px); }
+      .hero-desc { margin-left:auto; margin-right:auto; }
+      .hero-bullets { max-width:28ch; margin-left:auto; margin-right:auto; }
+      .hero-visual { order:-1; width:100%; }
+      .hero-carousel { width:min(85vw,320px); height:clamp(280px,55vw,380px); margin:0 auto; }
+      .story { grid-template-columns:1fr; text-align:center; }
+      .story h2 { text-align:center; }
+      .story img { width:min(50vw,200px); }
+      body { padding-bottom:72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ticker">★★★★★ 4.9 · Descarga instantánea · 10% primera compra</div>
+
+  <header>
+    <div class="wrap">
+      <div class="logo">VÉRTICE PRO</div>
+      <nav>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#guias-por-rol">Catálogo</a>
+        <a href="#incluye">Qué incluye</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero hero--bg">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="../assets/landing-lectura-lado.png" alt=""/>
+      <div class="hero-bg-scrim"></div>
+    </div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="hero-label">Serie · Aplicar en tu rol</p>
+        <h1>Libros que aplicas en tu trabajo</h1>
+        <p class="hero-desc">Guías PDF en español para profesionales. Un bestseller adaptado a tu oficio — sin suscripción.</p>
+        <ul class="hero-bullets"><li>Libros famosos traducidos a acciones de tu oficio</li><li>Compra única — sin suscripción mensual</li><li>PDF listo para leer en móvil o imprimir</li></ul>
+        <a class="btn" href="#guias-por-rol">Encontrar mi guía</a>
+        <p class="hero-micro">Para cualquier profesional · Pago único · PDF al instante</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-carousel" id="heroCarousel" data-slides="[{&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;pareto&quot;, &quot;titulo&quot;: &quot;El principio de Pareto&quot;, &quot;subtitulo&quot;: &quot;Antoine Delers&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: true, &quot;src&quot;: &quot;assets/libro-pareto.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;habitos&quot;, &quot;titulo&quot;: &quot;Hábitos atómicos&quot;, &quot;subtitulo&quot;: &quot;James Clear&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-habitos.svg&quot;}, {&quot;tipo&quot;: &quot;libro&quot;, &quot;slug&quot;: &quot;kahneman&quot;, &quot;titulo&quot;: &quot;Pensar rápido, pensar despacio&quot;, &quot;subtitulo&quot;: &quot;Daniel Kahneman&quot;, &quot;precio&quot;: &quot;&quot;, &quot;disponible&quot;: false, &quot;src&quot;: &quot;assets/libro-kahneman.svg&quot;}]">
+          <div class="carousel-track">
+        <figure class="carousel-slide is-active" data-index="0" data-slug="pareto" data-title="El principio de Pareto" data-subtitle="Antoine Delers">
+          <img src="../assets/libro-pareto.svg" alt="El principio de Pareto" draggable="false"/>
+        </figure>
+        <figure class="carousel-slide is-soon" data-index="1" data-slug="habitos" data-title="Hábitos atómicos" data-subtitle="James Clear">
+          <img src="../assets/libro-habitos.svg" alt="Hábitos atómicos" draggable="false"/>
+        </figure>
+        <figure class="carousel-slide is-soon" data-index="2" data-slug="kahneman" data-title="Pensar rápido, pensar despacio" data-subtitle="Daniel Kahneman">
+          <img src="../assets/libro-kahneman.svg" alt="Pensar rápido, pensar despacio" draggable="false"/>
+        </figure></div>
+        </div>
+        <div class="carousel-nav">
+          <button type="button" class="carousel-btn" id="carouselPrev" aria-label="Anterior">‹</button>
+          <div class="carousel-dots" id="carouselDots"><button type="button" class="carousel-dot is-active" data-index="0" aria-label="Libro 1"></button><button type="button" class="carousel-dot" data-index="1" aria-label="Libro 2"></button><button type="button" class="carousel-dot" data-index="2" aria-label="Libro 3"></button></div>
+          <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
+        </div>
+        <div class="carousel-caption" id="carouselCaption">
+          <span class="carousel-badge">Libros de la serie</span>
+          <strong id="captionTitle">El principio de Pareto</strong>
+          <span id="captionSubtitle">Antoine Delers</span>
+          <button type="button" class="carousel-cta" id="carouselBookCta">Ver guías de este libro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-badges"><div class="trust-badge">
+          <span class="trust-icon" aria-hidden="true">pdf</span>
+          <strong>PDF descargable</strong>
+          <span>Tuyo para siempre</span>
+        </div><div class="trust-badge">
+          <span class="trust-icon" aria-hidden="true">bolt</span>
+          <strong>Descarga al instante</strong>
+          <span>Sin esperas</span>
+        </div><div class="trust-badge">
+          <span class="trust-icon" aria-hidden="true">cale</span>
+          <strong>Plan 10 semanas</strong>
+          <span>Una acción por semana</span>
+        </div><div class="trust-badge">
+          <span class="trust-icon" aria-hidden="true">role</span>
+          <strong>Adaptado a tu rol</strong>
+          <span>No genérico</span>
+        </div></div>
+
+  <p class="trust">★★★★★ <strong>4.9</strong> · Guías PDF para profesionales · Descarga al instante</p>
+
+  <section id="como-funciona">
+    <h2>Cómo funciona</h2>
+    <p class="section-lead">Tres pasos — igual para abogados, docentes, psicopedagogas o cualquier oficio.</p>
+    <div class="flow-steps"><article class="flow-step">
+          <span class="flow-num">1</span>
+          <h3>Elige tu profesión</h3>
+          <p>Filtra el catálogo por tu oficio.</p>
+        </article><article class="flow-step">
+          <span class="flow-num">2</span>
+          <h3>Elige tu libro</h3>
+          <p>Pareto, Hábitos, Kahneman y más en camino.</p>
+        </article><article class="flow-step">
+          <span class="flow-num">3</span>
+          <h3>Descarga y aplica</h3>
+          <p>PDF al instante. Plan de 10 semanas incluido.</p>
+        </article></div>
+  </section>
+
+  <section id="guias-por-rol">
+    <h2>Encuentra tu guía</h2>
+    <p class="section-lead">Elige tu profesión y descubre la versión del libro para ti. Mismo formato en todos los oficios.</p>
+    <p class="filter-label">1 · Elige tu profesión</p>
+    <div class="role-filters" id="roleFilters"><button type="button" class="role-chip is-active" data-rol="todos">Todos los roles</button><button type="button" class="role-chip" data-rol="psicopedagogas">Psicopedagogas</button><button type="button" class="role-chip" data-rol="abogados">Abogados</button><button type="button" class="role-chip" data-rol="soldadores">Soldadores</button><button type="button" class="role-chip" data-rol="docentes">Docentes</button><button type="button" class="role-chip" data-rol="enfermeras">Enfermeras</button></div>
+    <p class="filter-label">2 · Opcional: filtra por libro</p>
+    <div class="book-filters" id="bookFilters"><button type="button" class="book-chip is-active" data-libro="todos">Todos los libros</button><button type="button" class="book-chip" data-libro="pareto">Pareto</button><button type="button" class="book-chip" data-libro="habitos">Hábitos</button><button type="button" class="book-chip" data-libro="kahneman">Kahneman</button></div>
+    <p class="grid-heading">Disponibles ahora</p>
+    <div class="grid" id="guiasDisponibles">
+      <article class="card guia-card" data-rol-card="psicopedagogas" data-libro-card="pareto">
+        <span class="card-badge">Disponible</span>
+        <img class="card-img" src="../assets/portada-pareto-psicopedagogas.png" alt="Pareto para psicopedagogas en 10 semanas"/>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Psicopedagogas</p>
+          <h3>Pareto para psicopedagogas en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <a class="btn btn-block" href="#">Comprar PDF</a>
+        </div>
+      </article></div>
+    <p class="grid-heading grid-heading--soon">Próximamente</p>
+    <div class="grid" id="guiasProximamente">
+      <article class="card guia-card" data-rol-card="psicopedagogas" data-libro-card="habitos" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Psicopedagogas</p>
+          <h3>Hábitos atómicos para psicopedagogas en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="abogados" data-libro-card="pareto" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Abogados</p>
+          <h3>Pareto para abogados en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="abogados" data-libro-card="habitos" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Abogados</p>
+          <h3>Hábitos atómicos para abogados en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="soldadores" data-libro-card="pareto" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Soldadores</p>
+          <h3>Pareto para soldadores en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="soldadores" data-libro-card="habitos" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Soldadores</p>
+          <h3>Hábitos atómicos para soldadores en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="docentes" data-libro-card="kahneman" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Docentes</p>
+          <h3>Kahneman para docentes en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article>
+      <article class="card guia-card" data-rol-card="enfermeras" data-libro-card="habitos" style="opacity:0.55">
+        
+        <div class="card-soon">Próximamente</div>
+        <div class="card-body">
+          <p class="card-brand">Vértice Pro · PDF · Enfermeras</p>
+          <h3>Hábitos atómicos para enfermeras en 10 semanas</h3>
+          <p class="price">$4.99</p>
+          <span class="btn btn-outline btn-block" style="line-height:46px">Próximamente</span>
+        </div>
+      </article></div>
+    <p class="empty-state" id="emptyAll">No hay guías con esta combinación. Prueba otro rol o libro.</p>
+  </section>
+
+  <section id="incluye">
+    <h2>Qué incluye cada guía</h2>
+    <p class="section-lead">Mismo formato en todos los libros y profesiones. El contenido se adapta cuando eliges tu rol arriba.</p>
+    <div class="benefits-grid"><article class="benefit-card">
+          <h3>Plan de 10 semanas</h3>
+          <p>Una acción concreta por semana. Empiezas hoy, avanzas sin improvisar.</p>
+        </article><article class="benefit-card">
+          <h3>Adaptado a tu rol</h3>
+          <p>Ejemplos, casos y lenguaje de tu profesión — no un resumen genérico de librería.</p>
+        </article><article class="benefit-card">
+          <h3>PDF tuyo para siempre</h3>
+          <p>Compra única. Descarga al instante. Lee en móvil, tablet o imprime.</p>
+        </article></div>
+    <div class="incluye-box">
+      <h3 id="incluyePlanTitulo">Estructura del plan · 10 semanas</h3>
+      <p class="incluye-intro" id="incluyeIntro">Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.</p>
+      <p class="incluye-ejemplo" id="incluyeEjemplo" hidden></p>
+      <ul><li>Semanas 1–2: Mapa de tu semana laboral y primeros focos</li><li>Semanas 3–5: Aplicar las ideas del libro a casos reales de tu rol</li><li>Semanas 6–8: Rutinas que sostienen el cambio en el día a día</li><li>Semanas 9–10: Medir resultados y ajustar el plan</li></ul>
+    </div>
+  </section>
+
+  <section id="historia">
+    <div class="story">
+      <img src="../assets/mockup-movil.svg" alt="Vista móvil"/>
+      <div>
+        <h2>Inspiradas en tu trabajo real</h2>
+        <p>Editorial digital en español. Adaptamos libros de no-ficción a oficios concretos: salud, educación, derecho, oficios técnicos y más.</p>
+        <p>Para quien compra ebooks y quiere aplicarlos el lunes, no guardarlos en la carpeta de descargas.</p>
+        <a class="btn btn-outline" href="#guias-por-rol">Encontrar mi guía</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="opiniones">
+    <h2>Lo que dicen</h2>
+    <div class="reviews"><blockquote class="review"><p>«Prioricé sin leer 300 páginas. Plan claro para el gabinete.»</p><cite>— María G. · Psicopedagogas</cite></blockquote><blockquote class="review"><p>«Ejemplos de expedientes reales, no teoría de librería.»</p><cite>— Roberto L. · Abogados</cite></blockquote><blockquote class="review"><p>«Lo apliqué en el turno. PDF al instante y sin suscripción.»</p><cite>— Carmen V. · Enfermeras</cite></blockquote></div>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq"><details class="faq-item" open>
+          <summary>¿Es una suscripción como Blinkist o Shortform?</summary>
+          <p>No. Pagas una vez por guía y el PDF es tuyo. Sin cuota mensual ni renovación automática.</p>
+        </details><details class="faq-item">
+          <summary>¿Cómo recibo el PDF?</summary>
+          <p>Tras el pago recibes un enlace de descarga inmediato por email. También disponible en tu cuenta de Shopify.</p>
+        </details><details class="faq-item">
+          <summary>¿En qué se diferencia de un resumen genérico?</summary>
+          <p>Cada guía traduce las ideas del libro a situaciones concretas de tu profesión — casos, lenguaje y plan de 10 semanas incluidos.</p>
+        </details><details class="faq-item">
+          <summary>¿Está afiliada al autor original?</summary>
+          <p>No. Son resúmenes independientes para aplicar ideas en tu trabajo. No sustituyen el libro completo.</p>
+        </details></div>
+  </section>
+
+  <div class="newsletter wrap">
+    <h2>10% en tu primera guía</h2>
+    <p>Suscríbete y recibe el descuento en tu primer PDF.</p>
+    <form class="newsletter-form" action="#" onsubmit="return false;">
+      <input type="email" placeholder="tu@email.com" aria-label="Email"/>
+      <button type="submit" class="btn">Quiero el 10%</button>
+    </form>
+    <p class="newsletter-micro">Solo tu descuento · Sin spam · Cancela cuando quieras</p>
+  </div>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div class="wrap">
+      <p><strong>Desde $4.99</strong> · PDF al instante</p>
+      <a class="btn" href="#guias-por-rol">Encontrar mi guía</a>
+    </div>
+  </div>
+
+  <footer><p>Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.</p></footer>
+  <script>
+  const ROLES_DATA = {"psicopedagogas": {"nombre": "Psicopedagogas", "ejemplo": "Prioriza el 20% de casos que generan el 80% del impacto en tu gabinete."}, "abogados": {"nombre": "Abogados", "ejemplo": "Enfoca tu semana en los expedientes que más mueven el bufete."}, "soldadores": {"nombre": "Soldadores", "ejemplo": "Organiza turnos y tareas para reducir retrabajo en obra."}, "docentes": {"nombre": "Docentes", "ejemplo": "Decide qué lecciones y alumnos merecen tu energía esta semana."}, "enfermeras": {"nombre": "Enfermeras", "ejemplo": "Ordena turnos y protocolos sin quemarte en lo urgente."}};
+  const INCLUYE_DEFAULT = "Todas las guías siguen la misma estructura. El contenido cambia según tu oficio y el libro que elijas.";
+  const INCLUYE_ROL_PREFIX = "Así se aplica en tu oficio cuando elijas una guía:";
+(function() {
+  const root = document.getElementById('heroCarousel');
+  if (!root) return;
+  const slides = root.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const titleEl = document.getElementById('captionTitle');
+  const priceEl = document.getElementById('captionSubtitle');
+  let idx = 0;
+  let timer;
+  let touchX = 0;
+
+  function show(i) {
+    idx = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('is-active', n === idx));
+    dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
+    const s = slides[idx];
+    if (titleEl) titleEl.textContent = s.dataset.title || '';
+    if (priceEl) priceEl.textContent = s.dataset.subtitle || '';
+    root.dataset.activeSlug = s.dataset.slug || '';
+  }
+
+  function next() { show(idx + 1); }
+  function prev() { show(idx - 1); }
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 4500);
+  }
+
+  document.getElementById('carouselNext')?.addEventListener('click', () => { next(); resetTimer(); });
+  document.getElementById('carouselPrev')?.addEventListener('click', () => { prev(); resetTimer(); });
+  dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.index); resetTimer(); }));
+
+  root.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive:true});
+  root.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); resetTimer(); }
+  }, {passive:true});
+
+  resetTimer();
+  if (slides[0]) root.dataset.activeSlug = slides[0].dataset.slug || '';
+})();
+(function() {
+  const roleChips = document.querySelectorAll('.role-chip');
+  const bookChips = document.querySelectorAll('.book-chip');
+  const cards = document.querySelectorAll('.guia-card');
+  const emptyAll = document.getElementById('emptyAll');
+  let activeRol = 'todos';
+  let activeLibro = 'todos';
+
+  function applyFilters() {
+    let visible = 0;
+    cards.forEach(card => {
+      const matchRol = activeRol === 'todos' || card.dataset.rolCard === activeRol;
+      const matchLibro = activeLibro === 'todos' || card.dataset.libroCard === activeLibro;
+      const show = matchRol && matchLibro;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    if (emptyAll) emptyAll.classList.toggle('is-visible', visible === 0);
+    updateIncluye(activeRol);
+  }
+
+  function updateIncluye(rol) {
+    const intro = document.getElementById('incluyeIntro');
+    const ej = document.getElementById('incluyeEjemplo');
+    if (!intro || !ej) return;
+    if (rol === 'todos' || !ROLES_DATA[rol]) {
+      intro.textContent = INCLUYE_DEFAULT;
+      ej.hidden = true;
+      ej.textContent = '';
+      return;
+    }
+    const data = ROLES_DATA[rol];
+    intro.textContent = INCLUYE_ROL_PREFIX + ' ' + (data.nombre || rol) + '.';
+    ej.textContent = data.ejemplo || '';
+    ej.hidden = !data.ejemplo;
+  }
+
+  roleChips.forEach(btn => btn.addEventListener('click', () => {
+    activeRol = btn.dataset.rol;
+    roleChips.forEach(c => c.classList.toggle('is-active', c === btn));
+    applyFilters();
+    if (activeRol !== 'todos') {
+      document.getElementById('guiasDisponibles')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }));
+
+  bookChips.forEach(btn => btn.addEventListener('click', () => {
+    activeLibro = btn.dataset.libro;
+    bookChips.forEach(c => c.classList.toggle('is-active', c === btn));
+    applyFilters();
+  }));
+
+  document.getElementById('carouselBookCta')?.addEventListener('click', () => {
+    const slug = document.getElementById('heroCarousel')?.dataset.activeSlug;
+    if (slug) {
+      activeLibro = slug;
+      bookChips.forEach(c => c.classList.toggle('is-active', c.dataset.libro === slug));
+      applyFilters();
+    }
+    document.getElementById('guias-por-rol')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  applyFilters();
+})();
+(function() {
+  const bar = document.getElementById('stickyCta');
+  const hero = document.querySelector('.hero');
+  if (!bar || !hero) return;
+  const obs = new IntersectionObserver(([e]) => {
+    bar.classList.toggle('is-visible', !e.isIntersecting);
+  }, { threshold: 0.1 });
+  obs.observe(hero);
+})();
+  </script>
+</body>
+</html>

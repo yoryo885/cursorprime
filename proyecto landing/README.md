@@ -39,9 +39,25 @@ Pipeline generador (cursorprime): `../sitio-pdf/`
 
 ## Ver en el navegador
 
+**Lo más simple (Cursor):**
+
+1. Abre `preview/versiones.html` en el editor
+2. Clic derecho → **Open with Live Preview** / **Simple Browser: Show**
+3. Elige la versión A–F desde el menú (no expiran, son archivos locales)
+
+Landing actual: `preview/index.html` (mismo folder, mismos `assets/`).
+
+```bash
+open "proyecto landing/preview/versiones.html"
+# o solo la actual:
+open "proyecto landing/preview/index.html"
+```
+
+Servidor local (opcional):
+
 ```bash
 cd preview && python3 -m http.server 8768
-# http://localhost:8768/index.html
+# http://localhost:8768/versiones.html
 ```
 
 En Cursor: **Cmd+Shift+B** (task «Vértice Pro: abrir en Browser»).
