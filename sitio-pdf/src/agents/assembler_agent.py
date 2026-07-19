@@ -200,7 +200,7 @@ def _render_html(ctx: PipelineContext) -> str:
     :root {{
       --bg:{col.get('bg','#faf8f5')}; --surface:{col.get('surface','#fff')};
       --text:{col.get('text','#1a1a1a')}; --muted:{col.get('muted','#6b6560')};
-      --charcoal:{col.get('charcoal','#1a1a1a')}; --gold:{col.get('gold','#c9a962')};
+      --charcoal:{col.get('charcoal','#1a1a1a')};
       --border:{col.get('border','#e8e4df')}; --cream:{col.get('cream_dark','#f0ebe3')};
       --max:1120px; --pad:clamp(16px,4vw,32px);
     }}
@@ -211,7 +211,7 @@ def _render_html(ctx: PipelineContext) -> str:
     a {{ color:inherit; text-decoration:none; }}
     .wrap {{ width:100%; max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }}
 
-    .ticker {{ background:var(--charcoal); color:#fff; font-size:0.7rem; letter-spacing:0.05em; padding:10px var(--pad); text-align:center; }}
+    .ticker {{ background:var(--cream); color:var(--muted); font-size:0.68rem; letter-spacing:0.06em; padding:9px var(--pad); text-align:center; border-bottom:1px solid var(--border); }}
     header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:20px var(--pad) 16px; position:sticky; top:0; z-index:50; }}
     header .wrap {{ display:flex; flex-direction:column; align-items:center; gap:14px; }}
     .logo {{
