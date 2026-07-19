@@ -224,11 +224,9 @@ def _render_html(ctx: PipelineContext) -> str:
     )
     about_tagline = cat.get("about_tagline") or m.get("producto_piloto", {}).get("subtitulo", "")
 
-    hero_banner = ""
-    hero_img = a.get("imagen_lectura") or a.get("hero_lifestyle", "")
-    if hero_img:
-        hero_banner = f"""<figure class="hero-banner">
-      <img src="{escape(hero_img)}" alt="Profesional aplicando guía PDF en su trabajo"/>
+    hero_img = a.get("imagen_lectura") or a.get("hero_lifestyle", "") or "assets/landing-lectura-lado.png"
+    hero_photo = f"""<figure class="hero-photo-figure">
+      <img src="{escape(hero_img)}" alt="Profesional leyendo guía PDF"/>
     </figure>"""
 
     about_visual = ""
@@ -285,48 +283,16 @@ def _render_html(ctx: PipelineContext) -> str:
     nav a {{ padding:4px 0; min-height:40px; display:inline-flex; align-items:center; transition:color 0.2s ease; }}
     nav a:hover {{ color:var(--charcoal); }}
 
-    .hero-editorial {{ padding:0 0 clamp(48px,8vw,72px); background:var(--surface); }}
-    .hero-banner {{
-      width:100%; max-height:clamp(180px,28vw,320px); overflow:hidden; margin-bottom:clamp(24px,4vw,36px);
-      border-bottom:1px solid var(--border);
+    .hero-photo {{ padding:0; margin:0; background:var(--surface); }}
+    .hero-photo-figure {{ margin:0; padding:0; width:100%; line-height:0; }}
+    .hero-photo-figure img {{
+      width:100%; height:clamp(480px,78vh,860px); object-fit:cover; object-position:center left;
+      display:block;
     }}
-    .hero-banner img {{ width:100%; height:clamp(180px,28vw,320px); object-fit:cover; object-position:center 30%; display:block; }}
-    .hero-visual {{ display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:clamp(28px,5vw,40px); }}
-    .hero-showcase {{
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      width:min(100%,520px); margin:0 auto;
+    .hero-copy {{
+      max-width:560px; margin:0 auto; text-align:center; padding:clamp(40px,6vw,64px) var(--pad);
+      background:var(--surface);
     }}
-    .hero-showcase .hero-carousel {{
-      position:relative; width:min(100%,420px); height:clamp(300px,42vw,460px);
-      perspective:900px; touch-action:pan-y; user-select:none;
-    }}
-    .carousel-track {{ position:relative; width:100%; height:100%; }}
-    .carousel-slide {{
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-      opacity:0; transform:translateX(20px) scale(0.94);
-      transition:opacity 0.5s ease, transform 0.5s ease; pointer-events:none;
-    }}
-    .carousel-slide.is-active {{ opacity:1; transform:translateX(0) scale(1); pointer-events:auto; }}
-    .carousel-slide.is-soon img {{ opacity:0.7; }}
-    .carousel-slide img {{
-      width:min(68%,280px); max-height:100%; object-fit:contain;
-      filter:drop-shadow(0 16px 40px rgba(52,48,44,0.06));
-    }}
-    .carousel-nav {{ display:flex; align-items:center; justify-content:center; gap:10px; }}
-    .carousel-btn {{
-      width:40px; height:40px; border:1px solid var(--border); background:var(--surface);
-      border-radius:50%; cursor:pointer; font-size:1rem; line-height:1; color:var(--muted);
-      display:inline-flex; align-items:center; justify-content:center;
-    }}
-    .carousel-btn:hover {{ border-color:var(--charcoal); color:var(--charcoal); }}
-    .carousel-dots {{ display:flex; gap:7px; }}
-    .carousel-dot {{
-      width:6px; height:6px; border-radius:50%; border:none; padding:0; background:var(--border); cursor:pointer;
-    }}
-    .carousel-dot.is-active {{ background:var(--charcoal); }}
-    .carousel-caption {{ display:none; }}
-
-    .hero-copy {{ max-width:560px; margin:0 auto; text-align:center; padding:0 var(--pad); }}
     .hero-series {{
       font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
       color:var(--muted); margin-bottom:16px;
@@ -428,7 +394,7 @@ def _render_html(ctx: PipelineContext) -> str:
       .reviews {{ grid-template-columns:repeat(2,minmax(0,1fr)); max-width:520px; }}
     }}
     @media (max-width:768px) {{
-      .hero-showcase .hero-carousel {{ width:min(88vw,360px); height:clamp(280px,52vw,380px); }}
+      .hero-photo-figure img {{ height:clamp(360px,62vh,560px); object-position:65% center; }}
       .grid-mas-vendidas {{ max-width:320px; }}
       .reviews {{ grid-template-columns:1fr; max-width:360px; }}
       .newsletter-form {{ flex-direction:column; }}
@@ -456,20 +422,8 @@ def _render_html(ctx: PipelineContext) -> str:
     </div>
   </header>
 
-  <section class="hero hero-editorial">
-    {hero_banner}
-    <div class="hero-visual wrap">
-      <div class="hero-showcase">
-        <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
-          <div class="carousel-track">{slides_html}</div>
-        </div>
-      </div>
-      <div class="carousel-nav">
-        <button type="button" class="carousel-btn" id="carouselPrev" aria-label="Anterior">‹</button>
-        <div class="carousel-dots" id="carouselDots">{dots_html}</div>
-        <button type="button" class="carousel-btn" id="carouselNext" aria-label="Siguiente">›</button>
-      </div>
-    </div>
+  <section class="hero hero-photo">
+    {hero_photo}
     <div class="hero-copy">
       <p class="hero-series">{escape(cat.get('hero_series', m.get('serie', 'Aplicar en tu rol')))}</p>
       <h1>{hero_title_html}</h1>
@@ -510,51 +464,11 @@ def _render_html(ctx: PipelineContext) -> str:
       <button type="submit" class="btn">Suscribirme</button>
     </form>
   </div>
-  </div>
 
   <footer>
     <p>{escape(c.get('footer_legal','Estas guías son resúmenes independientes. No están afiliadas ni respaldadas por los autores ni editoriales de los libros originales.'))}</p>
     <p>© {escape(m.get('marca', 'Vértice Pro'))}</p>
   </footer>
-  <script>
-(function() {{
-  const root = document.getElementById('heroCarousel');
-  if (!root) return;
-  const slides = root.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const titleEl = document.getElementById('captionTitle');
-  let idx = 0;
-  let timer;
-  let touchX = 0;
-
-  function show(i) {{
-    idx = (i + slides.length) % slides.length;
-    slides.forEach((s, n) => s.classList.toggle('is-active', n === idx));
-    dots.forEach((d, n) => d.classList.toggle('is-active', n === idx));
-    const s = slides[idx];
-    if (titleEl) titleEl.textContent = s.dataset.title || '';
-  }}
-
-  function next() {{ show(idx + 1); }}
-  function prev() {{ show(idx - 1); }}
-  function resetTimer() {{
-    clearInterval(timer);
-    timer = setInterval(next, 5000);
-  }}
-
-  document.getElementById('carouselNext')?.addEventListener('click', () => {{ next(); resetTimer(); }});
-  document.getElementById('carouselPrev')?.addEventListener('click', () => {{ prev(); resetTimer(); }});
-  dots.forEach(d => d.addEventListener('click', () => {{ show(+d.dataset.index); resetTimer(); }}));
-
-  root.addEventListener('touchstart', e => {{ touchX = e.touches[0].clientX; }}, {{passive:true}});
-  root.addEventListener('touchend', e => {{
-    const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 40) {{ dx < 0 ? next() : prev(); resetTimer(); }}
-  }}, {{passive:true}});
-
-  resetTimer();
-}})();
-  </script>
 </body>
 </html>"""
 
