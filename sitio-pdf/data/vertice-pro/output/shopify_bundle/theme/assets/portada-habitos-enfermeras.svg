@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img">
-  <rect width="400" height="520" fill="#ede6dc"/>
+  <rect width="400" height="520" fill="#f2efeb"/>
   <rect x="24" y="24" width="352" height="472" fill="#fff" stroke="#e8e4df"/>
   <rect x="24" y="24" width="5" height="472" fill="#a68b5b"/>
-  <text x="48" y="120" fill="#2c2824" font-family="Georgia,serif" font-size="18" font-weight="700">Hábitos atómicos para enfermeras</text>
-  <text x="48" y="148" fill="#2c2824" font-family="Georgia,serif" font-size="18" font-weight="700"> en 10 semanas</text>
+  <text x="48" y="120" fill="#3a3632" font-family="Georgia,serif" font-size="18" font-weight="700">Hábitos atómicos para enfermeras</text>
+  <text x="48" y="148" fill="#3a3632" font-family="Georgia,serif" font-size="18" font-weight="700"> en 10 semanas</text>
   <text x="48" y="440" fill="#a68b5b" font-family="system-ui,sans-serif" font-size="10" letter-spacing="0.12em">APLICAR EN TU ROL</text>
   <text x="48" y="462" fill="#6b6560" font-family="system-ui" font-size="9">VÉRTICE PRO · PDF</text>
 </svg>

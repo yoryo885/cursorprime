@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img">
   <rect x="0" y="0" width="320" height="440" fill="#ffffff" rx="3"/>
-  <rect x="0" y="0" width="5" height="440" fill="#b8956a"/>
-  <text x="20" y="72" fill="#b8956a" font-family="system-ui,sans-serif" font-size="8" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
-  <text x="20" y="108" fill="#2c2824" font-family="Georgia,serif" font-size="16" font-weight="700">Hábitos atómicos</text>
-  <text x="20" y="134" fill="#2c2824" font-family="Georgia,serif" font-size="16" font-weight="700"></text>
-  <text x="20" y="360" fill="#736b63" font-family="system-ui,sans-serif" font-size="10">James Clear</text>
-  <text x="20" y="384" fill="#b8956a" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.12em">APLICAR EN TU ROL</text>
+  <rect x="0" y="0" width="5" height="440" fill="#b5a898"/>
+  <text x="20" y="72" fill="#b5a898" font-family="system-ui,sans-serif" font-size="8" letter-spacing="0.14em">SERIE · LIBRO FUENTE</text>
+  <text x="20" y="108" fill="#3a3632" font-family="Georgia,serif" font-size="16" font-weight="700">Hábitos atómicos</text>
+  <text x="20" y="134" fill="#3a3632" font-family="Georgia,serif" font-size="16" font-weight="700"></text>
+  <text x="20" y="360" fill="#9a948c" font-family="system-ui,sans-serif" font-size="10">James Clear</text>
+  <text x="20" y="384" fill="#b5a898" font-family="system-ui,sans-serif" font-size="9" letter-spacing="0.12em">APLICAR EN TU ROL</text>
 </svg>
