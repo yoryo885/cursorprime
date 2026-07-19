@@ -22,10 +22,12 @@ class CopyAgent:
         beneficios = kdp.get("beneficios") or []
         copy = {
             "announce": "Descarga instantánea · Guías PDF en español · Serie «Aplicar en tu rol» · Primera compra 10% off",
-            "hero_title": cat.get("hero_title", "Libros que aplicas en tu trabajo"),
+            "hero_title": cat.get("hero_title", "Guías PDF para tu rol profesional"),
             "hero_subtitle": cat.get("hero_subtitle", marca.get("descripcion_corta", "")),
-            "hero_cta": cat.get("hero_cta", "Encontrar mi guía"),
-            "hero_label": cat.get("hero_label", "Serie · Aplicar en tu rol"),
+            "hero_cta": cat.get("hero_cta", "Ver guías"),
+            "hero_brand": cat.get("hero_brand", marca.get("marca", "Vértice Pro").upper()),
+            "hero_series": cat.get("hero_series", f"Serie · {marca.get('serie', 'Aplicar en tu rol')}"),
+            "hero_label": cat.get("hero_label", marca.get("marca", "Vértice Pro").upper()),
             "guias_lead": cat.get("guias_lead", ""),
             "benefits_title": cat.get("benefits_title", "Qué incluye cada guía"),
             "benefits": cat.get("benefits") or [

@@ -195,14 +195,23 @@ def _render_html(ctx: PipelineContext) -> str:
 
     .ticker {{ background:var(--charcoal); color:#fff; font-size:0.7rem; letter-spacing:0.05em; padding:10px var(--pad); text-align:center; }}
     header {{ background:var(--surface); border-bottom:1px solid var(--border); padding:16px var(--pad); position:sticky; top:0; z-index:50; }}
-    header .wrap {{ display:flex; flex-direction:column; align-items:center; gap:12px; }}
-    .logo {{ font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.15rem,4vw,1.45rem); letter-spacing:0.16em; font-weight:500; }}
-    nav {{ display:flex; flex-wrap:wrap; justify-content:center; gap:20px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }}
+    header .wrap {{ display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; }}
+    .logo {{
+      font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.05rem,3vw,1.35rem);
+      letter-spacing:0.2em; font-weight:500; color:var(--charcoal);
+      border-bottom:2px solid var(--gold); padding-bottom:4px; line-height:1.2;
+    }}
+    nav {{ display:flex; flex-wrap:wrap; justify-content:flex-end; gap:clamp(12px,3vw,24px); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }}
     nav a {{ padding:6px 0; min-height:44px; display:inline-flex; align-items:center; }}
 
     .hero {{ background:var(--cream); border-bottom:1px solid var(--border); }}
     .hero .wrap {{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,64px); align-items:center; padding-top:clamp(40px,7vw,72px); padding-bottom:clamp(40px,7vw,72px); }}
     .hero-copy {{ max-width:460px; }}
+    .hero-brand {{
+      font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.6rem,4.5vw,2.25rem);
+      letter-spacing:0.22em; font-weight:500; color:var(--charcoal); margin-bottom:6px; line-height:1.1;
+    }}
+    .hero-series {{ font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }}
     .hero-label {{ font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }}
     .hero h1 {{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.85rem,5vw,3rem); font-weight:400; line-height:1.12; margin-bottom:16px; letter-spacing:0.02em; }}
     .hero-desc {{ color:var(--muted); font-size:0.98rem; margin-bottom:28px; max-width:38ch; line-height:1.6; }}
@@ -214,6 +223,7 @@ def _render_html(ctx: PipelineContext) -> str:
       border:1px solid var(--border); box-shadow:0 16px 48px rgba(0,0,0,0.06);
     }}
     .hero-visual-label {{ font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }}
+    .hero-visual-label strong {{ color:var(--charcoal); font-weight:600; letter-spacing:0.12em; }}
     .hero-lifestyle {{ position:relative; margin:0; border-bottom:1px solid var(--border); overflow:hidden; }}
     .hero-lifestyle img {{ width:100%; height:clamp(180px,26vw,300px); object-fit:cover; object-position:center 30%; display:block; }}
     .hero-lifestyle figcaption {{
@@ -384,6 +394,8 @@ def _render_html(ctx: PipelineContext) -> str:
     footer {{ padding:28px var(--pad); text-align:center; font-size:0.7rem; color:var(--muted); line-height:1.5; }}
 
     @media (max-width:768px) {{
+      header .wrap {{ flex-direction:column; align-items:center; }}
+      nav {{ justify-content:center; }}
       .hero .wrap {{ grid-template-columns:1fr; text-align:center; }}
       .hero-copy {{ max-width:none; margin:0 auto; }}
       .hero-desc {{ margin-left:auto; margin-right:auto; }}
@@ -397,7 +409,7 @@ def _render_html(ctx: PipelineContext) -> str:
   </style>
 </head>
 <body>
-  <div class="ticker">★★★★★ 4.9 · Descarga instantánea · 10% primera compra</div>
+  <div class="ticker">{escape(m.get('marca', 'Vértice Pro'))} · {escape(m.get('serie', 'Aplicar en tu rol'))} · Descarga instantánea · 10% primera compra</div>
 
   <header>
     <div class="wrap">
@@ -414,14 +426,15 @@ def _render_html(ctx: PipelineContext) -> str:
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="hero-label">{escape(c.get('hero_label', cat.get('hero_label', 'Serie · Aplicar en tu rol')))}</p>
+        <p class="hero-brand">{escape(cat.get('hero_brand', name))}</p>
+        <p class="hero-series">{escape(cat.get('hero_series', m.get('serie', 'Aplicar en tu rol')))}</p>
         <h1>{escape(c.get('hero_title', cat.get('hero_title','')))}</h1>
         <p class="hero-desc">{escape(c.get('hero_subtitle', cat.get('hero_subtitle','')))}</p>
         <a class="btn" href="#guias-por-rol">{escape(c.get('hero_cta', cat.get('hero_cta','Ver guías')))}</a>
         <p class="hero-trust">{escape(cat.get('hero_trust', c.get('hero_trust', '★ 4.9 · Descarga al instante')))}</p>
       </div>
       <div class="hero-visual">
-        <p class="hero-visual-label">Libros de la serie</p>
+        <p class="hero-visual-label"><strong>{escape(m.get('marca', 'Vértice Pro'))}</strong> · Libros de la serie</p>
         <div class="hero-carousel" id="heroCarousel" data-slides="{escape(carousel_json)}">
           <div class="carousel-track">{slides_html}</div>
         </div>
@@ -516,7 +529,7 @@ def _render_html(ctx: PipelineContext) -> str:
     </div>
   </div>
 
-  <footer><p>{escape(c.get('footer_legal',''))}</p></footer>
+  <footer><p><strong>{escape(m.get('marca', 'Vértice Pro'))}</strong> · {escape(m.get('tagline', 'Aplicar en tu rol'))} · {escape(m.get('descripcion_corta', ''))}</p><p>{escape(c.get('footer_legal',''))}</p></footer>
   <script>
   const ROLES_DATA = {roles_json};
   const INCLUYE_DEFAULT = {json.dumps(cat.get('plan_intro_default',''), ensure_ascii=False)};
