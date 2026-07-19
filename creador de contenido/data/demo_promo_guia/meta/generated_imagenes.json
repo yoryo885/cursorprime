@@ -1,0 +1,42 @@
+{
+  "imagenes": [
+    {
+      "tema": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+      "archivo": "01-si_el_principio_de_pareto_te_abruma_est-inicio.png",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/01-si_el_principio_de_pareto_te_abruma_est-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "inicio",
+      "generado_at": "2026-07-19T21:14:57.669953+00:00"
+    },
+    {
+      "tema": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+      "archivo": "01-si_el_principio_de_pareto_te_abruma_est-fin.png",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/01-si_el_principio_de_pareto_te_abruma_est-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "fin",
+      "generado_at": "2026-07-19T21:14:57.687653+00:00"
+    },
+    {
+      "tema": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+      "archivo": "02-1_identifica_las_pocas_causas_que_gener-inicio.png",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/02-1_identifica_las_pocas_causas_que_gener-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "inicio",
+      "generado_at": "2026-07-19T21:14:57.704418+00:00"
+    },
+    {
+      "tema": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+      "archivo": "02-1_identifica_las_pocas_causas_que_gener-fin.png",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/02-1_identifica_las_pocas_causas_que_gener-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "fin",
+      "generado_at": "2026-07-19T21:14:57.720926+00:00"
+    }
+  ],
+  "count": 4,
+  "video_modo": "animado"
+}

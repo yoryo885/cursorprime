@@ -1,0 +1,34 @@
+{
+  "receta": "animado",
+  "nombre": "Guion → escenas → clips",
+  "descripcion": "Video animado desde guion existente",
+  "skills": [
+    "guion-a-video"
+  ],
+  "agentes": [
+    "context",
+    "planner",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "video",
+    "qc",
+    "packager"
+  ],
+  "salidas": [
+    "png",
+    "video"
+  ],
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 2
+  },
+  "copy": [],
+  "requiere": [
+    "guion"
+  ],
+  "slug": "demo_animado",
+  "generado_at": "2026-07-19T21:14:58.664195+00:00",
+  "warnings": []
+}

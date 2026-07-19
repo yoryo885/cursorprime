@@ -15,6 +15,7 @@ class PipelineContext:
     constitution: dict[str, Any]
     salidas: list[str] = field(default_factory=lambda: ["png"])
     mock_generate: bool = True
+    receta: str | None = None
 
 
 @dataclass
