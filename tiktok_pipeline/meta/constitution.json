@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "proyecto": "tiktok-pipeline",
+  "reglas": [
+    "Cada agente lee su skill .md antes de generar",
+    "Contrato run(input: dict) -> dict",
+    "Checkpoint para reintentar un solo agente",
+    "shotlist.md debe ser legible en móvil",
+    "Sin hashtags #fyp #viral",
+    "MOCK_LLM=true por defecto sin API key"
+  ]
+}

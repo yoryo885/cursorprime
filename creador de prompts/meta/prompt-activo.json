@@ -2,28 +2,18 @@
   "version": 1,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
-    "slug": "pdf-guion-video",
-    "tipo": "animacion",
-    "proyecto_destino": "creador-de-contenido",
-    "titulo": "Sistema de video por recetas — promo guías PDF",
-    "version": 3,
-    "ultima_mejora": "Pipeline con PlannerAgent + recetas (promo-guia) y agentes/skills condicionales"
+    "slug": "tiktok-pipeline-agentes",
+    "tipo": "copy",
+    "proyecto_destino": "tiktok-pipeline",
+    "titulo": "Pipeline de agentes TikTok (prompt PDF)",
+    "version": 1,
+    "ultima_mejora": "Proyecto tiktok_pipeline creado end-to-end desde prompt_pipeline_tiktok PDF"
   },
   "historial": [
     {
       "version": 1,
-      "mensaje": "La parte PDF debería crear guiones para video, no solo PDF",
-      "cambio": "Prompt inicial en data/pdf-guion-video/output/"
-    },
-    {
-      "version": 2,
-      "mensaje": "No pendientes — cada mensaje mejora el prompt",
-      "cambio": "Flujo cambiado a mejora continua (prompt-activo.json); pendientes.json deprecado"
-    },
-    {
-      "version": 3,
-      "mensaje": "sistema de creación de videos con agentes, skill, pipeline como otros proyectos",
-      "cambio": "Recetas + Planner + agentes copy; demo_promo_guia; skill guion-a-video actualizada"
+      "mensaje": "Realiza ese prompt (PDF pipeline TikTok)",
+      "cambio": "Nuevo slug tiktok-pipeline-agentes; scaffolding 11 agentes + 9 skills + demo_pareto"
     }
   ]
 }

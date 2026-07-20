@@ -199,17 +199,33 @@
       }
     },
     {
+      "id": "tiktok-pipeline",
+      "priority": 91,
+      "match": {
+        "any": ["tiktok pipeline", "pipeline tiktok", "guion tiktok", "shotlist", "pattern interrupt", "contenido viral tiktok", "agentes tiktok"],
+        "none": ["linkedin", "evaluar idea", "kdp"]
+      },
+      "skill": "hooks-redes",
+      "proyecto": "tiktok-pipeline",
+      "prompt": { "tipo": "copy", "proyecto_destino": "tiktok-pipeline", "auto": false },
+      "pipeline": {
+        "cwd": "tiktok_pipeline",
+        "cmd": "python3 tiktok_main.py --tema \"{texto}\" --reset-checkpoint"
+      },
+      "nota": "11 agentes + skills en src/skills/; output/{slug}/shotlist.md"
+    },
+    {
       "id": "contenido-redes",
       "priority": 84,
       "match": {
         "any": ["hook", "gancho", "reels", "shorts", "tiktok", "caption", "thumbnail", "miniatura", "faceless", "redes sociales", "instagram reel"],
-        "none": ["linkedin", "evaluar", "kdp", "libro editorial"]
+        "none": ["linkedin", "evaluar", "kdp", "libro editorial", "pipeline tiktok", "shotlist"]
       },
       "skill": "hooks-redes",
       "proyecto": "creador-de-contenido",
       "prompt": { "tipo": "copy", "proyecto_destino": "creador-de-contenido", "auto": false },
       "pipeline": null,
-      "nota": "Encadenar hooks-redes → guion-a-video → captions-redes → thumbnail-social según pedido"
+      "nota": "Encadenar hooks-redes → guion-a-video → captions-redes → thumbnail-social según pedido. Para pipeline completo: tiktok_pipeline/"
     },
     {
       "id": "gestion-proyecto-route",
