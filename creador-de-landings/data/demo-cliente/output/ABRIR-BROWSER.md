@@ -1,23 +1,15 @@
-# Arreglar preview en Cursor (ERR_CONNECTION_REFUSED)
+# Abrir preview (arreglo ERR_CONNECTION_REFUSED)
 
-## Causa
-El HTML está bien. Falla el **puerto**: Cursor no está reenviando `8777` a tu navegador.
+## Usa este puerto (recomendado)
+Cursor ya suele tener **8768** abierto:
 
-## Arreglo (30 segundos)
+**http://localhost:8768/preview.html**
 
-### 1. Servidor (en la terminal del workspace)
-```bash
-cd creador-de-landings
-bash servir-preview.sh
-```
-O: `Ctrl/Cmd+Shift+B` → task **Landings: abrir preview en Browser**
+## Si 8777 falla
+`8777` a veces no se reenvía → `ERR_CONNECTION_REFUSED`.
+No es un error del HTML; es el port forward.
 
-### 2. Reenviar el puerto
-1. Panel **Ports** (abajo en Cursor)
-2. **Forward a Port** → escribe `8777`
-3. Clic en la URL / **Open in Browser**
-
-### 3. Abrir
-http://localhost:8777/preview.html
-
-Si sigue fallando: cierra Simple Browser, vuelve a Forward `8777`, y abre de nuevo.
+## Ports
+1. Panel **Ports**
+2. Debe aparecer **8768** (y/o 8777)
+3. Clic → Open in Browser

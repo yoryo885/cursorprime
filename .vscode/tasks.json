@@ -11,6 +11,12 @@
       "id": "openLandingsPreview",
       "type": "command",
       "command": "simpleBrowser.show",
+      "args": ["http://localhost:8768/preview.html"]
+    },
+    {
+      "id": "openLandingsPreview8777",
+      "type": "command",
+      "command": "simpleBrowser.show",
       "args": ["http://localhost:8777/preview.html"]
     }
   ],
@@ -19,7 +25,7 @@
       "label": "Landings: abrir preview en Browser",
       "dependsOrder": "sequence",
       "dependsOn": [
-        "Landings: servir preview 8777",
+        "Landings: sync preview a 8768",
         "Landings: launch Simple Browser"
       ],
       "group": {
@@ -29,24 +35,13 @@
       "problemMatcher": []
     },
     {
-      "label": "Landings: servir preview 8777",
+      "label": "Landings: sync preview a 8768",
       "type": "shell",
-      "command": "bash servir-preview.sh",
-      "options": {
-        "cwd": "${workspaceFolder}/creador-de-landings"
-      },
-      "isBackground": true,
-      "problemMatcher": {
-        "pattern": { "regexp": "^$" },
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": ".",
-          "endsPattern": "(Serving HTTP|OK ya sirve)"
-        }
-      },
+      "command": "cp -f \"${workspaceFolder}/creador-de-landings/data/demo-cliente/output/preview.html\" \"${workspaceFolder}/vertice-pro-preview/preview.html\" && curl -sf -o /dev/null http://127.0.0.1:8768/preview.html && echo OK http://localhost:8768/preview.html",
+      "problemMatcher": [],
       "presentation": {
         "reveal": "always",
-        "panel": "dedicated"
+        "panel": "shared"
       }
     },
     {
