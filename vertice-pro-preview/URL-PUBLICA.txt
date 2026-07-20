@@ -1,9 +1,5 @@
-Preview: https://pink-carrots-rule.loca.lt/tienda.html
-Index:   https://pink-carrots-rule.loca.lt/index.html
+https://transmit-madrid-monitor-audience.trycloudflare.com/preview.html
 
-Si localtunnel pide clic/IP, usa el aviso de la pantalla.
-
-Local: http://localhost:8768/tienda.html
-
-Nota: regenerada con UNA sola imagen de hero (opción 6 → assets/hero-lifestyle.png).
-El túnel anterior modern-lies-return.loca.lt ya no está activo.
+NO se desinstaló nada.
+localhost falla porque Cursor Cloud no reenvía el puerto a tu PC.
+Usa la URL de Cloudflare de arriba (funciona en cualquier navegador).

@@ -1,2 +1,5 @@
-http://localhost:8777/preview.html
-https://vertice-landings-8777.loca.lt/preview.html
+https://transmit-madrid-monitor-audience.trycloudflare.com/preview.html
+
+NO se desinstaló nada.
+localhost falla porque Cursor Cloud no reenvía el puerto a tu PC.
+Usa la URL de Cloudflare de arriba (funciona en cualquier navegador).
