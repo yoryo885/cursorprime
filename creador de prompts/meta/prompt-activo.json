@@ -1,15 +1,15 @@
 {
-  "version": 17,
+  "version": 19,
   "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "landing_pipeline",
-    "titulo": "Pipeline landings v6 (variantes layout)",
-    "version": 11,
-    "ultima_mejora": "v6: variantes hero/benefits/pricing + siempre mostrar visual"
+    "titulo": "Pipeline landings v7 (referencia + fix hero split)",
+    "version": 13,
+    "ultima_mejora": "prompt reemplazado por usuario: 00_referencia + fix hero split"
   },
   "slug": "creador-de-landings",
-  "ultima_mejora": "mostrar URL/screenshot; nunca pegar código HTML",
-  "updated_at": "2026-07-20T12:25:00Z"
+  "ultima_mejora": "prompt v7 aplicado + código alineado",
+  "updated_at": "2026-07-20T22:10:00Z"
 }

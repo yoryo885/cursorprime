@@ -6,11 +6,9 @@
       <p class="sub">{{ hero.bajada }}</p>
       <a class="btn" href="#precio">{{ hero.cta }}</a>
     </div>
-    <div class="split-visual" aria-hidden="true">
-      <div class="visual-panel">
-        <p class="visual-mark">{{ nombre }}</p>
-        <p class="visual-line">{{ hero.titulo }}</p>
-      </div>
+    <div class="split-visual">
+      {# Solo imagen real — NUNCA repetir titulo/bajada aquí #}
+      <img class="hero-img" src="{{ hero.imagen_hero }}" alt="{{ nombre }}"/>
     </div>
   </div>
 </section>

@@ -2,7 +2,8 @@
   "score": 100,
   "criticos": [],
   "sugerencias": [
-    "Hero y CTA final comparten mensaje (esperado)."
+    "Hero y CTA final comparten mensaje (esperado).",
+    "hero_split excluido: sin imagen_hero real → hero_centrado forzado"
   ],
   "regenerar": [],
   "omisiones": [
@@ -17,7 +18,8 @@
     "acento_inconsistente": "ok",
     "naming_inconsistente": "ok",
     "testimonios_silenciados": "ok_omitida_explicita",
-    "secciones_duplicadas": "ok"
+    "secciones_duplicadas": "ok",
+    "duplicado_intra_hero": "ok"
   },
   "section_counts": {
     "hero": 1,
@@ -32,6 +34,9 @@
   },
   "n_sections": 8,
   "cta_count": 4,
+  "duplicado_intra_seccion": {
+    "hero": false
+  },
   "visual_qa": {
     "skipped": false,
     "motivo": "",

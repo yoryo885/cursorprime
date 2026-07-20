@@ -1,4 +1,4 @@
-"""Orquestador: agentes 01→10, 11a, 11b, 12, 13."""
+"""Orquestador: 00_referencia → 01–10 → 11a/11b → 12 → 13."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from src.agents import (
+    a00_referencia,
     a01_brief,
     a02_hero,
     a03_social_proof,
@@ -29,6 +30,7 @@ from src.paths import LOGS, ensure_slug
 from src.sections import SECTION_ORDER
 
 AGENTS: list[tuple[str, Callable[[dict], dict]]] = [
+    ("00_referencia", a00_referencia.run),
     ("01_brief", a01_brief.run),
     ("02_hero", a02_hero.run),
     ("03_social_proof", a03_social_proof.run),
@@ -96,6 +98,7 @@ def run_pipeline(
     (out / "screenshots").mkdir(parents=True, exist_ok=True)
     checkpoint = out / "checkpoint.json"
     state: dict[str, Any] = {
+        "referencia": {},
         "brief": {},
         "copy": {},
         "tokens": {},
@@ -113,7 +116,12 @@ def run_pipeline(
         html_file = out / "landing.html"
         if html_file.exists():
             state["html"] = html_file.read_text(encoding="utf-8")
-        for name, key in [("brief.json", "brief"), ("copy.json", "copy"), ("tokens.json", "tokens")]:
+        for name, key in [
+            ("referencia.json", "referencia"),
+            ("brief.json", "brief"),
+            ("copy.json", "copy"),
+            ("tokens.json", "tokens"),
+        ]:
             p = out / name
             if p.exists():
                 state[key] = json.loads(p.read_text(encoding="utf-8"))
@@ -134,6 +142,7 @@ def run_pipeline(
         try:
             payload: dict[str, Any] = {
                 "llm": llm,
+                "referencia": state.get("referencia") or {},
                 "brief": state.get("brief") or {},
                 "copy": state.get("copy") or {},
                 "tokens": state.get("tokens") or {},
@@ -143,7 +152,12 @@ def run_pipeline(
                 "section_order": SECTION_ORDER,
                 "assemble_meta": state.get("assemble_meta") or {},
             }
-            if agent_id == "01_brief":
+            if agent_id == "00_referencia":
+                ref = fn(dict(negocio))
+                state["referencia"] = ref
+                _save(out / "referencia.json", ref)
+                results[agent_id] = ref
+            elif agent_id == "01_brief":
                 brief = fn(dict(negocio))
                 state["brief"] = brief
                 _save(out / "brief.json", brief)
@@ -154,12 +168,12 @@ def run_pipeline(
                 _save(out / "tokens.json", tokens)
                 results[agent_id] = tokens
             elif agent_id == "11b_assemble":
-                # SIN pasar llm — 11b no lo usa
                 assemble = fn(
                     {
                         "brief": state["brief"],
                         "copy": state["copy"],
                         "tokens": state["tokens"],
+                        "referencia": state.get("referencia") or {},
                     }
                 )
                 html = assemble["html"]
@@ -168,13 +182,14 @@ def run_pipeline(
                     "included": assemble.get("included"),
                     "omitted": assemble.get("omitted"),
                     "templates_used": assemble.get("templates_used"),
+                    "layout_efectivo": assemble.get("layout_efectivo"),
+                    "hero_forzado_centrado": assemble.get("hero_forzado_centrado"),
                 }
                 _save(out / "landing.html", html)
                 results[agent_id] = {
                     "ok": True,
                     "bytes": len(html),
-                    "included": assemble.get("included"),
-                    "omitted": assemble.get("omitted"),
+                    **state["assemble_meta"],
                 }
             elif agent_id == "12_qa":
                 qa = fn(payload)
@@ -221,6 +236,7 @@ def run_pipeline(
             _save(
                 checkpoint,
                 {
+                    "referencia": state.get("referencia"),
                     "brief": state.get("brief"),
                     "copy": state.get("copy"),
                     "tokens": state.get("tokens"),
@@ -239,12 +255,13 @@ def run_pipeline(
             raise
 
     _log_mejora(
-        f"pipeline v4 slug={slug}",
+        f"pipeline v7 slug={slug}",
         f"agentes={','.join(state.get('done') or [])} assemble=jinja2 mock={llm.mock}",
     )
     return {
         "slug": slug,
         "out": str(out),
+        "referencia": state.get("referencia"),
         "brief": state.get("brief"),
         "copy": state.get("copy"),
         "tokens": state.get("tokens"),

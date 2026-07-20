@@ -35,6 +35,20 @@
       "mensaje": "pipeline v4 slug=vertice-pro",
       "cambio": "agentes=01_brief,02_hero,03_social_proof,04_problem,05_benefits,06_testimonials,07_pricing,08_faq,09_cta_final,10_footer,11a_design_tokens,11b_assemble,12_qa,13_visual_qa assemble=jinja2 mock=True",
       "aplicado": true
+    },
+    {
+      "id": "m006",
+      "at": "2026-07-20T22:09:02.980141+00:00",
+      "mensaje": "pipeline v7 slug=vertice-pro",
+      "cambio": "agentes=00_referencia,01_brief,02_hero,03_social_proof,04_problem,05_benefits,06_testimonials,07_pricing,08_faq,09_cta_final,10_footer,11a_design_tokens,11b_assemble,12_qa,13_visual_qa assemble=jinja2 mock=True",
+      "aplicado": true
+    },
+    {
+      "id": "m007",
+      "at": "2026-07-20T22:09:51.259424+00:00",
+      "mensaje": "pipeline v7 slug=vertice-pro",
+      "cambio": "agentes=00_referencia,01_brief,02_hero,03_social_proof,04_problem,05_benefits,06_testimonials,07_pricing,08_faq,09_cta_final,10_footer,11a_design_tokens,11b_assemble,12_qa,13_visual_qa assemble=jinja2 mock=True",
+      "aplicado": true
     }
   ]
 }

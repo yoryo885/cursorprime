@@ -39,11 +39,14 @@ def _pick_layout(brief: dict) -> dict:
 
 
 def _mock(brief: dict, _copy: dict) -> dict:
-    tokens = dict(DEFAULT_TOKENS)
     rubro = (brief.get("rubro") or "").lower()
+    tokens = dict(DEFAULT_TOKENS)
     if "tech" in rubro or "saas" in rubro:
         tokens["accent"] = "#3d7ea6"
     tokens["layout"] = _pick_layout(brief)
+    # Sin imagen → nunca split
+    if not (brief.get("imagen_hero") or "").strip():
+        tokens["layout"]["hero"] = "centrado"
     return tokens
 
 
@@ -51,11 +54,14 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
     llm: LLMClient = input["llm"]
     brief = input["brief"]
     skill = load_skill("design_skill.md")
+    referencia = input.get("referencia") or {}
     system = (
         "Sos director de arte. Devolvés SOLO JSON de tokens + layout. "
-        "NUNCA HTML. layout.hero/benefits/pricing solo de la lista cerrada del skill.\n\n"
+        "NUNCA HTML. layout.hero/benefits/pricing solo de la lista cerrada del skill. "
+        "Si referencia pide imagen real en hero y no hay imagen, preferí layout hero=centrado.\n\n"
         f"--- SKILL ---\n{skill}\n\n"
-        f"VARIANTES PERMITIDAS:\n{json.dumps(LAYOUT_VARIANTS, ensure_ascii=False)}"
+        f"VARIANTES PERMITIDAS:\n{json.dumps(LAYOUT_VARIANTS, ensure_ascii=False)}\n\n"
+        f"REFERENCIA (patrones, no copiar literal):\n{json.dumps(referencia, ensure_ascii=False)}"
     )
     user = (
         f"BRIEF:\n{json.dumps(brief, ensure_ascii=False, indent=2)}\n\n"
@@ -68,9 +74,14 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
     layout = tokens.get("layout") or {}
     if not isinstance(layout, dict):
         layout = {}
+    # Sin imagen real → no sugerir split (11b igual lo fuerza)
+    if not (brief.get("imagen_hero") or "").strip():
+        layout["hero"] = "centrado"
     clean = {}
     for sec, opts in LAYOUT_VARIANTS.items():
         val = layout.get(sec) or LAYOUT_DEFAULTS[sec]
         clean[sec] = val if val in opts else LAYOUT_DEFAULTS[sec]
+    if not (brief.get("imagen_hero") or "").strip():
+        clean["hero"] = "centrado"
     tokens["layout"] = clean
     return tokens

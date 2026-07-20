@@ -2,7 +2,10 @@
   "hero": {
     "titulo": "Métodos de libros clásicos, aplicados a tu oficio",
     "bajada": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
-    "cta": "Ver colección"
+    "cta": "Ver colección",
+    "tiene_imagen": false,
+    "imagen_hero": "",
+    "_ref_hero_visual": "imagen real de producto, nunca texto duplicado"
   },
   "social_proof": {
     "cifra_o_logos": "6 productos · 5 perfiles",

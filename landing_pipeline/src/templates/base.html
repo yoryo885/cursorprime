@@ -73,6 +73,15 @@
     }
     .visual-mark { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(240,235,227,.55); margin-bottom: 12px; }
     .visual-line { font-family: var(--font-heading); font-size: 1.25rem; line-height: 1.25; color: #f0ebe3; }
+    .hero-img {
+      width: min(100%, 320px); height: auto; max-height: 420px; object-fit: cover;
+      display: block; border: 1px solid rgba(240,235,227,.2);
+    }
+    .trust-badge {
+      text-align: center; padding: 10px var(--pad); font-size: .78rem;
+      background: var(--sand); color: var(--muted); border-bottom: 1px solid #e4dfd6;
+    }
+    .trust-badge strong { color: var(--ink); }
     .brand-hero {
       font-family: var(--font-heading); letter-spacing: .18em; font-weight: 600;
       font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 12px;
@@ -162,6 +171,11 @@
   </style>
 </head>
 <body>
+  {% if social and social.cifra_o_logos %}
+  <div class="trust-badge" data-section="social_proof">
+    <strong>{{ social.cifra_o_logos }}</strong>{% if social.texto %} · {{ social.texto }}{% endif %}
+  </div>
+  {% endif %}
   <header class="top">
     <a class="logo" href="#">{{ nombre }}</a>
     <nav class="nav">

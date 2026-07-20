@@ -23,7 +23,15 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
     brief = input.get("brief") or {}
     copy = input.get("copy") or {}
     tokens = input.get("tokens") or {}
-    layout = tokens.get("layout") or {}
+    layout = dict(tokens.get("layout") or {})
+
+    # FIX: split solo si hay imagen real — forzado por código, no por LLM
+    hero = copy.get("hero") or {}
+    tiene_imagen = bool(hero.get("tiene_imagen") and (hero.get("imagen_hero") or "").strip())
+    if not tiene_imagen:
+        layout["hero"] = "centrado"
+    elif layout.get("hero") not in ("centrado", "split"):
+        layout["hero"] = "centrado"
 
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
@@ -35,7 +43,8 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         "nombre": nombre,
         "tokens": tokens,
         "layout": layout,
-        "hero": copy.get("hero") or {},
+        "referencia": input.get("referencia") or {},
+        "hero": hero,
         "social": copy.get("social_proof") or {},
         "problem": copy.get("problem") or {},
         "benefits": copy.get("benefits") or {},
@@ -57,6 +66,11 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
             if t.get("omitida") or not (t.get("items") or []):
                 omitted.append(sec)
                 continue
+        # social_proof va como trust-badge arriba del todo en base.html (no debajo del hero)
+        if sec == "social_proof":
+            used_templates[sec] = "trust_badge@base"
+            included.append(sec)
+            continue
         tpl_name = resolve_template(sec, layout)
         used_templates[sec] = tpl_name
         html_part = env.get_template(tpl_name).render(**ctx_base).strip()
@@ -66,7 +80,7 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         parts.append(html_part)
         included.append(sec)
 
-    hero_titulo = (copy.get("hero") or {}).get("titulo") or propuesta(brief)
+    hero_titulo = hero.get("titulo") or propuesta(brief)
     page = env.get_template("base.html").render(
         nombre=nombre,
         hero_titulo=hero_titulo,
@@ -74,6 +88,8 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         font_heading_url=_font_url(tokens.get("font_heading") or "Cormorant Garamond"),
         font_body_url=_font_url(tokens.get("font_body") or "Outfit"),
         body="\n".join(parts),
+        referencia=input.get("referencia") or {},
+        social=copy.get("social_proof") or {},
     )
 
     for sec in SECTION_ORDER:
@@ -88,5 +104,7 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         "included": included,
         "omitted": omitted,
         "templates_used": used_templates,
+        "layout_efectivo": layout,
+        "hero_forzado_centrado": not tiene_imagen,
         "path_hint": "landing.html",
     }

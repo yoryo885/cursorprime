@@ -73,6 +73,15 @@
     }
     .visual-mark { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(240,235,227,.55); margin-bottom: 12px; }
     .visual-line { font-family: var(--font-heading); font-size: 1.25rem; line-height: 1.25; color: #f0ebe3; }
+    .hero-img {
+      width: min(100%, 320px); height: auto; max-height: 420px; object-fit: cover;
+      display: block; border: 1px solid rgba(240,235,227,.2);
+    }
+    .trust-badge {
+      text-align: center; padding: 10px var(--pad); font-size: .78rem;
+      background: var(--sand); color: var(--muted); border-bottom: 1px solid #e4dfd6;
+    }
+    .trust-badge strong { color: var(--ink); }
     .brand-hero {
       font-family: var(--font-heading); letter-spacing: .18em; font-weight: 600;
       font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 12px;
@@ -162,6 +171,11 @@
   </style>
 </head>
 <body>
+  
+  <div class="trust-badge" data-section="social_proof">
+    <strong>6 productos · 5 perfiles</strong> · Dato del catálogo · sin reseñas inventadas
+  </div>
+  
   <header class="top">
     <a class="logo" href="#">Vértice Pro</a>
     <nav class="nav">
@@ -171,25 +185,14 @@
       <a href="#faq">FAQ</a>
     </nav>
   </header>
-  <section class="hero dark hero-split" id="hero" data-section="hero">
-  <div class="inner split">
-    <div class="split-copy">
-      <div class="brand-hero">Vértice Pro</div>
-      <h1>Métodos de libros clásicos, aplicados a tu oficio</h1>
-      <p class="sub">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
-      <a class="btn" href="#precio">Ver colección</a>
-    </div>
-    <div class="split-visual" aria-hidden="true">
-      <div class="visual-panel">
-        <p class="visual-mark">Vértice Pro</p>
-        <p class="visual-line">Métodos de libros clásicos, aplicados a tu oficio</p>
-      </div>
-    </div>
+  <section class="hero dark hero-centrado" id="hero" data-section="hero">
+  <div class="inner center">
+    <div class="brand-hero">Vértice Pro</div>
+    <h1>Métodos de libros clásicos, aplicados a tu oficio</h1>
+    <p class="sub">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
+    <a class="btn" href="#precio">Ver colección</a>
   </div>
 </section>
-<div class="proof" id="social-proof" data-section="social_proof">
-  <strong>6 productos · 5 perfiles</strong> · Dato del catálogo · sin reseñas inventadas
-</div>
 <section id="problema" data-section="problem">
   <div class="inner">
     <h2>Sabés la teoría… y el día a día no cambia</h2>

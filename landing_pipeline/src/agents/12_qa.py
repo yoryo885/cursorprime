@@ -281,6 +281,52 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         regenerar.append("08_faq")
         score -= 10
 
+    # v7: duplicado DENTRO del hero (split con texto repetido en panel visual)
+    duplicado_intra: dict[str, bool] = {"hero": False}
+    hero_block = re.search(
+        r'data-section="hero"[^>]*>([\s\S]*?)(?=data-section=|</body>)', html, flags=re.I
+    )
+    if hero_block:
+        inner = hero_block.group(1)
+        # Si hay panel visual con h1/p.sub o brand-hero duplicado → fail
+        if re.search(r'class="[^"]*split-visual[^"]*"[\s\S]*?(<h1|class="sub"|brand-hero)', inner, re.I):
+            duplicado_intra["hero"] = True
+        # Texto del título aparece ≥2 veces en el hero
+        hero_copy = copy.get("hero") or {}
+        titulo = (hero_copy.get("titulo") or "").strip()
+        if titulo and inner.count(titulo) >= 2:
+            duplicado_intra["hero"] = True
+        # Split sin <img> real
+        if 'hero-split' in inner and not re.search(r"<img\b", inner, re.I):
+            duplicado_intra["hero"] = True
+            criticos.append(
+                {
+                    "tipo": "hero_split_sin_imagen",
+                    "detalle": "hero-split sin <img> (riesgo de texto duplicado en panel)",
+                    "texto": "hero",
+                }
+            )
+            regenerar.append("11b_assemble")
+            score -= 20
+
+    if duplicado_intra["hero"]:
+        bugs_v2["duplicado_intra_hero"] = "fail"
+        criticos.append(
+            {
+                "tipo": "duplicado_intra_seccion",
+                "detalle": "Hero repite título/bajada dentro de la misma sección",
+                "texto": "hero",
+            }
+        )
+        regenerar.append("11b_assemble")
+        score -= 25
+    else:
+        bugs_v2["duplicado_intra_hero"] = "ok"
+
+    # Si assemble forzó centrado, anotar
+    if assemble_meta.get("hero_forzado_centrado"):
+        sugerencias.append("hero_split excluido: sin imagen_hero real → hero_centrado forzado")
+
     score = max(0, min(100, score))
     return {
         "score": score,
@@ -292,4 +338,5 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         "section_counts": section_counts,
         "n_sections": sum(1 for v in section_counts.values() if v > 0),
         "cta_count": btn_count,
+        "duplicado_intra_seccion": duplicado_intra,
     }
