@@ -1,0 +1,14 @@
+<section id="precio" data-section="pricing">
+  <div class="inner">
+    <h2>Precio claro</h2>
+    <div class="price-box">
+      <p class="price">{{ pricing.precio }}</p>
+      <ul class="incluye">
+        {% for x in pricing["incluye"][:3] %}
+        <li>{{ x }}</li>
+        {% endfor %}
+      </ul>
+      <a class="btn" href="#">{{ pricing.cta }}</a>
+    </div>
+  </div>
+</section>

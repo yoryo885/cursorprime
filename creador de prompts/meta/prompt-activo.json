@@ -1,15 +1,15 @@
 {
-  "version": 14,
+  "version": 15,
   "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "landing_pipeline",
-    "titulo": "Pipeline landings v2 (bugs + visual QA)",
-    "version": 8,
-    "ultima_mejora": "prompt v2: 5 bugs + agente 13 screenshots"
+    "titulo": "Pipeline landings v4 (Jinja assemble)",
+    "version": 9,
+    "ultima_mejora": "v4: LLM no arma HTML; 11a tokens + 11b Jinja"
   },
   "slug": "creador-de-landings",
-  "ultima_mejora": "v2 ejecutado: bugs_v2 ok, QA 100, screenshots mobile/desktop",
-  "updated_at": "2026-07-20T11:26:00Z"
+  "ultima_mejora": "mostrar visual; arquitectura v4 sin HTML por LLM",
+  "updated_at": "2026-07-20T11:46:00Z"
 }

@@ -1,33 +1,18 @@
 # Skill: QA checklist
 
 ## Regla
-Puntuar conversión. Marcar sección que falla con texto/línea exacta.
-Errores críticos bloquean. Incluir chequeos automáticos (regex/parsing).
+Puntuar conversión. Texto/línea exacta. Críticos bloquean.
+Chequeos automáticos obligatorios.
 
-## Checklist (errores que matan conversión)
-1. Botón que no destaca (contraste / tamaño).
-2. Más de un mensaje principal en el hero.
-3. Texto largo donde debería ir imagen / visual.
-4. Formulario largo antes de generar confianza.
-5. Precio oculto o con letra chica.
-6. Testimonios inventados o genéricos.
-7. CTA genérico ("Enviar", "Click aquí").
-8. Más de 8 secciones / desorden visual.
-9. Sin versión mobile usable.
-10. Claims sin fuente marcados como alta confianza.
-
-## Chequeos automáticos (obligatorios — bugs reales)
-1. **Palabras repetidas**: patrón `\b(\w+)\s+\1\b` en texto visible (ej. "desde desde") → crítico + texto exacto.
-2. **Acento único**: todos los `.btn` primarios resuelven a `var(--accent)`; no `.btn-dark` con otro background.
-3. **Naming**: `nombre_producto` del brief igual en `<title>`, hero brand y footer; no filtrar `producto_interno`.
-4. **Overlap CSS**: `position: absolute|fixed` fuera de header/nav → crítico.
-5. **Secciones**: esperadas vs presentes; si falta sin `omitida` en copy → crítico.
-6. **Testimonios**: si no hay data → debe existir `omitida: true` en copy y registro en `omisiones` del qa_report (no silenciar).
-
-## Scoring
-- 90–100: listo
-- 70–89: ajustes menores
-- <70: regenerar secciones marcadas
+## Chequeos automáticos
+1. Palabras repetidas (`desde desde`) → crítico.
+2. Acento único: `.btn` → `var(--accent)`; sin `.btn-dark`.
+3. Naming: `nombre_producto` en title/hero/footer; no `producto_interno` en FAQ.
+4. Overlap CSS: absolute/fixed fuera de header → crítico.
+5. Secciones: cada `data-section` de SECTION_ORDER cuenta exactamente 1 (o 0 si omitida).
+6. Similitud de texto >70% entre secciones distintas (salvo hero≈cta_final) → crítico.
+7. Testimonios: `omitida:true` + registro en `omisiones`.
+8. Sin animaciones scroll-reveal / opacity:0+translateY.
 
 ## Output esperado (JSON)
 {
@@ -36,5 +21,6 @@ Errores críticos bloquean. Incluir chequeos automáticos (regex/parsing).
   "sugerencias": [],
   "regenerar": [],
   "omisiones": [],
-  "bugs_v2": {}
+  "bugs_v2": {},
+  "section_counts": {}
 }

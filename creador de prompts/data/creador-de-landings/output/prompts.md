@@ -1,18 +1,14 @@
-# Prompt — Pipeline landings v2 (bugs reales)
+# Prompt — Pipeline landings v4
 
 ```
-Usa landing-pipeline (landing_pipeline/).
+Usa landing-pipeline.
 
-v2 — prevenir por diseño:
-1. sanitize_prepend: nunca "desde desde"
-2. secciones flujo normal: sin absolute/fixed de contenido
-3. un solo --accent en todos los .btn
-4. solo nombre_producto / propuesta_valor en copy público
-5. testimonios: omitida:true + omisiones en qa_report (no silenciar)
+Arquitectura:
+- LLM: copy (02–10) + tokens (11a). NUNCA HTML completo.
+- HTML: 11b_assemble + Jinja2 templates, SECTION_ORDER una vez.
+- Mostrar resultado VISUAL (URL/screenshots), no pegar código HTML.
 
-Agentes 01–13 (13 = visual_qa Playwright + screenshots).
-QA reporta bugs_v2 explícitamente.
+Bugs prevenidos: desde-desde, overlap, acento único, naming, testimonios omitida, secciones duplicadas.
 
-CLI:
-  python3 landing_main.py run --demo
+CLI: python3 landing_main.py run --demo
 ```

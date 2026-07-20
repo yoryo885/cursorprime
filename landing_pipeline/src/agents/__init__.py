@@ -1,4 +1,4 @@
-"""Carga agentes 01–12 (nombres con dígitos vía importlib)."""
+"""Carga agentes (nombres con dígitos vía importlib)."""
 
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ a07_pricing = _load("07_pricing")
 a08_faq = _load("08_faq")
 a09_cta_final = _load("09_cta_final")
 a10_footer = _load("10_footer")
-a11_design = _load("11_design")
+a11a_design_tokens = _load("11a_design_tokens")
+a11b_assemble = _load("11b_assemble")
 a12_qa = _load("12_qa")
 a13_visual_qa = _load("13_visual_qa")

@@ -113,11 +113,21 @@
       "redes": []
     }
   },
+  "tokens": {
+    "ink": "#1b222c",
+    "paper": "#f4f1ec",
+    "accent": "#c9a962",
+    "muted": "#7a847c",
+    "sand": "#ebe6df",
+    "font_heading": "\"Cormorant Garamond\"",
+    "font_body": "Outfit",
+    "radius": "0"
+  },
   "qa": {
     "score": 100,
     "criticos": [],
     "sugerencias": [
-      "Testimonios omitidos (explícito): sin testimonios reales en el brief"
+      "Hero y CTA final comparten mensaje (esperado)."
     ],
     "regenerar": [],
     "omisiones": [
@@ -131,9 +141,21 @@
       "overlap_secciones": "ok",
       "acento_inconsistente": "ok",
       "naming_inconsistente": "ok",
-      "testimonios_silenciados": "ok_omitida_explicita"
+      "testimonios_silenciados": "ok_omitida_explicita",
+      "secciones_duplicadas": "ok"
     },
-    "n_sections": 5,
+    "section_counts": {
+      "hero": 1,
+      "social_proof": 1,
+      "problem": 1,
+      "benefits": 1,
+      "testimonials": 0,
+      "pricing": 1,
+      "faq": 1,
+      "cta_final": 1,
+      "footer": 1
+    },
+    "n_sections": 8,
     "visual_qa": {
       "skipped": false,
       "motivo": "",
@@ -141,7 +163,18 @@
         "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
         "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
       },
+      "scroll_shots": [
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_00.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_01.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_02.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_03.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_04.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_05.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_06.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_07.png"
+      ],
       "overlaps": [],
+      "animation_risks": [],
       "ok": true
     }
   },
@@ -152,8 +185,34 @@
       "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
       "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
     },
+    "scroll_shots": [
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_00.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_01.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_02.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_03.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_04.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_05.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_06.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_07.png"
+    ],
     "overlaps": [],
+    "animation_risks": [],
     "ok": true
+  },
+  "assemble_meta": {
+    "included": [
+      "hero",
+      "social_proof",
+      "problem",
+      "benefits",
+      "pricing",
+      "faq",
+      "cta_final",
+      "footer"
+    ],
+    "omitted": [
+      "testimonials"
+    ]
   },
   "done": [
     "01_brief",
@@ -166,7 +225,8 @@
     "08_faq",
     "09_cta_final",
     "10_footer",
-    "11_design",
+    "11a_design_tokens",
+    "11b_assemble",
     "12_qa",
     "13_visual_qa"
   ],

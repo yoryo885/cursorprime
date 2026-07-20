@@ -1,4 +1,4 @@
-"""Orquestador: agentes 01→13 con reintento por paso."""
+"""Orquestador: agentes 01→10, 11a, 11b, 12, 13."""
 
 from __future__ import annotations
 
@@ -19,12 +19,14 @@ from src.agents import (
     a08_faq,
     a09_cta_final,
     a10_footer,
-    a11_design,
+    a11a_design_tokens,
+    a11b_assemble,
     a12_qa,
     a13_visual_qa,
 )
 from src.llm_client import LLMClient
 from src.paths import LOGS, ensure_slug
+from src.sections import SECTION_ORDER
 
 AGENTS: list[tuple[str, Callable[[dict], dict]]] = [
     ("01_brief", a01_brief.run),
@@ -37,7 +39,8 @@ AGENTS: list[tuple[str, Callable[[dict], dict]]] = [
     ("08_faq", a08_faq.run),
     ("09_cta_final", a09_cta_final.run),
     ("10_footer", a10_footer.run),
-    ("11_design", a11_design.run),
+    ("11a_design_tokens", a11a_design_tokens.run),
+    ("11b_assemble", a11b_assemble.run),
     ("12_qa", a12_qa.run),
     ("13_visual_qa", a13_visual_qa.run),
 ]
@@ -95,24 +98,25 @@ def run_pipeline(
     state: dict[str, Any] = {
         "brief": {},
         "copy": {},
+        "tokens": {},
         "html": "",
         "qa": {},
         "visual_qa": {},
+        "assemble_meta": {},
         "done": [],
     }
     if checkpoint.exists():
         prev = json.loads(checkpoint.read_text(encoding="utf-8"))
-        state.update({k: prev[k] for k in state if k in prev})
-        # recargar html desde disco si hay checkpoint
+        for k in state:
+            if k in prev:
+                state[k] = prev[k]
         html_file = out / "landing.html"
-        if html_file.exists() and not state.get("html"):
+        if html_file.exists():
             state["html"] = html_file.read_text(encoding="utf-8")
-        brief_file = out / "brief.json"
-        if brief_file.exists() and not state.get("brief"):
-            state["brief"] = json.loads(brief_file.read_text(encoding="utf-8"))
-        copy_file = out / "copy.json"
-        if copy_file.exists() and not state.get("copy"):
-            state["copy"] = json.loads(copy_file.read_text(encoding="utf-8"))
+        for name, key in [("brief.json", "brief"), ("copy.json", "copy"), ("tokens.json", "tokens")]:
+            p = out / name
+            if p.exists():
+                state[key] = json.loads(p.read_text(encoding="utf-8"))
 
     start = False if retry_from or solo else True
     results: dict[str, Any] = {}
@@ -132,42 +136,75 @@ def run_pipeline(
                 "llm": llm,
                 "brief": state.get("brief") or {},
                 "copy": state.get("copy") or {},
+                "tokens": state.get("tokens") or {},
                 "html": state.get("html") or "",
                 "html_path": str(out / "landing.html"),
                 "out_dir": str(out),
+                "section_order": SECTION_ORDER,
+                "assemble_meta": state.get("assemble_meta") or {},
             }
             if agent_id == "01_brief":
                 brief = fn(dict(negocio))
                 state["brief"] = brief
                 _save(out / "brief.json", brief)
                 results[agent_id] = brief
-            elif agent_id == "11_design":
-                design = fn(payload)
-                html = design["html"]
+            elif agent_id == "11a_design_tokens":
+                tokens = fn(payload)
+                state["tokens"] = tokens
+                _save(out / "tokens.json", tokens)
+                results[agent_id] = tokens
+            elif agent_id == "11b_assemble":
+                # SIN pasar llm — 11b no lo usa
+                assemble = fn(
+                    {
+                        "brief": state["brief"],
+                        "copy": state["copy"],
+                        "tokens": state["tokens"],
+                    }
+                )
+                html = assemble["html"]
                 state["html"] = html
+                state["assemble_meta"] = {
+                    "included": assemble.get("included"),
+                    "omitted": assemble.get("omitted"),
+                }
                 _save(out / "landing.html", html)
-                results[agent_id] = {"ok": True, "bytes": len(html)}
+                results[agent_id] = {
+                    "ok": True,
+                    "bytes": len(html),
+                    "included": assemble.get("included"),
+                    "omitted": assemble.get("omitted"),
+                }
             elif agent_id == "12_qa":
                 qa = fn(payload)
                 state["qa"] = qa
                 results[agent_id] = qa
+                _save(out / "qa_report.json", qa)
             elif agent_id == "13_visual_qa":
                 visual = fn(payload)
                 state["visual_qa"] = visual
-                # merge into qa_report
                 qa = dict(state.get("qa") or {})
                 qa["visual_qa"] = visual
                 if visual.get("overlaps"):
                     qa.setdefault("criticos", []).append(
                         {
                             "tipo": "overlap_visual",
-                            "detalle": f"Overlap real entre secciones: {visual['overlaps']}",
+                            "detalle": f"Overlap real: {visual['overlaps']}",
                             "texto": str(visual["overlaps"]),
                         }
                     )
                     qa["bugs_v2"] = dict(qa.get("bugs_v2") or {})
                     qa["bugs_v2"]["overlap_secciones"] = "fail"
                     qa["score"] = max(0, int(qa.get("score") or 100) - 20)
+                if visual.get("animation_risks"):
+                    qa.setdefault("criticos", []).append(
+                        {
+                            "tipo": "animacion_scroll",
+                            "detalle": str(visual["animation_risks"]),
+                            "texto": "IntersectionObserver / translateY+opacity",
+                        }
+                    )
+                    qa["score"] = max(0, int(qa.get("score") or 100) - 15)
                 state["qa"] = qa
                 _save(out / "qa_report.json", qa)
                 results[agent_id] = visual
@@ -178,9 +215,6 @@ def run_pipeline(
                 _save(out / "copy.json", state["copy"])
                 results[agent_id] = block
 
-            if agent_id == "12_qa":
-                _save(out / "qa_report.json", state["qa"])
-
             if agent_id not in state["done"]:
                 state["done"].append(agent_id)
             _save(
@@ -188,8 +222,10 @@ def run_pipeline(
                 {
                     "brief": state.get("brief"),
                     "copy": state.get("copy"),
+                    "tokens": state.get("tokens"),
                     "qa": state.get("qa"),
                     "visual_qa": state.get("visual_qa"),
+                    "assemble_meta": state.get("assemble_meta"),
                     "done": state.get("done"),
                     "html_saved": bool(state.get("html")),
                 },
@@ -202,14 +238,15 @@ def run_pipeline(
             raise
 
     _log_mejora(
-        f"pipeline run slug={slug}",
-        f"agentes={','.join(state.get('done') or [])} mock={llm.mock}",
+        f"pipeline v4 slug={slug}",
+        f"agentes={','.join(state.get('done') or [])} assemble=jinja2 mock={llm.mock}",
     )
     return {
         "slug": slug,
         "out": str(out),
         "brief": state.get("brief"),
         "copy": state.get("copy"),
+        "tokens": state.get("tokens"),
         "qa": state.get("qa"),
         "visual_qa": state.get("visual_qa"),
         "landing": str(out / "landing.html"),

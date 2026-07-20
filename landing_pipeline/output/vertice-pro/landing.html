@@ -4,122 +4,115 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Vértice Pro — Métodos de libros clásicos, aplicados a tu oficio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --ink:#1b222c;
-      --paper:#f4f1ec;
-      --accent:#c9a962;
-      --muted:#7a847c;
-      --sand:#ebe6df;
-      --pad:clamp(16px,4vw,40px);
-      --max:960px;
+      --ink: #1b222c;
+      --paper: #f4f1ec;
+      --accent: #c9a962;
+      --muted: #7a847c;
+      --sand: #ebe6df;
+      --radius: 0;
+      --pad: clamp(16px, 4vw, 40px);
+      --max: 960px;
+      --font-heading: &#34;Cormorant Garamond&#34;, Georgia, serif;
+      --font-body: Outfit, system-ui, sans-serif;
     }
-    * { box-sizing:border-box; margin:0; }
+    * { box-sizing: border-box; margin: 0; }
     body {
-      font-family:Outfit,system-ui,sans-serif;
-      background:var(--paper);
-      color:var(--ink);
-      line-height:1.55;
+      font-family: var(--font-body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
     }
-    /* Header: único sticky permitido */
-    .top {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:14px var(--pad); border-bottom:1px solid #e4dfd6;
-      position:sticky; top:0; z-index:10;
-      background:var(--paper);
+    /* Solo el header puede ser sticky */
+    header.top {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px var(--pad); border-bottom: 1px solid #e4dfd6;
+      position: sticky; top: 0; z-index: 10;
+      background: var(--paper);
     }
     .logo {
-      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.16em;
-      font-weight:600; font-size:1.35rem; text-decoration:none; color:var(--ink);
+      font-family: var(--font-heading); letter-spacing: .16em;
+      font-weight: 600; font-size: 1.35rem; text-decoration: none; color: var(--ink);
     }
     .nav a {
-      color:var(--muted); text-decoration:none; font-size:.72rem;
-      letter-spacing:.08em; text-transform:uppercase; margin-left:14px;
+      color: var(--muted); text-decoration: none; font-size: .72rem;
+      letter-spacing: .08em; text-transform: uppercase; margin-left: 14px;
     }
-    /* Secciones: flujo normal, sin absolute/fixed de contenido, sin overlap */
-    section.flow, .proof, .cta-final, footer {
-      position:relative;
-      display:block;
-      width:100%;
-      clear:both;
-      isolation:isolate;
-      overflow:hidden;
+    /* Flujo normal — sin absolute/fixed de contenido, sin animaciones de entrada */
+    [data-section] {
+      position: relative;
+      display: block;
+      width: 100%;
+      clear: both;
+      isolation: isolate;
+      overflow: hidden;
+      background: var(--paper);
     }
-    section.flow {
-      padding:clamp(48px,8vw,72px) var(--pad);
-      background:var(--paper);
+    [data-section].band { background: var(--sand); }
+    [data-section].dark {
+      background: var(--ink);
+      color: #f0ebe3;
     }
-    section.flow.band { background:var(--sand); }
-    section.flow > .inner, .cta-final > .inner {
-      max-width:var(--max); margin:0 auto;
-    }
-    .hero.flow {
-      min-height:min(70svh,600px);
-      padding:clamp(48px,10vh,88px) var(--pad);
-      background:linear-gradient(125deg, #1b222c 0%, #2a3544 55%, #3a4555 100%);
-      color:#f0ebe3;
-      display:flex; align-items:flex-end;
-    }
+    .inner { max-width: var(--max); margin: 0 auto; padding: clamp(48px, 8vw, 72px) var(--pad); }
+    .hero .inner { padding: clamp(48px, 10vh, 88px) var(--pad); min-height: min(70svh, 600px); display: flex; flex-direction: column; justify-content: flex-end; }
     .brand-hero {
-      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.18em; font-weight:600;
-      font-size:clamp(2rem,5vw,3.2rem); margin-bottom:12px;
+      font-family: var(--font-heading); letter-spacing: .18em; font-weight: 600;
+      font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 12px;
     }
-    .hero h1 {
-      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.4rem,3vw,1.85rem); max-width:18ch; line-height:1.2; margin-bottom:12px;
+    h1 {
+      font-family: var(--font-heading); font-weight: 500;
+      font-size: clamp(1.4rem, 3vw, 1.85rem); max-width: 18ch; line-height: 1.2; margin-bottom: 12px;
     }
-    .hero .sub { color:rgba(240,235,227,.8); max-width:40ch; margin-bottom:22px; }
-    /* UN solo acento para TODOS los botones primarios */
+    h2 {
+      font-family: var(--font-heading); font-weight: 500;
+      font-size: clamp(1.4rem, 3vw, 1.9rem); text-align: center; margin-bottom: 14px;
+    }
+    .sub { color: rgba(240,235,227,.8); max-width: 40ch; margin-bottom: 22px; }
+    /* UN solo acento para todos los botones primarios */
     .btn {
-      display:inline-flex; align-items:center; justify-content:center;
-      min-height:50px; padding:0 26px;
-      background:var(--accent); color:var(--ink);
-      font-size:.72rem; font-weight:600; letter-spacing:.12em;
-      text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 0 26px;
+      background: var(--accent); color: var(--ink);
+      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; text-decoration: none; border: none; cursor: pointer;
+      border-radius: var(--radius);
     }
     .proof {
-      text-align:center; padding:18px var(--pad);
-      border-bottom:1px solid #e4dfd6; background:var(--paper);
-      font-size:.9rem; color:var(--muted);
+      text-align: center; padding: 18px var(--pad);
+      border-bottom: 1px solid #e4dfd6; font-size: .9rem; color: var(--muted);
     }
-    .proof strong { color:var(--ink); font-weight:600; }
-    h2 {
-      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.4rem,3vw,1.9rem); text-align:center; margin-bottom:14px;
+    .proof strong { color: var(--ink); font-weight: 600; }
+    .dolores { list-style: none; padding: 0; max-width: 40ch; margin: 0 auto; }
+    .dolores li { padding: 12px 0; border-bottom: 1px solid #e4dfd6; color: var(--muted); }
+    .puente { text-align: center; margin-top: 22px; font-weight: 500; }
+    .bens { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .ben { background: #fff; border: 1px solid #e4dfd6; padding: 20px; border-radius: var(--radius); }
+    .ben h3 { font-family: var(--font-heading); font-weight: 500; margin-bottom: 8px; }
+    .ben p { color: var(--muted); font-size: .92rem; }
+    .tests { display: grid; gap: 14px; max-width: 52ch; margin: 0 auto; }
+    blockquote { background: #fff; border: 1px solid #e4dfd6; padding: 18px; border-radius: var(--radius); }
+    blockquote p { font-size: 1.02rem; margin-bottom: 10px; }
+    cite { font-style: normal; font-size: .8rem; color: var(--muted); }
+    .price-box { text-align: center; max-width: 28rem; margin: 0 auto; }
+    .price { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 600; margin: 8px 0 16px; }
+    .incluye { list-style: none; padding: 0; text-align: left; margin: 0 auto 22px; max-width: 28ch; }
+    .incluye li { padding: 10px 0; border-bottom: 1px solid #e4dfd6; color: var(--muted); }
+    details { background: #fff; border: 1px solid #e4dfd6; padding: 14px 16px; margin-bottom: 10px; border-radius: var(--radius); }
+    summary { cursor: pointer; font-weight: 500; }
+    details p { margin-top: 8px; color: var(--muted); font-size: .92rem; }
+    .cta-final .inner { text-align: center; }
+    .cta-final h2 { color: #f0ebe3; }
+    .cta-final .sub-cta { color: rgba(240,235,227,.75); max-width: 40ch; margin: 0 auto 20px; }
+    footer.site-footer {
+      text-align: center; padding: 28px var(--pad); font-size: .75rem;
+      color: var(--muted); background: var(--paper);
     }
-    .dolores { list-style:none; padding:0; max-width:40ch; margin:0 auto; }
-    .dolores li { padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }
-    .puente { text-align:center; margin-top:22px; font-weight:500; }
-    .bens { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
-    .ben { background:#fff; border:1px solid #e4dfd6; padding:20px; }
-    .ben h3 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; margin-bottom:8px; }
-    .ben p { color:var(--muted); font-size:.92rem; }
-    .tests { display:grid; gap:14px; max-width:52ch; margin:0 auto; }
-    blockquote { background:#fff; border:1px solid #e4dfd6; padding:18px; }
-    blockquote p { font-size:1.02rem; margin-bottom:10px; }
-    cite { font-style:normal; font-size:.8rem; color:var(--muted); }
-    .price-box { text-align:center; max-width:28rem; margin:0 auto; }
-    .price { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:600; margin:8px 0 16px; }
-    .incluye { list-style:none; padding:0; text-align:left; margin:0 auto 22px; max-width:28ch; }
-    .incluye li { padding:10px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }
-    details { background:#fff; border:1px solid #e4dfd6; padding:14px 16px; margin-bottom:10px; }
-    summary { cursor:pointer; font-weight:500; }
-    details p { margin-top:8px; color:var(--muted); font-size:.92rem; }
-    .cta-final {
-      text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
-      background:#1b222c; color:#f0ebe3;
-    }
-    .cta-final h2 { color:#f0ebe3; }
-    .cta-final p { color:rgba(240,235,227,.75); max-width:40ch; margin:0 auto 20px; }
-    footer {
-      text-align:center; padding:28px var(--pad); font-size:.75rem;
-      color:var(--muted); background:var(--paper);
-    }
-    footer a { color:var(--muted); }
-    @media (max-width:640px) {
-      .nav { display:none; }
-      .hero.flow { min-height:auto; padding:56px var(--pad) 48px; }
+    footer.site-footer a { color: var(--muted); }
+    @media (max-width: 640px) {
+      .nav { display: none; }
+      .hero .inner { min-height: auto; padding: 56px var(--pad) 48px; }
     }
   </style>
 </head>
@@ -133,69 +126,118 @@
       <a href="#faq">FAQ</a>
     </nav>
   </header>
-
-  <section class="hero flow" id="hero">
-    <div class="inner">
-      <div class="brand-hero">Vértice Pro</div>
-      <h1>Métodos de libros clásicos, aplicados a tu oficio</h1>
-      <p class="sub">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
-      <a class="btn" href="#precio">Ver colección</a>
-    </div>
-  </section>
-
-  <div class="proof">
-    <strong>6 productos · 5 perfiles</strong>
-     · Colección lista para aplicar
+  <section class="hero dark" id="hero" data-section="hero">
+  <div class="inner">
+    <div class="brand-hero">Vértice Pro</div>
+    <h1>Métodos de libros clásicos, aplicados a tu oficio</h1>
+    <p class="sub">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
+    <a class="btn" href="#precio">Ver colección</a>
   </div>
-
-  <section id="problema" class="flow">
-    <div class="inner">
-      <h2>Sabés la teoría… y el día a día no cambia</h2>
-      <ul class="dolores"><li>Leés libros útiles pero no llegan a tu rol como psicopedagogas, docentes y profesionales por oficio.</li><li>Perdés tiempo buscando el 20% que importa.</li><li>Los resúmenes genéricos no hablan tu lenguaje.</li></ul>
-      <p class="puente">Por eso Vértice Pro traduce métodos clásicos a tu oficio.</p>
-    </div>
-  </section>
-
-  <section id="beneficios" class="flow band">
-    <div class="inner">
-      <h2>Lo que ganás</h2>
-      <div class="bens"><article class="ben"><h3>Hecho para tu oficio</h3><p>Ejemplos y prioridades de psicopedagogas, docentes y profesionales por oficio, no teoría genérica.</p></article><article class="ben"><h3>Método claro en semanas</h3><p>Sabés qué hacer cada semana, sin relleno ni moda.</p></article><article class="ben"><h3>Formato listo para usar</h3><p>PDF profesional: ordenado, descargable, aplicable hoy.</p></article><article class="ben"><h3>Precio de entrada real</h3><p>Empezás desde $4.99.</p></article></div>
-    </div>
-  </section>
-
-  
-
-  <section id="precio" class="flow">
-    <div class="inner">
-      <h2>Precio claro</h2>
-      <div class="price-box">
-        <p class="price">desde $4.99</p>
-        <ul class="incluye"><li>Acceso / descarga inmediata</li><li>Formato profesional listo para usar</li><li>Soporte de lanzamiento de colección</li></ul>
-        <a class="btn" href="#">Ver colección</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="flow band">
-    <div class="inner">
-      <h2>Preguntas frecuentes</h2>
-      <details><summary>¿Qué es Vértice Pro?</summary><p>Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno.</p></details><details><summary>¿Para quién es?</summary><p>Para psicopedagogas, docentes y profesionales por oficio que quieren método práctico, no teoría genérica.</p></details><details><summary>¿Cómo lo recibo?</summary><p>Acceso digital inmediato tras la compra (PDF / descarga según el producto).</p></details><details><summary>¿En qué se diferencia de un resumen genérico?</summary><p>Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día.</p></details><details><summary>¿Cuánto cuesta?</summary><p>desde $4.99 Sin letra chica.</p></details>
-    </div>
-  </section>
-
-  <div class="cta-final" id="cta">
-    <div class="inner">
-      <h2>Métodos de libros clásicos, aplicados a tu oficio</h2>
-      <p>Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
-      <a class="btn" href="#precio">Ver colección</a>
+</section>
+<div class="proof" id="social-proof" data-section="social_proof">
+  <strong>6 productos · 5 perfiles</strong> · Colección lista para aplicar
+</div>
+<section id="problema" data-section="problem">
+  <div class="inner">
+    <h2>Sabés la teoría… y el día a día no cambia</h2>
+    <ul class="dolores">
+      
+      <li>Leés libros útiles pero no llegan a tu rol como psicopedagogas, docentes y profesionales por oficio.</li>
+      
+      <li>Perdés tiempo buscando el 20% que importa.</li>
+      
+      <li>Los resúmenes genéricos no hablan tu lenguaje.</li>
+      
+    </ul>
+    <p class="puente">Por eso Vértice Pro traduce métodos clásicos a tu oficio.</p>
+  </div>
+</section>
+<section id="beneficios" class="band" data-section="benefits">
+  <div class="inner">
+    <h2>Lo que ganás</h2>
+    <div class="bens">
+      
+      <article class="ben">
+        <h3>Hecho para tu oficio</h3>
+        <p>Ejemplos y prioridades de psicopedagogas, docentes y profesionales por oficio, no teoría genérica.</p>
+      </article>
+      
+      <article class="ben">
+        <h3>Método claro en semanas</h3>
+        <p>Sabés qué hacer cada semana, sin relleno ni moda.</p>
+      </article>
+      
+      <article class="ben">
+        <h3>Formato listo para usar</h3>
+        <p>PDF profesional: ordenado, descargable, aplicable hoy.</p>
+      </article>
+      
+      <article class="ben">
+        <h3>Precio de entrada real</h3>
+        <p>Empezás desde $4.99.</p>
+      </article>
+      
     </div>
   </div>
-
-  <footer>
-    Vértice Pro
-     · hola@vertice.pro
-     · <a href="#">Privacidad</a> · <a href="#">Términos</a>
+</section>
+<section id="precio" data-section="pricing">
+  <div class="inner">
+    <h2>Precio claro</h2>
+    <div class="price-box">
+      <p class="price">desde $4.99</p>
+      <ul class="incluye">
+        
+        <li>Acceso / descarga inmediata</li>
+        
+        <li>Formato profesional listo para usar</li>
+        
+        <li>Soporte de lanzamiento de colección</li>
+        
+      </ul>
+      <a class="btn" href="#">Ver colección</a>
+    </div>
+  </div>
+</section>
+<section id="faq" class="band" data-section="faq">
+  <div class="inner">
+    <h2>Preguntas frecuentes</h2>
     
-  </footer>
+    <details>
+      <summary>¿Qué es Vértice Pro?</summary>
+      <p>Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno.</p>
+    </details>
+    
+    <details>
+      <summary>¿Para quién es?</summary>
+      <p>Para psicopedagogas, docentes y profesionales por oficio que quieren método práctico, no teoría genérica.</p>
+    </details>
+    
+    <details>
+      <summary>¿Cómo lo recibo?</summary>
+      <p>Acceso digital inmediato tras la compra (PDF / descarga según el producto).</p>
+    </details>
+    
+    <details>
+      <summary>¿En qué se diferencia de un resumen genérico?</summary>
+      <p>Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día.</p>
+    </details>
+    
+    <details>
+      <summary>¿Cuánto cuesta?</summary>
+      <p>desde $4.99 Sin letra chica.</p>
+    </details>
+    
+  </div>
+</section>
+<section class="cta-final dark" id="cta" data-section="cta_final">
+  <div class="inner">
+    <h2>Métodos de libros clásicos, aplicados a tu oficio</h2>
+    <p class="sub-cta">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
+    <a class="btn" href="#precio">Ver colección</a>
+  </div>
+</section>
+<footer class="site-footer" id="footer" data-section="footer">
+  Vértice Pro · hola@vertice.pro · <a href="#">Privacidad</a> · <a href="#">Términos</a>
+</footer>
 </body>
 </html>

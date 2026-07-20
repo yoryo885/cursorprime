@@ -1,0 +1,11 @@
+<section id="problema" data-section="problem">
+  <div class="inner">
+    <h2>{{ problem.headline }}</h2>
+    <ul class="dolores">
+      {% for d in problem["dolores"][:3] %}
+      <li>{{ d }}</li>
+      {% endfor %}
+    </ul>
+    <p class="puente">{{ problem.puente }}</p>
+  </div>
+</section>

@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Vértice Pro — Métodos de libros clásicos, aplicados a tu oficio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <title>{{ nombre }} — {{ hero_titulo }}</title>
+  <link href="https://fonts.googleapis.com/css2?family={{ font_heading_url }}&family={{ font_body_url }}&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --ink: #1b222c;
-      --paper: #f4f1ec;
-      --accent: #c9a962;
-      --muted: #7a847c;
-      --sand: #ebe6df;
-      --radius: 0;
+      --ink: {{ tokens.ink }};
+      --paper: {{ tokens.paper }};
+      --accent: {{ tokens.accent }};
+      --muted: {{ tokens.muted }};
+      --sand: {{ tokens.sand }};
+      --radius: {{ tokens.radius }};
       --pad: clamp(16px, 4vw, 40px);
       --max: 960px;
-      --font-heading: &#34;Cormorant Garamond&#34;, Georgia, serif;
-      --font-body: Outfit, system-ui, sans-serif;
+      --font-heading: {{ tokens.font_heading }}, Georgia, serif;
+      --font-body: {{ tokens.font_body }}, system-ui, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; }
     body {
@@ -118,7 +118,7 @@
 </head>
 <body>
   <header class="top">
-    <a class="logo" href="#">Vértice Pro</a>
+    <a class="logo" href="#">{{ nombre }}</a>
     <nav class="nav">
       <a href="#problema">Problema</a>
       <a href="#beneficios">Beneficios</a>
@@ -126,118 +126,6 @@
       <a href="#faq">FAQ</a>
     </nav>
   </header>
-  <section class="hero dark" id="hero" data-section="hero">
-  <div class="inner">
-    <div class="brand-hero">Vértice Pro</div>
-    <h1>Métodos de libros clásicos, aplicados a tu oficio</h1>
-    <p class="sub">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
-    <a class="btn" href="#precio">Ver colección</a>
-  </div>
-</section>
-<div class="proof" id="social-proof" data-section="social_proof">
-  <strong>6 productos · 5 perfiles</strong> · Colección lista para aplicar
-</div>
-<section id="problema" data-section="problem">
-  <div class="inner">
-    <h2>Sabés la teoría… y el día a día no cambia</h2>
-    <ul class="dolores">
-      
-      <li>Leés libros útiles pero no llegan a tu rol como psicopedagogas, docentes y profesionales por oficio.</li>
-      
-      <li>Perdés tiempo buscando el 20% que importa.</li>
-      
-      <li>Los resúmenes genéricos no hablan tu lenguaje.</li>
-      
-    </ul>
-    <p class="puente">Por eso Vértice Pro traduce métodos clásicos a tu oficio.</p>
-  </div>
-</section>
-<section id="beneficios" class="band" data-section="benefits">
-  <div class="inner">
-    <h2>Lo que ganás</h2>
-    <div class="bens">
-      
-      <article class="ben">
-        <h3>Hecho para tu oficio</h3>
-        <p>Ejemplos y prioridades de psicopedagogas, docentes y profesionales por oficio, no teoría genérica.</p>
-      </article>
-      
-      <article class="ben">
-        <h3>Método claro en semanas</h3>
-        <p>Sabés qué hacer cada semana, sin relleno ni moda.</p>
-      </article>
-      
-      <article class="ben">
-        <h3>Formato listo para usar</h3>
-        <p>PDF profesional: ordenado, descargable, aplicable hoy.</p>
-      </article>
-      
-      <article class="ben">
-        <h3>Precio de entrada real</h3>
-        <p>Empezás desde $4.99.</p>
-      </article>
-      
-    </div>
-  </div>
-</section>
-<section id="precio" data-section="pricing">
-  <div class="inner">
-    <h2>Precio claro</h2>
-    <div class="price-box">
-      <p class="price">desde $4.99</p>
-      <ul class="incluye">
-        
-        <li>Acceso / descarga inmediata</li>
-        
-        <li>Formato profesional listo para usar</li>
-        
-        <li>Soporte de lanzamiento de colección</li>
-        
-      </ul>
-      <a class="btn" href="#">Ver colección</a>
-    </div>
-  </div>
-</section>
-<section id="faq" class="band" data-section="faq">
-  <div class="inner">
-    <h2>Preguntas frecuentes</h2>
-    
-    <details>
-      <summary>¿Qué es Vértice Pro?</summary>
-      <p>Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno.</p>
-    </details>
-    
-    <details>
-      <summary>¿Para quién es?</summary>
-      <p>Para psicopedagogas, docentes y profesionales por oficio que quieren método práctico, no teoría genérica.</p>
-    </details>
-    
-    <details>
-      <summary>¿Cómo lo recibo?</summary>
-      <p>Acceso digital inmediato tras la compra (PDF / descarga según el producto).</p>
-    </details>
-    
-    <details>
-      <summary>¿En qué se diferencia de un resumen genérico?</summary>
-      <p>Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día.</p>
-    </details>
-    
-    <details>
-      <summary>¿Cuánto cuesta?</summary>
-      <p>desde $4.99 Sin letra chica.</p>
-    </details>
-    
-  </div>
-</section>
-<section class="cta-final dark" id="cta" data-section="cta_final">
-  <div class="inner">
-    <h2>Métodos de libros clásicos, aplicados a tu oficio</h2>
-    <p class="sub-cta">Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.</p>
-    <a class="btn" href="#precio">Ver colección</a>
-  </div>
-</section>
-<footer class="site-footer" id="footer" data-section="footer">
-  Vértice Pro · hola@vertice.pro · <a href="#">Privacidad</a> · <a href="#">Términos</a>
-</footer>
+  {{ body | safe }}
 </body>
 </html>

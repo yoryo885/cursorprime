@@ -1,0 +1,3 @@
+<footer class="site-footer" id="footer" data-section="footer">
+  {{ footer.marca or nombre }}{% if footer.contacto %} · {{ footer.contacto }}{% endif %}{% for x in footer.get("legales", ["Privacidad", "Términos"]) %} · <a href="#">{{ x }}</a>{% endfor %}{% for r in footer.get("redes", []) %} · {{ r }}{% endfor %}
+</footer>

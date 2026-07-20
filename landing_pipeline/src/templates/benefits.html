@@ -1,0 +1,13 @@
+<section id="beneficios" class="band" data-section="benefits">
+  <div class="inner">
+    <h2>Lo que ganás</h2>
+    <div class="bens">
+      {% for i in benefits["items"][:5] %}
+      <article class="ben">
+        <h3>{{ i.titulo }}</h3>
+        <p>{{ i.texto }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -28,6 +28,6 @@ python3 landing_main.py run --slug vertice-pro --solo 11_design
 - Con `ANTHROPIC_API_KEY` en `.env` → Claude.
 - Sin clave / `LANDING_MOCK=1` → copy determinista según skills (demo).
 
-## Estructura
-
-Ver prompt original. Skills en `src/skills/`. Outputs en `output/{slug}/`.
+## Arquitectura v4
+- LLM: solo copy (02–10) + tokens (11a). **Nunca** HTML completo.
+- HTML: `11b_assemble.py` + Jinja2 (`src/templates/`), una vez por sección.
