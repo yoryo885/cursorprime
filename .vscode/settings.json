@@ -1,9 +1,26 @@
 {
   "remote.autoForwardPorts": true,
   "remote.autoForwardPortsSource": "hybrid",
+  "remote.portsAttributes": {
+    "8768": {
+      "label": "Vértice Pro — Preview tienda",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    },
+    "8777": {
+      "label": "Landings — preview.html",
+      "onAutoForward": "openBrowser",
+      "protocol": "http"
+    }
+  },
   "portsAttributes": {
     "8768": {
       "label": "Vértice Pro — Preview tienda",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    },
+    "8777": {
+      "label": "Landings — preview.html",
       "onAutoForward": "openBrowser",
       "protocol": "http"
     }

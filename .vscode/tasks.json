@@ -31,9 +31,9 @@
     {
       "label": "Landings: servir preview 8777",
       "type": "shell",
-      "command": "python3 -m http.server 8777 --bind 0.0.0.0",
+      "command": "bash servir-preview.sh",
       "options": {
-        "cwd": "${workspaceFolder}/creador-de-landings/data/demo-cliente/output"
+        "cwd": "${workspaceFolder}/creador-de-landings"
       },
       "isBackground": true,
       "problemMatcher": {
@@ -41,11 +41,11 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": ".",
-          "endsPattern": "Serving HTTP"
+          "endsPattern": "(Serving HTTP|OK ya sirve)"
         }
       },
       "presentation": {
-        "reveal": "silent",
+        "reveal": "always",
         "panel": "dedicated"
       }
     },
