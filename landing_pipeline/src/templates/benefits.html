@@ -2,12 +2,16 @@
   <div class="inner">
     <h2>Lo que ganás</h2>
     <div class="bens">
-      {% for i in benefits["items"][:5] %}
+      {% for i in benefits.get("items", [])[:5] %}
       <article class="ben">
         <h3>{{ i.titulo }}</h3>
         <p>{{ i.texto }}</p>
       </article>
       {% endfor %}
     </div>
+    {# CTA mid — 2º botón primario (mobile no scrollea arriba) #}
+    <p class="mid-cta">
+      <a class="btn" href="#precio">{{ hero.cta if hero and hero.cta else "Ver oferta" }}</a>
+    </p>
   </div>
 </section>

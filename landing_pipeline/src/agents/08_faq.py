@@ -1,4 +1,4 @@
-"""08 — FAQ (solo nombre_producto público)"""
+"""08 — FAQ (nombre_producto + garantía/riesgo)"""
 
 from __future__ import annotations
 
@@ -30,8 +30,12 @@ def _mock(brief: dict, _copy: dict) -> dict:
                 "a": "Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día.",
             },
             {
+                "q": "¿Qué pasa si no me sirve?",
+                "a": "Escribimos y te ayudamos. Queremos que te sirva en tu oficio — sin letra chica escondida.",
+            },
+            {
                 "q": "¿Cuánto cuesta?",
-                "a": f"{brief.get('precio') or 'El precio está visible en la sección de compra.'} Sin letra chica.",
+                "a": f"{brief.get('precio') or 'El precio está visible en la sección de compra.'} Pago único, sin suscripción.",
             },
         ]
     }

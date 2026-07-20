@@ -4,11 +4,14 @@
     <div class="price-box">
       <p class="price">{{ pricing.precio }}</p>
       <ul class="incluye">
-        {% for x in pricing["incluye"][:3] %}
+        {% for x in pricing.get("incluye", [])[:3] %}
         <li>{{ x }}</li>
         {% endfor %}
       </ul>
       <a class="btn" href="#">{{ pricing.cta }}</a>
+      {% if pricing.get("garantia") %}
+      <p class="garantia">{{ pricing.garantia }}</p>
+      {% endif %}
     </div>
   </div>
 </section>

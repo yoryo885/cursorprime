@@ -6,8 +6,9 @@
   },
   "social_proof": {
     "cifra_o_logos": "6 productos · 5 perfiles",
-    "texto": "Colección lista para aplicar",
-    "confianza": "media"
+    "texto": "Dato del catálogo · sin reseñas inventadas",
+    "confianza": "media",
+    "fuente": "producto"
   },
   "problem": {
     "headline": "Sabés la teoría… y el día a día no cambia",
@@ -50,7 +51,8 @@
       "Formato profesional listo para usar",
       "Soporte de lanzamiento de colección"
     ],
-    "cta": "Ver colección"
+    "cta": "Ver colección",
+    "garantia": "Pago único · acceso inmediato · sin letra chica"
   },
   "faq": {
     "items": [
@@ -71,8 +73,12 @@
         "a": "Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día."
       },
       {
+        "q": "¿Qué pasa si no me sirve?",
+        "a": "Escribimos y te ayudamos. Queremos que te sirva en tu oficio — sin letra chica escondida."
+      },
+      {
         "q": "¿Cuánto cuesta?",
-        "a": "desde $4.99 Sin letra chica."
+        "a": "desde $4.99 Pago único, sin suscripción."
       }
     ]
   },

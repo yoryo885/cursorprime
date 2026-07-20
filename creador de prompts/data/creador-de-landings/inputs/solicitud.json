@@ -29,8 +29,8 @@
     },
     {
       "fecha": "2026-07-20",
-      "texto": "Prompt v2: corregir 5 bugs + agente 13 visual_qa + screenshots"
+      "texto": "Prompt v5: garantía bajo precio, FAQ riesgo, CTA×3, social proof verificable"
     }
   ],
-  "notas": "v2 listo. Confirmar bugs_v2 en qa_report.json"
+  "notas": "v5 conversión sobre assemble Jinja. Mostrar siempre URL/screenshot."
 }

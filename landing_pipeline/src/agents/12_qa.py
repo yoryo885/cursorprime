@@ -232,6 +232,55 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
             if not any(o["seccion"] == s for o in omisiones):
                 omisiones.append({"seccion": s, "motivo": "omitida en assemble"})
 
+    # v5: ≥3 CTAs primarios
+    btn_count = len(re.findall(r'class="btn"', html))
+    if btn_count < 3:
+        criticos.append(
+            {
+                "tipo": "cta_insuficientes",
+                "detalle": f"Solo {btn_count} botones .btn (mínimo 3: hero, mid, precio/cta)",
+                "texto": str(btn_count),
+            }
+        )
+        regenerar.append("11b_assemble")
+        score -= 15
+
+    # v5: garantía bajo precio
+    if 'class="garantia"' not in html and "garantia" not in (copy.get("pricing") or {}):
+        criticos.append(
+            {
+                "tipo": "garantia_faltante",
+                "detalle": "Falta línea de garantía bajo el CTA de precio",
+                "texto": "garantia",
+            }
+        )
+        regenerar.append("07_pricing")
+        score -= 10
+    elif 'class="garantia"' not in html:
+        criticos.append(
+            {
+                "tipo": "garantia_faltante",
+                "detalle": "copy tiene garantia pero no se renderizó",
+                "texto": "garantia",
+            }
+        )
+        regenerar.append("11b_assemble")
+        score -= 10
+
+    # v5: FAQ con riesgo/garantía
+    faq_items = (copy.get("faq") or {}).get("items") or []
+    faq_blob = " ".join(f"{f.get('q','')} {f.get('a','')}" for f in faq_items).lower()
+    if not any(k in faq_blob for k in ("garant", "devoluc", "no me sirve", "riesgo", "reembolso")):
+        criticos.append(
+            {
+                "tipo": "faq_sin_garantia",
+                "detalle": "FAQ sin pregunta de garantía/riesgo",
+                "texto": "faq",
+            }
+        )
+        regenerar.append("08_faq")
+        score -= 10
+
     score = max(0, min(100, score))
     return {
         "score": score,
@@ -242,4 +291,5 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         "bugs_v2": bugs_v2,
         "section_counts": section_counts,
         "n_sections": sum(1 for v in section_counts.values() if v > 0),
+        "cta_count": btn_count,
     }

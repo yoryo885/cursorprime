@@ -1,14 +1,16 @@
-# Prompt — Pipeline landings v4
+# Prompt — Pipeline landings v5
 
 ```
 Usa landing-pipeline.
 
-Arquitectura:
-- LLM: copy (02–10) + tokens (11a). NUNCA HTML completo.
-- HTML: 11b_assemble + Jinja2 templates, SECTION_ORDER una vez.
-- Mostrar resultado VISUAL (URL/screenshots), no pegar código HTML.
+Arquitectura v4 (intacta): LLM = copy+tokens; HTML = Jinja 11b una vez/sección.
 
-Bugs prevenidos: desde-desde, overlap, acento único, naming, testimonios omitida, secciones duplicadas.
+Mejoras v5 (conversión):
+- Social proof: dato verificable, no estrellas inventadas
+- Precio: línea `garantia` bajo el CTA
+- FAQ: pregunta de riesgo/garantía obligatoria
+- CTA primario ≥ 3 (hero + mid beneficios + precio/cta final)
+- Mostrar resultado VISUAL (URL/screenshot), no código HTML
 
 CLI: python3 landing_main.py run --demo
 ```

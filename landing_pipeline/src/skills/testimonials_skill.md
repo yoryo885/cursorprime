@@ -1,18 +1,13 @@
 # Skill: Testimonials
 
 ## Regla
-Un quote fuerte > cinco genéricos. Nombre + cargo real.
-Si brief.json no trae testimonios reales (array vacío o ausente),
-NO inventar nombre/cargo/quote.
+Un quote fuerte > cinco genéricos. Nombre + cargo/ciudad real.
+Si no hay data: `omitida: true` (no inventar).
 
 ## Obligatorio
-- Máximo 3 testimonios.
-- Campos: nombre, cargo, quote (≤ 35 palabras).
-- Si faltan datos reales: `{"omitida": true, "motivo": "sin testimonios reales en el brief", "items": []}`.
-- Nunca placeholders tipo "Cliente satisfecho".
-
-## Ejemplo
-"Ana R., psicopedagoga" · "En dos semanas ya tenía el 80/20 de mis intervenciones claro."
+- Máx. 3. Si faltan: `{"omitida": true, "motivo": "sin testimonios reales en el brief", "items": []}`.
+- Formato creíble: quote corto + nombre de pila + ciudad o rol (ej. "Hrefna, Akureyri").
+- Nunca "Cliente satisfecho".
 
 ## Output esperado (JSON)
 { "omitida": false, "items": [ { "nombre": "", "cargo": "", "quote": "" } ], "motivo": "" }

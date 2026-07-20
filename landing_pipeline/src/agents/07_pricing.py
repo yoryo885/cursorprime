@@ -1,4 +1,4 @@
-"""07 — Pricing (sin duplicar 'desde')"""
+"""07 — Pricing (sin duplicar 'desde' + garantía bajo el CTA)"""
 
 from __future__ import annotations
 
@@ -10,11 +10,17 @@ from src.text_utils import sanitize_prepend
 
 def _mock(brief: dict, _copy: dict) -> dict:
     raw = (brief.get("precio") or "Consultar").strip()
-    # Si el brief ya trae "desde", no anteponer otra vez
-    precio = sanitize_prepend("desde", raw) if raw.lower() not in ("consultar",) else raw
-    # Si raw ya era "desde $4.99", sanitize lo deja igual
     if raw.lower().startswith("desde"):
         precio = raw
+    elif raw.lower() in ("consultar",):
+        precio = raw
+    else:
+        precio = sanitize_prepend("desde", raw)
+    garantia = (
+        brief.get("garantia")
+        or (brief.get("extras") or {}).get("garantia")
+        or "Pago único · acceso inmediato · sin letra chica"
+    )
     return {
         "precio": precio,
         "incluye": [
@@ -23,6 +29,7 @@ def _mock(brief: dict, _copy: dict) -> dict:
             "Soporte de lanzamiento de colección",
         ],
         "cta": brief.get("cta") or "Comprar ahora",
+        "garantia": garantia,
     }
 
 

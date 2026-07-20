@@ -13,6 +13,9 @@ Chequeos automáticos obligatorios.
 6. Similitud de texto >70% entre secciones distintas (salvo hero≈cta_final) → crítico.
 7. Testimonios: `omitida:true` + registro en `omisiones`.
 8. Sin animaciones scroll-reveal / opacity:0+translateY.
+9. **CTA ≥ 3** botones `.btn` (hero, mid beneficios, precio/cta).
+10. **Garantía** visible (`class="garantia"`) bajo el CTA de precio.
+11. **FAQ** incluye pregunta de garantía/riesgo/devolución.
 
 ## Output esperado (JSON)
 {
@@ -22,5 +25,6 @@ Chequeos automáticos obligatorios.
   "regenerar": [],
   "omisiones": [],
   "bugs_v2": {},
-  "section_counts": {}
+  "section_counts": {},
+  "cta_count": 0
 }

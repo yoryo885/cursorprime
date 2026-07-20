@@ -31,6 +31,7 @@
     "footer": 1
   },
   "n_sections": 8,
+  "cta_count": 4,
   "visual_qa": {
     "skipped": false,
     "motivo": "",
