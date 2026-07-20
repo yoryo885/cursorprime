@@ -12,12 +12,10 @@ def copy_profesional(marca: str, n_productos: int, n_roles: int, precio: str = "
         ),
         "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
         "hero_eyebrow": "Colección profesional",
-        "hero_titulo": f"{marca}: guías hechas para tu rol",
+        "hero_titulo": f"Guías libro × rol para profesionales",
         "hero_sub": (
-            f"No es un solo PDF. Es una línea de {n_productos}+ guías libro × oficio, "
-            "diseñadas para aplicar con claridad, método y resultados medibles."
+            f"{n_productos} guías · {n_roles} oficios · métodos de libros clásicos aplicados a tu trabajo."
         ),
-        "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
         "catalogo_titulo": "Explora la colección",
         "catalogo_sub": (
             f"{n_productos} guías · {n_roles} roles · elige la combinación que necesitas hoy "

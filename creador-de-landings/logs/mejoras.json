@@ -92,6 +92,13 @@
       "mensaje": "no me gusto la landing sin personalidad y desordenada; modifico algo y modificas todo",
       "cambio": "REGLAS_CAMBIOS.md: solo tocar lo pedido; max 7 bloques; personalidad con foto/tipo no mas secciones",
       "aplicado": true
+    },
+    {
+      "id": "m014",
+      "at": "2026-07-20T03:13:25.969394+00:00",
+      "mensaje": "sin personalidad y desordenada; modifico algo y modificas todo",
+      "cambio": "plantilla tienda: 6 bloques, grid coleccion, hero corto, cambios quirurgicos",
+      "aplicado": true
     }
   ]
 }

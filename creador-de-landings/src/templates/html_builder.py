@@ -269,7 +269,6 @@ def _tpl_tienda(b: dict) -> str:
     precio = b.get("precio") or ""
     calidad = b.get("calidad") or []
     incluye = b.get("incluye") or []
-    beneficios = b.get("beneficios") or []
     faqs = b.get("faq") or []
     n_disp = sum(1 for p in productos if p.get("disponible"))
     n_prox = len(productos) - n_disp
@@ -365,11 +364,10 @@ def _tpl_tienda(b: dict) -> str:
 
     nav = [
         '<a href="#guias">Colección</a>',
-        '<a href="#calidad">Calidad</a>',
-        '<a href="#serie">Libros</a>',
         '<a href="#historia">Marca</a>',
         '<a href="#faq">FAQ</a>',
     ]
+    hero_imagen = b.get("hero_imagen") or ""
 
     best = []
     libros_by_card = {s.get("slug"): s for s in serie}
@@ -389,21 +387,25 @@ def _tpl_tienda(b: dict) -> str:
             "kahneman": ("#4a3f55", "#cbb8d4", "pensar"),
         }.get(p.get("libro") or "pareto", ("#3d4f5c", "#d8c4a0", "guía"))
         bg, accent, mark = theme
+        rol_nombre = next(
+            (r.get("nombre") for r in roles if r.get("slug") == p.get("rol")),
+            p.get("rol") or "",
+        )
         best.append(
             f"""
-      <article class="guia-slide" data-rol-card="{_e(p.get('rol'))}" data-disp="{1 if disp else 0}">
-        <div class="book book-lg" style="--book-bg:{bg}; --book-accent:{accent}">
-          <div class="book-spine"></div>
-          <div class="book-front">
-            <p class="book-mark">{_e(mark)}</p>
-            <p class="book-title">{_e(libro.get('titulo') or p.get('titulo'))}</p>
-            <p class="book-author">{_e(libro.get('autor') or '')}</p>
-            <p class="book-rol">{_e(next((r.get('nombre') for r in roles if r.get('slug')==p.get('rol')), p.get('rol') or ''))}</p>
-            <p class="book-estado">{_e(badge)}</p>
+      <article class="card guia-card" data-rol-card="{_e(p.get('rol'))}" data-disp="{1 if disp else 0}">
+        <div class="card-cover-wrap">
+          <div class="book book-card" style="--book-bg:{bg}; --book-accent:{accent}">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">{_e(mark)}</p>
+              <p class="book-title">{_e(libro.get('titulo') or p.get('titulo'))}</p>
+              <p class="book-rol">{_e(rol_nombre)}</p>
+            </div>
           </div>
         </div>
-        <div class="guia-info">
-          <p class="card-brand">{_e(marca)} · Guía profesional</p>
+        <div class="card-body">
+          <p class="card-brand">{_e(badge)}</p>
           <h3>{_e(p.get('titulo'))}</h3>
           <p class="card-sub">{_e(sub)}</p>
           <p class="price">{_e(p.get('precio') or '—')}</p>
@@ -420,28 +422,16 @@ def _tpl_tienda(b: dict) -> str:
 
     calidad_html = "".join(
         f'<article class="pillar"><h3>{_e(c.get("titulo"))}</h3><p>{_e(c.get("texto"))}</p></article>'
-        for c in calidad
+        for c in calidad[:3]
     )
-    incluye_html = "".join(f"<li>{_e(x)}</li>" for x in incluye)
-    ben_html = "".join(f"<li>{_e(x)}</li>" for x in beneficios)
     faq_html = "".join(
-        f"<details><summary>{_e(f.get('q'))}</summary><p>{_e(f.get('a'))}</p></details>" for f in faqs
+        f"<details><summary>{_e(f.get('q'))}</summary><p>{_e(f.get('a'))}</p></details>"
+        for f in faqs[:4]
     )
-    serie_html = "".join(
-        f'<article class="serie-card"><p class="card-brand">Libro base</p>'
-        f'<h3>{_e(s.get("titulo"))}</h3><p class="card-sub">{_e(s.get("autor") or "")}</p></article>'
-        for s in serie
-    )
-    mision_html = (
-        f'<section id="mision" class="band"><h2>Nuestra misión</h2>'
-        f'<p class="story">{_e(mision)}</p></section>'
-        if mision
-        else ""
-    )
-    spotlight_html = (
-        f'<p class="spotlight">Destacada ahora: <strong>{_e(spotlight)}</strong> · '
-        f"{_e(precio)} · + {n_prox} guías en camino</p>"
-        if spotlight
+    hero_bg = (
+        f"background-image:linear-gradient(115deg, rgba(27,34,44,.88), rgba(27,34,44,.72)),"
+        f"url('{_e(hero_imagen)}'); background-size:cover; background-position:center;"
+        if hero_imagen
         else ""
     )
 
@@ -456,7 +446,7 @@ def _tpl_tienda(b: dict) -> str:
   <style>
     :root {{
       {_palette_vars(b)} --sand:color-mix(in srgb, var(--paper) 85%, var(--muted));
-      --pad:clamp(16px,4vw,40px); --max:1120px;
+      --gold:#c9a962; --pad:clamp(16px,4vw,40px); --max:1120px;
     }}
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }}
@@ -477,11 +467,12 @@ def _tpl_tienda(b: dict) -> str:
     .nav a {{ color:var(--muted); text-decoration:none; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }}
     .nav a:hover {{ color:var(--ink); }}
     .hero-nuevo {{
-      min-height:min(88svh,760px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
-      background:
-        linear-gradient(115deg, color-mix(in srgb, var(--hero) 96%, #fff) 0%,
-          color-mix(in srgb, var(--hero) 88%, #3a4555) 45%,
-          color-mix(in srgb, var(--hero) 92%, #4a5565) 100%);
+      min-height:min(78svh,680px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+      {hero_bg or (
+        "background:linear-gradient(115deg, color-mix(in srgb, var(--hero) 96%, #fff) 0%,"
+        " color-mix(in srgb, var(--hero) 88%, #3a4555) 45%,"
+        " color-mix(in srgb, var(--hero) 92%, #4a5565) 100%);"
+      )}
       color:#e8e4dc; animation: rise .85s ease both;
     }}
     @keyframes rise {{ from {{ opacity:0; transform:translateY(12px); }} to {{ opacity:1; transform:none; }} }}
@@ -501,7 +492,6 @@ def _tpl_tienda(b: dict) -> str:
       font-size:.72rem; letter-spacing:.06em; color:rgba(232,228,220,.68); margin-bottom:18px; max-width:40ch;
     }}
     .hero-copy .price-lg {{ font-size:1.05rem; font-weight:600; margin-bottom:20px; color:#f0ebe3; }}
-    .spotlight {{ margin-top:18px; font-size:.85rem; color:rgba(232,228,220,.7); max-width:40ch; }}
     .hero-visual {{
       position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
       padding:clamp(28px,5vw,48px) var(--pad) clamp(20px,4vw,36px);
@@ -614,7 +604,7 @@ def _tpl_tienda(b: dict) -> str:
     }}
     .btn {{
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
-      background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em;
+      background:var(--gold); color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em;
       text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
     }}
     .btn-dark {{ background:var(--ink); color:var(--paper); }}
@@ -641,11 +631,21 @@ def _tpl_tienda(b: dict) -> str:
     .pillar p {{ color:var(--muted); font-size:.92rem; }}
     .incluye {{ max-width:40ch; margin:0 auto; list-style:none; padding:0; }}
     .incluye li {{ padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }}
-    .serie-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }}
-    .serie-card {{ background:#fff; border:1px solid #e4dfd6; padding:22px; text-align:center; }}
-    .serie-card h3 {{ font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:1.1rem; margin:8px 0; }}
-    .bens {{ max-width:52ch; margin:0 auto; list-style:none; padding:0; }}
-    .bens li {{ padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }}
+    .guia-card .card-cover-wrap {{
+      aspect-ratio:4/5; background:color-mix(in srgb, var(--paper) 88%, #dfe6ee);
+      display:flex; align-items:center; justify-content:center; padding:24px 16px;
+    }}
+    .book-card {{
+      width:120px; height:168px;
+      transform:perspective(800px) rotateY(-10deg) rotateX(2deg);
+      filter:drop-shadow(0 14px 22px rgba(0,0,0,.22));
+    }}
+    .book-card .book-title {{ font-size:.92rem; }}
+    .guia-card h3 {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+      font-size:1.05rem; margin:8px 0 10px; line-height:1.25;
+    }}
+    .guia-card .price {{ font-size:1rem; font-weight:600; margin-bottom:12px; }}
     details {{ background:#fff; border:1px solid #e4dfd6; padding:14px 16px; margin-bottom:10px; }}
     summary {{ cursor:pointer; font-weight:500; }}
     details p {{ margin-top:8px; color:var(--muted); font-size:.92rem; }}
@@ -658,48 +658,10 @@ def _tpl_tienda(b: dict) -> str:
     .news .btn {{ background:#f0ebe3; color:var(--ink); }}
     footer {{ text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }}
     .card-sub {{ font-size:.78rem; color:var(--muted); line-height:1.4; margin-bottom:12px; }}
-    /* Colección: carrusel MANUAL (el cliente mueve, sin auto) */
-    .guias-stage {{
-      position:relative; display:flex; align-items:center; gap:12px; margin-top:8px;
-    }}
-    .guias-viewport {{
-      overflow:hidden; flex:1; min-height:340px;
-      border:1px solid color-mix(in srgb, var(--muted) 28%, transparent);
-      background:color-mix(in srgb, var(--paper) 92%, #dfe6ee);
-    }}
-    .guias-track {{
-      display:flex; transition:transform .45s ease; will-change:transform;
-    }}
-    .guia-slide {{
-      flex:0 0 100%; min-width:100%; box-sizing:border-box;
-      display:flex; align-items:center; justify-content:center; gap:36px;
-      padding:clamp(28px,5vw,48px) clamp(16px,4vw,40px);
-    }}
-    .guia-slide[hidden] {{ display:none !important; }}
-    .book-lg {{ width:168px; height:240px; }}
-    .book-lg .book-title {{ font-size:1.15rem; }}
-    .guia-info {{ max-width:280px; text-align:left; }}
-    .guia-info h3 {{
-      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
-      font-size:clamp(1.15rem,2.4vw,1.45rem); margin:8px 0 10px; line-height:1.25;
-    }}
-    .guia-info .price {{ font-size:1.1rem; font-weight:600; margin-bottom:14px; }}
-    .guias-arrow {{
-      width:44px; height:44px; flex-shrink:0; border:1px solid color-mix(in srgb, var(--ink) 25%, transparent);
-      background:#fff; color:var(--ink); font-size:1.35rem; cursor:pointer;
-      display:inline-flex; align-items:center; justify-content:center;
-    }}
-    .guias-arrow:hover {{ border-color:var(--ink); }}
-    .guias-arrow:disabled {{ opacity:.35; cursor:default; }}
-    .guias-hint {{
-      text-align:center; margin-top:14px; font-size:.75rem; color:var(--muted); letter-spacing:.04em;
-    }}
     {_catalog_css()}
     @media (max-width:860px) {{
       .hero-nuevo {{ grid-template-columns:1fr; min-height:auto; }}
       .hero-visual {{ min-height:280px; order:-1; }}
-      .guia-slide {{ flex-direction:column; text-align:center; gap:22px; }}
-      .guia-info {{ text-align:center; max-width:100%; }}
     }}
   </style>
 </head>
@@ -716,10 +678,7 @@ def _tpl_tienda(b: dict) -> str:
       <div class="brand-hero">{_e(marca)}</div>
       <h1>{_e(hero_titulo)}</h1>
       <p class="sub">{_e(hero_sub)}</p>
-      <p class="badge-q">{_e(hero_badge)}</p>
-      <p class="price-lg">{_e(precio)}</p>
       <a class="btn" href="#guias">{_e(cta)}</a>
-      {spotlight_html}
     </div>
     <div class="hero-visual" id="roleHero">
       <div class="role-carousel" id="roleCarousel" aria-roledescription="carrusel" aria-label="Roles de la colección">
@@ -733,44 +692,19 @@ def _tpl_tienda(b: dict) -> str:
     </div>
   </section>
 
-  <section id="calidad">
-    <h2>{_e(b.get('calidad_titulo') or 'Por qué la calidad importa')}</h2>
-    <p class="sec-sub">Promovemos guías con criterio editorial: útiles, precisas y hechas para profesionales.</p>
-    <div class="pillars">{calidad_html}</div>
-  </section>
-
-  <section class="band" id="incluye">
-    <h2>{_e(b.get('incluye_titulo') or 'Qué incluye cada guía')}</h2>
-    <ul class="incluye">{incluye_html}</ul>
-  </section>
-
   <section id="guias">
     <h2>{_e(b.get('catalogo_titulo') or 'Explora la colección')}</h2>
     <p class="sec-sub">{_e(b.get('catalogo_sub') or '')}</p>
     <div class="role-filters" id="roleFilters">{"".join(chips)}</div>
-    <div class="guias-stage">
-      <button type="button" class="guias-arrow" id="guiasPrev" aria-label="Guía anterior">‹</button>
-      <div class="guias-viewport" id="guiasViewport">
-        <div class="guias-track" id="guiasTrack">{"".join(best)}</div>
-      </div>
-      <button type="button" class="guias-arrow" id="guiasNext" aria-label="Guía siguiente">›</button>
-    </div>
-    <p class="guias-hint">Tú eliges — usa las flechas o filtra por rol. Sin movimiento automático.</p>
+    <div class="grid" id="guiasGrid">{"".join(best)}</div>
   </section>
 
-  <section id="serie" class="band">
-    <h2>{_e(b.get('serie_titulo') or 'Basadas en libros que ya funcionan')}</h2>
-    <p class="sec-sub">{_e(b.get('serie_sub') or '')}</p>
-    <div class="serie-grid">{serie_html}</div>
-  </section>
-
-  <section id="historia">
+  <section id="historia" class="band">
     <h2>La marca</h2>
     <p class="story">{_e(historia)}</p>
-    <ul class="bens" style="margin-top:28px">{ben_html}</ul>
+    <div class="pillars" style="margin-top:32px">{calidad_html}</div>
     <p class="center" style="margin-top:28px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
   </section>
-  {mision_html}
 
   <section id="faq">
     <h2>Preguntas frecuentes</h2>
@@ -787,41 +721,18 @@ def _tpl_tienda(b: dict) -> str:
   <footer>{_e(marca)} · Colección profesional de guías · PDF de calidad</footer>
   <script>
   (function() {{
-    // —— Colección #guias: SOLO el cliente mueve (sin auto) ——
     const chips = document.querySelectorAll('.role-chip');
-    const track = document.getElementById('guiasTrack');
-    const prevG = document.getElementById('guiasPrev');
-    const nextG = document.getElementById('guiasNext');
-    let gIdx = 0;
-    let visible = [];
-
-    const refreshVisible = () => {{
-      visible = Array.from(track.querySelectorAll('.guia-slide')).filter(s => !s.hidden);
-      if (gIdx >= visible.length) gIdx = Math.max(0, visible.length - 1);
-      go(gIdx);
-    }};
-    const go = (n) => {{
-      if (!visible.length) return;
-      gIdx = Math.max(0, Math.min(n, visible.length - 1));
-      // slides ocultos son display:none → el track solo cuenta visibles
-      track.style.transform = 'translateX(' + (-100 * gIdx) + '%)';
-      if (prevG) prevG.disabled = gIdx <= 0;
-      if (nextG) nextG.disabled = gIdx >= visible.length - 1;
-    }};
-    const filter = (rol) => {{
-      chips.forEach(c => c.classList.toggle('is-active', c.dataset.rol === rol));
-      track.querySelectorAll('.guia-slide').forEach(card => {{
+    const cards = document.querySelectorAll('[data-rol-card]');
+    chips.forEach(chip => chip.addEventListener('click', () => {{
+      chips.forEach(c => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const rol = chip.dataset.rol;
+      cards.forEach(card => {{
         card.hidden = !(rol === 'todos' || card.dataset.rolCard === rol);
       }});
-      gIdx = 0;
-      refreshVisible();
-    }};
-    chips.forEach(chip => chip.addEventListener('click', () => filter(chip.dataset.rol)));
-    prevG && prevG.addEventListener('click', () => go(gIdx - 1));
-    nextG && nextG.addEventListener('click', () => go(gIdx + 1));
-    refreshVisible();
+    }}));
 
-    // —— Hero roles: auto 5s (NO toca #guias) ——
+    // Hero roles: auto 5s (independiente de #guias)
     const slides = Array.from(document.querySelectorAll('.role-slide'));
     const dots = Array.from(document.querySelectorAll('.role-dot'));
     const prev = document.getElementById('rolePrev');

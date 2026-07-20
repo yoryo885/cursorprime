@@ -19,6 +19,7 @@
   },
   "idea": "Tienda Vértice Pro — look colección tipo Filjós",
   "referencia": "https://filjos.com/",
+  "hero_imagen": "assets/hero-bg.svg",
   "serie_libros": [
     {
       "slug": "pareto",
@@ -207,8 +208,8 @@
   },
   "barra_aviso": "Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99",
   "hero_eyebrow": "Colección profesional",
-  "hero_titulo": "Vértice Pro: guías hechas para tu rol",
-  "hero_sub": "No es un solo PDF. Es una línea de 6+ guías libro × oficio, diseñadas para aplicar con claridad, método y resultados medibles.",
+  "hero_titulo": "Guías libro × rol para profesionales",
+  "hero_sub": "6 guías · 5 oficios · métodos de libros clásicos aplicados a tu trabajo.",
   "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
   "historia": "Vértice Pro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
   "mision": "Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.",
