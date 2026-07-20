@@ -37,6 +37,7 @@ Idea → evaluar-idea → (opcional) project-lens → gestion-proyecto → crear
 PDF libro → resumidor-kdp → KDP listing
 PDF datos → pdf-resumidor → (opcional) project-lens / guion-a-video
 Redes: hooks-redes → guion-a-video → thumbnail-social → captions-redes
+TikTok guion completo: tiktok_pipeline (11 agentes + skills) → shotlist.md
 Negocio → audit-marketing → landing-lanzamiento → (opcional) contenido redes
 WhatsApp → whatsapp-marketing → evaluar-idea (si SaaS)
 ```
