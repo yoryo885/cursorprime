@@ -71,6 +71,13 @@
       "mensaje": "carrusel muestra el libro no solamente palabras",
       "cambio": "portada libro 3D CSS por slide (pareto/habitos/kahneman) en carrusel roles",
       "aplicado": true
+    },
+    {
+      "id": "m011",
+      "at": "2026-07-20T02:02:08.312965+00:00",
+      "mensaje": "seccion guias no se tiene que mover sola, el cliente lo mueve",
+      "cambio": "#guias carrusel manual flechas+filtros; hero ya no filtra la coleccion",
+      "aplicado": true
     }
   ]
 }
