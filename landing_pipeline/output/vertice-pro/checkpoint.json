@@ -2,7 +2,10 @@
   "brief": {
     "slug": "vertice-pro",
     "marca": "Vértice Pro",
+    "nombre_producto": "Vértice Pro",
+    "propuesta_valor": "Métodos de libros clásicos, aplicados a tu oficio",
     "producto": "Guías PDF libro × rol",
+    "producto_interno": "Guías PDF libro × rol",
     "rubro": "educacion / productividad profesional",
     "precio": "desde $4.99",
     "publico": "psicopedagogas, docentes y profesionales por oficio",
@@ -12,6 +15,7 @@
     "contacto": "hola@vertice.pro",
     "n_productos": 6,
     "n_roles": 5,
+    "testimonios": [],
     "extras": {
       "redes": []
     }
@@ -52,13 +56,14 @@
         },
         {
           "titulo": "Precio de entrada real",
-          "texto": "Empezás desde desde $4.99."
+          "texto": "Empezás desde $4.99."
         }
       ]
     },
     "testimonials": {
-      "items": [],
-      "nota": "sin testimonios reales"
+      "omitida": true,
+      "motivo": "sin testimonios reales en el brief",
+      "items": []
     },
     "pricing": {
       "precio": "desde $4.99",
@@ -72,8 +77,8 @@
     "faq": {
       "items": [
         {
-          "q": "¿Qué es Guías PDF libro × rol?",
-          "a": "Una oferta de Vértice Pro pensada para psicopedagogas, docentes y profesionales por oficio: clara, aplicable y sin relleno."
+          "q": "¿Qué es Vértice Pro?",
+          "a": "Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno."
         },
         {
           "q": "¿Para quién es?",
@@ -112,10 +117,43 @@
     "score": 100,
     "criticos": [],
     "sugerencias": [
-      "Sin testimonios reales: OK (no inventar). Agregar cuando existan."
+      "Testimonios omitidos (explícito): sin testimonios reales en el brief"
     ],
     "regenerar": [],
-    "n_sections": 5
+    "omisiones": [
+      {
+        "seccion": "testimonials",
+        "motivo": "sin testimonios reales en el brief"
+      }
+    ],
+    "bugs_v2": {
+      "copy_duplicado": "ok",
+      "overlap_secciones": "ok",
+      "acento_inconsistente": "ok",
+      "naming_inconsistente": "ok",
+      "testimonios_silenciados": "ok_omitida_explicita"
+    },
+    "n_sections": 5,
+    "visual_qa": {
+      "skipped": false,
+      "motivo": "",
+      "screenshots": {
+        "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
+        "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
+      },
+      "overlaps": [],
+      "ok": true
+    }
+  },
+  "visual_qa": {
+    "skipped": false,
+    "motivo": "",
+    "screenshots": {
+      "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
+      "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
+    },
+    "overlaps": [],
+    "ok": true
   },
   "done": [
     "01_brief",
@@ -129,7 +167,8 @@
     "09_cta_final",
     "10_footer",
     "11_design",
-    "12_qa"
+    "12_qa",
+    "13_visual_qa"
   ],
   "html_saved": true
 }

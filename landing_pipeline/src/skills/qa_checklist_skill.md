@@ -1,7 +1,8 @@
 # Skill: QA checklist
 
 ## Regla
-Puntuar conversión. Marcar sección que falla. Errores críticos bloquean.
+Puntuar conversión. Marcar sección que falla con texto/línea exacta.
+Errores críticos bloquean. Incluir chequeos automáticos (regex/parsing).
 
 ## Checklist (errores que matan conversión)
 1. Botón que no destaca (contraste / tamaño).
@@ -15,6 +16,14 @@ Puntuar conversión. Marcar sección que falla. Errores críticos bloquean.
 9. Sin versión mobile usable.
 10. Claims sin fuente marcados como alta confianza.
 
+## Chequeos automáticos (obligatorios — bugs reales)
+1. **Palabras repetidas**: patrón `\b(\w+)\s+\1\b` en texto visible (ej. "desde desde") → crítico + texto exacto.
+2. **Acento único**: todos los `.btn` primarios resuelven a `var(--accent)`; no `.btn-dark` con otro background.
+3. **Naming**: `nombre_producto` del brief igual en `<title>`, hero brand y footer; no filtrar `producto_interno`.
+4. **Overlap CSS**: `position: absolute|fixed` fuera de header/nav → crítico.
+5. **Secciones**: esperadas vs presentes; si falta sin `omitida` en copy → crítico.
+6. **Testimonios**: si no hay data → debe existir `omitida: true` en copy y registro en `omisiones` del qa_report (no silenciar).
+
 ## Scoring
 - 90–100: listo
 - 70–89: ajustes menores
@@ -25,5 +34,7 @@ Puntuar conversión. Marcar sección que falla. Errores críticos bloquean.
   "score": 0,
   "criticos": [],
   "sugerencias": [],
-  "regenerar": []
+  "regenerar": [],
+  "omisiones": [],
+  "bugs_v2": {}
 }

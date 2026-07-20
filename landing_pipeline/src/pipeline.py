@@ -1,4 +1,4 @@
-"""Orquestador: agentes 01→12 con reintento por paso."""
+"""Orquestador: agentes 01→13 con reintento por paso."""
 
 from __future__ import annotations
 
@@ -21,11 +21,11 @@ from src.agents import (
     a10_footer,
     a11_design,
     a12_qa,
+    a13_visual_qa,
 )
 from src.llm_client import LLMClient
 from src.paths import LOGS, ensure_slug
 
-# Nombres de módulo → agent id para --solo / reintento
 AGENTS: list[tuple[str, Callable[[dict], dict]]] = [
     ("01_brief", a01_brief.run),
     ("02_hero", a02_hero.run),
@@ -39,6 +39,7 @@ AGENTS: list[tuple[str, Callable[[dict], dict]]] = [
     ("10_footer", a10_footer.run),
     ("11_design", a11_design.run),
     ("12_qa", a12_qa.run),
+    ("13_visual_qa", a13_visual_qa.run),
 ]
 
 COPY_KEYS = {
@@ -61,7 +62,6 @@ def _now() -> str:
 def _log_mejora(mensaje: str, cambio: str) -> None:
     LOGS.mkdir(parents=True, exist_ok=True)
     path = LOGS / "mejoras.json"
-    data: dict[str, Any]
     if path.exists() and path.stat().st_size:
         data = json.loads(path.read_text(encoding="utf-8"))
     else:
@@ -87,24 +87,32 @@ def run_pipeline(
     solo: str | None = None,
     retry_from: str | None = None,
 ) -> dict[str, Any]:
-    """
-    Corre el pipeline completo o un agente suelto.
-    - solo: id agente (ej. '02_hero') — requiere outputs previos en disco si aplica
-    - retry_from: reanuda desde ese agente (inclusive)
-    """
     llm = llm or LLMClient()
     slug = (negocio.get("slug") or "demo").strip()
     out = ensure_slug(slug)
+    (out / "screenshots").mkdir(parents=True, exist_ok=True)
     checkpoint = out / "checkpoint.json"
     state: dict[str, Any] = {
         "brief": {},
         "copy": {},
         "html": "",
         "qa": {},
+        "visual_qa": {},
         "done": [],
     }
     if checkpoint.exists():
-        state.update(json.loads(checkpoint.read_text(encoding="utf-8")))
+        prev = json.loads(checkpoint.read_text(encoding="utf-8"))
+        state.update({k: prev[k] for k in state if k in prev})
+        # recargar html desde disco si hay checkpoint
+        html_file = out / "landing.html"
+        if html_file.exists() and not state.get("html"):
+            state["html"] = html_file.read_text(encoding="utf-8")
+        brief_file = out / "brief.json"
+        if brief_file.exists() and not state.get("brief"):
+            state["brief"] = json.loads(brief_file.read_text(encoding="utf-8"))
+        copy_file = out / "copy.json"
+        if copy_file.exists() and not state.get("copy"):
+            state["copy"] = json.loads(copy_file.read_text(encoding="utf-8"))
 
     start = False if retry_from or solo else True
     results: dict[str, Any] = {}
@@ -125,10 +133,11 @@ def run_pipeline(
                 "brief": state.get("brief") or {},
                 "copy": state.get("copy") or {},
                 "html": state.get("html") or "",
+                "html_path": str(out / "landing.html"),
+                "out_dir": str(out),
             }
             if agent_id == "01_brief":
-                payload = dict(negocio)
-                brief = fn(payload)
+                brief = fn(dict(negocio))
                 state["brief"] = brief
                 _save(out / "brief.json", brief)
                 results[agent_id] = brief
@@ -141,8 +150,27 @@ def run_pipeline(
             elif agent_id == "12_qa":
                 qa = fn(payload)
                 state["qa"] = qa
-                _save(out / "qa_report.json", qa)
                 results[agent_id] = qa
+            elif agent_id == "13_visual_qa":
+                visual = fn(payload)
+                state["visual_qa"] = visual
+                # merge into qa_report
+                qa = dict(state.get("qa") or {})
+                qa["visual_qa"] = visual
+                if visual.get("overlaps"):
+                    qa.setdefault("criticos", []).append(
+                        {
+                            "tipo": "overlap_visual",
+                            "detalle": f"Overlap real entre secciones: {visual['overlaps']}",
+                            "texto": str(visual["overlaps"]),
+                        }
+                    )
+                    qa["bugs_v2"] = dict(qa.get("bugs_v2") or {})
+                    qa["bugs_v2"]["overlap_secciones"] = "fail"
+                    qa["score"] = max(0, int(qa.get("score") or 100) - 20)
+                state["qa"] = qa
+                _save(out / "qa_report.json", qa)
+                results[agent_id] = visual
             else:
                 block = fn(payload)
                 key = COPY_KEYS[agent_id]
@@ -150,16 +178,22 @@ def run_pipeline(
                 _save(out / "copy.json", state["copy"])
                 results[agent_id] = block
 
+            if agent_id == "12_qa":
+                _save(out / "qa_report.json", state["qa"])
+
             if agent_id not in state["done"]:
                 state["done"].append(agent_id)
-            cp = {
-                "brief": state.get("brief"),
-                "copy": state.get("copy"),
-                "qa": state.get("qa"),
-                "done": state.get("done"),
-                "html_saved": bool(state.get("html")),
-            }
-            _save(checkpoint, cp)
+            _save(
+                checkpoint,
+                {
+                    "brief": state.get("brief"),
+                    "copy": state.get("copy"),
+                    "qa": state.get("qa"),
+                    "visual_qa": state.get("visual_qa"),
+                    "done": state.get("done"),
+                    "html_saved": bool(state.get("html")),
+                },
+            )
         except Exception as e:
             err = {"agent": agent_id, "error": str(e), "trace": traceback.format_exc(), "at": _now()}
             _save(out / "error.json", err)
@@ -177,6 +211,7 @@ def run_pipeline(
         "brief": state.get("brief"),
         "copy": state.get("copy"),
         "qa": state.get("qa"),
+        "visual_qa": state.get("visual_qa"),
         "landing": str(out / "landing.html"),
         "results": results,
     }

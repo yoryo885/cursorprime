@@ -6,12 +6,12 @@ from typing import Any
 
 from src.agents.base import run_section
 from src.llm_client import LLMClient
+from src.text_utils import propuesta, public_name
 
 
 def _mock(brief: dict, _copy: dict) -> dict:
-    marca = brief.get("marca", "")
     return {
-        "titulo": _short(brief.get("promesa") or f"{marca} para tu rol", 8),
+        "titulo": _short(propuesta(brief) or f"{public_name(brief)} para tu rol", 8),
         "bajada": f"Hecho para {brief.get('publico', 'vos')}. Sin relleno.",
         "cta": brief.get("cta") or "Empezar ahora",
     }

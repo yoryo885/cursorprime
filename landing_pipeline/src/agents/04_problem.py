@@ -16,7 +16,7 @@ def _mock(brief: dict, _copy: dict) -> dict:
             "Perdés tiempo buscando el 20% que importa.",
             "Los resúmenes genéricos no hablan tu lenguaje.",
         ],
-        "puente": f"Por eso {brief.get('marca')} traduce métodos clásicos a tu oficio.",
+        "puente": f"Por eso {brief.get('nombre_producto') or brief.get('marca')} traduce métodos clásicos a tu oficio.",
     }
 
 

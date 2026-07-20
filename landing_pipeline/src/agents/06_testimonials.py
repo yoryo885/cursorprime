@@ -1,4 +1,4 @@
-"""06 — Testimonials (no inventar)"""
+"""06 — Testimonials (no inventar; omitir si no hay data)"""
 
 from __future__ import annotations
 
@@ -8,11 +8,14 @@ from src.agents.base import run_section
 
 
 def _mock(brief: dict, _copy: dict) -> dict:
-    extras = brief.get("extras") or {}
-    real = extras.get("testimonios") or []
+    real = brief.get("testimonios") or (brief.get("extras") or {}).get("testimonios") or []
     if real:
-        return {"items": real[:3], "nota": ""}
-    return {"items": [], "nota": "sin testimonios reales"}
+        return {"omitida": False, "items": real[:3], "motivo": ""}
+    return {
+        "omitida": True,
+        "motivo": "sin testimonios reales en el brief",
+        "items": [],
+    }
 
 
 def run(input: dict[str, Any]) -> dict[str, Any]:

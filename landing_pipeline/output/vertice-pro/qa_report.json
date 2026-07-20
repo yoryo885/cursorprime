@@ -2,8 +2,31 @@
   "score": 100,
   "criticos": [],
   "sugerencias": [
-    "Sin testimonios reales: OK (no inventar). Agregar cuando existan."
+    "Testimonios omitidos (explícito): sin testimonios reales en el brief"
   ],
   "regenerar": [],
-  "n_sections": 5
+  "omisiones": [
+    {
+      "seccion": "testimonials",
+      "motivo": "sin testimonios reales en el brief"
+    }
+  ],
+  "bugs_v2": {
+    "copy_duplicado": "ok",
+    "overlap_secciones": "ok",
+    "acento_inconsistente": "ok",
+    "naming_inconsistente": "ok",
+    "testimonios_silenciados": "ok_omitida_explicita"
+  },
+  "n_sections": 5,
+  "visual_qa": {
+    "skipped": false,
+    "motivo": "",
+    "screenshots": {
+      "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
+      "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
+    },
+    "overlaps": [],
+    "ok": true
+  }
 }

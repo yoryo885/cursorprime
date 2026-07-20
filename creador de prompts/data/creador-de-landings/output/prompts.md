@@ -1,22 +1,18 @@
-# Prompt — Pipeline de agentes para landings
+# Prompt — Pipeline landings v2 (bugs reales)
 
 ```
 Usa landing-pipeline (landing_pipeline/).
 
-Flujo obligatorio:
-1. 01_brief → brief.json
-2. 02_hero … 10_footer → cada uno LEE su skill .md y aporta a copy.json
-3. 11_design → landing.html (un archivo, mobile-first)
-4. 12_qa → qa_report.json (score + regenerar[])
+v2 — prevenir por diseño:
+1. sanitize_prepend: nunca "desde desde"
+2. secciones flujo normal: sin absolute/fixed de contenido
+3. un solo --accent en todos los .btn
+4. solo nombre_producto / propuesta_valor en copy público
+5. testimonios: omitida:true + omisiones en qa_report (no silenciar)
 
-Reglas:
-- Cada agente: def run(input: dict) -> dict
-- NO improvisar estilo: inyectar skill en system prompt
-- Testimonios: no inventar
-- Reintento: --retry-from {agente} sin re-correr todo
-- Mock sin API key; Claude con ANTHROPIC_API_KEY
+Agentes 01–13 (13 = visual_qa Playwright + screenshots).
+QA reporta bugs_v2 explícitamente.
 
 CLI:
   python3 landing_main.py run --demo
-  python3 landing_main.py run --input meta/ejemplo-negocio.json --slug {slug}
 ```

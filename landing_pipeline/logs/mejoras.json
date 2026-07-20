@@ -7,6 +7,13 @@
       "mensaje": "pipeline run slug=vertice-pro",
       "cambio": "agentes=01_brief,02_hero,03_social_proof,04_problem,05_benefits,06_testimonials,07_pricing,08_faq,09_cta_final,10_footer,11_design,12_qa mock=True",
       "aplicado": true
+    },
+    {
+      "id": "m002",
+      "at": "2026-07-20T11:25:36.817048+00:00",
+      "mensaje": "pipeline run slug=vertice-pro",
+      "cambio": "agentes=01_brief,02_hero,03_social_proof,04_problem,05_benefits,06_testimonials,07_pricing,08_faq,09_cta_final,10_footer,11_design,12_qa,13_visual_qa mock=True",
+      "aplicado": true
     }
   ]
 }

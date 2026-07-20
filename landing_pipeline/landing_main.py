@@ -25,16 +25,19 @@ from src.pipeline import run_pipeline
 DEMO_VERTICE = {
     "slug": "vertice-pro",
     "marca": "Vértice Pro",
+    "nombre_producto": "Vértice Pro",
     "producto": "Guías PDF libro × rol",
     "rubro": "educacion / productividad profesional",
     "precio": "desde $4.99",
     "publico": "psicopedagogas, docentes y profesionales por oficio",
     "tono": "editorial, claro, sin relleno",
+    "propuesta_valor": "Métodos de libros clásicos, aplicados a tu oficio",
     "promesa": "Métodos de libros clásicos, aplicados a tu oficio",
     "cta": "Ver colección",
     "contacto": "hola@vertice.pro",
     "n_productos": 6,
     "n_roles": 5,
+    "testimonios": [],
     "extras": {"redes": []},
 }
 
@@ -60,14 +63,22 @@ def cmd_run(args: argparse.Namespace) -> None:
         retry_from=args.retry_from,
     )
     qa = result.get("qa") or {}
+    visual = result.get("visual_qa") or {}
     print(f"\n✅ Listo → {result['out']}")
     print(f"   landing: {result['landing']}")
     print(f"   copy:    {Path(result['out']) / 'copy.json'}")
     print(f"   QA score: {qa.get('score', '—')}")
+    if qa.get("bugs_v2"):
+        print(f"   bugs_v2: {qa['bugs_v2']}")
+    if qa.get("omisiones"):
+        print(f"   omisiones: {qa['omisiones']}")
     if qa.get("criticos"):
         print(f"   críticos: {qa['criticos']}")
-    if qa.get("sugerencias"):
-        print(f"   tips: {qa['sugerencias']}")
+    if visual.get("skipped"):
+        print(f"   visual_qa: skipped ({visual.get('motivo')})")
+    elif visual:
+        print(f"   screenshots: {visual.get('screenshots')}")
+        print(f"   overlaps: {visual.get('overlaps')}")
     print()
 
 

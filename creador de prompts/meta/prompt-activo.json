@@ -1,15 +1,15 @@
 {
-  "version": 13,
+  "version": 14,
   "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "landing_pipeline",
-    "titulo": "Pipeline agentes + skills por sección",
-    "version": 7,
-    "ultima_mejora": "Prompt ejecutado: agentes 01-12 + demo Vertice Pro QA 100"
+    "titulo": "Pipeline landings v2 (bugs + visual QA)",
+    "version": 8,
+    "ultima_mejora": "prompt v2: 5 bugs + agente 13 screenshots"
   },
   "slug": "creador-de-landings",
-  "ultima_mejora": "landing_pipeline end-to-end con skills y QA",
-  "updated_at": "2026-07-20T10:40:00Z"
+  "ultima_mejora": "v2 ejecutado: bugs_v2 ok, QA 100, screenshots mobile/desktop",
+  "updated_at": "2026-07-20T11:26:00Z"
 }

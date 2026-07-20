@@ -5,11 +5,12 @@ from __future__ import annotations
 from typing import Any
 
 from src.agents.base import run_section
+from src.text_utils import public_name
 
 
 def _mock(brief: dict, _copy: dict) -> dict:
     return {
-        "marca": brief.get("marca") or "",
+        "marca": public_name(brief),
         "contacto": brief.get("contacto") or "hola@ejemplo.com",
         "legales": ["Privacidad", "Términos"],
         "redes": (brief.get("extras") or {}).get("redes") or [],

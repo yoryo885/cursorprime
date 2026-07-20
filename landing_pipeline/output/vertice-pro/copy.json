@@ -34,13 +34,14 @@
       },
       {
         "titulo": "Precio de entrada real",
-        "texto": "Empezás desde desde $4.99."
+        "texto": "Empezás desde $4.99."
       }
     ]
   },
   "testimonials": {
-    "items": [],
-    "nota": "sin testimonios reales"
+    "omitida": true,
+    "motivo": "sin testimonios reales en el brief",
+    "items": []
   },
   "pricing": {
     "precio": "desde $4.99",
@@ -54,8 +55,8 @@
   "faq": {
     "items": [
       {
-        "q": "¿Qué es Guías PDF libro × rol?",
-        "a": "Una oferta de Vértice Pro pensada para psicopedagogas, docentes y profesionales por oficio: clara, aplicable y sin relleno."
+        "q": "¿Qué es Vértice Pro?",
+        "a": "Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno."
       },
       {
         "q": "¿Para quién es?",

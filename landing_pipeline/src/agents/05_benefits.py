@@ -5,9 +5,23 @@ from __future__ import annotations
 from typing import Any
 
 from src.agents.base import run_section
+from src.text_utils import sanitize_prepend
 
 
 def _mock(brief: dict, _copy: dict) -> dict:
+    precio = (brief.get("precio") or "").strip()
+    if precio:
+        # Nunca: "Empezás desde" + "desde $4.99"
+        precio_txt = sanitize_prepend("desde", precio)
+        precio_item = {
+            "titulo": "Precio de entrada real",
+            "texto": f"Empezás {precio_txt}.",
+        }
+    else:
+        precio_item = {
+            "titulo": "Precio de entrada real",
+            "texto": "Precio claro, sin letra chica.",
+        }
     return {
         "items": [
             {
@@ -22,10 +36,7 @@ def _mock(brief: dict, _copy: dict) -> dict:
                 "titulo": "Formato listo para usar",
                 "texto": "PDF profesional: ordenado, descargable, aplicable hoy.",
             },
-            {
-                "titulo": "Precio de entrada real",
-                "texto": f"Empezás desde {brief.get('precio') or 'un precio accesible'}.",
-            },
+            precio_item,
         ]
     }
 

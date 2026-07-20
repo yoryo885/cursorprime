@@ -26,7 +26,11 @@
     {
       "fecha": "2026-07-20",
       "texto": "Prompt ejecutado: landing_pipeline completo + demo Vertice Pro QA 100"
+    },
+    {
+      "fecha": "2026-07-20",
+      "texto": "Prompt v2: corregir 5 bugs + agente 13 visual_qa + screenshots"
     }
   ],
-  "notas": "CLI: python3 landing_main.py run --demo → output/vertice-pro/landing.html"
+  "notas": "v2 listo. Confirmar bugs_v2 en qa_report.json"
 }

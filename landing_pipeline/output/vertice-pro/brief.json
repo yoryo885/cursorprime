@@ -1,7 +1,10 @@
 {
   "slug": "vertice-pro",
   "marca": "Vértice Pro",
+  "nombre_producto": "Vértice Pro",
+  "propuesta_valor": "Métodos de libros clásicos, aplicados a tu oficio",
   "producto": "Guías PDF libro × rol",
+  "producto_interno": "Guías PDF libro × rol",
   "rubro": "educacion / productividad profesional",
   "precio": "desde $4.99",
   "publico": "psicopedagogas, docentes y profesionales por oficio",
@@ -11,6 +14,7 @@
   "contacto": "hola@vertice.pro",
   "n_productos": 6,
   "n_roles": 5,
+  "testimonios": [],
   "extras": {
     "redes": []
   }

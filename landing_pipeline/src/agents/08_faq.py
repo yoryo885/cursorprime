@@ -1,21 +1,21 @@
-"""08 — FAQ"""
+"""08 — FAQ (solo nombre_producto público)"""
 
 from __future__ import annotations
 
 from typing import Any
 
 from src.agents.base import run_section
+from src.text_utils import public_name
 
 
 def _mock(brief: dict, _copy: dict) -> dict:
-    marca = brief.get("marca")
-    producto = brief.get("producto")
+    nombre = public_name(brief)
     publico = brief.get("publico")
     return {
         "items": [
             {
-                "q": f"¿Qué es {producto}?",
-                "a": f"Una oferta de {marca} pensada para {publico}: clara, aplicable y sin relleno.",
+                "q": f"¿Qué es {nombre}?",
+                "a": f"{nombre} ofrece guías prácticas para {publico}: claras, aplicables y sin relleno.",
             },
             {
                 "q": "¿Para quién es?",
@@ -30,7 +30,7 @@ def _mock(brief: dict, _copy: dict) -> dict:
                 "a": "Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día.",
             },
             {
-                "q": f"¿Cuánto cuesta?",
+                "q": "¿Cuánto cuesta?",
                 "a": f"{brief.get('precio') or 'El precio está visible en la sección de compra.'} Sin letra chica.",
             },
         ]
