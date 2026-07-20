@@ -78,6 +78,13 @@
       "mensaje": "seccion guias no se tiene que mover sola, el cliente lo mueve",
       "cambio": "#guias carrusel manual flechas+filtros; hero ya no filtra la coleccion",
       "aplicado": true
+    },
+    {
+      "id": "m012",
+      "at": "2026-07-20T02:04:04.134448+00:00",
+      "mensaje": "roleHero portadas de guias tipo carrusel",
+      "cambio": "hero: portada grande book-hero centrada, caption abajo, auto 5s + flechas",
+      "aplicado": true
     }
   ]
 }

@@ -320,7 +320,7 @@ def _tpl_tienda(b: dict) -> str:
         *role_slides,
     ]
 
-    def _book_cover(s: dict) -> str:
+    def _book_cover(s: dict, size: str = "") -> str:
         theme = {
             "pareto": ("#3d4f5c", "#d8c4a0", "80/20"),
             "habitos": ("#4a5c48", "#c9d4b8", "1%"),
@@ -328,15 +328,19 @@ def _tpl_tienda(b: dict) -> str:
         }.get(s.get("libro_slug") or "pareto", ("#3d4f5c", "#d8c4a0", "guía"))
         bg, accent, mark = theme
         estado = "Disponible" if s.get("disponible") else "Próximamente"
+        cls = "book book-hero" if size == "hero" else "book"
         return f"""
-          <div class="book" style="--book-bg:{bg}; --book-accent:{accent}">
+          <div class="{cls}" style="--book-bg:{bg}; --book-accent:{accent}">
             <div class="book-spine"></div>
             <div class="book-front">
+              <p class="book-series">{_e(marca)}</p>
               <p class="book-mark">{_e(mark)}</p>
               <p class="book-title">{_e(s.get('libro_titulo') or '')}</p>
               <p class="book-author">{_e(s.get('libro_autor') or '')}</p>
-              <p class="book-rol">{_e(s.get('nombre') or '')}</p>
-              <p class="book-estado">{_e(estado)}</p>
+              <div class="book-footer">
+                <p class="book-rol">{_e(s.get('nombre') or '')}</p>
+                <p class="book-estado">{_e(estado)}</p>
+              </div>
             </div>
           </div>"""
 
@@ -348,18 +352,15 @@ def _tpl_tienda(b: dict) -> str:
         slides_html.append(
             f"""
         <div class="role-slide{active}" data-slide="{i}" data-rol-slide="{_e(s['slug'])}" aria-hidden="{'false' if i == 0 else 'true'}">
-          {_book_cover(s)}
-          <div class="slide-meta">
-            <p class="slide-count">{s['disp']} {disp_label}</p>
-            <p class="slide-prox">+ {s['prox']} próximamente</p>
-            <p class="slide-role">{_e(s['nombre'])}</p>
+          {_book_cover(s, size="hero")}
+          <div class="slide-caption">
+            <p class="slide-count"><strong>{s['disp']}</strong> {disp_label} · +{s['prox']} próximamente</p>
             <p class="slide-guia">{_e(s.get('guia') or '')}</p>
-            <p class="slide-right">COLECCIÓN</p>
           </div>
         </div>"""
         )
         dots_html.append(
-            f'<button type="button" class="role-dot{active}" data-dot="{i}" aria-label="{_e(s.get("nombre") or f"Rol {i+1}")}"></button>'
+            f'<button type="button" class="role-dot{active}" data-dot="{i}" aria-label="{_e(s.get("nombre") or f"Guía {i+1}")}"></button>'
         )
 
     nav = [
@@ -503,79 +504,104 @@ def _tpl_tienda(b: dict) -> str:
     .spotlight {{ margin-top:18px; font-size:.85rem; color:rgba(232,228,220,.7); max-width:40ch; }}
     .hero-visual {{
       position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      padding:clamp(32px,6vw,56px) var(--pad); min-height:380px;
+      padding:clamp(28px,5vw,48px) var(--pad) clamp(20px,4vw,36px);
+      min-height:520px;
       background:
-        radial-gradient(ellipse at 50% 45%, #2a3340 0%, var(--hero) 70%);
+        radial-gradient(ellipse at 50% 40%, #2f3a48 0%, var(--hero) 68%);
+      overflow:hidden;
     }}
-    .role-carousel {{ position:relative; width:min(100%,460px); min-height:280px; }}
+    .role-carousel {{
+      position:relative; width:min(100%,340px); height:390px; margin:0 auto;
+    }}
     .role-slide {{
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:28px;
-      opacity:0; transform:translateY(10px); transition:opacity .55s ease, transform .55s ease;
-      pointer-events:none; padding:8px;
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:18px;
+      opacity:0; visibility:hidden;
+      transform:scale(.92) translateY(12px);
+      transition:opacity .5s ease, transform .5s ease, visibility .5s;
+      pointer-events:none;
     }}
-    .role-slide.is-active {{ opacity:1; transform:none; pointer-events:auto; }}
+    .role-slide.is-active {{
+      opacity:1; visibility:visible; transform:scale(1) translateY(0);
+      pointer-events:auto; z-index:2;
+    }}
     .book {{
       position:relative; width:148px; height:210px; flex-shrink:0;
-      transform:perspective(800px) rotateY(-12deg) rotateX(2deg);
-      filter:drop-shadow(0 18px 28px rgba(0,0,0,.45));
+      transform:perspective(900px) rotateY(-14deg) rotateX(3deg);
+      filter:drop-shadow(0 22px 32px rgba(0,0,0,.5));
+    }}
+    .book-hero {{
+      width:200px; height:290px;
+      transform:perspective(900px) rotateY(-16deg) rotateX(4deg);
+      animation: bookIn .7s ease both;
+    }}
+    @keyframes bookIn {{
+      from {{ opacity:0; transform:perspective(900px) rotateY(-28deg) translateY(18px); }}
+      to {{ opacity:1; transform:perspective(900px) rotateY(-16deg) rotateX(4deg); }}
     }}
     .book-spine {{
-      position:absolute; left:0; top:6px; bottom:6px; width:14px;
-      background:linear-gradient(90deg, #0e1218, color-mix(in srgb, var(--book-bg) 70%, #000));
-      border-radius:2px 0 0 2px;
+      position:absolute; left:0; top:8px; bottom:8px; width:16px;
+      background:linear-gradient(90deg, #0a0e14, color-mix(in srgb, var(--book-bg) 65%, #000));
+      border-radius:3px 0 0 3px;
+      box-shadow:inset -2px 0 4px rgba(0,0,0,.35);
     }}
     .book-front {{
-      position:absolute; left:12px; right:0; top:0; bottom:0;
+      position:absolute; left:14px; right:0; top:0; bottom:0;
       background:
-        linear-gradient(160deg, color-mix(in srgb, var(--book-bg) 88%, #fff) 0%, var(--book-bg) 55%, color-mix(in srgb, var(--book-bg) 80%, #000) 100%);
-      border:1px solid color-mix(in srgb, var(--book-accent) 35%, transparent);
-      border-radius:0 4px 4px 0;
-      padding:18px 14px 16px;
+        linear-gradient(165deg, color-mix(in srgb, var(--book-bg) 92%, #fff) 0%, var(--book-bg) 48%, color-mix(in srgb, var(--book-bg) 75%, #000) 100%);
+      border:1px solid color-mix(in srgb, var(--book-accent) 40%, transparent);
+      border-radius:0 5px 5px 0;
+      padding:20px 16px 18px;
       display:flex; flex-direction:column;
       color:var(--book-accent);
     }}
+    .book-hero .book-front {{ padding:24px 18px 20px; }}
+    .book-series {{
+      font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
+      color:rgba(240,235,227,.55); margin-bottom:10px;
+    }}
     .book-mark {{
-      font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; opacity:.7; margin-bottom:16px;
+      font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; opacity:.75; margin-bottom:14px;
+      color:var(--book-accent);
     }}
     .book-title {{
       font-family:"Cormorant Garamond",Georgia,serif; font-size:1.05rem; font-weight:600;
-      line-height:1.2; letter-spacing:.02em; flex:1; color:#f0ebe3;
+      line-height:1.2; letter-spacing:.02em; flex:1; color:#f5f0e8;
     }}
-    .book-author {{ font-size:.68rem; letter-spacing:.04em; opacity:.75; margin-top:10px; color:#e8e0d4; }}
+    .book-hero .book-title {{ font-size:1.35rem; }}
+    .book-author {{ font-size:.7rem; letter-spacing:.04em; opacity:.8; margin-top:12px; color:#e8e0d4; }}
+    .book-footer {{
+      margin-top:auto; padding-top:12px;
+      border-top:1px solid color-mix(in srgb, var(--book-accent) 35%, transparent);
+    }}
     .book-rol {{
-      margin-top:14px; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--book-accent); border-top:1px solid color-mix(in srgb, var(--book-accent) 35%, transparent);
-      padding-top:10px;
+      font-size:.62rem; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--book-accent); margin:0;
     }}
     .book-estado {{
-      margin-top:6px; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; opacity:.65; color:#e8e0d4;
+      margin-top:6px; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase;
+      opacity:.7; color:#e8e0d4;
     }}
-    .slide-meta {{ text-align:left; max-width:180px; }}
+    .slide-caption {{ text-align:center; max-width:260px; }}
     .slide-count {{
-      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.35rem,2.6vw,1.75rem);
-      color:#d8d2c8; font-weight:500; line-height:1.15; letter-spacing:.02em;
+      font-size:.78rem; letter-spacing:.04em; color:rgba(232,228,220,.78);
     }}
-    .slide-prox {{
-      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.35rem,2.6vw,1.75rem);
-      color:#d8d2c8; font-weight:500; line-height:1.15; margin-top:4px;
+    .slide-count strong {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:1.15rem; font-weight:500; color:#f0ebe3;
     }}
-    .slide-role {{
-      margin-top:16px; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(216,210,200,.55);
-    }}
-    .slide-guia {{ margin-top:6px; font-size:.78rem; color:rgba(216,210,200,.5); max-width:20ch; line-height:1.35; }}
-    .slide-right {{
-      margin-top:18px; font-family:"Cormorant Garamond",Georgia,serif; font-size:.95rem;
-      letter-spacing:.22em; color:rgba(216,210,200,.4);
+    .slide-guia {{
+      margin-top:6px; font-size:.78rem; color:rgba(216,210,200,.55); line-height:1.35;
     }}
     .carousel-nav {{
-      display:flex; align-items:center; justify-content:center; gap:16px; margin-top:28px; width:100%;
+      display:flex; align-items:center; justify-content:center; gap:16px; margin-top:8px; width:100%;
+      position:relative; z-index:3;
     }}
     .carousel-btn {{
-      width:42px; height:42px; border:1px solid rgba(216,210,200,.35); background:transparent;
+      width:42px; height:42px; border:1px solid rgba(216,210,200,.4); background:rgba(0,0,0,.15);
       color:#d8d2c8; font-size:1.2rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
       transition:border-color .2s, background .2s;
     }}
-    .carousel-btn:hover {{ border-color:rgba(216,210,200,.7); background:rgba(255,255,255,.04); }}
+    .carousel-btn:hover {{ border-color:rgba(216,210,200,.85); background:rgba(255,255,255,.06); }}
     .role-dots {{ display:flex; gap:8px; align-items:center; }}
     .role-dot {{
       width:7px; height:7px; border-radius:50%; border:none; padding:0; cursor:pointer;
@@ -583,9 +609,8 @@ def _tpl_tienda(b: dict) -> str:
     }}
     .role-dot.is-active {{ background:#d8d2c8; }}
     @media (max-width:860px) {{
-      .role-slide {{ flex-direction:column; gap:18px; }}
-      .slide-meta {{ text-align:center; max-width:none; }}
-      .book {{ transform:perspective(800px) rotateY(-6deg); }}
+      .book-hero {{ width:170px; height:250px; transform:perspective(900px) rotateY(-8deg); }}
+      .role-carousel {{ height:350px; }}
     }}
     .btn {{
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
@@ -812,9 +837,14 @@ def _tpl_tienda(b: dict) -> str:
         const on = i === idx;
         s.classList.toggle('is-active', on);
         s.setAttribute('aria-hidden', on ? 'false' : 'true');
+        const book = s.querySelector('.book-hero');
+        if (book && on) {{
+          book.style.animation = 'none';
+          void book.offsetWidth;
+          book.style.animation = '';
+        }}
       }});
       dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-      // No filtrar #guias aquí — el cliente controla la colección
     }};
     const restart = () => {{
       if (timer) clearInterval(timer);
