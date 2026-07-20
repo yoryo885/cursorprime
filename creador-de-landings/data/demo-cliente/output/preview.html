@@ -57,33 +57,69 @@
     .spotlight { margin-top:18px; font-size:.85rem; color:rgba(232,228,220,.7); max-width:40ch; }
     .hero-visual {
       position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      padding:clamp(32px,6vw,56px) var(--pad); min-height:320px;
+      padding:clamp(32px,6vw,56px) var(--pad); min-height:380px;
       background:
         radial-gradient(ellipse at 50% 45%, #2a3340 0%, var(--hero) 70%);
     }
-    .role-carousel { position:relative; width:min(100%,420px); min-height:220px; }
+    .role-carousel { position:relative; width:min(100%,460px); min-height:280px; }
     .role-slide {
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; gap:20px;
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:28px;
       opacity:0; transform:translateY(10px); transition:opacity .55s ease, transform .55s ease;
       pointer-events:none; padding:8px;
     }
     .role-slide.is-active { opacity:1; transform:none; pointer-events:auto; }
-    .slide-left { text-align:left; }
+    .book {
+      position:relative; width:148px; height:210px; flex-shrink:0;
+      transform:perspective(800px) rotateY(-12deg) rotateX(2deg);
+      filter:drop-shadow(0 18px 28px rgba(0,0,0,.45));
+    }
+    .book-spine {
+      position:absolute; left:0; top:6px; bottom:6px; width:14px;
+      background:linear-gradient(90deg, #0e1218, color-mix(in srgb, var(--book-bg) 70%, #000));
+      border-radius:2px 0 0 2px;
+    }
+    .book-front {
+      position:absolute; left:12px; right:0; top:0; bottom:0;
+      background:
+        linear-gradient(160deg, color-mix(in srgb, var(--book-bg) 88%, #fff) 0%, var(--book-bg) 55%, color-mix(in srgb, var(--book-bg) 80%, #000) 100%);
+      border:1px solid color-mix(in srgb, var(--book-accent) 35%, transparent);
+      border-radius:0 4px 4px 0;
+      padding:18px 14px 16px;
+      display:flex; flex-direction:column;
+      color:var(--book-accent);
+    }
+    .book-mark {
+      font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; opacity:.7; margin-bottom:16px;
+    }
+    .book-title {
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:1.05rem; font-weight:600;
+      line-height:1.2; letter-spacing:.02em; flex:1; color:#f0ebe3;
+    }
+    .book-author { font-size:.68rem; letter-spacing:.04em; opacity:.75; margin-top:10px; color:#e8e0d4; }
+    .book-rol {
+      margin-top:14px; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--book-accent); border-top:1px solid color-mix(in srgb, var(--book-accent) 35%, transparent);
+      padding-top:10px;
+    }
+    .book-estado {
+      margin-top:6px; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; opacity:.65; color:#e8e0d4;
+    }
+    .slide-meta { text-align:left; max-width:180px; }
     .slide-count {
-      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.5rem,3vw,2rem);
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.35rem,2.6vw,1.75rem);
       color:#d8d2c8; font-weight:500; line-height:1.15; letter-spacing:.02em;
     }
     .slide-prox {
-      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.5rem,3vw,2rem);
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.35rem,2.6vw,1.75rem);
       color:#d8d2c8; font-weight:500; line-height:1.15; margin-top:4px;
     }
     .slide-role {
-      margin-top:18px; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(216,210,200,.55);
+      margin-top:16px; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(216,210,200,.55);
     }
-    .slide-guia { margin-top:6px; font-size:.8rem; color:rgba(216,210,200,.45); max-width:22ch; line-height:1.35; }
+    .slide-guia { margin-top:6px; font-size:.78rem; color:rgba(216,210,200,.5); max-width:20ch; line-height:1.35; }
     .slide-right {
-      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.1rem,2.2vw,1.45rem);
-      letter-spacing:.22em; color:rgba(216,210,200,.42); writing-mode:horizontal-tb; align-self:center;
+      margin-top:18px; font-family:"Cormorant Garamond",Georgia,serif; font-size:.95rem;
+      letter-spacing:.22em; color:rgba(216,210,200,.4);
     }
     .carousel-nav {
       display:flex; align-items:center; justify-content:center; gap:16px; margin-top:28px; width:100%;
@@ -100,6 +136,11 @@
       background:rgba(216,210,200,.28);
     }
     .role-dot.is-active { background:#d8d2c8; }
+    @media (max-width:860px) {
+      .role-slide { flex-direction:column; gap:18px; }
+      .slide-meta { text-align:center; max-width:none; }
+      .book { transform:perspective(800px) rotateY(-6deg); }
+    }
     .btn {
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
       background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em;
@@ -196,63 +237,129 @@
       <div class="role-carousel" id="roleCarousel" aria-roledescription="carrusel" aria-label="Roles de la colección">
         
         <div class="role-slide is-active" data-slide="0" data-rol-slide="todos" aria-hidden="false">
-          <div class="slide-left">
+          
+          <div class="book" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">80/20</p>
+              <p class="book-title">El principio de Pareto</p>
+              <p class="book-author">Antoine Delers</p>
+              <p class="book-rol">Toda la colección</p>
+              <p class="book-estado">Disponible</p>
+            </div>
+          </div>
+          <div class="slide-meta">
             <p class="slide-count">1 disponible</p>
             <p class="slide-prox">+ 5 próximamente</p>
             <p class="slide-role">Toda la colección</p>
             <p class="slide-guia">Pareto para psicopedagogas en 10 semanas</p>
+            <p class="slide-right">COLECCIÓN</p>
           </div>
-          <p class="slide-right">COLECCIÓN</p>
         </div>
         <div class="role-slide" data-slide="1" data-rol-slide="psicopedagogas" aria-hidden="true">
-          <div class="slide-left">
+          
+          <div class="book" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">80/20</p>
+              <p class="book-title">El principio de Pareto</p>
+              <p class="book-author">Antoine Delers</p>
+              <p class="book-rol">Psicopedagogas</p>
+              <p class="book-estado">Disponible</p>
+            </div>
+          </div>
+          <div class="slide-meta">
             <p class="slide-count">1 disponible</p>
             <p class="slide-prox">+ 0 próximamente</p>
             <p class="slide-role">Psicopedagogas</p>
             <p class="slide-guia">Pareto para psicopedagogas en 10 semanas</p>
+            <p class="slide-right">COLECCIÓN</p>
           </div>
-          <p class="slide-right">COLECCIÓN</p>
         </div>
         <div class="role-slide" data-slide="2" data-rol-slide="abogados" aria-hidden="true">
-          <div class="slide-left">
+          
+          <div class="book" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">80/20</p>
+              <p class="book-title">El principio de Pareto</p>
+              <p class="book-author">Antoine Delers</p>
+              <p class="book-rol">Abogados</p>
+              <p class="book-estado">Próximamente</p>
+            </div>
+          </div>
+          <div class="slide-meta">
             <p class="slide-count">0 disponibles</p>
             <p class="slide-prox">+ 2 próximamente</p>
             <p class="slide-role">Abogados</p>
             <p class="slide-guia">Pareto para abogados en 10 semanas</p>
+            <p class="slide-right">COLECCIÓN</p>
           </div>
-          <p class="slide-right">COLECCIÓN</p>
         </div>
         <div class="role-slide" data-slide="3" data-rol-slide="docentes" aria-hidden="true">
-          <div class="slide-left">
+          
+          <div class="book" style="--book-bg:#4a3f55; --book-accent:#cbb8d4">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">pensar</p>
+              <p class="book-title">Pensar rápido, pensar despacio</p>
+              <p class="book-author">Daniel Kahneman</p>
+              <p class="book-rol">Docentes</p>
+              <p class="book-estado">Próximamente</p>
+            </div>
+          </div>
+          <div class="slide-meta">
             <p class="slide-count">0 disponibles</p>
             <p class="slide-prox">+ 1 próximamente</p>
             <p class="slide-role">Docentes</p>
             <p class="slide-guia">Kahneman para docentes en 10 semanas</p>
+            <p class="slide-right">COLECCIÓN</p>
           </div>
-          <p class="slide-right">COLECCIÓN</p>
         </div>
         <div class="role-slide" data-slide="4" data-rol-slide="enfermeras" aria-hidden="true">
-          <div class="slide-left">
+          
+          <div class="book" style="--book-bg:#4a5c48; --book-accent:#c9d4b8">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">1%</p>
+              <p class="book-title">Hábitos atómicos</p>
+              <p class="book-author">James Clear</p>
+              <p class="book-rol">Enfermeras</p>
+              <p class="book-estado">Próximamente</p>
+            </div>
+          </div>
+          <div class="slide-meta">
             <p class="slide-count">0 disponibles</p>
             <p class="slide-prox">+ 1 próximamente</p>
             <p class="slide-role">Enfermeras</p>
             <p class="slide-guia">Hábitos atómicos para enfermeras en 10 semanas</p>
+            <p class="slide-right">COLECCIÓN</p>
           </div>
-          <p class="slide-right">COLECCIÓN</p>
         </div>
         <div class="role-slide" data-slide="5" data-rol-slide="soldadores" aria-hidden="true">
-          <div class="slide-left">
+          
+          <div class="book" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">80/20</p>
+              <p class="book-title">El principio de Pareto</p>
+              <p class="book-author">Antoine Delers</p>
+              <p class="book-rol">Soldadores</p>
+              <p class="book-estado">Próximamente</p>
+            </div>
+          </div>
+          <div class="slide-meta">
             <p class="slide-count">0 disponibles</p>
             <p class="slide-prox">+ 1 próximamente</p>
             <p class="slide-role">Soldadores</p>
             <p class="slide-guia">Pareto para soldadores en 10 semanas</p>
+            <p class="slide-right">COLECCIÓN</p>
           </div>
-          <p class="slide-right">COLECCIÓN</p>
         </div>
       </div>
       <div class="carousel-nav">
         <button type="button" class="carousel-btn" id="rolePrev" aria-label="Rol anterior">‹</button>
-        <div class="role-dots" id="roleDots"><button type="button" class="role-dot is-active" data-dot="0" aria-label="Rol 1"></button><button type="button" class="role-dot" data-dot="1" aria-label="Rol 2"></button><button type="button" class="role-dot" data-dot="2" aria-label="Rol 3"></button><button type="button" class="role-dot" data-dot="3" aria-label="Rol 4"></button><button type="button" class="role-dot" data-dot="4" aria-label="Rol 5"></button><button type="button" class="role-dot" data-dot="5" aria-label="Rol 6"></button></div>
+        <div class="role-dots" id="roleDots"><button type="button" class="role-dot is-active" data-dot="0" aria-label="Toda la colección"></button><button type="button" class="role-dot" data-dot="1" aria-label="Psicopedagogas"></button><button type="button" class="role-dot" data-dot="2" aria-label="Abogados"></button><button type="button" class="role-dot" data-dot="3" aria-label="Docentes"></button><button type="button" class="role-dot" data-dot="4" aria-label="Enfermeras"></button><button type="button" class="role-dot" data-dot="5" aria-label="Soldadores"></button></div>
         <button type="button" class="carousel-btn" id="roleNext" aria-label="Rol siguiente">›</button>
       </div>
     </div>

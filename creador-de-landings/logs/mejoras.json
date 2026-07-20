@@ -64,6 +64,13 @@
       "mensaje": "color negro no gusta; carrusel roles 5s con flechas como la imagen",
       "cambio": "paleta carbón navy #1b222c + carrusel roles auto 5s con flechas/dots",
       "aplicado": true
+    },
+    {
+      "id": "m010",
+      "at": "2026-07-20T01:59:17.230620+00:00",
+      "mensaje": "carrusel muestra el libro no solamente palabras",
+      "cambio": "portada libro 3D CSS por slide (pareto/habitos/kahneman) en carrusel roles",
+      "aplicado": true
     }
   ]
 }

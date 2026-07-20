@@ -294,6 +294,7 @@
     "flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional",
     "preguntas.json v2 + regla cursor + router priority 93 + paletas en HTML",
     "referencia visual activa; entrevista estándar pendiente de respuestas",
-    "entrevista v3 solo letras A/B/C/D + CLI responder"
+    "entrevista v3 solo letras A/B/C/D + CLI responder",
+    "paleta carbón navy #1b222c + carrusel roles auto 5s con flechas/dots"
   ]
 }
