@@ -6,6 +6,7 @@ Workspace único. Guía de apertura: [COMO_ABRIR.md](./COMO_ABRIR.md)
 
 | Proyecto | Entrypoint | Skill | Inputs | Outputs |
 |----------|------------|-------|--------|---------|
+| **landing_pipeline** | `python3 landing_main.py run --demo` | `usa landing-pipeline` | brief JSON / demo | `output/{slug}/landing.html` + QA |
 | creador de prompts | `python3 creador_prompts_main.py --slug {slug}` | `usa creador-de-prompts` | `data/{slug}/inputs/solicitud.json` | `data/{slug}/output/prompts.json` |
 | creador de skills | `python3 creador_skills_main.py --slug {slug}` | `usa creador-de-skills` | `catalogo/{slug}.json` | `~/.cursor/skills/{nombre}/` |
 | creador de contenido | `python3 creador_imagenes_main.py --slug {slug}` | `usa guion-a-video` | `data/{slug}/inputs/lote.json` | `data/{slug}/output/` |

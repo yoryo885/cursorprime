@@ -1,23 +1,22 @@
-# Prompt — Creador de Landings
+# Prompt — Pipeline de agentes para landings
 
 ```
-Usa creador-de-landings.
+Usa landing-pipeline (landing_pipeline/).
 
-REGLA CRÍTICA — CAMBIOS QUIRÚRGICOS:
-- Si el usuario pide modificar algo, tocar SOLO eso (archivo + sección).
-- NO regenerar preview.html entero salvo que diga "regenera todo" / "desde cero".
-- Antes de editar: 1 línea → "Voy a cambiar: [hero|#guias|colores|copy] en [archivo]".
-- Si no especifica sección, preguntar UNA vez cuál quiere tocar.
-- Ver meta/REGLAS_CAMBIOS.md
+Flujo obligatorio:
+1. 01_brief → brief.json
+2. 02_hero … 10_footer → cada uno LEE su skill .md y aporta a copy.json
+3. 11_design → landing.html (un archivo, mobile-first)
+4. 12_qa → qa_report.json (score + regenerar[])
 
-Personalidad y orden:
-- Máx. 6–7 bloques (nav, hero, colección, marca, FAQ, newsletter).
-- Colección = grid con filtros (no doble carrusel).
-- Personalidad = foto hero + tipografía + paleta + copy corto, NO más bloques genéricos.
-- Copy: específico a la marca, no plantilla "calidad editorial" repetida.
-
-Entrevista A/B/C/D → generar solo en brief nuevo o cuando pidan regenerar.
+Reglas:
+- Cada agente: def run(input: dict) -> dict
+- NO improvisar estilo: inyectar skill en system prompt
+- Testimonios: no inventar
+- Reintento: --retry-from {agente} sin re-correr todo
+- Mock sin API key; Claude con ANTHROPIC_API_KEY
 
 CLI:
-  python3 landings_main.py aprender --mensaje "..." --cambio "solo ..."
+  python3 landing_main.py run --demo
+  python3 landing_main.py run --input meta/ejemplo-negocio.json --slug {slug}
 ```

@@ -1,0 +1,135 @@
+{
+  "brief": {
+    "slug": "vertice-pro",
+    "marca": "Vértice Pro",
+    "producto": "Guías PDF libro × rol",
+    "rubro": "educacion / productividad profesional",
+    "precio": "desde $4.99",
+    "publico": "psicopedagogas, docentes y profesionales por oficio",
+    "tono": "editorial, claro, sin relleno",
+    "promesa": "Métodos de libros clásicos, aplicados a tu oficio",
+    "cta": "Ver colección",
+    "contacto": "hola@vertice.pro",
+    "n_productos": 6,
+    "n_roles": 5,
+    "extras": {
+      "redes": []
+    }
+  },
+  "copy": {
+    "hero": {
+      "titulo": "Métodos de libros clásicos, aplicados a tu oficio",
+      "bajada": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
+      "cta": "Ver colección"
+    },
+    "social_proof": {
+      "cifra_o_logos": "6 productos · 5 perfiles",
+      "texto": "Colección lista para aplicar",
+      "confianza": "media"
+    },
+    "problem": {
+      "headline": "Sabés la teoría… y el día a día no cambia",
+      "dolores": [
+        "Leés libros útiles pero no llegan a tu rol como psicopedagogas, docentes y profesionales por oficio.",
+        "Perdés tiempo buscando el 20% que importa.",
+        "Los resúmenes genéricos no hablan tu lenguaje."
+      ],
+      "puente": "Por eso Vértice Pro traduce métodos clásicos a tu oficio."
+    },
+    "benefits": {
+      "items": [
+        {
+          "titulo": "Hecho para tu oficio",
+          "texto": "Ejemplos y prioridades de psicopedagogas, docentes y profesionales por oficio, no teoría genérica."
+        },
+        {
+          "titulo": "Método claro en semanas",
+          "texto": "Sabés qué hacer cada semana, sin relleno ni moda."
+        },
+        {
+          "titulo": "Formato listo para usar",
+          "texto": "PDF profesional: ordenado, descargable, aplicable hoy."
+        },
+        {
+          "titulo": "Precio de entrada real",
+          "texto": "Empezás desde desde $4.99."
+        }
+      ]
+    },
+    "testimonials": {
+      "items": [],
+      "nota": "sin testimonios reales"
+    },
+    "pricing": {
+      "precio": "desde $4.99",
+      "incluye": [
+        "Acceso / descarga inmediata",
+        "Formato profesional listo para usar",
+        "Soporte de lanzamiento de colección"
+      ],
+      "cta": "Ver colección"
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿Qué es Guías PDF libro × rol?",
+          "a": "Una oferta de Vértice Pro pensada para psicopedagogas, docentes y profesionales por oficio: clara, aplicable y sin relleno."
+        },
+        {
+          "q": "¿Para quién es?",
+          "a": "Para psicopedagogas, docentes y profesionales por oficio que quieren método práctico, no teoría genérica."
+        },
+        {
+          "q": "¿Cómo lo recibo?",
+          "a": "Acceso digital inmediato tras la compra (PDF / descarga según el producto)."
+        },
+        {
+          "q": "¿En qué se diferencia de un resumen genérico?",
+          "a": "Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "desde $4.99 Sin letra chica."
+        }
+      ]
+    },
+    "cta_final": {
+      "headline": "Métodos de libros clásicos, aplicados a tu oficio",
+      "sub": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
+      "cta": "Ver colección"
+    },
+    "footer": {
+      "marca": "Vértice Pro",
+      "contacto": "hola@vertice.pro",
+      "legales": [
+        "Privacidad",
+        "Términos"
+      ],
+      "redes": []
+    }
+  },
+  "qa": {
+    "score": 100,
+    "criticos": [],
+    "sugerencias": [
+      "Sin testimonios reales: OK (no inventar). Agregar cuando existan."
+    ],
+    "regenerar": [],
+    "n_sections": 5
+  },
+  "done": [
+    "01_brief",
+    "02_hero",
+    "03_social_proof",
+    "04_problem",
+    "05_benefits",
+    "06_testimonials",
+    "07_pricing",
+    "08_faq",
+    "09_cta_final",
+    "10_footer",
+    "11_design",
+    "12_qa"
+  ],
+  "html_saved": true
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "mejoras": [
+    {
+      "id": "m001",
+      "at": "2026-07-20T10:37:09.364667+00:00",
+      "mensaje": "pipeline run slug=vertice-pro",
+      "cambio": "agentes=01_brief,02_hero,03_social_proof,04_problem,05_benefits,06_testimonials,07_pricing,08_faq,09_cta_final,10_footer,11_design,12_qa mock=True",
+      "aplicado": true
+    }
+  ]
+}

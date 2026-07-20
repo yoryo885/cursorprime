@@ -1,73 +1,32 @@
 {
-  "titulo": "Sistema creador de landings (entrevista → ejemplos → HTML)",
+  "titulo": "Pipeline de agentes por sección (skills .md → copy → HTML → QA)",
   "tipo": "pipeline",
-  "proyecto_destino": "creador-de-landings",
+  "proyecto_destino": "landing_pipeline",
   "temas": [
-    "entrevista breve de brief",
-    "estilos editorial | tienda | mockup | oferta",
-    "estilo tienda tipo Filjós (colección ecommerce)",
-    "generación HTML en segundos",
-    "demo como cliente",
-    "catálogo libro×rol multi-producto",
-    "aprendizaje continuo logs/mejoras.json",
-    "paleta de colores auto + 3 opciones",
-    "pregunta clima marca (1)",
-    "entrevista estándar fija preguntas.json",
-    "cada idea tienda/landing dispara mismas preguntas",
-    "agente propone paletas A/B/C",
-    "copy profesional marketing",
-    "promoción calidad colección"
+    "agentes 01–12 una responsabilidad",
+    "skills .md por sección (regla + obligatorio + ejemplo + JSON)",
+    "brief → hero → social → problem → benefits → testimonials → pricing → faq → cta → footer → design → qa",
+    "llm_client con mock/Claude",
+    "reintento por agente sin re-correr todo",
+    "output/{slug}/copy.json + landing.html + qa_report.json",
+    "cambios quirúrgicos en HTML final"
   ],
   "contexto": {
-    "audiencia": "operador cursorprime / cliente demo",
+    "audiencia": "operador cursorprime",
     "tono": "claro y accionable",
     "idioma": "español",
-    "objetivo": "Pipeline que pregunta cómo quiere la landing, muestra ejemplos (incl. tienda tipo filjos.com) y genera preview.html multiproducto",
-    "referencias_estructura": [
-      "https://filjos.com/"
-    ]
+    "objetivo": "Pipeline tipo Libros a Entender: cada agente lee su skill antes de generar copy/HTML",
+    "fuente_prompt": "prompt_pipeline_landings_83a1.md"
   },
   "mejoras": [
     {
-      "mensaje": "desarrollar sistema landings con preguntas y ejemplos como cliente usando crear-pipeline",
-      "cambio": "Proyecto creador-de-landings MVP construido"
-    },
-    {
-      "mensaje": "landing debe ofrecer diferentes productos no solo Pareto; iremos modificando y aprendiendo mejoras",
-      "cambio": "Catálogo multi-producto + aprender CLI + filtros por rol"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "Landing con varios productos (no solo Pareto) y aprendizaje continuo de mejoras"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "filjos.com como idea de página/landing que el sistema puede generar (estilo tienda)"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "paleta de colores: sistema recomienda 3 y usuario elige (o auto)"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "Preguntas estándar vienen del sistema; cada idea de tienda/landing dispara la misma entrevista"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "Referencia activa filjos.com — entrevista estándar en curso"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "Preguntas con opciones A B C D; respuesta solo letras"
-    },
-    {
-      "fecha": "2026-07-19",
-      "texto": "Copy profesional marketing: calidad, multiproducto, FAQ, serie de libros"
+      "fecha": "2026-07-20",
+      "texto": "Ejecutar prompt: pipeline agentes + skills por sección para landings"
     },
     {
       "fecha": "2026-07-20",
-      "texto": "Sin personalidad/desordenada; modifico algo y modificas todo — respuesta: 1 línea qué toco + solo esa sección"
+      "texto": "Prompt ejecutado: landing_pipeline completo + demo Vertice Pro QA 100"
     }
   ],
-  "notas": "Antes de editar: preguntar qué sección (hero, colección, colores, copy). No regenerar todo."
+  "notas": "CLI: python3 landing_main.py run --demo → output/vertice-pro/landing.html"
 }
