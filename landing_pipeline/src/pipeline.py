@@ -167,6 +167,7 @@ def run_pipeline(
                 state["assemble_meta"] = {
                     "included": assemble.get("included"),
                     "omitted": assemble.get("omitted"),
+                    "templates_used": assemble.get("templates_used"),
                 }
                 _save(out / "landing.html", html)
                 results[agent_id] = {

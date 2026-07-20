@@ -1,15 +1,15 @@
 {
-  "version": 16,
+  "version": 17,
   "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "landing_pipeline",
-    "titulo": "Pipeline landings v5 (conversión)",
-    "version": 10,
-    "ultima_mejora": "v5: garantía, FAQ riesgo, CTA×3, social proof real"
+    "titulo": "Pipeline landings v6 (variantes layout)",
+    "version": 11,
+    "ultima_mejora": "v6: variantes hero/benefits/pricing + siempre mostrar visual"
   },
   "slug": "creador-de-landings",
-  "ultima_mejora": "mejoras v5 de conversión sobre arquitectura Jinja",
-  "updated_at": "2026-07-20T12:05:00Z"
+  "ultima_mejora": "mostrar URL/screenshot; nunca pegar código HTML",
+  "updated_at": "2026-07-20T12:25:00Z"
 }

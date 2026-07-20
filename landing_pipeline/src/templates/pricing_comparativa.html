@@ -1,0 +1,29 @@
+<section id="precio" data-section="pricing">
+  <div class="inner">
+    <h2>Precio claro</h2>
+    <div class="price-compare">
+      <article class="plan plan-muted">
+        <p class="plan-label">Resumen genérico</p>
+        <p class="plan-price">Gratis / caro en tiempo</p>
+        <ul>
+          <li>Teoría sin rol</li>
+          <li>Sin plan semanal</li>
+          <li>Sin soporte de colección</li>
+        </ul>
+      </article>
+      <article class="plan plan-focus">
+        <p class="plan-label">{{ nombre }}</p>
+        <p class="plan-price">{{ pricing.precio }}</p>
+        <ul>
+          {% for x in pricing.get("incluye", [])[:3] %}
+          <li>{{ x }}</li>
+          {% endfor %}
+        </ul>
+        <a class="btn" href="#">{{ pricing.cta }}</a>
+        {% if pricing.get("garantia") %}
+        <p class="garantia">{{ pricing.garantia }}</p>
+        {% endif %}
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,18 +1,24 @@
 # Skill: Design
 
 ## Regla
-Tokens de diseño (colores, tipografía, radios) — NO HTML.
+Tokens + **variantes de layout** (lista cerrada). NUNCA HTML.
 HTML = `11b_assemble` + Jinja2.
 
 ## Obligatorio (tokens)
-- Un solo `accent` para todos los botones primarios.
+- Un solo `accent` para todos los `.btn`.
 - Keys: ink, paper, accent, muted, sand, font_heading, font_body, radius.
+- `layout` con variantes de lista cerrada:
+  - hero: `centrado` | `split`
+  - benefits: `tarjetas` | `lista_numerada`
+  - pricing: `una_columna` | `comparativa`
+- No inventar nombres de layout nuevos.
 
 ## Obligatorio (templates)
-- CTA primario ≥ 3 veces (hero, después de beneficios, precio y/o CTA final). Todas con `var(--accent)`.
-- Sin absolute/fixed de contenido; sin animaciones scroll-reveal.
-- Garantía visible bajo el botón de precio.
-- Testimonios omitidos → no renderizar template.
+- CTA ≥ 3, garantía bajo precio, sin animaciones reveal, sin absolute de contenido.
 
-## Output esperado (JSON tokens)
-{ "ink": "", "paper": "", "accent": "", "muted": "", "sand": "", "font_heading": "", "font_body": "", "radius": "" }
+## Output esperado (JSON)
+{
+  "ink": "", "paper": "", "accent": "", "muted": "", "sand": "",
+  "font_heading": "", "font_body": "", "radius": "",
+  "layout": { "hero": "split", "benefits": "lista_numerada", "pricing": "comparativa" }
+}

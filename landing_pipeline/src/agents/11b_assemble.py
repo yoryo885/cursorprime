@@ -1,4 +1,4 @@
-"""11b — Ensambla landing.html con Jinja2. SIN LLM."""
+"""11b — Ensambla landing.html con Jinja2 + variantes. SIN LLM."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from src.sections import SECTION_ORDER, SECTION_TEMPLATE
+from src.sections import SECTION_ORDER, resolve_template
 from src.text_utils import public_name, propuesta
 
 TEMPLATES_DIR = Path(__file__).resolve().parents[1] / "templates"
@@ -20,14 +20,10 @@ def _font_url(family: str) -> str:
 
 
 def run(input: dict[str, Any]) -> dict[str, Any]:
-    """
-    Puro ensamblado determinístico.
-    NO importa ni llama a llm_client.
-    Cada sección de SECTION_ORDER se renderiza a lo sumo una vez.
-    """
     brief = input.get("brief") or {}
     copy = input.get("copy") or {}
     tokens = input.get("tokens") or {}
+    layout = tokens.get("layout") or {}
 
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
@@ -38,6 +34,7 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
     ctx_base = {
         "nombre": nombre,
         "tokens": tokens,
+        "layout": layout,
         "hero": copy.get("hero") or {},
         "social": copy.get("social_proof") or {},
         "problem": copy.get("problem") or {},
@@ -52,15 +49,16 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
     parts: list[str] = []
     included: list[str] = []
     omitted: list[str] = []
+    used_templates: dict[str, str] = {}
 
     for sec in SECTION_ORDER:
-        # Omitir testimonios si marcado
         if sec == "testimonials":
             t = copy.get("testimonials") or {}
             if t.get("omitida") or not (t.get("items") or []):
                 omitted.append(sec)
                 continue
-        tpl_name = SECTION_TEMPLATE[sec]
+        tpl_name = resolve_template(sec, layout)
+        used_templates[sec] = tpl_name
         html_part = env.get_template(tpl_name).render(**ctx_base).strip()
         if not html_part:
             omitted.append(sec)
@@ -78,7 +76,6 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         body="\n".join(parts),
     )
 
-    # Red de seguridad: ninguna data-section más de una vez
     for sec in SECTION_ORDER:
         count = len(re.findall(rf'data-section="{sec}"', page))
         if sec in omitted:
@@ -90,5 +87,6 @@ def run(input: dict[str, Any]) -> dict[str, Any]:
         "html": page,
         "included": included,
         "omitted": omitted,
+        "templates_used": used_templates,
         "path_hint": "landing.html",
     }
