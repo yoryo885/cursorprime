@@ -130,5 +130,71 @@
     "step": "11_qa",
     "notes": "ok",
     "at": "2026-07-20T14:16:51.809725+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.622312+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.622864+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.623248+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.623678+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.624106+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.624583+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.625065+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.625495+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.625958+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.626517+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.627105+00:00"
   }
 ]
