@@ -1,7 +1,7 @@
 # Landing brief — Vértice Pro
 
 - **Estilo:** tienda
-- **Paleta:** Editorial (neutro/A)
+- **Paleta:** Editorial carbón (neutro/A)
 - **Promesa:** Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional
 - **CTA:** Ver colección
 - **Productos en catálogo:** 6

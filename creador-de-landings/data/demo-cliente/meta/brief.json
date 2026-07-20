@@ -8,11 +8,12 @@
   "tono": "editorial",
   "estilo": "tienda",
   "paleta": {
-    "nombre": "Editorial",
-    "ink": "#0f1419",
-    "paper": "#f7f4ef",
-    "accent": "#1a1a1a",
-    "muted": "#8a847c",
+    "nombre": "Editorial carbón",
+    "ink": "#1b222c",
+    "paper": "#f4f1ec",
+    "accent": "#2a3544",
+    "muted": "#7a847c",
+    "hero": "#1b222c",
     "id": "A",
     "clima": "neutro"
   },

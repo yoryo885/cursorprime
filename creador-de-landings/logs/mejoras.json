@@ -57,6 +57,13 @@
       "mensaje": "las preguntas que lleven respuestas a b c d",
       "cambio": "entrevista v3 solo letras A/B/C/D + CLI responder",
       "aplicado": true
+    },
+    {
+      "id": "m009",
+      "at": "2026-07-20T01:49:43.389742+00:00",
+      "mensaje": "color negro no gusta; carrusel roles 5s con flechas como la imagen",
+      "cambio": "paleta carbón navy #1b222c + carrusel roles auto 5s con flechas/dots",
+      "aplicado": true
     }
   ]
 }

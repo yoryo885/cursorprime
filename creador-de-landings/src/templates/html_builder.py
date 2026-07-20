@@ -31,11 +31,15 @@ def _fonts() -> str:
 
 def _palette_vars(b: dict) -> str:
     p = b.get("paleta") or {}
-    ink = p.get("ink") or "#0f1419"
-    paper = p.get("paper") or "#f7f4ef"
-    accent = p.get("accent") or ink
-    muted = p.get("muted") or "#8a847c"
-    return f"--ink:{ink}; --paper:{paper}; --accent:{accent}; --muted:{muted};"
+    ink = p.get("ink") or "#1b222c"
+    paper = p.get("paper") or "#f4f1ec"
+    accent = p.get("accent") or "#2a3544"
+    muted = p.get("muted") or "#7a847c"
+    hero = p.get("hero") or ink
+    return (
+        f"--ink:{ink}; --paper:{paper}; --accent:{accent}; --muted:{muted}; "
+        f"--hero:{hero};"
+    )
 
 
 def _catalog_block(b: dict) -> str:
@@ -273,6 +277,56 @@ def _tpl_tienda(b: dict) -> str:
     disponible = next((p for p in productos if p.get("disponible")), None)
     spotlight = (disponible or {}).get("titulo") or ""
 
+    # Slides por rol: disponibles / próximamente (carrusel hero)
+    role_slides = []
+    for r in roles:
+        slug = r.get("slug")
+        guías_rol = [p for p in productos if p.get("rol") == slug]
+        d = sum(1 for p in guías_rol if p.get("disponible"))
+        pr = len(guías_rol) - d
+        if not guías_rol:
+            continue
+        role_slides.append(
+            {
+                "slug": slug,
+                "nombre": r.get("nombre"),
+                "disp": d,
+                "prox": pr,
+                "guia": next((p.get("titulo") for p in guías_rol if p.get("disponible")), guías_rol[0].get("titulo")),
+            }
+        )
+    # slide resumen al inicio
+    slides_data = [
+        {
+            "slug": "todos",
+            "nombre": "Toda la colección",
+            "disp": n_disp,
+            "prox": n_prox,
+            "guia": spotlight or "Guías libro × rol",
+        },
+        *role_slides,
+    ]
+    slides_html = []
+    dots_html = []
+    for i, s in enumerate(slides_data):
+        active = " is-active" if i == 0 else ""
+        disp_label = "disponible" if s["disp"] == 1 else "disponibles"
+        slides_html.append(
+            f"""
+        <div class="role-slide{active}" data-slide="{i}" data-rol-slide="{_e(s['slug'])}" aria-hidden="{'false' if i == 0 else 'true'}">
+          <div class="slide-left">
+            <p class="slide-count">{s['disp']} {disp_label}</p>
+            <p class="slide-prox">+ {s['prox']} próximamente</p>
+            <p class="slide-role">{_e(s['nombre'])}</p>
+            <p class="slide-guia">{_e(s.get('guia') or '')}</p>
+          </div>
+          <p class="slide-right">COLECCIÓN</p>
+        </div>"""
+        )
+        dots_html.append(
+            f'<button type="button" class="role-dot{active}" data-dot="{i}" aria-label="Rol {i+1}"></button>'
+        )
+
     nav = [
         '<a href="#guias">Colección</a>',
         '<a href="#calidad">Calidad</a>',
@@ -354,7 +408,7 @@ def _tpl_tienda(b: dict) -> str:
     * {{ box-sizing:border-box; margin:0; }}
     body {{ font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }}
     .announce {{
-      background:var(--ink); color:var(--paper); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--hero); color:#f0ebe3; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
       text-align:center; padding:10px var(--pad);
     }}
     .top {{
@@ -370,34 +424,76 @@ def _tpl_tienda(b: dict) -> str:
     .nav a {{ color:var(--muted); text-decoration:none; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }}
     .nav a:hover {{ color:var(--ink); }}
     .hero-nuevo {{
-      min-height:min(88svh,760px); display:grid; grid-template-columns:1.1fr .9fr; gap:0;
+      min-height:min(88svh,760px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
       background:
-        linear-gradient(120deg, rgba(12,14,18,.92) 0%, rgba(12,14,18,.4) 55%, rgba(12,14,18,.18) 100%),
-        radial-gradient(ellipse at 75% 35%, #314155 0%, #12151a 70%);
-      color:#fff; animation: rise .85s ease both;
+        linear-gradient(115deg, color-mix(in srgb, var(--hero) 96%, #fff) 0%,
+          color-mix(in srgb, var(--hero) 88%, #3a4555) 45%,
+          color-mix(in srgb, var(--hero) 92%, #4a5565) 100%);
+      color:#e8e4dc; animation: rise .85s ease both;
     }}
     @keyframes rise {{ from {{ opacity:0; transform:translateY(12px); }} to {{ opacity:1; transform:none; }} }}
     .hero-copy {{ padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:36rem; }}
-    .eyebrow {{ font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:14px; }}
+    .eyebrow {{ font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,228,220,.65); margin-bottom:14px; }}
     .hero-copy .brand-hero {{
       font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.18em; font-weight:600;
-      font-size:clamp(2.2rem,5.5vw,3.6rem); margin-bottom:14px; color:#fff;
+      font-size:clamp(2.2rem,5.5vw,3.6rem); margin-bottom:14px; color:#f0ebe3;
     }}
     .hero-copy h1 {{
       font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
       font-size:clamp(1.35rem,2.8vw,1.75rem); max-width:22ch; margin-bottom:14px; line-height:1.2;
+      color:#f0ebe3;
     }}
-    .hero-copy .sub {{ color:rgba(255,255,255,.8); margin-bottom:14px; max-width:42ch; font-size:.98rem; }}
+    .hero-copy .sub {{ color:rgba(232,228,220,.82); margin-bottom:14px; max-width:42ch; font-size:.98rem; }}
     .hero-copy .badge-q {{
-      font-size:.72rem; letter-spacing:.06em; color:rgba(255,255,255,.7); margin-bottom:18px; max-width:40ch;
+      font-size:.72rem; letter-spacing:.06em; color:rgba(232,228,220,.68); margin-bottom:18px; max-width:40ch;
     }}
-    .hero-copy .price-lg {{ font-size:1.05rem; font-weight:600; margin-bottom:20px; }}
-    .spotlight {{ margin-top:18px; font-size:.85rem; color:rgba(255,255,255,.72); max-width:40ch; }}
+    .hero-copy .price-lg {{ font-size:1.05rem; font-weight:600; margin-bottom:20px; color:#f0ebe3; }}
+    .spotlight {{ margin-top:18px; font-size:.85rem; color:rgba(232,228,220,.7); max-width:40ch; }}
     .hero-visual {{
-      display:flex; align-items:center; justify-content:center; padding:var(--pad);
-      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.1em; font-size:clamp(1.2rem,2.6vw,1.7rem);
-      color:rgba(255,255,255,.38); text-align:center; line-height:1.4;
+      position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:clamp(32px,6vw,56px) var(--pad); min-height:320px;
+      background:
+        radial-gradient(ellipse at 50% 45%, #2a3340 0%, var(--hero) 70%);
     }}
+    .role-carousel {{ position:relative; width:min(100%,420px); min-height:220px; }}
+    .role-slide {{
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; gap:20px;
+      opacity:0; transform:translateY(10px); transition:opacity .55s ease, transform .55s ease;
+      pointer-events:none; padding:8px;
+    }}
+    .role-slide.is-active {{ opacity:1; transform:none; pointer-events:auto; }}
+    .slide-left {{ text-align:left; }}
+    .slide-count {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.5rem,3vw,2rem);
+      color:#d8d2c8; font-weight:500; line-height:1.15; letter-spacing:.02em;
+    }}
+    .slide-prox {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.5rem,3vw,2rem);
+      color:#d8d2c8; font-weight:500; line-height:1.15; margin-top:4px;
+    }}
+    .slide-role {{
+      margin-top:18px; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(216,210,200,.55);
+    }}
+    .slide-guia {{ margin-top:6px; font-size:.8rem; color:rgba(216,210,200,.45); max-width:22ch; line-height:1.35; }}
+    .slide-right {{
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.1rem,2.2vw,1.45rem);
+      letter-spacing:.22em; color:rgba(216,210,200,.42); writing-mode:horizontal-tb; align-self:center;
+    }}
+    .carousel-nav {{
+      display:flex; align-items:center; justify-content:center; gap:16px; margin-top:28px; width:100%;
+    }}
+    .carousel-btn {{
+      width:42px; height:42px; border:1px solid rgba(216,210,200,.35); background:transparent;
+      color:#d8d2c8; font-size:1.2rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
+      transition:border-color .2s, background .2s;
+    }}
+    .carousel-btn:hover {{ border-color:rgba(216,210,200,.7); background:rgba(255,255,255,.04); }}
+    .role-dots {{ display:flex; gap:8px; align-items:center; }}
+    .role-dot {{
+      width:7px; height:7px; border-radius:50%; border:none; padding:0; cursor:pointer;
+      background:rgba(216,210,200,.28);
+    }}
+    .role-dot.is-active {{ background:#d8d2c8; }}
     .btn {{
       display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
       background:var(--accent); color:#fff; font-size:.72rem; font-weight:600; letter-spacing:.12em;
@@ -437,17 +533,17 @@ def _tpl_tienda(b: dict) -> str:
     details p {{ margin-top:8px; color:var(--muted); font-size:.92rem; }}
     .news {{
       text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
-      background:var(--ink); color:var(--paper);
+      background:var(--hero); color:#f0ebe3;
     }}
-    .news h2 {{ color:var(--paper); }}
-    .news p {{ color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:38ch; margin:0 auto 20px; }}
-    .news .btn {{ background:var(--paper); color:var(--ink); }}
+    .news h2 {{ color:#f0ebe3; }}
+    .news p {{ color:rgba(240,235,227,.72); max-width:38ch; margin:0 auto 20px; }}
+    .news .btn {{ background:#f0ebe3; color:var(--ink); }}
     footer {{ text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }}
     .card-sub {{ font-size:.78rem; color:var(--muted); line-height:1.4; margin-bottom:12px; min-height:2.6em; }}
     {_catalog_css()}
     @media (max-width:860px) {{
       .hero-nuevo {{ grid-template-columns:1fr; min-height:auto; }}
-      .hero-visual {{ min-height:200px; order:-1; }}
+      .hero-visual {{ min-height:280px; order:-1; }}
     }}
   </style>
 </head>
@@ -469,7 +565,16 @@ def _tpl_tienda(b: dict) -> str:
       <a class="btn" href="#guias">{_e(cta)}</a>
       {spotlight_html}
     </div>
-    <div class="hero-visual">{n_disp} disponible<br/>+ {n_prox} próximamente<br/><span style="font-size:.85em;letter-spacing:.16em">COLECCIÓN</span></div>
+    <div class="hero-visual" id="roleHero">
+      <div class="role-carousel" id="roleCarousel" aria-roledescription="carrusel" aria-label="Roles de la colección">
+        {"".join(slides_html)}
+      </div>
+      <div class="carousel-nav">
+        <button type="button" class="carousel-btn" id="rolePrev" aria-label="Rol anterior">‹</button>
+        <div class="role-dots" id="roleDots">{"".join(dots_html)}</div>
+        <button type="button" class="carousel-btn" id="roleNext" aria-label="Rol siguiente">›</button>
+      </div>
+    </div>
   </section>
 
   <section id="calidad">
@@ -531,6 +636,38 @@ def _tpl_tienda(b: dict) -> str:
     document.querySelectorAll('[data-nav-rol]').forEach(a => {{
       a.addEventListener('click', (e) => {{ e.preventDefault(); filter(a.dataset.navRol); location.hash = 'guias'; }});
     }});
+
+    // Carrusel de roles: auto 5s + flechas
+    const slides = Array.from(document.querySelectorAll('.role-slide'));
+    const dots = Array.from(document.querySelectorAll('.role-dot'));
+    const prev = document.getElementById('rolePrev');
+    const next = document.getElementById('roleNext');
+    if (!slides.length) return;
+    let idx = 0;
+    let timer = null;
+    const INTERVAL = 5000;
+
+    const show = (n) => {{
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {{
+        const on = i === idx;
+        s.classList.toggle('is-active', on);
+        s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      }});
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+      const slug = slides[idx].dataset.rolSlide;
+      if (slug && slug !== 'todos') filter(slug);
+    }};
+    const restart = () => {{
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => show(idx + 1), INTERVAL);
+    }};
+    prev && prev.addEventListener('click', () => {{ show(idx - 1); restart(); }});
+    next && next.addEventListener('click', () => {{ show(idx + 1); restart(); }});
+    dots.forEach(d => d.addEventListener('click', () => {{
+      show(Number(d.dataset.dot) || 0); restart();
+    }}));
+    restart();
   }})();
   </script>
 </body>

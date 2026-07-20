@@ -191,9 +191,9 @@
       "C": { "nombre": "Noche clara", "ink": "#101820", "paper": "#f0f3f7", "accent": "#264653", "muted": "#6b7280" }
     },
     "neutro": {
-      "A": { "nombre": "Editorial", "ink": "#0f1419", "paper": "#f7f4ef", "accent": "#1a1a1a", "muted": "#8a847c" },
-      "B": { "nombre": "Galería", "ink": "#14110f", "paper": "#faf6f0", "accent": "#2a2520", "muted": "#6a635c" },
-      "C": { "nombre": "Lino", "ink": "#161412", "paper": "#f5f2ec", "accent": "#3a342c", "muted": "#7a746c" }
+      "A": { "nombre": "Editorial carbón", "ink": "#1b222c", "paper": "#f4f1ec", "accent": "#2a3544", "muted": "#7a847c", "hero": "#1b222c" },
+      "B": { "nombre": "Galería", "ink": "#243038", "paper": "#f7f4ef", "accent": "#3d4f5c", "muted": "#6a737c", "hero": "#20252f" },
+      "C": { "nombre": "Lino", "ink": "#2a3038", "paper": "#f5f2ec", "accent": "#3a424c", "muted": "#7a746c", "hero": "#252b33" }
     },
     "oscuro": {
       "A": { "nombre": "Carbón", "ink": "#f4f0ea", "paper": "#12151a", "accent": "#d4c4a8", "muted": "#9a948a" },
