@@ -1,12 +1,12 @@
 {
-  "version": 17,
+  "version": 18,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Sistema creador de landings",
-    "version": 2,
-    "ultima_mejora": "catálogo multi-producto + aprendizaje continuo",
+    "version": 3,
+    "ultima_mejora": "entrega visual obligatoria (URL + screenshots)",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }

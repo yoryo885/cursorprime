@@ -30,7 +30,11 @@
     {
       "fecha": "2026-07-20",
       "texto": "Prompt v5: garantía bajo precio, FAQ riesgo, CTA×3, social proof verificable"
+    },
+    {
+      "fecha": "2026-07-23",
+      "texto": "Pedido: mandar HTML de nuevo en formato visual (URL/capturas), no código fuente"
     }
   ],
-  "notas": "v5 conversión sobre assemble Jinja. Mostrar siempre URL/screenshot."
+  "notas": "v7: entrega SIEMPRE visual (URL + screenshots), NUNCA pegar HTML en chat."
 }
