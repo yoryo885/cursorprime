@@ -1,0 +1,31 @@
+{
+  "escenas": [
+    {
+      "id": 1,
+      "titulo": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+      "texto_guion": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre El principio de Pareto. Esta guía te da enfocarte en el 20% que mueve el 80% de tus resultados sin relleno.",
+      "start_frame_prompt": "Start frame, papel-sketch style, scene: Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre El pr, illustration, clean composition, no text, square",
+      "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre El pr, no text, square",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+      "slug": "si_el_principio_de_pareto_te_abruma_est",
+      "archivo_inicio": "01-si_el_principio_de_pareto_te_abruma_est-inicio.png",
+      "archivo_fin": "01-si_el_principio_de_pareto_te_abruma_est-fin.png",
+      "archivo_clip": "01-si_el_principio_de_pareto_te_abruma_est.mp4"
+    },
+    {
+      "id": 2,
+      "titulo": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+      "texto_guion": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o delega lo que no mueve la aguja 3. Revisa semanalmente tu 20% prioritario",
+      "start_frame_prompt": "Start frame, papel-sketch style, scene: 1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o delega lo que no mueve la aguja 3. Revisa , illustration, clean composition, no text, square",
+      "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: 1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o delega lo que no mueve la aguja 3. Revisa , no text, square",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: 1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+      "slug": "1_identifica_las_pocas_causas_que_gener",
+      "archivo_inicio": "02-1_identifica_las_pocas_causas_que_gener-inicio.png",
+      "archivo_fin": "02-1_identifica_las_pocas_causas_que_gener-fin.png",
+      "archivo_clip": "02-1_identifica_las_pocas_causas_que_gener.mp4"
+    }
+  ],
+  "count": 2,
+  "modo_video": "animado",
+  "generado_at": "2026-07-19T21:14:57.643713+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "videos": [
+    {
+      "escena_id": 1,
+      "archivo": "01-si_el_principio_de_pareto_te_abruma_est.mp4",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/videos/clips/01-si_el_principio_de_pareto_te_abruma_est.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "escena_id": 2,
+      "archivo": "02-1_identifica_las_pocas_causas_que_gener.mp4",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/videos/clips/02-1_identifica_las_pocas_causas_que_gener.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "archivo": "demo_promo_guia.mp4",
+      "path": "/workspace/creador de contenido/data/demo_promo_guia/videos/demo_promo_guia.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "tipo": "final",
+      "escenas": 2,
+      "generado_at": "2026-07-19T21:14:58.578449+00:00"
+    }
+  ],
+  "count": 2,
+  "modo": "animado",
+  "final": "/workspace/creador de contenido/data/demo_promo_guia/videos/demo_promo_guia.mp4"
+}

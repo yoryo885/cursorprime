@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "pipeline": [
+    {"id": 0, "slug": "00_extract_fuente", "agente": "ExtractFuente", "skill": "extract_fuente_skill.md", "nota": "solo lectura"},
+    {"id": 1, "slug": "01_trend_research", "agente": "TrendResearch"},
+    {"id": 2, "slug": "02_hook", "agente": "Hook", "skill": "hook_skill.md"},
+    {"id": 3, "slug": "03_script", "agente": "Script", "skill": "script_skill.md"},
+    {"id": 4, "slug": "04_pattern_interrupts", "agente": "PatternInterrupts", "skill": "pattern_interrupt_skill.md"},
+    {"id": 5, "slug": "05_onscreen_text", "agente": "OnscreenText", "skill": "onscreen_text_skill.md"},
+    {"id": 6, "slug": "06_cta", "agente": "CTA", "skill": "cta_skill.md"},
+    {"id": 7, "slug": "07_loop", "agente": "Loop", "skill": "loop_skill.md"},
+    {"id": 8, "slug": "08_audio", "agente": "Audio", "skill": "audio_skill.md"},
+    {"id": 9, "slug": "09_caption_hashtags", "agente": "CaptionHashtags", "skill": "caption_hashtags_skill.md"},
+    {"id": 10, "slug": "10_shotlist", "agente": "Shotlist"},
+    {"id": 11, "slug": "11_qa", "agente": "QA", "skill": "qa_checklist_skill.md"}
+  ]
+}

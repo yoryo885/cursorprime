@@ -1,16 +1,27 @@
 {
-  "version": 2,
+  "version": 3,
   "proyecto": "creador-de-contenido",
   "integracion_externa": {
     "habilitada": false,
-    "nota": "Hooks preparados para conectar otros proyectos en el futuro. Por defecto apagado."
+    "nota": "Skills de redes viven como agentes en el pipeline; chat skills siguen siendo capa de refinamiento."
   },
   "reglas": [
     "Cada salida (png/gif/video/pdf) funciona sola o combinada",
+    "El Planner activa agentes/skills según la receta del video (no todo corre siempre)",
     "Video y PDF consumen PNG internamente — no proyectos externos",
-    "MOCK_GENERATE=true en MVP; IA real pendiente V1",
-    "INTEGRACION_EXTERNA=false por defecto"
+    "promo-guia: hook → guion → escenas → video → captions → thumbnail",
+    "MOCK_GENERATE=true y MOCK_KLING=true en MVP",
+    "INTEGRACION_EXTERNA=false por defecto",
+    "No inventar métricas; marcar confidence bajo si el copy es heurístico"
   ],
+  "skills_por_agente": {
+    "hook": "hooks-redes",
+    "guion": "guion-a-video",
+    "captions": "captions-redes",
+    "thumbnail": "thumbnail-social",
+    "escenas": "guion-a-video",
+    "video": "guion-a-video"
+  },
   "estilos": {
     "yordy-minimal": {
       "descripcion": "Flat, líneas limpias, fondo claro, acento verde",
@@ -19,6 +30,10 @@
     "yordy-dark": {
       "descripcion": "Fondo oscuro, alto contraste",
       "palette": ["#0d0d0d", "#e94560", "#ffffff"]
+    },
+    "papel-sketch": {
+      "descripcion": "Ilustración estilo papel / sketch para video",
+      "palette": ["#f7f3e9", "#2c2c2c", "#c4a35a"]
     }
   }
 }

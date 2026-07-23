@@ -1,0 +1,344 @@
+[
+  {
+    "slug": "demo_pareto",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.639873+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.640540+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.641110+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.641754+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.642456+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.643255+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.643885+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.644505+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.645341+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.646590+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:22.647816+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.804818+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.805279+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.805632+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.805972+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.806377+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.806809+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.807845+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.808280+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.808716+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.809229+00:00"
+  },
+  {
+    "slug": "demo_pareto",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-20T14:16:51.809725+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.622312+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.622864+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.623248+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.623678+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.624106+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.624583+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.625065+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.625495+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.625958+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.626517+00:00"
+  },
+  {
+    "slug": "demo_guia_pareto",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-20T14:21:54.627105+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "00_extract_fuente",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.124495+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.125835+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.126754+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.127691+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.128601+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.129507+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.130361+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.131139+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.131936+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.132873+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.134355+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.135863+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "00_extract_fuente",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.023413+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.024199+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.024774+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.026051+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.026719+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.027406+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.028015+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.028614+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.029220+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.029898+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.030633+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.031355+00:00"
+  }
+]

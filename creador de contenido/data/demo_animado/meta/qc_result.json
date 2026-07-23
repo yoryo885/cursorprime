@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "passed": [
+    "01-muchos_emprendedores_quieren_conectar_ch-inicio.png",
+    "01-muchos_emprendedores_quieren_conectar_ch-fin.png",
+    "02-luego_conectas_la_api_de_whatsapp_busine-inicio.png",
+    "02-luego_conectas_la_api_de_whatsapp_busine-fin.png",
+    "01-muchos_emprendedores_quieren_conectar_ch.mp4",
+    "02-luego_conectas_la_api_de_whatsapp_busine.mp4",
+    "demo_animado.mp4"
+  ],
+  "issues": [],
+  "salidas": [
+    "png",
+    "video"
+  ],
+  "receta": "animado",
+  "agentes": [
+    "planner",
+    "prompt",
+    "context",
+    "escenas",
+    "qc",
+    "video",
+    "style",
+    "packager",
+    "png"
+  ]
+}

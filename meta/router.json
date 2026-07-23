@@ -72,7 +72,7 @@
       "id": "video-guion",
       "priority": 90,
       "match": {
-        "any": ["video", "guion", "guión", "animado", "mp4", "escena", "slideshow", "kling", "clip"],
+        "any": ["video", "guion", "guión", "animado", "mp4", "escena", "slideshow", "kling", "clip", "promo-guia", "promo guia", "receta video", "sistema de video"],
         "none": ["evaluar", "viabilidad", "negocio", "linkedin", "post"]
       },
       "skill": "guion-a-video",
@@ -80,8 +80,9 @@
       "prompt": { "tipo": "animacion", "proyecto_destino": "creador-de-contenido", "auto": true },
       "pipeline": {
         "cwd": "creador de contenido",
-        "cmd": "python3 creador_imagenes_main.py --slug {slug} --modo video"
-      }
+        "cmd": "python3 creador_imagenes_main.py --slug {slug} --receta promo-guia"
+      },
+      "nota": "Recetas: slideshow|animado|promo-guia|reels-pack. Planner activa agentes/skills según necesidad."
     },
     {
       "id": "imagenes-lote",
@@ -198,17 +199,33 @@
       }
     },
     {
+      "id": "tiktok-pipeline",
+      "priority": 91,
+      "match": {
+        "any": ["tiktok pipeline", "pipeline tiktok", "guion tiktok", "shotlist", "pattern interrupt", "contenido viral tiktok", "agentes tiktok"],
+        "none": ["linkedin", "evaluar idea", "kdp"]
+      },
+      "skill": "hooks-redes",
+      "proyecto": "tiktok-pipeline",
+      "prompt": { "tipo": "copy", "proyecto_destino": "tiktok-pipeline", "auto": false },
+      "pipeline": {
+        "cwd": "tiktok_pipeline",
+        "cmd": "python3 tiktok_main.py --fuente \"{fuente}\" --tema \"{texto}\" --reset-checkpoint"
+      },
+      "nota": "Aparte de libros a entender. --fuente solo lectura → ideas centrales → shotlist. No modifica PDF."
+    },
+    {
       "id": "contenido-redes",
       "priority": 84,
       "match": {
         "any": ["hook", "gancho", "reels", "shorts", "tiktok", "caption", "thumbnail", "miniatura", "faceless", "redes sociales", "instagram reel"],
-        "none": ["linkedin", "evaluar", "kdp", "libro editorial"]
+        "none": ["linkedin", "evaluar", "kdp", "libro editorial", "pipeline tiktok", "shotlist"]
       },
       "skill": "hooks-redes",
       "proyecto": "creador-de-contenido",
       "prompt": { "tipo": "copy", "proyecto_destino": "creador-de-contenido", "auto": false },
       "pipeline": null,
-      "nota": "Encadenar hooks-redes → guion-a-video → captions-redes → thumbnail-social según pedido"
+      "nota": "Encadenar hooks-redes → guion-a-video → captions-redes → thumbnail-social según pedido. Para pipeline completo: tiktok_pipeline/"
     },
     {
       "id": "gestion-proyecto-route",

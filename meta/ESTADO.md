@@ -11,7 +11,12 @@ Referencia rápida para agentes y usuarios: qué está listo y qué falta.
 - [x] Skill `guion-a-video` instalado
 - [x] Pipeline `creador de contenido/creador_imagenes_main.py`
 - [x] Demos (`demo_animado`, `demo_slideshow`, `demo_full`, `demo_lote`)
+- [x] Sistema por recetas: `PlannerAgent` + `meta/recetas.json` (slideshow / animado / promo-guia / reels-pack)
+- [x] Agentes copy condicionales: hook, guion, captions, thumbnail (skills embebidas)
+- [x] Demo `demo_promo_guia` (promo de guía PDF end-to-end mock)
+- [x] **tiktok_pipeline/** — 11 agentes + 9 skills; demo `output/demo_pareto/shotlist.md` (MOCK_LLM)
 - [ ] Video animado con API Kling real (requiere `.env`; mock: `MOCK_KLING=true`)
+- [ ] TikTok LLM real (`MOCK_LLM=false` + `ANTHROPIC_API_KEY`)
 
 ### Libro o PDF — resumen, listing KDP
 

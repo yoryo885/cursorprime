@@ -62,13 +62,16 @@ class EscenasAgent:
         estilo = context.get("estilo", "yordy-minimal")
         limit = int(video_cfg.get("limit_escenas") or MAX_ESCENAS_DEFAULT)
 
+        guion_meta = load_json(ctx.paths.get("guion"), {}) if ctx.paths.get("guion") else {}
+        guion_texto = raw.get("guion") or (guion_meta or {}).get("guion") or context.get("guion") or ""
+
         if raw.get("escenas"):
             escenas = raw["escenas"][:limit]
-        elif raw.get("guion"):
-            textos = _split_guion(raw["guion"], limit)
+        elif guion_texto:
+            textos = _split_guion(str(guion_texto), limit)
             escenas = [_build_escena(i + 1, t, estilo) for i, t in enumerate(textos)]
         else:
-            return AgentResult(ok=False, notes="Modo animado requiere guion o escenas en lote.json")
+            return AgentResult(ok=False, notes="Modo animado requiere guion, escenas o agente guion previo")
 
         out = ctx.paths["escenas"]
         payload = {

@@ -1,0 +1,25 @@
+{
+  "slug": "demo_pareto",
+  "last_completed": "11_qa",
+  "updated_at": "2026-07-20T14:16:51.809835+00:00",
+  "keys": [
+    "tema",
+    "nicho",
+    "producto",
+    "slug",
+    "_shotlist_path",
+    "trend",
+    "hooks",
+    "hook_elegido",
+    "script",
+    "pattern_interrupts",
+    "onscreen_text",
+    "cta",
+    "loop",
+    "audio",
+    "caption_hashtags",
+    "shotlist_md",
+    "shotlist_path",
+    "qa"
+  ]
+}
