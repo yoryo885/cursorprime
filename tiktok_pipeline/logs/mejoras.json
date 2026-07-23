@@ -196,5 +196,149 @@
     "step": "11_qa",
     "notes": "ok",
     "at": "2026-07-20T14:21:54.627105+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "00_extract_fuente",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.124495+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.125835+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.126754+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.127691+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.128601+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.129507+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.130361+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.131139+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.131936+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.132873+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.134355+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-23T14:25:59.135863+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "00_extract_fuente",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.023413+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "01_trend_research",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.024199+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "02_hook",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.024774+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "03_script",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.026051+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "04_pattern_interrupts",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.026719+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "05_onscreen_text",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.027406+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "06_cta",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.028015+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "07_loop",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.028614+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "08_audio",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.029220+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "09_caption_hashtags",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.029898+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "10_shotlist",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.030633+00:00"
+  },
+  {
+    "slug": "demo_desde_fuente",
+    "step": "11_qa",
+    "notes": "ok",
+    "at": "2026-07-23T14:26:20.031355+00:00"
   }
 ]

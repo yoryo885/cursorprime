@@ -28,7 +28,19 @@ def run_with_skill(
 
 
 def tema_from(state: dict) -> str:
-    return str(state.get("tema") or state.get("producto") or "productividad")
+    tema = str(state.get("tema") or "").strip()
+    desde_fuente = str(state.get("tema_desde_fuente") or "").strip()
+    if desde_fuente and (not tema or tema in {"desde_fuente", "productividad"}):
+        return desde_fuente
+    return tema or desde_fuente or str(state.get("producto") or "productividad")
+
+
+def ideas_from(state: dict) -> list[str]:
+    ideas = state.get("ideas_centrales") or []
+    if ideas:
+        return [str(x) for x in ideas]
+    fe = state.get("fuente_extract") or {}
+    return [str(x) for x in (fe.get("ideas_centrales") or [])]
 
 
 def nicho_from(state: dict) -> str:

@@ -5,15 +5,20 @@
     "slug": "tiktok-pipeline-agentes",
     "tipo": "copy",
     "proyecto_destino": "tiktok-pipeline",
-    "titulo": "Pipeline de agentes TikTok (prompt PDF)",
-    "version": 1,
-    "ultima_mejora": "Proyecto tiktok_pipeline creado end-to-end desde prompt_pipeline_tiktok PDF"
+    "titulo": "TikTok aparte: pesca ideas del PDF → guion video",
+    "version": 2,
+    "ultima_mejora": "Frontera: no tocar libros/PDF; --fuente solo lectura → ideas_centrales → guion"
   },
   "historial": [
     {
       "version": 1,
       "mensaje": "Realiza ese prompt (PDF pipeline TikTok)",
-      "cambio": "Nuevo slug tiktok-pipeline-agentes; scaffolding 11 agentes + 9 skills + demo_pareto"
+      "cambio": "Proyecto tiktok_pipeline 11 agentes + skills"
+    },
+    {
+      "version": 2,
+      "mensaje": "No modificar sistema ni PDF; pescar ideas y hacer guion aparte",
+      "cambio": "00_extract_fuente + --fuente; script desde ideas centrales"
     }
   ]
 }

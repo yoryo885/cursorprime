@@ -1,23 +1,29 @@
 {
-  "titulo": "Pipeline de agentes para contenido viral TikTok",
+  "titulo": "TikTok pipeline aparte — pesca ideas del PDF sin modificarlo",
   "tipo": "copy",
   "proyecto_destino": "tiktok-pipeline",
   "temas": [
-    "11 agentes secuenciales con skills .md",
-    "Output shotlist.md legible en móvil",
-    "QA checklist de retención"
+    "tiktok_pipeline es un sistema aparte de libros a entender",
+    "No modificar PDF ni resumen generado",
+    "Pescar ideas centrales de la salida y transformarlas en guion de video"
   ],
   "contexto": {
-    "audiencia": "creador de contenido",
-    "tono": "directo LATAM",
+    "audiencia": "operador cursorprime",
+    "tono": "claro y concreto",
+    "estilo": "frontera estricta: solo lectura de fuente → guion nuevo",
     "idioma": "español",
-    "objetivo": "De tema/producto a guion TikTok listo para grabar"
+    "objetivo": "Contenido de video nace de las ideas del PDF/resumen, pero vive en tiktok_pipeline sin tocar el PDF"
   },
-  "fuente": "prompt_pipeline_tiktok_7a6a.pdf",
+  "notas": "CLI: --fuente ruta/al/resumen.md (solo lectura). Agente 00_extract_fuente.",
   "mejoras": [
     {
-      "mensaje": "Realiza ese prompt",
-      "cambio": "Implementación completa tiktok_pipeline + demo Principio de Pareto"
+      "mensaje": "Realiza ese prompt (PDF pipeline TikTok)",
+      "cambio": "Scaffolding 11 agentes + skills"
+    },
+    {
+      "mensaje": "No modificar sistema ni PDF; pescar ideas y hacer guion aparte",
+      "cambio": "Agente 00 extract solo-lectura + --fuente; script/hook usan ideas_centrales"
     }
-  ]
+  ],
+  "variantes": 1
 }

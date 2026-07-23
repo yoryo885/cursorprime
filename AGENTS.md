@@ -10,7 +10,7 @@ Workspace único. Guía de apertura: [COMO_ABRIR.md](./COMO_ABRIR.md)
 | creador de skills | `python3 creador_skills_main.py --slug {slug}` | `usa creador-de-skills` | `catalogo/{slug}.json` | `~/.cursor/skills/{nombre}/` |
 | creador de contenido | `python3 creador_imagenes_main.py --slug {slug} --receta promo-guia` | `usa guion-a-video` | `data/{slug}/inputs/lote.json` (+ `guia` / receta) | `data/{slug}/videos/` · `copy/` · `output/` |
 | redes (hooks/captions/thumb) | chat + pipeline PNG/video | `usa hooks-redes` / `captions-redes` / `thumbnail-social` | brief + guion | PNG + copy |
-| **tiktok_pipeline** | `python3 tiktok_main.py --tema "..."` | `usa hooks-redes` (+ skills internas) | tema + nicho | `output/{slug}/shotlist.md` · `guion.json` · `qa_report.json` |
+| **tiktok_pipeline** | `python3 tiktok_main.py --fuente "…/resumen.md"` | `usa hooks-redes` (+ skills internas) | `--fuente` (solo lectura) o `--tema` | `output/{slug}/shotlist.md` · `guion.json` · `qa_report.json` |
 | buscar skill externa | `npx skills find {query}` | `usa find-skills` | keyword | propuesta install o catálogo |
 | ideas de proyectos | `python3 evaluar.py ideas/{idea}.json` | `usa evaluar-idea` | `ideas/*.json` | `evaluaciones/{slug}/` |
 | project lens | `python3 project_lens_main.py --slug {slug}` | `usa project-lens` | `ideas/*.json` o `data/{slug}/inputs/idea.json` | `data/{slug}/output/` |
@@ -37,7 +37,7 @@ Idea → evaluar-idea → (opcional) project-lens → gestion-proyecto → crear
 PDF libro → resumidor-kdp → KDP listing
 PDF datos → pdf-resumidor → (opcional) project-lens / guion-a-video
 Redes: hooks-redes → guion-a-video → thumbnail-social → captions-redes
-TikTok guion completo: tiktok_pipeline (11 agentes + skills) → shotlist.md
+TikTok guion completo: tiktok_pipeline lee resumen/PDF (solo lectura) → ideas centrales → shotlist.md (aparte de libros a entender)
 Negocio → audit-marketing → landing-lanzamiento → (opcional) contenido redes
 WhatsApp → whatsapp-marketing → evaluar-idea (si SaaS)
 ```

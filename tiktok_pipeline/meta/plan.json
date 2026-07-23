@@ -1,6 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "pipeline": [
+    {"id": 0, "slug": "00_extract_fuente", "agente": "ExtractFuente", "skill": "extract_fuente_skill.md", "nota": "solo lectura"},
     {"id": 1, "slug": "01_trend_research", "agente": "TrendResearch"},
     {"id": 2, "slug": "02_hook", "agente": "Hook", "skill": "hook_skill.md"},
     {"id": 3, "slug": "03_script", "agente": "Script", "skill": "script_skill.md"},

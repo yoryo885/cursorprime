@@ -1,21 +1,29 @@
-# Prompts — Pipeline TikTok
+# Prompts — TikTok pipeline (aparte del PDF)
 
 - **Slug:** tiktok-pipeline-agentes
-- **Proyecto:** tiktok_pipeline
-- **Fuente:** prompt_pipeline_tiktok_7a6a.pdf
+- **Proyecto:** tiktok-pipeline
+
+## Regla de frontera (obligatoria)
+
+1. **No modificar** `libros a entender` ni el PDF/markdown generado.
+2. Este pipeline es **aparte**.
+3. **Sí puede leer** la salida (`resumenes/{slug}/*.md` o `.pdf`) en solo lectura.
+4. **Pesca ideas centrales** → las transforma en hook, guion, shotlist y caption de video.
+5. Todo el contenido nuevo vive en `tiktok_pipeline/output/{slug}/`.
 
 ## Prompt operativo
 
 ```
-Corre el pipeline TikTok:
+Usa tiktok_pipeline (no toques libros a entender).
+
+Pesca ideas del resumen/PDF con --fuente (solo lectura) y genera shotlist:
 
 cd tiktok_pipeline
-MOCK_LLM=true python3 tiktok_main.py --tema "{TEMA}" --nicho "{NICHO}" --reset-checkpoint
+MOCK_LLM=true python3 tiktok_main.py \
+  --fuente "../libros a entender/resumenes/{slug}/{Libro}.md" \
+  --nicho "{audiencia}" \
+  --slug video_{slug} \
+  --reset-checkpoint
 
-Entrega: output/{slug}/shotlist.md (para grabar), guion.json, qa_report.json.
-Cada agente debe haber leído su skill en src/skills/ antes de generar.
+Entrega: output/video_{slug}/shotlist.md + ideas_centrales en guion.json.
 ```
-
-## Demo corrida
-
-Tema: Principio de Pareto · slug: demo_pareto · QA score 100

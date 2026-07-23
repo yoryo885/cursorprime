@@ -25,6 +25,7 @@ CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 DEFAULT_SLUG = os.getenv("DEFAULT_SLUG", "demo_pareto")
 
 AGENT_ORDER = [
+    "00_extract_fuente",
     "01_trend_research",
     "02_hook",
     "03_script",
@@ -39,6 +40,7 @@ AGENT_ORDER = [
 ]
 
 SKILL_MAP = {
+    "00_extract_fuente": "extract_fuente_skill.md",
     "02_hook": "hook_skill.md",
     "03_script": "script_skill.md",
     "04_pattern_interrupts": "pattern_interrupt_skill.md",

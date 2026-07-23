@@ -1,0 +1,29 @@
+{
+  "slug": "demo_desde_fuente",
+  "last_completed": "11_qa",
+  "updated_at": "2026-07-23T14:26:20.031643+00:00",
+  "keys": [
+    "tema",
+    "nicho",
+    "producto",
+    "slug",
+    "fuente",
+    "_shotlist_path",
+    "fuente_extract",
+    "ideas_centrales",
+    "tema_desde_fuente",
+    "trend",
+    "hooks",
+    "hook_elegido",
+    "script",
+    "pattern_interrupts",
+    "onscreen_text",
+    "cta",
+    "loop",
+    "audio",
+    "caption_hashtags",
+    "shotlist_md",
+    "shotlist_path",
+    "qa"
+  ]
+}

@@ -210,9 +210,9 @@
       "prompt": { "tipo": "copy", "proyecto_destino": "tiktok-pipeline", "auto": false },
       "pipeline": {
         "cwd": "tiktok_pipeline",
-        "cmd": "python3 tiktok_main.py --tema \"{texto}\" --reset-checkpoint"
+        "cmd": "python3 tiktok_main.py --fuente \"{fuente}\" --tema \"{texto}\" --reset-checkpoint"
       },
-      "nota": "11 agentes + skills en src/skills/; output/{slug}/shotlist.md"
+      "nota": "Aparte de libros a entender. --fuente solo lectura → ideas centrales → shotlist. No modifica PDF."
     },
     {
       "id": "contenido-redes",

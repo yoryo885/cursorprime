@@ -81,6 +81,7 @@ def run_pipeline(
     slug: str | None = None,
     nicho: str = "productividad",
     producto: str = "",
+    fuente: str = "",
     reset: bool = False,
     solo: str | None = None,
     desde: str | None = None,
@@ -96,6 +97,7 @@ def run_pipeline(
             "nicho": nicho,
             "producto": producto or tema,
             "slug": slug,
+            "fuente": fuente,
         }
     else:
         state = load_json(state_path, {}) or {
@@ -106,8 +108,12 @@ def run_pipeline(
         }
         state["tema"] = tema
         state["nicho"] = nicho
+        if fuente:
+            state["fuente"] = fuente
 
     state["_shotlist_path"] = str(out / "shotlist.md")
+    if fuente:
+        state["fuente"] = fuente
 
     if solo:
         steps = [solo]
@@ -133,6 +139,12 @@ def run_pipeline(
             if not isinstance(result, dict):
                 raise RuntimeError(f"{agent_id} no devolvió dict")
             state.update(result)
+            # Tras pescar la fuente: enriquecer tema sin tocar el PDF
+            if agent_id == "00_extract_fuente":
+                if result.get("tema_desde_fuente") and (
+                    not state.get("tema") or state.get("tema") in {"desde_fuente", "productividad"}
+                ):
+                    state["tema"] = result["tema_desde_fuente"]
             _log_mejora(slug, agent_id, notes="ok")
             _save_checkpoint(slug, agent_id, state)
             persist = {k: v for k, v in state.items() if not k.startswith("_")}

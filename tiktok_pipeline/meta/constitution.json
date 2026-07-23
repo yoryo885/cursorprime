@@ -1,7 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
   "proyecto": "tiktok-pipeline",
   "reglas": [
+    "Aparte de libros a entender: nunca modificar PDF ni markdown fuente",
+    "Solo lectura de --fuente: pescar ideas centrales y transformarlas en guion de video",
     "Cada agente lee su skill .md antes de generar",
     "Contrato run(input: dict) -> dict",
     "Checkpoint para reintentar un solo agente",
