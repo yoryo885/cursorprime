@@ -28,10 +28,14 @@
     {
       "mensaje": "la imagen mock no se parece; primero crea imagen similar a Psicología Invisible (blob characters, pastel, banner título)",
       "cambio": "Estilo visual target: ilustración suave tipo canal educativo faceless; personaje cápsula; pastel; banner tipográfico; NO placeholder amarillo mock"
-    }
+    },
     {
       "mensaje": "esa imagen me gusto ahora dale animacion",
       "cambio": "Animación Ken Burns 7s sobre ref estilo_psico_invisible_pareto.png"
+    },
+    {
+      "mensaje": "puedes hacer que se mueva el que esta sentado",
+      "cambio": "Poses del personaje (pensar → gesticular) + dissolve ~5s"
     }
   ],
   "estilo_visual_target": {
