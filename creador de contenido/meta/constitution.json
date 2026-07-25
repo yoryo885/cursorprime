@@ -12,6 +12,8 @@
     "promo-guia: hook → guion → escenas → video → captions → thumbnail",
     "MOCK_GENERATE=true y MOCK_KLING=true en MVP",
     "MOCK_GENERATE=false usa OpenAI/Replicate; si falla → placeholder (no tumba el lote)",
+    "MOCK_KLING=false usa Kling vía Kie+Cloudinary; si falla → crossfade mock",
+    "AudioAgent: brief de música alineado al hook; mux si lote.audio.bed_path",
     "INTEGRACION_EXTERNA=false por defecto",
     "No inventar métricas; marcar confidence bajo si el copy es heurístico"
   ],

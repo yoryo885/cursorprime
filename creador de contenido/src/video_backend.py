@@ -1,18 +1,26 @@
-"""Backends de video: slideshow (ffmpeg concat) y animado (Kling/mock)."""
+"""Backends de video: slideshow, animado mock (crossfade) y Kling real vía Kie.ai."""
 
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
-MOCK_KLING = os.getenv("MOCK_KLING", "true").lower() in ("1", "true", "yes")
+MOCK_KLING = os.getenv("MOCK_KLING", "true").lower() in ("1", "true", "yes", "on")
 KIE_API_KEY = os.getenv("KIE_API_KEY", "")
-KIE_API_URL = os.getenv(
-    "KIE_API_URL",
-    "https://api.kie.ai/api/v1/jobs/createTask",
-)
+KIE_API_URL = os.getenv("KIE_API_URL", "https://api.kie.ai/api/v1/jobs/createTask")
+KIE_RECORD_URL = os.getenv("KIE_RECORD_URL", "https://api.kie.ai/api/v1/jobs/recordInfo")
+KIE_KLING_MODEL = os.getenv("KIE_KLING_MODEL", "kling-2.6/image-to-video")
+KIE_DURATION = os.getenv("KIE_DURATION", "5")  # 5 | 10
+KIE_POLL_SECONDS = float(os.getenv("KIE_POLL_SECONDS", "4"))
+KIE_POLL_MAX = int(os.getenv("KIE_POLL_MAX", "45"))
+CLOUDINARY_URL = os.getenv("CLOUDINARY_URL", "")  # cloudinary://key:secret@cloud
 
 
 def _ffmpeg() -> str | None:
@@ -44,7 +52,7 @@ def slideshow_from_pngs(png_paths: list[Path], out_mp4: Path, fps: int = 2) -> t
 
 
 def _mock_clip_from_pair(start: Path, end: Path, out_clip: Path, duration: float = 3.0) -> tuple[bool, str]:
-    """Simula Kling: crossfade entre frame inicio y fin."""
+    """Simula Kling: crossfade entre frame inicio y fin (juntar imágenes con movimiento)."""
     ffmpeg = _ffmpeg()
     if not ffmpeg:
         return False, "ffmpeg no instalado"
@@ -68,11 +76,174 @@ def _mock_clip_from_pair(start: Path, end: Path, out_clip: Path, duration: float
     return True, out_clip.name
 
 
+def _parse_cloudinary() -> tuple[str, str, str] | None:
+    """cloudinary://api_key:api_secret@cloud_name"""
+    raw = CLOUDINARY_URL.strip()
+    if not raw.startswith("cloudinary://"):
+        return None
+    try:
+        rest = raw[len("cloudinary://") :]
+        creds, cloud = rest.split("@", 1)
+        key, secret = creds.split(":", 1)
+        return key, secret, cloud
+    except ValueError:
+        return None
+
+
+def upload_public_url(image_path: Path) -> str:
+    """Sube PNG a Cloudinary y devuelve URL pública HTTPS."""
+    parsed = _parse_cloudinary()
+    if not parsed:
+        raise RuntimeError("CLOUDINARY_URL no configurada (cloudinary://key:secret@cloud)")
+    api_key, api_secret, cloud = parsed
+    boundary = "----CursorPrimeForm"
+    data = image_path.read_bytes()
+    parts = []
+    for name, value in (("file", None), ("api_key", api_key), ("upload_preset", None)):
+        pass
+    # Signed upload with timestamp + signature would need hashlib; use unsigned if preset set
+    upload_preset = os.getenv("CLOUDINARY_UPLOAD_PRESET", "")
+    if upload_preset:
+        body = (
+            f"--{boundary}\r\n"
+            f'Content-Disposition: form-data; name="file"; filename="{image_path.name}"\r\n'
+            f"Content-Type: image/png\r\n\r\n"
+        ).encode() + data + (
+            f"\r\n--{boundary}\r\n"
+            f'Content-Disposition: form-data; name="upload_preset"\r\n\r\n{upload_preset}\r\n'
+            f"--{boundary}--\r\n"
+        ).encode()
+        url = f"https://api.cloudinary.com/v1_1/{cloud}/image/upload"
+        req = urllib.request.Request(
+            url,
+            data=body,
+            headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+        secure = payload.get("secure_url") or payload.get("url")
+        if not secure:
+            raise RuntimeError(f"Cloudinary sin URL: {payload}")
+        return secure
+
+    # Signed basic upload
+    import hashlib
+    import time as _t
+
+    timestamp = str(int(_t.time()))
+    to_sign = f"timestamp={timestamp}{api_secret}"
+    signature = hashlib.sha1(to_sign.encode()).hexdigest()
+    body = (
+        f"--{boundary}\r\n"
+        f'Content-Disposition: form-data; name="file"; filename="{image_path.name}"\r\n'
+        f"Content-Type: image/png\r\n\r\n"
+    ).encode() + data + (
+        f"\r\n--{boundary}\r\n"
+        f'Content-Disposition: form-data; name="api_key"\r\n\r\n{api_key}\r\n'
+        f"--{boundary}\r\n"
+        f'Content-Disposition: form-data; name="timestamp"\r\n\r\n{timestamp}\r\n'
+        f"--{boundary}\r\n"
+        f'Content-Disposition: form-data; name="signature"\r\n\r\n{signature}\r\n'
+        f"--{boundary}--\r\n"
+    ).encode()
+    url = f"https://api.cloudinary.com/v1_1/{cloud}/image/upload"
+    req = urllib.request.Request(
+        url,
+        data=body,
+        headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    secure = payload.get("secure_url") or payload.get("url")
+    if not secure:
+        raise RuntimeError(f"Cloudinary sin URL: {payload}")
+    return secure
+
+
+def _kie_headers() -> dict:
+    return {
+        "Authorization": f"Bearer {KIE_API_KEY}",
+        "Content-Type": "application/json",
+    }
+
+
+def _kie_create(image_url: str, prompt: str) -> str:
+    body = {
+        "model": KIE_KLING_MODEL,
+        "input": {
+            "prompt": (prompt or "Subtle cinematic motion")[:1000],
+            "image_urls": [image_url],
+            "sound": False,
+            "duration": KIE_DURATION if KIE_DURATION in ("5", "10") else "5",
+        },
+    }
+    req = urllib.request.Request(
+        KIE_API_URL,
+        data=json.dumps(body).encode("utf-8"),
+        headers=_kie_headers(),
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    task_id = (payload.get("data") or {}).get("taskId") or payload.get("taskId")
+    if not task_id:
+        raise RuntimeError(f"Kie createTask sin taskId: {payload}")
+    return str(task_id)
+
+
+def _kie_poll(task_id: str) -> str:
+    """Devuelve URL del video cuando state=success."""
+    for _ in range(KIE_POLL_MAX):
+        url = f"{KIE_RECORD_URL}?{urllib.parse.urlencode({'taskId': task_id})}"
+        req = urllib.request.Request(url, headers=_kie_headers(), method="GET")
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+        data = payload.get("data") or {}
+        state = data.get("state") or ""
+        if state == "success":
+            result_raw = data.get("resultJson") or "{}"
+            result = json.loads(result_raw) if isinstance(result_raw, str) else result_raw
+            urls = result.get("resultUrls") or []
+            if not urls:
+                raise RuntimeError(f"Kie success sin resultUrls: {result}")
+            return urls[0]
+        if state == "fail":
+            raise RuntimeError(f"Kie fail: {data.get('failMsg') or data.get('failCode')}")
+        time.sleep(KIE_POLL_SECONDS)
+    raise RuntimeError(f"Kie timeout tras {KIE_POLL_MAX} polls (taskId={task_id})")
+
+
+def _download(url: str, dest: Path) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    with urllib.request.urlopen(url, timeout=180) as resp:
+        dest.write_bytes(resp.read())
+
+
 def _kling_via_kie(start: Path, end: Path, prompt: str, out_clip: Path) -> tuple[bool, str]:
+    """Image-to-video: sube frame inicio → Kling. end se usa solo como hint en prompt."""
     if not KIE_API_KEY:
-        return False, "KIE_API_KEY no configurada — usa MOCK_KLING=true"
-    # Kie requiere URLs públicas; sin Cloudinary usamos mock como fallback documentado
-    return False, "Kie/Kling requiere URLs públicas (Cloudinary) — pendiente V1; usando mock"
+        return False, "KIE_API_KEY no configurada"
+    try:
+        image_url = upload_public_url(start)
+    except Exception as exc:
+        return False, f"Upload público falló: {exc}"
+
+    full_prompt = prompt or "Smooth subtle motion, professional, clean"
+    if end and end.exists():
+        full_prompt = f"{full_prompt}. Evolve toward a related end composition."
+
+    try:
+        task_id = _kie_create(image_url, full_prompt)
+        video_url = _kie_poll(task_id)
+        _download(video_url, out_clip)
+        return True, f"kling:{task_id}"
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="ignore")[:200]
+        return False, f"Kie HTTP {exc.code}: {detail}"
+    except Exception as exc:
+        return False, f"Kie error: {exc}"
 
 
 def animate_pair(
@@ -112,3 +283,30 @@ def concat_clips(clips: list[Path], out_mp4: Path) -> tuple[bool, str]:
     if proc.returncode != 0:
         return False, proc.stderr[:300]
     return True, out_mp4.name
+
+
+def mux_audio_bed(video_path: Path, audio_path: Path, out_path: Path) -> tuple[bool, str]:
+    """Junta video (sin audio o con) + cama musical/voz. Loop audio si es más corto."""
+    ffmpeg = _ffmpeg()
+    if not ffmpeg:
+        return False, "ffmpeg no instalado"
+    if not video_path.exists():
+        return False, "video no existe"
+    if not audio_path.exists():
+        return False, "audio no existe"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        ffmpeg, "-y",
+        "-i", str(video_path.resolve()),
+        "-stream_loop", "-1", "-i", str(audio_path.resolve()),
+        "-shortest",
+        "-c:v", "copy",
+        "-c:a", "aac",
+        "-map", "0:v:0",
+        "-map", "1:a:0",
+        str(out_path),
+    ]
+    proc = subprocess.run(cmd, capture_output=True, text=True)
+    if proc.returncode != 0:
+        return False, proc.stderr[:300]
+    return True, out_path.name

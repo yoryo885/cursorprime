@@ -52,6 +52,7 @@ class QcAgent:
             "guion": "guion",
             "captions": "captions",
             "thumbnail": "thumbnail",
+            "audio": "audio",
         }
         for step, path_key in copy_checks.items():
             if step not in agentes:

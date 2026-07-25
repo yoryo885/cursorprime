@@ -9,6 +9,7 @@ from pathlib import Path
 from gifs.agent import GifsModule
 from imagenes.agent import ImagenesModule
 from pdf.agent import PdfModule
+from src.agents.audio_agent import AudioAgent
 from src.agents.captions_agent import CaptionsAgent
 from src.agents.context_agent import ContextAgent
 from src.agents.escenas_agent import EscenasAgent
@@ -51,6 +52,7 @@ AGENTS = {
     "gif": GifsModule(),
     "video": VideosModule(),
     "pdf": PdfModule(),
+    "audio": AudioAgent(),
     "captions": CaptionsAgent(),
     "thumbnail": ThumbnailAgent(),
     "qc": QcAgent(),
@@ -69,6 +71,7 @@ LABELS = {
     "gif": "Módulo · gifs",
     "video": "Módulo · videos",
     "pdf": "Módulo · pdf",
+    "audio": "Audio · música/voz",
     "captions": "Copy · Captions (captions-redes)",
     "thumbnail": "Copy · Thumbnail (thumbnail-social)",
     "qc": "Core · QC",
@@ -111,6 +114,7 @@ def build_context(
             "guion_md": copy_dir / "guion.md",
             "captions": meta / "captions.json",
             "thumbnail": meta / "thumbnail.json",
+            "audio": meta / "audio.json",
             "copy_dir": copy_dir,
             "imagenes_out": slug_imagenes(slug),
             "gifs_out": slug_gifs(slug),

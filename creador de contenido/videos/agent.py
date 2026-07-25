@@ -76,7 +76,9 @@ class VideosModule:
             if not ok:
                 return AgentResult(ok=False, notes=f"Escena {eid}: {msg}")
             if fue_mock:
-                warnings.append(f"escena {eid}: mock (MOCK_KLING=true)")
+                warnings.append(f"escena {eid}: motion mock/fallback ({msg})")
+            else:
+                warnings.append(f"escena {eid}: kling real ({msg})")
             clips.append(clip_path)
             items.append(
                 {

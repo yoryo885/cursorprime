@@ -39,7 +39,7 @@ class PackagerAgent:
             if ctx.paths.get(key) and Path(ctx.paths[key]).exists():
                 manifest["modulos"][key] = load_json(ctx.paths[key], {})
 
-        for key in ("hooks", "guion", "captions", "thumbnail"):
+        for key in ("hooks", "guion", "captions", "thumbnail", "audio"):
             if ctx.paths.get(key) and Path(ctx.paths[key]).exists():
                 manifest["copy"][key] = load_json(ctx.paths[key], {})
 

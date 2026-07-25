@@ -1,22 +1,27 @@
 [
   {
     "paso": "A",
-    "cambio": "Eliminado GenerateAgent muerto (paths stale imagenes/generated); plan.json ya alineado v2; errores.json limpio de KeyError context stale",
+    "cambio": "Eliminado GenerateAgent muerto",
     "at": "2026-07-25T17:36:00+00:00"
   },
   {
     "paso": "B",
-    "cambio": "Checkpoint reanuda con last_completed_slug; CLI --desde; context+planner siempre; skip pasos ya hechos",
+    "cambio": "Checkpoint reanuda con last_completed_slug + --desde",
     "at": "2026-07-25T17:42:00+00:00"
   },
   {
     "paso": "C",
-    "cambio": "llm_client.py + MOCK_LLM; Hook/Guion/Escenas usan LLM opcional con fallback heurística; FLUJO.md ramas",
+    "cambio": "LLM opcional hook/guion/escenas",
     "at": "2026-07-25T17:45:00+00:00"
   },
   {
     "paso": "D",
-    "cambio": "ImagenesModule respeta MOCK_GENERATE; OpenAI/Replicate + fallback placeholder; IMAGE_PROVIDER",
+    "cambio": "Imágenes reales OpenAI/Replicate + fallback",
     "at": "2026-07-25T17:49:00+00:00"
+  },
+  {
+    "paso": "E",
+    "cambio": "Kling vía Kie+Cloudinary con fallback mock; AudioAgent brief+mux; recetas promo/reels incluyen audio",
+    "at": "2026-07-25T17:55:00+00:00"
   }
 ]
