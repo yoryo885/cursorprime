@@ -87,12 +87,12 @@ python3 creador_imagenes_main.py --slug video_pareto_psico --desde video
 
 ---
 
-### Rama F — Copy con LLM (Paso C)
+### Rama G — Imágenes reales (Paso D)
 **Dices:**
-> Mismo promo-guia pero con Claude en hook/guion/escenas.
+> Genera PNG reales con OpenAI para demo_lote.
 
-**Requisito:** `MOCK_LLM=false` + `ANTHROPIC_API_KEY` en `.env`  
-Si no hay key → cae a heurística (no rompe el pipeline).
+**Requisito:** `MOCK_GENERATE=false` + `OPENAI_API_KEY` (o Replicate).  
+Si falla la API → placeholder + warning (el lote no muere).
 
 ---
 

@@ -11,6 +11,7 @@
     "Video y PDF consumen PNG internamente — no proyectos externos",
     "promo-guia: hook → guion → escenas → video → captions → thumbnail",
     "MOCK_GENERATE=true y MOCK_KLING=true en MVP",
+    "MOCK_GENERATE=false usa OpenAI/Replicate; si falla → placeholder (no tumba el lote)",
     "INTEGRACION_EXTERNA=false por defecto",
     "No inventar métricas; marcar confidence bajo si el copy es heurístico"
   ],

@@ -115,8 +115,17 @@ meta/recetas.json    → catálogo de recetas
 - [x] **A** Limpieza: GenerateAgent muerto eliminado; `meta/plan.json` alineado con runtime
 - [x] **B** Checkpoint que reanuda (`last_completed_slug` + `--desde` / auto-resume)
 - [x] **C** LLM opcional en hook/guion/escenas (`MOCK_LLM=false` + `ANTHROPIC_API_KEY`; si no → heurística)
-- [ ] Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
-- [ ] IA real imágenes (`MOCK_GENERATE=false`)
+- [x] **D** IA real imágenes (`MOCK_GENERATE=false` + OpenAI/Replicate; si falla → placeholder)
+- [ ] **E** Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
 - [ ] Conexión directa a salida de `libros a entender` vía path `fuente_guia`
 
-Flujo en ramas + ejemplos de chat: [FLUJO.md](./FLUJO.md)
+## Imágenes — mock vs real (Paso D)
+
+```bash
+# Mock (default)
+MOCK_GENERATE=true python3 creador_imagenes_main.py --slug demo_lote --modo png
+
+# Real OpenAI (fallback a placeholder si falla)
+# .env: MOCK_GENERATE=false  OPENAI_API_KEY=...  IMAGE_PROVIDER=openai
+MOCK_GENERATE=false python3 creador_imagenes_main.py --slug demo_lote --modo png --reset-checkpoint
+```

@@ -13,5 +13,10 @@
     "paso": "C",
     "cambio": "llm_client.py + MOCK_LLM; Hook/Guion/Escenas usan LLM opcional con fallback heurística; FLUJO.md ramas",
     "at": "2026-07-25T17:45:00+00:00"
+  },
+  {
+    "paso": "D",
+    "cambio": "ImagenesModule respeta MOCK_GENERATE; OpenAI/Replicate + fallback placeholder; IMAGE_PROVIDER",
+    "at": "2026-07-25T17:49:00+00:00"
   }
 ]
