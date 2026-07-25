@@ -114,7 +114,9 @@ meta/recetas.json    → catálogo de recetas
 
 - [x] **A** Limpieza: GenerateAgent muerto eliminado; `meta/plan.json` alineado con runtime
 - [x] **B** Checkpoint que reanuda (`last_completed_slug` + `--desde` / auto-resume)
-- [ ] **C** LLM opcional en hook/guion/escenas (mock si no hay API)
+- [x] **C** LLM opcional en hook/guion/escenas (`MOCK_LLM=false` + `ANTHROPIC_API_KEY`; si no → heurística)
 - [ ] Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
 - [ ] IA real imágenes (`MOCK_GENERATE=false`)
 - [ ] Conexión directa a salida de `libros a entender` vía path `fuente_guia`
+
+Flujo en ramas + ejemplos de chat: [FLUJO.md](./FLUJO.md)

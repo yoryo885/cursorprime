@@ -3,5 +3,15 @@
     "paso": "A",
     "cambio": "Eliminado GenerateAgent muerto (paths stale imagenes/generated); plan.json ya alineado v2; errores.json limpio de KeyError context stale",
     "at": "2026-07-25T17:36:00+00:00"
+  },
+  {
+    "paso": "B",
+    "cambio": "Checkpoint reanuda con last_completed_slug; CLI --desde; context+planner siempre; skip pasos ya hechos",
+    "at": "2026-07-25T17:42:00+00:00"
+  },
+  {
+    "paso": "C",
+    "cambio": "llm_client.py + MOCK_LLM; Hook/Guion/Escenas usan LLM opcional con fallback heurística; FLUJO.md ramas",
+    "at": "2026-07-25T17:45:00+00:00"
   }
 ]

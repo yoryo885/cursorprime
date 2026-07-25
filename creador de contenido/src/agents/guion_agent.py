@@ -1,4 +1,4 @@
-"""GuionAgent — arma guion promocional desde guía/PDF o temas."""
+"""GuionAgent — promo desde guía; heurística o LLM (MOCK_LLM=false)."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from src.config import ROOT, load_json, save_json
+from src.llm_client import get_llm, llm_activo
 from src.types import AgentResult, PipelineContext
 
 
@@ -53,13 +54,14 @@ class GuionAgent:
     def run(self, ctx: PipelineContext) -> AgentResult:
         lote = load_json(ctx.paths["lote"], {}) or ctx.lote
         context = load_json(ctx.paths["context"], {})
+        modo = "heuristica"
 
-        # Si ya hay guion explícito y no se fuerza regenerar, solo normaliza/exporta
         if lote.get("guion") and not lote.get("regenerar_guion"):
             guion = str(lote["guion"]).strip()
             origen = "guion_existente"
-            ideas = []
+            ideas: list[str] = []
             titulo = context.get("titulo") or lote.get("titulo") or ctx.slug
+            modo = "guion_existente"
         else:
             guia = lote.get("guia") if isinstance(lote.get("guia"), dict) else {}
             fuente = lote.get("fuente_guia") or guia.get("fuente") or ""
@@ -83,19 +85,43 @@ class GuionAgent:
             guion = build_guion_promo(str(titulo), hook, str(promesa), ideas, str(cta))
             origen = "guia" if guia or fuente_texto else "temas"
 
+            if llm_activo():
+                system = (
+                    "Eres guionista de video corto. Un mensaje central. "
+                    "Escenas separadas por doble salto de línea. Español. "
+                    'JSON: {"guion":"...","mensaje_central":"..."}'
+                )
+                user = (
+                    f"Título: {titulo}\nHook: {hook}\nPromesa: {promesa}\nCTA: {cta}\n"
+                    f"Ideas centrales:\n- " + "\n- ".join(ideas) + "\n"
+                    "Escribe guion hablado corto (no copies el PDF)."
+                )
+                try:
+                    data = get_llm().complete_json(
+                        system, user, mock_payload={"guion": guion, "mensaje_central": ideas[0] if ideas else titulo}
+                    )
+                    if data.get("guion"):
+                        guion = str(data["guion"]).strip()
+                        modo = "llm"
+                        origen = f"{origen}+llm"
+                except Exception:
+                    modo = "heuristica_fallback"
+
         out_json = ctx.paths["guion"]
         out_md = ctx.paths["guion_md"]
+        preview = [
+            {"id": i + 1, "texto_guion": p.strip()}
+            for i, p in enumerate(guion.split("\n\n"))
+            if p.strip()
+        ]
         payload = {
             "skill": "guion-a-video",
             "titulo": titulo,
             "guion": guion,
-            "escenas_preview": [
-                {"id": i + 1, "texto_guion": p.strip()}
-                for i, p in enumerate(guion.split("\n\n"))
-                if p.strip()
-            ],
+            "escenas_preview": preview,
             "ideas": ideas,
             "generado_desde": origen,
+            "modo": modo,
             "archivo_md": str(out_md),
             "generado_at": datetime.now(timezone.utc).isoformat(),
         }
@@ -106,7 +132,6 @@ class GuionAgent:
         lote_updated = {**lote, "guion": guion, "titulo": titulo}
         save_json(ctx.paths["lote"], lote_updated)
         ctx.lote = lote_updated
-
         context["guion"] = guion
         context["titulo"] = titulo
         save_json(ctx.paths["context"], context)
@@ -114,5 +139,5 @@ class GuionAgent:
         return AgentResult(
             ok=True,
             artifacts=[str(out_json), str(out_md)],
-            notes=f"Guion ({origen}) · {len(payload['escenas_preview'])} bloques",
+            notes=f"Guion ({origen}/{modo}) · {len(preview)} bloques",
         )

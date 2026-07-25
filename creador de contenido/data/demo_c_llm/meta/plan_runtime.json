@@ -1,0 +1,46 @@
+{
+  "receta": "promo-guia",
+  "nombre": "Promo de guía PDF",
+  "descripcion": "Promociona una guía/PDF: hook → guion → escenas → video → captions → thumbnail",
+  "skills": [
+    "hooks-redes",
+    "guion-a-video",
+    "captions-redes",
+    "thumbnail-social"
+  ],
+  "agentes": [
+    "context",
+    "planner",
+    "hook",
+    "guion",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "video",
+    "captions",
+    "thumbnail",
+    "qc",
+    "packager"
+  ],
+  "salidas": [
+    "png",
+    "video"
+  ],
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 2
+  },
+  "copy": [
+    "hook",
+    "guion",
+    "captions",
+    "thumbnail"
+  ],
+  "requiere": [
+    "guia"
+  ],
+  "slug": "demo_c_llm",
+  "generado_at": "2026-07-25T17:46:26.629821+00:00",
+  "warnings": []
+}
