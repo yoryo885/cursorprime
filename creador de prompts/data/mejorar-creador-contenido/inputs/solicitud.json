@@ -40,8 +40,24 @@
     {
       "mensaje": "esta buenicimo; cambiar escenario, 5 imagenes haciendo algo y animar",
       "cambio": "Plantilla 5 escenas + pose B + morph fluido; demo pareto_5_escenas_animado.mp4"
+    },
+    {
+      "mensaje": "elige estrategia capítulo ancla + cortes para TikTok",
+      "cambio": "Estrategia fijada: máster 2–3 min (guion+escenas) → 1 largo opcional + 5 cortes 20–30s diarios; monetización: shorts crecimiento + máster ≥60s candidato Rewards"
+    }
+    {
+      "mensaje": "listo (ElevenLabs en .env) — cablea la voz",
+      "cambio": "TTS ElevenLabs en AudioAgent: guion→narracion.mp3→mux; MOCK_TTS + ELEVENLABS_API_KEY"
     }
   ],
+  "estrategia_tiktok": {
+    "nombre": "capitulo-ancla-cortes",
+    "master_min": 2,
+    "master_max": 3,
+    "cortes": "5 x 20–30s",
+    "estilo": "ensenanza + personaje blob + morph",
+    "fuente": "resumen (solo lectura)"
+  },
   "estilo_visual_target": {
     "ref": "La Psicología Invisible",
     "elementos": [

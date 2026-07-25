@@ -127,7 +127,22 @@ meta/recetas.json    → catálogo de recetas
 - [x] **C** LLM opcional en hook/guion/escenas (`MOCK_LLM=false` + `ANTHROPIC_API_KEY`; si no → heurística)
 - [x] **D** IA real imágenes (`MOCK_GENERATE=false` + OpenAI/Replicate; si falla → placeholder)
 - [x] **E** Kling real (`MOCK_KLING=false` + `KIE_API_KEY` + Cloudinary; si falla → crossfade mock)
-- [x] Audio brief + mux opcional (`audio.bed_path`) en promo-guia / reels-pack
+- [x] Audio brief + mux opcional (`audio.bed_path`) en promo-guia / reels-pack / ensenanza
+- [x] **TTS ElevenLabs** (`MOCK_TTS=false` + `ELEVENLABS_API_KEY` en `.env`) → `copy/narracion.mp3` + mux
+
+```bash
+# .env (no se sube al repo)
+TTS_PROVIDER=elevenlabs
+MOCK_TTS=false
+ELEVENLABS_API_KEY=sk_...
+ELEVENLABS_VOICE_ID=   # opcional
+```
+
+En `lote.json`:
+```json
+"audio": { "voz_off": true, "bed_path": "" }
+```
+La narración sale del `guion`. Override: `"texto": "..."` o `"voz_path": "ruta.mp3"`.
 - [ ] Conexión directa a salida de `libros a entender` vía path `fuente_guia`
 
 ## Video + audio (Paso E)

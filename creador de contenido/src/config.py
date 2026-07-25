@@ -9,9 +9,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+ROOT = Path(__file__).resolve().parent.parent
+# Carga .env del proyecto (creador de contenido/.env)
+load_dotenv(ROOT / ".env")
 load_dotenv()
 
-ROOT = Path(__file__).resolve().parent.parent
 META_DIR = ROOT / "meta"
 DATA_DIR = ROOT / "data"
 LOGS_DIR = ROOT / "logs"
@@ -27,9 +29,12 @@ def env_bool(key: str, default: bool = False) -> bool:
 
 MOCK_GENERATE = env_bool("MOCK_GENERATE", True)
 MOCK_KLING = env_bool("MOCK_KLING", True)
+MOCK_LLM = env_bool("MOCK_LLM", True)
+MOCK_TTS = env_bool("MOCK_TTS", True)
 CHECKPOINT_ENABLED = env_bool("CHECKPOINT", True)
 DEFAULT_SLUG = os.getenv("DEFAULT_SLUG", "demo_lote")
 INTEGRACION_EXTERNA = env_bool("INTEGRACION_EXTERNA", False)
+TTS_PROVIDER = os.getenv("TTS_PROVIDER", "elevenlabs").strip().lower()
 VIDEO_MODOS = ("slideshow", "animado")
 
 
