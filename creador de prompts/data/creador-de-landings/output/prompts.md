@@ -1,156 +1,161 @@
-# Prompt completo — Pipeline de Landings (v7)
+# Prompt completo — Arreglar creador-de-landings (v8)
 
 ```
-Usa landing-pipeline (carpeta landing_pipeline/).
+Usa creador-de-landings (carpeta creador-de-landings/).
 
 ## Qué es
-Sistema tipo pipeline en Python (patrón Libros a Entender):
-agentes en src/agents/, cada uno con una sola responsabilidad,
-orquestados en secuencia, inputs/outputs en JSON.
-Recibe datos de un negocio/producto y genera copy + diseño de
-una landing completa, sección por sección, usando skills (.md).
+Pipeline MVP: entrevista → ejemplos → brief → HTML estático → QC.
+Hoy está roto y con deuda estructural. Este prompt es el plan
+paso a paso para dejarlo usable, con entrega SIEMPRE visual.
 
-## Regla de oro
-Cada agente NO improvisa el estilo. Antes de generar, carga su
-skill en src/skills/ y lo inyecta en el system prompt.
-El LLM NUNCA ensambla HTML completo (causa de duplicaciones).
-- LLM → solo copy (02–10) + tokens/layout (11a)
-- HTML → 100% Python determinístico con Jinja2 (11b_assemble)
+## Regla de oro — entrega visual (OBLIGATORIA)
+El usuario YA SABE que es una landing. No quiere ver código HTML
+en el chat. Quiere VER la página.
 
-## NUEVO: agente de referencia visual (00_referencia.py)
-Antes de 01_brief, el pipeline carga una lista curada a mano de
-URLs de landings reales bien armadas (empieza con
-https://filjos.com/) y extrae SOLO patrones estructurales — nunca
-copia texto ni diseño literal. Devuelve referencia.json:
-{
-  "trust_badge_posicion": "arriba del todo, antes del hero",
-  "hero_visual": "imagen real de producto, nunca texto duplicado",
-  "testimonio_formato": "quote corto + nombre + ciudad entre paréntesis",
-  "cta_por_bloque": "un único CTA claro por bloque, no botones compitiendo",
-  "fuente": ["https://filjos.com/"]
-}
-referencia.json se pasa como contexto extra a 02_hero.py y a
-11a_design_tokens.py, junto con brief.json y su skill. No reemplaza
-ningún skill, los complementa. La lista de URLs es curada a mano
-(vos la editás en src/config/referencias.json), nunca scraping
-automático de "sitios similares".
+En CADA paso que toque el HTML (o al cerrar cada fase):
+1. Regenerar preview: data/{slug}/output/preview.html
+2. Servir local (servir-preview.sh o http.server)
+3. Exponer URL pública (tunnel cloudflared o CDN tras push)
+4. Capturar desktop + mobile (Playwright o chrome headless)
+5. Responder SOLO con:
+   - URL clicable
+   - Screenshots embebidos (desktop + mobile)
+   - 1–3 bullets de qué cambió visualmente
+NUNCA pegar código HTML, CSS ni f-strings en el chat.
+Si algo falló: mostrar screenshot del error / estado roto + URL
+si existe — no dumps de traceback largos.
 
-## Fix del bug real: hero split con texto duplicado
-En la última corrida, layout=hero_split generó una tarjeta con el
-mismo título+bajada que el hero grande de abajo (duplicado DENTRO
-de la misma sección, no detectado por section_counts porque es un
-solo <section data-section="hero">).
-Causa: hero_split reserva un panel visual para imagen de producto;
-sin imagen real, el LLM rellenó ese panel repitiendo el copy.
-Fix:
-- 02_hero.py devuelve también "tiene_imagen": true|false
-  (true solo si brief.json trae "imagen_hero" real).
-- 11b_assemble.py fuerza hero_centrado si tiene_imagen=false,
-  SIN pasar por el LLM ni por tokens.json["layout"]["hero"] — la
-  variante split queda excluida por código si no hay imagen, no por
-  instrucción de prompt.
-- El panel visual de hero_split.html, cuando sí hay imagen, jamás
-  recibe titulo/bajada como contenido — solo <img>.
+## Contexto del diagnóstico (no re-auditar desde cero)
+Problemas ya confirmados:
+1. CRITICAL: KeyError hero_badge_calidad — Brief lee copy["hero_badge_calidad"]
+   pero copy_profesional() no lo define → demo/generar mueren.
+2. Demo engañosa: preview.html viejo existe; regenerar falla.
+3. Sin tests.
+4. aprender() no afecta el HTML (solo anota en brief).
+5. html_builder.py = f-string monolítico (~800 líneas).
+6. Copy/catálogo hardcodeados a Vértice Pro (libro×rol).
+7. QC superficial; constitution.json se carga y no se usa.
+8. Campos del brief muertos (no se renderizan).
+9. Checkout fake (href="#").
+10. Docs/CLI/skill desfasados.
 
-## Estructura
-landing_pipeline/
-├── landing_main.py
-├── src/
-│   ├── agents/
-│   │   ├── 00_referencia.py       # NUEVO: patrones de URLs reales
-│   │   ├── 01_brief.py
-│   │   ├── 02_hero.py … 10_footer.py
-│   │   ├── 11a_design_tokens.py   # tokens + layout (sin HTML)
-│   │   ├── 11b_assemble.py        # Jinja2, SIN LLM
-│   │   ├── 12_qa.py
-│   │   └── 13_visual_qa.py        # Playwright screenshots
-│   ├── config/
-│   │   └── referencias.json       # NUEVO: lista curada de URLs
-│   ├── templates/                 # variantes Jinja2
-│   ├── skills/                    # reglas por sección
-│   ├── sections.py                # SECTION_ORDER + variantes
-│   ├── pipeline.py
-│   ├── llm_client.py
-│   └── text_utils.py              # sanitize_prepend, naming
-├── output/{slug}/
-│   ├── brief.json, copy.json, tokens.json, referencia.json
-│   ├── landing.html, qa_report.json
-│   └── screenshots/mobile.png, desktop.png
-└── logs/mejoras.json
+Proyecto hermano de referencia (NO mezclar sin pedir):
+landing_pipeline/ — agentes por sección + Jinja + QA visual.
+Tomar ideas de ahí (assemble determinístico, visual QA), pero
+arreglar primero creador-de-landings sin reescribir todo a la vez.
 
-## Flujo
-0. 00_referencia → referencia.json (patrones de URLs curadas)
-1. 01_brief → brief.json (nombre_producto, propuesta_valor, precio…)
-2. 02_hero → 10_footer → acumulan copy.json (leen su skill + referencia.json)
-3. 11a_design_tokens → tokens.json (colores + layout de lista cerrada)
-4. 11b_assemble → landing.html (SECTION_ORDER una sola vez;
-   hero_split solo si copy.hero.tiene_imagen=true)
-5. 12_qa → qa_report.json (score, bugs_v2, section_counts, duplicado_intra_seccion)
-6. 13_visual_qa → screenshots + overlap real (si no hay Playwright, skip)
+## Plan paso a paso (ejecutar EN ORDEN; un paso = un commit + preview)
 
-SECTION_ORDER =
-["hero","social_proof","problem","benefits","testimonials",
- "pricing","faq","cta_final","footer"]
+### Paso 0 — Baseline visual
+- Abrir el preview.html viejo si existe; servir + tunnel + capturas.
+- Guardar en data/demo-cliente/output/screenshots/BEFORE-*.png
+- Anotar en logs/errores.json el KeyError actual.
+- Entrega: URL “antes” + capturas (aunque esté desactualizado).
 
-## Variantes de layout (lista cerrada — el LLM solo elige nombres)
-- hero: centrado | split (split excluido por código si no hay imagen real)
-- benefits: tarjetas | lista_numerada
-- pricing: una_columna | comparativa
-Default si falta: centrado / tarjetas / una_columna.
+### Paso 1 — Destrabar el pipeline (CRITICAL)
+- Alinear contrato Brief ↔ copy_marketing:
+  - Opción A: agregar hero_badge_calidad (y cualquier key faltante)
+    a copy_profesional().
+  - Opción B: brief_agent usa .get() con defaults seguros.
+  Preferir A + defaults: el brief no debe KeyError nunca.
+- Smoke: python3 landings_main.py demo --ejemplo tienda
+  debe terminar Packager sin ✗.
+- Regenerar preview; servir; tunnel; capturas AFTER-paso1.
+- Entrega visual: “pipeline vuelve a correr” + URL + screenshots.
+- Añadir test mínimo: test_brief_copy_contract.py (keys requeridas).
 
-## Bugs prevenidos por diseño
-1. Copy duplicado ("desde desde") → sanitize_prepend
-2. Overlap secciones → flujo normal, sin absolute/fixed de contenido,
-   sin animaciones scroll-reveal (opacity:0 + translateY)
-3. Acento inconsistente → un solo --accent; todos los .btn lo usan
-4. Naming interno filtrado → solo nombre_producto / propuesta_valor
-5. Testimonios silenciados → omitida:true + omisiones en qa_report
-6. Hero/FAQ duplicados entre secciones → 11b renderiza cada
-   data-section exactamente 1 vez (0 si omitida legítimamente)
-7. NUEVO — Hero duplicado dentro de la misma sección (tarjeta split
-   repitiendo el título) → hero_split requiere imagen real; sin ella,
-   cae a hero_centrado por código, nunca por elección del LLM
+### Paso 2 — QC real + constitution
+- Hacer que QC lea meta/constitution.json y falle si faltan reglas.
+- Permitir landings de 1 producto (quitar hard-require ≥2).
+- Chequeos: hero presente, CTA≥1, marca en HTML, no testimonios inventados
+  sin marcar [PENDIENTE], score numérico.
+- Entrega: mismo preview + bullet “QC score X” (sin pegar JSON entero).
 
-## Conversión (v5+)
-- Social proof: dato verificable; no inventar estrellas/clientes
-- Precio: línea garantia bajo el CTA
-- FAQ: pregunta de riesgo/garantía obligatoria
-- CTA primario ≥ 3 (hero + mid beneficios + precio/cta final)
-- NUEVO: patrones de referencia.json (badge de confianza arriba del
-  todo si hay dato real; testimonio "Nombre (Ciudad)")
+### Paso 3 — Campos muertos del brief → HTML
+- Auditar brief keys vs html_builder (tienda/editorial/mockup/oferta).
+- Renderizar o eliminar: hero_badge_calidad, mision, incluye, precio
+  donde corresponda al estilo.
+- Hero image: si hero_imagen apunta a asset inexistente, no romper CSS;
+  usar gradiente/fallback visual claro.
+- Entrega visual: capturas donde se VEA el badge / bloque nuevo.
 
-## Skills (formato fijo)
-# Skill: {Sección}
-## Regla
-## Obligatorio
-## Ejemplo
-## Output esperado (JSON)
+### Paso 4 — Desacoplar copy de Vértice (sin perder el demo)
+- copy_profesional(marca, …) debe usar respuestas reales
+  (producto, cliente, promesa, tono) cuando no son defaults.
+- Mantener catalogo_default + demo Vértice como CASO A.
+- Añadir CASO B: demo genérico 1-producto (slug demo-simple) para
+  probar que no queda pegado a libro×rol.
+- Entrega: 2 URLs (Vértice tienda + demo-simple) + capturas lado a lado.
 
-Skills: hero, social_proof, problem, benefits, testimonials,
-pricing, faq, cta, footer, design, qa_checklist.
+### Paso 5 — Aprendizaje que se ve
+- aprender debe producir reglas aplicables (lista cerrada) que
+  html_builder o brief lean de verdad (ej. ocultar newsletter,
+  cambiar CTA, forzar paleta).
+- Probar: aprender "quitar newsletter" → regenerar → screenshot
+  sin bloque newsletter.
+- Si no se puede enganchar: quitar el claim de PROYECTO.md
+  (honestidad > feature falsa). Preferir engancharlo.
 
-## Contrato técnico
-- Cada agente: def run(input: dict) -> dict
-- 11b_assemble NO importa llm_client
-- 00_referencia NO hace scraping libre: solo lee src/config/referencias.json
-- Reintento: --retry-from {agente} / --solo {agente}
-- Sin API key → MOCK; con ANTHROPIC_API_KEY → Claude
-- Mostrar resultado SIEMPRE visual (URL pública o screenshots),
-  NUNCA pegar código HTML en el chat
+### Paso 6 — Modularizar HTML (sin big-bang)
+- Partir html_builder.py en módulos/partials por sección o por estilo
+  (al menos: _header, _hero, _catalogo, _faq, _footer).
+- Preferir Jinja2 (como landing_pipeline) si el costo es bajo;
+  si no, funciones Python por sección con escape (_e) intacto.
+- Un estilo a la vez: primero tienda (el que usa el demo).
+- Tras cada split: regenerar + capturas; diff visual ≈ 0 esperado.
+- Entrega: “mismo look, código partido” + URL.
 
-## CLI
-cd landing_pipeline
-python3 landing_main.py run --demo
-python3 landing_main.py run --input meta/ejemplo-negocio.json --slug mi-marca
-python3 landing_main.py run --slug vertice-pro --retry-from 07_pricing
-python3 landing_main.py run --slug vertice-pro --retry-from 02_hero  # para forzar fix del hero split
+### Paso 7 — Docs, skill, CLI
+- Alinear PROYECTO.md, SKILL.md, meta/plan.json con flags reales
+  (--solo interview, no --solo-interview).
+- Instalar/copiar skill a ~/.cursor/skills/creador-de-landings/
+  o documentar ruta in-repo.
+- Crear .cursor/rules/entrevista-landing-estandar.mdc si el SKILL
+  lo promete, o borrar la promesa.
+- Limpiar previews huérfanos / URL-PUBLICA muertas o regenerarlas.
+- servir-preview.sh: documentar puerto; preferir 127.0.0.1 en cloud.
 
-## Demo actual
-Slug: vertice-pro
-Layout: hero=centrado (forzado por falta de imagen real — antes era
-split y ahí estaba el bug de la tarjeta duplicada), benefits=lista_numerada,
-pricing=comparativa
-Outputs: output/vertice-pro/landing.html + screenshots/
-Pedile al agente que confirme en qa_report.json que
-duplicado_intra_seccion.hero = false antes de darlo por bueno.
+### Paso 8 — Visual QA automático
+- Script o agente: screenshots desktop (1280) + mobile (390) en
+  data/{slug}/output/screenshots/.
+- Escribir URL-PUBLICA.txt en cada generar exitoso.
+- Checklist final del agente en chat: URL + 2 imágenes + score QC.
+  Cero HTML en la respuesta.
+
+## Criterios de “listo”
+- [ ] demo y generar pasan end-to-end
+- [ ] test de contrato brief/copy verde
+- [ ] QC usa constitution; 1-producto permitido
+- [ ] aprender tiene efecto visible O el claim se eliminó
+- [ ] html_builder partido (tienda como mínimo)
+- [ ] copy no ignora respuestas del usuario
+- [ ] cada fase cerrada con URL pública + screenshots
+- [ ] Nunca se pegó HTML en el chat al usuario
+
+## Anti-patrones (prohibido)
+- Pegar landing.html / bloques <section> en el chat
+- Reescribir landing_pipeline “en vez de” arreglar este (salvo
+  que el usuario diga migrar)
+- Inventar testimonios / estrellas / clientes
+- Un solo PR monstruo con pasos 1–8 mezclados
+- Decir “listo” sin URL visual
+
+## CLI de trabajo
+cd creador-de-landings
+python3 landings_main.py demo --ejemplo tienda
+python3 landings_main.py generar --slug demo-cliente --ejemplo tienda --reset-checkpoint
+python3 landings_main.py aprender --mensaje "..." --cambio "..."
+./servir-preview.sh   # luego tunnel → URL pública
+
+## Demo canónico
+Slug: demo-cliente · estilo: tienda · marca: Vértice Pro
+Salida: data/demo-cliente/output/preview.html + screenshots/
+Tras Paso 4: también demo-simple (1 producto) para prueba genérica.
+
+## Cómo responder al usuario en cada paso
+1 línea: qué paso cerraste
+URL del preview
+<img desktop> + <img mobile>
+2 bullets máximo de cambio visual
+Pregunta: ¿sigo al paso N+1?
 ```

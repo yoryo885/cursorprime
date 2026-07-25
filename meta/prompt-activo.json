@@ -1,12 +1,12 @@
 {
-  "version": 18,
+  "version": 20,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
-    "titulo": "Sistema creador de landings",
-    "version": 3,
-    "ultima_mejora": "entrega visual obligatoria (URL + screenshots)",
+    "titulo": "Arreglar creador de landings (visual)",
+    "version": 8,
+    "ultima_mejora": "prompt v8: plan paso a paso + entrega visual obligatoria",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }

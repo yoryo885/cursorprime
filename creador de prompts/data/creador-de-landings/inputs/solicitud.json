@@ -1,22 +1,24 @@
 {
-  "titulo": "Pipeline de agentes por sección (skills .md → copy → HTML → QA)",
+  "titulo": "Arreglar creador-de-landings paso a paso (entrega siempre visual)",
   "tipo": "pipeline",
-  "proyecto_destino": "landing_pipeline",
+  "proyecto_destino": "creador-de-landings",
   "temas": [
-    "agentes 01–12 una responsabilidad",
-    "skills .md por sección (regla + obligatorio + ejemplo + JSON)",
-    "brief → hero → social → problem → benefits → testimonials → pricing → faq → cta → footer → design → qa",
-    "llm_client con mock/Claude",
-    "reintento por agente sin re-correr todo",
-    "output/{slug}/copy.json + landing.html + qa_report.json",
-    "cambios quirúrgicos en HTML final"
+    "destrabar KeyError hero_badge_calidad Brief↔copy",
+    "QC con constitution + landings 1 producto",
+    "renderizar campos muertos del brief",
+    "desacoplar copy de Vértice (demo-simple)",
+    "aprendizaje con efecto visual real",
+    "modularizar html_builder (tienda primero)",
+    "docs/skill/CLI alineados",
+    "visual QA: URL pública + screenshots desktop/mobile",
+    "NUNCA pegar HTML en el chat — solo ver la landing"
   ],
   "contexto": {
     "audiencia": "operador cursorprime",
     "tono": "claro y accionable",
     "idioma": "español",
-    "objetivo": "Pipeline tipo Libros a Entender: cada agente lee su skill antes de generar copy/HTML",
-    "fuente_prompt": "prompt_pipeline_landings_83a1.md"
+    "objetivo": "Plan paso a paso para dejar creador-de-landings usable; el usuario sabe que es una landing y necesita verla visual (URL+capturas), no código",
+    "fuente_prompt": "auditoría 2026-07-25 + pedido prompt de arreglo"
   },
   "mejoras": [
     {
@@ -34,7 +36,15 @@
     {
       "fecha": "2026-07-23",
       "texto": "Pedido: mandar HTML de nuevo en formato visual (URL/capturas), no código fuente"
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "Auditoría código base: KeyError hero_badge_calidad rompe demo; aprendizaje no-op; HTML monolítico f-string; copy/catalogo hardcodeados a Vértice; QC superficial; sin tests"
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "Prompt v8: plan paso a paso 0–8 para arreglar creador-de-landings; regla de oro entrega visual obligatoria (URL+screenshots, nunca pegar HTML); criterios de listo + anti-patrones"
     }
   ],
-  "notas": "v7: entrega SIEMPRE visual (URL + screenshots), NUNCA pegar HTML en chat."
+  "notas": "v8 = plan de arreglo de creador-de-landings (no landing_pipeline). Cada paso: commit + preview visual. Empezar por Paso 1 (KeyError) tras baseline Paso 0."
 }
