@@ -44,7 +44,11 @@
     {
       "fecha": "2026-07-25",
       "texto": "Prompt v8: plan paso a paso 0–8 para arreglar creador-de-landings; regla de oro entrega visual obligatoria (URL+screenshots, nunca pegar HTML); criterios de listo + anti-patrones"
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "Paso 0+1 hechos: KeyError hero_badge_calidad arreglado; demo pasa; test contrato; entrega visual URL+screenshots. Cuello de botella: Chrome headless ~25–60s por captura, no el pipeline."
     }
   ],
-  "notas": "v8 = plan de arreglo de creador-de-landings (no landing_pipeline). Cada paso: commit + preview visual. Empezar por Paso 1 (KeyError) tras baseline Paso 0."
+  "notas": "Paso 1 cerrado. Siguiente: Paso 2 QC+constitution. Entrega siempre visual."
 }

@@ -16,6 +16,9 @@ def copy_profesional(marca: str, n_productos: int, n_roles: int, precio: str = "
         "hero_sub": (
             f"{n_productos} guías · {n_roles} oficios · métodos de libros clásicos aplicados a tu trabajo."
         ),
+        "hero_badge_calidad": (
+            "Edición profesional · plan 10 semanas · listo para usar"
+        ),
         "catalogo_titulo": "Explora la colección",
         "catalogo_sub": (
             f"{n_productos} guías · {n_roles} roles · elige la combinación que necesitas hoy "
