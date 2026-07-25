@@ -1,7 +1,7 @@
 # Ejemplos de landing — Vértice Pro
 
-**Producto:** Guías PDF libro × rol (colección)
-**Cliente:** Profesionales por oficio (psicopedagogas, docentes…)
+**Producto:** Guías PDF para tu rol profesional
+**Cliente:** Profesionales por oficio (psicopedagogas, docentes, abogados…)
 
 **Recomendado para ti:** `tienda`
 

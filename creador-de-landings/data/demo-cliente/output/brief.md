@@ -7,7 +7,7 @@
 - **Productos en catálogo:** 6
 
 ## Copy marketing
-- Hero: Vértice Pro: guías hechas para tu rol
+- Hero: Guías libro × rol para profesionales
 - Calidad: 4 pilares
 
 ## Serie (libros)

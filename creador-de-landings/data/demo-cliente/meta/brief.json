@@ -1,7 +1,7 @@
 {
   "marca": "Vértice Pro",
-  "producto": "Guías PDF libro × rol (colección)",
-  "cliente": "Profesionales por oficio (psicopedagogas, docentes…)",
+  "producto": "Guías PDF para tu rol profesional",
+  "cliente": "Profesionales por oficio (psicopedagogas, docentes, abogados…)",
   "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
   "cta": "Ver colección",
   "precio": "desde $4.99",
@@ -17,9 +17,8 @@
     "id": "A",
     "clima": "neutro"
   },
-  "idea": "Tienda Vértice Pro — look colección tipo Filjós",
+  "idea": "Tienda de guías PDF por oficio, look colección tipo Filjós",
   "referencia": "https://filjos.com/",
-  "hero_imagen": "assets/hero-bg.svg",
   "serie_libros": [
     {
       "slug": "pareto",
@@ -132,8 +131,8 @@
     "barra_aviso": "Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99",
     "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
     "hero_eyebrow": "Colección profesional",
-    "hero_titulo": "Vértice Pro: guías hechas para tu rol",
-    "hero_sub": "No es un solo PDF. Es una línea de 6+ guías libro × oficio, diseñadas para aplicar con claridad, método y resultados medibles.",
+    "hero_titulo": "Guías libro × rol para profesionales",
+    "hero_sub": "6 guías · 5 oficios · métodos de libros clásicos aplicados a tu trabajo.",
     "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
     "catalogo_titulo": "Explora la colección",
     "catalogo_sub": "6 guías · 5 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
@@ -298,6 +297,9 @@
     "entrevista v3 solo letras A/B/C/D + CLI responder",
     "paleta carbón navy #1b222c + carrusel roles auto 5s con flechas/dots",
     "portada libro 3D CSS por slide (pareto/habitos/kahneman) en carrusel roles",
-    "#guias carrusel manual flechas+filtros; hero ya no filtra la coleccion"
+    "#guias carrusel manual flechas+filtros; hero ya no filtra la coleccion",
+    "hero: portada grande book-hero centrada, caption abajo, auto 5s + flechas",
+    "REGLAS_CAMBIOS.md: solo tocar lo pedido; max 7 bloques; personalidad con foto/tipo no mas secciones",
+    "plantilla tienda: 6 bloques, grid coleccion, hero corto, cambios quirurgicos"
   ]
 }
