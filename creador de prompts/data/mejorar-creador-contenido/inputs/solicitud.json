@@ -24,7 +24,20 @@
     {
       "mensaje": "ajustar codigo base para entregar una enseñanza del resumen (Pareto), estilo Psicología Invisible",
       "cambio": "Formato ensenanza vs promo; receta ensenanza; guion didáctico desde fuente_guia; referencia canales faceless educativos"
+    },
+    {
+      "mensaje": "la imagen mock no se parece; primero crea imagen similar a Psicología Invisible (blob characters, pastel, banner título)",
+      "cambio": "Estilo visual target: ilustración suave tipo canal educativo faceless; personaje cápsula; pastel; banner tipográfico; NO placeholder amarillo mock"
     }
   ],
+  "estilo_visual_target": {
+    "ref": "La Psicología Invisible",
+    "elementos": [
+      "personaje blob/cápsula simple",
+      "habitación o escena narrativa pastel",
+      "banner título amarillo/negro",
+      "ilustración plana suave, no foto, no mock text placeholder"
+    ]
+  },
   "variantes": 1
 }

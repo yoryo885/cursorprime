@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 2,
-    "ultima_mejora": "Formato ensenanza: video entrega lección del resumen (Pareto), estilo Psicología Invisible / faceless"
+    "version": 3,
+    "ultima_mejora": "Estilo visual: ilustración blob pastel tipo Psicología Invisible (no mock amarillo)"
   },
   "historial": [
     {
@@ -19,6 +19,11 @@
       "version": 2,
       "mensaje": "ajustar base para enseñanza del resumen Pareto estilo Psicología Invisible",
       "cambio": "Receta+formato ensenanza; guion didáctico; sin CTA duro"
+    },
+    {
+      "version": 3,
+      "mensaje": "creame imagen similar a eso",
+      "cambio": "Target visual faceless ilustrado; demo PNG generada"
     }
   ]
 }
