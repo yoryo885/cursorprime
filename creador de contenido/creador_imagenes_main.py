@@ -51,6 +51,12 @@ def main() -> None:
         default=None,
         help="Ejecutar un solo agente (debug)",
     )
+    p.add_argument(
+        "--desde",
+        choices=sorted(AGENTS.keys()),
+        default=None,
+        help="Reanudar el plan desde este agente (no rehace los anteriores)",
+    )
     p.add_argument("--listar-recetas", action="store_true", help="Muestra recetas y sale")
     p.add_argument("--reset-checkpoint", action="store_true")
     args = p.parse_args()
@@ -90,6 +96,7 @@ def main() -> None:
         reset=args.reset_checkpoint,
         receta=args.receta,
         solo=args.solo,
+        desde=args.desde,
     )
     if ok:
         print(f"\n✅ Listo: data/{slug}/")

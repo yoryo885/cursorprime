@@ -180,45 +180,67 @@ def run_pipeline(
     reset: bool = False,
     receta: str | None = None,
     solo: str | None = None,
+    desde: str | None = None,
 ) -> bool:
     if reset:
         Checkpoint.load(slug).reset()
 
     ctx = build_context(slug, lote, modo=None if modo == "all" else modo, receta=receta)
 
-    # Siempre context primero (normaliza lote)
-    if not _run_agent(LABELS["context"], AGENTS["context"], ctx):
-        return False
+    # Context + planner siempre (baratos; aseguran meta/lote frescos)
+    if not solo:
+        if not _run_agent(LABELS["context"], AGENTS["context"], ctx):
+            return False
+        ctx = build_context(
+            slug,
+            load_json(ctx.paths["lote"], {}) or lote,
+            modo=None if modo == "all" else modo,
+            receta=receta or ctx.receta,
+        )
+        if not _run_agent(LABELS["planner"], AGENTS["planner"], ctx):
+            return False
+    else:
+        # --solo: no reescribe plan; necesita contexto previo o lo regenera mínimo
+        if not _run_agent(LABELS["context"], AGENTS["context"], ctx):
+            return False
+        ctx = build_context(
+            slug,
+            load_json(ctx.paths["lote"], {}) or lote,
+            modo=None if modo == "all" else modo,
+            receta=receta or ctx.receta,
+        )
 
-    # Recargar lote normalizado
-    ctx = build_context(
-        slug,
-        load_json(ctx.paths["lote"], {}) or lote,
-        modo=None if modo == "all" else modo,
-        receta=receta or ctx.receta,
-    )
-
-    if not _run_agent(LABELS["planner"], AGENTS["planner"], ctx):
-        return False
-
-    # Plan definitivo tras planner
     steps = _steps_for_run(ctx, solo=solo)
-    # Evitar repetir context/planner si ya corrimos
-    skip = {"context", "planner"} if not solo else set()
+    skip: set[str] = set()
+    if not solo:
+        skip.update({"context", "planner"})  # ya corridos arriba
 
     ckpt = Checkpoint.load(slug)
-    for idx, step in enumerate(steps, start=1):
+
+    # Reanudación: --desde o último slug del checkpoint
+    resume_from = desde or (None if reset or solo else ckpt.last_completed_slug or None)
+    if resume_from and resume_from in steps and not solo:
+        idx = steps.index(resume_from)
+        # Si viene del checkpoint (ya completado), saltar ese y los anteriores
+        if not desde:
+            skip.update(steps[: idx + 1])
+            print(f"   ↩ Reanudando después de «{resume_from}» ({len(skip)} pasos en skip)")
+        else:
+            # --desde X: empezar EN X (no rehacer anteriores)
+            skip.update(s for s in steps[:idx] if s not in {"context", "planner"})
+            print(f"   ↩ Desde «{desde}»")
+
+    for i, step in enumerate(steps, start=1):
         if step in skip:
             continue
         if step not in AGENTS:
             log_error(slug, step, "agente desconocido")
             return False
-        # Si --modo acotó salidas, no correr módulos no pedidos
         if step in MODULO_STEPS and step not in ctx.salidas and modo != "all":
             continue
         label = LABELS.get(step, step)
         if not _run_agent(label, AGENTS[step], ctx):
             return False
-        ckpt.mark_completed(idx, step)
+        ckpt.mark_completed(i, step)
 
     return True

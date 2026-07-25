@@ -25,6 +25,10 @@ python3 creador_imagenes_main.py --slug demo_slideshow --receta slideshow
 # Modos clásicos
 python3 creador_imagenes_main.py --slug demo_lote --modo png
 python3 creador_imagenes_main.py --slug demo_full --modo all
+
+# Reanudar (Paso B): sin --reset-checkpoint continúa tras el último paso OK
+# o fuerza punto de partida:
+python3 creador_imagenes_main.py --slug demo_lote --modo png --desde png
 ```
 
 ## Recetas → agentes / skills
@@ -109,7 +113,7 @@ meta/recetas.json    → catálogo de recetas
 ## Pendiente V1
 
 - [x] **A** Limpieza: GenerateAgent muerto eliminado; `meta/plan.json` alineado con runtime
-- [ ] **B** Checkpoint que reanuda (hoy solo escribe historial)
+- [x] **B** Checkpoint que reanuda (`last_completed_slug` + `--desde` / auto-resume)
 - [ ] **C** LLM opcional en hook/guion/escenas (mock si no hay API)
 - [ ] Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
 - [ ] IA real imágenes (`MOCK_GENERATE=false`)
