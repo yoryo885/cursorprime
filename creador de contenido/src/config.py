@@ -10,7 +10,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
-# Carga .env del proyecto (creador de contenido/.env)
+# Keys: archivo visible ELEVENLABS_KEY.env (Mac/Finder) + .env clásico
+load_dotenv(ROOT / "ELEVENLABS_KEY.env")
 load_dotenv(ROOT / ".env")
 load_dotenv()
 

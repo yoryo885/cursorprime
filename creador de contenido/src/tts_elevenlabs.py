@@ -15,6 +15,13 @@ ELEVEN_MODEL = os.getenv("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2").strip(
 TTS_PROVIDER = os.getenv("TTS_PROVIDER", "elevenlabs").strip().lower()
 MOCK_TTS = os.getenv("MOCK_TTS", "true").lower() in ("1", "true", "yes", "on")
 
+# Voces por defecto (evita /v1/voices que exige permiso user_read)
+_DEFAULT_VOICES = [
+    "EXAVITQu4vr4xnSDxMaL",  # Bella — suele funcionar en plan free vía API
+    "JBFqnCBsd6RMkjVDRZzb",  # George
+    "21m00Tcm4TlvDq8ikWAM",  # Rachel (a veces requiere plan de pago)
+]
+
 
 def tts_activo() -> bool:
     if MOCK_TTS:
@@ -24,38 +31,16 @@ def tts_activo() -> bool:
     return bool(ELEVEN_KEY)
 
 
-def _resolve_voice_id() -> str:
+def _voice_candidates() -> list[str]:
     if ELEVEN_VOICE:
-        return ELEVEN_VOICE
-    # Sin VOICE_ID: pide la primera voz de la cuenta
-    req = urllib.request.Request(
-        f"{ELEVEN_API}/voices",
-        headers={"xi-api-key": ELEVEN_KEY, "Accept": "application/json"},
-        method="GET",
-    )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-    voices = data.get("voices") or []
-    if not voices:
-        raise RuntimeError("ElevenLabs: no hay voces en la cuenta; define ELEVENLABS_VOICE_ID")
-    return str(voices[0]["voice_id"])
+        return [ELEVEN_VOICE]
+    return list(_DEFAULT_VOICES)
 
 
-def synthesize_elevenlabs(texto: str, out_mp3: Path) -> Path:
-    """Genera MP3 con ElevenLabs. Lanza si falla."""
-    if not ELEVEN_KEY:
-        raise RuntimeError("ELEVENLABS_API_KEY vacía")
-    text = " ".join(str(texto).split()).strip()
-    if not text:
-        raise RuntimeError("texto vacío para TTS")
-    # Límite práctico por request
-    if len(text) > 4500:
-        text = text[:4500]
-
-    voice_id = _resolve_voice_id()
+def _tts_once(texto: str, voice_id: str, out_mp3: Path) -> Path:
     url = f"{ELEVEN_API}/text-to-speech/{voice_id}"
     payload = {
-        "text": text,
+        "text": texto,
         "model_id": ELEVEN_MODEL or "eleven_multilingual_v2",
         "voice_settings": {"stability": 0.45, "similarity_boost": 0.75},
     }
@@ -71,16 +56,42 @@ def synthesize_elevenlabs(texto: str, out_mp3: Path) -> Path:
         method="POST",
     )
     out_mp3.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            out_mp3.write_bytes(resp.read())
-    except urllib.error.HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="ignore")[:240]
-        raise RuntimeError(f"ElevenLabs HTTP {exc.code}: {detail}") from exc
+    with urllib.request.urlopen(req, timeout=120) as resp:
+        out_mp3.write_bytes(resp.read())
     if not out_mp3.exists() or out_mp3.stat().st_size < 100:
         raise RuntimeError("ElevenLabs devolvió audio vacío")
     return out_mp3
 
+
+def synthesize_elevenlabs(texto: str, out_mp3: Path) -> Path:
+    """Genera MP3 con ElevenLabs. Lanza si falla."""
+    if not ELEVEN_KEY:
+        raise RuntimeError("ELEVENLABS_API_KEY vacía")
+    text = " ".join(str(texto).split()).strip()
+    if not text:
+        raise RuntimeError("texto vacío para TTS")
+    if len(text) > 4500:
+        text = text[:4500]
+
+    errors: list[str] = []
+    for voice_id in _voice_candidates():
+        try:
+            return _tts_once(text, voice_id, out_mp3)
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="ignore")[:200]
+            if exc.code == 401:
+                errors.append(f"{voice_id}: 401 key inválida o sin permiso TTS")
+            elif exc.code == 402:
+                errors.append(f"{voice_id}: 402 voz de librería requiere plan de pago")
+            else:
+                errors.append(f"{voice_id}: HTTP {exc.code} {detail}")
+        except Exception as exc:
+            errors.append(f"{voice_id}: {exc}")
+    raise RuntimeError(
+        "ElevenLabs falló con todas las voces. "
+        "Pon ELEVENLABS_VOICE_ID= de una voz de TU cuenta (VoiceLab). "
+        + " | ".join(errors[:3])
+    )
 
 def synthesize(texto: str, out_mp3: Path, mock: bool | None = None) -> tuple[Path | None, str, str]:
     """

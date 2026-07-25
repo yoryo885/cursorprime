@@ -1,0 +1,13 @@
+# Pegá aquí tu API key de ElevenLabs
+
+1. Abre este archivo: ELEVENLABS_KEY.env
+   (está en la carpeta "creador de contenido" — SÍ se ve en Finder)
+
+2. En la línea ELEVENLABS_API_KEY= pega la key pegada al = 
+
+3. Guarda
+
+4. En terminal:
+   python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza --desde audio --reset-checkpoint
+
+NO uses el archivo .env (está oculto). Usa ELEVENLABS_KEY.env
