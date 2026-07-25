@@ -7,7 +7,7 @@
 - **Productos en catálogo:** 6
 
 ## Copy marketing
-- Hero: Guías libro × rol para profesionales
+- Hero: Guías PDF para tu rol profesional
 - Calidad: 4 pilares
 
 ## Serie (libros)

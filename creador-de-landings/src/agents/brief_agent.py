@@ -23,21 +23,36 @@ class BriefAgent:
         paleta = elegir_paleta(r)
         marca = r.get("marca") or ctx.slug
         precio = r.get("precio") or "desde $4.99"
-        copy = copy_profesional(marca, len(guias), len(roles), precio)
-        productos = enriquecer_productos(guias, serie)
-
-        # Promesa: preferir copy profesional salvo que el usuario pidió otra explícita no-default
+        producto_r = (r.get("producto") or "").strip()
+        cliente_r = (r.get("cliente") or "").strip()
         promesa_user = (r.get("promesa") or "").strip()
         promesa_default_entrevista = "Ideas de libros aplicadas a tu rol — elige tu guía"
-        if promesa_user and promesa_user != promesa_default_entrevista:
-            promesa = promesa_user
+        promesa_para_copy = (
+            promesa_user
+            if promesa_user and promesa_user != promesa_default_entrevista
+            else ""
+        )
+        copy = copy_profesional(
+            marca,
+            len(guias),
+            len(roles),
+            precio,
+            producto=producto_r,
+            cliente=cliente_r,
+            promesa=promesa_para_copy,
+            tono=(r.get("tono") or ""),
+        )
+        productos = enriquecer_productos(guias, serie)
+
+        if promesa_para_copy:
+            promesa = promesa_para_copy
         else:
             promesa = copy["promesa"]
 
         brief = {
             "marca": marca,
-            "producto": r.get("producto") or "Guías PDF profesionales libro × rol",
-            "cliente": r.get("cliente") or "Profesionales por oficio",
+            "producto": producto_r or "Guías PDF profesionales libro × rol",
+            "cliente": cliente_r or "Profesionales por oficio",
             "promesa": promesa,
             "cta": r.get("cta") or "Ver colección",
             "precio": precio,

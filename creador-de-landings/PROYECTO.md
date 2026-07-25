@@ -18,59 +18,61 @@ flowchart LR
 ```bash
 cd creador-de-landings
 
-# Demo como cliente (Vértice Pro — catálogo completo)
+# Demo colección (Vértice Pro)
 python3 landings_main.py demo --ejemplo tienda
 
-# Entrevista interactiva
-python3 landings_main.py entrevista --slug mi-marca
+# Demo 1 producto (Norte Claro)
+python3 landings_main.py generar --slug demo-simple --ejemplo tienda --reset-checkpoint
 
-# Generar (usa data/{slug}/inputs/catalogo.json si existe)
-python3 landings_main.py generar --slug mi-marca --ejemplo tienda
+# Entrevista / letras
+python3 landings_main.py preguntas
+python3 landings_main.py responder --slug mi-marca --letras "todo A" --generar
 
-# Registrar mejora (aprendizaje continuo)
-python3 landings_main.py aprender --mensaje "..." --cambio "..."
+# Reintento por paso
+python3 landings_main.py generar --slug demo-cliente --solo brief --reset-checkpoint
+
+# Aprendizaje con efecto real (ej. ocultar newsletter)
+python3 landings_main.py aprender --mensaje "quitar newsletter" --cambio "ocultar_newsletter"
 ```
 
-## Catálogo (no solo Pareto)
+Flags reales: `--solo interview|examples|brief|build|qc|packager` (no `--solo-interview`).
+
+## Catálogo
 
 - Default: `meta/catalogo_default.json` (libros × roles)
 - Por marca: `data/{slug}/inputs/catalogo.json`
-- La landing muestra **grid + filtros por rol** (disponibles y próximamente)
 
 ## Aprendizaje
 
-Cada mejora del usuario → `logs/mejoras.json` → se reinyecta en el brief (`aprendizaje[]`).
+`aprender` escribe en `logs/mejoras.json` y aplica **efectos** al brief que el HTML respeta:
 
-## Entrada
+- `ocultar_newsletter` / `ocultar_faq`
+- `forzar_cta` (vía `cta: ...` en el mensaje)
 
-- Preguntas en `meta/preguntas.json`
-- Respuestas: `data/{slug}/inputs/respuestas.json`
-- Estilo elegido: `ejemplo` = `editorial` | `tienda` | `mockup` | `oferta`
-- Ref. tienda (estructura Filjós): `meta/referencias/filjos.md`
+## Templates
+
+| Estilo | Archivo |
+|--------|---------|
+| `tienda` | `src/templates/tienda.py` |
+| `editorial` / `mockup` / `oferta` | `src/templates/html_builder.py` |
+| helpers | `src/templates/common.py` |
 
 ## Salida
 
 ```
 data/{slug}/output/
-├── preview.html      # landing lista
-├── brief.md          # resumen del brief
-├── ejemplos.md       # 3 estilos propuestos
+├── preview.html
+├── brief.md
+├── ejemplos.md
+├── URL-PUBLICA.txt
 └── manifest.json
 ```
 
-## MVP / V1 / Futuro
+## Entrega
 
-| Fase | Qué |
-|------|-----|
-| **MVP** | Entrevista + 3 ejemplos + HTML estático (3 plantillas) + demo cliente |
-| **V1** | Imagen hero IA / Unsplash, export Shopify sections, A/B headlines |
-| **Futuro** | Multi-página, i18n, conectar creador de contenido para assets |
+Mostrar **solo URL pública** del preview. No pegar HTML. No screenshots.
 
-## Relación con otros proyectos
+## MVP / límites
 
-| Proyecto | Rol |
-|----------|-----|
-| `landing-lanzamiento` (skill) | Solo copy/brief markdown |
-| **creador-de-landings** | Genera HTML real |
-| `vertice-pro-preview` | Referencia visual (imagen 6 / hero) |
-| `sitio-pdf` | Tienda PDF + Shopify zip |
+- Botones de compra son `href="#"` (sin checkout real).
+- Testimonios inventados prohibidos → `[PENDIENTE]`.

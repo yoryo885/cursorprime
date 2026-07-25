@@ -3,15 +3,13 @@
   "tipo": "pipeline",
   "proyecto_destino": "creador-de-landings",
   "temas": [
-    "destrabar KeyError hero_badge_calidad Brief↔copy",
-    "QC con constitution + landings 1 producto",
-    "renderizar campos muertos del brief",
-    "desacoplar copy de Vértice (demo-simple)",
-    "aprendizaje con efecto visual real",
-    "modularizar html_builder (tienda primero)",
-    "docs/skill/CLI alineados",
-    "visual QA: URL pública + screenshots desktop/mobile",
-    "NUNCA pegar HTML en el chat — solo ver la landing"
+    "entrega solo URL sin screenshots",
+    "QC constitution 1 producto",
+    "campos brief visibles",
+    "demo-simple",
+    "aprendizaje efectos HTML",
+    "tienda.py modular",
+    "docs CLI skill"
   ],
   "contexto": {
     "audiencia": "operador cursorprime",
@@ -48,7 +46,11 @@
     {
       "fecha": "2026-07-25",
       "texto": "Paso 0+1 hechos: KeyError hero_badge_calidad arreglado; demo pasa; test contrato; entrega visual URL+screenshots. Cuello de botella: Chrome headless ~25–60s por captura, no el pipeline."
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "v9: sin screenshots solo URL; pasos 2-7: QC constitution, campos brief, demo-simple, aprendizaje real, tienda modular, docs/CLI"
     }
   ],
-  "notas": "Paso 1 cerrado. Siguiente: Paso 2 QC+constitution. Entrega siempre visual."
+  "notas": "Prompt v9: entrega solo URL. Pasos 2-7 implementados."
 }

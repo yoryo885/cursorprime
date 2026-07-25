@@ -1,0 +1,26 @@
+{
+  "serie_libros": [
+    {
+      "slug": "norte",
+      "titulo": "Ordena tu práctica",
+      "autor": "Norte Claro"
+    }
+  ],
+  "roles": [
+    {
+      "slug": "coach",
+      "nombre": "Coach"
+    }
+  ],
+  "catalogo_guias": [
+    {
+      "slug": "norte-coach",
+      "libro": "norte",
+      "rol": "coach",
+      "titulo": "Guía práctica para coaches 1:1",
+      "precio": "$9",
+      "disponible": true,
+      "destacado": true
+    }
+  ]
+}

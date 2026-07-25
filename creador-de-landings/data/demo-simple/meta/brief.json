@@ -1,11 +1,11 @@
 {
-  "marca": "Vértice Pro",
-  "producto": "Guías PDF para tu rol profesional",
-  "cliente": "Profesionales por oficio (psicopedagogas, docentes, abogados…)",
-  "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
-  "cta": "Ver colección",
-  "precio": "desde $4.99",
-  "tono": "editorial",
+  "marca": "Norte Claro",
+  "producto": "Guía práctica para coaches 1:1",
+  "cliente": "Coaches que arrancan su práctica",
+  "promesa": "Un plan claro de 8 semanas para ordenar tu oferta",
+  "cta": "Quiero la guía",
+  "precio": "$9",
+  "tono": "directo",
   "estilo": "tienda",
   "paleta": {
     "nombre": "Editorial carbón",
@@ -17,125 +17,44 @@
     "id": "A",
     "clima": "neutro"
   },
-  "idea": "Tienda de guías PDF por oficio, look colección tipo Filjós",
-  "referencia": "https://filjos.com/",
+  "idea": "Una sola guía PDF para coaches",
+  "referencia": "",
   "serie_libros": [
     {
-      "slug": "pareto",
-      "titulo": "El principio de Pareto",
-      "autor": "Antoine Delers"
-    },
-    {
-      "slug": "habitos",
-      "titulo": "Hábitos atómicos",
-      "autor": "James Clear"
-    },
-    {
-      "slug": "kahneman",
-      "titulo": "Pensar rápido, pensar despacio",
-      "autor": "Daniel Kahneman"
+      "slug": "norte",
+      "titulo": "Ordena tu práctica",
+      "autor": "Norte Claro"
     }
   ],
   "roles": [
     {
-      "slug": "psicopedagogas",
-      "nombre": "Psicopedagogas"
-    },
-    {
-      "slug": "abogados",
-      "nombre": "Abogados"
-    },
-    {
-      "slug": "docentes",
-      "nombre": "Docentes"
-    },
-    {
-      "slug": "enfermeras",
-      "nombre": "Enfermeras"
-    },
-    {
-      "slug": "soldadores",
-      "nombre": "Soldadores"
+      "slug": "coach",
+      "nombre": "Coach"
     }
   ],
   "productos": [
     {
-      "slug": "pareto-psicopedagogas",
-      "libro": "pareto",
-      "rol": "psicopedagogas",
-      "titulo": "Pareto para psicopedagogas en 10 semanas",
-      "precio": "$4.99",
+      "slug": "norte-coach",
+      "libro": "norte",
+      "rol": "coach",
+      "titulo": "Guía práctica para coaches 1:1",
+      "precio": "$9",
       "disponible": true,
       "destacado": true,
-      "subtitulo": "Basada en El principio de Pareto · Antoine Delers · Edición profesional · Plan 10 semanas",
+      "subtitulo": "Basada en Ordena tu práctica · Norte Claro · Edición profesional · Plan 10 semanas",
       "badge_marketing": "Disponible ahora"
-    },
-    {
-      "slug": "pareto-abogados",
-      "libro": "pareto",
-      "rol": "abogados",
-      "titulo": "Pareto para abogados en 10 semanas",
-      "precio": "$4.99",
-      "disponible": false,
-      "destacado": false,
-      "subtitulo": "Próximo lanzamiento · El principio de Pareto · Antoine Delers · Misma calidad de la colección",
-      "badge_marketing": "Próximamente"
-    },
-    {
-      "slug": "habitos-enfermeras",
-      "libro": "habitos",
-      "rol": "enfermeras",
-      "titulo": "Hábitos atómicos para enfermeras en 10 semanas",
-      "precio": "$4.99",
-      "disponible": false,
-      "destacado": false,
-      "subtitulo": "Próximo lanzamiento · Hábitos atómicos · James Clear · Misma calidad de la colección",
-      "badge_marketing": "Próximamente"
-    },
-    {
-      "slug": "kahneman-docentes",
-      "libro": "kahneman",
-      "rol": "docentes",
-      "titulo": "Kahneman para docentes en 10 semanas",
-      "precio": "$4.99",
-      "disponible": false,
-      "destacado": false,
-      "subtitulo": "Próximo lanzamiento · Pensar rápido, pensar despacio · Daniel Kahneman · Misma calidad de la colección",
-      "badge_marketing": "Próximamente"
-    },
-    {
-      "slug": "pareto-soldadores",
-      "libro": "pareto",
-      "rol": "soldadores",
-      "titulo": "Pareto para soldadores en 10 semanas",
-      "precio": "$4.99",
-      "disponible": false,
-      "destacado": false,
-      "subtitulo": "Próximo lanzamiento · El principio de Pareto · Antoine Delers · Misma calidad de la colección",
-      "badge_marketing": "Próximamente"
-    },
-    {
-      "slug": "habitos-abogados",
-      "libro": "habitos",
-      "rol": "abogados",
-      "titulo": "Hábitos atómicos para abogados en 10 semanas",
-      "precio": "$4.99",
-      "disponible": false,
-      "destacado": false,
-      "subtitulo": "Próximo lanzamiento · Hábitos atómicos · James Clear · Misma calidad de la colección",
-      "badge_marketing": "Próximamente"
     }
   ],
   "mostrar_catalogo": true,
   "copy": {
-    "barra_aviso": "Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99",
-    "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
-    "hero_eyebrow": "Colección profesional",
-    "hero_titulo": "Guías PDF para tu rol profesional",
-    "hero_sub": "Para Profesionales por oficio (psicopedagogas, docentes, abogados…) · 6 guías · 5 oficios · métodos de libros clásicos aplicados a tu trabajo.",
-    "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
+    "barra_aviso": "Norte Claro · Guía práctica para coaches 1:1 · $9",
+    "promesa": "Un plan claro de 8 semanas para ordenar tu oferta",
+    "hero_eyebrow": "Directo",
+    "hero_titulo": "Guía práctica para coaches 1:1",
+    "hero_sub": "Coaches que arrancan su práctica. Un plan claro de 8 semanas para ordenar tu oferta",
+    "hero_badge_calidad": "Edición profesional · $9",
     "catalogo_titulo": "Explora la colección",
-    "catalogo_sub": "6 guías · 5 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
+    "catalogo_sub": "1 guías · 1 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
     "serie_titulo": "Basadas en libros que ya funcionan",
     "serie_sub": "Cada guía toma un libro de referencia y lo traduce a tu realidad laboral.",
     "calidad_titulo": "Por qué la calidad importa",
@@ -164,7 +83,7 @@
       "Checklist y prioridades 80/20",
       "Descarga inmediata en PDF"
     ],
-    "historia": "Vértice Pro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
+    "historia": "Norte Claro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
     "mision": "Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.",
     "beneficios": [
       "Colección multiproducto: varias guías libro × rol, no un único PDF",
@@ -205,12 +124,12 @@
     "newsletter_cta": "Quiero avisos de la colección",
     "social_proof_nota": "Las reseñas reales de clientes aparecerán aquí. No publicamos testimonios inventados."
   },
-  "barra_aviso": "Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99",
-  "hero_eyebrow": "Colección profesional",
-  "hero_titulo": "Guías PDF para tu rol profesional",
-  "hero_sub": "Para Profesionales por oficio (psicopedagogas, docentes, abogados…) · 6 guías · 5 oficios · métodos de libros clásicos aplicados a tu trabajo.",
-  "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
-  "historia": "Vértice Pro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
+  "barra_aviso": "Norte Claro · Guía práctica para coaches 1:1 · $9",
+  "hero_eyebrow": "Directo",
+  "hero_titulo": "Guía práctica para coaches 1:1",
+  "hero_sub": "Coaches que arrancan su práctica. Un plan claro de 8 semanas para ordenar tu oferta",
+  "hero_badge_calidad": "Edición profesional · $9",
+  "historia": "Norte Claro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
   "mision": "Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.",
   "beneficios": [
     "Colección multiproducto: varias guías libro × rol, no un único PDF",
@@ -275,7 +194,7 @@
   "newsletter_cta": "Quiero avisos de la colección",
   "social_proof_nota": "Las reseñas reales de clientes aparecerán aquí. No publicamos testimonios inventados.",
   "catalogo_titulo": "Explora la colección",
-  "catalogo_sub": "6 guías · 5 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
+  "catalogo_sub": "1 guías · 1 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
   "serie_titulo": "Basadas en libros que ya funcionan",
   "serie_sub": "Cada guía toma un libro de referencia y lo traduce a tu realidad laboral.",
   "calidad_titulo": "Por qué la calidad importa",

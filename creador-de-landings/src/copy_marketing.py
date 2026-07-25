@@ -3,22 +3,62 @@
 from __future__ import annotations
 
 
-def copy_profesional(marca: str, n_productos: int, n_roles: int, precio: str = "") -> dict:
-    """Bloques de texto listos para brief + HTML. Sin testimonios inventados."""
+def copy_profesional(
+    marca: str,
+    n_productos: int,
+    n_roles: int,
+    precio: str = "",
+    *,
+    producto: str = "",
+    cliente: str = "",
+    promesa: str = "",
+    tono: str = "",
+) -> dict:
+    """Bloques de texto listos para brief + HTML. Sin testimonios inventados.
+
+    Si vienen producto/cliente/promesa del usuario (no vacíos), el copy los usa
+    en vez del relato fijo libro×rol — así no queda pegado solo a Vértice.
+    """
     precio_line = precio or "desde $4.99"
-    return {
-        "barra_aviso": (
-            f"Colección profesional · PDF de alta calidad · descarga inmediata · {precio_line}"
-        ),
-        "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
-        "hero_eyebrow": "Colección profesional",
-        "hero_titulo": f"Guías libro × rol para profesionales",
-        "hero_sub": (
+    promesa_final = (promesa or "").strip() or (
+        "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional"
+    )
+    if (producto or "").strip() and not (promesa or "").strip():
+        # Producto custom sin promesa explícita → titular alrededor del producto
+        hero_titulo = producto.strip()
+    elif (producto or "").strip() and n_productos <= 1:
+        hero_titulo = producto.strip()
+    else:
+        hero_titulo = "Guías libro × rol para profesionales"
+
+    if n_productos <= 1 and (producto or "").strip():
+        hero_sub = (
+            f"{cliente.strip()}. {promesa_final}"
+            if (cliente or "").strip()
+            else promesa_final
+        )
+        eyebrow = (tono or "Colección").strip().capitalize() if tono else "Producto"
+        badge = f"Edición profesional · {precio_line}"
+        barra = f"{marca} · {producto.strip()} · {precio_line}"
+    else:
+        hero_sub = (
             f"{n_productos} guías · {n_roles} oficios · métodos de libros clásicos aplicados a tu trabajo."
-        ),
-        "hero_badge_calidad": (
-            "Edición profesional · plan 10 semanas · listo para usar"
-        ),
+        )
+        if (cliente or "").strip():
+            hero_sub = f"Para {cliente.strip()} · {hero_sub}"
+        eyebrow = "Colección profesional"
+        badge = "Edición profesional · plan 10 semanas · listo para usar"
+        barra = (
+            f"Colección profesional · PDF de alta calidad · descarga inmediata · {precio_line}"
+        )
+
+    return {
+        "barra_aviso": barra,
+        "promesa": promesa_final,
+        "hero_eyebrow": eyebrow,
+        "hero_titulo": hero_titulo,
+        "hero_sub": hero_sub,
+        "hero_badge_calidad": badge,
         "catalogo_titulo": "Explora la colección",
         "catalogo_sub": (
             f"{n_productos} guías · {n_roles} roles · elige la combinación que necesitas hoy "

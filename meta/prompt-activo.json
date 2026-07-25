@@ -1,12 +1,12 @@
 {
-  "version": 21,
+  "version": 22,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Arreglar creador de landings (visual)",
-    "version": 8,
-    "ultima_mejora": "Paso 0+1 cerrados: pipeline destrabado + preview visual",
+    "version": 9,
+    "ultima_mejora": "v9 solo URL + pasos 2-7 hechos",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }

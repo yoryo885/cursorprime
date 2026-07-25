@@ -39,3 +39,8 @@ python3 landings_main.py aprender --mensaje "..." --cambio "..."
 ## Salida
 
 `data/{slug}/output/preview.html` · `ejemplos.md` · `brief.md`
+
+## Entrega al usuario
+
+Solo **URL pública** del preview (tunnel/CDN).  
+**Nunca** pegar HTML. **Nunca** screenshots (el usuario pidió URL solamente).
