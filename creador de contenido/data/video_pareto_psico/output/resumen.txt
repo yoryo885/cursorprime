@@ -1,0 +1,6 @@
+Creador de Contenido — Pareto para psicopedagogas en 10 semanas
+Receta: promo-guia
+Skills: hooks-redes, guion-a-video, captions-redes, thumbnail-social
+Salidas: png, video
+QC: OK
+Pack: video_pareto_psico_contenido.zip

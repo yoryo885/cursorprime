@@ -1,0 +1,66 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "escena_id": 1,
+      "tipo_frame": "inicio",
+      "tema": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+      "slug": "si_pareto_para_psicopedagogas_en_10_sema",
+      "prompt": "Start frame, papel-sketch style, scene: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan, illustration, clean composition, no text, square",
+      "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos"
+    },
+    {
+      "id": 1,
+      "escena_id": 1,
+      "tipo_frame": "fin",
+      "tema": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+      "slug": "si_pareto_para_psicopedagogas_en_10_sema",
+      "prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan, no text, square",
+      "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos"
+    },
+    {
+      "id": 2,
+      "escena_id": 2,
+      "tipo_frame": "inicio",
+      "tema": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+      "slug": "esta_gua_te_da_priorizar_el_20_de_caso",
+      "prompt": "Start frame, papel-sketch style, scene: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno. 1. El 20% de causas pro, illustration, clean composition, no text, square",
+      "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a"
+    },
+    {
+      "id": 2,
+      "escena_id": 2,
+      "tipo_frame": "fin",
+      "tema": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+      "slug": "esta_gua_te_da_priorizar_el_20_de_caso",
+      "prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno. 1. El 20% de causas pro, no text, square",
+      "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a"
+    },
+    {
+      "id": 3,
+      "escena_id": 3,
+      "tipo_frame": "inicio",
+      "tema": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+      "slug": "2_separa_lo_vital_de_lo_secundario_y_re",
+      "prompt": "Start frame, papel-sketch style, scene: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exacta: puede ser 10/90 en tu escuela, illustration, clean composition, no text, square",
+      "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac"
+    },
+    {
+      "id": 3,
+      "escena_id": 3,
+      "tipo_frame": "fin",
+      "tema": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+      "slug": "2_separa_lo_vital_de_lo_secundario_y_re",
+      "prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exacta: puede ser 10/90 en tu escuela, no text, square",
+      "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac"
+    }
+  ],
+  "count": 6,
+  "video_modo": "animado"
+}

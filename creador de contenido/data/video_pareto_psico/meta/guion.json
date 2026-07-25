@@ -1,0 +1,44 @@
+{
+  "skill": "guion-a-video",
+  "titulo": "Pareto para psicopedagogas en 10 semanas",
+  "guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.\n\nEl problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas.\n\nEsta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno.\n\n1. El 20% de causas produce el 80% de efectos en tu gabinete\n\n2. Separa lo vital de lo secundario y reduce el caos\n\n3. La proporción no es exacta: puede ser 10/90 en tu escuela\n\nComenta PARETO y te paso la guía completa",
+  "escenas_preview": [
+    {
+      "id": 1,
+      "texto_guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos."
+    },
+    {
+      "id": 2,
+      "texto_guion": "El problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas."
+    },
+    {
+      "id": 3,
+      "texto_guion": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno."
+    },
+    {
+      "id": 4,
+      "texto_guion": "1. El 20% de causas produce el 80% de efectos en tu gabinete"
+    },
+    {
+      "id": 5,
+      "texto_guion": "2. Separa lo vital de lo secundario y reduce el caos"
+    },
+    {
+      "id": 6,
+      "texto_guion": "3. La proporción no es exacta: puede ser 10/90 en tu escuela"
+    },
+    {
+      "id": 7,
+      "texto_guion": "Comenta PARETO y te paso la guía completa"
+    }
+  ],
+  "ideas": [
+    "El 20% de causas produce el 80% de efectos en tu gabinete",
+    "Separa lo vital de lo secundario y reduce el caos",
+    "La proporción no es exacta: puede ser 10/90 en tu escuela"
+  ],
+  "generado_desde": "guia",
+  "modo": "heuristica",
+  "archivo_md": "/workspace/creador de contenido/data/video_pareto_psico/copy/guion.md",
+  "generado_at": "2026-07-25T18:01:52.035607+00:00"
+}

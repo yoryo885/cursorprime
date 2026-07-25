@@ -1,0 +1,29 @@
+{
+  "titulo": "Pareto para psicopedagogas en 10 semanas",
+  "receta": "promo-guia",
+  "estilo": "papel-sketch",
+  "plataforma": "reels",
+  "regenerar_guion": true,
+  "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
+  "guia": {
+    "titulo": "Pareto para psicopedagogas en 10 semanas",
+    "promesa": "priorizar el 20% de casos que generan el 80% del impacto en el aula",
+    "ideas": [
+      "El 20% de causas produce el 80% de efectos en tu gabinete",
+      "Separa lo vital de lo secundario y reduce el caos",
+      "La proporción no es exacta: puede ser 10/90 en tu escuela"
+    ],
+    "cta": "Comenta PARETO y te paso la guía completa"
+  },
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 3
+  },
+  "audio": {
+    "estilo": "instrumental trendy suave, sin letra",
+    "bpm": 98
+  },
+  "notas": "Primer video real del pipeline — mock motion/LLM; PDF solo lectura",
+  "hook": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
+  "guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.\n\nEl problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas.\n\nEsta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno.\n\n1. El 20% de causas produce el 80% de efectos en tu gabinete\n\n2. Separa lo vital de lo secundario y reduce el caos\n\n3. La proporción no es exacta: puede ser 10/90 en tu escuela\n\nComenta PARETO y te paso la guía completa"
+}

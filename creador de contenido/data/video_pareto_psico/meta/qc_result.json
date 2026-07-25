@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "passed": [
+    "01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+    "01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+    "02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+    "02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+    "03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+    "03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+    "01-si_pareto_para_psicopedagogas_en_10_sema.mp4",
+    "02-esta_gua_te_da_priorizar_el_20_de_caso.mp4",
+    "03-2_separa_lo_vital_de_lo_secundario_y_re.mp4",
+    "video_pareto_psico.mp4",
+    "hooks",
+    "guion",
+    "captions",
+    "thumbnail",
+    "audio",
+    "thumbnail.png"
+  ],
+  "issues": [],
+  "salidas": [
+    "png",
+    "video"
+  ],
+  "receta": "promo-guia",
+  "agentes": [
+    "hook",
+    "qc",
+    "escenas",
+    "png",
+    "guion",
+    "context",
+    "captions",
+    "audio",
+    "prompt",
+    "style",
+    "video",
+    "thumbnail",
+    "packager",
+    "planner"
+  ]
+}

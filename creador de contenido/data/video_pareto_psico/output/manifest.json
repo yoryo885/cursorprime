@@ -1,0 +1,324 @@
+{
+  "proyecto": "creador-de-contenido",
+  "slug": "video_pareto_psico",
+  "titulo": "Pareto para psicopedagogas en 10 semanas",
+  "receta": "promo-guia",
+  "skills_activadas": [
+    "hooks-redes",
+    "guion-a-video",
+    "captions-redes",
+    "thumbnail-social"
+  ],
+  "agentes": [
+    "context",
+    "planner",
+    "hook",
+    "guion",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "video",
+    "audio",
+    "captions",
+    "thumbnail",
+    "qc",
+    "packager"
+  ],
+  "salidas_pedidas": [
+    "png",
+    "video"
+  ],
+  "salidas_generadas": [
+    "png",
+    "video"
+  ],
+  "integracion_externa": false,
+  "modulos": {
+    "generated_imagenes": {
+      "imagenes": [
+        {
+          "tema": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+          "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+          "modulo": "imagenes",
+          "escena_id": 1,
+          "tipo_frame": "inicio",
+          "mock": true,
+          "backend": "mock_placeholder",
+          "generado_at": "2026-07-25T18:01:52.063398+00:00"
+        },
+        {
+          "tema": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+          "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+          "modulo": "imagenes",
+          "escena_id": 1,
+          "tipo_frame": "fin",
+          "mock": true,
+          "backend": "mock_placeholder",
+          "generado_at": "2026-07-25T18:01:52.081694+00:00"
+        },
+        {
+          "tema": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+          "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+          "modulo": "imagenes",
+          "escena_id": 2,
+          "tipo_frame": "inicio",
+          "mock": true,
+          "backend": "mock_placeholder",
+          "generado_at": "2026-07-25T18:01:52.098734+00:00"
+        },
+        {
+          "tema": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+          "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+          "modulo": "imagenes",
+          "escena_id": 2,
+          "tipo_frame": "fin",
+          "mock": true,
+          "backend": "mock_placeholder",
+          "generado_at": "2026-07-25T18:01:52.116022+00:00"
+        },
+        {
+          "tema": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+          "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+          "modulo": "imagenes",
+          "escena_id": 3,
+          "tipo_frame": "inicio",
+          "mock": true,
+          "backend": "mock_placeholder",
+          "generado_at": "2026-07-25T18:01:52.133363+00:00"
+        },
+        {
+          "tema": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+          "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+          "modulo": "imagenes",
+          "escena_id": 3,
+          "tipo_frame": "fin",
+          "mock": true,
+          "backend": "mock_placeholder",
+          "generado_at": "2026-07-25T18:01:52.150324+00:00"
+        }
+      ],
+      "count": 6,
+      "video_modo": "animado",
+      "mock_generate": true,
+      "reales": 0,
+      "mocks": 6
+    },
+    "generated_videos": {
+      "videos": [
+        {
+          "escena_id": 1,
+          "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema.mp4",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/01-si_pareto_para_psicopedagogas_en_10_sema.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "mock_kling": true
+        },
+        {
+          "escena_id": 2,
+          "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso.mp4",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/02-esta_gua_te_da_priorizar_el_20_de_caso.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "mock_kling": true
+        },
+        {
+          "escena_id": 3,
+          "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re.mp4",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/03-2_separa_lo_vital_de_lo_secundario_y_re.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "mock_kling": true
+        },
+        {
+          "archivo": "video_pareto_psico.mp4",
+          "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "tipo": "final",
+          "escenas": 3,
+          "generado_at": "2026-07-25T18:01:53.559666+00:00"
+        }
+      ],
+      "count": 3,
+      "modo": "animado",
+      "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico.mp4"
+    }
+  },
+  "copy": {
+    "hooks": {
+      "skill": "hooks-redes",
+      "tema": "Pareto para psicopedagogas en 10 semanas",
+      "hooks": [
+        {
+          "id": 1,
+          "texto": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
+          "angulo": "dolor"
+        },
+        {
+          "id": 2,
+          "texto": "La mayoría lee PDFs y no aplica nada. Esta guía sí: priorizar el 20% de casos que generan el 80% del impacto en el aula.",
+          "angulo": "contraste"
+        },
+        {
+          "id": 3,
+          "texto": "3 ideas de «Pareto para psicopedagogas en 10 semanas» que puedes usar hoy — empezando por El 20% de causas produce el 80% de efectos en tu gabinete.",
+          "angulo": "lista"
+        }
+      ],
+      "elegido": {
+        "id": 1,
+        "texto": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
+        "angulo": "dolor"
+      },
+      "generado_at": "2026-07-25T18:01:52.035089+00:00",
+      "confidence": "medium",
+      "modo": "heuristica",
+      "nota": "MOCK_LLM=false + ANTHROPIC_API_KEY activa LLM; si no, heurística"
+    },
+    "guion": {
+      "skill": "guion-a-video",
+      "titulo": "Pareto para psicopedagogas en 10 semanas",
+      "guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.\n\nEl problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas.\n\nEsta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno.\n\n1. El 20% de causas produce el 80% de efectos en tu gabinete\n\n2. Separa lo vital de lo secundario y reduce el caos\n\n3. La proporción no es exacta: puede ser 10/90 en tu escuela\n\nComenta PARETO y te paso la guía completa",
+      "escenas_preview": [
+        {
+          "id": 1,
+          "texto_guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos."
+        },
+        {
+          "id": 2,
+          "texto_guion": "El problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas."
+        },
+        {
+          "id": 3,
+          "texto_guion": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno."
+        },
+        {
+          "id": 4,
+          "texto_guion": "1. El 20% de causas produce el 80% de efectos en tu gabinete"
+        },
+        {
+          "id": 5,
+          "texto_guion": "2. Separa lo vital de lo secundario y reduce el caos"
+        },
+        {
+          "id": 6,
+          "texto_guion": "3. La proporción no es exacta: puede ser 10/90 en tu escuela"
+        },
+        {
+          "id": 7,
+          "texto_guion": "Comenta PARETO y te paso la guía completa"
+        }
+      ],
+      "ideas": [
+        "El 20% de causas produce el 80% de efectos en tu gabinete",
+        "Separa lo vital de lo secundario y reduce el caos",
+        "La proporción no es exacta: puede ser 10/90 en tu escuela"
+      ],
+      "generado_desde": "guia",
+      "modo": "heuristica",
+      "archivo_md": "/workspace/creador de contenido/data/video_pareto_psico/copy/guion.md",
+      "generado_at": "2026-07-25T18:01:52.035607+00:00"
+    },
+    "captions": {
+      "skill": "captions-redes",
+      "plataforma": "reels",
+      "caption": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.\n\nEn este video resumo lo esencial de «Pareto para psicopedagogas en 10 semanas».\nComenta PARETO y te paso la guía completa\n\n#guia #productividad #aprendizaje",
+      "hashtags": [
+        "guia",
+        "productividad",
+        "aprendizaje"
+      ],
+      "cta": "Comenta PARETO y te paso la guía completa",
+      "generado_at": "2026-07-25T18:01:53.560561+00:00",
+      "confidence": "medium"
+    },
+    "thumbnail": {
+      "skill": "thumbnail-social",
+      "titulo_on_image": "Pareto para psicopedagogas en 10 semanas",
+      "subtitulo": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto ",
+      "estilo": "papel-sketch",
+      "prompt": "YouTube thumbnail, bold text «Pareto para psicopedagogas en 10 semanas», high contrast, clean composition, style papel-sketch, no clutter",
+      "archivo": "/workspace/creador de contenido/data/video_pareto_psico/copy/thumbnail.png",
+      "generado_at": "2026-07-25T18:01:53.574138+00:00",
+      "confidence": "low",
+      "nota": "PNG placeholder MVP; skill thumbnail-social puede iterar diseño"
+    },
+    "audio": {
+      "skill": "audio-redes",
+      "titulo": "Pareto para psicopedagogas en 10 semanas",
+      "hook": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
+      "tipo": "mix",
+      "voz_off": true,
+      "musica": {
+        "estilo": "instrumental trendy suave, sin letra",
+        "bpm_sugerido": 98,
+        "nota": "Buscar sonido trending del nicho o librería libre; no inventar archivo de pago"
+      },
+      "atraccion": [
+        "Los primeros 3s del audio deben pegar con el hook visual",
+        "Bajar música -12 dB cuando entra voz",
+        "Loop limpio al final para rewatch"
+      ],
+      "generado_at": "2026-07-25T18:01:53.560199+00:00",
+      "confidence": "medium",
+      "mux": {
+        "ok": false,
+        "nota": "Sin bed_path en lote.audio — solo brief. Añade audio.bed_path para mux."
+      }
+    }
+  },
+  "qc_ok": true,
+  "empaquetado_at": "2026-07-25T18:01:53.575112+00:00",
+  "video_modo": "animado",
+  "escenas": {
+    "escenas": [
+      {
+        "id": 1,
+        "titulo": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+        "texto_guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas.",
+        "start_frame_prompt": "Start frame, papel-sketch style, scene: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan, illustration, clean composition, no text, square",
+        "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan, no text, square",
+        "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+        "slug": "si_pareto_para_psicopedagogas_en_10_sema",
+        "archivo_inicio": "01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+        "archivo_fin": "01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+        "archivo_clip": "01-si_pareto_para_psicopedagogas_en_10_sema.mp4"
+      },
+      {
+        "id": 2,
+        "titulo": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+        "texto_guion": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno. 1. El 20% de causas produce el 80% de efectos en tu gabinete",
+        "start_frame_prompt": "Start frame, papel-sketch style, scene: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno. 1. El 20% de causas pro, illustration, clean composition, no text, square",
+        "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno. 1. El 20% de causas pro, no text, square",
+        "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+        "slug": "esta_gua_te_da_priorizar_el_20_de_caso",
+        "archivo_inicio": "02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+        "archivo_fin": "02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+        "archivo_clip": "02-esta_gua_te_da_priorizar_el_20_de_caso.mp4"
+      },
+      {
+        "id": 3,
+        "titulo": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+        "texto_guion": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exacta: puede ser 10/90 en tu escuela",
+        "start_frame_prompt": "Start frame, papel-sketch style, scene: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exacta: puede ser 10/90 en tu escuela, illustration, clean composition, no text, square",
+        "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exacta: puede ser 10/90 en tu escuela, no text, square",
+        "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: 2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+        "slug": "2_separa_lo_vital_de_lo_secundario_y_re",
+        "archivo_inicio": "03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+        "archivo_fin": "03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+        "archivo_clip": "03-2_separa_lo_vital_de_lo_secundario_y_re.mp4"
+      }
+    ],
+    "count": 3,
+    "modo_video": "animado",
+    "modo": "heuristica",
+    "generado_at": "2026-07-25T18:01:52.036301+00:00"
+  }
+}

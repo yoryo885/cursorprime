@@ -1,0 +1,23 @@
+{
+  "skill": "audio-redes",
+  "titulo": "Pareto para psicopedagogas en 10 semanas",
+  "hook": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
+  "tipo": "mix",
+  "voz_off": true,
+  "musica": {
+    "estilo": "instrumental trendy suave, sin letra",
+    "bpm_sugerido": 98,
+    "nota": "Buscar sonido trending del nicho o librería libre; no inventar archivo de pago"
+  },
+  "atraccion": [
+    "Los primeros 3s del audio deben pegar con el hook visual",
+    "Bajar música -12 dB cuando entra voz",
+    "Loop limpio al final para rewatch"
+  ],
+  "generado_at": "2026-07-25T18:01:53.560199+00:00",
+  "confidence": "medium",
+  "mux": {
+    "ok": false,
+    "nota": "Sin bed_path en lote.audio — solo brief. Añade audio.bed_path para mux."
+  }
+}

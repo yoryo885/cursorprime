@@ -1,0 +1,75 @@
+{
+  "imagenes": [
+    {
+      "tema": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+      "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/01-si_pareto_para_psicopedagogas_en_10_sema-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-25T18:01:52.063398+00:00"
+    },
+    {
+      "tema": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos",
+      "archivo": "01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/01-si_pareto_para_psicopedagogas_en_10_sema-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-25T18:01:52.081694+00:00"
+    },
+    {
+      "tema": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+      "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/02-esta_gua_te_da_priorizar_el_20_de_caso-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-25T18:01:52.098734+00:00"
+    },
+    {
+      "tema": "Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el a",
+      "archivo": "02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/02-esta_gua_te_da_priorizar_el_20_de_caso-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-25T18:01:52.116022+00:00"
+    },
+    {
+      "tema": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+      "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/03-2_separa_lo_vital_de_lo_secundario_y_re-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 3,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-25T18:01:52.133363+00:00"
+    },
+    {
+      "tema": "2. Separa lo vital de lo secundario y reduce el caos 3. La proporción no es exac",
+      "archivo": "03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/03-2_separa_lo_vital_de_lo_secundario_y_re-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 3,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-25T18:01:52.150324+00:00"
+    }
+  ],
+  "count": 6,
+  "video_modo": "animado",
+  "mock_generate": true,
+  "reales": 0,
+  "mocks": 6
+}

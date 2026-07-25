@@ -1,0 +1,48 @@
+{
+  "receta": "promo-guia",
+  "nombre": "Promo de guía PDF",
+  "descripcion": "Promociona una guía/PDF: hook → guion → escenas → video → audio → captions → thumbnail",
+  "skills": [
+    "hooks-redes",
+    "guion-a-video",
+    "captions-redes",
+    "thumbnail-social"
+  ],
+  "agentes": [
+    "context",
+    "planner",
+    "hook",
+    "guion",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "video",
+    "audio",
+    "captions",
+    "thumbnail",
+    "qc",
+    "packager"
+  ],
+  "salidas": [
+    "png",
+    "video"
+  ],
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 3
+  },
+  "copy": [
+    "hook",
+    "guion",
+    "audio",
+    "captions",
+    "thumbnail"
+  ],
+  "requiere": [
+    "guia"
+  ],
+  "slug": "video_pareto_psico",
+  "generado_at": "2026-07-25T18:01:52.034716+00:00",
+  "warnings": []
+}
