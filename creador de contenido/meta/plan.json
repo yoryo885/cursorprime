@@ -25,5 +25,9 @@
     "mock_kling": true,
     "estilo": "yordy-minimal",
     "receta": "animado"
-  }
+  },
+  "notas": [
+    "GenerateAgent eliminado (Paso A): las PNG las genera imagenes/ImagenesModule",
+    "Runtime real = meta/recetas.json → plan_runtime.json por slug"
+  ]
 }

@@ -108,7 +108,9 @@ meta/recetas.json    → catálogo de recetas
 
 ## Pendiente V1
 
-- Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
-- IA real imágenes (`MOCK_GENERATE=false`)
-- LLM para split de guion / hooks (hoy heurística)
-- Conexión directa a salida de `libros a entender` vía path `fuente_guia`
+- [x] **A** Limpieza: GenerateAgent muerto eliminado; `meta/plan.json` alineado con runtime
+- [ ] **B** Checkpoint que reanuda (hoy solo escribe historial)
+- [ ] **C** LLM opcional en hook/guion/escenas (mock si no hay API)
+- [ ] Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
+- [ ] IA real imágenes (`MOCK_GENERATE=false`)
+- [ ] Conexión directa a salida de `libros a entender` vía path `fuente_guia`
