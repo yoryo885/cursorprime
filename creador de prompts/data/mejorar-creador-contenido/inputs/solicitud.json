@@ -36,6 +36,10 @@
     {
       "mensaje": "puedes hacer que se mueva el que esta sentado",
       "cambio": "Poses del personaje (pensar → gesticular) + dissolve ~5s"
+    },
+    {
+      "mensaje": "esta buenicimo; cambiar escenario, 5 imagenes haciendo algo y animar",
+      "cambio": "Plantilla 5 escenas + pose B + morph fluido; demo pareto_5_escenas_animado.mp4"
     }
   ],
   "estilo_visual_target": {
