@@ -1,0 +1,42 @@
+{
+  "imagenes": [
+    {
+      "tema": "Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 2",
+      "archivo": "01-muchos_emprendedores_quieren_conectar_ch-inicio.png",
+      "path": "/workspace/creador de contenido/data/demo_animado/imagenes/01-muchos_emprendedores_quieren_conectar_ch-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "inicio",
+      "generado_at": "2026-07-19T21:14:58.690642+00:00"
+    },
+    {
+      "tema": "Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 2",
+      "archivo": "01-muchos_emprendedores_quieren_conectar_ch-fin.png",
+      "path": "/workspace/creador de contenido/data/demo_animado/imagenes/01-muchos_emprendedores_quieren_conectar_ch-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "fin",
+      "generado_at": "2026-07-19T21:14:58.708174+00:00"
+    },
+    {
+      "tema": "Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente",
+      "archivo": "02-luego_conectas_la_api_de_whatsapp_busine-inicio.png",
+      "path": "/workspace/creador de contenido/data/demo_animado/imagenes/02-luego_conectas_la_api_de_whatsapp_busine-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "inicio",
+      "generado_at": "2026-07-19T21:14:58.724869+00:00"
+    },
+    {
+      "tema": "Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente",
+      "archivo": "02-luego_conectas_la_api_de_whatsapp_busine-fin.png",
+      "path": "/workspace/creador de contenido/data/demo_animado/imagenes/02-luego_conectas_la_api_de_whatsapp_busine-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "fin",
+      "generado_at": "2026-07-19T21:14:58.741314+00:00"
+    }
+  ],
+  "count": 4,
+  "video_modo": "animado"
+}

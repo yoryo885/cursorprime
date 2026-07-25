@@ -1,0 +1,29 @@
+{
+  "skill": "hooks-redes",
+  "tema": "El principio de Pareto",
+  "hooks": [
+    {
+      "id": 1,
+      "texto": "Si El principio de Pareto te abruma, esto te ordena en minutos.",
+      "angulo": "dolor"
+    },
+    {
+      "id": 2,
+      "texto": "La mayoría lee PDFs y no aplica nada. Esta guía sí: enfocarte en el 20% que mueve el 80% de tus resultados.",
+      "angulo": "contraste"
+    },
+    {
+      "id": 3,
+      "texto": "3 ideas de «El principio de Pareto» que puedes usar hoy — empezando por Identifica las pocas causas que generan la mayoría del efecto.",
+      "angulo": "lista"
+    }
+  ],
+  "elegido": {
+    "id": 0,
+    "texto": "Si El principio de Pareto te abruma, esto te ordena en minutos.",
+    "angulo": "manual"
+  },
+  "generado_at": "2026-07-19T21:14:57.642675+00:00",
+  "confidence": "medium",
+  "nota": "MVP heurístico; skill hooks-redes en chat puede refinar"
+}

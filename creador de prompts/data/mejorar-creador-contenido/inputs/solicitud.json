@@ -1,0 +1,25 @@
+{
+  "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
+  "tipo": "cursor",
+  "proyecto_destino": "creador-de-contenido",
+  "temas": [
+    "Modo B crear-pipeline: mejorar existente",
+    "Frontera estricta: no modificar libros a entender, tiktok_pipeline, router salvo registro",
+    "Pasos ordenados: limpieza → checkpoint → copy LLM → imágenes reales → Kling"
+  ],
+  "contexto": {
+    "audiencia": "agente Cursor / operador",
+    "tono": "técnico, paso a paso, sin inventar alcance",
+    "estilo": "diff mínimo, un paso por vez, probar con --limit / demos",
+    "idioma": "español",
+    "objetivo": "Prompt operable para mejorar creador de contenido sin desarmar el ecosistema"
+  },
+  "notas": "Basado en auditoría: GenerateAgent muerto, checkpoint sin resume, MOCK_GENERATE/MOCK_KLING incompletos, skills heurísticas.",
+  "mejoras": [
+    {
+      "mensaje": "dame un prompt paso a paso para mejorar sin desarmar otros proyectos",
+      "cambio": "Nuevo slug mejorar-creador-contenido con fases A–E y frontera"
+    }
+  ],
+  "variantes": 1
+}

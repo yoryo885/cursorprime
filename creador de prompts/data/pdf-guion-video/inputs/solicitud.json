@@ -1,16 +1,29 @@
 {
-  "titulo": "PDF + guiones de video en creador de contenido",
-  "tipo": "cursor",
+  "titulo": "Sistema de video por recetas — promo guías PDF",
+  "tipo": "animacion",
   "proyecto_destino": "creador-de-contenido",
   "temas": [
-    "Extender módulo PDF para generar guiones de video además del documento PDF"
+    "Pipeline de video con PlannerAgent y recetas",
+    "Agentes/skills condicionales según necesidad del video",
+    "Receta promo-guia: hook → guion → escenas → video → captions → thumbnail"
   ],
   "contexto": {
-    "audiencia": "desarrollador del pipeline creador de contenido",
+    "audiencia": "operador del ecosistema cursorprime",
     "tono": "técnico y concreto",
-    "estilo": "MVP incremental, reutilizar EscenasAgent y convenciones existentes",
+    "estilo": "MVP pipeline con mock; skills embebidas como agentes",
     "idioma": "español",
-    "objetivo": "Cuando el lote pida salida pdf (o pdf+video), además del .pdf con PNGs maquetados, generar un guion estructurado reutilizable por el modo video animado — no limitarse solo al PDF"
+    "objetivo": "Crear videos promocionando guías PDF con un sistema de agentes/skills que se activan solo cuando el video lo necesita"
   },
+  "notas": "Extendido sobre creador de contenido existente (no proyecto nuevo). Demo demo_promo_guia.",
+  "mejoras": [
+    {
+      "mensaje": "La parte PDF debería crear guiones para video, no solo PDF",
+      "cambio": "Prompt inicial pdf-guion-video"
+    },
+    {
+      "mensaje": "Sistema de creación de videos con agentes y skills como pipeline",
+      "cambio": "Recetas + PlannerAgent + agentes hook/guion/captions/thumbnail; skill guion-a-video actualizada"
+    }
+  ],
   "variantes": 1
 }

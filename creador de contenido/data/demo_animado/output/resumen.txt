@@ -1,0 +1,6 @@
+Creador de Contenido — Conectar ChatGPT a WhatsApp
+Receta: animado
+Skills: guion-a-video
+Salidas: png, video
+QC: OK
+Pack: demo_animado_contenido.zip
