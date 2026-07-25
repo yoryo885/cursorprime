@@ -1,15 +1,15 @@
-# Guion — Pareto para psicopedagogas en 10 semanas
+# Guion (ensenanza) — El principio de Pareto
 
-Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.
+Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…
 
-El problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas.
+La idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus…
 
-Esta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno.
+Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.
 
-1. El 20% de causas produce el 80% de efectos en tu gabinete
+Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.
 
-2. Separa lo vital de lo secundario y reduce el caos
+Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.
 
-3. La proporción no es exacta: puede ser 10/90 en tu escuela
+Cómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.
 
-Comenta PARETO y te paso la guía completa
+Si esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.

@@ -23,7 +23,32 @@
     },
     "promo-guia": {
       "nombre": "Promo de guía PDF",
-      "descripcion": "Promociona una guía/PDF: hook → guion → escenas → video → audio → captions → thumbnail",
+      "descripcion": "Vende/promociona una guía: hook venta → guion promo → video → audio → captions",
+      "skills": ["hooks-redes", "guion-a-video", "captions-redes", "thumbnail-social"],
+      "agentes": [
+        "context",
+        "planner",
+        "hook",
+        "guion",
+        "escenas",
+        "style",
+        "prompt",
+        "png",
+        "video",
+        "audio",
+        "captions",
+        "thumbnail",
+        "qc",
+        "packager"
+      ],
+      "salidas": ["png", "video"],
+      "video_modo": "animado",
+      "copy": ["hook", "guion", "audio", "captions", "thumbnail"],
+      "requiere": ["guia"]
+    },
+    "ensenanza": {
+      "nombre": "Enseñanza desde el resumen (estilo canal educativo)",
+      "descripcion": "Entrega una enseñanza del contenido (Pareto, etc.). Faceless didáctico — no venta dura. Ref: Psicología Invisible.",
       "skills": ["hooks-redes", "guion-a-video", "captions-redes", "thumbnail-social"],
       "agentes": [
         "context",

@@ -1,12 +1,12 @@
 {
   "skill": "audio-redes",
-  "titulo": "Pareto para psicopedagogas en 10 semanas",
-  "hook": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
+  "titulo": "El principio de Pareto",
+  "hook": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…",
   "tipo": "mix",
   "voz_off": true,
   "musica": {
-    "estilo": "instrumental trendy suave, sin letra",
-    "bpm_sugerido": 98,
+    "estilo": "instrumental trendy, sin letra, volumen bajo bajo la voz",
+    "bpm_sugerido": 100,
     "nota": "Buscar sonido trending del nicho o librería libre; no inventar archivo de pago"
   },
   "atraccion": [
@@ -14,7 +14,7 @@
     "Bajar música -12 dB cuando entra voz",
     "Loop limpio al final para rewatch"
   ],
-  "generado_at": "2026-07-25T18:01:53.560199+00:00",
+  "generado_at": "2026-07-25T18:22:01.460762+00:00",
   "confidence": "medium",
   "mux": {
     "ok": false,

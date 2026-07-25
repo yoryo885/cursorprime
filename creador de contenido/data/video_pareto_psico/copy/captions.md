@@ -1,8 +1,8 @@
-# Caption — Pareto para psicopedagogas en 10 semanas
+# Caption (ensenanza) — El principio de Pareto
 
-Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.
+Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…
 
-En este video resumo lo esencial de «Pareto para psicopedagogas en 10 semanas».
-Comenta PARETO y te paso la guía completa
+Una enseñanza clara de «El principio de Pareto».
+Si esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.
 
-#guia #productividad #aprendizaje
+#aprendizaje #productividad #pareto #psicologia

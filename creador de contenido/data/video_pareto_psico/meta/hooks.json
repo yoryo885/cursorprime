@@ -1,30 +1,31 @@
 {
   "skill": "hooks-redes",
-  "tema": "Pareto para psicopedagogas en 10 semanas",
+  "formato": "ensenanza",
+  "tema": "El principio de Pareto",
   "hooks": [
     {
       "id": 1,
-      "texto": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
-      "angulo": "dolor"
+      "texto": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…",
+      "angulo": "insight"
     },
     {
       "id": 2,
-      "texto": "La mayoría lee PDFs y no aplica nada. Esta guía sí: priorizar el 20% de casos que generan el 80% del impacto en el aula.",
-      "angulo": "contraste"
+      "texto": "El 80% de tu cansancio no es lo que crees. Es un patrón.",
+      "angulo": "revelacion"
     },
     {
       "id": 3,
-      "texto": "3 ideas de «Pareto para psicopedagogas en 10 semanas» que puedes usar hoy — empezando por El 20% de causas produce el 80% de efectos en tu gabinete.",
-      "angulo": "lista"
+      "texto": "En 60 segundos entiendes por qué El principio de Pareto cambia cómo priorizas.",
+      "angulo": "promesa_aprendizaje"
     }
   ],
   "elegido": {
-    "id": 1,
-    "texto": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
-    "angulo": "dolor"
+    "id": 0,
+    "texto": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…",
+    "angulo": "manual"
   },
-  "generado_at": "2026-07-25T18:01:52.035089+00:00",
+  "generado_at": "2026-07-25T18:21:58.861764+00:00",
   "confidence": "medium",
-  "modo": "heuristica",
-  "nota": "MOCK_LLM=false + ANTHROPIC_API_KEY activa LLM; si no, heurística"
+  "modo": "manual",
+  "nota": "ensenanza=insight; promo=venta. Ref: canales educativos faceless"
 }

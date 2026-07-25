@@ -60,14 +60,19 @@ class EscenasAgent:
         raw = load_json(ctx.paths["lote"], {}) or ctx.lote
         video_cfg = context.get("video") or {}
         estilo = context.get("estilo", "yordy-minimal")
-        limit = int(video_cfg.get("limit_escenas") or MAX_ESCENAS_DEFAULT)
+        # lote.escenas puede ser int (cantidad) o list (escenas ya armadas)
+        escenas_raw = raw.get("escenas")
+        if isinstance(escenas_raw, int) and escenas_raw > 0:
+            limit = int(video_cfg.get("limit_escenas") or escenas_raw or MAX_ESCENAS_DEFAULT)
+        else:
+            limit = int(video_cfg.get("limit_escenas") or MAX_ESCENAS_DEFAULT)
         modo = "heuristica"
 
         guion_meta = load_json(ctx.paths.get("guion"), {}) if ctx.paths.get("guion") else {}
         guion_texto = raw.get("guion") or (guion_meta or {}).get("guion") or context.get("guion") or ""
 
-        if raw.get("escenas"):
-            escenas = raw["escenas"][:limit]
+        if isinstance(escenas_raw, list) and escenas_raw:
+            escenas = escenas_raw[:limit]
             modo = "lote"
         elif guion_texto:
             textos = _split_guion(str(guion_texto), limit)

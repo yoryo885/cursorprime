@@ -1,5 +1,5 @@
-Creador de Contenido — Pareto para psicopedagogas en 10 semanas
-Receta: promo-guia
+Creador de Contenido — El principio de Pareto
+Receta: ensenanza
 Skills: hooks-redes, guion-a-video, captions-redes, thumbnail-social
 Salidas: png, video
 QC: OK

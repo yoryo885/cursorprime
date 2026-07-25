@@ -1,10 +1,10 @@
-# Audio — Pareto para psicopedagogas en 10 semanas
+# Audio — El principio de Pareto
 
-**Hook:** Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.
+**Hook:** Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…
 
 **Tipo:** mix
 
-**Música:** instrumental trendy suave, sin letra · ~98 BPM
+**Música:** instrumental trendy, sin letra, volumen bajo bajo la voz · ~100 BPM
 
 **Atracción:**
 - Los primeros 3s del audio deben pegar con el hook visual

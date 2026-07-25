@@ -1,19 +1,24 @@
 {
-  "version": 1,
+  "version": 2,
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "mejorar-creador-contenido",
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 1,
-    "ultima_mejora": "Prompt paso a paso A–E con frontera estricta (solo creador de contenido/)"
+    "version": 2,
+    "ultima_mejora": "Formato ensenanza: video entrega lección del resumen (Pareto), estilo Psicología Invisible / faceless"
   },
   "historial": [
     {
       "version": 1,
       "mensaje": "dame un prompt paso a paso para mejorar sin desarmar otros proyectos",
       "cambio": "Nuevo slug mejorar-creador-contenido con Pasos 0 y A–E"
+    },
+    {
+      "version": 2,
+      "mensaje": "ajustar base para enseñanza del resumen Pareto estilo Psicología Invisible",
+      "cambio": "Receta+formato ensenanza; guion didáctico; sin CTA duro"
     }
   ]
 }

@@ -5,20 +5,25 @@
   "temas": [
     "Modo B crear-pipeline: mejorar existente",
     "Frontera estricta: no modificar libros a entender, tiktok_pipeline, router salvo registro",
-    "Pasos ordenados: limpieza → checkpoint → copy LLM → imágenes reales → Kling"
+    "Pasos ordenados: limpieza → checkpoint → copy LLM → imágenes reales → Kling",
+    "Formato ensenanza: lección didáctica desde resumen (vs promo/CTA)"
   ],
   "contexto": {
     "audiencia": "agente Cursor / operador",
     "tono": "técnico, paso a paso, sin inventar alcance",
     "estilo": "diff mínimo, un paso por vez, probar con --limit / demos",
     "idioma": "español",
-    "objetivo": "Prompt operable para mejorar creador de contenido sin desarmar el ecosistema"
+    "objetivo": "Prompt operable para mejorar creador de contenido sin desarmar el ecosistema; videos pueden enseñar (ensenanza) o vender (promo)"
   },
-  "notas": "Basado en auditoría: GenerateAgent muerto, checkpoint sin resume, MOCK_GENERATE/MOCK_KLING incompletos, skills heurísticas.",
+  "notas": "Ref YouTube Psicología Invisible. Formato ensenanza: enseñar insight del resumen, sin hard sell. Frontera: solo creador de contenido/.",
   "mejoras": [
     {
       "mensaje": "dame un prompt paso a paso para mejorar sin desarmar otros proyectos",
       "cambio": "Nuevo slug mejorar-creador-contenido con fases A–E y frontera"
+    },
+    {
+      "mensaje": "ajustar codigo base para entregar una enseñanza del resumen (Pareto), estilo Psicología Invisible",
+      "cambio": "Formato ensenanza vs promo; receta ensenanza; guion didáctico desde fuente_guia; referencia canales faceless educativos"
     }
   ],
   "variantes": 1

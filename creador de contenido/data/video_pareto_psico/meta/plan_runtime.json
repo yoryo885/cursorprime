@@ -1,7 +1,7 @@
 {
-  "receta": "promo-guia",
-  "nombre": "Promo de guía PDF",
-  "descripcion": "Promociona una guía/PDF: hook → guion → escenas → video → audio → captions → thumbnail",
+  "receta": "ensenanza",
+  "nombre": "Enseñanza desde el resumen (estilo canal educativo)",
+  "descripcion": "Entrega una enseñanza del contenido (Pareto, etc.). Faceless didáctico — no venta dura. Ref: Psicología Invisible.",
   "skills": [
     "hooks-redes",
     "guion-a-video",
@@ -30,7 +30,7 @@
   ],
   "video": {
     "modo": "animado",
-    "limit_escenas": 3
+    "limit_escenas": 5
   },
   "copy": [
     "hook",
@@ -43,6 +43,6 @@
     "guia"
   ],
   "slug": "video_pareto_psico",
-  "generado_at": "2026-07-25T18:01:52.034716+00:00",
+  "generado_at": "2026-07-25T18:21:58.861284+00:00",
   "warnings": []
 }

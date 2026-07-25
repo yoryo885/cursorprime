@@ -23,5 +23,10 @@
     "paso": "E",
     "cambio": "Kling vía Kie+Cloudinary con fallback mock; AudioAgent brief+mux; recetas promo/reels incluyen audio",
     "at": "2026-07-25T17:55:00+00:00"
+  },
+  {
+    "paso": "F-ensenanza",
+    "cambio": "Receta ensenanza + formato promo|ensenanza; fuente_guia compartida; fix escenas int; demo video_pareto_psico didáctico",
+    "at": "2026-07-25T18:22:13.837454+00:00"
   }
 ]

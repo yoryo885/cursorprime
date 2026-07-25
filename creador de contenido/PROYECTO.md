@@ -16,6 +16,9 @@ python3 creador_imagenes_main.py --listar-recetas
 # Promo de una guía PDF (hook → guion → escenas → video → captions → thumb)
 python3 creador_imagenes_main.py --slug demo_promo_guia --receta promo-guia --reset-checkpoint
 
+# Enseñanza desde el resumen (estilo canal educativo / Psicología Invisible)
+python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza --reset-checkpoint
+
 # Solo video animado desde guion
 python3 creador_imagenes_main.py --slug demo_animado --receta animado
 
@@ -37,9 +40,12 @@ python3 creador_imagenes_main.py --slug demo_lote --modo png --desde png
 |--------|--------|-----------------|
 | `slideshow` | guion-a-video | context → planner → style → prompt → png → video → qc → packager |
 | `animado` | guion-a-video | + escenas (requiere guion) |
-| `promo-guia` | hooks-redes, guion-a-video, captions-redes, thumbnail-social | + hook → guion → escenas → … → captions → thumbnail |
+| `promo-guia` | hooks-redes, guion-a-video, captions-redes, thumbnail-social | hook → guion promo (CTA) → … |
+| `ensenanza` | mismas 4 | hook → guion didáctico (lección) → … — sin hard sell |
 | `reels-pack` | mismas 4 | pack redes completo |
 | `custom` | — | según `salidas` / `copy` del lote |
+
+**Formato** (`lote.formato` o forzado por receta): `promo` = vende guía · `ensenanza` = entrega una enseñanza del resumen.
 
 Definición: `meta/recetas.json`. Plan runtime por lote: `data/{slug}/meta/plan_runtime.json`.
 
@@ -50,7 +56,7 @@ flowchart TD
   A[lote.json + receta] --> B[ContextAgent]
   B --> C[PlannerAgent]
   C --> D{¿necesita copy?}
-  D -->|promo-guia / reels| E[HookAgent]
+  D -->|promo-guia / ensenanza / reels| E[HookAgent]
   E --> F[GuionAgent]
   D -->|guion ya existe| G[EscenasAgent]
   F --> G
@@ -60,22 +66,26 @@ flowchart TD
   J --> K[QC + Packager]
 ```
 
-## Entrada lote.json (promo guía)
+## Entrada lote.json (enseñanza desde resumen)
 
 ```json
 {
-  "titulo": "Mi guía",
-  "receta": "promo-guia",
+  "titulo": "El principio de Pareto",
+  "receta": "ensenanza",
+  "formato": "ensenanza",
+  "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
   "guia": {
     "titulo": "El principio de Pareto",
-    "promesa": "enfocarte en el 20% que importa",
-    "ideas": ["idea 1", "idea 2", "idea 3"],
-    "cta": "Comenta PARETO"
+    "promesa": "concentarte en el 20% que mueve resultados",
+    "ideas": ["idea del resumen 1", "idea 2", "idea 3"],
+    "cierre": "Guarda el video para cuando te sientas abrumado."
   },
-  "fuente_guia": "ruta/opcional/al/resumen.md",
-  "video": { "modo": "animado", "limit_escenas": 2 }
+  "regenerar_guion": true,
+  "video": { "modo": "animado", "limit_escenas": 5 }
 }
 ```
+
+Para **vender** la guía, usa `receta: "promo-guia"` y `cta` en lugar de `cierre`.
 
 ## Salida
 

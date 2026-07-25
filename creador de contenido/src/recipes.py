@@ -43,6 +43,9 @@ def infer_receta(lote: dict[str, Any]) -> str:
     explicit = (lote.get("receta") or "").strip().lower()
     if explicit:
         return explicit
+    formato = str(lote.get("formato") or "").strip().lower()
+    if formato in {"ensenanza", "enseñanza", "teaching", "educativo", "didactico", "didáctico"}:
+        return "ensenanza"
     if lote.get("guia") or lote.get("fuente_guia"):
         return "promo-guia"
     video = lote.get("video") or {}
@@ -151,5 +154,5 @@ def validate_requirements(plan: dict[str, Any], lote: dict[str, Any]) -> list[st
     if "guion" in requiere and not (lote.get("guion") or lote.get("escenas") or lote.get("guia")):
         errors.append("Receta requiere guion, escenas o guia en lote.json")
     if "guia" in requiere and not (lote.get("guia") or lote.get("fuente_guia") or lote.get("guion")):
-        errors.append("Receta promo-guia requiere guia, fuente_guia o guion")
+        errors.append(f"Receta {plan.get('receta')} requiere guia, fuente_guia o guion")
     return errors

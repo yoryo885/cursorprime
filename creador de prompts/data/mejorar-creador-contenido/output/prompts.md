@@ -109,9 +109,31 @@ Ejecuta **solo Paso 0**. No edites código todavía. Devuélveme el diagnóstico
 
 ---
 
+## Mejora activa (v2) — Formato enseñanza
+
+El video **no vende** por defecto: entrega una **enseñanza** del resumen (ej. Pareto), tono faceless educativo (ref. [Psicología Invisible](https://youtube.com/@lapsicologiainvisible)).
+
+| Campo | Valor |
+|-------|--------|
+| Receta | `ensenanza` |
+| Formato | `ensenanza` (vs `promo`) |
+| Fuente | `fuente_guia` → resumen `.md` (solo lectura) |
+| Guion | hook → concepto → por qué importa → 2 enseñanzas → aplicación → cierre suave |
+| Prohibido en copy | “Comenta X”, hard sell, “descarga gratis” como mensaje central |
+
+```bash
+cd "creador de contenido"
+python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza --reset-checkpoint
+```
+
+Demo: `data/video_pareto_psico/videos/video_pareto_psico.mp4`
+
+---
+
 ## Cómo usarlo
 
 1. Abre un chat nuevo con el workspace `cursorprime`.
 2. Pega el bloque de arriba.
 3. Di `sigue` / `paso A` / `paso B`… cuando quieras avanzar.
 4. Si el agente propone tocar otro proyecto → recuérdale la frontera.
+5. Para videos didácticos: usa receta `ensenanza`, no `promo-guia`.

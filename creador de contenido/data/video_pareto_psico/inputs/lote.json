@@ -1,29 +1,45 @@
 {
-  "titulo": "Pareto para psicopedagogas en 10 semanas",
-  "receta": "promo-guia",
-  "estilo": "papel-sketch",
-  "plataforma": "reels",
+  "slug": "video_pareto_psico",
+  "tema": "Principio de Pareto 80/20 — lección práctica desde el resumen",
+  "titulo": "El principio de Pareto",
+  "nicho": "psicología y productividad",
+  "receta": "ensenanza",
+  "formato": "ensenanza",
+  "duracion_seg": 40,
+  "escenas": 5,
+  "aspect_ratio": "9:16",
+  "estilo": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
+  "voz": "calma, didáctica, como canal de psicología aplicada",
+  "cta": "",
+  "oferta": "",
   "regenerar_guion": true,
   "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
   "guia": {
-    "titulo": "Pareto para psicopedagogas en 10 semanas",
-    "promesa": "priorizar el 20% de casos que generan el 80% del impacto en el aula",
+    "titulo": "El principio de Pareto",
+    "promesa": "dejar de dispersar energía y concentrarte en el 20% que mueve resultados",
+    "beneficio": "claridad sobre dónde poner tu mejor atención",
+    "cierre": "Si esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
     "ideas": [
-      "El 20% de causas produce el 80% de efectos en tu gabinete",
-      "Separa lo vital de lo secundario y reduce el caos",
-      "La proporción no es exacta: puede ser 10/90 en tu escuela"
-    ],
-    "cta": "Comenta PARETO y te paso la guía completa"
+      "El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus resultados.",
+      "Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.",
+      "La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico."
+    ]
+  },
+  "prompts": [
+    "Espacio mental ordenado: silueta frente a un escritorio con pocas cosas esenciales, luz suave, estilo documental educativo vertical 9:16",
+    "Visualización abstracta 80/20: diagrama simple con zona destacada, tipografía minimal, fondo profundo atmosférico, vertical 9:16",
+    "Contraste visual: lista larga tachada vs tres prioridades claras iluminadas, metáfora de enfoque, vertical 9:16",
+    "Momento de decisión: elegir una tarea entre muchas, gesto de priorizar, atmósfera calmada educativa, vertical 9:16",
+    "Cierre reflexivo: horizonte o ventana con luz, sensación de claridad mental, estilo faceless premium, vertical 9:16"
+  ],
+  "audio": {
+    "narracion_modo": "brief",
+    "bed_path": ""
   },
   "video": {
     "modo": "animado",
-    "limit_escenas": 3
+    "limit_escenas": 5
   },
-  "audio": {
-    "estilo": "instrumental trendy suave, sin letra",
-    "bpm": 98
-  },
-  "notas": "Primer video real del pipeline — mock motion/LLM; PDF solo lectura",
-  "hook": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.",
-  "guion": "Si Pareto para psicopedagogas en 10 semanas te abruma, esto te ordena en minutos.\n\nEl problema: acumular PDFs sin un plan claro sobre Pareto para psicopedagogas en 10 semanas.\n\nEsta guía te da priorizar el 20% de casos que generan el 80% del impacto en el aula sin relleno.\n\n1. El 20% de causas produce el 80% de efectos en tu gabinete\n\n2. Separa lo vital de lo secundario y reduce el caos\n\n3. La proporción no es exacta: puede ser 10/90 en tu escuela\n\nComenta PARETO y te paso la guía completa"
+  "hook": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…",
+  "guion": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…\n\nLa idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus…\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado."
 }

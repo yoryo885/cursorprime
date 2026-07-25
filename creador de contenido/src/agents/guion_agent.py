@@ -1,41 +1,34 @@
-"""GuionAgent — promo desde guía; heurística o LLM (MOCK_LLM=false)."""
+"""GuionAgent — promo (venta) o enseñanza (didáctico / Psicología Invisible)."""
 
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from pathlib import Path
 
-from src.config import ROOT, load_json, save_json
+from src.config import load_json, save_json
+from src.formato import formato_video
+from src.fuente_guia import ideas_from_guia, load_fuente_texto
 from src.llm_client import get_llm, llm_activo
 from src.types import AgentResult, PipelineContext
 
 
-def _load_fuente_texto(path_str: str) -> str:
-    candidates = [
-        Path(path_str),
-        ROOT / path_str,
-        ROOT.parent / path_str.lstrip("./"),
-        ROOT.parent / path_str.replace("../", "", 1),
-    ]
-    path = next((p for p in candidates if p.exists() and p.is_file()), None)
-    if not path:
-        return ""
-    if path.suffix.lower() in {".md", ".txt"}:
-        return path.read_text(encoding="utf-8", errors="ignore")[:4000]
-    return ""
-
-
-def _ideas_from_guia(guia: dict, fuente_texto: str) -> list[str]:
-    ideas = list(guia.get("ideas") or guia.get("puntos") or [])
-    if ideas:
-        return [str(x) for x in ideas[:5]]
-    if fuente_texto:
-        lines = [ln.strip("-*# ").strip() for ln in fuente_texto.splitlines() if ln.strip()]
-        bullets = [ln for ln in lines if 20 < len(ln) < 160][:5]
-        if bullets:
-            return bullets
-    temas = guia.get("temas") or []
-    return [str(t) for t in temas[:5]] or ["idea clave 1", "idea clave 2", "cómo aplicarlo"]
+def _acortar_idea(texto: str, max_len: int = 110) -> str:
+    t = " ".join(str(texto).split())
+    for pref in (
+        "Verás que ",
+        "Notarás que ",
+        "Descubrirás que ",
+        "Comprenderás que ",
+        "Reconocerás que ",
+        "Observarás que ",
+        "Encontrarás que ",
+    ):
+        if t.startswith(pref):
+            t = t[len(pref) :]
+            t = t[0].upper() + t[1:] if t else t
+            break
+    if len(t) <= max_len:
+        return t
+    return t[: max_len - 1].rsplit(" ", 1)[0] + "…"
 
 
 def build_guion_promo(titulo: str, hook: str, promesa: str, ideas: list[str], cta: str) -> str:
@@ -45,8 +38,29 @@ def build_guion_promo(titulo: str, hook: str, promesa: str, ideas: list[str], ct
         f"Esta guía te da {promesa or 'pasos accionables'} sin relleno.",
     ]
     for i, idea in enumerate(ideas[:3], start=1):
-        bloques.append(f"{i}. {idea}")
+        bloques.append(f"{i}. {_acortar_idea(idea)}")
     bloques.append(cta or f"Descarga la guía «{titulo}» y aplícala hoy.")
+    return "\n\n".join(bloques)
+
+
+def build_guion_ensenanza(titulo: str, hook: str, promesa: str, ideas: list[str], cierre: str) -> str:
+    """
+    Estructura didáctica (ref. canales faceless educativos):
+    hook → concepto → por qué importa → 2–3 enseñanzas → aplicación → cierre suave
+    """
+    i0 = _acortar_idea(ideas[0]) if ideas else (promesa or titulo)
+    i1 = _acortar_idea(ideas[1]) if len(ideas) > 1 else "Separa lo vital de lo secundario."
+    i2 = _acortar_idea(ideas[2]) if len(ideas) > 2 else "Revisa tu prioridad cada semana."
+    bloques = [
+        hook or f"Hay un patrón detrás de {titulo} que casi nadie nombra.",
+        f"La idea central: {i0}",
+        f"Por qué importa: {promesa or 'dejas de dispersar energía en lo que no mueve resultados'}.",
+        f"Primera enseñanza: {i1}",
+        f"Segunda enseñanza: {i2}",
+        "Cómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.",
+        cierre
+        or "Si esto te ordenó la cabeza, guarda el video. La próxima vez que te sientas abrumado, vuelve a esta regla.",
+    ]
     return "\n\n".join(bloques)
 
 
@@ -54,18 +68,19 @@ class GuionAgent:
     def run(self, ctx: PipelineContext) -> AgentResult:
         lote = load_json(ctx.paths["lote"], {}) or ctx.lote
         context = load_json(ctx.paths["context"], {})
+        formato = formato_video(lote, context)
         modo = "heuristica"
+        ideas: list[str] = []
 
         if lote.get("guion") and not lote.get("regenerar_guion"):
             guion = str(lote["guion"]).strip()
             origen = "guion_existente"
-            ideas: list[str] = []
             titulo = context.get("titulo") or lote.get("titulo") or ctx.slug
             modo = "guion_existente"
         else:
             guia = lote.get("guia") if isinstance(lote.get("guia"), dict) else {}
             fuente = lote.get("fuente_guia") or guia.get("fuente") or ""
-            fuente_texto = _load_fuente_texto(str(fuente)) if fuente else ""
+            fuente_texto = load_fuente_texto(str(fuente)) if fuente else ""
             titulo = (
                 guia.get("titulo")
                 or context.get("titulo")
@@ -73,32 +88,51 @@ class GuionAgent:
                 or ctx.slug
             )
             promesa = guia.get("promesa") or guia.get("beneficio") or ""
-            ideas = _ideas_from_guia(guia, fuente_texto)
+            ideas = ideas_from_guia(guia, fuente_texto)
             if not ideas and context.get("temas"):
                 ideas = [str(t) for t in context["temas"][:5]]
+            if not ideas:
+                ideas = ["idea clave 1", "idea clave 2", "cómo aplicarlo"]
             hook = lote.get("hook") or ""
             hooks_path = ctx.paths.get("hooks")
             hooks_data = load_json(hooks_path, {}) if hooks_path else {}
             if not hook and hooks_data:
                 hook = (hooks_data.get("elegido") or {}).get("texto", "")
             cta = guia.get("cta") or lote.get("cta") or ""
-            guion = build_guion_promo(str(titulo), hook, str(promesa), ideas, str(cta))
+            cierre = guia.get("cierre") or lote.get("cierre") or ""
+
+            if formato == "ensenanza":
+                guion = build_guion_ensenanza(str(titulo), hook, str(promesa), ideas, str(cierre))
+            else:
+                guion = build_guion_promo(str(titulo), hook, str(promesa), ideas, str(cta))
             origen = "guia" if guia or fuente_texto else "temas"
 
             if llm_activo():
-                system = (
-                    "Eres guionista de video corto. Un mensaje central. "
-                    "Escenas separadas por doble salto de línea. Español. "
-                    'JSON: {"guion":"...","mensaje_central":"..."}'
-                )
+                if formato == "ensenanza":
+                    system = (
+                        "Eres guionista de canal educativo faceless (estilo Psicología Invisible). "
+                        "ENTREGA UNA ENSEÑANZA clara del concepto. No vendas. "
+                        "Estructura: hook → concepto → por qué importa → 2 enseñanzas → aplicación hoy → cierre suave. "
+                        "Escenas separadas por doble salto de línea. Español hablado, frases cortas. "
+                        'JSON: {"guion":"...","mensaje_central":"..."}'
+                    )
+                else:
+                    system = (
+                        "Eres guionista de video corto promocional. Un mensaje central. "
+                        "Escenas separadas por doble salto de línea. Español. "
+                        'JSON: {"guion":"...","mensaje_central":"..."}'
+                    )
                 user = (
-                    f"Título: {titulo}\nHook: {hook}\nPromesa: {promesa}\nCTA: {cta}\n"
-                    f"Ideas centrales:\n- " + "\n- ".join(ideas) + "\n"
-                    "Escribe guion hablado corto (no copies el PDF)."
+                    f"Formato: {formato}\nTítulo: {titulo}\nHook: {hook}\nPromesa: {promesa}\n"
+                    f"Ideas del resumen (enseñar, no copiar PDF):\n- "
+                    + "\n- ".join(ideas)
+                    + "\nEscribe guion hablado."
                 )
                 try:
                     data = get_llm().complete_json(
-                        system, user, mock_payload={"guion": guion, "mensaje_central": ideas[0] if ideas else titulo}
+                        system,
+                        user,
+                        mock_payload={"guion": guion, "mensaje_central": ideas[0] if ideas else titulo},
                     )
                     if data.get("guion"):
                         guion = str(data["guion"]).strip()
@@ -116,6 +150,7 @@ class GuionAgent:
         ]
         payload = {
             "skill": "guion-a-video",
+            "formato": formato,
             "titulo": titulo,
             "guion": guion,
             "escenas_preview": preview,
@@ -124,20 +159,24 @@ class GuionAgent:
             "modo": modo,
             "archivo_md": str(out_md),
             "generado_at": datetime.now(timezone.utc).isoformat(),
+            "referencia_estilo": "ensenanza≈Psicología Invisible / faceless educativo"
+            if formato == "ensenanza"
+            else "promo",
         }
         save_json(out_json, payload)
         out_md.parent.mkdir(parents=True, exist_ok=True)
-        out_md.write_text(f"# Guion — {titulo}\n\n{guion}\n", encoding="utf-8")
+        out_md.write_text(f"# Guion ({formato}) — {titulo}\n\n{guion}\n", encoding="utf-8")
 
-        lote_updated = {**lote, "guion": guion, "titulo": titulo}
+        lote_updated = {**lote, "guion": guion, "titulo": titulo, "formato": formato}
         save_json(ctx.paths["lote"], lote_updated)
         ctx.lote = lote_updated
         context["guion"] = guion
         context["titulo"] = titulo
+        context["formato"] = formato
         save_json(ctx.paths["context"], context)
 
         return AgentResult(
             ok=True,
             artifacts=[str(out_json), str(out_md)],
-            notes=f"Guion ({origen}/{modo}) · {len(preview)} bloques",
+            notes=f"Guion {formato} ({origen}/{modo}) · {len(preview)} bloques",
         )
