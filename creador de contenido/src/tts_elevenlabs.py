@@ -9,8 +9,8 @@ import urllib.request
 from pathlib import Path
 
 ELEVEN_API = os.getenv("ELEVENLABS_API_URL", "https://api.elevenlabs.io/v1")
-ELEVEN_KEY = os.getenv("ELEVENLABS_API_KEY", "").strip()
-ELEVEN_VOICE = os.getenv("ELEVENLABS_VOICE_ID", "").strip()
+ELEVEN_KEY = os.getenv("ELEVENLABS_API_KEY", "").strip().strip('"').strip("'")
+ELEVEN_VOICE = os.getenv("ELEVENLABS_VOICE_ID", "").strip().strip('"').strip("'")
 ELEVEN_MODEL = os.getenv("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2").strip()
 TTS_PROVIDER = os.getenv("TTS_PROVIDER", "elevenlabs").strip().lower()
 MOCK_TTS = os.getenv("MOCK_TTS", "true").lower() in ("1", "true", "yes", "on")
