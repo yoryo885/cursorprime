@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 6,
-    "ultima_mejora": "Usuario confirma: incluir las 6 imágenes de interacción (06–08 A/B) en el video"
+    "version": 7,
+    "ultima_mejora": "6 escenas interactivas visibles al inicio del video (no al final)"
   },
   "historial": [
     {
@@ -39,6 +39,11 @@
       "version": 6,
       "mensaje": "crear mas imagenes donde el personaje interactue",
       "cambio": "Brief pack interactivo 06–08"
+    },
+    {
+      "version": 7,
+      "mensaje": "no no no estan",
+      "cambio": "Orden morph: interacciones primero; completar 6 escenas interactivas 06-11"
     }
   ]
 }

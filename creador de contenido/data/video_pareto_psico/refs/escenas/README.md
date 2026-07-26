@@ -1,25 +1,14 @@
-# Plantilla: escenas + animación fluida (interacción)
+# Escenas blob — interacción
 
-Flujo estilo Psicología Invisible / personaje blob:
+## Las 6 interactivas (video principal)
 
-1. **Imagen base** del personaje (misma cara/cuerpo).
-2. **Escenarios** distintos (acción + lugar + banner).
-3. **Pose B** por escenario: el personaje **interactúa con objetos** (no solo gesticula en el aire).
-4. **Morph ping-pong** A↔B + idle, sync a `narracion.mp3`.
+| # | Stem | Acción |
+|---|------|--------|
+| 06 | tachar | señala / tacha lista |
+| 07 | piedra_vital | toca piedrita / abraza piedra |
+| 08 | protege_tiempo | mira agenda / protege bloque |
+| 09 | toca_20 | toca / empuja el 20% del gráfico |
+| 10 | ordena | agarra papeles / deja solo el 20% |
+| 11 | foco | alcanza lámpara / enciende foco |
 
-## Pack actual
-
-| # | Stem | Interacción |
-|---|------|-------------|
-| 01 | abrumado | señala papeles ↔ manos a la cabeza |
-| 02 | diagrama | señala el 20% del gráfico |
-| 03 | piedras | mira lo pequeño ↔ prioriza |
-| 04 | lista | marca prioridades |
-| 05 | claridad | cierre / ventana |
-| 06 | tachar | **señala ítem ↔ tacha lo secundario** |
-| 07 | piedra_vital | **toca piedrita ↔ abraza piedra grande** |
-| 08 | protege_tiempo | **mira agenda ↔ protege bloque de tiempo** |
-
-```bash
-python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza-tiktok --desde morph
-```
+En `lote.json` → `morph.only_stems` lista estas 6 para que **todo el video** las muestre (no al final).

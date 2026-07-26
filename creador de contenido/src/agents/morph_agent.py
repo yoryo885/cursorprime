@@ -113,6 +113,51 @@ def _pairs_from_imagenes(img_dir: Path) -> list[tuple[Path, Path, str]]:
     return pairs
 
 
+def _order_pairs(
+    pairs: list[tuple[Path, Path, str]],
+    morph_cfg: dict,
+) -> list[tuple[Path, Path, str]]:
+    """Orden explícito / solo stems / interacciones primero."""
+    by_stem = {stem: (a, b, stem) for a, b, stem in pairs}
+    only = morph_cfg.get("only_stems") or morph_cfg.get("stems")
+    order = morph_cfg.get("order") or morph_cfg.get("orden")
+    if only:
+        out = []
+        for stem in only:
+            stem = str(stem)
+            if stem in by_stem:
+                out.append(by_stem[stem])
+            else:
+                # permite pasar "06_tachar" o solo coincidencia parcial
+                hit = next((k for k in by_stem if k == stem or k.endswith(stem) or stem in k), None)
+                if hit:
+                    out.append(by_stem[hit])
+        if out:
+            return out
+    if order:
+        out = []
+        used = set()
+        for stem in order:
+            stem = str(stem)
+            if stem in by_stem:
+                out.append(by_stem[stem])
+                used.add(stem)
+        for a, b, stem in pairs:
+            if stem not in used:
+                out.append((a, b, stem))
+        return out
+    if morph_cfg.get("interactivo_primero", False):
+        inter = []
+        resto = []
+        for a, b, stem in pairs:
+            # stems nuevos de interacción suelen ser 06+ o nombres explícitos
+            num = stem.split("_", 1)[0]
+            is_inter = num.isdigit() and int(num) >= 6
+            (inter if is_inter else resto).append((a, b, stem))
+        return inter + resto
+    return pairs
+
+
 def _frames_to_mp4(tmp: Path, out: Path, fps: int) -> tuple[bool, str]:
     ffmpeg = _ffmpeg()
     if not ffmpeg:
@@ -264,6 +309,9 @@ class MorphAgent:
             )
 
         morph_cfg = lote.get("morph") if isinstance(lote.get("morph"), dict) else {}
+        pairs = _order_pairs(pairs, morph_cfg)
+        if not pairs:
+            return AgentResult(ok=False, notes="Morph: order/only_stems no coincidió con ningún par A/B")
         # defaults orientados a movimiento continuo
         hold = int(morph_cfg.get("hold_frames") or 6)
         xfade = int(morph_cfg.get("xfade_frames") or 28)

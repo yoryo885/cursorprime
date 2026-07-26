@@ -6,7 +6,7 @@
   "receta": "ensenanza-tiktok",
   "formato": "ensenanza",
   "duracion_seg": 40,
-  "escenas": 8,
+  "escenas": 6,
   "aspect_ratio": "9:16",
   "estilo": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
   "voz": "calma, didáctica, como canal de psicología aplicada",
@@ -51,6 +51,15 @@
     "hold_frames": 6,
     "xfade_frames": 28,
     "fps": 24,
-    "sync_audio": true
+    "sync_audio": true,
+    "interactivo_primero": true,
+    "only_stems": [
+      "06_tachar",
+      "07_piedra_vital",
+      "08_protege_tiempo",
+      "09_toca_20",
+      "10_ordena",
+      "11_foco"
+    ]
   }
 }
