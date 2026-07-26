@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 7,
-    "ultima_mejora": "6 escenas interactivas visibles al inicio del video (no al final)"
+    "version": 8,
+    "ultima_mejora": "Motion suave: xfade largo, ease coseno, blur mid-morph, holds más largos"
   },
   "historial": [
     {
@@ -44,6 +44,11 @@
       "version": 7,
       "mensaje": "no no no estan",
       "cambio": "Orden morph: interacciones primero; completar 6 escenas interactivas 06-11"
+    },
+    {
+      "version": 8,
+      "mensaje": "movimiento muy brusco",
+      "cambio": "Morph soft: no pingpong rápido; transiciones lentas + blur"
     }
   ]
 }

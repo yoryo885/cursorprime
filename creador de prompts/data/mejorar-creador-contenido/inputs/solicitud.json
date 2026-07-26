@@ -78,6 +78,10 @@
     {
       "mensaje": "no no no estan",
       "cambio": "Las 6 interacciones deben verse: orden primero + escenas 06-11"
+    },
+    {
+      "mensaje": "encuentro que el movimiento es muy brusco; imagenes ok mejorar movimiento",
+      "cambio": "Morph soft: hold/xfade largos, ease coseno, blur en cruce, idle solo en holds"
     }
   ],
   "estrategia_tiktok": {
@@ -110,36 +114,11 @@
   },
   "variantes": 1,
   "motion_plan": {
-    "problema": "tpad_freeze deja ~86% de cada escena congelada",
-    "opcion_recomendada": "pingpong_ab + idle_breathe",
-    "opciones": [
-      {
-        "id": "pingpong",
-        "desc": "Repetir A→B→A durante toda la duración de la escena",
-        "esfuerzo": "bajo",
-        "impacto": "alto"
-      },
-      {
-        "id": "idle",
-        "desc": "Micro movimiento (scale/bob) mientras se ve una pose",
-        "esfuerzo": "bajo",
-        "impacto": "medio"
-      },
-      {
-        "id": "multipose",
-        "desc": "3+ poses por escena (A/B/C)",
-        "esfuerzo": "medio",
-        "impacto": "alto",
-        "requiere": "más PNGs"
-      },
-      {
-        "id": "kling",
-        "desc": "Video real del personaje (API)",
-        "esfuerzo": "alto",
-        "impacto": "muy alto",
-        "requiere": "MOCK_KLING=false + cuota"
-      }
-    ]
+    "modo": "soft",
+    "hold_frames": 20,
+    "xfade_frames": 56,
+    "idle_on_holds_only": true,
+    "mid_blur": true
   },
   "pack_interactivo": {
     "objetivo": "el blob toca/usa objetos del escenario en cada beat",
