@@ -1,12 +1,17 @@
-"""MorphAgent — anima escenas A→B (morph fluido) y concatena el video base.
+"""MorphAgent — anima escenas A↔B en loop (ping-pong + idle) y concatena.
 
 Prioridad de frames:
 1) refs/escenas/{id}_a.png + _b.png (pack visual validado)
 2) imagenes/*-inicio.png + *-fin.png del PNG agent
+
+Motion (default):
+- Ping-pong A→B→A durante toda la duración de la escena (sin freeze largo)
+- Idle “respirar”: scale/bob sutil continuo
 """
 
 from __future__ import annotations
 
+import math
 import re
 import subprocess
 from datetime import datetime, timezone
@@ -14,7 +19,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from src.config import ROOT, load_json, save_json, slug_dir
+from src.config import load_json, save_json, slug_dir
 from src.types import AgentResult, PipelineContext
 from src.video_backend import _ffmpeg, concat_clips
 
@@ -37,7 +42,7 @@ def _ffprobe_duration(path: Path) -> float:
 
 
 def _pad_clip_to_duration(clip: Path, target_s: float, out: Path) -> tuple[bool, str]:
-    """Congela el último frame hasta alcanzar target_s (voz manda la duración)."""
+    """Congela el último frame hasta alcanzar target_s (fallback legacy)."""
     ffmpeg = _ffmpeg()
     if not ffmpeg:
         return False, "ffmpeg no instalado"
@@ -61,9 +66,26 @@ def _pad_clip_to_duration(clip: Path, target_s: float, out: Path) -> tuple[bool,
     return True, out.name
 
 
-def _slug_num(name: str) -> str | None:
-    m = re.match(r"^(\d+)_", name)
-    return m.group(1) if m else None
+def _ease(u: float) -> float:
+    return 3 * u * u - 2 * u * u * u
+
+
+def _breathe(im: Image.Image, t_sec: float, amp: float = 0.014, period: float = 2.0) -> Image.Image:
+    """Micro-movimiento: scale + bob vertical suave (personaje “vivo”)."""
+    if amp <= 0:
+        return im
+    w, h = im.size
+    s = 1.0 + amp * math.sin(2 * math.pi * t_sec / period)
+    bob = int(round(2.5 * math.sin(2 * math.pi * t_sec / period + 0.7)))
+    nw = max(1, int(round(w * s)))
+    nh = max(1, int(round(h * s)))
+    scaled = im.resize((nw, nh), Image.Resampling.BILINEAR)
+    # center crop + bob
+    left = (nw - w) // 2
+    top = (nh - h) // 2 - bob
+    top = max(0, min(top, nh - h))
+    left = max(0, min(left, nw - w))
+    return scaled.crop((left, top, left + w, top + h))
 
 
 def _pairs_from_refs(refs_dir: Path) -> list[tuple[Path, Path, str]]:
@@ -91,11 +113,24 @@ def _pairs_from_imagenes(img_dir: Path) -> list[tuple[Path, Path, str]]:
     return pairs
 
 
-def _morph_clip(a: Path, b: Path, out: Path, fps: int = 24, hold: int = 8, xfade: int = 16) -> tuple[bool, str]:
-    """Morph A→B con blend ease (misma técnica que el demo que gustó)."""
+def _frames_to_mp4(tmp: Path, out: Path, fps: int) -> tuple[bool, str]:
     ffmpeg = _ffmpeg()
     if not ffmpeg:
         return False, "ffmpeg no instalado"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        ffmpeg, "-y", "-framerate", str(fps), "-i", str(tmp / "f%04d.jpg"),
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "veryfast",
+        "-movflags", "+faststart", str(out),
+    ]
+    proc = subprocess.run(cmd, capture_output=True, text=True)
+    if proc.returncode != 0:
+        return False, proc.stderr[-300:]
+    return True, out.name
+
+
+def _morph_clip(a: Path, b: Path, out: Path, fps: int = 24, hold: int = 8, xfade: int = 16) -> tuple[bool, str]:
+    """Morph A→B único (legacy / ciclo base)."""
     size = (1080, 1080)
     tmp = out.parent / f"_morph_tmp_{out.stem}"
     if tmp.exists():
@@ -110,31 +145,101 @@ def _morph_clip(a: Path, b: Path, out: Path, fps: int = 24, hold: int = 8, xfade
 
     def save(im: Image.Image) -> None:
         nonlocal n
-        im.save(tmp / f"f{n:04d}.jpg", quality=90)
+        im.save(tmp / f"f{n:04d}.jpg", quality=88)
         n += 1
 
     for _ in range(hold):
         save(im_a)
     for t in range(xfade):
         u = t / max(xfade - 1, 1)
-        e = 3 * u * u - 2 * u * u * u
-        save(Image.blend(im_a, im_b, e))
+        save(Image.blend(im_a, im_b, _ease(u)))
     for _ in range(hold):
         save(im_b)
 
-    out.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [
-        ffmpeg, "-y", "-framerate", str(fps), "-i", str(tmp / "f%04d.jpg"),
-        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "veryfast",
-        "-movflags", "+faststart", str(out),
-    ]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    ok, msg = _frames_to_mp4(tmp, out, fps)
     for f in tmp.glob("*"):
         f.unlink()
     tmp.rmdir()
-    if proc.returncode != 0:
-        return False, proc.stderr[-300:]
-    return True, out.name
+    return ok, msg
+
+
+def _morph_pingpong_clip(
+    a: Path,
+    b: Path,
+    out: Path,
+    target_s: float,
+    fps: int = 24,
+    hold: int = 6,
+    xfade: int = 28,
+    idle_amp: float = 0.014,
+) -> tuple[bool, str]:
+    """Genera A→B→A… con idle breathe hasta cubrir target_s (sin freeze)."""
+    size = (1080, 1080)
+    total = max(int(round(target_s * fps)), fps)
+    tmp = out.parent / f"_morph_tmp_{out.stem}"
+    if tmp.exists():
+        for old in tmp.glob("*"):
+            old.unlink()
+        try:
+            tmp.rmdir()
+        except OSError:
+            pass
+    tmp.mkdir(parents=True, exist_ok=True)
+
+    im_a = Image.open(a).convert("RGB").resize(size, Image.Resampling.LANCZOS)
+    im_b = Image.open(b).convert("RGB").resize(size, Image.Resampling.LANCZOS)
+
+    # Precompute morph frames (sin idle) para reusar
+    ab = []
+    ba = []
+    for t in range(xfade):
+        u = t / max(xfade - 1, 1)
+        e = _ease(u)
+        ab.append(Image.blend(im_a, im_b, e))
+        ba.append(Image.blend(im_b, im_a, e))
+
+    n = 0
+    # cycle phases: holdA, A→B, holdB, B→A
+    phase = 0
+    phase_i = 0
+    hold_a = max(4, hold)
+    hold_b = max(4, hold)
+
+    while n < total:
+        t_sec = n / fps
+        if phase == 0:  # hold A
+            base = im_a
+            phase_i += 1
+            if phase_i >= hold_a:
+                phase, phase_i = 1, 0
+        elif phase == 1:  # A→B
+            base = ab[min(phase_i, len(ab) - 1)]
+            phase_i += 1
+            if phase_i >= xfade:
+                phase, phase_i = 2, 0
+        elif phase == 2:  # hold B
+            base = im_b
+            phase_i += 1
+            if phase_i >= hold_b:
+                phase, phase_i = 3, 0
+        else:  # B→A
+            base = ba[min(phase_i, len(ba) - 1)]
+            phase_i += 1
+            if phase_i >= xfade:
+                phase, phase_i = 0, 0
+
+        frame = _breathe(base, t_sec, amp=idle_amp)
+        frame.save(tmp / f"f{n:04d}.jpg", quality=86)
+        n += 1
+
+    ok, msg = _frames_to_mp4(tmp, out, fps)
+    for f in tmp.glob("*"):
+        f.unlink()
+    try:
+        tmp.rmdir()
+    except OSError:
+        pass
+    return ok, msg
 
 
 class MorphAgent:
@@ -159,11 +264,18 @@ class MorphAgent:
             )
 
         morph_cfg = lote.get("morph") if isinstance(lote.get("morph"), dict) else {}
-        hold = int(morph_cfg.get("hold_frames") or 10)
-        xfade = int(morph_cfg.get("xfade_frames") or 20)
+        # defaults orientados a movimiento continuo
+        hold = int(morph_cfg.get("hold_frames") or 6)
+        xfade = int(morph_cfg.get("xfade_frames") or 28)
         fps = int(morph_cfg.get("fps") or 24)
+        idle_amp = float(morph_cfg.get("idle_amp") if morph_cfg.get("idle_amp") is not None else 0.014)
+        # pingpong | freeze
+        pad_mode = str(morph_cfg.get("pad_mode") or "pingpong").strip().lower()
+        if pad_mode in {"tpad", "tpad_freeze", "freeze"}:
+            pad_mode = "freeze"
+        else:
+            pad_mode = "pingpong"
 
-        # Sync: morph corto + freeze por escena hasta cubrir narracion.mp3
         narr = Path(ctx.paths["copy_dir"]) / "narracion.mp3"
         audio_dur = _ffprobe_duration(narr)
         sync_audio = morph_cfg.get("sync_audio", True)
@@ -175,25 +287,32 @@ class MorphAgent:
         items = []
         warnings = []
         for i, (a, b, stem) in enumerate(pairs, start=1):
-            raw_clip = clips_dir / f"{i:02d}-{stem}_raw.mp4"
             out_clip = clips_dir / f"{i:02d}-{stem}.mp4"
-            ok, msg = _morph_clip(a, b, raw_clip, fps=fps, hold=hold, xfade=xfade)
-            if not ok:
-                return AgentResult(ok=False, notes=f"Morph escena {i}: {msg}")
-            if per_scene_target > 0:
-                ok, msg = _pad_clip_to_duration(raw_clip, per_scene_target, out_clip)
+            if pad_mode == "pingpong" and per_scene_target > 0:
+                ok, msg = _morph_pingpong_clip(
+                    a, b, out_clip,
+                    target_s=per_scene_target,
+                    fps=fps,
+                    hold=hold,
+                    xfade=xfade,
+                    idle_amp=idle_amp,
+                )
                 if not ok:
-                    return AgentResult(ok=False, notes=f"Morph pad escena {i}: {msg}")
-                try:
-                    raw_clip.unlink(missing_ok=True)
-                except Exception:
-                    pass
+                    return AgentResult(ok=False, notes=f"Morph pingpong escena {i}: {msg}")
             else:
-                out_clip.write_bytes(raw_clip.read_bytes())
-                try:
+                raw_clip = clips_dir / f"{i:02d}-{stem}_raw.mp4"
+                ok, msg = _morph_clip(a, b, raw_clip, fps=fps, hold=hold, xfade=xfade)
+                if not ok:
+                    return AgentResult(ok=False, notes=f"Morph escena {i}: {msg}")
+                if per_scene_target > 0:
+                    ok, msg = _pad_clip_to_duration(raw_clip, per_scene_target, out_clip)
+                    if not ok:
+                        return AgentResult(ok=False, notes=f"Morph pad escena {i}: {msg}")
                     raw_clip.unlink(missing_ok=True)
-                except Exception:
-                    pass
+                else:
+                    out_clip.write_bytes(raw_clip.read_bytes())
+                    raw_clip.unlink(missing_ok=True)
+
             clip_paths.append(out_clip)
             items.append(
                 {
@@ -208,12 +327,14 @@ class MorphAgent:
             )
 
         final = videos_out / f"{ctx.slug}_morph.mp4"
-        # también alias estable para audio/subtitulos
-        alias = videos_out / "pareto_5_escenas_animado.mp4" if "pareto" in ctx.slug else videos_out / f"{ctx.slug}_escenas.mp4"
+        alias = (
+            videos_out / "pareto_5_escenas_animado.mp4"
+            if "pareto" in ctx.slug
+            else videos_out / f"{ctx.slug}_escenas.mp4"
+        )
         ok, msg = concat_clips(clip_paths, final)
         if not ok:
             return AgentResult(ok=False, notes=f"Morph concat: {msg}")
-        # copia alias
         try:
             alias.write_bytes(final.read_bytes())
         except Exception as exc:
@@ -230,16 +351,16 @@ class MorphAgent:
             "hold_frames": hold,
             "xfade_frames": xfade,
             "fps": fps,
+            "idle_amp": idle_amp,
             "audio_dur_target": audio_dur or None,
             "duration_esperada_s": round(expected_dur, 3),
             "sync_audio": bool(sync_audio and audio_dur >= 1.0),
-            "pad_mode": "tpad_freeze" if per_scene_target else None,
+            "pad_mode": pad_mode if per_scene_target else None,
             "generado_at": datetime.now(timezone.utc).isoformat(),
         }
         out_meta = Path(ctx.paths["meta"]) / "morph.json"
         save_json(out_meta, payload)
 
-        # Actualiza generated_videos para Audio/Subtitulos/QC
         gv_path = ctx.paths.get("generated_videos")
         gv = load_json(gv_path, {}) if gv_path else {}
         gv = gv or {}
@@ -263,11 +384,19 @@ class MorphAgent:
         if gv_path:
             save_json(gv_path, gv)
 
-        # lote apunta al video visual correcto
         lote_u = {
             **lote,
             "video_final": final.name,
             "audio": {**(lote.get("audio") if isinstance(lote.get("audio"), dict) else {}), "video_path": final.name},
+            "morph": {
+                **(lote.get("morph") if isinstance(lote.get("morph"), dict) else {}),
+                "pad_mode": pad_mode,
+                "idle_amp": idle_amp,
+                "hold_frames": hold,
+                "xfade_frames": xfade,
+                "fps": fps,
+                "sync_audio": sync_audio,
+            },
         }
         save_json(ctx.paths["lote"], lote_u)
         ctx.lote = lote_u
@@ -275,6 +404,6 @@ class MorphAgent:
         return AgentResult(
             ok=True,
             artifacts=[str(final), str(out_meta)],
-            notes=f"Morph {len(items)} escenas ({fuente}) → {final.name}",
+            notes=f"Morph {len(items)} escenas ({fuente}, {pad_mode}) → {final.name}",
             warnings=warnings,
         )
