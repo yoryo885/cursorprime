@@ -76,13 +76,20 @@
       "tipo": "final_subtitulado"
     },
     {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
       "archivo": "video_pareto_psico_morph.mp4",
       "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
       "modulo": "videos",
       "modo": "morph",
       "tipo": "final",
-      "escenas": 8,
-      "generado_at": "2026-07-26T20:07:59.503134+00:00"
+      "escenas": 6,
+      "generado_at": "2026-07-26T20:18:40.124305+00:00"
     },
     {
       "archivo": "video_pareto_psico_audio.mp4",
@@ -99,7 +106,7 @@
       "tipo": "final_subtitulado"
     }
   ],
-  "count": 8,
+  "count": 6,
   "modo": "morph",
   "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
   "morph_final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
