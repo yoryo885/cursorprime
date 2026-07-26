@@ -276,15 +276,33 @@ class SubtitulosAgent:
             # Entregable canónico en la carpeta videos/ del slug
             canonical = videos_out / f"{ctx.slug}.mp4"
             try:
-                canonical.write_bytes(out_mp4.read_bytes())
+                data = out_mp4.read_bytes()
+                canonical.write_bytes(data)
             except Exception as exc:
                 warnings.append(f"copia canónica {canonical.name}: {exc}")
+                data = None
+            # Aliases que el operador suele abrir en Finder
+            if data is not None:
+                for alias_name in (
+                    "pareto_5_escenas_animado.mp4",
+                    "pareto_5_escenas_con_voz.mp4",
+                    "pareto_final.mp4",
+                    "00_VER_ESTE_pareto.mp4",
+                ):
+                    if "pareto" in ctx.slug or alias_name.startswith("00_"):
+                        try:
+                            (videos_out / alias_name).write_bytes(data)
+                        except Exception as exc:
+                            warnings.append(f"alias {alias_name}: {exc}")
             # También en output/ (junto a resumen/manifest)
             out_dir = Path(ctx.paths["output"])
             out_dir.mkdir(parents=True, exist_ok=True)
             out_copy = out_dir / f"{ctx.slug}.mp4"
             try:
-                out_copy.write_bytes(out_mp4.read_bytes())
+                if data is not None:
+                    out_copy.write_bytes(data)
+                else:
+                    out_copy.write_bytes(out_mp4.read_bytes())
             except Exception as exc:
                 warnings.append(f"copia output: {exc}")
 
