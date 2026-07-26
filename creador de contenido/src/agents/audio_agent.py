@@ -121,7 +121,14 @@ class AudioAgent:
         # 2) Resolver video final (portable Mac/cloud)
         videos_meta = load_json(ctx.paths.get("generated_videos"), {}) if ctx.paths.get("generated_videos") else {}
         videos_out = Path(ctx.paths["videos_out"])
-        final_path = resolve_video_final(videos_meta or {}, videos_out, ctx.slug)
+        prefer = (
+            audio_cfg.get("video_path")
+            or audio_cfg.get("video")
+            or lote.get("video_final")
+            or ""
+        )
+        prefer_name = Path(str(prefer)).name if prefer else None
+        final_path = resolve_video_final(videos_meta or {}, videos_out, ctx.slug, prefer_name=prefer_name)
 
         bed = audio_cfg.get("bed_path") or audio_cfg.get("musica_path") or ""
         audio_for_mux: Path | None = None

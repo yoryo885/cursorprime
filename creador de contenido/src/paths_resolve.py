@@ -17,13 +17,18 @@ def resolve_existing(*candidates: Path | str | None) -> Path | None:
     return None
 
 
-def resolve_video_final(videos_meta: dict, videos_out: Path, slug: str) -> Path | None:
+def resolve_video_final(videos_meta: dict, videos_out: Path, slug: str, prefer_name: str | None = None) -> Path | None:
     """
     Busca el MP4 final aunque generated_videos.json tenga rutas absolutas de otra máquina.
     Nunca devuelve un clip de videos/clips/.
     """
     videos_out = Path(videos_out)
     preferred: list[Path] = []
+
+    # 0) Nombre explícito del lote (ej. pareto_5_escenas_animado.mp4)
+    if prefer_name:
+        preferred.append(videos_out / prefer_name)
+        preferred.append(ROOT / "data" / slug / "videos" / prefer_name)
 
     # 1) Convención local más fiable
     preferred.append(videos_out / f"{slug}.mp4")

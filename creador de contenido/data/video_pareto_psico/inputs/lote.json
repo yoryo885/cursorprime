@@ -34,8 +34,11 @@
   ],
   "audio": {
     "narracion_modo": "brief",
-    "bed_path": ""
+    "bed_path": "",
+    "video_path": "pareto_5_escenas_animado.mp4",
+    "voz_off": true
   },
+  "video_final": "pareto_5_escenas_animado.mp4",
   "video": {
     "modo": "animado",
     "limit_escenas": 5
