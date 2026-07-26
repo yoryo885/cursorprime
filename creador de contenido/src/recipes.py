@@ -141,8 +141,15 @@ def _ensure_core(agentes: list[str], salidas: list[str], video_cfg: dict, lote: 
     s.update(["context", "planner", "style", "prompt", "qc", "packager"])
     for m in ("png", "gif", "video", "pdf"):
         if m in salidas:
+            # ensenanza-tiktok usa morph en lugar del módulo video clásico
+            if m == "video" and "morph" in s:
+                continue
             s.add(m)
-    if "video" in salidas and video_cfg.get("modo") == "animado":
+    if "video" in salidas and video_cfg.get("modo") == "animado" and "morph" not in s:
+        s.add("escenas")
+        if not lote.get("guion") and not lote.get("escenas"):
+            s.add("guion")
+    if "morph" in s:
         s.add("escenas")
         if not lote.get("guion") and not lote.get("escenas"):
             s.add("guion")
