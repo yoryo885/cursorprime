@@ -1,0 +1,240 @@
+{
+  "proyecto": "creador-de-contenido",
+  "slug": "demo_promo_guia",
+  "titulo": "El principio de Pareto",
+  "receta": "promo-guia",
+  "skills_activadas": [
+    "hooks-redes",
+    "guion-a-video",
+    "captions-redes",
+    "thumbnail-social"
+  ],
+  "agentes": [
+    "context",
+    "planner",
+    "hook",
+    "guion",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "video",
+    "captions",
+    "thumbnail",
+    "qc",
+    "packager"
+  ],
+  "salidas_pedidas": [
+    "png",
+    "video"
+  ],
+  "salidas_generadas": [
+    "png",
+    "video"
+  ],
+  "integracion_externa": false,
+  "modulos": {
+    "generated_imagenes": {
+      "imagenes": [
+        {
+          "tema": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+          "archivo": "01-si_el_principio_de_pareto_te_abruma_est-inicio.png",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/01-si_el_principio_de_pareto_te_abruma_est-inicio.png",
+          "modulo": "imagenes",
+          "escena_id": 1,
+          "tipo_frame": "inicio",
+          "generado_at": "2026-07-19T21:14:57.669953+00:00"
+        },
+        {
+          "tema": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+          "archivo": "01-si_el_principio_de_pareto_te_abruma_est-fin.png",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/01-si_el_principio_de_pareto_te_abruma_est-fin.png",
+          "modulo": "imagenes",
+          "escena_id": 1,
+          "tipo_frame": "fin",
+          "generado_at": "2026-07-19T21:14:57.687653+00:00"
+        },
+        {
+          "tema": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+          "archivo": "02-1_identifica_las_pocas_causas_que_gener-inicio.png",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/02-1_identifica_las_pocas_causas_que_gener-inicio.png",
+          "modulo": "imagenes",
+          "escena_id": 2,
+          "tipo_frame": "inicio",
+          "generado_at": "2026-07-19T21:14:57.704418+00:00"
+        },
+        {
+          "tema": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+          "archivo": "02-1_identifica_las_pocas_causas_que_gener-fin.png",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/imagenes/02-1_identifica_las_pocas_causas_que_gener-fin.png",
+          "modulo": "imagenes",
+          "escena_id": 2,
+          "tipo_frame": "fin",
+          "generado_at": "2026-07-19T21:14:57.720926+00:00"
+        }
+      ],
+      "count": 4,
+      "video_modo": "animado"
+    },
+    "generated_videos": {
+      "videos": [
+        {
+          "escena_id": 1,
+          "archivo": "01-si_el_principio_de_pareto_te_abruma_est.mp4",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/videos/clips/01-si_el_principio_de_pareto_te_abruma_est.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "mock_kling": true
+        },
+        {
+          "escena_id": 2,
+          "archivo": "02-1_identifica_las_pocas_causas_que_gener.mp4",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/videos/clips/02-1_identifica_las_pocas_causas_que_gener.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "mock_kling": true
+        },
+        {
+          "archivo": "demo_promo_guia.mp4",
+          "path": "/workspace/creador de contenido/data/demo_promo_guia/videos/demo_promo_guia.mp4",
+          "modulo": "videos",
+          "modo": "animado",
+          "tipo": "final",
+          "escenas": 2,
+          "generado_at": "2026-07-19T21:14:58.578449+00:00"
+        }
+      ],
+      "count": 2,
+      "modo": "animado",
+      "final": "/workspace/creador de contenido/data/demo_promo_guia/videos/demo_promo_guia.mp4"
+    }
+  },
+  "copy": {
+    "hooks": {
+      "skill": "hooks-redes",
+      "tema": "El principio de Pareto",
+      "hooks": [
+        {
+          "id": 1,
+          "texto": "Si El principio de Pareto te abruma, esto te ordena en minutos.",
+          "angulo": "dolor"
+        },
+        {
+          "id": 2,
+          "texto": "La mayoría lee PDFs y no aplica nada. Esta guía sí: enfocarte en el 20% que mueve el 80% de tus resultados.",
+          "angulo": "contraste"
+        },
+        {
+          "id": 3,
+          "texto": "3 ideas de «El principio de Pareto» que puedes usar hoy — empezando por Identifica las pocas causas que generan la mayoría del efecto.",
+          "angulo": "lista"
+        }
+      ],
+      "elegido": {
+        "id": 0,
+        "texto": "Si El principio de Pareto te abruma, esto te ordena en minutos.",
+        "angulo": "manual"
+      },
+      "generado_at": "2026-07-19T21:14:57.642675+00:00",
+      "confidence": "medium",
+      "nota": "MVP heurístico; skill hooks-redes en chat puede refinar"
+    },
+    "guion": {
+      "skill": "guion-a-video",
+      "titulo": "El principio de Pareto",
+      "guion": "Si El principio de Pareto te abruma, esto te ordena en minutos.\n\nEl problema: acumular PDFs sin un plan claro sobre El principio de Pareto.\n\nEsta guía te da enfocarte en el 20% que mueve el 80% de tus resultados sin relleno.\n\n1. Identifica las pocas causas que generan la mayoría del efecto\n\n2. Elimina o delega lo que no mueve la aguja\n\n3. Revisa semanalmente tu 20% prioritario\n\nComenta PARETO y te paso la guía completa",
+      "escenas_preview": [
+        {
+          "id": 1,
+          "texto_guion": "Si El principio de Pareto te abruma, esto te ordena en minutos."
+        },
+        {
+          "id": 2,
+          "texto_guion": "El problema: acumular PDFs sin un plan claro sobre El principio de Pareto."
+        },
+        {
+          "id": 3,
+          "texto_guion": "Esta guía te da enfocarte en el 20% que mueve el 80% de tus resultados sin relleno."
+        },
+        {
+          "id": 4,
+          "texto_guion": "1. Identifica las pocas causas que generan la mayoría del efecto"
+        },
+        {
+          "id": 5,
+          "texto_guion": "2. Elimina o delega lo que no mueve la aguja"
+        },
+        {
+          "id": 6,
+          "texto_guion": "3. Revisa semanalmente tu 20% prioritario"
+        },
+        {
+          "id": 7,
+          "texto_guion": "Comenta PARETO y te paso la guía completa"
+        }
+      ],
+      "ideas": [],
+      "generado_desde": "guion_existente",
+      "archivo_md": "/workspace/creador de contenido/data/demo_promo_guia/copy/guion.md",
+      "generado_at": "2026-07-19T21:14:57.643052+00:00"
+    },
+    "captions": {
+      "skill": "captions-redes",
+      "plataforma": "reels",
+      "caption": "Si El principio de Pareto te abruma, esto te ordena en minutos.\n\nEn este video resumo lo esencial de «El principio de Pareto».\nComenta PARETO y te paso la guía completa\n\n#guia #productividad #aprendizaje",
+      "hashtags": [
+        "guia",
+        "productividad",
+        "aprendizaje"
+      ],
+      "cta": "Comenta PARETO y te paso la guía completa",
+      "generado_at": "2026-07-19T21:14:58.578993+00:00",
+      "confidence": "medium"
+    },
+    "thumbnail": {
+      "skill": "thumbnail-social",
+      "titulo_on_image": "El principio de Pareto",
+      "subtitulo": "Si El principio de Pareto te abruma, esto te ordena en minut",
+      "estilo": "papel-sketch",
+      "prompt": "YouTube thumbnail, bold text «El principio de Pareto», high contrast, clean composition, style papel-sketch, no clutter",
+      "archivo": "/workspace/creador de contenido/data/demo_promo_guia/copy/thumbnail.png",
+      "generado_at": "2026-07-19T21:14:58.592672+00:00",
+      "confidence": "low",
+      "nota": "PNG placeholder MVP; skill thumbnail-social puede iterar diseño"
+    }
+  },
+  "qc_ok": true,
+  "empaquetado_at": "2026-07-19T21:14:58.593677+00:00",
+  "video_modo": "animado",
+  "escenas": {
+    "escenas": [
+      {
+        "id": 1,
+        "titulo": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+        "texto_guion": "Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre El principio de Pareto. Esta guía te da enfocarte en el 20% que mueve el 80% de tus resultados sin relleno.",
+        "start_frame_prompt": "Start frame, papel-sketch style, scene: Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre El pr, illustration, clean composition, no text, square",
+        "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acumular PDFs sin un plan claro sobre El pr, no text, square",
+        "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Si El principio de Pareto te abruma, esto te ordena en minutos. El problema: acu",
+        "slug": "si_el_principio_de_pareto_te_abruma_est",
+        "archivo_inicio": "01-si_el_principio_de_pareto_te_abruma_est-inicio.png",
+        "archivo_fin": "01-si_el_principio_de_pareto_te_abruma_est-fin.png",
+        "archivo_clip": "01-si_el_principio_de_pareto_te_abruma_est.mp4"
+      },
+      {
+        "id": 2,
+        "titulo": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+        "texto_guion": "1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o delega lo que no mueve la aguja 3. Revisa semanalmente tu 20% prioritario",
+        "start_frame_prompt": "Start frame, papel-sketch style, scene: 1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o delega lo que no mueve la aguja 3. Revisa , illustration, clean composition, no text, square",
+        "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: 1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o delega lo que no mueve la aguja 3. Revisa , no text, square",
+        "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: 1. Identifica las pocas causas que generan la mayoría del efecto 2. Elimina o de",
+        "slug": "1_identifica_las_pocas_causas_que_gener",
+        "archivo_inicio": "02-1_identifica_las_pocas_causas_que_gener-inicio.png",
+        "archivo_fin": "02-1_identifica_las_pocas_causas_que_gener-fin.png",
+        "archivo_clip": "02-1_identifica_las_pocas_causas_que_gener.mp4"
+      }
+    ],
+    "count": 2,
+    "modo_video": "animado",
+    "generado_at": "2026-07-19T21:14:57.643713+00:00"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
+  "tipo": "cursor",
+  "proyecto_destino": "creador-de-contenido",
+  "temas": [
+    "Modo B crear-pipeline: mejorar existente",
+    "Frontera estricta: no modificar libros a entender, tiktok_pipeline, router salvo registro",
+    "Pasos ordenados: limpieza → checkpoint → copy LLM → imágenes reales → Kling",
+    "Formato ensenanza: lección didáctica desde resumen (vs promo/CTA)",
+    "Subtítulos karaoke: solo palabras, sin sombra/caja negra, aparecen y desaparecen con la voz",
+    "Morph sincronizado a duración de narracion.mp3",
+    "Más movimiento del personaje blob (evitar freeze largo)",
+    "Morph ping-pong / idle breathe / multi-pose",
+    "Más imágenes de interacción del personaje con objetos (no solo gestos en vacío)",
+    "Pack refs/escenas ampliado: poses A/B con acción clara"
+  ],
+  "contexto": {
+    "audiencia": "agente Cursor / operador",
+    "tono": "técnico, paso a paso, sin inventar alcance",
+    "estilo": "diff mínimo, un paso por vez, probar con --limit / demos",
+    "idioma": "español",
+    "objetivo": "Prompt operable para mejorar creador de contenido sin desarmar el ecosistema; videos pueden enseñar (ensenanza) o vender (promo)"
+  },
+  "notas": "Ref YouTube Psicología Invisible. Formato ensenanza: enseñar insight del resumen, sin hard sell. Frontera: solo creador de contenido/. Subtítulos: NO BorderStyle=3 ni sombra negra; solo tipografía; timing palabra/chunk con la voz. | Motion: preferir loop morph sobre tpad_freeze estático.",
+  "mejoras": [
+    {
+      "mensaje": "dame un prompt paso a paso para mejorar sin desarmar otros proyectos",
+      "cambio": "Nuevo slug mejorar-creador-contenido con fases A–E y frontera"
+    },
+    {
+      "mensaje": "ajustar codigo base para entregar una enseñanza del resumen (Pareto), estilo Psicología Invisible",
+      "cambio": "Formato ensenanza vs promo; receta ensenanza; guion didáctico desde fuente_guia; referencia canales faceless educativos"
+    },
+    {
+      "mensaje": "la imagen mock no se parece; primero crea imagen similar a Psicología Invisible (blob characters, pastel, banner título)",
+      "cambio": "Estilo visual target: ilustración suave tipo canal educativo faceless; personaje cápsula; pastel; banner tipográfico; NO placeholder amarillo mock"
+    },
+    {
+      "mensaje": "esa imagen me gusto ahora dale animacion",
+      "cambio": "Animación Ken Burns 7s sobre ref estilo_psico_invisible_pareto.png"
+    },
+    {
+      "mensaje": "puedes hacer que se mueva el que esta sentado",
+      "cambio": "Poses del personaje (pensar → gesticular) + dissolve ~5s"
+    },
+    {
+      "mensaje": "esta buenicimo; cambiar escenario, 5 imagenes haciendo algo y animar",
+      "cambio": "Plantilla 5 escenas + pose B + morph fluido; demo pareto_5_escenas_animado.mp4"
+    },
+    {
+      "mensaje": "elige estrategia capítulo ancla + cortes para TikTok",
+      "cambio": "Estrategia fijada: máster 2–3 min (guion+escenas) → 1 largo opcional + 5 cortes 20–30s diarios; monetización: shorts crecimiento + máster ≥60s candidato Rewards"
+    },
+    {
+      "mensaje": "listo (ElevenLabs en .env) — cablea la voz",
+      "cambio": "TTS ElevenLabs en AudioAgent: guion→narracion.mp3→mux; MOCK_TTS + ELEVENLABS_API_KEY"
+    },
+    {
+      "mensaje": "video con skills/agentes; subtítulos de la voz",
+      "cambio": "Receta ensenanza-tiktok + MorphAgent + SubtitulosAgent"
+    },
+    {
+      "mensaje": "sigamos con esa mejora; la letra no tiene que salir con la sombra negra; solo las palabras y que vayan apareciendo con la voz y desapareciendo",
+      "cambio": "Morph hold ↔ duración narracion.mp3; mux no corta voz (tpad si hace falta); subtítulos ASS palabra/chunk sin caja/sombra negra, fad in/out con la voz"
+    },
+    {
+      "mensaje": "falta que el personaje se mueva mas; como mejorariamos esto?",
+      "cambio": "Diagnóstico: solo ~14% motion por escena (1.7s morph + ~10s freeze). Propuesta: ping-pong A↔B + micro-idle; opcional poses C y Kling"
+    },
+    {
+      "mensaje": "pienso que deberiamos crear mas imagenes donde el personaje interactue",
+      "cambio": "Pack interactivo: nuevas escenas 06–08 (tachar lista, mover piedras, proteger tiempo) + morph usa todos los pares A/B"
+    },
+    {
+      "mensaje": "se pueden ayadir las 6??",
+      "cambio": "Confirmación: las 6 (06/07/08 A+B) ya van en morph de 8 escenas"
+    },
+    {
+      "mensaje": "no no no estan",
+      "cambio": "Las 6 interacciones deben verse: orden primero + escenas 06-11"
+    },
+    {
+      "mensaje": "encuentro que el movimiento es muy brusco; imagenes ok mejorar movimiento",
+      "cambio": "Morph soft: hold/xfade largos, ease coseno, blur en cruce, idle solo en holds"
+    }
+  ],
+  "estrategia_tiktok": {
+    "nombre": "capitulo-ancla-cortes",
+    "receta": "ensenanza-tiktok",
+    "master_min": 2,
+    "master_max": 3,
+    "cortes": "5 x 20–30s",
+    "estilo": "ensenanza + personaje blob + morph",
+    "fuente": "resumen (solo lectura)",
+    "agentes_nuevos": [
+      "morph",
+      "subtitulos"
+    ],
+    "subtitulos_ux": {
+      "sin_caja_negra": true,
+      "sin_sombra": true,
+      "modo": "palabras_con_voz",
+      "aparecen_desaparecen": true
+    }
+  },
+  "estilo_visual_target": {
+    "ref": "La Psicología Invisible",
+    "elementos": [
+      "personaje blob/cápsula simple",
+      "habitación o escena narrativa pastel",
+      "banner título amarillo/negro",
+      "ilustración plana suave, no foto, no mock text placeholder"
+    ]
+  },
+  "variantes": 1,
+  "motion_plan": {
+    "modo": "soft",
+    "hold_frames": 20,
+    "xfade_frames": 56,
+    "idle_on_holds_only": true,
+    "mid_blur": true
+  },
+  "pack_interactivo": {
+    "objetivo": "el blob toca/usa objetos del escenario en cada beat",
+    "escenas_nuevas": [
+      {
+        "id": "06_tachar",
+        "banner": "TACHA LO SECUNDARIO",
+        "a": "señala ítem irrelevante",
+        "b": "tacha con marcador"
+      },
+      {
+        "id": "07_piedra_vital",
+        "banner": "LO QUE MUEVE",
+        "a": "mira piedras pequeñas",
+        "b": "levanta/abraza la piedra grande"
+      },
+      {
+        "id": "08_protege_tiempo",
+        "banner": "PROTEGE EL 20%",
+        "a": "mira reloj/agenda vacío",
+        "b": "bloquea hueco en calendario con la mano"
+      }
+    ],
+    "regla": "mismo personaje blob gris-azul, banner amarillo, estilo Psicología Invisible, 1:1"
+  }
+}

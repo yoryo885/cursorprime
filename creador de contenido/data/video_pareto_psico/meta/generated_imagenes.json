@@ -1,0 +1,119 @@
+{
+  "imagenes": [
+    {
+      "tema": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: u",
+      "archivo": "01-nadie_te_explica_esto_as_el_20_de_las-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/01-nadie_te_explica_esto_as_el_20_de_las-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.870863+00:00"
+    },
+    {
+      "tema": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: u",
+      "archivo": "01-nadie_te_explica_esto_as_el_20_de_las-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/01-nadie_te_explica_esto_as_el_20_de_las-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 1,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.888653+00:00"
+    },
+    {
+      "tema": "La idea central: El 20% de las causas produce el 80% de los efectos: una minoría",
+      "archivo": "02-la_idea_central_el_20_de_las_causas_pr-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/02-la_idea_central_el_20_de_las_causas_pr-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.905342+00:00"
+    },
+    {
+      "tema": "La idea central: El 20% de las causas produce el 80% de los efectos: una minoría",
+      "archivo": "02-la_idea_central_el_20_de_las_causas_pr-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/02-la_idea_central_el_20_de_las_causas_pr-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 2,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.922133+00:00"
+    },
+    {
+      "tema": "Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve r",
+      "archivo": "03-por_qu_importa_dejar_de_dispersar_ener-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/03-por_qu_importa_dejar_de_dispersar_ener-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 3,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.938781+00:00"
+    },
+    {
+      "tema": "Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve r",
+      "archivo": "03-por_qu_importa_dejar_de_dispersar_ener-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/03-por_qu_importa_dejar_de_dispersar_ener-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 3,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.955299+00:00"
+    },
+    {
+      "tema": "Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar",
+      "archivo": "04-primera_enseanza_separa_lo_vital_ese-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/04-primera_enseanza_separa_lo_vital_ese-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 4,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.972684+00:00"
+    },
+    {
+      "tema": "Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar",
+      "archivo": "04-primera_enseanza_separa_lo_vital_ese-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/04-primera_enseanza_separa_lo_vital_ese-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 4,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:54.989265+00:00"
+    },
+    {
+      "tema": "Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. L",
+      "archivo": "05-segunda_enseanza_la_proporcin_no_es_e-inicio.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/05-segunda_enseanza_la_proporcin_no_es_e-inicio.png",
+      "modulo": "imagenes",
+      "escena_id": 5,
+      "tipo_frame": "inicio",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:55.005594+00:00"
+    },
+    {
+      "tema": "Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. L",
+      "archivo": "05-segunda_enseanza_la_proporcin_no_es_e-fin.png",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/imagenes/05-segunda_enseanza_la_proporcin_no_es_e-fin.png",
+      "modulo": "imagenes",
+      "escena_id": 5,
+      "tipo_frame": "fin",
+      "mock": true,
+      "backend": "mock_placeholder",
+      "generado_at": "2026-07-26T19:07:55.021973+00:00"
+    }
+  ],
+  "count": 10,
+  "video_modo": "animado",
+  "mock_generate": true,
+  "reales": 0,
+  "mocks": 10
+}

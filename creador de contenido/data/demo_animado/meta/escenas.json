@@ -1,0 +1,31 @@
+{
+  "escenas": [
+    {
+      "id": 1,
+      "titulo": "Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 2",
+      "texto_guion": "Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 24/7. El primer paso es definir qué preguntas frecuentes responderá el bot.",
+      "start_frame_prompt": "Start frame, papel-sketch style, scene: Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 24/7. El primer paso es definir qué pregu, illustration, clean composition, no text, square",
+      "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 24/7. El primer paso es definir qué pregu, no text, square",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Muchos emprendedores quieren conectar ChatGPT a WhatsApp para atender clientes 2",
+      "slug": "muchos_emprendedores_quieren_conectar_ch",
+      "archivo_inicio": "01-muchos_emprendedores_quieren_conectar_ch-inicio.png",
+      "archivo_fin": "01-muchos_emprendedores_quieren_conectar_ch-fin.png",
+      "archivo_clip": "01-muchos_emprendedores_quieren_conectar_ch.mp4"
+    },
+    {
+      "id": 2,
+      "titulo": "Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente",
+      "texto_guion": "Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente pruebas con clientes reales antes de escalar.",
+      "start_frame_prompt": "Start frame, papel-sketch style, scene: Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente pruebas con clientes reales antes de es, illustration, clean composition, no text, square",
+      "end_frame_prompt": "End frame, same style and characters as start, papel-sketch, scene conclusion: Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente pruebas con clientes reales antes de es, no text, square",
+      "animation_prompt": "Smooth subtle motion from start to end, papel-sketch, expressive but professional, topic: Luego conectas la API de WhatsApp Business con un flujo automatizado. Finalmente",
+      "slug": "luego_conectas_la_api_de_whatsapp_busine",
+      "archivo_inicio": "02-luego_conectas_la_api_de_whatsapp_busine-inicio.png",
+      "archivo_fin": "02-luego_conectas_la_api_de_whatsapp_busine-fin.png",
+      "archivo_clip": "02-luego_conectas_la_api_de_whatsapp_busine.mp4"
+    }
+  ],
+  "count": 2,
+  "modo_video": "animado",
+  "generado_at": "2026-07-19T21:14:58.664661+00:00"
+}

@@ -1,17 +1,33 @@
 {
-  "version": 1,
+  "version": 2,
+  "descripcion": "Pipeline de contenido + sistema de video por recetas (agentes/skills condicionales)",
   "pipeline": [
-    {"id": 1, "slug": "context", "nombre": "Context Loader", "agente": "ContextAgent", "required": true, "flag_cli": "--solo-context"},
-    {"id": 2, "slug": "style", "nombre": "Style Profile", "agente": "StyleAgent", "required": true, "flag_cli": "--solo-style"},
-    {"id": 3, "slug": "prompt", "nombre": "Prompt Builder", "agente": "PromptAgent", "required": true, "flag_cli": "--solo-prompt"},
-    {"id": 4, "slug": "generate", "nombre": "Image Generator", "agente": "GenerateAgent", "required": true, "flag_cli": "--solo-generate"},
-    {"id": 5, "slug": "qc", "nombre": "QC Visual", "agente": "QcAgent", "required": true, "flag_cli": "--solo-qc"},
-    {"id": 6, "slug": "packager", "nombre": "Packager", "agente": "PackagerAgent", "required": true, "flag_cli": "--solo-packager"}
+    {"id": 1, "slug": "context", "nombre": "Context Loader", "agente": "ContextAgent", "required": true},
+    {"id": 2, "slug": "planner", "nombre": "Video Planner", "agente": "PlannerAgent", "required": true, "nota": "Elige agentes/skills según receta"},
+    {"id": 3, "slug": "hook", "nombre": "Hook Redes", "agente": "HookAgent", "required": false, "skill": "hooks-redes"},
+    {"id": 4, "slug": "guion", "nombre": "Guion Promo", "agente": "GuionAgent", "required": false, "skill": "guion-a-video"},
+    {"id": 5, "slug": "escenas", "nombre": "Escenas", "agente": "EscenasAgent", "required": false},
+    {"id": 6, "slug": "style", "nombre": "Style Profile", "agente": "StyleAgent", "required": true},
+    {"id": 7, "slug": "prompt", "nombre": "Prompt Builder", "agente": "PromptAgent", "required": true},
+    {"id": 8, "slug": "png", "nombre": "Imágenes", "agente": "ImagenesModule", "required": false},
+    {"id": 9, "slug": "gif", "nombre": "GIFs", "agente": "GifsModule", "required": false},
+    {"id": 10, "slug": "video", "nombre": "Video MP4", "agente": "VideosModule", "required": false},
+    {"id": 11, "slug": "pdf", "nombre": "PDF", "agente": "PdfModule", "required": false},
+    {"id": 12, "slug": "captions", "nombre": "Captions Redes", "agente": "CaptionsAgent", "required": false, "skill": "captions-redes"},
+    {"id": 13, "slug": "thumbnail", "nombre": "Thumbnail", "agente": "ThumbnailAgent", "required": false, "skill": "thumbnail-social"},
+    {"id": 14, "slug": "qc", "nombre": "QC", "agente": "QcAgent", "required": true},
+    {"id": 15, "slug": "packager", "nombre": "Packager", "agente": "PackagerAgent", "required": true}
   ],
+  "recetas": ["slideshow", "animado", "promo-guia", "reels-pack", "custom"],
   "defaults": {
     "checkpoint": true,
     "mock_generate": true,
-    "formato": "png",
-    "estilo": "yordy-minimal"
-  }
+    "mock_kling": true,
+    "estilo": "yordy-minimal",
+    "receta": "animado"
+  },
+  "notas": [
+    "GenerateAgent eliminado (Paso A): las PNG las genera imagenes/ImagenesModule",
+    "Runtime real = meta/recetas.json → plan_runtime.json por slug"
+  ]
 }

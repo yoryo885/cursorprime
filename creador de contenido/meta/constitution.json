@@ -1,16 +1,36 @@
 {
-  "version": 2,
+  "version": 3,
   "proyecto": "creador-de-contenido",
   "integracion_externa": {
     "habilitada": false,
-    "nota": "Hooks preparados para conectar otros proyectos en el futuro. Por defecto apagado."
+    "nota": "Skills de redes viven como agentes en el pipeline; chat skills siguen siendo capa de refinamiento."
   },
   "reglas": [
     "Cada salida (png/gif/video/pdf) funciona sola o combinada",
+    "El Planner activa agentes/skills según la receta del video (no todo corre siempre)",
     "Video y PDF consumen PNG internamente — no proyectos externos",
-    "MOCK_GENERATE=true en MVP; IA real pendiente V1",
-    "INTEGRACION_EXTERNA=false por defecto"
+    "promo-guia: hook → guion (venta) → escenas → video → captions → thumbnail",
+    "ensenanza: hook → guion (lección didáctica) → escenas → video → captions → thumbnail",
+    "ensenanza-tiktok: hook→guion→escenas→png→morph→audio→subtitulos→captions→thumb",
+    "MorphAgent: anima pares A/B (refs/escenas o imagenes) y concatena video base",
+    "SubtitulosAgent: SRT de lo que dice la voz + burn-in en el MP4",
+    "formato ensenanza ≈ canal faceless educativo; no hard sell; ideas desde resumen/fuente_guia",
+    "MOCK_GENERATE=true y MOCK_KLING=true en MVP",
+    "MOCK_GENERATE=false usa OpenAI/Replicate; si falla → placeholder (no tumba el lote)",
+    "MOCK_KLING=false usa Kling vía Kie+Cloudinary; si falla → crossfade mock",
+    "AudioAgent: brief + TTS ElevenLabs (MOCK_TTS=false + ELEVENLABS_API_KEY) + mux voz/cama",
+    "Voz: guion → narracion.mp3 → {slug}_audio.mp4; override con audio.voz_path",
+    "INTEGRACION_EXTERNA=false por defecto",
+    "No inventar métricas; marcar confidence bajo si el copy es heurístico"
   ],
+  "skills_por_agente": {
+    "hook": "hooks-redes",
+    "guion": "guion-a-video",
+    "captions": "captions-redes",
+    "thumbnail": "thumbnail-social",
+    "escenas": "guion-a-video",
+    "video": "guion-a-video"
+  },
   "estilos": {
     "yordy-minimal": {
       "descripcion": "Flat, líneas limpias, fondo claro, acento verde",
@@ -19,6 +39,10 @@
     "yordy-dark": {
       "descripcion": "Fondo oscuro, alto contraste",
       "palette": ["#0d0d0d", "#e94560", "#ffffff"]
+    },
+    "papel-sketch": {
+      "descripcion": "Ilustración estilo papel / sketch para video",
+      "palette": ["#f7f3e9", "#2c2c2c", "#c4a35a"]
     }
   }
 }

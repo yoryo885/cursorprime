@@ -1,0 +1,74 @@
+{
+  "slug": "video_pareto_psico",
+  "titulo": "El principio de Pareto",
+  "cantidad": 1,
+  "salidas_pedidas": [
+    "png",
+    "video"
+  ],
+  "salidas_efectivas": [
+    "png",
+    "video"
+  ],
+  "estilo": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
+  "temas": [
+    "tema_1"
+  ],
+  "guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.\n\nLa idea central: una minoría de situaciones genera la mayor parte de tus resultados.\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+  "guia": {
+    "titulo": "El principio de Pareto",
+    "promesa": "dejar de dispersar energía y concentrarte en el 20% que mueve resultados",
+    "beneficio": "claridad sobre dónde poner tu mejor atención",
+    "cierre": "Si esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+    "ideas": [
+      "El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus resultados.",
+      "Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.",
+      "La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico."
+    ]
+  },
+  "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
+  "uso": "general",
+  "receta": "ensenanza-tiktok",
+  "copy": [
+    "hook",
+    "guion",
+    "audio",
+    "subtitulos",
+    "captions",
+    "thumbnail",
+    "morph"
+  ],
+  "gif": {},
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 5
+  },
+  "pdf": {},
+  "notas": "",
+  "skills_activadas": [
+    "hooks-redes",
+    "guion-a-video",
+    "morph-escenas",
+    "audio-redes",
+    "subtitulos-burn",
+    "captions-redes",
+    "thumbnail-social"
+  ],
+  "agentes_plan": [
+    "context",
+    "planner",
+    "hook",
+    "guion",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "morph",
+    "audio",
+    "subtitulos",
+    "captions",
+    "thumbnail",
+    "qc",
+    "packager"
+  ]
+}

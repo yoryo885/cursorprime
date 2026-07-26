@@ -1,0 +1,150 @@
+{
+  "videos": [
+    {
+      "escena_id": 1,
+      "archivo": "01-nadie_te_explica_esto_as_el_20_de_las.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/01-nadie_te_explica_esto_as_el_20_de_las.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "escena_id": 2,
+      "archivo": "02-la_idea_central_el_20_de_las_causas_pr.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/02-la_idea_central_el_20_de_las_causas_pr.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "escena_id": 3,
+      "archivo": "03-por_qu_importa_dejar_de_dispersar_ener.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/03-por_qu_importa_dejar_de_dispersar_ener.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "escena_id": 4,
+      "archivo": "04-primera_enseanza_separa_lo_vital_ese.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/04-primera_enseanza_separa_lo_vital_ese.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "escena_id": 5,
+      "archivo": "05-segunda_enseanza_la_proporcin_no_es_e.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips/05-segunda_enseanza_la_proporcin_no_es_e.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_morph.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+      "modulo": "videos",
+      "modo": "morph",
+      "tipo": "final",
+      "escenas": 6,
+      "generado_at": "2026-07-26T20:52:38.850555+00:00"
+    },
+    {
+      "archivo": "video_pareto_psico_audio.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_audio.mp4",
+      "modulo": "videos",
+      "modo": "audio_mux",
+      "tipo": "final_audio"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    }
+  ],
+  "count": 6,
+  "modo": "morph",
+  "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+  "morph_final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+  "final_audio": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_audio.mp4",
+  "final_subtitulado": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4"
+}

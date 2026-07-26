@@ -1,0 +1,54 @@
+{
+  "receta": "ensenanza-tiktok",
+  "nombre": "Enseñanza TikTok (morph + voz + subtítulos)",
+  "descripcion": "Cadena completa: hook→guion→escenas→png→morph→voz→letras en pantalla. Capítulo ancla.",
+  "skills": [
+    "hooks-redes",
+    "guion-a-video",
+    "morph-escenas",
+    "audio-redes",
+    "subtitulos-burn",
+    "captions-redes",
+    "thumbnail-social"
+  ],
+  "agentes": [
+    "context",
+    "planner",
+    "hook",
+    "guion",
+    "escenas",
+    "style",
+    "prompt",
+    "png",
+    "morph",
+    "audio",
+    "subtitulos",
+    "captions",
+    "thumbnail",
+    "qc",
+    "packager"
+  ],
+  "salidas": [
+    "png",
+    "video"
+  ],
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 5
+  },
+  "copy": [
+    "hook",
+    "guion",
+    "audio",
+    "subtitulos",
+    "captions",
+    "thumbnail",
+    "morph"
+  ],
+  "requiere": [
+    "guia"
+  ],
+  "slug": "video_pareto_psico",
+  "generado_at": "2026-07-26T20:37:14.988057+00:00",
+  "warnings": []
+}

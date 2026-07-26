@@ -1,0 +1,6 @@
+Creador de Contenido — El principio de Pareto
+Receta: promo-guia
+Skills: hooks-redes, guion-a-video, captions-redes, thumbnail-social
+Salidas: png, video
+QC: OK
+Pack: demo_promo_guia_contenido.zip

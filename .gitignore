@@ -1,6 +1,9 @@
 .env
 .env.*
 !.env.example
+ELEVENLABS_KEY.env
+*_KEY.env
+keys.env
 .venv/
 venv/
 __pycache__/
@@ -13,3 +16,4 @@ node_modules/
 
 # PDFs y outputs pesados (opcional subir manual)
 libros a entender/libros/*.pdf
+libros a entender/resumenes/**/*.pdf

@@ -1,0 +1,332 @@
+{
+  "slug": "video_pareto_psico",
+  "last_completed_step": 15,
+  "last_completed_slug": "packager",
+  "history": [
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T19:08:24.349355+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T19:08:24.506817+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T19:08:26.487290+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T19:08:26.487640+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T19:08:26.503797+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T19:08:26.504452+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T19:08:26.796226+00:00"
+    },
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T19:17:09.226767+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T19:17:09.906312+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T19:17:12.860505+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T19:17:12.861009+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T19:17:12.879894+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T19:17:12.880636+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T19:17:13.271857+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T19:17:36.861200+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T19:17:36.861595+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T19:17:36.881380+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T19:17:36.882182+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T19:17:37.268801+00:00"
+    },
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T19:57:11.754252+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T19:57:12.465943+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T19:57:19.517543+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T19:57:19.518256+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T19:57:19.539920+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T19:57:19.540747+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T19:57:21.101221+00:00"
+    },
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T20:07:59.504159+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T20:08:00.266253+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T20:08:07.875955+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T20:08:07.876516+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T20:08:07.896687+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T20:08:07.897597+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T20:08:09.804665+00:00"
+    },
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T20:18:40.125305+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T20:18:40.893213+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T20:18:49.709627+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T20:18:49.710807+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T20:18:49.742342+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T20:18:49.743318+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T20:18:52.497284+00:00"
+    },
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T20:28:09.078601+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T20:28:09.816776+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T20:28:16.709394+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T20:28:16.709988+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T20:28:16.726809+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T20:28:16.727807+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T20:28:18.660582+00:00"
+    },
+    {
+      "step_id": 9,
+      "step_slug": "morph",
+      "notes": "",
+      "at": "2026-07-26T20:37:52.059721+00:00"
+    },
+    {
+      "step_id": 10,
+      "step_slug": "audio",
+      "notes": "",
+      "at": "2026-07-26T20:37:52.698655+00:00"
+    },
+    {
+      "step_id": 11,
+      "step_slug": "subtitulos",
+      "notes": "",
+      "at": "2026-07-26T20:37:58.950779+00:00"
+    },
+    {
+      "step_id": 12,
+      "step_slug": "captions",
+      "notes": "",
+      "at": "2026-07-26T20:37:58.951331+00:00"
+    },
+    {
+      "step_id": 13,
+      "step_slug": "thumbnail",
+      "notes": "",
+      "at": "2026-07-26T20:37:58.969024+00:00"
+    },
+    {
+      "step_id": 14,
+      "step_slug": "qc",
+      "notes": "",
+      "at": "2026-07-26T20:37:58.970003+00:00"
+    },
+    {
+      "step_id": 15,
+      "step_slug": "packager",
+      "notes": "",
+      "at": "2026-07-26T20:38:00.866462+00:00"
+    }
+  ],
+  "updated_at": "2026-07-26T20:38:00.866488+00:00"
+}

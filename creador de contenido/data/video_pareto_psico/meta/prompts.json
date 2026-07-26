@@ -1,0 +1,106 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "escena_id": 1,
+      "tipo_frame": "inicio",
+      "tema": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: u",
+      "slug": "nadie_te_explica_esto_as_el_20_de_las",
+      "prompt": "Start frame, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell style, scene: Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…, illustration, clean composition, no text, square",
+      "archivo": "01-nadie_te_explica_esto_as_el_20_de_las-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: u"
+    },
+    {
+      "id": 1,
+      "escena_id": 1,
+      "tipo_frame": "fin",
+      "tema": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: u",
+      "slug": "nadie_te_explica_esto_as_el_20_de_las",
+      "prompt": "End frame, same style and characters as start, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, scene conclusion: Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…, no text, square",
+      "archivo": "01-nadie_te_explica_esto_as_el_20_de_las-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: u"
+    },
+    {
+      "id": 2,
+      "escena_id": 2,
+      "tipo_frame": "inicio",
+      "tema": "La idea central: El 20% de las causas produce el 80% de los efectos: una minoría",
+      "slug": "la_idea_central_el_20_de_las_causas_pr",
+      "prompt": "Start frame, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell style, scene: La idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de, illustration, clean composition, no text, square",
+      "archivo": "02-la_idea_central_el_20_de_las_causas_pr-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: La idea central: El 20% de las causas produce el 80% de los efectos: una minoría"
+    },
+    {
+      "id": 2,
+      "escena_id": 2,
+      "tipo_frame": "fin",
+      "tema": "La idea central: El 20% de las causas produce el 80% de los efectos: una minoría",
+      "slug": "la_idea_central_el_20_de_las_causas_pr",
+      "prompt": "End frame, same style and characters as start, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, scene conclusion: La idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de, no text, square",
+      "archivo": "02-la_idea_central_el_20_de_las_causas_pr-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: La idea central: El 20% de las causas produce el 80% de los efectos: una minoría"
+    },
+    {
+      "id": 3,
+      "escena_id": 3,
+      "tipo_frame": "inicio",
+      "tema": "Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve r",
+      "slug": "por_qu_importa_dejar_de_dispersar_ener",
+      "prompt": "Start frame, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell style, scene: Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados., illustration, clean composition, no text, square",
+      "archivo": "03-por_qu_importa_dejar_de_dispersar_ener-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve r"
+    },
+    {
+      "id": 3,
+      "escena_id": 3,
+      "tipo_frame": "fin",
+      "tema": "Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve r",
+      "slug": "por_qu_importa_dejar_de_dispersar_ener",
+      "prompt": "End frame, same style and characters as start, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, scene conclusion: Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados., no text, square",
+      "archivo": "03-por_qu_importa_dejar_de_dispersar_ener-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve r"
+    },
+    {
+      "id": 4,
+      "escena_id": 4,
+      "tipo_frame": "inicio",
+      "tema": "Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar",
+      "slug": "primera_enseanza_separa_lo_vital_ese",
+      "prompt": "Start frame, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell style, scene: Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos., illustration, clean composition, no text, square",
+      "archivo": "04-primera_enseanza_separa_lo_vital_ese-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar"
+    },
+    {
+      "id": 4,
+      "escena_id": 4,
+      "tipo_frame": "fin",
+      "tema": "Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar",
+      "slug": "primera_enseanza_separa_lo_vital_ese",
+      "prompt": "End frame, same style and characters as start, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, scene conclusion: Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos., no text, square",
+      "archivo": "04-primera_enseanza_separa_lo_vital_ese-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar"
+    },
+    {
+      "id": 5,
+      "escena_id": 5,
+      "tipo_frame": "inicio",
+      "tema": "Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. L",
+      "slug": "segunda_enseanza_la_proporcin_no_es_e",
+      "prompt": "Start frame, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell style, scene: Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero , illustration, clean composition, no text, square",
+      "archivo": "05-segunda_enseanza_la_proporcin_no_es_e-inicio.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. L"
+    },
+    {
+      "id": 5,
+      "escena_id": 5,
+      "tipo_frame": "fin",
+      "tema": "Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. L",
+      "slug": "segunda_enseanza_la_proporcin_no_es_e",
+      "prompt": "End frame, same style and characters as start, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, scene conclusion: Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero , no text, square",
+      "archivo": "05-segunda_enseanza_la_proporcin_no_es_e-fin.png",
+      "animation_prompt": "Smooth subtle motion from start to end, faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, expressive but professional, topic: Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. L"
+    }
+  ],
+  "count": 10,
+  "video_modo": "animado"
+}

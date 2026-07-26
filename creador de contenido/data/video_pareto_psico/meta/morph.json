@@ -1,0 +1,76 @@
+{
+  "skill": "morph-escenas",
+  "fuente_frames": "refs/escenas",
+  "count": 6,
+  "clips": [
+    {
+      "escena": 1,
+      "stem": "06_tachar",
+      "archivo": "01-06_tachar.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/01-06_tachar.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/06_tachar_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/06_tachar_b.png",
+      "duracion_objetivo_s": 5.935
+    },
+    {
+      "escena": 2,
+      "stem": "07_piedra_vital",
+      "archivo": "02-07_piedra_vital.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/02-07_piedra_vital.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/07_piedra_vital_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/07_piedra_vital_b.png",
+      "duracion_objetivo_s": 6.316
+    },
+    {
+      "escena": 3,
+      "stem": "08_protege_tiempo",
+      "archivo": "03-08_protege_tiempo.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/03-08_protege_tiempo.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/08_protege_tiempo_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/08_protege_tiempo_b.png",
+      "duracion_objetivo_s": 7.001
+    },
+    {
+      "escena": 4,
+      "stem": "09_toca_20",
+      "archivo": "04-09_toca_20.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/04-09_toca_20.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/09_toca_20_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/09_toca_20_b.png",
+      "duracion_objetivo_s": 8.142
+    },
+    {
+      "escena": 5,
+      "stem": "10_ordena",
+      "archivo": "05-10_ordena.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/05-10_ordena.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/10_ordena_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/10_ordena_b.png",
+      "duracion_objetivo_s": 12.632
+    },
+    {
+      "escena": 6,
+      "stem": "11_foco",
+      "archivo": "06-11_foco.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/06-11_foco.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/11_foco_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/11_foco_b.png",
+      "duracion_objetivo_s": 14.838
+    }
+  ],
+  "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+  "alias": "/workspace/creador de contenido/data/video_pareto_psico/videos/pareto_5_escenas_animado.mp4",
+  "hold_frames": 38,
+  "xfade_frames": 58,
+  "fps": 24,
+  "idle_amp": 0.008,
+  "soft": true,
+  "blur_max": 2.4,
+  "audio_dur_target": 54.864,
+  "duration_esperada_s": 54.864,
+  "sync_audio": true,
+  "sync_guion": true,
+  "beats_guion": 7,
+  "pad_mode": "pingpong",
+  "generado_at": "2026-07-26T20:52:38.850555+00:00"
+}

@@ -1,8 +1,1 @@
-[
-  {
-    "slug": "pack_demo_investigacion",
-    "step": "Core · Context",
-    "error": "'context'\nTraceback (most recent call last):\n  File \"/Users/yoryo/cursorprime/creador de contenido/src/pipeline.py\", line 97, in _run_agent\n    result: AgentResult = agent.run(ctx)\n  File \"/Users/yoryo/cursorprime/creador de contenido/src/agents/context_agent.py\", line 42, in run\n    save_json(ctx.paths[\"context\"], context)\nKeyError: 'context'\n",
-    "at": "2026-06-28T23:05:29.931951+00:00"
-  }
-]
+[]

@@ -1,0 +1,31 @@
+{
+  "skill": "audio-redes",
+  "titulo": "El principio de Pareto",
+  "hook": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…",
+  "tipo": "mix",
+  "voz_off": true,
+  "tts": {
+    "provider": "archivo",
+    "modo": "reusar",
+    "path": "/workspace/creador de contenido/data/video_pareto_psico/copy/narracion.mp3",
+    "nota": "Reutiliza copy/narracion.mp3 (pon regenerar_voz:true para forzar TTS)"
+  },
+  "musica": {
+    "estilo": "instrumental trendy, sin letra, volumen bajo bajo la voz",
+    "bpm_sugerido": 100,
+    "nota": "Buscar sonido trending del nicho o librería libre; no inventar archivo de pago"
+  },
+  "atraccion": [
+    "Los primeros 3s del audio deben pegar con el hook visual",
+    "Bajar música -12 dB cuando entra voz",
+    "Loop limpio al final para rewatch"
+  ],
+  "generado_at": "2026-07-26T20:52:38.852291+00:00",
+  "confidence": "medium",
+  "mux": {
+    "ok": true,
+    "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_audio.mp4",
+    "fuente": "voz",
+    "video_fuente": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4"
+  }
+}

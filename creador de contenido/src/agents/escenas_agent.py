@@ -1,4 +1,4 @@
-"""Divide guion en escenas (frame inicio + fin + animación)."""
+"""Divide guion en escenas (heurística o LLM si MOCK_LLM=false)."""
 
 from __future__ import annotations
 
@@ -6,13 +6,13 @@ import re
 from datetime import datetime, timezone
 
 from src.config import load_json, save_json, slugify
+from src.llm_client import get_llm, llm_activo
 from src.types import AgentResult, PipelineContext
 
 MAX_ESCENAS_DEFAULT = 8
 
 
 def _split_guion(guion: str, max_escenas: int) -> list[str]:
-    """Heurística MVP: párrafos o frases → escenas."""
     guion = guion.strip()
     if not guion:
         return []
@@ -60,22 +60,49 @@ class EscenasAgent:
         raw = load_json(ctx.paths["lote"], {}) or ctx.lote
         video_cfg = context.get("video") or {}
         estilo = context.get("estilo", "yordy-minimal")
-        limit = int(video_cfg.get("limit_escenas") or MAX_ESCENAS_DEFAULT)
+        # lote.escenas puede ser int (cantidad) o list (escenas ya armadas)
+        escenas_raw = raw.get("escenas")
+        if isinstance(escenas_raw, int) and escenas_raw > 0:
+            limit = int(video_cfg.get("limit_escenas") or escenas_raw or MAX_ESCENAS_DEFAULT)
+        else:
+            limit = int(video_cfg.get("limit_escenas") or MAX_ESCENAS_DEFAULT)
+        modo = "heuristica"
 
-        if raw.get("escenas"):
-            escenas = raw["escenas"][:limit]
-        elif raw.get("guion"):
-            textos = _split_guion(raw["guion"], limit)
+        guion_meta = load_json(ctx.paths.get("guion"), {}) if ctx.paths.get("guion") else {}
+        guion_texto = raw.get("guion") or (guion_meta or {}).get("guion") or context.get("guion") or ""
+
+        if isinstance(escenas_raw, list) and escenas_raw:
+            escenas = escenas_raw[:limit]
+            modo = "lote"
+        elif guion_texto:
+            textos = _split_guion(str(guion_texto), limit)
+            if llm_activo():
+                system = (
+                    "Divide el guion en escenas para video animado. "
+                    f'Máximo {limit} escenas. JSON: {{"textos":["escena1","escena2",...]}}'
+                )
+                try:
+                    data = get_llm().complete_json(
+                        system,
+                        f"Estilo visual: {estilo}\nGuion:\n{guion_texto}",
+                        mock_payload={"textos": textos},
+                    )
+                    if data.get("textos"):
+                        textos = [str(t).strip() for t in data["textos"] if str(t).strip()][:limit]
+                        modo = "llm"
+                except Exception:
+                    modo = "heuristica_fallback"
             escenas = [_build_escena(i + 1, t, estilo) for i, t in enumerate(textos)]
         else:
-            return AgentResult(ok=False, notes="Modo animado requiere guion o escenas en lote.json")
+            return AgentResult(ok=False, notes="Modo animado requiere guion, escenas o agente guion previo")
 
         out = ctx.paths["escenas"]
         payload = {
             "escenas": escenas,
             "count": len(escenas),
             "modo_video": "animado",
+            "modo": modo,
             "generado_at": datetime.now(timezone.utc).isoformat(),
         }
         save_json(out, payload)
-        return AgentResult(ok=True, artifacts=[str(out)], notes=f"{len(escenas)} escenas")
+        return AgentResult(ok=True, artifacts=[str(out)], notes=f"{len(escenas)} escenas ({modo})")

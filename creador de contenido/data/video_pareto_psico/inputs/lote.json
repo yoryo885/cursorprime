@@ -1,0 +1,72 @@
+{
+  "slug": "video_pareto_psico",
+  "tema": "Principio de Pareto 80/20 — lección práctica desde el resumen",
+  "titulo": "El principio de Pareto",
+  "nicho": "psicología y productividad",
+  "receta": "ensenanza-tiktok",
+  "formato": "ensenanza",
+  "duracion_seg": 40,
+  "escenas": 6,
+  "aspect_ratio": "9:16",
+  "estilo": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
+  "voz": "calma, didáctica, como canal de psicología aplicada",
+  "cta": "",
+  "oferta": "",
+  "regenerar_guion": false,
+  "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
+  "guia": {
+    "titulo": "El principio de Pareto",
+    "promesa": "dejar de dispersar energía y concentrarte en el 20% que mueve resultados",
+    "beneficio": "claridad sobre dónde poner tu mejor atención",
+    "cierre": "Si esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+    "ideas": [
+      "El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus resultados.",
+      "Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.",
+      "La proporción no es exacta: en tu realidad puede ser diez por ciento frente a noventa por ciento. Lo esencial es distinguir lo escaso pero crítico."
+    ]
+  },
+  "prompts": [
+    "Espacio mental ordenado: silueta frente a un escritorio con pocas cosas esenciales, luz suave, estilo documental educativo vertical 9:16",
+    "Visualización abstracta 80/20: diagrama simple con zona destacada, tipografía minimal, fondo profundo atmosférico, vertical 9:16",
+    "Contraste visual: lista larga tachada vs tres prioridades claras iluminadas, metáfora de enfoque, vertical 9:16",
+    "Momento de decisión: elegir una tarea entre muchas, gesto de priorizar, atmósfera calmada educativa, vertical 9:16",
+    "Cierre reflexivo: horizonte o ventana con luz, sensación de claridad mental, estilo faceless premium, vertical 9:16"
+  ],
+  "audio": {
+    "narracion_modo": "brief",
+    "bed_path": "",
+    "video_path": "video_pareto_psico_morph.mp4",
+    "voz_off": true,
+    "regenerar_voz": false,
+    "reusar_voz": true,
+    "tts_fallback": "edge-tts es-MX-DaliaNeural (ElevenLabs key sin permiso text_to_speech)"
+  },
+  "video_final": "video_pareto_psico.mp4",
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 5
+  },
+  "hook": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.",
+  "guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.\n\nLa idea central: una minoría de situaciones genera la mayor parte de lo que logras.\n\nPor qué importa: dejar de dispersar energía y concentrarte en ese 20% que sí mueve la aguja.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez por ciento frente a noventa por ciento. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+  "morph": {
+    "pad_mode": "pingpong",
+    "idle_amp": 0.008,
+    "fps": 24,
+    "sync_audio": true,
+    "interactivo_primero": true,
+    "only_stems": [
+      "06_tachar",
+      "07_piedra_vital",
+      "08_protege_tiempo",
+      "09_toca_20",
+      "10_ordena",
+      "11_foco"
+    ],
+    "soft": true,
+    "blur_max": 2.4,
+    "hold_frames": 38,
+    "xfade_frames": 58,
+    "sync_guion": true
+  },
+  "regenerar_voz": false
+}

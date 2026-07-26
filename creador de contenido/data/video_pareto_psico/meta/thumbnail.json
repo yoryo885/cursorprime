@@ -1,0 +1,11 @@
+{
+  "skill": "thumbnail-social",
+  "titulo_on_image": "El principio de Pareto",
+  "subtitulo": "Nadie te explica esto así: el 20% de las causas produce el 8",
+  "estilo": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
+  "prompt": "YouTube thumbnail, bold text «El principio de Pareto», high contrast, clean composition, style faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell, no clutter",
+  "archivo": "/workspace/creador de contenido/data/video_pareto_psico/copy/thumbnail.png",
+  "generado_at": "2026-07-26T20:37:58.968840+00:00",
+  "confidence": "low",
+  "nota": "PNG placeholder MVP; skill thumbnail-social puede iterar diseño"
+}
