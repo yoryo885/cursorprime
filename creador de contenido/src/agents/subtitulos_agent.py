@@ -273,7 +273,23 @@ class SubtitulosAgent:
         save_json(meta, payload)
 
         if ok and out_mp4.exists():
+            # Entregable canónico en la carpeta videos/ del slug
+            canonical = videos_out / f"{ctx.slug}.mp4"
+            try:
+                canonical.write_bytes(out_mp4.read_bytes())
+            except Exception as exc:
+                warnings.append(f"copia canónica {canonical.name}: {exc}")
+            # También en output/ (junto a resumen/manifest)
+            out_dir = Path(ctx.paths["output"])
+            out_dir.mkdir(parents=True, exist_ok=True)
+            out_copy = out_dir / f"{ctx.slug}.mp4"
+            try:
+                out_copy.write_bytes(out_mp4.read_bytes())
+            except Exception as exc:
+                warnings.append(f"copia output: {exc}")
+
             gv = videos_meta or {}
+            gv["final"] = str(canonical if canonical.exists() else out_mp4)
             gv["final_subtitulado"] = str(out_mp4)
             gv.setdefault("videos", []).append(
                 {
@@ -284,15 +300,36 @@ class SubtitulosAgent:
                     "tipo": "final_subtitulado",
                 }
             )
+            if canonical.exists():
+                gv.setdefault("videos", []).append(
+                    {
+                        "archivo": canonical.name,
+                        "path": str(canonical),
+                        "modulo": "videos",
+                        "modo": "subtitulos",
+                        "tipo": "final",
+                    }
+                )
             if ctx.paths.get("generated_videos"):
                 save_json(ctx.paths["generated_videos"], gv)
+
+            # lote apunta al archivo que el usuario espera abrir
+            lote_u = load_json(ctx.paths["lote"], {}) or lote
+            lote_u = {**lote_u, "video_final": canonical.name if canonical.exists() else out_mp4.name}
+            save_json(ctx.paths["lote"], lote_u)
+            ctx.lote = lote_u
 
         notes = f"Subtitulos {len(timed)} chunks ({len(words)} palabras) → {ass_path.name}"
         if ok:
             notes += f" · burn {out_mp4.name}"
+            can = videos_out / f"{ctx.slug}.mp4"
+            if can.exists():
+                notes += f" · final {can.name}"
         return AgentResult(
             ok=True,
-            artifacts=[str(ass_path), str(srt_path), str(meta)] + ([str(out_mp4)] if ok else []),
+            artifacts=[str(ass_path), str(srt_path), str(meta)]
+            + ([str(out_mp4)] if ok else [])
+            + ([str(videos_out / f"{ctx.slug}.mp4")] if ok and (videos_out / f"{ctx.slug}.mp4").exists() else []),
             notes=notes,
             warnings=warnings,
         )

@@ -68,13 +68,33 @@ class PackagerAgent:
 
         resumen = out_dir / "resumen.txt"
         skills = ", ".join(manifest["skills_activadas"]) or "—"
+        # Ruta clara del video final para el operador
+        videos_dir = Path(ctx.paths["videos_out"])
+        final_candidates = [
+            videos_dir / f"{ctx.slug}.mp4",
+            videos_dir / f"{ctx.slug}_subtitulado.mp4",
+            videos_dir / f"{ctx.slug}_audio.mp4",
+            out_dir / f"{ctx.slug}.mp4",
+        ]
+        final_video = next((p for p in final_candidates if p.exists() and p.stat().st_size > 50_000), None)
+        if final_video and final_video.parent != out_dir:
+            try:
+                (out_dir / final_video.name).write_bytes(final_video.read_bytes())
+            except Exception:
+                pass
+        video_line = f"Video final: {final_video}" if final_video else "Video final: (pendiente)"
         resumen.write_text(
             f"Creador de Contenido — {context.get('titulo')}\n"
             f"Receta: {manifest.get('receta')}\n"
             f"Skills: {skills}\n"
             f"Salidas: {', '.join(context.get('salidas_pedidas', []))}\n"
             f"QC: {'OK' if qc.get('ok') else 'FAIL'}\n"
-            f"Pack: {zip_path.name}\n",
+            f"Pack: {zip_path.name}\n"
+            f"{video_line}\n"
+            f"Carpeta videos: {videos_dir}\n",
             encoding="utf-8",
         )
-        return AgentResult(ok=True, artifacts=[str(zip_path)], notes=zip_path.name)
+        artifacts = [str(zip_path), str(resumen)]
+        if final_video:
+            artifacts.append(str(final_video))
+        return AgentResult(ok=True, artifacts=artifacts, notes=zip_path.name)

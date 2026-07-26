@@ -41,7 +41,7 @@
     "reusar_voz": true,
     "tts_fallback": "edge-tts es-MX-DaliaNeural (ElevenLabs key sin permiso text_to_speech)"
   },
-  "video_final": "video_pareto_psico_morph.mp4",
+  "video_final": "video_pareto_psico.mp4",
   "video": {
     "modo": "animado",
     "limit_escenas": 5

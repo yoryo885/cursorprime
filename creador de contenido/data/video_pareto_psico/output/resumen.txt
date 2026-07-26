@@ -1,6 +1,5 @@
 Creador de Contenido — El principio de Pareto
-Receta: ensenanza
-Skills: hooks-redes, guion-a-video, captions-redes, thumbnail-social
-Salidas: png, video
+Receta: ensenanza-tiktok
 QC: OK
-Pack: video_pareto_psico_contenido.zip
+Video final: creador de contenido/data/video_pareto_psico/videos/video_pareto_psico.mp4
+También en: creador de contenido/data/video_pareto_psico/output/video_pareto_psico.mp4
