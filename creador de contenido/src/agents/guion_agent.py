@@ -12,6 +12,7 @@ from src.types import AgentResult, PipelineContext
 
 
 def _acortar_idea(texto: str, max_len: int = 110) -> str:
+    """Acorta sin cortar a mitad de palabra ni dejar '…' a medias (promo)."""
     t = " ".join(str(texto).split())
     for pref in (
         "Verás que ",
@@ -28,7 +29,20 @@ def _acortar_idea(texto: str, max_len: int = 110) -> str:
             break
     if len(t) <= max_len:
         return t
-    return t[: max_len - 1].rsplit(" ", 1)[0] + "…"
+    # preferir corte en frase
+    cut = t[:max_len]
+    for sep in (". ", "; ", ": ", ", "):
+        idx = cut.rfind(sep)
+        if idx >= max(40, max_len // 3):
+            return cut[: idx + (1 if sep.startswith(".") else 0)].rstrip(" ,;:") + "."
+    return cut.rsplit(" ", 1)[0].rstrip(" ,;:") + "."
+
+
+def _frase_completa(texto: str) -> str:
+    """Para enseñanza: nunca truncar con puntos suspensivos."""
+    t = " ".join(str(texto).split()).strip()
+    t = t.replace("…", "").replace("...", "").strip()
+    return t
 
 
 def build_guion_promo(titulo: str, hook: str, promesa: str, ideas: list[str], cta: str) -> str:
@@ -48,11 +62,15 @@ def build_guion_ensenanza(titulo: str, hook: str, promesa: str, ideas: list[str]
     Estructura didáctica (ref. canales faceless educativos):
     hook → concepto → por qué importa → 2–3 enseñanzas → aplicación → cierre suave
     """
-    i0 = _acortar_idea(ideas[0]) if ideas else (promesa or titulo)
-    i1 = _acortar_idea(ideas[1]) if len(ideas) > 1 else "Separa lo vital de lo secundario."
-    i2 = _acortar_idea(ideas[2]) if len(ideas) > 2 else "Revisa tu prioridad cada semana."
+    i0 = _frase_completa(ideas[0]) if ideas else (promesa or titulo)
+    i1 = _frase_completa(ideas[1]) if len(ideas) > 1 else "Separa lo vital de lo secundario."
+    i2 = _frase_completa(ideas[2]) if len(ideas) > 2 else "Revisa tu prioridad cada semana."
+    hook_limpio = _frase_completa(hook) if hook else f"Hay un patrón detrás de {titulo} que casi nadie nombra."
+    # Evitar hook que ya viene truncado con resto de idea a medias
+    if hook_limpio.endswith(" l") or hook_limpio.endswith(" tus") or len(hook_limpio) < 20:
+        hook_limpio = f"Nadie te explica esto así: {i0}"
     bloques = [
-        hook or f"Hay un patrón detrás de {titulo} que casi nadie nombra.",
+        hook_limpio,
         f"La idea central: {i0}",
         f"Por qué importa: {promesa or 'dejas de dispersar energía en lo que no mueve resultados'}.",
         f"Primera enseñanza: {i1}",
@@ -61,7 +79,7 @@ def build_guion_ensenanza(titulo: str, hook: str, promesa: str, ideas: list[str]
         cierre
         or "Si esto te ordenó la cabeza, guarda el video. La próxima vez que te sientas abrumado, vuelve a esta regla.",
     ]
-    return "\n\n".join(bloques)
+    return "\n\n".join(_frase_completa(b) for b in bloques)
 
 
 class GuionAgent:

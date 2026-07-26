@@ -1,8 +1,8 @@
 # Guion (ensenanza) — El principio de Pareto
 
-Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…
+Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.
 
-La idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus…
+La idea central: una minoría de situaciones genera la mayor parte de tus resultados.
 
 Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.
 

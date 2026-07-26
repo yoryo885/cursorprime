@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 8,
-    "ultima_mejora": "Motion suave: xfade largo, ease coseno, blur mid-morph, holds más largos"
+    "version": 9,
+    "ultima_mejora": "Guion completo sin cortes + regenerar voz y subtítulos"
   },
   "historial": [
     {
@@ -49,6 +49,11 @@
       "version": 8,
       "mensaje": "movimiento muy brusco",
       "cambio": "Morph soft: no pingpong rápido; transiciones lentas + blur"
+    },
+    {
+      "version": 9,
+      "mensaje": "demosle",
+      "cambio": "Fix truncado guion/hook; TTS + subs sync"
     }
   ]
 }

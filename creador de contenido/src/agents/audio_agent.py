@@ -13,21 +13,27 @@ from src.video_backend import mux_audio_bed
 
 
 def _texto_narracion(lote: dict, context: dict, guion_meta: dict, hook: str) -> str:
-    """Prioriza guion completo; si no, hook + ideas."""
+    """Prioriza guion completo; si no, hook + ideas. Limpia cortes '…' residuales."""
     if lote.get("audio") and isinstance(lote["audio"], dict) and lote["audio"].get("texto"):
-        return str(lote["audio"]["texto"]).strip()
-    guion = (
-        lote.get("guion")
-        or guion_meta.get("guion")
-        or context.get("guion")
-        or ""
-    )
-    if guion:
-        return str(guion).strip()
-    partes = [hook] if hook else []
-    ideas = guion_meta.get("ideas") or context.get("temas") or []
-    partes.extend(str(x) for x in ideas[:5])
-    return "\n\n".join(p for p in partes if p).strip()
+        raw = str(lote["audio"]["texto"]).strip()
+    else:
+        guion = (
+            lote.get("guion")
+            or guion_meta.get("guion")
+            or context.get("guion")
+            or ""
+        )
+        if guion:
+            raw = str(guion).strip()
+        else:
+            partes = [hook] if hook else []
+            ideas = guion_meta.get("ideas") or context.get("temas") or []
+            partes.extend(str(x) for x in ideas[:5])
+            raw = "\n\n".join(p for p in partes if p).strip()
+    # quita puntos suspensivos de truncados viejos
+    raw = raw.replace("…", " ").replace("...", " ")
+    raw = "\n\n".join(" ".join(block.split()) for block in raw.split("\n\n") if block.strip())
+    return raw.strip()
 
 
 class AudioAgent:

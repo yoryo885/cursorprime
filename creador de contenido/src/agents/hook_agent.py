@@ -48,8 +48,17 @@ def _mock_hooks_promo(tema: str, promesa: str, ideas: list[str]) -> dict:
 
 def _mock_hooks_ensenanza(tema: str, promesa: str, ideas: list[str]) -> dict:
     """Estilo canal educativo (curiosidad + insight), no venta."""
-    idea0 = ideas[0] if ideas else promesa or tema
-    corta = idea0 if len(idea0) < 90 else idea0[:87] + "…"
+    idea0 = " ".join(str(ideas[0] if ideas else promesa or tema).split()).strip()
+    idea0 = idea0.replace("…", "").replace("...", "").strip()
+    # Hook corto y completo (sin cortar a mitad de palabra)
+    if len(idea0) > 120:
+        # primera oración o hasta 120 en límite de palabra
+        if ". " in idea0[:120]:
+            corta = idea0.split(". ", 1)[0].rstrip(".") + "."
+        else:
+            corta = idea0[:120].rsplit(" ", 1)[0].rstrip(" ,;:") + "."
+    else:
+        corta = idea0
     hooks = [
         {
             "id": 1,

@@ -12,7 +12,7 @@
   "voz": "calma, didáctica, como canal de psicología aplicada",
   "cta": "",
   "oferta": "",
-  "regenerar_guion": true,
+  "regenerar_guion": false,
   "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
   "guia": {
     "titulo": "El principio de Pareto",
@@ -36,15 +36,17 @@
     "narracion_modo": "brief",
     "bed_path": "",
     "video_path": "video_pareto_psico_morph.mp4",
-    "voz_off": true
+    "voz_off": true,
+    "regenerar_voz": true,
+    "reusar_voz": false
   },
   "video_final": "video_pareto_psico_morph.mp4",
   "video": {
     "modo": "animado",
     "limit_escenas": 5
   },
-  "hook": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…",
-  "guion": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…\n\nLa idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus…\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+  "hook": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.",
+  "guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.\n\nLa idea central: una minoría de situaciones genera la mayor parte de tus resultados.\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
   "morph": {
     "pad_mode": "pingpong",
     "idle_amp": 0.008,
@@ -63,5 +65,6 @@
     "blur_max": 2.4,
     "hold_frames": 38,
     "xfade_frames": 58
-  }
+  },
+  "regenerar_voz": true
 }

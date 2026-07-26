@@ -2,15 +2,15 @@
   "skill": "guion-a-video",
   "formato": "ensenanza",
   "titulo": "El principio de Pareto",
-  "guion": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…\n\nLa idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus…\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+  "guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.\n\nLa idea central: una minoría de situaciones genera la mayor parte de tus resultados.\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser 10/90. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
   "escenas_preview": [
     {
       "id": 1,
-      "texto_guion": "Nadie te explica esto así: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera l…"
+      "texto_guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos."
     },
     {
       "id": 2,
-      "texto_guion": "La idea central: El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus…"
+      "texto_guion": "La idea central: una minoría de situaciones genera la mayor parte de tus resultados."
     },
     {
       "id": 3,
@@ -41,6 +41,6 @@
   "generado_desde": "guia",
   "modo": "heuristica",
   "archivo_md": "/workspace/creador de contenido/data/video_pareto_psico/copy/guion.md",
-  "generado_at": "2026-07-25T18:21:58.862295+00:00",
+  "generado_at": "2026-07-26T19:07:54.842976+00:00",
   "referencia_estilo": "ensenanza≈Psicología Invisible / faceless educativo"
 }
