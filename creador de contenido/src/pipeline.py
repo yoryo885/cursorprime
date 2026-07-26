@@ -15,11 +15,13 @@ from src.agents.context_agent import ContextAgent
 from src.agents.escenas_agent import EscenasAgent
 from src.agents.guion_agent import GuionAgent
 from src.agents.hook_agent import HookAgent
+from src.agents.morph_agent import MorphAgent
 from src.agents.packager_agent import PackagerAgent
 from src.agents.planner_agent import PlannerAgent
 from src.agents.prompt_agent import PromptAgent
 from src.agents.qc_agent import QcAgent
 from src.agents.style_agent import StyleAgent
+from src.agents.subtitulos_agent import SubtitulosAgent
 from src.agents.thumbnail_agent import ThumbnailAgent
 from src.checkpoint import Checkpoint
 from src.config import (
@@ -51,8 +53,10 @@ AGENTS = {
     "png": ImagenesModule(),
     "gif": GifsModule(),
     "video": VideosModule(),
+    "morph": MorphAgent(),
     "pdf": PdfModule(),
     "audio": AudioAgent(),
+    "subtitulos": SubtitulosAgent(),
     "captions": CaptionsAgent(),
     "thumbnail": ThumbnailAgent(),
     "qc": QcAgent(),
@@ -63,15 +67,17 @@ LABELS = {
     "context": "Core · Context",
     "planner": "Core · Planner",
     "hook": "Copy · Hook (hooks-redes)",
-    "guion": "Copy · Guion",
+    "guion": "Copy · Guion (guion-a-video)",
     "escenas": "Core · Escenas",
     "style": "Core · Style",
     "prompt": "Core · Prompt",
     "png": "Módulo · imagenes",
     "gif": "Módulo · gifs",
     "video": "Módulo · videos",
+    "morph": "Motion · Morph escenas",
     "pdf": "Módulo · pdf",
-    "audio": "Audio · música/voz",
+    "audio": "Audio · voz ElevenLabs",
+    "subtitulos": "Copy · Subtítulos (letras en video)",
     "captions": "Copy · Captions (captions-redes)",
     "thumbnail": "Copy · Thumbnail (thumbnail-social)",
     "qc": "Core · QC",

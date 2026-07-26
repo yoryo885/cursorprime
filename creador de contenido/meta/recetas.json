@@ -71,6 +71,40 @@
       "copy": ["hook", "guion", "audio", "captions", "thumbnail"],
       "requiere": ["guia"]
     },
+    "ensenanza-tiktok": {
+      "nombre": "Enseñanza TikTok (morph + voz + subtítulos)",
+      "descripcion": "Cadena completa: hook→guion→escenas→png→morph→voz→letras en pantalla. Capítulo ancla.",
+      "skills": [
+        "hooks-redes",
+        "guion-a-video",
+        "morph-escenas",
+        "audio-redes",
+        "subtitulos-burn",
+        "captions-redes",
+        "thumbnail-social"
+      ],
+      "agentes": [
+        "context",
+        "planner",
+        "hook",
+        "guion",
+        "escenas",
+        "style",
+        "prompt",
+        "png",
+        "morph",
+        "audio",
+        "subtitulos",
+        "captions",
+        "thumbnail",
+        "qc",
+        "packager"
+      ],
+      "salidas": ["png", "video"],
+      "video_modo": "animado",
+      "copy": ["hook", "guion", "audio", "subtitulos", "captions", "thumbnail"],
+      "requiere": ["guia"]
+    },
     "reels-pack": {
       "nombre": "Pack redes (hook + video + audio + captions + thumb)",
       "descripcion": "Pack completo para Reels/Shorts a partir de guion o guía",

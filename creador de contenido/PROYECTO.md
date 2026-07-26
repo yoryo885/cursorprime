@@ -16,8 +16,8 @@ python3 creador_imagenes_main.py --listar-recetas
 # Promo de una guía PDF (hook → guion → escenas → video → captions → thumb)
 python3 creador_imagenes_main.py --slug demo_promo_guia --receta promo-guia --reset-checkpoint
 
-# Enseñanza desde el resumen (estilo canal educativo / Psicología Invisible)
-python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza --reset-checkpoint
+# Enseñanza TikTok (morph + voz + letras)
+python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza-tiktok --reset-checkpoint
 
 # Solo video animado desde guion
 python3 creador_imagenes_main.py --slug demo_animado --receta animado

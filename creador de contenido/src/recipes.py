@@ -21,7 +21,9 @@ AGENT_ORDER = [
     "png",
     "gif",
     "video",
+    "morph",
     "audio",
+    "subtitulos",
     "pdf",
     "captions",
     "thumbnail",
@@ -30,7 +32,7 @@ AGENT_ORDER = [
 ]
 
 MODULO_STEPS = {"png", "gif", "video", "pdf"}
-COPY_STEPS = {"hook", "guion", "captions", "thumbnail", "audio"}
+COPY_STEPS = {"hook", "guion", "captions", "thumbnail", "audio", "subtitulos", "morph"}
 
 
 def load_recetas() -> dict[str, Any]:
