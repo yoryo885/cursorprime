@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -10,6 +11,29 @@ from src.paths_resolve import resolve_video_final
 from src.tts_elevenlabs import synthesize, tts_activo
 from src.types import AgentResult, PipelineContext
 from src.video_backend import mux_audio_bed
+
+
+_NUM_HABLA = {
+    "10": "diez",
+    "20": "veinte",
+    "30": "treinta",
+    "40": "cuarenta",
+    "50": "cincuenta",
+    "60": "sesenta",
+    "70": "setenta",
+    "80": "ochenta",
+    "90": "noventa",
+}
+
+
+def _habla_ratios(texto: str) -> str:
+    """Evita que TTS lea 10/90 como 'octubre de 90'."""
+
+    def repl(m: re.Match[str]) -> str:
+        a, b = m.group(1), m.group(2)
+        return f"{_NUM_HABLA.get(a, a)} a {_NUM_HABLA.get(b, b)}"
+
+    return re.sub(r"\b(\d{1,2})\s*/\s*(\d{1,2})\b", repl, texto)
 
 
 def _texto_narracion(lote: dict, context: dict, guion_meta: dict, hook: str) -> str:
@@ -32,6 +56,7 @@ def _texto_narracion(lote: dict, context: dict, guion_meta: dict, hook: str) -> 
             raw = "\n\n".join(p for p in partes if p).strip()
     # quita puntos suspensivos de truncados viejos
     raw = raw.replace("…", " ").replace("...", " ")
+    raw = _habla_ratios(raw)
     raw = "\n\n".join(" ".join(block.split()) for block in raw.split("\n\n") if block.strip())
     return raw.strip()
 

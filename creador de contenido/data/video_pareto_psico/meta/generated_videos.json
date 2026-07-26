@@ -97,13 +97,20 @@
       "tipo": "final_subtitulado"
     },
     {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
       "archivo": "video_pareto_psico_morph.mp4",
       "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
       "modulo": "videos",
       "modo": "morph",
       "tipo": "final",
       "escenas": 6,
-      "generado_at": "2026-07-26T20:37:52.058498+00:00"
+      "generado_at": "2026-07-26T20:41:21.719257+00:00"
     },
     {
       "archivo": "video_pareto_psico_audio.mp4",
