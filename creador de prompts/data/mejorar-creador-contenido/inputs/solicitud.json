@@ -6,7 +6,9 @@
     "Modo B crear-pipeline: mejorar existente",
     "Frontera estricta: no modificar libros a entender, tiktok_pipeline, router salvo registro",
     "Pasos ordenados: limpieza → checkpoint → copy LLM → imágenes reales → Kling",
-    "Formato ensenanza: lección didáctica desde resumen (vs promo/CTA)"
+    "Formato ensenanza: lección didáctica desde resumen (vs promo/CTA)",
+    "Subtítulos karaoke: solo palabras, sin sombra/caja negra, aparecen y desaparecen con la voz",
+    "Morph sincronizado a duración de narracion.mp3"
   ],
   "contexto": {
     "audiencia": "agente Cursor / operador",
@@ -15,7 +17,7 @@
     "idioma": "español",
     "objetivo": "Prompt operable para mejorar creador de contenido sin desarmar el ecosistema; videos pueden enseñar (ensenanza) o vender (promo)"
   },
-  "notas": "Ref YouTube Psicología Invisible. Formato ensenanza: enseñar insight del resumen, sin hard sell. Frontera: solo creador de contenido/.",
+  "notas": "Ref YouTube Psicología Invisible. Formato ensenanza: enseñar insight del resumen, sin hard sell. Frontera: solo creador de contenido/. Subtítulos: NO BorderStyle=3 ni sombra negra; solo tipografía; timing palabra/chunk con la voz.",
   "mejoras": [
     {
       "mensaje": "dame un prompt paso a paso para mejorar sin desarmar otros proyectos",
@@ -52,6 +54,10 @@
     {
       "mensaje": "video con skills/agentes; subtítulos de la voz",
       "cambio": "Receta ensenanza-tiktok + MorphAgent + SubtitulosAgent"
+    },
+    {
+      "mensaje": "sigamos con esa mejora; la letra no tiene que salir con la sombra negra; solo las palabras y que vayan apareciendo con la voz y desapareciendo",
+      "cambio": "Morph hold ↔ duración narracion.mp3; mux no corta voz (tpad si hace falta); subtítulos ASS palabra/chunk sin caja/sombra negra, fad in/out con la voz"
     }
   ],
   "estrategia_tiktok": {
@@ -62,7 +68,13 @@
     "cortes": "5 x 20–30s",
     "estilo": "ensenanza + personaje blob + morph",
     "fuente": "resumen (solo lectura)",
-    "agentes_nuevos": ["morph", "subtitulos"]
+    "agentes_nuevos": ["morph", "subtitulos"],
+    "subtitulos_ux": {
+      "sin_caja_negra": true,
+      "sin_sombra": true,
+      "modo": "palabras_con_voz",
+      "aparecen_desaparecen": true
+    }
   },
   "estilo_visual_target": {
     "ref": "La Psicología Invisible",

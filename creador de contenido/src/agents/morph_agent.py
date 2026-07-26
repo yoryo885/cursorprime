@@ -19,6 +19,48 @@ from src.types import AgentResult, PipelineContext
 from src.video_backend import _ffmpeg, concat_clips
 
 
+def _ffprobe_duration(path: Path) -> float:
+    ffmpeg = _ffmpeg()
+    if not ffmpeg or not path.exists():
+        return 0.0
+    ffprobe = Path(ffmpeg).with_name("ffprobe")
+    bin_ = str(ffprobe) if ffprobe.exists() else "ffprobe"
+    try:
+        out = subprocess.check_output(
+            [bin_, "-v", "error", "-show_entries", "format=duration",
+             "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+            text=True,
+        ).strip()
+        return float(out)
+    except Exception:
+        return 0.0
+
+
+def _pad_clip_to_duration(clip: Path, target_s: float, out: Path) -> tuple[bool, str]:
+    """Congela el último frame hasta alcanzar target_s (voz manda la duración)."""
+    ffmpeg = _ffmpeg()
+    if not ffmpeg:
+        return False, "ffmpeg no instalado"
+    cur = _ffprobe_duration(clip)
+    if cur <= 0:
+        return False, "clip sin duración"
+    if target_s <= cur + 0.05:
+        out.write_bytes(clip.read_bytes())
+        return True, out.name
+    pad = target_s - cur
+    cmd = [
+        ffmpeg, "-y", "-i", str(clip),
+        "-vf", f"tpad=stop_mode=clone:stop_duration={pad:.3f},format=yuv420p",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "veryfast",
+        "-t", f"{target_s:.3f}",
+        "-an", "-movflags", "+faststart", str(out),
+    ]
+    proc = subprocess.run(cmd, capture_output=True, text=True)
+    if proc.returncode != 0:
+        return False, proc.stderr[-300:]
+    return True, out.name
+
+
 def _slug_num(name: str) -> str | None:
     m = re.match(r"^(\d+)_", name)
     return m.group(1) if m else None
@@ -116,18 +158,42 @@ class MorphAgent:
                 notes="Morph: sin pares A/B (pon refs/escenas/*_a.png|*_b.png o corre png animado)",
             )
 
-        hold = int((lote.get("morph") or {}).get("hold_frames") or 10)
-        xfade = int((lote.get("morph") or {}).get("xfade_frames") or 20)
-        fps = int((lote.get("morph") or {}).get("fps") or 24)
+        morph_cfg = lote.get("morph") if isinstance(lote.get("morph"), dict) else {}
+        hold = int(morph_cfg.get("hold_frames") or 10)
+        xfade = int(morph_cfg.get("xfade_frames") or 20)
+        fps = int(morph_cfg.get("fps") or 24)
+
+        # Sync: morph corto + freeze por escena hasta cubrir narracion.mp3
+        narr = Path(ctx.paths["copy_dir"]) / "narracion.mp3"
+        audio_dur = _ffprobe_duration(narr)
+        sync_audio = morph_cfg.get("sync_audio", True)
+        per_scene_target = (
+            audio_dur / len(pairs) if sync_audio and audio_dur >= 1.0 and pairs else 0.0
+        )
 
         clip_paths: list[Path] = []
         items = []
         warnings = []
         for i, (a, b, stem) in enumerate(pairs, start=1):
+            raw_clip = clips_dir / f"{i:02d}-{stem}_raw.mp4"
             out_clip = clips_dir / f"{i:02d}-{stem}.mp4"
-            ok, msg = _morph_clip(a, b, out_clip, fps=fps, hold=hold, xfade=xfade)
+            ok, msg = _morph_clip(a, b, raw_clip, fps=fps, hold=hold, xfade=xfade)
             if not ok:
                 return AgentResult(ok=False, notes=f"Morph escena {i}: {msg}")
+            if per_scene_target > 0:
+                ok, msg = _pad_clip_to_duration(raw_clip, per_scene_target, out_clip)
+                if not ok:
+                    return AgentResult(ok=False, notes=f"Morph pad escena {i}: {msg}")
+                try:
+                    raw_clip.unlink(missing_ok=True)
+                except Exception:
+                    pass
+            else:
+                out_clip.write_bytes(raw_clip.read_bytes())
+                try:
+                    raw_clip.unlink(missing_ok=True)
+                except Exception:
+                    pass
             clip_paths.append(out_clip)
             items.append(
                 {
@@ -137,6 +203,7 @@ class MorphAgent:
                     "path": str(out_clip),
                     "a": str(a),
                     "b": str(b),
+                    "duracion_objetivo_s": round(per_scene_target, 3) if per_scene_target else None,
                 }
             )
 
@@ -152,6 +219,7 @@ class MorphAgent:
         except Exception as exc:
             warnings.append(f"alias: {exc}")
 
+        expected_dur = audio_dur if per_scene_target else len(pairs) * (2 * hold + xfade) / max(fps, 1)
         payload = {
             "skill": "morph-escenas",
             "fuente_frames": fuente,
@@ -162,6 +230,10 @@ class MorphAgent:
             "hold_frames": hold,
             "xfade_frames": xfade,
             "fps": fps,
+            "audio_dur_target": audio_dur or None,
+            "duration_esperada_s": round(expected_dur, 3),
+            "sync_audio": bool(sync_audio and audio_dur >= 1.0),
+            "pad_mode": "tpad_freeze" if per_scene_target else None,
             "generado_at": datetime.now(timezone.utc).isoformat(),
         }
         out_meta = Path(ctx.paths["meta"]) / "morph.json"

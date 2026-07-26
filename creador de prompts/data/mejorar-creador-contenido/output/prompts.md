@@ -130,6 +130,22 @@ Demo: `data/video_pareto_psico/videos/video_pareto_psico.mp4`
 
 ---
 
+## Mejora activa (v4) — Voz + letras limpias
+
+1. **Duración:** Morph estira `hold_frames` para igualar `copy/narracion.mp3` (no cortar la voz con `-shortest` sobre un morph de ~8s).
+2. **Subtítulos UX (obligatorio):**
+   - Solo las **palabras** en pantalla (sin caja negra, sin sombra negra).
+   - Aparecen **con la voz** y **desaparecen** (chunks cortos / fad in-out).
+   - Formato ASS preferido; SRT solo como respaldo.
+3. Receta: `ensenanza-tiktok`.
+
+```bash
+cd "creador de contenido"
+python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza-tiktok --reset-checkpoint
+```
+
+---
+
 ## Cómo usarlo
 
 1. Abre un chat nuevo con el workspace `cursorprime`.

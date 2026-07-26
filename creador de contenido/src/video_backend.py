@@ -285,8 +285,25 @@ def concat_clips(clips: list[Path], out_mp4: Path) -> tuple[bool, str]:
     return True, out_mp4.name
 
 
+def _ffprobe_duration_sec(path: Path) -> float:
+    ffmpeg = _ffmpeg()
+    if not ffmpeg or not path.exists():
+        return 0.0
+    ffprobe = Path(ffmpeg).with_name("ffprobe")
+    bin_ = str(ffprobe) if ffprobe.exists() else "ffprobe"
+    try:
+        out = subprocess.check_output(
+            [bin_, "-v", "error", "-show_entries", "format=duration",
+             "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+            text=True,
+        ).strip()
+        return float(out)
+    except Exception:
+        return 0.0
+
+
 def mux_audio_bed(video_path: Path, audio_path: Path, out_path: Path) -> tuple[bool, str]:
-    """Junta video (sin audio o con) + cama musical/voz. Loop audio si es más corto."""
+    """Junta video + voz/cama. La voz manda: si el video es más corto, congela el último frame."""
     ffmpeg = _ffmpeg()
     if not ffmpeg:
         return False, "ffmpeg no instalado"
@@ -295,17 +312,38 @@ def mux_audio_bed(video_path: Path, audio_path: Path, out_path: Path) -> tuple[b
     if not audio_path.exists():
         return False, "audio no existe"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [
-        ffmpeg, "-y",
-        "-i", str(video_path.resolve()),
-        "-stream_loop", "-1", "-i", str(audio_path.resolve()),
-        "-shortest",
-        "-c:v", "copy",
-        "-c:a", "aac",
-        "-map", "0:v:0",
-        "-map", "1:a:0",
-        str(out_path),
-    ]
+    v_dur = _ffprobe_duration_sec(video_path)
+    a_dur = _ffprobe_duration_sec(audio_path)
+    # Narración no se loopea (evitar eco). Si el video es corto → tpad clone.
+    if a_dur > 0.5 and v_dur > 0 and a_dur > v_dur + 0.08:
+        pad = a_dur - v_dur
+        cmd = [
+            ffmpeg, "-y",
+            "-i", str(video_path.resolve()),
+            "-i", str(audio_path.resolve()),
+            "-filter_complex",
+            f"[0:v]tpad=stop_mode=clone:stop_duration={pad:.3f},format=yuv420p[v]",
+            "-map", "[v]", "-map", "1:a:0",
+            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+            "-c:a", "aac",
+            "-t", f"{a_dur:.3f}",
+            "-movflags", "+faststart",
+            str(out_path),
+        ]
+    else:
+        # Video ≥ audio (o duraciones desconocidas): corta al más corto sin loop de voz
+        cmd = [
+            ffmpeg, "-y",
+            "-i", str(video_path.resolve()),
+            "-i", str(audio_path.resolve()),
+            "-c:v", "copy",
+            "-c:a", "aac",
+            "-map", "0:v:0",
+            "-map", "1:a:0",
+            "-shortest",
+            "-movflags", "+faststart",
+            str(out_path),
+        ]
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
         return False, proc.stderr[:300]

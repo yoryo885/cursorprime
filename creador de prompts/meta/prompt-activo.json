@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 3,
-    "ultima_mejora": "Estilo visual: ilustración blob pastel tipo Psicología Invisible (no mock amarillo)"
+    "version": 4,
+    "ultima_mejora": "Subtítulos solo palabras sin sombra negra + aparecen/desaparecen con voz; morph = duración narración"
   },
   "historial": [
     {
@@ -24,6 +24,11 @@
       "version": 3,
       "mensaje": "creame imagen similar a eso",
       "cambio": "Target visual faceless ilustrado; demo PNG generada"
+    },
+    {
+      "version": 4,
+      "mensaje": "letra sin sombra negra; palabras aparecen y desaparecen con la voz",
+      "cambio": "ASS karaoke limpio + morph sync narración"
     }
   ]
 }

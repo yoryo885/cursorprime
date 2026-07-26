@@ -1,10 +1,14 @@
-"""SubtitulosAgent — SRT de lo que dice la voz + burn-in en el video.
+"""SubtitulosAgent — letras de lo que dice la voz, limpio y al ritmo.
 
 Skill: subtitulos-burn
-1) Toma guion (beats) o texto de narración
-2) Distribuye tiempos según duración de narracion.mp3 (o del video)
-3) Escribe copy/subtitulos.srt
-4) Genera videos/{slug}_subtitulado.mp4 (letras en pantalla)
+1) Toma guion (texto narrado)
+2) Parte en palabras/chunks y reparte tiempos según narracion.mp3
+3) Escribe copy/subtitulos.ass (+ .srt de respaldo)
+4) Quema en videos/{slug}_subtitulado.mp4
+
+UX (obligatorio):
+- Solo las palabras (sin caja negra, sin sombra negra)
+- Aparecen con la voz y desaparecen (fad in/out por chunk)
 """
 
 from __future__ import annotations
@@ -22,7 +26,7 @@ from src.video_backend import _ffmpeg
 
 def _ffprobe_duration(path: Path) -> float:
     ffmpeg = _ffmpeg()
-    if not ffmpeg:
+    if not ffmpeg or not path.exists():
         return 0.0
     ffprobe = Path(ffmpeg).with_name("ffprobe")
     bin_ = str(ffprobe) if ffprobe.exists() else "ffprobe"
@@ -37,13 +41,44 @@ def _ffprobe_duration(path: Path) -> float:
         return 0.0
 
 
-def _beats_from_guion(guion: str) -> list[str]:
-    parts = [p.strip() for p in re.split(r"\n\s*\n", guion or "") if p.strip()]
-    if len(parts) >= 2:
-        return parts
-    # frases
-    frases = [f.strip() for f in re.split(r"(?<=[.!?])\s+", guion or "") if f.strip()]
-    return frases or [guion.strip()]
+def _texto_plano(guion: str) -> str:
+    text = re.sub(r"\s+", " ", (guion or "").strip())
+    # quita etiquetas tipo "La idea central:" si vienen truncadas con …
+    return text
+
+
+def _words(guion: str) -> list[str]:
+    text = _texto_plano(guion)
+    # tokens: palabras y números con %
+    toks = re.findall(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+(?:[./%][A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+)?|[…]", text)
+    # filtra puntos suspensivos sueltos
+    return [t for t in toks if t and t != "…"]
+
+
+def _chunk_words(words: list[str], max_words: int = 3, max_chars: int = 28) -> list[str]:
+    """Agrupa 1–3 palabras para lectura móvil (aparecen/desaparecen con la voz)."""
+    chunks: list[str] = []
+    buf: list[str] = []
+    for w in words:
+        trial = (" ".join(buf + [w])).strip()
+        if buf and (len(buf) >= max_words or len(trial) > max_chars):
+            chunks.append(" ".join(buf))
+            buf = [w]
+        else:
+            buf.append(w)
+    if buf:
+        chunks.append(" ".join(buf))
+    return chunks or [" "]
+
+
+def _ass_ts(seconds: float) -> str:
+    if seconds < 0:
+        seconds = 0
+    cs = int(round(seconds * 100))
+    h, rem = divmod(cs, 3600_00)
+    m, rem = divmod(rem, 60_00)
+    s, c = divmod(rem, 100)
+    return f"{h}:{m:02d}:{s:02d}.{c:02d}"
 
 
 def _srt_ts(seconds: float) -> str:
@@ -56,53 +91,96 @@ def _srt_ts(seconds: float) -> str:
     return f"{h:02d}:{m:02d}:{s:02d},{milli:03d}"
 
 
-def _build_srt(beats: list[str], duration: float) -> str:
-    weights = [max(len(b), 8) for b in beats]
+def _timed_chunks(chunks: list[str], duration: float) -> list[tuple[float, float, str]]:
+    weights = [max(len(c), 4) for c in chunks]
     total_w = sum(weights) or 1
-    # deja 0.15s de margen al final
-    usable = max(duration - 0.15, 1.0)
-    lines = []
-    t = 0.0
-    for i, (beat, w) in enumerate(zip(beats, weights), start=1):
+    usable = max(duration - 0.12, 1.0)
+    gap = 0.04  # hueco para que “desaparezcan” antes del siguiente
+    out: list[tuple[float, float, str]] = []
+    t = 0.05
+    for i, (chunk, w) in enumerate(zip(chunks, weights)):
         seg = usable * (w / total_w)
         start = t
-        end = min(duration - 0.05, t + seg) if i < len(beats) else duration - 0.05
+        end = start + max(seg - gap, 0.18)
+        if i == len(chunks) - 1:
+            end = min(duration - 0.05, max(end, start + 0.2))
+        else:
+            end = min(end, duration - 0.08)
         if end <= start:
-            end = start + 0.4
-        text = re.sub(r"\s+", " ", beat).strip()
-        # líneas cortas para móvil
-        if len(text) > 42:
-            mid = text.rfind(" ", 0, 42)
-            if mid > 10:
-                text = text[:mid] + "\n" + text[mid + 1 :]
-        lines.append(f"{i}\n{_srt_ts(start)} --> {_srt_ts(end)}\n{text}\n")
-        t = end
+            end = start + 0.2
+        out.append((start, end, chunk))
+        t = end + gap
+    return out
+
+
+def _build_ass(chunks_timed: list[tuple[float, float, str]]) -> str:
+    # Sin caja (BorderStyle=1), sin sombra, outline mínimo solo para legibilidad
+    header = """[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Word,Arial,64,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,40,40,140,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    lines = [header.rstrip()]
+    for start, end, text in chunks_timed:
+        # fad in/out suave; solo el texto
+        safe = text.replace("\\", "\\\\").replace("{", "\\{").replace("}", "\\}")
+        fad_in = 80
+        fad_out = 90
+        dur_ms = int((end - start) * 1000)
+        if dur_ms < 280:
+            fad_in = 40
+            fad_out = 40
+        lines.append(
+            f"Dialogue: 0,{_ass_ts(start)},{_ass_ts(end)},Word,,0,0,0,,{{\\fad({fad_in},{fad_out})}}{safe}"
+        )
     return "\n".join(lines) + "\n"
 
 
-def _burn_subtitles(video: Path, srt: Path, out: Path) -> tuple[bool, str]:
+def _build_srt(chunks_timed: list[tuple[float, float, str]]) -> str:
+    lines = []
+    for i, (start, end, text) in enumerate(chunks_timed, start=1):
+        lines.append(f"{i}\n{_srt_ts(start)} --> {_srt_ts(end)}\n{text}\n")
+    return "\n".join(lines) + "\n"
+
+
+def _burn_ass(video: Path, ass: Path, out: Path) -> tuple[bool, str]:
     ffmpeg = _ffmpeg()
     if not ffmpeg:
         return False, "ffmpeg no instalado"
-    # escape path for subtitles filter (ffmpeg)
-    srt_esc = str(srt.resolve()).replace("\\", "/").replace(":", "\\:").replace("'", "\\'")
+    ass_esc = str(ass.resolve()).replace("\\", "/").replace(":", "\\:").replace("'", "\\'")
+    # force_style refuerza: sin sombra, sin caja opaca
     style = (
-        "FontName=Arial,FontSize=16,PrimaryColour=&H00FFFFFF,OutlineColour=&H80000000,"
-        "BorderStyle=3,Outline=2,Shadow=0,Alignment=2,MarginV=60"
+        "FontName=Arial,FontSize=22,PrimaryColour=&H00FFFFFF,"
+        "OutlineColour=&H00000000,BackColour=&H00000000,"
+        "BorderStyle=1,Outline=0,Shadow=0,Alignment=2,MarginV=70,Bold=1"
     )
-    vf = f"subtitles='{srt_esc}':force_style='{style}'"
-    cmd = [
-        ffmpeg, "-y", "-i", str(video.resolve()),
-        "-vf", vf,
-        "-c:a", "copy",
-        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
-        str(out.resolve()),
-    ]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
-    if proc.returncode != 0:
-        # fallback: drawtext simple por si falta libass
-        return False, proc.stderr[-400:]
-    return True, out.name
+    # Preferir filtro ass (respeta Style del archivo + fad)
+    for vf_try in (
+        f"ass='{ass_esc}'",
+        f"subtitles='{ass_esc}':force_style='{style}'",
+    ):
+        cmd = [
+            ffmpeg, "-y", "-i", str(video.resolve()),
+            "-vf", vf_try,
+            "-c:a", "copy",
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast",
+            "-movflags", "+faststart",
+            str(out.resolve()),
+        ]
+        proc = subprocess.run(cmd, capture_output=True, text=True)
+        if proc.returncode == 0:
+            return True, out.name
+        last_err = proc.stderr[-400:]
+    return False, last_err
 
 
 class SubtitulosAgent:
@@ -120,7 +198,6 @@ class SubtitulosAgent:
         videos_meta = load_json(ctx.paths.get("generated_videos"), {}) if ctx.paths.get("generated_videos") else {}
         prefer = (lote.get("audio") or {}).get("video_path") if isinstance(lote.get("audio"), dict) else None
         prefer = prefer or lote.get("video_final")
-        # Preferir video con audio si existe
         audio_mp4 = videos_out / f"{ctx.slug}_audio.mp4"
         morph = videos_out / f"{ctx.slug}_morph.mp4"
         con_voz_alias = videos_out / "pareto_5_escenas_con_voz.mp4"
@@ -145,37 +222,49 @@ class SubtitulosAgent:
         if duration < 1:
             duration = 8.0
 
-        beats = _beats_from_guion(guion)
-        if not beats:
+        words = _words(guion)
+        if not words:
             return AgentResult(ok=False, notes="Subtitulos: sin guion/texto")
 
-        # Si el video es mucho más corto que la narración, acota beats al video
+        chunks = _chunk_words(words, max_words=3, max_chars=28)
+        # Usar duración de audio (voz) para timing; el video ya debería igualarla
         vid_dur = _ffprobe_duration(video) or duration
-        srt_dur = min(duration, vid_dur) if vid_dur > 0 else duration
-        srt_text = _build_srt(beats, srt_dur)
+        srt_dur = duration if duration >= 1 else vid_dur
+        timed = _timed_chunks(chunks, srt_dur)
+
+        ass_path = copy_dir / "subtitulos.ass"
         srt_path = copy_dir / "subtitulos.srt"
-        srt_path.write_text(srt_text, encoding="utf-8")
+        ass_path.write_text(_build_ass(timed), encoding="utf-8")
+        srt_path.write_text(_build_srt(timed), encoding="utf-8")
 
         out_mp4 = videos_out / f"{ctx.slug}_subtitulado.mp4"
-        ok, msg = _burn_subtitles(video, srt_path, out_mp4)
+        ok, msg = _burn_ass(video, ass_path, out_mp4)
         warnings = []
         if not ok:
-            # deja SRT igual; no tumba el lote
-            warnings.append(f"burn-in falló (SRT listo): {msg}")
+            warnings.append(f"burn-in falló (ASS/SRT listos): {msg}")
             out_mp4 = video
 
         payload = {
             "skill": "subtitulos-burn",
+            "modo": "palabras_con_voz",
+            "ass": str(ass_path),
             "srt": str(srt_path),
             "video_in": str(video),
             "video_out": str(out_mp4),
-            "beats": len(beats),
+            "chunks": len(timed),
+            "words": len(words),
             "duration_srt": srt_dur,
             "duration_audio": duration,
             "duration_video": vid_dur,
+            "estilo": {
+                "caja_negra": False,
+                "sombra": False,
+                "fad": True,
+                "solo_palabras": True,
+            },
             "burn_ok": ok,
             "generado_at": datetime.now(timezone.utc).isoformat(),
-            "nota": "Letras = beats del guion sincronizados a la duración (aprox). Mejora futura: timestamps ElevenLabs.",
+            "nota": "Chunks 1–3 palabras sincronizados a narracion.mp3; sin caja/sombra negra.",
         }
         meta = Path(ctx.paths["meta"]) / "subtitulos.json"
         save_json(meta, payload)
@@ -195,12 +284,12 @@ class SubtitulosAgent:
             if ctx.paths.get("generated_videos"):
                 save_json(ctx.paths["generated_videos"], gv)
 
-        notes = f"Subtitulos {len(beats)} beats → {srt_path.name}"
+        notes = f"Subtitulos {len(timed)} chunks ({len(words)} palabras) → {ass_path.name}"
         if ok:
             notes += f" · burn {out_mp4.name}"
         return AgentResult(
             ok=True,
-            artifacts=[str(srt_path), str(meta)] + ([str(out_mp4)] if ok else []),
+            artifacts=[str(ass_path), str(srt_path), str(meta)] + ([str(out_mp4)] if ok else []),
             notes=notes,
             warnings=warnings,
         )
