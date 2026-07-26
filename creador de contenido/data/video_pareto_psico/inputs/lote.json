@@ -60,6 +60,8 @@
       "11_foco"
     ],
     "soft": true,
-    "blur_max": 2.4
+    "blur_max": 2.4,
+    "hold_frames": 38,
+    "xfade_frames": 58
   }
 }
