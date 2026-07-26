@@ -37,8 +37,9 @@
     "bed_path": "",
     "video_path": "video_pareto_psico_morph.mp4",
     "voz_off": true,
-    "regenerar_voz": true,
-    "reusar_voz": false
+    "regenerar_voz": false,
+    "reusar_voz": true,
+    "tts_fallback": "edge-tts es-MX-DaliaNeural (ElevenLabs key sin permiso text_to_speech)"
   },
   "video_final": "video_pareto_psico_morph.mp4",
   "video": {
@@ -66,5 +67,5 @@
     "hold_frames": 38,
     "xfade_frames": 58
   },
-  "regenerar_voz": true
+  "regenerar_voz": false
 }

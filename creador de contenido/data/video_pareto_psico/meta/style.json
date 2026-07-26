@@ -1,10 +1,18 @@
 {
-  "estilo_id": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
-  "descripcion": "Flat, líneas limpias, fondo claro, acento verde",
+  "estilo_id": "psico-invisible-blob",
+  "formato_video": "ensenanza",
+  "descripcion": "faceless educativo, tipografía clara, fondos atmosféricos sobrios, sin hard sell",
   "palette": [
-    "#1a1a2e",
-    "#16a085",
-    "#f5f5f5"
+    "#F5E6C8",
+    "#F5C518",
+    "#6B7F6A",
+    "#2C2C2C"
   ],
-  "formato": "ensenanza"
+  "formato": "ensenanza",
+  "personaje_fijo": true,
+  "reglas": [
+    "Mismo personaje en todas las escenas",
+    "Banner de título corto en cada escena",
+    "Sin mock placeholder de texto plano"
+  ]
 }

@@ -93,15 +93,49 @@ def synthesize_elevenlabs(texto: str, out_mp3: Path) -> Path:
         + " | ".join(errors[:3])
     )
 
+def _synthesize_edge(texto: str, out_mp3: Path) -> Path:
+    """Fallback local/remoto sin cuota ElevenLabs (edge-tts)."""
+    import asyncio
+    try:
+        import edge_tts
+    except ImportError as exc:
+        raise RuntimeError("Instala edge-tts para fallback TTS") from exc
+    text = " ".join(str(texto).split()).strip()
+    voice = os.getenv("EDGE_TTS_VOICE", "es-MX-DaliaNeural").strip() or "es-MX-DaliaNeural"
+    rate = os.getenv("EDGE_TTS_RATE", "-5%").strip() or "-5%"
+
+    async def _run() -> None:
+        communicate = edge_tts.Communicate(text, voice=voice, rate=rate)
+        await communicate.save(str(out_mp3))
+
+    asyncio.run(_run())
+    if not out_mp3.exists() or out_mp3.stat().st_size < 100:
+        raise RuntimeError("edge-tts devolvió audio vacío")
+    return out_mp3
+
+
 def synthesize(texto: str, out_mp3: Path, mock: bool | None = None) -> tuple[Path | None, str, str]:
     """
     Devuelve (path|None, modo, nota).
-    modo: elevenlabs | mock | skip
+    modo: elevenlabs | edge-tts | mock | skip
     """
     use_mock = MOCK_TTS if mock is None else mock
     if use_mock:
         return None, "mock", "MOCK_TTS=true — no se llamó a ElevenLabs"
     if not tts_activo():
-        return None, "skip", "TTS inactivo (falta ELEVENLABS_API_KEY o TTS_PROVIDER)"
-    path = synthesize_elevenlabs(texto, out_mp3)
-    return path, "elevenlabs", f"voz generada ({path.name})"
+        # sin ElevenLabs: intentar edge-tts
+        try:
+            path = _synthesize_edge(texto, out_mp3)
+            return path, "edge-tts", f"voz edge-tts ({path.name})"
+        except Exception as exc:
+            return None, "skip", f"TTS inactivo y edge-tts falló: {exc}"
+    try:
+        path = synthesize_elevenlabs(texto, out_mp3)
+        return path, "elevenlabs", f"voz generada ({path.name})"
+    except Exception as exc:
+        # key sin permiso TTS → fallback
+        try:
+            path = _synthesize_edge(texto, out_mp3)
+            return path, "edge-tts", f"fallback edge-tts tras ElevenLabs: {exc}"
+        except Exception as exc2:
+            raise RuntimeError(f"ElevenLabs y edge-tts fallaron: {exc} | {exc2}") from exc2

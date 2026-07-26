@@ -16,34 +16,50 @@
     "03-por_qu_importa_dejar_de_dispersar_ener.mp4",
     "04-primera_enseanza_separa_lo_vital_ese.mp4",
     "05-segunda_enseanza_la_proporcin_no_es_e.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_subtitulado.mp4",
+    "video_pareto_psico_morph.mp4",
+    "video_pareto_psico_audio.mp4",
+    "video_pareto_psico_subtitulado.mp4",
     "video_pareto_psico.mp4",
     "hooks",
     "guion",
     "captions",
     "thumbnail",
     "audio",
-    "thumbnail.png"
+    "thumbnail.png",
+    "narracion.mp3"
   ],
   "issues": [],
+  "warnings": [
+    "QC video: se validó por MP4 final local (rutas absolutas viejas ignoradas)"
+  ],
   "salidas": [
     "png",
     "video"
   ],
-  "receta": "ensenanza",
+  "receta": "ensenanza-tiktok",
   "agentes": [
-    "video",
+    "captions",
     "style",
-    "prompt",
-    "hook",
+    "subtitulos",
     "guion",
+    "context",
+    "qc",
+    "prompt",
+    "audio",
+    "escenas",
+    "planner",
+    "morph",
+    "thumbnail",
     "png",
     "packager",
-    "captions",
-    "thumbnail",
-    "qc",
-    "escenas",
-    "audio",
-    "context",
-    "planner"
+    "hook"
   ]
 }

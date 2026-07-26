@@ -1,10 +1,13 @@
 {
-  "receta": "ensenanza",
-  "nombre": "Enseñanza desde el resumen (estilo canal educativo)",
-  "descripcion": "Entrega una enseñanza del contenido (Pareto, etc.). Faceless didáctico — no venta dura. Ref: Psicología Invisible.",
+  "receta": "ensenanza-tiktok",
+  "nombre": "Enseñanza TikTok (morph + voz + subtítulos)",
+  "descripcion": "Cadena completa: hook→guion→escenas→png→morph→voz→letras en pantalla. Capítulo ancla.",
   "skills": [
     "hooks-redes",
     "guion-a-video",
+    "morph-escenas",
+    "audio-redes",
+    "subtitulos-burn",
     "captions-redes",
     "thumbnail-social"
   ],
@@ -17,8 +20,9 @@
     "style",
     "prompt",
     "png",
-    "video",
+    "morph",
     "audio",
+    "subtitulos",
     "captions",
     "thumbnail",
     "qc",
@@ -36,13 +40,15 @@
     "hook",
     "guion",
     "audio",
+    "subtitulos",
     "captions",
-    "thumbnail"
+    "thumbnail",
+    "morph"
   ],
   "requiere": [
     "guia"
   ],
   "slug": "video_pareto_psico",
-  "generado_at": "2026-07-25T18:21:58.861284+00:00",
+  "generado_at": "2026-07-26T20:37:14.988057+00:00",
   "warnings": []
 }
