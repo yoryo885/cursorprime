@@ -13,6 +13,7 @@ Motion soft (default):
 from __future__ import annotations
 
 import math
+import re
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -192,6 +193,48 @@ def _order_pairs(
             (inter if is_inter else resto).append((a, b, stem))
         return inter + resto
     return pairs
+
+
+def _guion_beats(lote: dict, copy_dir: Path) -> list[str]:
+    guion = str(lote.get("guion") or "").strip()
+    if not guion:
+        md = copy_dir / "guion.md"
+        if md.exists():
+            lines = [l for l in md.read_text(encoding="utf-8").splitlines() if not l.startswith("#")]
+            guion = "\n".join(lines)
+    beats = [b.strip() for b in re.split(r"\n\s*\n", guion) if b.strip()]
+    return beats
+
+
+def _scene_durations(n_scenes: int, audio_dur: float, beats: list[str]) -> list[float]:
+    """Reparte la duración del audio según el peso del guion (sync voz↔imagen)."""
+    if n_scenes < 1 or audio_dur < 1:
+        return []
+    if not beats:
+        return [audio_dur / n_scenes] * n_scenes
+
+    # Mapear N beats → n_scenes (fusiona extras al final / reparte)
+    groups: list[list[str]] = [[] for _ in range(n_scenes)]
+    if len(beats) == n_scenes:
+        for i, b in enumerate(beats):
+            groups[i] = [b]
+    elif len(beats) > n_scenes:
+        # primeros n-1 beats 1:1; el resto al último
+        for i in range(n_scenes - 1):
+            groups[i] = [beats[i]]
+        groups[-1] = beats[n_scenes - 1 :]
+    else:
+        # más escenas que beats: repartir beats y repetir último
+        for i in range(n_scenes):
+            groups[i] = [beats[min(i, len(beats) - 1)]]
+
+    weights = [max(sum(len(x) for x in g), 24) for g in groups]
+    total_w = sum(weights) or 1
+    durs = [audio_dur * (w / total_w) for w in weights]
+    # mínimos para que el morph quepa
+    durs = [max(d, 2.5) for d in durs]
+    scale = audio_dur / sum(durs)
+    return [round(d * scale, 3) for d in durs]
 
 
 def _frames_to_mp4(tmp: Path, out: Path, fps: int) -> tuple[bool, str]:
@@ -392,19 +435,24 @@ class MorphAgent:
         narr = Path(ctx.paths["copy_dir"]) / "narracion.mp3"
         audio_dur = _ffprobe_duration(narr)
         sync_audio = morph_cfg.get("sync_audio", True)
-        per_scene_target = (
-            audio_dur / len(pairs) if sync_audio and audio_dur >= 1.0 and pairs else 0.0
-        )
+        beats = _guion_beats(lote, Path(ctx.paths["copy_dir"]))
+        scene_durs: list[float] = []
+        if sync_audio and audio_dur >= 1.0 and pairs:
+            if morph_cfg.get("sync_guion", True):
+                scene_durs = _scene_durations(len(pairs), audio_dur, beats)
+            else:
+                scene_durs = [audio_dur / len(pairs)] * len(pairs)
 
         clip_paths: list[Path] = []
         items = []
         warnings = []
         for i, (a, b, stem) in enumerate(pairs, start=1):
             out_clip = clips_dir / f"{i:02d}-{stem}.mp4"
-            if pad_mode == "pingpong" and per_scene_target > 0:
+            target_s = scene_durs[i - 1] if scene_durs else 0.0
+            if pad_mode == "pingpong" and target_s > 0:
                 ok, msg = _morph_pingpong_clip(
                     a, b, out_clip,
-                    target_s=per_scene_target,
+                    target_s=target_s,
                     fps=fps,
                     hold=hold,
                     xfade=xfade,
@@ -419,8 +467,8 @@ class MorphAgent:
                 ok, msg = _morph_clip(a, b, raw_clip, fps=fps, hold=hold, xfade=xfade)
                 if not ok:
                     return AgentResult(ok=False, notes=f"Morph escena {i}: {msg}")
-                if per_scene_target > 0:
-                    ok, msg = _pad_clip_to_duration(raw_clip, per_scene_target, out_clip)
+                if target_s > 0:
+                    ok, msg = _pad_clip_to_duration(raw_clip, target_s, out_clip)
                     if not ok:
                         return AgentResult(ok=False, notes=f"Morph pad escena {i}: {msg}")
                     raw_clip.unlink(missing_ok=True)
@@ -437,7 +485,7 @@ class MorphAgent:
                     "path": str(out_clip),
                     "a": str(a),
                     "b": str(b),
-                    "duracion_objetivo_s": round(per_scene_target, 3) if per_scene_target else None,
+                    "duracion_objetivo_s": round(target_s, 3) if target_s else None,
                 }
             )
 
@@ -455,7 +503,7 @@ class MorphAgent:
         except Exception as exc:
             warnings.append(f"alias: {exc}")
 
-        expected_dur = audio_dur if per_scene_target else len(pairs) * (2 * hold + xfade) / max(fps, 1)
+        expected_dur = audio_dur if scene_durs else len(pairs) * (2 * hold + xfade) / max(fps, 1)
         payload = {
             "skill": "morph-escenas",
             "fuente_frames": fuente,
@@ -472,7 +520,9 @@ class MorphAgent:
             "audio_dur_target": audio_dur or None,
             "duration_esperada_s": round(expected_dur, 3),
             "sync_audio": bool(sync_audio and audio_dur >= 1.0),
-            "pad_mode": pad_mode if per_scene_target else None,
+            "sync_guion": bool(morph_cfg.get("sync_guion", True) and beats),
+            "beats_guion": len(beats),
+            "pad_mode": pad_mode if scene_durs else None,
             "generado_at": datetime.now(timezone.utc).isoformat(),
         }
         out_meta = Path(ctx.paths["meta"]) / "morph.json"

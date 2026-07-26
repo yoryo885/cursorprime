@@ -2,7 +2,7 @@
   "skill": "guion-a-video",
   "formato": "ensenanza",
   "titulo": "El principio de Pareto",
-  "guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.\n\nLa idea central: una minoría de situaciones genera la mayor parte de tus resultados.\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez a noventa. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
+  "guion": "Nadie te explica esto así: el 20% de las causas produce el 80% de los efectos.\n\nLa idea central: una minoría de situaciones genera la mayor parte de tus resultados.\n\nPor qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve resultados.\n\nPrimera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.\n\nSegunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez por ciento frente a noventa por ciento. Lo esencial es distinguir lo escaso pero crítico.\n\nCómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.\n\nSi esto te ordenó la cabeza, guarda el video y míralo cuando te sientas abrumado.",
   "escenas_preview": [
     {
       "id": 1,
@@ -22,7 +22,7 @@
     },
     {
       "id": 5,
-      "texto_guion": "Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez a noventa. Lo esencial es distinguir lo escaso pero crítico."
+      "texto_guion": "Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez por ciento frente a noventa por ciento. Lo esencial es distinguir lo escaso pero crítico."
     },
     {
       "id": 6,
@@ -36,7 +36,7 @@
   "ideas": [
     "El 20% de las causas produce el 80% de los efectos: una minoría de situaciones genera la mayor parte de tus resultados.",
     "Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.",
-    "La proporción no es exacta: en tu realidad puede ser diez a noventa. Lo esencial es distinguir lo escaso pero crítico."
+    "La proporción no es exacta: en tu realidad puede ser diez por ciento frente a noventa por ciento. Lo esencial es distinguir lo escaso pero crítico."
   ],
   "generado_desde": "guia",
   "modo": "heuristica",

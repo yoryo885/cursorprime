@@ -31,7 +31,10 @@ def _habla_ratios(texto: str) -> str:
 
     def repl(m: re.Match[str]) -> str:
         a, b = m.group(1), m.group(2)
-        return f"{_NUM_HABLA.get(a, a)} a {_NUM_HABLA.get(b, b)}"
+        sa = _NUM_HABLA.get(a, a)
+        sb = _NUM_HABLA.get(b, b)
+        # "diez por ciento frente a noventa por ciento" = inequívoco
+        return f"{sa} por ciento frente a {sb} por ciento"
 
     return re.sub(r"\b(\d{1,2})\s*/\s*(\d{1,2})\b", repl, texto)
 

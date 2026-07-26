@@ -8,7 +8,7 @@ Por qué importa: dejar de dispersar energía y concentrarte en el 20% que mueve
 
 Primera enseñanza: Separa lo vital (ese 20% crítico) de lo secundario; al aislar lo vital, reduces el caos.
 
-Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez a noventa. Lo esencial es distinguir lo escaso pero crítico.
+Segunda enseñanza: La proporción no es exacta: en tu realidad puede ser diez por ciento frente a noventa por ciento. Lo esencial es distinguir lo escaso pero crítico.
 
 Cómo aplicarlo hoy: elige una lista de lo que haces, marca solo el 20% que más impacta, y protege tiempo para eso.
 

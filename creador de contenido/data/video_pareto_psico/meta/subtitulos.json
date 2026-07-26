@@ -5,11 +5,11 @@
   "srt": "/workspace/creador de contenido/data/video_pareto_psico/copy/subtitulos.srt",
   "video_in": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_audio.mp4",
   "video_out": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
-  "chunks": 41,
-  "words": 123,
-  "duration_srt": 53.808,
-  "duration_audio": 53.808,
-  "duration_video": 53.75,
+  "chunks": 43,
+  "words": 128,
+  "duration_srt": 55.056,
+  "duration_audio": 55.056,
+  "duration_video": 55.041667,
   "estilo": {
     "caja_negra": false,
     "sombra": false,
@@ -17,6 +17,6 @@
     "solo_palabras": true
   },
   "burn_ok": true,
-  "generado_at": "2026-07-26T20:41:28.527035+00:00",
+  "generado_at": "2026-07-26T20:47:56.503451+00:00",
   "nota": "Chunks 1–3 palabras sincronizados a narracion.mp3; sin caja/sombra negra."
 }
