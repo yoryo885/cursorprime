@@ -1,0 +1,59 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Word,Arial,64,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,40,40,140,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.05,0:00:01.35,Word,,0,0,0,,{\fad(80,90)}Nadie te explica
+Dialogue: 0,0:00:01.39,0:00:02.28,Word,,0,0,0,,{\fad(80,90)}esto así El
+Dialogue: 0,0:00:02.32,0:00:03.12,Word,,0,0,0,,{\fad(80,90)}20% de las
+Dialogue: 0,0:00:03.16,0:00:04.55,Word,,0,0,0,,{\fad(80,90)}causas produce el
+Dialogue: 0,0:00:04.59,0:00:05.39,Word,,0,0,0,,{\fad(80,90)}80% de los
+Dialogue: 0,0:00:05.43,0:00:06.99,Word,,0,0,0,,{\fad(80,90)}efectos una minoría
+Dialogue: 0,0:00:07.03,0:00:08.75,Word,,0,0,0,,{\fad(80,90)}de situaciones genera
+Dialogue: 0,0:00:08.79,0:00:09.51,Word,,0,0,0,,{\fad(80,90)}l La idea
+Dialogue: 0,0:00:09.55,0:00:10.68,Word,,0,0,0,,{\fad(80,90)}central El 20%
+Dialogue: 0,0:00:10.72,0:00:11.78,Word,,0,0,0,,{\fad(80,90)}de las causas
+Dialogue: 0,0:00:11.82,0:00:12.95,Word,,0,0,0,,{\fad(80,90)}produce el 80%
+Dialogue: 0,0:00:12.99,0:00:14.13,Word,,0,0,0,,{\fad(80,90)}de los efectos
+Dialogue: 0,0:00:14.17,0:00:15.31,Word,,0,0,0,,{\fad(80,90)}una minoría de
+Dialogue: 0,0:00:15.35,0:00:17.07,Word,,0,0,0,,{\fad(80,90)}situaciones genera la
+Dialogue: 0,0:00:17.11,0:00:18.25,Word,,0,0,0,,{\fad(80,90)}mayor parte de
+Dialogue: 0,0:00:18.29,0:00:19.17,Word,,0,0,0,,{\fad(80,90)}tus Por qué
+Dialogue: 0,0:00:19.21,0:00:20.52,Word,,0,0,0,,{\fad(80,90)}importa dejar de
+Dialogue: 0,0:00:20.56,0:00:22.11,Word,,0,0,0,,{\fad(80,90)}dispersar energía y
+Dialogue: 0,0:00:22.15,0:00:23.63,Word,,0,0,0,,{\fad(80,90)}concentrarte en el
+Dialogue: 0,0:00:23.67,0:00:24.72,Word,,0,0,0,,{\fad(80,90)}20% que mueve
+Dialogue: 0,0:00:24.76,0:00:27.07,Word,,0,0,0,,{\fad(80,90)}resultados Primera enseñanza
+Dialogue: 0,0:00:27.11,0:00:28.33,Word,,0,0,0,,{\fad(80,90)}Separa lo vital
+Dialogue: 0,0:00:28.37,0:00:29.59,Word,,0,0,0,,{\fad(80,90)}ese 20% crítico
+Dialogue: 0,0:00:29.63,0:00:30.94,Word,,0,0,0,,{\fad(80,90)}de lo secundario
+Dialogue: 0,0:00:30.98,0:00:31.95,Word,,0,0,0,,{\fad(80,90)}al aislar lo
+Dialogue: 0,0:00:31.99,0:00:33.29,Word,,0,0,0,,{\fad(80,90)}vital reduces el
+Dialogue: 0,0:00:33.33,0:00:35.14,Word,,0,0,0,,{\fad(80,90)}caos Segunda enseñanza
+Dialogue: 0,0:00:35.18,0:00:36.48,Word,,0,0,0,,{\fad(80,90)}La proporción no
+Dialogue: 0,0:00:36.52,0:00:37.49,Word,,0,0,0,,{\fad(80,90)}es exacta en
+Dialogue: 0,0:00:37.53,0:00:38.92,Word,,0,0,0,,{\fad(80,90)}tu realidad puede
+Dialogue: 0,0:00:38.96,0:00:39.93,Word,,0,0,0,,{\fad(80,90)}ser 10/90 Lo
+Dialogue: 0,0:00:39.97,0:00:41.78,Word,,0,0,0,,{\fad(80,90)}esencial es distinguir
+Dialogue: 0,0:00:41.82,0:00:42.96,Word,,0,0,0,,{\fad(80,90)}lo escaso pero
+Dialogue: 0,0:00:43.00,0:00:44.80,Word,,0,0,0,,{\fad(80,90)}crítico Cómo aplicarlo
+Dialogue: 0,0:00:44.84,0:00:45.90,Word,,0,0,0,,{\fad(80,90)}hoy elige una
+Dialogue: 0,0:00:45.94,0:00:46.82,Word,,0,0,0,,{\fad(80,90)}lista de lo
+Dialogue: 0,0:00:46.86,0:00:48.08,Word,,0,0,0,,{\fad(80,90)}que haces marca
+Dialogue: 0,0:00:48.12,0:00:49.01,Word,,0,0,0,,{\fad(80,90)}solo el 20%
+Dialogue: 0,0:00:49.05,0:00:50.27,Word,,0,0,0,,{\fad(80,90)}que más impacta
+Dialogue: 0,0:00:50.31,0:00:51.61,Word,,0,0,0,,{\fad(80,90)}y protege tiempo
+Dialogue: 0,0:00:51.65,0:00:52.54,Word,,0,0,0,,{\fad(80,90)}para eso Si
+Dialogue: 0,0:00:52.58,0:00:53.71,Word,,0,0,0,,{\fad(80,90)}esto te ordenó
+Dialogue: 0,0:00:53.75,0:00:55.06,Word,,0,0,0,,{\fad(80,90)}la cabeza guarda
+Dialogue: 0,0:00:55.10,0:00:55.90,Word,,0,0,0,,{\fad(80,90)}el video y
+Dialogue: 0,0:00:55.94,0:00:57.24,Word,,0,0,0,,{\fad(80,90)}míralo cuando te
+Dialogue: 0,0:00:57.28,0:00:58.59,Word,,0,0,0,,{\fad(80,90)}sientas abrumado

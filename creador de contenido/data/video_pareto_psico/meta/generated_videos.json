@@ -41,16 +41,54 @@
       "mock_kling": true
     },
     {
-      "archivo": "video_pareto_psico.mp4",
-      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico.mp4",
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
       "modulo": "videos",
-      "modo": "animado",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_morph.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+      "modulo": "videos",
+      "modo": "morph",
       "tipo": "final",
       "escenas": 5,
-      "generado_at": "2026-07-25T18:22:01.460046+00:00"
+      "generado_at": "2026-07-26T19:17:09.226062+00:00"
+    },
+    {
+      "archivo": "video_pareto_psico_audio.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_audio.mp4",
+      "modulo": "videos",
+      "modo": "audio_mux",
+      "tipo": "final_audio"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
+    },
+    {
+      "archivo": "video_pareto_psico_subtitulado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4",
+      "modulo": "videos",
+      "modo": "subtitulos",
+      "tipo": "final_subtitulado"
     }
   ],
   "count": 5,
-  "modo": "animado",
-  "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico.mp4"
+  "modo": "morph",
+  "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+  "morph_final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+  "final_audio": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_audio.mp4",
+  "final_subtitulado": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_subtitulado.mp4"
 }

@@ -1,0 +1,62 @@
+{
+  "skill": "morph-escenas",
+  "fuente_frames": "refs/escenas",
+  "count": 5,
+  "clips": [
+    {
+      "escena": 1,
+      "stem": "01_abrumado",
+      "archivo": "01-01_abrumado.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/01-01_abrumado.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/01_abrumado_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/01_abrumado_b.png",
+      "duracion_objetivo_s": 11.739
+    },
+    {
+      "escena": 2,
+      "stem": "02_diagrama",
+      "archivo": "02-02_diagrama.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/02-02_diagrama.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/02_diagrama_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/02_diagrama_b.png",
+      "duracion_objetivo_s": 11.739
+    },
+    {
+      "escena": 3,
+      "stem": "03_piedras",
+      "archivo": "03-03_piedras.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/03-03_piedras.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/03_piedras_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/03_piedras_b.png",
+      "duracion_objetivo_s": 11.739
+    },
+    {
+      "escena": 4,
+      "stem": "04_lista",
+      "archivo": "04-04_lista.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/04-04_lista.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/04_lista_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/04_lista_b.png",
+      "duracion_objetivo_s": 11.739
+    },
+    {
+      "escena": 5,
+      "stem": "05_claridad",
+      "archivo": "05-05_claridad.mp4",
+      "path": "/workspace/creador de contenido/data/video_pareto_psico/videos/clips_morph/05-05_claridad.mp4",
+      "a": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/05_claridad_a.png",
+      "b": "/workspace/creador de contenido/data/video_pareto_psico/refs/escenas/05_claridad_b.png",
+      "duracion_objetivo_s": 11.739
+    }
+  ],
+  "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
+  "alias": "/workspace/creador de contenido/data/video_pareto_psico/videos/pareto_5_escenas_animado.mp4",
+  "hold_frames": 10,
+  "xfade_frames": 20,
+  "fps": 24,
+  "audio_dur_target": 58.697143,
+  "duration_esperada_s": 58.697,
+  "sync_audio": true,
+  "pad_mode": "tpad_freeze",
+  "generado_at": "2026-07-26T19:17:09.226062+00:00"
+}

@@ -50,7 +50,10 @@ def _texto_plano(guion: str) -> str:
 def _words(guion: str) -> list[str]:
     text = _texto_plano(guion)
     # tokens: palabras y números con %
-    toks = re.findall(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+(?:[./%][A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+)?|[…]", text)
+    toks = re.findall(
+        r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+(?:[./][A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+)?%?|[…]",
+        text,
+    )
     # filtra puntos suspensivos sueltos
     return [t for t in toks if t and t != "…"]
 
