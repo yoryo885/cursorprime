@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from src.config import ROOT, load_json, save_json
+from src.paths_resolve import resolve_video_final
 from src.tts_elevenlabs import synthesize, tts_activo
 from src.types import AgentResult, PipelineContext
 from src.video_backend import mux_audio_bed
@@ -77,7 +78,9 @@ class AudioAgent:
         copy_dir.mkdir(parents=True, exist_ok=True)
         if voz_off and narracion:
             out_voz = copy_dir / "narracion.mp3"
-            # Permite override: audio.voz_path ya generado
+            # Reusa narracion.mp3 si ya existe y no forzamos regenerar
+            reuse = bool(audio_cfg.get("reusar_voz", True)) and out_voz.exists() and out_voz.stat().st_size > 1000
+            force = bool(audio_cfg.get("regenerar_voz") or lote.get("regenerar_voz"))
             preset = audio_cfg.get("voz_path") or ""
             if preset:
                 p = Path(preset)
@@ -89,6 +92,14 @@ class AudioAgent:
                 if p.exists():
                     voz_path = p
                     brief["tts"] = {"provider": "archivo", "modo": "voz_path", "path": str(p)}
+            elif reuse and not force:
+                voz_path = out_voz
+                brief["tts"] = {
+                    "provider": "archivo",
+                    "modo": "reusar",
+                    "path": str(out_voz),
+                    "nota": "Reutiliza copy/narracion.mp3 (pon regenerar_voz:true para forzar TTS)",
+                }
             else:
                 try:
                     path, modo, nota = synthesize(narracion, out_voz)
@@ -107,14 +118,10 @@ class AudioAgent:
                     warnings.append(f"TTS: {exc}")
                     brief["tts"] = {"provider": "elevenlabs", "modo": "error", "error": str(exc)[:200]}
 
-        # 2) Resolver video final
+        # 2) Resolver video final (portable Mac/cloud)
         videos_meta = load_json(ctx.paths.get("generated_videos"), {}) if ctx.paths.get("generated_videos") else {}
-        final = videos_meta.get("final")
-        if not final:
-            for v in videos_meta.get("videos") or []:
-                if v.get("tipo") == "final" or str(v.get("archivo", "")).endswith(".mp4"):
-                    final = v.get("path")
-                    break
+        videos_out = Path(ctx.paths["videos_out"])
+        final_path = resolve_video_final(videos_meta or {}, videos_out, ctx.slug)
 
         bed = audio_cfg.get("bed_path") or audio_cfg.get("musica_path") or ""
         audio_for_mux: Path | None = None
@@ -130,18 +137,29 @@ class AudioAgent:
             if bed_path.exists():
                 audio_for_mux = bed_path
 
-        if audio_for_mux and final:
-            out_mux = Path(ctx.paths["videos_out"]) / f"{ctx.slug}_audio.mp4"
-            ok, msg = mux_audio_bed(Path(final), audio_for_mux, out_mux)
+        if audio_for_mux and final_path:
+            out_mux = videos_out / f"{ctx.slug}_audio.mp4"
+            ok, msg = mux_audio_bed(final_path, audio_for_mux, out_mux)
             if ok:
                 muxed = str(out_mux)
                 brief["mux"] = {
                     "ok": True,
                     "path": muxed,
                     "fuente": "voz" if voz_path and audio_for_mux == voz_path else "bed",
+                    "video_fuente": str(final_path),
                 }
+                # Normaliza meta a rutas locales
+                videos_meta = videos_meta or {}
+                videos_meta["final"] = str(final_path)
                 videos_meta["final_audio"] = muxed
-                videos_meta.setdefault("videos", []).append(
+                videos_meta.setdefault("videos", [])
+                # quita entradas stale de final_audio
+                videos_meta["videos"] = [
+                    v
+                    for v in videos_meta["videos"]
+                    if v.get("tipo") != "final_audio"
+                ]
+                videos_meta["videos"].append(
                     {
                         "archivo": out_mux.name,
                         "path": muxed,
@@ -150,16 +168,41 @@ class AudioAgent:
                         "tipo": "final_audio",
                     }
                 )
+                # reescribe paths de videos existentes si el archivo local existe por nombre
+                fixed = []
+                for v in videos_meta["videos"]:
+                    vv = dict(v)
+                    name = vv.get("archivo") or Path(str(vv.get("path") or "")).name
+                    local = videos_out / name if name else None
+                    if local and local.exists():
+                        vv["path"] = str(local)
+                        vv["archivo"] = name
+                    elif vv.get("escena_id") is not None:
+                        clip = videos_out / "clips" / name
+                        if clip.exists():
+                            vv["path"] = str(clip)
+                    fixed.append(vv)
+                videos_meta["videos"] = fixed
                 save_json(ctx.paths["generated_videos"], videos_meta)
             else:
                 warnings.append(f"mux audio: {msg}")
                 brief["mux"] = {"ok": False, "error": msg}
+        elif audio_for_mux and not final_path:
+            warnings.append(
+                "mux audio: no hay video local. Corre sin --desde, o: "
+                f"--desde video  (busca {ctx.slug}.mp4 en videos/)"
+            )
+            brief["mux"] = {
+                "ok": False,
+                "error": "video no existe",
+                "hint": "Regenera video o asegúrate de tener data/.../videos/{slug}.mp4",
+            }
         else:
             brief["mux"] = {
                 "ok": False,
                 "nota": (
                     "Sin voz TTS ni bed_path — solo brief. "
-                    "Pon MOCK_TTS=false + ELEVENLABS_API_KEY, o audio.voz_path / audio.bed_path."
+                    "Pon MOCK_TTS=false + ELEVENLABS_API_KEY en ELEVENLABS_KEY.env"
                 ),
             }
 
@@ -173,6 +216,7 @@ class AudioAgent:
             f"**Tipo:** {tipo}\n\n"
             f"**TTS:** {tts_line.get('modo') or '—'} · {tts_line.get('nota') or tts_line.get('path') or ''}\n\n"
             f"**Música:** {brief['musica']['estilo']} · ~{brief['musica']['bpm_sugerido']} BPM\n\n"
+            f"**Mux:** {brief.get('mux')}\n\n"
             f"**Atracción:**\n" + "\n".join(f"- {a}" for a in brief["atraccion"]) + "\n",
             encoding="utf-8",
         )
@@ -181,4 +225,5 @@ class AudioAgent:
             notes += f" · voz {voz_path.name}"
         if muxed:
             notes += f" · mux {Path(muxed).name}"
+        # ok=True si hay voz aunque mux falle (el usuario ya tiene narracion.mp3)
         return AgentResult(ok=True, artifacts=[str(out), str(md)], notes=notes, warnings=warnings)
