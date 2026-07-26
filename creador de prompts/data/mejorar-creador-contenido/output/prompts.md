@@ -146,6 +146,23 @@ python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza-ti
 
 ---
 
+---
+
+## Mejora activa (v5) — Más movimiento del personaje
+
+**Problema:** cada escena ~11.7s = ~1.7s morph A→B + **~10s freeze** (el blob casi no se mueve).
+
+**Mejora objetivo:** el personaje debe moverse de forma continua (estilo Psicología Invisible), no quedar congelado.
+
+### Opciones (elegir / combinar)
+
+1. **Ping-pong A↔B (recomendada, rápida):** en vez de freeze, repetir morph A→B→A durante toda la duración de la escena.
+2. **Idle breathe:** ligero “respirar” (scale/bob 1–2%) en holds.
+3. **Multi-pose:** refs `*_a/_b/_c.png` por escena (más gestos).
+4. **Kling/i2v:** movimiento real (costo API).
+
+Implementar primero **1 + 2** en `MorphAgent` (`pad_mode=pingpong` en lugar de `tpad_freeze`).
+
 ## Cómo usarlo
 
 1. Abre un chat nuevo con el workspace `cursorprime`.

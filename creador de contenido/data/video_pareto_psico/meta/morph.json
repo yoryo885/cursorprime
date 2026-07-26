@@ -51,12 +51,13 @@
   ],
   "final": "/workspace/creador de contenido/data/video_pareto_psico/videos/video_pareto_psico_morph.mp4",
   "alias": "/workspace/creador de contenido/data/video_pareto_psico/videos/pareto_5_escenas_animado.mp4",
-  "hold_frames": 10,
-  "xfade_frames": 20,
+  "hold_frames": 6,
+  "xfade_frames": 28,
   "fps": 24,
+  "idle_amp": 0.014,
   "audio_dur_target": 58.697143,
   "duration_esperada_s": 58.697,
   "sync_audio": true,
-  "pad_mode": "tpad_freeze",
-  "generado_at": "2026-07-26T19:17:09.226062+00:00"
+  "pad_mode": "pingpong",
+  "generado_at": "2026-07-26T19:57:11.753466+00:00"
 }

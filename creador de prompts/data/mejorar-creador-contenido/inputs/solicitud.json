@@ -8,7 +8,9 @@
     "Pasos ordenados: limpieza → checkpoint → copy LLM → imágenes reales → Kling",
     "Formato ensenanza: lección didáctica desde resumen (vs promo/CTA)",
     "Subtítulos karaoke: solo palabras, sin sombra/caja negra, aparecen y desaparecen con la voz",
-    "Morph sincronizado a duración de narracion.mp3"
+    "Morph sincronizado a duración de narracion.mp3",
+    "Más movimiento del personaje blob (evitar freeze largo)",
+    "Morph ping-pong / idle breathe / multi-pose"
   ],
   "contexto": {
     "audiencia": "agente Cursor / operador",
@@ -17,7 +19,7 @@
     "idioma": "español",
     "objetivo": "Prompt operable para mejorar creador de contenido sin desarmar el ecosistema; videos pueden enseñar (ensenanza) o vender (promo)"
   },
-  "notas": "Ref YouTube Psicología Invisible. Formato ensenanza: enseñar insight del resumen, sin hard sell. Frontera: solo creador de contenido/. Subtítulos: NO BorderStyle=3 ni sombra negra; solo tipografía; timing palabra/chunk con la voz.",
+  "notas": "Ref YouTube Psicología Invisible. Formato ensenanza: enseñar insight del resumen, sin hard sell. Frontera: solo creador de contenido/. Subtítulos: NO BorderStyle=3 ni sombra negra; solo tipografía; timing palabra/chunk con la voz. | Motion: preferir loop morph sobre tpad_freeze estático.",
   "mejoras": [
     {
       "mensaje": "dame un prompt paso a paso para mejorar sin desarmar otros proyectos",
@@ -58,6 +60,10 @@
     {
       "mensaje": "sigamos con esa mejora; la letra no tiene que salir con la sombra negra; solo las palabras y que vayan apareciendo con la voz y desapareciendo",
       "cambio": "Morph hold ↔ duración narracion.mp3; mux no corta voz (tpad si hace falta); subtítulos ASS palabra/chunk sin caja/sombra negra, fad in/out con la voz"
+    },
+    {
+      "mensaje": "falta que el personaje se mueva mas; como mejorariamos esto?",
+      "cambio": "Diagnóstico: solo ~14% motion por escena (1.7s morph + ~10s freeze). Propuesta: ping-pong A↔B + micro-idle; opcional poses C y Kling"
     }
   ],
   "estrategia_tiktok": {
@@ -68,7 +74,10 @@
     "cortes": "5 x 20–30s",
     "estilo": "ensenanza + personaje blob + morph",
     "fuente": "resumen (solo lectura)",
-    "agentes_nuevos": ["morph", "subtitulos"],
+    "agentes_nuevos": [
+      "morph",
+      "subtitulos"
+    ],
     "subtitulos_ux": {
       "sin_caja_negra": true,
       "sin_sombra": true,
@@ -85,5 +94,37 @@
       "ilustración plana suave, no foto, no mock text placeholder"
     ]
   },
-  "variantes": 1
+  "variantes": 1,
+  "motion_plan": {
+    "problema": "tpad_freeze deja ~86% de cada escena congelada",
+    "opcion_recomendada": "pingpong_ab + idle_breathe",
+    "opciones": [
+      {
+        "id": "pingpong",
+        "desc": "Repetir A→B→A durante toda la duración de la escena",
+        "esfuerzo": "bajo",
+        "impacto": "alto"
+      },
+      {
+        "id": "idle",
+        "desc": "Micro movimiento (scale/bob) mientras se ve una pose",
+        "esfuerzo": "bajo",
+        "impacto": "medio"
+      },
+      {
+        "id": "multipose",
+        "desc": "3+ poses por escena (A/B/C)",
+        "esfuerzo": "medio",
+        "impacto": "alto",
+        "requiere": "más PNGs"
+      },
+      {
+        "id": "kling",
+        "desc": "Video real del personaje (API)",
+        "esfuerzo": "alto",
+        "impacto": "muy alto",
+        "requiere": "MOCK_KLING=false + cuota"
+      }
+    ]
+  }
 }

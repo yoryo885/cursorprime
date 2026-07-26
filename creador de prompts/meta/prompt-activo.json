@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 4,
-    "ultima_mejora": "Subtítulos solo palabras sin sombra negra + aparecen/desaparecen con voz; morph = duración narración"
+    "version": 5,
+    "ultima_mejora": "Más movimiento: ping-pong A↔B + idle (evitar freeze ~86%)"
   },
   "historial": [
     {
@@ -29,6 +29,11 @@
       "version": 4,
       "mensaje": "letra sin sombra negra; palabras aparecen y desaparecen con la voz",
       "cambio": "ASS karaoke limpio + morph sync narración"
+    },
+    {
+      "version": 5,
+      "mensaje": "falta que el personaje se mueva mas",
+      "cambio": "Plan motion: pingpong + idle; freeze es la causa"
     }
   ]
 }
