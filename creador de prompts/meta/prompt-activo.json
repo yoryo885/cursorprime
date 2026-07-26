@@ -6,8 +6,8 @@
     "tipo": "cursor",
     "proyecto_destino": "creador-de-contenido",
     "titulo": "Mejorar creador de contenido sin tocar otros proyectos",
-    "version": 5,
-    "ultima_mejora": "Más movimiento: ping-pong A↔B + idle (evitar freeze ~86%)"
+    "version": 6,
+    "ultima_mejora": "Más imágenes de interacción: pack 06–08 + morph con más escenas"
   },
   "historial": [
     {
@@ -34,6 +34,11 @@
       "version": 5,
       "mensaje": "falta que el personaje se mueva mas",
       "cambio": "Plan motion: pingpong + idle; freeze es la causa"
+    },
+    {
+      "version": 6,
+      "mensaje": "crear mas imagenes donde el personaje interactue",
+      "cambio": "Brief pack interactivo 06–08"
     }
   ]
 }

@@ -10,7 +10,9 @@
     "Subtítulos karaoke: solo palabras, sin sombra/caja negra, aparecen y desaparecen con la voz",
     "Morph sincronizado a duración de narracion.mp3",
     "Más movimiento del personaje blob (evitar freeze largo)",
-    "Morph ping-pong / idle breathe / multi-pose"
+    "Morph ping-pong / idle breathe / multi-pose",
+    "Más imágenes de interacción del personaje con objetos (no solo gestos en vacío)",
+    "Pack refs/escenas ampliado: poses A/B con acción clara"
   ],
   "contexto": {
     "audiencia": "agente Cursor / operador",
@@ -64,6 +66,10 @@
     {
       "mensaje": "falta que el personaje se mueva mas; como mejorariamos esto?",
       "cambio": "Diagnóstico: solo ~14% motion por escena (1.7s morph + ~10s freeze). Propuesta: ping-pong A↔B + micro-idle; opcional poses C y Kling"
+    },
+    {
+      "mensaje": "pienso que deberiamos crear mas imagenes donde el personaje interactue",
+      "cambio": "Pack interactivo: nuevas escenas 06–08 (tachar lista, mover piedras, proteger tiempo) + morph usa todos los pares A/B"
     }
   ],
   "estrategia_tiktok": {
@@ -126,5 +132,29 @@
         "requiere": "MOCK_KLING=false + cuota"
       }
     ]
+  },
+  "pack_interactivo": {
+    "objetivo": "el blob toca/usa objetos del escenario en cada beat",
+    "escenas_nuevas": [
+      {
+        "id": "06_tachar",
+        "banner": "TACHA LO SECUNDARIO",
+        "a": "señala ítem irrelevante",
+        "b": "tacha con marcador"
+      },
+      {
+        "id": "07_piedra_vital",
+        "banner": "LO QUE MUEVE",
+        "a": "mira piedras pequeñas",
+        "b": "levanta/abraza la piedra grande"
+      },
+      {
+        "id": "08_protege_tiempo",
+        "banner": "PROTEGE EL 20%",
+        "a": "mira reloj/agenda vacío",
+        "b": "bloquea hueco en calendario con la mano"
+      }
+    ],
+    "regla": "mismo personaje blob gris-azul, banner amarillo, estilo Psicología Invisible, 1:1"
   }
 }

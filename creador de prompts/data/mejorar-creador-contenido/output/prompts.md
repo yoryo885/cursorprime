@@ -163,6 +163,21 @@ python3 creador_imagenes_main.py --slug video_pareto_psico --receta ensenanza-ti
 
 Implementar primero **1 + 2** en `MorphAgent` (`pad_mode=pingpong` en lugar de `tpad_freeze`).
 
+---
+
+## Mejora activa (v6) — Imágenes de interacción
+
+No bastan gestos en el aire: el personaje **interactúa con objetos** (lista, piedras, calendario, diagrama).
+
+### Pack nuevo (añadir a `refs/escenas/`)
+| ID | Banner | Pose A | Pose B |
+|----|--------|--------|--------|
+| 06_tachar | TACHA LO SECUNDARIO | señala ítem | tacha con marcador |
+| 07_piedra_vital | LO QUE MUEVE | mira lo pequeño | levanta la piedra grande |
+| 08_protege_tiempo | PROTEGE EL 20% | mira agenda | bloquea tiempo con la mano |
+
+Reglas: mismo blob, banner amarillo/negro, pastel, 1080×1080, par A/B mismo fondo.
+
 ## Cómo usarlo
 
 1. Abre un chat nuevo con el workspace `cursorprime`.
