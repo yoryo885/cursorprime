@@ -50,6 +50,26 @@
     {
       "fecha": "2026-07-25",
       "texto": "v9: sin screenshots solo URL; pasos 2-7: QC constitution, campos brief, demo-simple, aprendizaje real, tienda modular, docs/CLI"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Pregunta iPad: ¿se puede usar n8n desde este agente? Respuesta: no hay n8n instalado/MCP; sí se puede diseñar workflows o llamar webhooks si da URL."
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Pregunta: manera más rápida de usar n8n desde iPad/agente → webhook n8n.cloud + URL"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Aclaración: subir n8n a GitHub = versionar workflows JSON (sí edito); ejecutar requiere instancia n8n + webhook"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Celular = mismo flujo que iPad: agente cloud + webhook n8n; GitHub solo versiona"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "n8n instalado en repo /n8n + tunnel para celular; workflows versionados; instancia efímera del cloud agent"
     }
   ],
   "notas": "Prompt v9: entrega solo URL. Pasos 2-7 implementados."

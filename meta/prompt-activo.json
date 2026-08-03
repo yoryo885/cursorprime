@@ -1,12 +1,12 @@
 {
-  "version": 22,
+  "version": 23,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Arreglar creador de landings (visual)",
     "version": 9,
-    "ultima_mejora": "v9 solo URL + pasos 2-7 hechos",
+    "ultima_mejora": "n8n en repo usable desde celular via tunnel",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }
