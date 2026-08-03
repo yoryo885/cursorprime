@@ -20,11 +20,12 @@ No hace falta login ahora. Acá guardamos **sistemas listos** (JSON) para import
 | `04-audit-trigger` | Disparo audit (genérico) | Webhook con URL → log + ack | `sistemas/04-audit-trigger/` |
 | `05-contenido-lote` | Lote contenido | Webhook con slug → ack para pipeline contenido | `sistemas/05-contenido-lote/` |
 | **`06-auditorias-locales`** | **#1 Auditorías (negocio)** | Embudo: audit → informe → planes upsell | `sistemas/06-auditorias-locales/` |
+| **`07-presencia-digital`** | **#2 Presencia digital** | Upsell: web + GBP (+ Wasap) | `sistemas/07-presencia-digital/` |
 
-## Sistema prioritario
+## Sistemas prioritarios
 
-**`06-auditorias-locales`** = producto #1 más rentable.  
-Primero se entrega el análisis; después planes `basico` / `presencia` / `completo` (`planes.json`).
+1. **`06-auditorias-locales`** — entrada (espejo / informe).  
+2. **`07-presencia-digital`** — arreglo (web + Google + Wasap opcional).
 
 ## Convención de cada sistema
 

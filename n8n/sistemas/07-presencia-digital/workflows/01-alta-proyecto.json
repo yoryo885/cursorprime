@@ -1,0 +1,63 @@
+{
+  "name": "07a-alta-proyecto-presencia",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "presencia/alta",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-07a",
+      "name": "Webhook Alta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "07a-alta-presencia"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst paquetes = new Set(['presencia', 'completo', 'mantenimiento']);\nconst paquete = String(b.paquete || b.plan || 'presencia').trim().toLowerCase();\nconst cliente = String(b.cliente || b.slug || '').trim();\nconst marca = String(b.marca || b.nombre_negocio || '').trim();\nconst whatsapp = String(b.whatsapp || '').trim();\nconst jobAudit = String(b.jobAudit || b.job_audit || '').trim();\nconst urlNegocio = String(b.url || '').trim();\nif (!paquetes.has(paquete)) {\n  return [{ json: { ok: false, error: 'paquete inválido', paquetes: [...paquetes] } }];\n}\nif (!cliente && !marca) {\n  return [{ json: { ok: false, error: 'falta cliente o marca' } }];\n}\nconst slug = (cliente || marca).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');\nreturn [{ json: {\n  ok: true,\n  sistema: '07-presencia-digital',\n  etapa: 'alta',\n  jobId: `PRE-${Date.now()}`,\n  slug,\n  marca: marca || slug,\n  paquete,\n  whatsapp,\n  jobAudit,\n  urlNegocio,\n  status: 'queued',\n  apps: ['creador-de-landings', 'vercel/netlify', 'gbp', 'whatsapp', 'clientes/'],\n  entregables: paquete === 'completo'\n    ? ['landing_url', 'gbp_ok', 'wasap_task']\n    : ['landing_url', 'gbp_ok'],\n  todo: 'TODO: crear clientes/{slug}/ + disparar landing pipeline',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-07a",
+      "name": "Armar job presencia",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-07a",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    },
+    {
+      "parameters": {
+        "content": "## #2 Presencia\nApps: landings + Vercel/Netlify + GBP + Wasap\nDepende del audit (#1) cuando exista.",
+        "height": 200,
+        "width": 300
+      },
+      "id": "note-07a",
+      "name": "Nota",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [280, 200]
+    }
+  ],
+  "connections": {
+    "Webhook Alta": {
+      "main": [[{ "node": "Armar job presencia", "type": "main", "index": 0 }]]
+    },
+    "Armar job presencia": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

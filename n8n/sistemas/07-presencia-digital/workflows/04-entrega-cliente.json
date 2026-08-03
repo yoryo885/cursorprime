@@ -1,0 +1,51 @@
+{
+  "name": "07d-entrega-cliente",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "presencia/entrega",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-07d",
+      "name": "Webhook Entrega",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "07d-entrega-presencia"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst to = String(b.whatsapp || b.to || '').trim();\nconst marca = String(b.marca || b.cliente || '').trim();\nconst landingUrl = String(b.landingUrl || '').trim();\nconst paquete = String(b.paquete || 'presencia').trim();\nconst texto = [\n  `Listo${marca ? ' — ' + marca : ''}: tu presencia digital quedó armada.`,\n  landingUrl ? `Web: ${landingUrl}` : 'Web: (pegar URL)',\n  'Google Business: revisá nombre, horarios y link a la web.',\n  paquete === 'completo' ? 'Wasap task: activado / en configuración.' : '',\n  'Si querés cambios chicos, podemos sumar mantenimiento mensual.'\n].filter(Boolean).join('\\n');\nif (!to) {\n  return [{ json: { ok: false, error: 'falta whatsapp', texto } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '07-presencia-digital',\n  etapa: 'entrega',\n  to,\n  texto,\n  status: 'draft_ready',\n  todo: 'TODO_CREDENCIAL: enviar Wasap',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-07d",
+      "name": "Mensaje entrega",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-07d",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Entrega": {
+      "main": [[{ "node": "Mensaje entrega", "type": "main", "index": 0 }]]
+    },
+    "Mensaje entrega": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

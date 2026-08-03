@@ -106,6 +106,18 @@
     {
       "fecha": "2026-08-03",
       "texto": "Creado sistema n8n 06-auditorias-locales: embudo audit→planes, 3 workflows, planes.json"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar #2 Presencia digital locales (producto, entrega, relación con audit)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Apps del #2 Presencia digital (web, GBP, Wasap, n8n, deploy)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Creado sistema n8n 07-presencia-digital: alta, deploy, GBP, entrega + paquetes.json"
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"

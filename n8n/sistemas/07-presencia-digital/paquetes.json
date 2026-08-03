@@ -1,0 +1,39 @@
+{
+  "sistema": "07-presencia-digital",
+  "producto": "presencia_digital_locales",
+  "depende_de": ["06-auditorias-locales"],
+  "moneda": "USD",
+  "nota": "Precios placeholder — alinear con planes.json del #1",
+  "paquetes": [
+    {
+      "id": "presencia",
+      "nombre": "Presencia",
+      "precio_desde": 399,
+      "incluye": [
+        "Landing o web local publicada",
+        "Google Business Profile ordenado",
+        "CTA WhatsApp visible"
+      ]
+    },
+    {
+      "id": "completo",
+      "nombre": "Completo",
+      "precio_desde": 699,
+      "incluye": [
+        "Todo Presencia",
+        "Wasap task (citas/pedidos/FAQ) + handoff"
+      ]
+    },
+    {
+      "id": "mantenimiento",
+      "nombre": "Mantenimiento mensual",
+      "precio_desde": 79,
+      "incluye": [
+        "Cambios menores de copy",
+        "Revisión GBP",
+        "Reporte corto mensual"
+      ],
+      "recurrente": true
+    }
+  ]
+}

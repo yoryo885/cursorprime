@@ -1,0 +1,51 @@
+{
+  "name": "07b-deploy-listo",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "presencia/deploy-listo",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-07b",
+      "name": "Webhook Deploy",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "07b-deploy-listo"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst jobId = String(b.jobId || '').trim();\nconst slug = String(b.slug || b.cliente || '').trim();\nconst landingUrl = String(b.landingUrl || b.url || '').trim();\nconst host = String(b.host || 'vercel').trim();\nif (!landingUrl || !/^https?:\\/\\//i.test(landingUrl)) {\n  return [{ json: { ok: false, error: 'landingUrl inválida' } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '07-presencia-digital',\n  etapa: 'deploy',\n  jobId,\n  slug,\n  landingUrl,\n  host,\n  status: 'web_publicada',\n  siguiente: 'gbp_checklist',\n  todo: 'TODO: guardar URL en clientes/{slug}/entregables/',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-07b",
+      "name": "Registrar deploy",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-07b",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Deploy": {
+      "main": [[{ "node": "Registrar deploy", "type": "main", "index": 0 }]]
+    },
+    "Registrar deploy": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

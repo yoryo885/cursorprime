@@ -1,0 +1,51 @@
+{
+  "name": "07c-gbp-checklist",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "presencia/gbp",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-07c",
+      "name": "Webhook GBP",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "07c-gbp-checklist"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst jobId = String(b.jobId || '').trim();\nconst slug = String(b.slug || '').trim();\nconst checks = {\n  nombre_correcto: !!b.nombre_correcto,\n  categoria: !!b.categoria,\n  horarios: !!b.horarios,\n  telefono_wasap: !!b.telefono_wasap,\n  fotos: !!b.fotos,\n  link_web: !!b.link_web,\n};\nconst done = Object.values(checks).filter(Boolean).length;\nconst total = Object.keys(checks).length;\nconst ok = done === total;\nreturn [{ json: {\n  ok: true,\n  sistema: '07-presencia-digital',\n  etapa: 'gbp',\n  jobId,\n  slug,\n  checks,\n  progreso: `${done}/${total}`,\n  status: ok ? 'gbp_completo' : 'gbp_pendiente',\n  todo: 'TODO: checklist manual o API GBP',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-07c",
+      "name": "Checklist GBP",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-07c",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook GBP": {
+      "main": [[{ "node": "Checklist GBP", "type": "main", "index": 0 }]]
+    },
+    "Checklist GBP": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}
