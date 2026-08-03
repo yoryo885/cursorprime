@@ -1,0 +1,51 @@
+{
+  "name": "08d-alta-negocio",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cola/alta",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-08d",
+      "name": "Webhook Alta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "08d-alta-negocio"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst paquetes = new Set(['setup', 'mensual', 'pico']);\nconst paquete = String(b.paquete || 'setup').trim().toLowerCase();\nconst marca = String(b.marca || b.nombre || '').trim();\nconst whatsapp = String(b.whatsapp || '').trim();\nconst rubro = String(b.rubro || 'local').trim();\nif (!paquetes.has(paquete)) return [{ json: { ok: false, error: 'paquete inválido', paquetes: [...paquetes] } }];\nif (!marca) return [{ json: { ok: false, error: 'falta marca' } }];\nconst slug = marca.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');\nreturn [{ json: {\n  ok: true,\n  sistema: '08-cola-pedidos-wasap',\n  etapa: 'alta_negocio',\n  jobId: `COL-${Date.now()}`,\n  slug, marca, rubro, whatsapp, paquete,\n  status: 'onboarding',\n  apps: ['whatsapp-meta', 'n8n', 'sheet/notion'],\n  todo: 'TODO: clientes/{slug}/ + activar webhooks Meta',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-08d",
+      "name": "Onboarding",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-08d",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Alta": {
+      "main": [[{ "node": "Onboarding", "type": "main", "index": 0 }]]
+    },
+    "Onboarding": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

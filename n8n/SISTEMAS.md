@@ -6,37 +6,37 @@ No hace falta login ahora. Acá guardamos **sistemas listos** (JSON) para import
 
 1. Abrí tu n8n (cloud o self-host)
 2. Menú **⋯** → **Import from File** (o Workflows → Import)
-3. Elegí el `.json` de `sistemas/{id}/workflow.json`
+3. Elegí el `.json` de `sistemas/{id}/workflows/*.json`
 4. Completá credenciales marcadas `TODO_CREDENCIAL`
 5. **Activate** → copiá la URL del Webhook si aplica
 
-## Catálogo
+## Catálogo de negocio (ranking 1–4) ✅
 
-| ID | Sistema | Para qué | Archivo |
-|----|---------|----------|---------|
-| `01-ping` | Ping salud | Probar que n8n responde | `sistemas/01-ping/` |
-| `02-lead-landing` | Lead de landing | Webhook recibe lead → normaliza → responde OK | `sistemas/02-lead-landing/` |
-| `03-wasap-faq` | Wasap FAQ (esqueleto) | Webhook Meta → respuesta FAQ / handoff | `sistemas/03-wasap-faq/` |
-| `04-audit-trigger` | Disparo audit (genérico) | Webhook con URL → log + ack | `sistemas/04-audit-trigger/` |
-| `05-contenido-lote` | Lote contenido | Webhook con slug → ack para pipeline contenido | `sistemas/05-contenido-lote/` |
-| **`06-auditorias-locales`** | **#1 Auditorías (negocio)** | Embudo: audit → informe → planes upsell | `sistemas/06-auditorias-locales/` |
-| **`07-presencia-digital`** | **#2 Presencia digital** | Upsell: web + GBP (+ Wasap) | `sistemas/07-presencia-digital/` |
+| # | ID | Sistema | Entrega al cliente |
+|---|-----|---------|-------------------|
+| 1 | `06-auditorias-locales` | Auditorías | Informe score + puerta a planes |
+| 2 | `07-presencia-digital` | Presencia digital | Web + GBP (+ Wasap) |
+| 3 | `08-cola-pedidos-wasap` | Cola pedidos | Tickets + estados + avisos |
+| 4 | `09-wasap-task-faq-citas` | Wasap task | FAQ + citas + handoff |
 
-## Sistemas prioritarios
+## Utilitarios (plantillas cortas)
 
-1. **`06-auditorias-locales`** — entrada (espejo / informe).  
-2. **`07-presencia-digital`** — arreglo (web + Google + Wasap opcional).
+| ID | Sistema | Archivo |
+|----|---------|---------|
+| `01-ping` | Ping salud | `sistemas/01-ping/` |
+| `02-lead-landing` | Lead landing | `sistemas/02-lead-landing/` |
+| `03-wasap-faq` | FAQ corto | `sistemas/03-wasap-faq/` |
+| `04-audit-trigger` | Disparo audit genérico | `sistemas/04-audit-trigger/` |
+| `05-contenido-lote` | Lote contenido | `sistemas/05-contenido-lote/` |
 
-## Convención de cada sistema
+## Embudo recomendado
 
 ```
-sistemas/{id}/
-├── README.md        # qué hace, inputs, outputs, TODOs
-└── workflow.json    # importable en n8n
+#1 Audit → #2 Presencia → (#3 Cola ó #4 FAQ/citas según el rubro)
 ```
 
 ## Estado
 
-- **Ahora:** solo archivos en GitHub (versionados).
-- **Después:** import + credenciales + Activate.
-- Login owner / otro correo: pendiente a propósito.
+- **Ahora:** esqueletos en GitHub (1–4 hechos).
+- **Después:** import + Meta API + precios reales.
+- Login n8n owner: pendiente a propósito.

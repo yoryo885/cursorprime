@@ -1,0 +1,51 @@
+{
+  "name": "09b-intent-router",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-task/intent",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-09b",
+      "name": "Webhook Intent",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "09b-intent-router"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst text = String(b.text || b.textLower || '').toLowerCase();\nconst from = String(b.from || '').trim();\nconst negocio = String(b.negocio || '').trim();\nif (!text) return [{ json: { ok: true, intent: 'ignore', from, negocio, reply: '' } }];\nconst handoffKeys = ['humano', 'persona', 'asesor', 'llamar', 'operador'];\nconst citaKeys = ['cita', 'turno', 'agendar', 'reserva', 'horario disponible'];\nconst faqKeys = ['horario', 'precio', 'direccion', 'dirección', 'servicios', 'donde', 'cuánto', 'cuanto'];\nlet intent = 'faq';\nif (handoffKeys.some(k => text.includes(k))) intent = 'handoff';\nelse if (citaKeys.some(k => text.includes(k))) intent = 'cita';\nelse if (faqKeys.some(k => text.includes(k))) intent = 'faq';\nelse intent = 'handoff';\nreturn [{ json: {\n  ok: true,\n  sistema: '09-wasap-task-faq-citas',\n  etapa: 'intent',\n  from, negocio, text, intent,\n  siguiente: intent === 'faq' ? 'responder_faq' : intent === 'cita' ? 'agendar_cita' : 'handoff_humano',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-09b",
+      "name": "Router intent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-09b",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Intent": {
+      "main": [[{ "node": "Router intent", "type": "main", "index": 0 }]]
+    },
+    "Router intent": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

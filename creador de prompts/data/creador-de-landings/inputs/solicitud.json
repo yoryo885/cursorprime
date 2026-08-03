@@ -118,6 +118,14 @@
     {
       "fecha": "2026-08-03",
       "texto": "Creado sistema n8n 07-presencia-digital: alta, deploy, GBP, entrega + paquetes.json"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Pregunta qué sigue: #1+#2 hechos; recomendar #3 Wasap o ejecutar 5 audits reales"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Sistemas #3 cola pedidos + #4 wasap task FAQ/citas creados; ranking 1-4 completo en n8n/sistemas"
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"

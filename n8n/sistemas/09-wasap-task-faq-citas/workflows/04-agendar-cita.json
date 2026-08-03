@@ -1,0 +1,51 @@
+{
+  "name": "09d-agendar-cita",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-task/cita",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-09d",
+      "name": "Webhook Cita",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "09d-agendar-cita"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst from = String(b.from || b.whatsapp || '').trim();\nconst negocio = String(b.negocio || '').trim();\nconst nombre = String(b.nombre || '').trim();\nconst cuando = String(b.cuando || b.fecha || b.text || '').trim();\nconst citaId = `CITA-${Date.now()}`;\nif (!from) return [{ json: { ok: false, error: 'falta from/whatsapp' } }];\nreturn [{ json: {\n  ok: true,\n  sistema: '09-wasap-task-faq-citas',\n  etapa: 'cita',\n  citaId, from, negocio, nombre, cuando,\n  estado: 'solicitada',\n  reply: `Recibí tu pedido de cita${cuando ? ' (' + cuando + ')' : ''}. Te confirmamos en breve.`,\n  status: 'draft_ready',\n  todo: 'TODO: Sheet/Cal.com + aviso al negocio',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-09d",
+      "name": "Alta cita",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-09d",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Cita": {
+      "main": [[{ "node": "Alta cita", "type": "main", "index": 0 }]]
+    },
+    "Alta cita": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

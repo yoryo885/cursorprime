@@ -1,0 +1,51 @@
+{
+  "name": "09c-responder-faq",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-task/faq",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-09c",
+      "name": "Webhook FAQ",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "09c-responder-faq"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst text = String(b.text || '').toLowerCase();\nconst from = String(b.from || '').trim();\nconst faqs = b.faqs || {\n  horario: 'Atendemos lun–vie 9 a 18 hs.',\n  precio: 'Te paso la lista de precios por este chat.',\n  direccion: 'Estamos en el centro — pedime el mapa si querés.',\n  servicios: 'Contame qué necesitás y te digo si lo cubrimos.'\n};\nlet key = 'servicios';\nlet reply = faqs.servicios;\nfor (const k of Object.keys(faqs)) {\n  if (text.includes(k) || (k === 'direccion' && (text.includes('dirección') || text.includes('donde')))) {\n    key = k; reply = faqs[k]; break;\n  }\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '09-wasap-task-faq-citas',\n  etapa: 'faq',\n  from, key, reply,\n  status: 'draft_ready',\n  todo: 'TODO_CREDENCIAL: send Wasap + faq por cliente',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-09c",
+      "name": "Responder FAQ",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-09c",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook FAQ": {
+      "main": [[{ "node": "Responder FAQ", "type": "main", "index": 0 }]]
+    },
+    "Responder FAQ": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

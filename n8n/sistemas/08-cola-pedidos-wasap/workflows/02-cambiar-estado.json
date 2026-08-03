@@ -1,0 +1,51 @@
+{
+  "name": "08b-cambiar-estado",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cola/estado",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-08b",
+      "name": "Webhook Estado",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "08b-cambiar-estado"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst okEstados = new Set(['nuevo', 'preparando', 'listo', 'entregado', 'cancelado']);\nconst ticket = String(b.ticket || '').trim();\nconst estado = String(b.estado || '').trim().toLowerCase();\nconst negocio = String(b.negocio || '').trim();\nif (!ticket) return [{ json: { ok: false, error: 'falta ticket' } }];\nif (!okEstados.has(estado)) return [{ json: { ok: false, error: 'estado inválido', okEstados: [...okEstados] } }];\nreturn [{ json: {\n  ok: true,\n  sistema: '08-cola-pedidos-wasap',\n  etapa: 'cambio_estado',\n  ticket,\n  negocio,\n  estado,\n  status: 'actualizado',\n  siguiente: estado === 'listo' ? 'avisar_cliente' : null,\n  todo: 'TODO: update fila Sheet + trigger 08c si listo',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-08b",
+      "name": "Validar estado",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-08b",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Estado": {
+      "main": [[{ "node": "Validar estado", "type": "main", "index": 0 }]]
+    },
+    "Validar estado": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

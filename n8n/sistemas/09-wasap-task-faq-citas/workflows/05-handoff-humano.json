@@ -1,0 +1,51 @@
+{
+  "name": "09e-handoff-humano",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-task/handoff",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-09e",
+      "name": "Webhook Handoff",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "09e-handoff-humano"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst from = String(b.from || b.whatsapp || '').trim();\nconst negocio = String(b.negocio || '').trim();\nconst text = String(b.text || '').trim();\nconst equipo = String(b.equipo_wasap || b.aviso_a || '').trim();\nreturn [{ json: {\n  ok: true,\n  sistema: '09-wasap-task-faq-citas',\n  etapa: 'handoff',\n  from, negocio, text,\n  reply_cliente: 'Te derivo con una persona del equipo. En un momento te escriben.',\n  aviso_equipo: equipo ? `Handoff de ${from}: ${text || '(sin texto)'}` : null,\n  status: 'draft_ready',\n  todo: 'TODO_CREDENCIAL: mensaje al cliente + aviso interno',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-09e",
+      "name": "Handoff",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-09e",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Handoff": {
+      "main": [[{ "node": "Handoff", "type": "main", "index": 0 }]]
+    },
+    "Handoff": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

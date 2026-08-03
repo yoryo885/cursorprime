@@ -1,0 +1,9 @@
+{
+  "faqs_default": {
+    "horario": "Atendemos lun–vie 9 a 18 hs.",
+    "precio": "Te paso la lista de precios por este chat.",
+    "direccion": "Estamos en el centro — pedime el mapa si querés.",
+    "servicios": "Contame qué necesitás y te digo si lo cubrimos."
+  },
+  "nota": "Sobrescribir por cliente en clientes/{slug}/faq.json"
+}

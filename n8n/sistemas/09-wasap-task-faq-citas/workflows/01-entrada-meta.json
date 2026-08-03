@@ -1,0 +1,51 @@
+{
+  "name": "09a-entrada-meta",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-task/entrada",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-09a",
+      "name": "Webhook Meta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "09a-entrada-meta"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json;\nconst entry = (body.entry || [])[0] || {};\nconst change = ((entry.changes || [])[0] || {}).value || {};\nconst msg = ((change.messages || [])[0]) || {};\nconst text = String((msg.text || {}).body || msg.button?.text || body.texto || '').trim();\nconst from = String(msg.from || body.from || body.whatsapp || '').trim();\nconst negocio = String(body.negocio || body.slug || change.metadata?.phone_number_id || 'default').trim();\nreturn [{ json: {\n  ok: true,\n  sistema: '09-wasap-task-faq-citas',\n  etapa: 'entrada',\n  from,\n  text,\n  textLower: text.toLowerCase(),\n  negocio,\n  rawHasMeta: Array.isArray(body.entry),\n  status: 'normalizado',\n  siguiente: 'intent_router',\n  todo: 'TODO: verify token GET + credencial Meta',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-09a",
+      "name": "Normalizar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-09a",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Meta": {
+      "main": [[{ "node": "Normalizar", "type": "main", "index": 0 }]]
+    },
+    "Normalizar": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}
