@@ -1,0 +1,51 @@
+{
+  "name": "04-audit-trigger",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "audit-trigger",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-04-audit",
+      "name": "Webhook Audit",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "04-audit-trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst url = String(b.url || '').trim();\nconst cliente = String(b.cliente || b.slug || 'sin-slug').trim();\nif (!/^https?:\\/\\//i.test(url)) {\n  return [{ json: { ok: false, error: 'url inválida', url, cliente } }];\n}\nconst jobId = `AUD-${Date.now()}`;\nreturn [{ json: { ok: true, jobId, url, cliente, status: 'queued', todo: 'TODO: encolar marketing-audit', at: new Date().toISOString() } }];"
+      },
+      "id": "code-04-job",
+      "name": "Armar job",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-04-audit",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [540, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Audit": {
+      "main": [[{ "node": "Armar job", "type": "main", "index": 0 }]]
+    },
+    "Armar job": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

@@ -70,6 +70,14 @@
     {
       "fecha": "2026-08-03",
       "texto": "n8n instalado en repo /n8n + tunnel para celular; workflows versionados; instancia efímera del cloud agent"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "n8n: reset owner incompleto para permitir correo Cursor c.pprimepersonal@gmail.com"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "n8n: pausa login; catálogo sistemas 01-05 importables después (lead, wasap, audit, contenido)"
     }
   ],
   "notas": "Prompt v9: entrega solo URL. Pasos 2-7 implementados."

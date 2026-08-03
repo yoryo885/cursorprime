@@ -1,5 +1,5 @@
 {
-  "name": "Ping celular",
+  "name": "01-ping",
   "nodes": [
     {
       "parameters": {
@@ -8,24 +8,24 @@
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "webhook-ping",
+      "id": "wh-01-ping",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [0, 0],
-      "webhookId": "ping-celular"
+      "webhookId": "01-ping"
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ { ok: true, msg: \"n8n vivo desde el celular\", at: $now.toISO() } }}",
+        "responseBody": "={{ { ok: true, sistema: \"01-ping\", at: $now.toISO() } }}",
         "options": {}
       },
-      "id": "respond-ping",
+      "id": "rs-01-ping",
       "name": "Respond",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [260, 0]
+      "position": [280, 0]
     }
   ],
   "connections": {

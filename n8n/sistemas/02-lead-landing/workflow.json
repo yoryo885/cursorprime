@@ -1,0 +1,63 @@
+{
+  "name": "02-lead-landing",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-landing",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-02-lead",
+      "name": "Webhook Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "02-lead-landing"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst lead = {\n  leadId: `L-${Date.now()}`,\n  nombre: String(b.nombre || b.name || '').trim(),\n  email: String(b.email || '').trim().toLowerCase(),\n  mensaje: String(b.mensaje || b.message || '').trim(),\n  marca: String(b.marca || b.brand || '').trim(),\n  origen: String(b.origen || 'landing').trim(),\n  at: new Date().toISOString(),\n};\nif (!lead.email && !lead.nombre) {\n  return [{ json: { ok: false, error: 'falta nombre o email', lead } }];\n}\nreturn [{ json: { ok: true, lead } }];"
+      },
+      "id": "code-02-norm",
+      "name": "Normalizar lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-02-lead",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [520, 0]
+    },
+    {
+      "parameters": {
+        "content": "## TODO_CREDENCIAL\nAcá enchufar Sheets / Notion / CRM / Slack.\nPor ahora el lead ya está normalizado en el item anterior.",
+        "height": 240,
+        "width": 320
+      },
+      "id": "note-02-todo",
+      "name": "TODO destino",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [260, 180]
+    }
+  ],
+  "connections": {
+    "Webhook Lead": {
+      "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]]
+    },
+    "Normalizar lead": {
+      "main": [[{ "node": "Respond OK", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

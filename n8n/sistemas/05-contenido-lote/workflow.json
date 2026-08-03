@@ -1,0 +1,51 @@
+{
+  "name": "05-contenido-lote",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contenido-lote",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-05-cont",
+      "name": "Webhook Contenido",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "05-contenido-lote"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst slug = String(b.slug || '').trim();\nconst tipo = String(b.tipo || 'imagenes').trim();\nif (!slug) return [{ json: { ok: false, error: 'falta slug' } }];\nreturn [{ json: { ok: true, jobId: `CNT-${Date.now()}`, slug, tipo, status: 'queued', todo: 'TODO: correr creador de contenido', at: new Date().toISOString() } }];"
+      },
+      "id": "code-05-job",
+      "name": "Armar lote",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-05-cont",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [540, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Contenido": {
+      "main": [[{ "node": "Armar lote", "type": "main", "index": 0 }]]
+    },
+    "Armar lote": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}
