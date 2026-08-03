@@ -1,0 +1,63 @@
+{
+  "name": "06b-lead-interes-plan",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "auditorias/interes-plan",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-06b",
+      "name": "Webhook Interés Plan",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "06b-lead-interes-plan"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst planesOk = new Set(['basico', 'presencia', 'completo']);\nconst plan = String(b.plan || '').trim().toLowerCase();\nconst cliente = String(b.cliente || b.slug || '').trim();\nconst nombre = String(b.nombre || '').trim();\nconst whatsapp = String(b.whatsapp || b.telefono || '').trim();\nconst jobAudit = String(b.jobId || b.job_audit || '').trim();\nif (!planesOk.has(plan)) {\n  return [{ json: { ok: false, error: 'plan inválido', planes: [...planesOk], sistema: '06-auditorias-locales' } }];\n}\nif (!cliente && !whatsapp) {\n  return [{ json: { ok: false, error: 'falta cliente o whatsapp' } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'upsell_plan',\n  leadId: `LP-${Date.now()}`,\n  plan,\n  cliente,\n  nombre,\n  whatsapp,\n  jobAudit,\n  status: 'interes_registrado',\n  todo: 'TODO: avisar por Wasap + crear carpeta clientes/{slug}/proyectos/…',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-06b",
+      "name": "Validar plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-06b",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    },
+    {
+      "parameters": {
+        "content": "## Planes\nbasico | presencia | completo\n(ver planes.json)\n\nEl audit ya se entregó antes.",
+        "height": 200,
+        "width": 280
+      },
+      "id": "note-06b",
+      "name": "Nota planes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [280, 200]
+    }
+  ],
+  "connections": {
+    "Webhook Interés Plan": {
+      "main": [[{ "node": "Validar plan", "type": "main", "index": 0 }]]
+    },
+    "Validar plan": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

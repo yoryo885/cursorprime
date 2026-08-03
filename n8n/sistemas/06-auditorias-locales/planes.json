@@ -1,0 +1,55 @@
+{
+  "sistema": "06-auditorias-locales",
+  "producto_entrada": "auditoria_marketing_local",
+  "moneda": "USD",
+  "nota": "Precios placeholder — ajustar antes de vender",
+  "planes": [
+    {
+      "id": "audit",
+      "nombre": "Auditoría",
+      "orden": 0,
+      "precio_desde": 49,
+      "incluye": [
+        "Informe score 0-100",
+        "Quick wins priorizados",
+        "HTML/MD (PDF opcional)"
+      ],
+      "es_entrada": true
+    },
+    {
+      "id": "basico",
+      "nombre": "Plan Básico",
+      "orden": 1,
+      "precio_desde": 149,
+      "incluye": [
+        "CTA y WhatsApp visibles",
+        "Ajustes de copy clave",
+        "Checklist de 7 días"
+      ],
+      "requiere": ["audit"]
+    },
+    {
+      "id": "presencia",
+      "nombre": "Plan Presencia",
+      "orden": 2,
+      "precio_desde": 399,
+      "incluye": [
+        "Landing o web local",
+        "Google Business Profile",
+        "Todo lo del Básico"
+      ],
+      "requiere": ["audit"]
+    },
+    {
+      "id": "completo",
+      "nombre": "Plan Completo",
+      "orden": 3,
+      "precio_desde": 699,
+      "incluye": [
+        "Todo Presencia",
+        "Wasap task (citas/pedidos/FAQ) + handoff"
+      ],
+      "requiere": ["audit"]
+    }
+  ]
+}

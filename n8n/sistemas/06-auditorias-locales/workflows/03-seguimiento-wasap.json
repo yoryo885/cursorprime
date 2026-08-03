@@ -1,0 +1,51 @@
+{
+  "name": "06c-seguimiento-wasap",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "auditorias/seguimiento",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-06c",
+      "name": "Webhook Seguimiento",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "06c-seguimiento-wasap"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst to = String(b.whatsapp || b.to || '').trim();\nconst cliente = String(b.cliente || '').trim();\nconst plantilla = String(b.plantilla || 'post_audit').trim();\nconst mensajes = {\n  post_audit: `Hola${cliente ? ' — ' + cliente : ''}: ya tenés el informe de auditoría. Si querés, te paso los planes Básico / Presencia / Completo.`,\n  oferta_plan: `Te dejo los planes: Básico (quick wins), Presencia (web+GBP), Completo (+Wasap). ¿Cuál te sirve?`,\n  cierre: `Cuando quieras avanzamos con el plan que elijas. Sin compromiso en la auditoría.`\n};\nconst texto = mensajes[plantilla] || mensajes.post_audit;\nif (!to) {\n  return [{ json: { ok: false, error: 'falta whatsapp', texto } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'seguimiento',\n  to,\n  plantilla,\n  texto,\n  status: 'draft_ready',\n  todo: 'TODO_CREDENCIAL: enviar vía Meta Cloud API / proveedor Wasap',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-06c",
+      "name": "Armar mensaje",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-06c",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Seguimiento": {
+      "main": [[{ "node": "Armar mensaje", "type": "main", "index": 0 }]]
+    },
+    "Armar mensaje": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

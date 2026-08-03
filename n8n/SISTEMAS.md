@@ -17,8 +17,14 @@ No hace falta login ahora. Acá guardamos **sistemas listos** (JSON) para import
 | `01-ping` | Ping salud | Probar que n8n responde | `sistemas/01-ping/` |
 | `02-lead-landing` | Lead de landing | Webhook recibe lead → normaliza → responde OK | `sistemas/02-lead-landing/` |
 | `03-wasap-faq` | Wasap FAQ (esqueleto) | Webhook Meta → respuesta FAQ / handoff | `sistemas/03-wasap-faq/` |
-| `04-audit-trigger` | Disparo audit | Webhook con URL → log + ack (engancha pipeline luego) | `sistemas/04-audit-trigger/` |
+| `04-audit-trigger` | Disparo audit (genérico) | Webhook con URL → log + ack | `sistemas/04-audit-trigger/` |
 | `05-contenido-lote` | Lote contenido | Webhook con slug → ack para pipeline contenido | `sistemas/05-contenido-lote/` |
+| **`06-auditorias-locales`** | **#1 Auditorías (negocio)** | Embudo: audit → informe → planes upsell | `sistemas/06-auditorias-locales/` |
+
+## Sistema prioritario
+
+**`06-auditorias-locales`** = producto #1 más rentable.  
+Primero se entrega el análisis; después planes `basico` / `presencia` / `completo` (`planes.json`).
 
 ## Convención de cada sistema
 

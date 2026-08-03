@@ -1,0 +1,63 @@
+{
+  "name": "06a-disparar-audit",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "auditorias/disparar",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-06a",
+      "name": "Webhook Disparar Audit",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "06a-disparar-audit"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst url = String(b.url || '').trim();\nconst cliente = String(b.cliente || b.slug || '').trim() || 'sin-slug';\nconst contacto = String(b.whatsapp || b.telefono || b.email || '').trim();\nconst modo = String(b.modo || 'piloto').trim(); // piloto | cobrado\nif (!/^https?:\\/\\//i.test(url)) {\n  return [{ json: { ok: false, error: 'url inválida', sistema: '06-auditorias-locales' } }];\n}\nconst jobId = `AUD-${Date.now()}`;\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'audit_entrada',\n  jobId,\n  url,\n  cliente,\n  contacto,\n  modo,\n  status: 'queued',\n  entregable_esperado: ['MARKETING-AUDIT.md', 'MARKETING-AUDIT.html'],\n  siguiente: 'enviar_informe_luego_ofrecer_plan',\n  todo: 'TODO_CREDENCIAL: HTTP → marketing_audit_main.py audit --url … --slug …',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-06a",
+      "name": "Armar job audit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-06a",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [560, 0]
+    },
+    {
+      "parameters": {
+        "content": "## Embudo\n1. Disparar audit (este flujo)\n2. Entregar informe al cliente\n3. Si quiere más → 06b lead plan\n\n## TODO\nConectar runner marketing-audit",
+        "height": 260,
+        "width": 320
+      },
+      "id": "note-06a",
+      "name": "Nota embudo",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [280, 200]
+    }
+  ],
+  "connections": {
+    "Webhook Disparar Audit": {
+      "main": [[{ "node": "Armar job audit", "type": "main", "index": 0 }]]
+    },
+    "Armar job audit": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}
