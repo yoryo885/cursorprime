@@ -65,6 +65,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Ejecutar inbox Telegram: órdenes desde el bot hacia runner."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Comando Telegram `correr` para demo sistema completo; esperar orden del usuario."
     }
   ]
 }

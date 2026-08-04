@@ -25,5 +25,6 @@ bash scripts/start-telegram-inbox.sh  # escucha órdenes
 | `leads` | Últimos leads |
 | `audit Clínica Sol \| Providencia` | Encola audit |
 | `tiktok 3 errores en Google` | Crea brief TikTok |
+| `correr` | Demo sistema completo (lead+audit+tiktok) |
 
 Solo responde a tu chat (seguridad).

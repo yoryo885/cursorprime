@@ -98,17 +98,18 @@ def runner_get(path: str) -> dict:
 HELP = """Comandos cursorprime:
 
 • ayuda — esta lista
-• ping — ¿está vivo el runner?
+• ping / status — ¿está vivo?
 • leads — últimos leads
-• status — health del sistema
 • audit NOMBRE [| ciudad]
 • tiktok TEMA [| slug]
+• correr — demo del sistema completo (lead + audit + tiktok)
 
 Ejemplos:
+correr
 audit Clínica Sol | Providencia
 tiktok 3 errores en Google
 
-Todo lo que genera es borrador. Si no te gusta, pedime el cambio en Cursor."""
+Todo es borrador. Si no te gusta, pedí el cambio en Cursor."""
 
 
 def handle_text(text: str) -> str:
@@ -185,6 +186,44 @@ def handle_text(text: str) -> str:
             f"Slug: {b.get('slug')}\n"
             f"Modo: {(b.get('video') or {}).get('modo')}\n"
             f"Revisá y pedí cambios si hace falta."
+        )
+
+    if low in ("correr", "correr todo", "sistema", "full", "/correr", "demo"):
+        # Demo sistema completo: lead + audit + tiktok brief
+        lead = runner_job(
+            "lead.append",
+            {
+                "lead": {
+                    "nombre": "Demo Telegram",
+                    "email": "demo-telegram@cursorprime.local",
+                    "mensaje": "Quiero audit + presencia",
+                    "marca": "Demo Local",
+                    "origen": "telegram-correr",
+                }
+            },
+        )
+        audit = runner_job(
+            "pipeline.audit_demo",
+            {
+                "negocio": "Demo Local",
+                "ciudad": "Providencia",
+                "slug": "audit-demo-telegram",
+            },
+        )
+        tt = runner_job(
+            "pipeline.tiktok_brief",
+            {
+                "tema": "3 errores de locales en Google Maps",
+                "slug": "tt-demo-telegram",
+                "nicho": "negocios locales",
+            },
+        )
+        return (
+            "✅ Sistema completo (demo) disparado desde Telegram\n\n"
+            f"1) Lead: {((lead.get('lead') or {}).get('id'))}\n"
+            f"2) Audit: {((audit.get('brief') or {}).get('slug'))}\n"
+            f"3) TikTok: {((tt.get('brief') or {}).get('slug'))}\n\n"
+            "Son borradores. Revisá y pedí cambios si hace falta."
         )
 
     return "No entendí.\nEscribí: ayuda"
