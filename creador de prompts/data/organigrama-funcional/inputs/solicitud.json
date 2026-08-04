@@ -53,6 +53,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Token Telegram guardado en .env; pendiente /start al bot para chat_id."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Telegram @yoryo321 conectado; mensaje de prueba enviado."
     }
   ]
 }

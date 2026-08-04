@@ -1,12 +1,12 @@
 {
-  "version": 43,
+  "version": 44,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
     "version": 5,
-    "ultima_mejora": "token Telegram en .env; falta /start",
+    "ultima_mejora": "Telegram conectado @yoryo321",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }
