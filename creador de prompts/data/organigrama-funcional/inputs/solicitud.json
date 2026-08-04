@@ -61,6 +61,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Pregunta: ¿órdenes desde Telegram? Hoy solo recepción; falta inbox de comandos."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Ejecutar inbox Telegram: órdenes desde el bot hacia runner."
     }
   ]
 }
