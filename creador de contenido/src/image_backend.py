@@ -42,10 +42,11 @@ def generate_placeholder(
     frame: int = 1,
     frames_total: int = 1,
     size: tuple[int, int] = (1024, 1024),
+    force_character: bool = False,
 ) -> Path:
-    """Si el tema parece escena con personaje, dibuja figura; si no, card legacy."""
+    """Sistema: animado/personaje → figura; si no, card legacy (slideshow)."""
     t = f"{titulo} {tema}".lower()
-    wants_character = any(
+    wants_character = force_character or any(
         k in t
         for k in (
             "personaje",
@@ -165,11 +166,10 @@ def generate_character_frame(
         # mano señalando
         draw.polygon([(gx - 70, 520), (cx + 100, 540), (gx - 70, 560)], fill="#f0c4a8")
 
+    # Título mínimo — el foco es el personaje, no la card
     font_l, font_s = _fonts()
-    draw.rectangle([0, 0, size[0], 90], fill=dark)
-    draw.text((36, 28), (titulo or "Video")[:42], fill="#ffffff", font=font_l)
-    label = "inicio" if frame == 1 else "fin"
-    draw.text((36, size[1] - 70), f"personaje · {label} · {tema[:48]}", fill=dark, font=font_s)
+    draw.rectangle([0, 0, size[0], 72], fill=dark)
+    draw.text((28, 22), (titulo or "Personaje")[:40], fill="#ffffff", font=font_l)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     img.save(output_path, format="PNG")

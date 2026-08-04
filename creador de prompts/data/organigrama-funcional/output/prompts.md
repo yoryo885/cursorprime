@@ -8,3 +8,9 @@ Documento formal (HTML+PDF) con organigrama piramidal por **roles** (no personas
 - Solo roles funcionales.
 - Español claro, tono ejecutivo.
 - Entregar URL visual / PDF, no solo markdown.
+
+
+## Entrega video del sistema (Telegram)
+- Default: **animado + personaje** (emprendedor + guía), nunca slideshow de cards.
+- Comandos: `video TEMA` y `correr` → MP4 con personaje al bot.
+- Runner: `pipeline.contenido_video` fuerza modo animado salvo `modo: slideshow` explícito.

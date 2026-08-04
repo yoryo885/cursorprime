@@ -12,7 +12,7 @@
     "operaciones técnicas",
     "IA automatización"
   ],
-  "notas": "Entrega visual PDF/HTML. Alinear con productos creados: Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok, n8n. | Ciclo: borrador → feedback usuario → yo itero; QA checklist antes de cliente.",
+  "notas": "Entrega visual PDF/HTML. Alinear con productos creados: Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok, n8n. | Ciclo: borrador → feedback usuario → yo itero; QA checklist antes de cliente. | Entrega video sistema: animado + personaje → Telegram.",
   "mejoras": [
     {
       "fecha": "2026-08-04",
@@ -89,6 +89,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Video con personaje (frames ilustrados) a Telegram; default animado no slideshow."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Video CON personaje es el default del sistema (Telegram video/correr/runner); no slideshow de cards."
     }
   ]
 }

@@ -59,8 +59,6 @@ Jobs: `n8n/runner/jobs/`
 - Runner ejecutando `*_main.py` completo (hoy encola briefs + jobs listos)
 
 ## Telegram
-Ver  — destino @yoryo321.
-
-
-## Telegram
 Destino **@yoryo321**. Ver `TELEGRAM.md`.
+
+Videos del sistema: **animado + personaje** (`video TEMA` / `correr`) → MP4 en el chat. No slideshow.

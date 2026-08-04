@@ -102,14 +102,15 @@ HELP = """Comandos cursorprime:
 • leads — últimos leads
 • audit NOMBRE [| ciudad]
 • tiktok TEMA [| slug]
-• video TEMA — crea video (creador de contenido) y te lo manda acá
-• correr — demo lead + audit + video a Telegram
+• video TEMA — video CON personaje (animado) → Telegram
+• correr — lead + audit + video con personaje
 
 Ejemplos:
-video 3 errores en Google Maps
+video emprendedor ordena WhatsApp
 correr
 audit Clínica Sol | Providencia
 
+Default del sistema: animado + personaje (no slideshow).
 Todo es borrador. Si no te gusta, pedí el cambio en Cursor."""
 
 
@@ -191,18 +192,26 @@ def handle_text(text: str) -> str:
 
     if low.startswith("video ") or low.startswith("/video ") or low.startswith("contenido "):
         tema = raw.split(" ", 1)[1].strip()
-        reply_pre = None  # handled below via long job
         r = runner_job(
             "pipeline.contenido_video",
-            {"tema": tema, "titulo": tema, "slug": "tg-" + "".join(
-                c if c.isalnum() else "-" for c in tema.lower()
-            ).strip("-")[:36]},
+            {
+                "tema": tema,
+                "titulo": tema,
+                "modo": "animado",
+                "slug": "tg-"
+                + "".join(c if c.isalnum() else "-" for c in tema.lower()).strip("-")[:36],
+                "guion": (
+                    f"Un emprendedor con delantal mira el celular por {tema}.\n\n"
+                    f"Aparece un personaje guía amable que le muestra la solución.\n\n"
+                    f"El emprendedor sonríe: problema resuelto."
+                ),
+            },
         )
         if not r.get("ok"):
             return f"❌ No pude generar el video.\n{r.get('error')}\n{(r.get('stderr') or '')[:300]}"
         tg = r.get("telegram") or {}
         return (
-            f"✅ Video generado (creador de contenido)\n"
+            f"✅ Video CON personaje (sistema)\n"
             f"slug: {r.get('slug')}\n"
             f"MP4 enviado a Telegram: {tg.get('ok')}\n"
             f"Revisá el video arriba. Si no te gusta, pedí cambios."
@@ -232,18 +241,28 @@ def handle_text(text: str) -> str:
         vid = runner_job(
             "pipeline.contenido_video",
             {
-                "tema": "3 errores de locales en Google Maps",
-                "titulo": "3 errores de locales en Google Maps",
-                "slug": "tg-correr-demo",
-                "temas": ["Google Maps", "WhatsApp", "Clientes locales"],
+                "tema": "Emprendedor local que ordena su WhatsApp",
+                "titulo": "Emprendedor local que ordena su WhatsApp",
+                "slug": "tg-correr-personaje",
+                "modo": "animado",
+                "temas": [
+                    "Emprendedor con delantal mira WhatsApp",
+                    "Personaje guía ordena el bot",
+                    "Emprendedor sonríe",
+                ],
+                "guion": (
+                    "Un emprendedor con delantal mira el celular: mensajes de WhatsApp sin responder.\n\n"
+                    "Aparece un personaje guía amable que le muestra un bot ordenando las preguntas frecuentes.\n\n"
+                    "El emprendedor sonríe: ahora los clientes reciben respuesta mientras él atiende el local."
+                ),
             },
         )
         return (
             "✅ Sistema completo disparado\n\n"
             f"1) Lead: {((lead.get('lead') or {}).get('id'))}\n"
             f"2) Audit: {((audit.get('brief') or {}).get('slug'))}\n"
-            f"3) Video: {vid.get('slug')} · enviado={((vid.get('telegram') or {}).get('ok'))}\n\n"
-            "El MP4 te tiene que haber llegado como video en este chat."
+            f"3) Video CON personaje: {vid.get('slug')} · enviado={((vid.get('telegram') or {}).get('ok'))}\n\n"
+            "El MP4 con personaje te tiene que haber llegado en este chat."
         )
 
     return "No entendí.\nEscribí: ayuda"

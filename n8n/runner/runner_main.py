@@ -262,17 +262,20 @@ def handle_telegram_notify(payload: dict) -> dict:
 
 
 def handle_contenido_video(payload: dict) -> dict:
-    """Corre creador de contenido (slideshow) y manda el MP4 a Telegram."""
+    """Sistema LIVE: video animado CON personaje → MP4 a Telegram (no slideshow)."""
     slug = (payload.get("slug") or f"tg-vid-{uuid.uuid4().hex[:8]}").strip()
     temas = payload.get("temas")
     if isinstance(temas, str):
         temas = [t.strip() for t in temas.split(",") if t.strip()]
     if not temas:
         tema = (payload.get("tema") or payload.get("titulo") or "Contenido demo").strip()
-        temas = [tema, "WhatsApp", "Clientes"]
+        temas = [tema, "WhatsApp con personaje guía", "Emprendedor sonríe"]
     titulo = (payload.get("titulo") or temas[0]).strip()
-    # Por defecto animado CON personaje (no slideshow de cards)
-    modo_video = (payload.get("modo") or "animado").strip()
+    # Default del sistema = animado + personaje. Solo slideshow si se pide explícito.
+    requested = (payload.get("modo") or "animado").strip().lower()
+    modo_video = requested if requested in ("animado", "slideshow") else "animado"
+    if modo_video != "slideshow":
+        modo_video = "animado"
     content_root = CURSORPRIME / "creador de contenido"
     lote_dir = content_root / "data" / slug / "inputs"
     lote_dir.mkdir(parents=True, exist_ok=True)
@@ -283,6 +286,13 @@ def handle_contenido_video(payload: dict) -> dict:
             f"Aparece un personaje guía amable que le muestra la solución.\n\n"
             f"El emprendedor sonríe: ahora puede atender el local tranquilo."
         )
+    # Forzar menciones de personaje en temas para el dibujador
+    if modo_video == "animado":
+        temas = [
+            t if any(k in t.lower() for k in ("personaje", "emprendedor", "guía", "guia", "delantal"))
+            else f"Emprendedor y personaje guía · {t}"
+            for t in temas[:5]
+        ]
     lote = {
         "titulo": titulo,
         "salidas": ["png", "video"],
@@ -298,7 +308,7 @@ def handle_contenido_video(payload: dict) -> dict:
             "descripcion": payload.get("personaje")
             or "Emprendedor joven con delantal + personaje guía ilustrado"
         },
-        "notas": "Generado por runner → Telegram (modo personaje)",
+        "notas": "Sistema LIVE → Telegram (animado + personaje)",
     }
     (lote_dir / "lote.json").write_text(
         json.dumps(lote, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -335,11 +345,11 @@ def handle_contenido_video(payload: dict) -> dict:
     tg = telegram_send_video(
         mp4,
         caption=(
-            f"🎬 Creador de contenido\n"
+            f"🎬 Video CON personaje (sistema)\n"
             f"slug: {slug}\n"
             f"tema: {titulo}\n"
             f"modo: {modo_video}\n\n"
-            f"Borrador — si no te gusta, pedí cambios."
+            f"Borrador del sistema — si no te gusta, pedí cambios."
         ),
     )
     return {
