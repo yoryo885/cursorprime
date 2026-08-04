@@ -23,14 +23,67 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent
 CURSORPRIME = ROOT.parent.parent
+N8N_ROOT = ROOT.parent
 DATA = ROOT / "data"
 JOBS = ROOT / "jobs"
 LEADS = DATA / "leads.jsonl"
 LOG = DATA / "runner.log"
+CONFIG = ROOT / "config.json"
 PORT = int(os.environ.get("RUNNER_PORT", "8780"))
 
 DATA.mkdir(parents=True, exist_ok=True)
 JOBS.mkdir(parents=True, exist_ok=True)
+
+
+def _load_dotenv() -> None:
+    env_path = N8N_ROOT / ".env"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, _, v = line.partition("=")
+        os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+
+
+_load_dotenv()
+
+
+def load_config() -> dict:
+    if CONFIG.exists():
+        return json.loads(CONFIG.read_text(encoding="utf-8"))
+    return {}
+
+
+def telegram_send(text: str) -> dict:
+    """Envía mensaje al chat configurado. Sin token/chat_id → pending."""
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    cfg = load_config().get("telegram") or {}
+    username = cfg.get("username_at") or cfg.get("username") or "@yoryo321"
+    if not chat_id and cfg.get("chat_id"):
+        chat_id = str(cfg["chat_id"])
+    if not token or not chat_id:
+        return {
+            "ok": False,
+            "pending": True,
+            "to": username,
+            "error": "falta TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID",
+            "hint": "Creá el bot con @BotFather, /start al bot, bash scripts/telegram-setup.sh",
+        }
+    import urllib.request
+
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    body = json.dumps(
+        {"chat_id": chat_id, "text": text[:4000], "disable_web_page_preview": True}
+    ).encode()
+    req = urllib.request.Request(
+        url, data=body, headers={"Content-Type": "application/json"}, method="POST"
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        data = json.loads(resp.read().decode())
+    return {"ok": bool(data.get("ok")), "to": username, "chat_id": chat_id, "telegram": data}
 
 
 def now() -> str:
@@ -74,7 +127,13 @@ def handle_lead_append(payload: dict) -> dict:
     (JOBS / f"{job['jobId']}.json").write_text(
         json.dumps(job, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    return {"ok": True, "action": "lead.append", "lead": row, "job": job}
+    tg = telegram_send(
+        f"🆕 Lead nuevo\n"
+        f"{row['nombre']} · {row['email']}\n"
+        f"Intención: {row['intencion']}\n"
+        f"{row['mensaje'][:300]}"
+    )
+    return {"ok": True, "action": "lead.append", "lead": row, "job": job, "telegram": tg}
 
 
 def _guess_intent(lead: dict) -> str:
@@ -121,7 +180,28 @@ def handle_tiktok_brief(payload: dict) -> dict:
     path = out_dir / "tiktok-brief.json"
     path.write_text(json.dumps(brief, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     job = handle_enqueue({"type": "tiktok_brief", "slug": slug, "path": str(path)})
-    return {"ok": True, "action": "pipeline.tiktok_brief", "brief": brief, "path": str(path), "job": job["job"]}
+    tg = telegram_send(
+        f"🎬 TikTok brief listo\n"
+        f"slug: {slug}\n"
+        f"tema: {tema or '—'}\n"
+        f"Revisá el borrador y pedime cambios si hace falta."
+    )
+    return {
+        "ok": True,
+        "action": "pipeline.tiktok_brief",
+        "brief": brief,
+        "path": str(path),
+        "job": job["job"],
+        "telegram": tg,
+    }
+
+
+def handle_telegram_notify(payload: dict) -> dict:
+    text = str(payload.get("text") or payload.get("mensaje") or "").strip()
+    if not text:
+        return {"ok": False, "error": "falta text"}
+    result = telegram_send(text)
+    return {"ok": result.get("ok", False), "action": "telegram.notify", **result}
 
 
 def handle_audit_demo(payload: dict) -> dict:
@@ -167,6 +247,7 @@ ACTIONS = {
     "job.enqueue": handle_enqueue,
     "pipeline.tiktok_brief": handle_tiktok_brief,
     "pipeline.audit_demo": handle_audit_demo,
+    "telegram.notify": handle_telegram_notify,
 }
 
 

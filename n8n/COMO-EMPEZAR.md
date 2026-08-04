@@ -57,3 +57,10 @@ Jobs: `n8n/runner/jobs/`
 - Dominio fijo (no tunnel efímero)  
 - Meta Wasap / Vercel / Kling reales  
 - Runner ejecutando `*_main.py` completo (hoy encola briefs + jobs listos)
+
+## Telegram
+Ver  — destino @yoryo321.
+
+
+## Telegram
+Destino **@yoryo321**. Ver `TELEGRAM.md`.
