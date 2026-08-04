@@ -18,10 +18,29 @@ def _href(prefix: str, path: str) -> str:
     return prefix + p
 
 
+_BADGE_ES: dict[str, tuple[str, str]] = {
+    "live": ("En vivo", "live"),
+    "mock": ("Simulado", "mock"),
+    "viable": ("Viable", "viable"),
+    "condicional": ("Condicional", "condicional"),
+    "descartar": ("Descartar", "descartar"),
+    "hecho": ("Hecho", "hecho"),
+    "parcial": ("Parcial", "parcial"),
+    "falta": ("Por hacer", "falta"),
+    "demo": ("Demo", "mock"),
+    "no": ("No", ""),
+    "listo": ("Listo", "hecho"),
+}
+
+
 def _badge(val: str, kind: str = "") -> str:
     v = str(val).lower()
+    if v in _BADGE_ES:
+        label, default_cls = _BADGE_ES[v]
+        cls = kind or default_cls
+        return f"<span class='badge {cls}'>{escape(label)}</span>"
     cls = kind or (v if v in ("live", "mock", "viable", "condicional", "hecho", "parcial", "falta") else "")
-    return f"<span class='badge {cls}'>{escape(str(val).upper())}</span>"
+    return f"<span class='badge {cls}'>{escape(str(val))}</span>"
 
 
 def _hero_compact(item: dict, *, title: str | None = None, meta_prefix: str = "", href_prefix: str = "../") -> str:
@@ -45,8 +64,8 @@ def _hero_compact(item: dict, *, title: str | None = None, meta_prefix: str = ""
       <div class="hero-stats">
         <div class="hero-stat"><div class="lbl">Fuentes</div><div class="val">{item.get('fuentes', 0)}</div></div>
         <div class="hero-stat"><div class="lbl">Veredicto</div><div class="val">{_badge(ver, ver_cls)}</div></div>
-        <div class="hero-stat"><div class="lbl">Score</div><div class="val">{item.get('score', '—')}</div></div>
-        <div class="hero-stat"><div class="lbl">Oportun.</div><div class="val">{item.get('oportunidades', 0)}</div></div>
+        <div class="hero-stat"><div class="lbl">Puntuación</div><div class="val">{item.get('score', '—')}</div></div>
+        <div class="hero-stat"><div class="lbl">Oportunidades</div><div class="val">{item.get('oportunidades', 0)}</div></div>
       </div>
       <p class="resumen"><strong>Tema:</strong> {escape(tema)} — {escape(item.get('resumen', ''))}</p>
       {link}
@@ -99,8 +118,8 @@ def _hero_card(item: dict, *, title: str | None = None, meta_prefix: str = "", h
       <div class="analisis-hero-grid">
         <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">{item.get('fuentes', 0)}</div></div>
         <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val">{_badge(ver, ver_cls)}</div></div>
-        <div class="analisis-stat"><div class="lbl">Score</div><div class="val">{item.get('score', '—')}</div></div>
-        <div class="analisis-stat"><div class="lbl">Oportun.</div><div class="val">{item.get('oportunidades', 0)}</div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">{item.get('score', '—')}</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">{item.get('oportunidades', 0)}</div></div>
       </div>
       <p class="analisis-resumen">{escape(item.get('resumen', ''))}</p>
       {link}
@@ -124,7 +143,7 @@ def _viabilidad_heroes(viab: dict | None, *, href_prefix: str = "../") -> str:
         <div class="capa-block">
           <div class="capa-label {cls}">
             <h3>{escape(capa.get('titulo', ''))}</h3>
-            <span>{capa.get('viables', 0)} viables · score {capa.get('score_promedio', 0)}</span>
+            <span>{capa.get('viables', 0)} viables · puntuación {capa.get('score_promedio', 0)}</span>
           </div>
           <div class="analisis-heroes-grid">{cards}</div>
         </div>"""
@@ -156,7 +175,7 @@ def _viabilidad_table(proyectos: list[dict]) -> str:
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr>
-          <th>Proyecto</th><th>Fetch</th><th>Fuentes</th><th>Veredicto</th><th>Score</th><th>Opp</th><th></th>
+          <th>Proyecto</th><th>Modo</th><th>Fuentes</th><th>Veredicto</th><th>Puntuación</th><th>Oport.</th><th></th>
         </thead>
         <tbody>{rows}</tbody>
       </table>
@@ -234,7 +253,7 @@ def _analisis_mercado_table(items: list[dict], *, href_prefix: str = "../") -> s
           <td>{link}</td>
         </tr>"""
     return f"""<div class="tbl-wrap"><table class="tbl">
-      <thead><tr><th>Tema</th><th>Slug</th><th>Fetch</th><th>Fuentes</th><th>Veredicto</th><th>Score</th><th></th></tr></thead>
+      <thead><tr><th>Tema</th><th>Identificador</th><th>Modo</th><th>Fuentes</th><th>Veredicto</th><th>Puntuación</th><th></th></tr></thead>
       <tbody>{rows}</tbody></table></div>"""
 
 
@@ -324,7 +343,9 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
         </div>"""
     rubro = escape(str(ultima.get("rubro", "—")))
     ciudad = escape(str(ultima.get("ciudad", "—")))
-    modo = escape(str(ultima.get("modo", "—")))
+    modo_raw = str(ultima.get("modo", "—"))
+    modo_map = {"live": "En vivo", "mock": "Simulado"}
+    modo = escape(modo_map.get(modo_raw.lower(), modo_raw))
     fecha = escape(str(ultima.get("generado_legible", ultima.get("generado_at", "—"))))
     total = ultima.get("total", len(ultima.get("leads", [])))
     viables = ultima.get("viables", sum(1 for l in ultima.get("leads", []) if l.get("viable")))
@@ -338,13 +359,13 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
         direccion = escape(str(lead.get("direccion", "—")))
         telefono = escape(str(lead.get("telefono") or "—"))
         web = lead.get("web") or ""
-        web_cell = f'<a href="{escape(web)}" target="_blank" rel="noopener">web</a>' if web else "—"
+        web_cell = f'<a href="{escape(web)}" target="_blank" rel="noopener">Sitio web</a>' if web else "—"
         rating = lead.get("rating", "—")
         resenas = lead.get("resenas", "—")
         score = lead.get("score", "—")
         senales = ", ".join(escape(s) for s in (lead.get("senales") or [])[:4])
         maps = lead.get("maps_url") or ""
-        maps_cell = f'<a href="{escape(maps)}" target="_blank" rel="noopener">Maps</a>' if maps else "—"
+        maps_cell = f'<a href="{escape(maps)}" target="_blank" rel="noopener">Mapas</a>' if maps else "—"
         viable_badge = _badge("viable", "viable") if lead.get("viable") else _badge("no", "")
         tel_link = ""
         if lead.get("telefono"):
@@ -365,7 +386,7 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
           <td>{maps_cell}</td>
         </tr>"""
         maps_btn = (
-            f'<a class="lead-card-btn" href="{escape(maps)}" target="_blank" rel="noopener">Abrir Maps</a>'
+            f'<a class="lead-card-btn" href="{escape(maps)}" target="_blank" rel="noopener">Abrir Mapas</a>'
             if maps
             else ""
         )
@@ -377,7 +398,7 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
           </div>
           <p class="lead-card-addr">{direccion}</p>
           <div class="lead-card-stats">
-            <span class="score">{score} pts</span>
+            <span class="score">{score} puntos</span>
             <span>★ {rating}</span>
             <span>{resenas} reseñas</span>
           </div>
@@ -391,7 +412,7 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
     <div class="prod-leads">
       <p class="prod-leads-meta">
         Paso 0 · <strong>{rubro}</strong> en <strong>{ciudad}</strong> · {modo} · {fecha}
-        · {viables} viables / {total} leads · slug <code>{slug}</code>
+        · {viables} viables / {total} contactos · identificador <code>{slug}</code>
       </p>
       <div class="prod-leads-cards">{cards}</div>
       <div class="tbl-wrap prod-leads-table">
@@ -399,7 +420,7 @@ def _prospeccion_leads_html(prospeccion: dict | None) -> str:
           <thead>
             <tr>
               <th>Negocio</th><th>Dirección</th><th>Tel</th><th>Web</th>
-              <th>★</th><th>Reseñas</th><th>Score</th><th>Señales</th><th></th><th></th>
+              <th>★</th><th>Reseñas</th><th>Puntuación</th><th>Señales</th><th></th><th></th>
             </tr>
           </thead>
           <tbody>{rows}</tbody>
@@ -448,14 +469,14 @@ def _embudo_view(
     <div id="embudo-shell" class="embudo-shell" data-index-url="{escape(idx)}" data-steps="{escape(steps_json)}">
       <div id="embudo-overview">
         <div class="embudo-intro">
-          <p>Cliente demo <strong>Clínica Sol</strong> · flujo prospección → informe → propuesta → web → WhatsApp.
+          <p>Cliente de demostración <strong>Clínica Sol</strong> · flujo prospección → informe → propuesta → sitio web → WhatsApp.
           Cada paso se abre aquí mismo; puedes seguir con anterior / siguiente.</p>
           <button type="button" class="btn-outline" data-embudo-url="{escape(idx)}"
             data-embudo-title="Índice del embudo" data-embudo-paso="0">Abrir índice del embudo</button>
         </div>
         <div class="embudo-flow">{flow}</div>
         <div class="card" style="margin-top:12px">
-          <div class="card-head"><h2>Prospección · Paso 0</h2><span class="hint">Bot Maps · leads viables</span></div>
+          <div class="card-head"><h2>Prospección · Paso 0</h2><span class="hint">Bot de Mapas · contactos viables</span></div>
           <div class="card-body">{leads_html}</div>
         </div>
         <div class="embudo-steps">{steps}</div>
@@ -519,7 +540,7 @@ def _rentabilidad_view(data: dict) -> str:
           </div>
           <h3>{escape(item.get('titulo', ''))}</h3>
           <p class="rent-why">{escape(item.get('por_que', ''))}</p>
-          <div class="rent-meta">Score {score}{margen_txt} · {_rent_estado(item)}</div>
+          <div class="rent-meta">Puntuación {score}{margen_txt} · {_rent_estado(item)}</div>
         </article>"""
     conf = data.get("confidence_global", "—")
     fecha = data.get("generado_at", "—")
@@ -535,7 +556,7 @@ def _rentabilidad_view(data: dict) -> str:
       <span><i class="dot dot-no"></i> No crear</span>
     </div>
     <div class="rent-grid">{cards}</div>
-    <p class="rent-footer">confidence {escape(str(conf))} · {escape(str(fecha))} · {escape(data.get('nota', ''))}</p>"""
+    <p class="rent-footer">Confianza {escape(str(conf))} · {escape(str(fecha))} · {escape(data.get('nota', ''))}</p>"""
 
 
 def _clientes_table(clientes: list[dict]) -> str:
@@ -553,10 +574,10 @@ def _folders_compact(carpetas: list[dict]) -> str:
         return '<p class="empty">Sin carpetas.</p>'
     rows = ""
     for c in carpetas:
-        cli = "CLI" if c.get("has_cli") else "—"
+        cli = "Comando" if c.get("has_cli") else "—"
         subs = ", ".join(c.get("subcarpetas", [])[:6])
         rows += f"<tr><td>{escape(c['nombre'])}</td><td>{escape(c.get('tipo',''))}</td><td>{cli}</td><td style='font-size:0.72rem;color:var(--muted)'>{escape(subs)}</td></tr>"
-    return f'<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Carpeta</th><th>Tipo</th><th></th><th>Contenido</th></tr></thead><tbody>{rows}</tbody></table></div>'
+    return f'<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Carpeta</th><th>Tipo</th><th>Comando</th><th>Contenido</th></tr></thead><tbody>{rows}</tbody></table></div>'
 
 
 def render_html(inv: dict, *, href_prefix: str = "../") -> str:
@@ -594,7 +615,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     rentabilidad = _rentabilidad_view(d.get("rentabilidad", {}))
 
     idea_cols = [("titulo", "Idea"), ("categoria", "Tipo")]
-    eval_cols = [("titulo", "Idea"), ("estado", "Veredicto"), ("score", "Score")]
+    eval_cols = [("titulo", "Idea"), ("estado", "Veredicto"), ("score", "Puntuación")]
 
     skills = "".join(f'<span class="skill-chip">{escape(s)}</span>' for s in d.get("skills_instaladas", []))
 
@@ -639,7 +660,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
           <div class="card-body">{_flujo_compact(d['flujo'])}</div>
         </div>
         <div class="card">
-          <div class="card-head"><h2>Último radar KDP</h2><span class="hint">YouTube + web · live</span></div>
+          <div class="card-head"><h2>Último radar KDP</h2><span class="hint">YouTube + web · en vivo</span></div>
           <div class="card-body">{hero or '<p class="empty">Sin radar aún.</p>'}</div>
         </div>
       </div>
@@ -686,7 +707,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     <!-- PRESENCIA DIGITAL -->
     <section id="view-embudo" class="view">
       <div class="card">
-        <div class="card-head"><h2>Presencia digital — Clínica Sol</h2><span class="hint">4 pasos · informe → propuesta → web → WhatsApp</span></div>
+        <div class="card-head"><h2>Presencia digital — Clínica Sol</h2><span class="hint">4 pasos · informe → propuesta → sitio web → WhatsApp</span></div>
         <div class="card-body">{embudo_full}</div>
       </div>
     </section>
@@ -703,7 +724,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     <section id="view-sistema" class="view">
       <div class="grid-2">
         <div class="card">
-          <div class="card-head"><h2>Presencia digital</h2><span class="hint">demo clinica-sol</span></div>
+          <div class="card-head"><h2>Presencia digital</h2><span class="hint">Demostración Clínica Sol</span></div>
           <div class="card-body">{_embudo_mini(embudo, href_prefix=href_prefix, index_path=embudo_index)}</div>
         </div>
         <div class="card">
@@ -716,7 +737,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
         <div class="card-body">{_folders_compact(d.get('carpetas',[]))}</div>
       </div>
       <div class="card" style="margin-top:12px">
-        <div class="card-head"><h2>Skills instaladas</h2><span class="hint">{len(d.get('skills_instaladas',[]))} skills</span></div>
+        <div class="card-head"><h2>Habilidades instaladas</h2><span class="hint">{len(d.get('skills_instaladas',[]))} habilidades</span></div>
         <div class="card-body"><div class="skills-row">{skills or '<span class="empty">Ninguna</span>'}</div></div>
       </div>
     </section>

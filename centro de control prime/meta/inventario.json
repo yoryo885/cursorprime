@@ -1,7 +1,7 @@
 {
   "version": 1,
   "nombre": "Centro de control prime",
-  "generado_at": "2026-07-09T16:24:46.480238+00:00",
+  "generado_at": "2026-08-04T02:23:57.793148+00:00",
   "resumen": {
     "analisis": 3,
     "radar_corridas": 3,
@@ -18,10 +18,10 @@
     "skills_generadas": 13,
     "skills_instaladas": 0,
     "proyectos_activos": 9,
-    "carpetas_total": 15,
+    "carpetas_total": 18,
     "modulos_hecho": 6,
     "modulos_parcial": 10,
-    "clientes_total": 4,
+    "clientes_total": 5,
     "analisis_live": 1,
     "radar_semana_ok": "2026w27"
   },
@@ -605,7 +605,8 @@
         "clinica-sol",
         "demo-kerkus",
         "empanadas-don-pedro",
-        "ferreteria-central"
+        "ferreteria-central",
+        "vertice-pro"
       ]
     },
     {
@@ -748,6 +749,18 @@
       ]
     },
     {
+      "nombre": "proyecto landing",
+      "path": "proyecto landing",
+      "tipo": "otro",
+      "has_cli": false,
+      "subcarpetas": [
+        "copy",
+        "preview",
+        "scripts",
+        "shopify"
+      ]
+    },
+    {
       "nombre": "proyectos-top3",
       "path": "proyectos-top3",
       "tipo": "producto",
@@ -757,12 +770,33 @@
         "02-wasap-pymes",
         "03-presencia-digital"
       ]
+    },
+    {
+      "nombre": "sitio-pdf",
+      "path": "sitio-pdf",
+      "tipo": "otro",
+      "has_cli": true,
+      "subcarpetas": [
+        "data",
+        "logs",
+        "meta",
+        "src"
+      ]
+    },
+    {
+      "nombre": "vertice-pro-preview",
+      "path": "vertice-pro-preview",
+      "tipo": "otro",
+      "has_cli": false,
+      "subcarpetas": [
+        "assets"
+      ]
     }
   ],
   "modulos": [
     {
       "id": "router",
-      "nombre": "Router + skills",
+      "nombre": "Enrutador + habilidades",
       "carpeta": "router.py",
       "grupo": "core",
       "capa": "creador",
@@ -986,7 +1020,7 @@
     "falta": 0
   },
   "analisis_ecosistema": {
-    "generado_at": "2026-07-09T16:24:46.479187+00:00",
+    "generado_at": "2026-08-04T02:23:57.792441+00:00",
     "avance_global": 90,
     "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Marketing Audit**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
     "capas": [
@@ -1004,7 +1038,7 @@
         "proyectos": [
           {
             "id": "router",
-            "nombre": "Router + skills",
+            "nombre": "Enrutador + habilidades",
             "carpeta": "router.py",
             "grupo": "core",
             "estado": "hecho",
@@ -1257,7 +1291,7 @@
       "proyectos": [
         {
           "id": "router",
-          "nombre": "Router + skills",
+          "nombre": "Enrutador + habilidades",
           "carpeta": "router.py",
           "grupo": "core",
           "estado": "hecho",
@@ -1625,7 +1659,7 @@
     }
   },
   "viabilidad_proyectos": {
-    "generado_at": "2026-07-09T16:24:46.480212+00:00",
+    "generado_at": "2026-08-04T02:23:57.793126+00:00",
     "total": 16,
     "capas": [
       {
@@ -6459,6 +6493,15 @@
       "proyectos": [
         {
           "slug": "web-inicial",
+          "embudo": false
+        }
+      ]
+    },
+    {
+      "slug": "vertice-pro",
+      "proyectos": [
+        {
+          "slug": "shopify",
           "embudo": false
         }
       ]

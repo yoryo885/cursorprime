@@ -150,18 +150,18 @@ def prepare_panel_data(inv: dict) -> dict:
             "id": "modulos_parcial",
             "titulo": "Módulos parciales",
             "valor": r.get("modulos_parcial", 0),
-            "explicacion": "Funcionan en demo pero falta producción o cliente real.",
+            "explicacion": "Funcionan en demostración pero falta producción o cliente real.",
         },
         {
             "id": "clientes",
-            "titulo": "Clientes carpeta",
+            "titulo": "Clientes",
             "valor": r.get("clientes_total", 0),
-            "explicacion": "Carpetas en clientes/ (incluye demos ficticios).",
+            "explicacion": "Carpetas en clientes/ (incluye demostraciones ficticias).",
         },
     ]
 
     tabs_ayuda = {
-        "analisis": "Investigaciones de mercado con fetch live/mock, fuentes, veredicto y enlace al informe.",
+        "analisis": "Investigaciones de mercado con datos en vivo o simulados, fuentes, veredicto y enlace al informe.",
         "implementadas": "Ideas que dijiste sí y ya existen como código o pipeline en cursorprime.",
         "espera": "Ideas que pospusiste — puedes retomarlas cuando quieras.",
         "pendientes": "Propuestas nuevas de la lluvia. Aquí es donde suele tocar tu decisión.",
@@ -171,7 +171,7 @@ def prepare_panel_data(inv: dict) -> dict:
         "modulos": "Tu fábrica (creador de proyectos) separada de los pipelines que ya construiste.",
         "analisis_proyectos": "Viabilidad por proyecto — YouTube + web, mismo formato que el radar KDP.",
         "carpetas": "Árbol de carpetas principales del ecosistema.",
-        "embudo": "Presencia digital: informe → propuesta → web → WhatsApp.",
+        "embudo": "Presencia digital: informe → propuesta → sitio web → WhatsApp.",
         "clientes_tab": "Clientes con carpeta propia y proyectos activos.",
     }
 
@@ -213,7 +213,7 @@ def prepare_panel_data(inv: dict) -> dict:
         ],
         "flujo": flujo_enriquecido,
         "flujo_values": [p["count"] for p in inv.get("flujo", [])],
-        "produccion_labels": ["Packs visuales", "Prompts", "Skills creadas", "Evaluaciones", "Borradores"],
+        "produccion_labels": ["Packs visuales", "Plantillas de prompts", "Habilidades creadas", "Evaluaciones", "Borradores"],
         "produccion_explicacion": "Cosas que ya produjo el ecosistema — material, plantillas y borradores.",
         "produccion_values": [
             r.get("packs_contenido", 0),

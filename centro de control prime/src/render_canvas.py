@@ -33,7 +33,7 @@ export default function Dashboard() {{
 
   const tabLabels: [string, string][] = [
     ["analisis", "Investigaciones"], ["implementadas", "Ya hechas"], ["espera", "Pospuestas"],
-    ["pendientes", "Sin revisar"], ["evaluaciones", "Evaluaciones"], ["contenido", "Contenido"], ["skills", "Skills"],
+    ["pendientes", "Sin revisar"], ["evaluaciones", "Evaluaciones"], ["contenido", "Contenido"], ["skills", "Habilidades"],
   ];
 
   return (
