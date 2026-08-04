@@ -48,15 +48,15 @@
       "paso": 3,
       "nombre": "Web presencia",
       "apps": ["landing-lanzamiento", "Vercel/Netlify", "Google Business Profile"],
-      "flujo": "Propuesta OK → landing paso-3 → deploy → enlace en Maps",
+      "flujo": "Propuesta OK → landing paso-3 → publicación → enlace en Mapas",
       "plan_b": "Primero subdominio tuyo (cliente.presencialocal.cl); dominio del cliente después.",
       "tareas": [
-        {"id": "p3-sub", "texto": "Plan B: subdominio temporal live en 24h"},
+        {"id": "p3-sub", "texto": "Plan B: subdominio temporal en línea en 24 h"},
         {"id": "p3-landing", "texto": "Armar landing en paso-3-web"},
-        {"id": "p3-deploy", "texto": "Deploy en Vercel/Netlify (SSL activo)"},
+        {"id": "p3-deploy", "texto": "Publicar en Vercel/Netlify (SSL activo)"},
         {"id": "p3-dominio", "texto": "Dominio del cliente (tú compras/configuras DNS si hace falta)"},
         {"id": "p3-cta", "texto": "CTA WhatsApp y formulario funcionando"},
-        {"id": "p3-gbp", "texto": "Google Business Profile con URL de la web"},
+        {"id": "p3-gbp", "texto": "Perfil de Google Business con URL del sitio web"},
         {"id": "p3-test", "texto": "Probar en móvil"}
       ]
     },
@@ -64,13 +64,13 @@
       "paso": 4,
       "nombre": "Bot WhatsApp",
       "apps": ["whatsapp-marketing", "Meta API (A)", "Evolution API (B)"],
-      "flujo": "Web live → elegir ruta A u B → bot agenda / responde",
+      "flujo": "Sitio web en línea → elegir ruta A o B → bot agenda / responde",
       "plan_b": "Ruta B (Evolution): sin verificación Meta; ideal negocio informal.",
       "tareas": [
         {"id": "p4-ruta", "texto": "Elegir ruta: A oficial (Meta) o B rápida (Evolution)"},
         {"id": "p4-meta", "texto": "Ruta A: cuenta Meta Business + documentos legales"},
         {"id": "p4-evolution", "texto": "Ruta B: Evolution API + número dedicado"},
-        {"id": "p4-webhook", "texto": "Webhook / servidor con URL pública"},
+        {"id": "p4-webhook", "texto": "Webhook / servidor con URL pública (conexión en vivo)"},
         {"id": "p4-flujos", "texto": "Flujos: saludo, agendar, derivar a humano"},
         {"id": "p4-piloto", "texto": "Piloto 1 semana con cliente real"}
       ]
