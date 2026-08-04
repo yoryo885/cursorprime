@@ -1,0 +1,22 @@
+{
+  "slug": "organigrama-funcional",
+  "tipo": "documento",
+  "proyecto_destino": "meta/organizacion",
+  "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
+  "contexto": "Estrategia organizacional del emprendedor: pirámide por roles, no por nombres. DG = Emprendedor. Delegar de inmediato Tráfico/Adquisición (Marketing) y Soporte/Ejecución Técnica (Operaciones), con IA/automatización cubriendo ~80% de fricción.",
+  "temas": [
+    "organigrama",
+    "roles",
+    "manual de operaciones",
+    "marketing adquisición",
+    "operaciones técnicas",
+    "IA automatización"
+  ],
+  "notas": "Entrega visual PDF/HTML. Alinear con productos creados: Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok, n8n.",
+  "mejoras": [
+    {
+      "fecha": "2026-08-04",
+      "texto": "Pedido inicial: organigrama piramidal + JD + rutinas + IA 80%."
+    }
+  ]
+}
