@@ -102,12 +102,13 @@ HELP = """Comandos cursorprime:
 • leads — últimos leads
 • audit NOMBRE [| ciudad]
 • tiktok TEMA [| slug]
-• correr — demo del sistema completo (lead + audit + tiktok)
+• video TEMA — crea video (creador de contenido) y te lo manda acá
+• correr — demo lead + audit + video a Telegram
 
 Ejemplos:
+video 3 errores en Google Maps
 correr
 audit Clínica Sol | Providencia
-tiktok 3 errores en Google
 
 Todo es borrador. Si no te gusta, pedí el cambio en Cursor."""
 
@@ -188,8 +189,26 @@ def handle_text(text: str) -> str:
             f"Revisá y pedí cambios si hace falta."
         )
 
+    if low.startswith("video ") or low.startswith("/video ") or low.startswith("contenido "):
+        tema = raw.split(" ", 1)[1].strip()
+        reply_pre = None  # handled below via long job
+        r = runner_job(
+            "pipeline.contenido_video",
+            {"tema": tema, "titulo": tema, "slug": "tg-" + "".join(
+                c if c.isalnum() else "-" for c in tema.lower()
+            ).strip("-")[:36]},
+        )
+        if not r.get("ok"):
+            return f"❌ No pude generar el video.\n{r.get('error')}\n{(r.get('stderr') or '')[:300]}"
+        tg = r.get("telegram") or {}
+        return (
+            f"✅ Video generado (creador de contenido)\n"
+            f"slug: {r.get('slug')}\n"
+            f"MP4 enviado a Telegram: {tg.get('ok')}\n"
+            f"Revisá el video arriba. Si no te gusta, pedí cambios."
+        )
+
     if low in ("correr", "correr todo", "sistema", "full", "/correr", "demo"):
-        # Demo sistema completo: lead + audit + tiktok brief
         lead = runner_job(
             "lead.append",
             {
@@ -210,20 +229,21 @@ def handle_text(text: str) -> str:
                 "slug": "audit-demo-telegram",
             },
         )
-        tt = runner_job(
-            "pipeline.tiktok_brief",
+        vid = runner_job(
+            "pipeline.contenido_video",
             {
                 "tema": "3 errores de locales en Google Maps",
-                "slug": "tt-demo-telegram",
-                "nicho": "negocios locales",
+                "titulo": "3 errores de locales en Google Maps",
+                "slug": "tg-correr-demo",
+                "temas": ["Google Maps", "WhatsApp", "Clientes locales"],
             },
         )
         return (
-            "✅ Sistema completo (demo) disparado desde Telegram\n\n"
+            "✅ Sistema completo disparado\n\n"
             f"1) Lead: {((lead.get('lead') or {}).get('id'))}\n"
             f"2) Audit: {((audit.get('brief') or {}).get('slug'))}\n"
-            f"3) TikTok: {((tt.get('brief') or {}).get('slug'))}\n\n"
-            "Son borradores. Revisá y pedí cambios si hace falta."
+            f"3) Video: {vid.get('slug')} · enviado={((vid.get('telegram') or {}).get('ok'))}\n\n"
+            "El MP4 te tiene que haber llegado como video en este chat."
         )
 
     return "No entendí.\nEscribí: ayuda"

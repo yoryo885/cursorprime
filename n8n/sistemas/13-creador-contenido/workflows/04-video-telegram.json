@@ -1,0 +1,110 @@
+{
+  "name": "Contenido · video a Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contenido/video-telegram",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-13-vid-tg",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "13-video-telegram"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b=$json.body||$json;\nconst tema=String(b.tema||b.titulo||'').trim();\nif(!tema) return [{json:{ok:false,error:'falta tema'}}];\nreturn [{json:{ok:true,tema,slug:String(b.slug||'').trim(),titulo:String(b.titulo||tema).trim()}}];"
+      },
+      "id": "code-13-vid",
+      "name": "Normalizar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8780/job",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'pipeline.contenido_video', payload: $json }) }}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "http-13-runner",
+      "name": "Runner · video + Telegram",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        0
+      ],
+      "notes": "Corre creador de contenido y envía MP4 a @yoryo321",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-13-vid",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        780,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalizar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar": {
+      "main": [
+        [
+          {
+            "node": "Runner · video + Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Runner · video + Telegram": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
