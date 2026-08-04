@@ -12,7 +12,7 @@
     "operaciones técnicas",
     "IA automatización"
   ],
-  "notas": "Entrega visual PDF/HTML. Alinear con productos creados: Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok, n8n.",
+  "notas": "Entrega visual PDF/HTML. Alinear con productos creados: Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok, n8n. | Ciclo: borrador → feedback usuario → yo itero; QA checklist antes de cliente.",
   "mejoras": [
     {
       "fecha": "2026-08-04",
@@ -25,6 +25,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Detalle del 80%: qué hace el agente Cursor vs qué se automatiza en n8n/pipelines."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Explicar cómo se haría el flujo en la práctica + ciclo de revisión si no gusta PDF/video (no arregla solo el usuario)."
     }
   ]
 }
