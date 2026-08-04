@@ -1,39 +1,28 @@
-# Sistemas n8n — diseño sin API (para ver cómo queda)
+# Sistemas n8n — solo proyectos creados
 
-Importar después en n8n.cloud. **Sin Meta / Shopify / credenciales** por ahora.
+En n8n viven **únicamente** los workflows de la capa **Proyectos creados** del centro de control.
+Lo demás queda en `cola/` (ideas en cola — **no se importan ni se crean** en n8n).
 
-## Cómo ver el catálogo
+## Proyectos creados → sistemas activos
 
-Abrí `catalogo/index.html` (o la URL del tunnel si está servido).
+| Proyecto (panel) | Carpeta n8n | Workflows |
+|------------------|-------------|-----------|
+| Marketing Audit | `sistemas/06-auditorias-locales` | Auditoría · … |
+| Presencia web locales | `sistemas/07-presencia-digital` | Presencia · … |
+| Bot WhatsApp pymes | `sistemas/09-wasap-task-faq-citas` | Wasap FAQ · … |
+| Embudo comercial HTML | `sistemas/02-lead-landing` | Embudo · formulario landing |
+| Libros / KDP | `sistemas/11-kdp-resumenes` | KDP · … |
+| LinkedIn ghostwriter | `sistemas/12-linkedin-ghostwriter` | LinkedIn · … |
+| Creador de contenido | `sistemas/13-creador-contenido` | Contenido · … |
+| Capa clientes | — | Sin workflow n8n (carpeta `clientes/`) |
 
-## Ranking 1–8 (negocio)
+## Cola (no crear en n8n)
 
-| # | ID | Qué entrega | Workflows |
-|---|-----|-------------|-----------|
-| 1 | `06-auditorias-locales` | Informe → planes | 3 |
-| 2 | `07-presencia-digital` | Web + GBP | 4 |
-| 3 | `08-cola-pedidos-wasap` | Cola pedidos | 4 |
-| 4 | `09-wasap-task-faq-citas` | FAQ + citas + handoff | 5 |
-| 5 | `10-vertice-pdf-upsell` | PDF + upsell dropship | 4 |
-| 6 | `11-kdp-resumenes` | Resumen + listing KDP | 3 |
-| 7 | `12-linkedin-ghostwriter` | Pack posts mes | 3 |
-| 8 | `13-creador-contenido` | Lote imágenes | 3 |
-
-## Utilitarios
-
-`01-ping` … `05-contenido-lote` — plantillas cortas.
-
-## Embudo
-
-```
-#1 Audit → #2 Presencia → (#3 Cola | #4 Wasap task)
-#5–#8 = productos / canales propios
-```
+En `cola/`: ping, utilitarios, **Cola Wasap**, **Vértice PDF/upsell**, etc.
+Vuelven a `sistemas/` solo cuando el panel los pase a proyectos creados y digas **construye**.
 
 ## Estado
 
-- ✅ Esqueletos 1–8 en GitHub  
-- ⏸ Sin API (mock `sin_api: true` en respuestas)  
-- ⏸ Login n8n pendiente  
-
-Cuando digas **enchufar APIs**, se conectan Meta / Shopify / runners Cursor.
+- ✅ Solo 7 sistemas + embudo en GitHub `sistemas/`
+- ✅ Instancia n8n alineada (~22 workflows)
+- ⏸ Sin API real (mock / TODO)

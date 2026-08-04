@@ -198,6 +198,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Usuario pidió nombres n8n más simples (sin 10a/12c); formato Producto · acción."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n: solo proyectos creados del panel; cola fuera de la instancia (borrar utilitarios/Vertice/Cola Wasap)."
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/ | Nombres n8n: Producto · acción (sin códigos técnicos)."

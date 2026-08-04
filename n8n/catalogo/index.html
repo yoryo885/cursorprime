@@ -78,38 +78,37 @@
   <div class="wrap">
     <header>
       <p class="eyebrow">cursorprime · n8n</p>
-      <h1>Sistemas listos para ver (sin API)</h1>
-      <p class="sub">Esqueletos del ranking 1–8. Importables después en n8n.cloud. Hoy solo diseño + mock.</p>
+      <h1>Proyectos creados en n8n</h1>
+      <p class="sub">Solo lo que está en el panel como proyectos creados. Lo demás vive en <code>n8n/cola/</code> y no se importa.</p>
       <span class="badge">sin Meta · sin Shopify · sin credenciales</span>
     </header>
 
     <div class="flow">
-      <strong>Embudo negocio:</strong> #1 Audit → #2 Presencia → (#3 Cola o #4 Wasap task)<br/>
-      <strong>Producto propio:</strong> #5 Vértice PDF+upsell · #6 KDP · #7 LinkedIn · #8 Contenido
+      <strong>Activos:</strong> Marketing Audit → Presencia → Bot WhatsApp · Embudo<br/>
+      <strong>Contenido:</strong> KDP · LinkedIn · Creador de contenido · (Capa clientes sin n8n)
     </div>
 
     <div class="grid" id="list"></div>
-    <footer>Carpeta <code>n8n/sistemas/</code> · índice <code>n8n/SISTEMAS.md</code></footer>
+    <footer>Activos: <code>n8n/sistemas/</code> · Cola: <code>n8n/cola/</code> · <code>n8n/SISTEMAS.md</code></footer>
   </div>
   <script>
     const systems = [
-      { rank: 1, id: "06-auditorias-locales", title: "Auditorías locales", desc: "Informe score primero; después planes Básico / Presencia / Completo.", apps: "Maps · marketing-audit · Wasap · n8n", w: 3 },
-      { rank: 2, id: "07-presencia-digital", title: "Presencia digital", desc: "Web + Google Business (+ Wasap). El arreglo después del audit.", apps: "landings · Vercel · GBP · Wasap", w: 4 },
-      { rank: 3, id: "08-cola-pedidos-wasap", title: "Cola pedidos Wasap", desc: "Tickets, estados y avisos para locales en hora pico.", apps: "Meta API · Sheet · n8n", w: 4 },
-      { rank: 4, id: "09-wasap-task-faq-citas", title: "Wasap task FAQ/citas", desc: "FAQ + citas + handoff. No bot genérico.", apps: "Meta API · FAQ JSON · agenda", w: 5 },
-      { rank: 5, id: "10-vertice-pdf-upsell", title: "Vértice PDF + upsell", desc: "Pedido PDF → brief Cursor → oferta accesorio dropship.", apps: "Shopify · Cursor PDF · dropship", w: 4 },
-      { rank: 6, id: "11-kdp-resumenes", title: "KDP / resúmenes", desc: "Elegir nicho → disparar resumen + listing.", apps: "libros a entender · kdp_main", w: 3 },
-      { rank: 7, id: "12-linkedin-ghostwriter", title: "LinkedIn ghostwriter", desc: "Brief de mes → pack de posts (sin publicar aún).", apps: "generar_posts.py", w: 3 },
-      { rank: 8, id: "13-creador-contenido", title: "Creador de contenido", desc: "Lote slug → pipeline imágenes / slideshow mock.", apps: "creador de contenido · MOCK_KLING", w: 3 },
+      { rank: 1, id: "06-auditorias-locales", title: "Marketing Audit", desc: "Informe score primero; después interés en plan y seguimiento Wasap.", apps: "Maps · marketing-audit · Wasap", w: 3 },
+      { rank: 2, id: "07-presencia-digital", title: "Presencia web locales", desc: "Alta proyecto → web publicada → checklist Google → entrega.", apps: "landings · Vercel · GBP · Wasap", w: 4 },
+      { rank: 3, id: "09-wasap-task-faq-citas", title: "Bot WhatsApp pymes", desc: "Mensaje → intención → FAQ / cita / handoff a humano.", apps: "Meta API · FAQ JSON · agenda", w: 5 },
+      { rank: 4, id: "02-lead-landing", title: "Embudo comercial HTML", desc: "Lead del formulario de la landing / embudo.", apps: "Webhook · CRM / Sheet", w: 1 },
+      { rank: 5, id: "11-kdp-resumenes", title: "Libros / KDP", desc: "Nicho → resumen → listing listo.", apps: "libros a entender · kdp_main", w: 3 },
+      { rank: 6, id: "12-linkedin-ghostwriter", title: "LinkedIn ghostwriter", desc: "Brief del mes → generar posts → pack listo.", apps: "generar_posts.py", w: 3 },
+      { rank: 7, id: "13-creador-contenido", title: "Creador de contenido", desc: "Nuevo lote → imágenes → lote listo.", apps: "creador de contenido · MOCK_KLING", w: 3 },
     ];
     const el = document.getElementById("list");
     el.innerHTML = systems.map(s => `
       <article class="${s.rank <= 4 ? "top" : ""}">
-        <div class="rank">#${s.rank} · ${s.id}</div>
+        <div class="rank">Proyecto · ${s.id}</div>
         <h2>${s.title}</h2>
         <p>${s.desc}</p>
         <div class="meta">
-          <span class="chip ok">esqueleto</span>
+          <span class="chip ok">creado</span>
           <span class="chip">${s.w} workflows</span>
           <span class="chip">${s.apps}</span>
         </div>
