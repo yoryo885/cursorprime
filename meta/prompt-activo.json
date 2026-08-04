@@ -1,12 +1,12 @@
 {
-  "version": 35,
+  "version": 36,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
-    "version": 2,
-    "ultima_mejora": "URL descarga PDF organigrama",
+    "version": 3,
+    "ultima_mejora": "automatizar el 80% Marketing/Ops",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }

@@ -21,6 +21,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Quiere poder descargar el organigrama (URL PDF estable/fresca)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Detalle del 80%: qué hace el agente Cursor vs qué se automatiza en n8n/pipelines."
     }
   ]
 }
