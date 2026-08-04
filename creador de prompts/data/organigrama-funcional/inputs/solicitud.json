@@ -77,6 +77,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Demo en Telegram de formatos de mensaje (hoy vs entregable PDF/video)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Entrega demo real a Telegram: PDF adjunto + links trycloudflare (no ejemplo.com)."
     }
   ]
 }
