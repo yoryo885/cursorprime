@@ -48,107 +48,122 @@
     },
     {
       "parameters": {
-        "content": "## #2 Presencia digital\\n\\n**Apps del sistema**\\nlandings · Vercel/Netlify · Google Business · WhatsApp\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #2 Presencia digital\n\nArma la web y Google del negocio después del audit.\n\n### Apps\n\n**Cursor · creador-de-landings**  \nCrea la landing/HTML del negocio.\n\n**Vercel / Netlify**  \nPublica la web con URL viva.\n\n**Google Business Profile**  \nOrdena ficha Google (horarios, fotos, link).\n\n**WhatsApp**  \nAvisa al cliente que la presencia quedó lista.\n\n**Carpeta clientes/**  \nGuarda URL, checklist GBP y entregables.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-03-gbp-checklist",
-      "name": "Viz Apps 03 Gbp Checklist",
+      "id": "viz-legend-03-gbp-checklist",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/landing-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-03-gbp-checklist-0",
-      "name": "TODO creador-de-landings",
+      "id": "viz-app-03-gbp-checklist-0",
+      "name": "Cursor · creador-de-landings",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Crea la landing/HTML del negocio.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/vercel-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-03-gbp-checklist-1",
-      "name": "TODO Deploy Vercel",
+      "id": "viz-app-03-gbp-checklist-1",
+      "name": "Vercel / Netlify",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
-        140
+        860,
+        150
       ],
-      "notes": "TODO sin API — conectar credencial después",
-      "notesInFlow": true,
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "mode": "manual",
-        "duplicateItem": false,
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a0",
-              "name": "gbp",
-              "value": "pendiente",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "viz-03-gbp-checklist-2",
-      "name": "TODO Checklist GBP",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        840,
-        280
-      ],
-      "notes": "TODO — destino real después",
+      "notes": "Qué hace: Publica la web con URL viva.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/wasap-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-03-gbp-checklist-3",
-      "name": "TODO Wasap entrega",
+      "id": "viz-app-03-gbp-checklist-2",
+      "name": "Google Business Profile",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
-        420
+        860,
+        300
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Ordena ficha Google (horarios, fotos, link).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-gbp-checklist-3",
+      "name": "WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Avisa al cliente que la presencia quedó lista.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-gbp-checklist-4",
+      "name": "Carpeta clientes/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Guarda URL, checklist GBP y entregables.",
       "notesInFlow": true,
       "disabled": true
     }
@@ -174,40 +189,51 @@
             "index": 0
           },
           {
-            "node": "TODO creador-de-landings",
+            "node": "Cursor · creador-de-landings",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO creador-de-landings": {
+    "Cursor · creador-de-landings": {
       "main": [
         [
           {
-            "node": "TODO Deploy Vercel",
+            "node": "Vercel / Netlify",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Deploy Vercel": {
+    "Vercel / Netlify": {
       "main": [
         [
           {
-            "node": "TODO Checklist GBP",
+            "node": "Google Business Profile",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Checklist GBP": {
+    "Google Business Profile": {
       "main": [
         [
           {
-            "node": "TODO Wasap entrega",
+            "node": "WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Carpeta clientes/",
             "type": "main",
             "index": 0
           }

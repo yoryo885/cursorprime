@@ -48,65 +48,80 @@
     },
     {
       "parameters": {
-        "content": "## #7 LinkedIn\\n\\n**Apps del sistema**\\ngenerar_posts.py · (luego LinkedIn)\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #7 LinkedIn ghostwriter\n\nPack de posts del mes al estilo del perfil.\n\n### Apps\n\n**Cursor · generar_posts.py**  \nEscribe el lote de posts del mes.\n\n**Carpeta posts_generados/**  \nGuarda los textos listos para publicar.\n\n**LinkedIn (después)**  \nPublicación manual o API más adelante.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-02-disparar-posts",
-      "name": "Viz Apps 02 Disparar Posts",
+      "id": "viz-legend-02-disparar-posts",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/linkedin-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-disparar-posts-0",
-      "name": "TODO Cursor generar_posts",
+      "id": "viz-app-02-disparar-posts-0",
+      "name": "Cursor · generar_posts.py",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Escribe el lote de posts del mes.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
-        "mode": "manual",
-        "duplicateItem": false,
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a0",
-              "name": "out",
-              "value": "posts_generados/",
-              "type": "string"
-            }
-          ]
-        },
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-disparar-posts-1",
-      "name": "TODO Export carpeta posts",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "id": "viz-app-02-disparar-posts-1",
+      "name": "Carpeta posts_generados/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        840,
-        140
+        860,
+        150
       ],
-      "notes": "TODO — destino real después",
+      "notes": "Qué hace: Guarda los textos listos para publicar.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-disparar-posts-2",
+      "name": "LinkedIn (después)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Publicación manual o API más adelante.",
       "notesInFlow": true,
       "disabled": true
     }
@@ -132,18 +147,29 @@
             "index": 0
           },
           {
-            "node": "TODO Cursor generar_posts",
+            "node": "Cursor · generar_posts.py",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Cursor generar_posts": {
+    "Cursor · generar_posts.py": {
       "main": [
         [
           {
-            "node": "TODO Export carpeta posts",
+            "node": "Carpeta posts_generados/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Carpeta posts_generados/": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn (después)",
             "type": "main",
             "index": 0
           }

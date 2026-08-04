@@ -48,92 +48,122 @@
     },
     {
       "parameters": {
-        "content": "## #1 Auditorías\\n\\n**Apps del sistema**\\nMaps · marketing-audit (Cursor) · WhatsApp · clientes/\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #1 Auditorías locales\n\nEncuentra el problema del local y abre la venta.\n\n### Apps\n\n**Google Maps / Places**  \nBuscar locales y su web/ficha para auditar.\n\n**Cursor · marketing-audit**  \nGenera el informe con score y quick wins.\n\n**Google Sheet / Notion**  \nGuarda el job del audit (estado, cliente, URL).\n\n**WhatsApp**  \nManda el informe o el seguimiento al dueño del local.\n\n**Carpeta clientes/**  \nArchiva brief + entregables del cliente en el repo.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-03-seguimiento-wasap",
-      "name": "Viz Apps 03 Seguimiento Wasap",
+      "id": "viz-legend-03-seguimiento-wasap",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/audit-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-03-seguimiento-wasap-0",
-      "name": "TODO Cursor marketing-audit",
+      "id": "viz-app-03-seguimiento-wasap-0",
+      "name": "Google Maps / Places",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
-      "notesInFlow": true,
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "mode": "manual",
-        "duplicateItem": false,
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a0",
-              "name": "destino",
-              "value": "sheet_jobs",
-              "type": "string"
-            },
-            {
-              "id": "a1",
-              "name": "estado",
-              "value": "queued",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "viz-03-seguimiento-wasap-1",
-      "name": "TODO Sheet/Notion jobs",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        840,
-        140
-      ],
-      "notes": "TODO — destino real después",
+      "notes": "Qué hace: Buscar locales y su web/ficha para auditar.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/wasap-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-03-seguimiento-wasap-2",
-      "name": "TODO WhatsApp aviso",
+      "id": "viz-app-03-seguimiento-wasap-1",
+      "name": "Cursor · marketing-audit",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
-        280
+        860,
+        150
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Genera el informe con score y quick wins.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-2",
+      "name": "Google Sheet / Notion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Guarda el job del audit (estado, cliente, URL).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-3",
+      "name": "WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Manda el informe o el seguimiento al dueño del local.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-4",
+      "name": "Carpeta clientes/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Archiva brief + entregables del cliente en el repo.",
       "notesInFlow": true,
       "disabled": true
     }
@@ -159,29 +189,51 @@
             "index": 0
           },
           {
-            "node": "TODO Cursor marketing-audit",
+            "node": "Google Maps / Places",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Cursor marketing-audit": {
+    "Google Maps / Places": {
       "main": [
         [
           {
-            "node": "TODO Sheet/Notion jobs",
+            "node": "Cursor · marketing-audit",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Sheet/Notion jobs": {
+    "Cursor · marketing-audit": {
       "main": [
         [
           {
-            "node": "TODO WhatsApp aviso",
+            "node": "Google Sheet / Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheet / Notion": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Carpeta clientes/",
             "type": "main",
             "index": 0
           }

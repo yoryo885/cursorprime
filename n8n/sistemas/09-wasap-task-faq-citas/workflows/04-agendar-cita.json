@@ -48,65 +48,101 @@
     },
     {
       "parameters": {
-        "content": "## #4 Wasap FAQ/citas\\n\\n**Apps del sistema**\\nMeta API · FAQ JSON · Sheet/Cal.com · handoff\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #4 Wasap FAQ / citas\n\nAtiende preguntas y turnos; pasa a humano si hace falta.\n\n### Apps\n\n**WhatsApp · Meta Cloud API**  \nCanal de mensajes con el cliente.\n\n**FAQ JSON del negocio**  \nRespuestas de horario, precio, dirección, servicios.\n\n**Sheet / Cal.com**  \nAgenda de citas solicitadas.\n\n**WhatsApp equipo**  \nHandoff: avisa a una persona del local.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-04-agendar-cita",
-      "name": "Viz Apps 04 Agendar Cita",
+      "id": "viz-legend-04-agendar-cita",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/meta-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-04-agendar-cita-0",
-      "name": "TODO Meta send message",
+      "id": "viz-app-04-agendar-cita-0",
+      "name": "WhatsApp · Meta Cloud API",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Canal de mensajes con el cliente.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
-        "mode": "manual",
-        "duplicateItem": false,
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a0",
-              "name": "agenda",
-              "value": "sheet_citas",
-              "type": "string"
-            }
-          ]
-        },
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-04-agendar-cita-1",
-      "name": "TODO Agenda citas",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "id": "viz-app-04-agendar-cita-1",
+      "name": "FAQ JSON del negocio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        840,
-        140
+        860,
+        150
       ],
-      "notes": "TODO — destino real después",
+      "notes": "Qué hace: Respuestas de horario, precio, dirección, servicios.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-04-agendar-cita-2",
+      "name": "Sheet / Cal.com",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Agenda de citas solicitadas.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-04-agendar-cita-3",
+      "name": "WhatsApp equipo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Handoff: avisa a una persona del local.",
       "notesInFlow": true,
       "disabled": true
     }
@@ -132,18 +168,40 @@
             "index": 0
           },
           {
-            "node": "TODO Meta send message",
+            "node": "WhatsApp · Meta Cloud API",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Meta send message": {
+    "WhatsApp · Meta Cloud API": {
       "main": [
         [
           {
-            "node": "TODO Agenda citas",
+            "node": "FAQ JSON del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ JSON del negocio": {
+      "main": [
+        [
+          {
+            "node": "Sheet / Cal.com",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sheet / Cal.com": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp equipo",
             "type": "main",
             "index": 0
           }

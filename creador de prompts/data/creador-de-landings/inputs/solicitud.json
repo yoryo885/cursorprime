@@ -158,6 +158,38 @@
     {
       "fecha": "2026-08-04",
       "texto": "n8n abierto con owner Cursor email + API key + swagger"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Fix login n8n: owner = yordifallodelgado@gmail.com"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n tunnel nuevo + login verificado yordifallodelgado"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n owner restaurado a c.pprimepersonal@gmail.com"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Aclarar dónde está lo armado: n8n/sistemas + catálogo + UI tunnel"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Usuario ve solo 01-ping en UI; aclarar que el armado completo está en repo, falta importar"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Importados 34 workflows a n8n UI via API (antes solo 01-ping)"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Workflows n8n enriquecidos con nodos TODO visibles de apps (Shopify/Meta/Vercel/Cursor)"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Nodos n8n con nombre de app + descripción de qué hace cada una"
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"

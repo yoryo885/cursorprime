@@ -48,65 +48,80 @@
     },
     {
       "parameters": {
-        "content": "## #8 Contenido\\n\\n**Apps del sistema**\\ncreador de contenido · MOCK_KLING · manifest\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #8 Creador de contenido\n\nLote de imágenes/video a partir de un slug.\n\n### Apps\n\n**Cursor · creador_imagenes_main**  \nGenera el lote (PNG/GIF/video mock).\n\n**MOCK_KLING / Kling API**  \nAnimación de escenas (mock ahora).\n\n**manifest.json**  \nLista de archivos generados en output/.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-02-disparar-pipeline",
-      "name": "Viz Apps 02 Disparar Pipeline",
+      "id": "viz-legend-02-disparar-pipeline",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/contenido-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-disparar-pipeline-0",
-      "name": "TODO creador_imagenes_main",
+      "id": "viz-app-02-disparar-pipeline-0",
+      "name": "Cursor · creador_imagenes_main",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Genera el lote (PNG/GIF/video mock).",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
-        "mode": "manual",
-        "duplicateItem": false,
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a0",
-              "name": "manifest",
-              "value": "output/manifest.json",
-              "type": "string"
-            }
-          ]
-        },
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-disparar-pipeline-1",
-      "name": "TODO manifest.json",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "id": "viz-app-02-disparar-pipeline-1",
+      "name": "MOCK_KLING / Kling API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        840,
-        140
+        860,
+        150
       ],
-      "notes": "TODO — destino real después",
+      "notes": "Qué hace: Animación de escenas (mock ahora).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-disparar-pipeline-2",
+      "name": "manifest.json",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Lista de archivos generados en output/.",
       "notesInFlow": true,
       "disabled": true
     }
@@ -132,18 +147,29 @@
             "index": 0
           },
           {
-            "node": "TODO creador_imagenes_main",
+            "node": "Cursor · creador_imagenes_main",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO creador_imagenes_main": {
+    "Cursor · creador_imagenes_main": {
       "main": [
         [
           {
-            "node": "TODO manifest.json",
+            "node": "MOCK_KLING / Kling API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MOCK_KLING / Kling API": {
+      "main": [
+        [
+          {
+            "node": "manifest.json",
             "type": "main",
             "index": 0
           }

@@ -48,100 +48,122 @@
     },
     {
       "parameters": {
-        "content": "## #5 Vértice PDF + upsell\\n\\n**Apps del sistema**\\nShopify · Cursor PDF · Dropship · Email/Wasap\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #5 Vértice PDF + upsell\n\nVende la guía PDF y ofrece accesorio físico.\n\n### Apps\n\n**Shopify**  \nCobra el PDF y avisa el pedido pagado.\n\n**Cursor · generador PDF**  \nCrea/entrega el PDF según el slug (libro×rol).\n\n**Email / WhatsApp**  \nManda la oferta de upsell (lámpara, repisa…).\n\n**Dropshipping (CJ/Spocket/etc.)**  \nSi acepta, el proveedor envía el físico.\n\n**Google Sheet**  \nLog: PDF vendido + upsell sí/no.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-02-brief-cursor",
-      "name": "Viz Apps 02 Brief Cursor",
+      "id": "viz-legend-02-brief-cursor",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/shopify-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-brief-cursor-0",
-      "name": "TODO Shopify order",
+      "id": "viz-app-02-brief-cursor-0",
+      "name": "Shopify",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Cobra el PDF y avisa el pedido pagado.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/cursor-pdf-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-brief-cursor-1",
-      "name": "TODO Cursor generar PDF",
+      "id": "viz-app-02-brief-cursor-1",
+      "name": "Cursor · generador PDF",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
-        140
+        860,
+        150
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Crea/entrega el PDF según el slug (libro×rol).",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/dropship-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-brief-cursor-2",
-      "name": "TODO Dropship proveedor",
+      "id": "viz-app-02-brief-cursor-2",
+      "name": "Email / WhatsApp",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
-        280
+        860,
+        300
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Manda la oferta de upsell (lámpara, repisa…).",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/email-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-02-brief-cursor-3",
-      "name": "TODO Email upsell",
+      "id": "viz-app-02-brief-cursor-3",
+      "name": "Dropshipping (CJ/Spocket/etc.)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
-        420
+        860,
+        450
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Si acepta, el proveedor envía el físico.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-brief-cursor-4",
+      "name": "Google Sheet",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Log: PDF vendido + upsell sí/no.",
       "notesInFlow": true,
       "disabled": true
     }
@@ -167,40 +189,51 @@
             "index": 0
           },
           {
-            "node": "TODO Shopify order",
+            "node": "Shopify",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Shopify order": {
+    "Shopify": {
       "main": [
         [
           {
-            "node": "TODO Cursor generar PDF",
+            "node": "Cursor · generador PDF",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Cursor generar PDF": {
+    "Cursor · generador PDF": {
       "main": [
         [
           {
-            "node": "TODO Dropship proveedor",
+            "node": "Email / WhatsApp",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Dropship proveedor": {
+    "Email / WhatsApp": {
       "main": [
         [
           {
-            "node": "TODO Email upsell",
+            "node": "Dropshipping (CJ/Spocket/etc.)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dropshipping (CJ/Spocket/etc.)": {
+      "main": [
+        [
+          {
+            "node": "Google Sheet",
             "type": "main",
             "index": 0
           }

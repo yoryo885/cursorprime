@@ -48,65 +48,80 @@
     },
     {
       "parameters": {
-        "content": "## #3 Cola pedidos\\n\\n**Apps del sistema**\\nWhatsApp Meta API · Sheet/Notion cola · n8n\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
-        "height": 300,
-        "width": 360
+        "content": "## #3 Cola de pedidos WhatsApp\n\nOrdena pedidos del local en hora pico.\n\n### Apps\n\n**WhatsApp · Meta Cloud API**  \nRecibe pedidos y manda avisos de estado.\n\n**Google Sheet / Notion**  \nCola del día: ticket, estado, cliente.\n\n**n8n (este flujo)**  \nAsigna ticket y cambia estados (nuevo→listo).\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
       },
-      "id": "viz-apps-04-alta-negocio",
-      "name": "Viz Apps 04 Alta Negocio",
+      "id": "viz-legend-04-alta-negocio",
+      "name": "Qué hace cada app",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -420,
-        -40
+        -480,
+        -80
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:9999/meta-mock",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-04-alta-negocio-0",
-      "name": "TODO Meta Cloud API",
+      "id": "viz-app-04-alta-negocio-0",
+      "name": "WhatsApp · Meta Cloud API",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        860,
         0
       ],
-      "notes": "TODO sin API — conectar credencial después",
+      "notes": "Qué hace: Recibe pedidos y manda avisos de estado.",
       "notesInFlow": true,
       "disabled": true
     },
     {
       "parameters": {
-        "mode": "manual",
-        "duplicateItem": false,
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a0",
-              "name": "tabla",
-              "value": "pedidos",
-              "type": "string"
-            }
-          ]
-        },
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
         "options": {}
       },
-      "id": "viz-04-alta-negocio-1",
-      "name": "TODO Sheet cola pedidos",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "id": "viz-app-04-alta-negocio-1",
+      "name": "Google Sheet / Notion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        840,
-        140
+        860,
+        150
       ],
-      "notes": "TODO — destino real después",
+      "notes": "Qué hace: Cola del día: ticket, estado, cliente.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-04-alta-negocio-2",
+      "name": "n8n (este flujo)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Asigna ticket y cambia estados (nuevo→listo).",
       "notesInFlow": true,
       "disabled": true
     }
@@ -132,18 +147,29 @@
             "index": 0
           },
           {
-            "node": "TODO Meta Cloud API",
+            "node": "WhatsApp · Meta Cloud API",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "TODO Meta Cloud API": {
+    "WhatsApp · Meta Cloud API": {
       "main": [
         [
           {
-            "node": "TODO Sheet cola pedidos",
+            "node": "Google Sheet / Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheet / Notion": {
+      "main": [
+        [
+          {
+            "node": "n8n (este flujo)",
             "type": "main",
             "index": 0
           }
