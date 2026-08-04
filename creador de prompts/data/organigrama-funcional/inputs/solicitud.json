@@ -69,6 +69,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Comando Telegram `correr` para demo sistema completo; esperar orden del usuario."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Explicar qué hace `correr` hoy vs entregables cliente (PDF/video)."
     }
   ]
 }

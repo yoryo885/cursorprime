@@ -1,12 +1,12 @@
 {
-  "version": 47,
+  "version": 48,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
     "version": 5,
-    "ultima_mejora": "Telegram comando correr; esperar orden",
+    "ultima_mejora": "explicar entregable real de comando correr",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }
