@@ -26,6 +26,10 @@ Formato: **Producto · qué hace**
 | Creador de contenido | **Contenido · nuevo lote** |
 | Creador de contenido | **Contenido · generar imágenes** |
 | Creador de contenido | **Contenido · lote listo** |
+| Videos TikTok | **TikTok · nuevo guion** |
+| Videos TikTok | **TikTok · render video** |
+| Videos TikTok | **TikTok · video listo** |
+| Videos TikTok | **TikTok · publicar** |
 
 Capa clientes: sin workflow n8n.
 

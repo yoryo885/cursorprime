@@ -202,6 +202,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "n8n: solo proyectos creados del panel; cola fuera de la instancia (borrar utilitarios/Vertice/Cola Wasap)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Añadir sistema n8n Videos TikTok (guion→render→listo→publicar) con creador de contenido / Kling mock."
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/ | Nombres n8n: Producto · acción (sin códigos técnicos)."

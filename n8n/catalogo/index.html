@@ -85,7 +85,7 @@
 
     <div class="flow">
       <strong>Activos:</strong> Marketing Audit → Presencia → Bot WhatsApp · Embudo<br/>
-      <strong>Contenido:</strong> KDP · LinkedIn · Creador de contenido · (Capa clientes sin n8n)
+      <strong>Contenido:</strong> KDP · LinkedIn · Creador de contenido · Videos TikTok · (Capa clientes sin n8n)
     </div>
 
     <div class="grid" id="list"></div>
@@ -100,6 +100,7 @@
       { rank: 5, id: "11-kdp-resumenes", title: "Libros / KDP", desc: "Nicho → resumen → listing listo.", apps: "libros a entender · kdp_main", w: 3 },
       { rank: 6, id: "12-linkedin-ghostwriter", title: "LinkedIn ghostwriter", desc: "Brief del mes → generar posts → pack listo.", apps: "generar_posts.py", w: 3 },
       { rank: 7, id: "13-creador-contenido", title: "Creador de contenido", desc: "Nuevo lote → imágenes → lote listo.", apps: "creador de contenido · MOCK_KLING", w: 3 },
+      { rank: 8, id: "14-videos-tiktok", title: "Videos TikTok", desc: "Guion → render 9:16 (slideshow|animado) → listo → publicar.", apps: "hooks-redes · guion-a-video · Kling/mock · TikTok API", w: 4 },
     ];
     const el = document.getElementById("list");
     el.innerHTML = systems.map(s => `

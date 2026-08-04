@@ -14,6 +14,7 @@ Lo demás queda en `cola/` (ideas en cola — **no se importan ni se crean** en 
 | Libros / KDP | `sistemas/11-kdp-resumenes` | KDP · … |
 | LinkedIn ghostwriter | `sistemas/12-linkedin-ghostwriter` | LinkedIn · … |
 | Creador de contenido | `sistemas/13-creador-contenido` | Contenido · … |
+| Videos TikTok | `sistemas/14-videos-tiktok` | TikTok · … |
 | Capa clientes | — | Sin workflow n8n (carpeta `clientes/`) |
 
 ## Cola (no crear en n8n)
@@ -23,6 +24,6 @@ Vuelven a `sistemas/` solo cuando el panel los pase a proyectos creados y digas 
 
 ## Estado
 
-- ✅ Solo 7 sistemas + embudo en GitHub `sistemas/`
-- ✅ Instancia n8n alineada (~22 workflows)
+- ✅ Sistemas de proyectos creados + **Videos TikTok** en `sistemas/`
+- ✅ Instancia n8n alineada (~26 workflows)
 - ⏸ Sin API real (mock / TODO)

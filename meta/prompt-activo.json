@@ -1,12 +1,12 @@
 {
-  "version": 30,
+  "version": 31,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Arreglar creador de landings (visual)",
-    "version": 11,
-    "ultima_mejora": "n8n solo proyectos creados; cola aparte",
+    "version": 12,
+    "ultima_mejora": "sistema n8n Videos TikTok",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }
