@@ -12,7 +12,10 @@
       "name": "Webhook Interés Plan",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [
+        0,
+        0
+      ],
       "webhookId": "06b-lead-interes-plan"
     },
     {
@@ -23,7 +26,10 @@
       "name": "Validar plan",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [280, 0]
+      "position": [
+        280,
+        0
+      ]
     },
     {
       "parameters": {
@@ -35,7 +41,10 @@
       "name": "Respond",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [560, 0]
+      "position": [
+        560,
+        0
+      ]
     },
     {
       "parameters": {
@@ -47,17 +56,158 @@
       "name": "Nota planes",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [280, 200]
+      "position": [
+        280,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #1 Auditorías\\n\\n**Apps del sistema**\\nMaps · marketing-audit (Cursor) · WhatsApp · clientes/\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
+        "height": 300,
+        "width": 360
+      },
+      "id": "viz-apps-02-lead-interes-plan",
+      "name": "Viz Apps 02 Lead Interes Plan",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/audit-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-02-lead-interes-plan-0",
+      "name": "TODO Cursor marketing-audit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        0
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0",
+              "name": "destino",
+              "value": "sheet_jobs",
+              "type": "string"
+            },
+            {
+              "id": "a1",
+              "name": "estado",
+              "value": "queued",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "viz-02-lead-interes-plan-1",
+      "name": "TODO Sheet/Notion jobs",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        140
+      ],
+      "notes": "TODO — destino real después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/wasap-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-02-lead-interes-plan-2",
+      "name": "TODO WhatsApp aviso",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        280
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
     }
   ],
   "connections": {
     "Webhook Interés Plan": {
-      "main": [[{ "node": "Validar plan", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Validar plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Validar plan": {
-      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TODO Cursor marketing-audit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Cursor marketing-audit": {
+      "main": [
+        [
+          {
+            "node": "TODO Sheet/Notion jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Sheet/Notion jobs": {
+      "main": [
+        [
+          {
+            "node": "TODO WhatsApp aviso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "settings": { "executionOrder": "v1" },
-  "meta": { "templateCredsSetupCompleted": true }
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
 }

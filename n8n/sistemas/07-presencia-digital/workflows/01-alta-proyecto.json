@@ -12,7 +12,10 @@
       "name": "Webhook Alta",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [
+        0,
+        0
+      ],
       "webhookId": "07a-alta-presencia"
     },
     {
@@ -23,7 +26,10 @@
       "name": "Armar job presencia",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [280, 0]
+      "position": [
+        280,
+        0
+      ]
     },
     {
       "parameters": {
@@ -35,7 +41,10 @@
       "name": "Respond",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [560, 0]
+      "position": [
+        560,
+        0
+      ]
     },
     {
       "parameters": {
@@ -47,17 +56,184 @@
       "name": "Nota",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [280, 200]
+      "position": [
+        280,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #2 Presencia digital\\n\\n**Apps del sistema**\\nlandings · Vercel/Netlify · Google Business · WhatsApp\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
+        "height": 300,
+        "width": 360
+      },
+      "id": "viz-apps-01-alta-proyecto",
+      "name": "Viz Apps 01 Alta Proyecto",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/landing-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-01-alta-proyecto-0",
+      "name": "TODO creador-de-landings",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        0
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/vercel-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-01-alta-proyecto-1",
+      "name": "TODO Deploy Vercel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        140
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0",
+              "name": "gbp",
+              "value": "pendiente",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "viz-01-alta-proyecto-2",
+      "name": "TODO Checklist GBP",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        280
+      ],
+      "notes": "TODO — destino real después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/wasap-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-01-alta-proyecto-3",
+      "name": "TODO Wasap entrega",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        420
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
     }
   ],
   "connections": {
     "Webhook Alta": {
-      "main": [[{ "node": "Armar job presencia", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Armar job presencia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Armar job presencia": {
-      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TODO creador-de-landings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO creador-de-landings": {
+      "main": [
+        [
+          {
+            "node": "TODO Deploy Vercel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Deploy Vercel": {
+      "main": [
+        [
+          {
+            "node": "TODO Checklist GBP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Checklist GBP": {
+      "main": [
+        [
+          {
+            "node": "TODO Wasap entrega",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "settings": { "executionOrder": "v1" },
-  "meta": { "templateCredsSetupCompleted": true }
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
 }

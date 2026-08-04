@@ -12,7 +12,10 @@
       "name": "Webhook Intent",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [
+        0,
+        0
+      ],
       "webhookId": "09b-intent-router"
     },
     {
@@ -23,7 +26,10 @@
       "name": "Router intent",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [280, 0]
+      "position": [
+        280,
+        0
+      ]
     },
     {
       "parameters": {
@@ -35,17 +41,120 @@
       "name": "Respond",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [560, 0]
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #4 Wasap FAQ/citas\\n\\n**Apps del sistema**\\nMeta API · FAQ JSON · Sheet/Cal.com · handoff\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
+        "height": 300,
+        "width": 360
+      },
+      "id": "viz-apps-02-intent-router",
+      "name": "Viz Apps 02 Intent Router",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/meta-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-02-intent-router-0",
+      "name": "TODO Meta send message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        0
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0",
+              "name": "agenda",
+              "value": "sheet_citas",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "viz-02-intent-router-1",
+      "name": "TODO Agenda citas",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        140
+      ],
+      "notes": "TODO — destino real después",
+      "notesInFlow": true,
+      "disabled": true
     }
   ],
   "connections": {
     "Webhook Intent": {
-      "main": [[{ "node": "Router intent", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Router intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Router intent": {
-      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TODO Meta send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Meta send message": {
+      "main": [
+        [
+          {
+            "node": "TODO Agenda citas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "settings": { "executionOrder": "v1" },
-  "meta": { "templateCredsSetupCompleted": true }
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
 }

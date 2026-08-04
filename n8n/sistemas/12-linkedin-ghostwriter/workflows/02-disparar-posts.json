@@ -45,6 +45,70 @@
         560,
         0
       ]
+    },
+    {
+      "parameters": {
+        "content": "## #7 LinkedIn\\n\\n**Apps del sistema**\\ngenerar_posts.py · (luego LinkedIn)\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
+        "height": 300,
+        "width": 360
+      },
+      "id": "viz-apps-02-disparar-posts",
+      "name": "Viz Apps 02 Disparar Posts",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/linkedin-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-02-disparar-posts-0",
+      "name": "TODO Cursor generar_posts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        0
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0",
+              "name": "out",
+              "value": "posts_generados/",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "viz-02-disparar-posts-1",
+      "name": "TODO Export carpeta posts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        140
+      ],
+      "notes": "TODO — destino real después",
+      "notesInFlow": true,
+      "disabled": true
     }
   ],
   "connections": {
@@ -64,6 +128,22 @@
         [
           {
             "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TODO Cursor generar_posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Cursor generar_posts": {
+      "main": [
+        [
+          {
+            "node": "TODO Export carpeta posts",
             "type": "main",
             "index": 0
           }

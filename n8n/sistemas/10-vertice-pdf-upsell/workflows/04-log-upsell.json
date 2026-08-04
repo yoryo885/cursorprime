@@ -45,6 +45,105 @@
         560,
         0
       ]
+    },
+    {
+      "parameters": {
+        "content": "## #5 Vértice PDF + upsell\\n\\n**Apps del sistema**\\nShopify · Cursor PDF · Dropship · Email/Wasap\\n\\nNodos grises = TODO sin API.\\nWebhook+Código = cerebro mock.",
+        "height": 300,
+        "width": 360
+      },
+      "id": "viz-apps-04-log-upsell",
+      "name": "Viz Apps 04 Log Upsell",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/shopify-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-04-log-upsell-0",
+      "name": "TODO Shopify order",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        0
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/cursor-pdf-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-04-log-upsell-1",
+      "name": "TODO Cursor generar PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        140
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/dropship-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-04-log-upsell-2",
+      "name": "TODO Dropship proveedor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        280
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/email-mock",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-04-log-upsell-3",
+      "name": "TODO Email upsell",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        420
+      ],
+      "notes": "TODO sin API — conectar credencial después",
+      "notesInFlow": true,
+      "disabled": true
     }
   ],
   "connections": {
@@ -64,6 +163,44 @@
         [
           {
             "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TODO Shopify order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Shopify order": {
+      "main": [
+        [
+          {
+            "node": "TODO Cursor generar PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Cursor generar PDF": {
+      "main": [
+        [
+          {
+            "node": "TODO Dropship proveedor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TODO Dropship proveedor": {
+      "main": [
+        [
+          {
+            "node": "TODO Email upsell",
             "type": "main",
             "index": 0
           }
