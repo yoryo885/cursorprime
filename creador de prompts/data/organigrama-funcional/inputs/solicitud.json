@@ -45,6 +45,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Guía BotFather: qué seleccionar al crear el bot."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Usuario preguntó si puede entregar el token API de Telegram al agente."
     }
   ]
 }

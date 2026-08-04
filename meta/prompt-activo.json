@@ -1,12 +1,12 @@
 {
-  "version": 41,
+  "version": 42,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
     "version": 5,
-    "ultima_mejora": "guía crear bot Telegram",
+    "ultima_mejora": "recibir TELEGRAM_BOT_TOKEN",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }
