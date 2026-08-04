@@ -210,6 +210,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Presupuesto para activar sistemas n8n: gaps por sistema + costos mensuales/one-shot."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Entregar presupuesto activar n8n en PDF."
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/ | Nombres n8n: Producto · acción (sin códigos técnicos)."

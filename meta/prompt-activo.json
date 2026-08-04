@@ -1,12 +1,12 @@
 {
-  "version": 32,
+  "version": 33,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Arreglar creador de landings (visual)",
-    "version": 13,
-    "ultima_mejora": "presupuesto activar sistemas n8n",
+    "version": 14,
+    "ultima_mejora": "presupuesto n8n en PDF",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }
