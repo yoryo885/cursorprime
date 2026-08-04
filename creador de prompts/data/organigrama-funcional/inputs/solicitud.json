@@ -49,6 +49,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Usuario preguntó si puede entregar el token API de Telegram al agente."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Token Telegram guardado en .env; pendiente /start al bot para chat_id."
     }
   ]
 }
