@@ -150,6 +150,14 @@
     {
       "fecha": "2026-08-03",
       "texto": "Q&A: n8n puede llevar catálogo/reglas de qué PDF crear (brief JSON); análisis de datos puede decidir nicho y n8n dispara"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n reabierto con tunnel para celular"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n abierto con owner Cursor email + API key + swagger"
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"
