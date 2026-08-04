@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const b = $json.body || $json;\nconst url = String(b.url || '').trim();\nconst cliente = String(b.cliente || b.slug || '').trim() || 'sin-slug';\nconst contacto = String(b.whatsapp || b.telefono || b.email || '').trim();\nconst modo = String(b.modo || 'piloto').trim(); // piloto | cobrado\nif (!/^https?:\\/\\//i.test(url)) {\n  return [{ json: { ok: false, error: 'url inválida', sistema: '06-auditorias-locales' } }];\n}\nconst jobId = `AUD-${Date.now()}`;\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'audit_entrada',\n  jobId,\n  url,\n  cliente,\n  contacto,\n  modo,\n  status: 'queued',\n  entregable_esperado: ['MARKETING-AUDIT.md', 'MARKETING-AUDIT.html'],\n  siguiente: 'enviar_informe_luego_ofrecer_plan',\n  todo: 'TODO_CREDENCIAL: HTTP → marketing_audit_main.py audit --url … --slug …',\n  at: new Date().toISOString()\n}}];"
+        "jsCode": "const b = $json.body || $json;\nconst url = String(b.url || '').trim();\nconst negocio = String(b.negocio || b.cliente || b.nombre || '').trim();\nconst ciudad = String(b.ciudad || '').trim();\nconst cliente = String(b.cliente || b.slug || negocio || '').trim() || `audit-${Date.now()}`;\nconst contacto = String(b.whatsapp || b.telefono || b.email || '').trim();\nconst modo = String(b.modo || 'piloto').trim();\nconst slug = String(b.slug || cliente).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || `audit-${Date.now()}`;\nif (!url && !negocio) {\n  return [{ json: { ok: false, error: 'falta url o negocio', sistema: '06-auditorias-locales' } }];\n}\nif (url && !/^https?:\\/\\//i.test(url)) {\n  return [{ json: { ok: false, error: 'url inválida', sistema: '06-auditorias-locales' } }];\n}\nconst jobId = `AUD-${Date.now()}`;\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'audit_entrada',\n  jobId, url, negocio, ciudad, cliente: slug, slug, contacto, modo,\n  status: 'queued',\n  entregable_esperado: ['MARKETING-AUDIT.md', 'MARKETING-AUDIT.html'],\n  siguiente: 'runner_brief_luego_pipeline',\n  at: new Date().toISOString()\n}}];"
       },
       "id": "code-06a",
       "name": "Armar job audit",
@@ -181,6 +181,28 @@
       "notes": "Qué hace: Archiva brief + entregables del cliente en el repo.",
       "notesInFlow": true,
       "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8780/job",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'pipeline.audit_demo', payload: $json }) }}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "http-06a-runner",
+      "name": "Runner · audit brief",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        0
+      ],
+      "notes": "Crea brief + job audit en cola (borrador).",
+      "notesInFlow": true
     }
   ],
   "connections": {
@@ -199,7 +221,7 @@
       "main": [
         [
           {
-            "node": "Respond",
+            "node": "Runner · audit brief",
             "type": "main",
             "index": 0
           },
@@ -249,6 +271,17 @@
         [
           {
             "node": "Carpeta clientes/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Runner · audit brief": {
+      "main": [
+        [
+          {
+            "node": "Respond",
             "type": "main",
             "index": 0
           }

@@ -1,12 +1,12 @@
 {
-  "version": 37,
+  "version": 38,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
-    "version": 4,
-    "ultima_mejora": "flujo práctico + revisión PDF/video",
+    "version": 5,
+    "ultima_mejora": "MVP LIVE runner+embudo",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }

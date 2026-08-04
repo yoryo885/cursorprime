@@ -80,3 +80,10 @@ Ejemplos que ya son el 80% en chat:
 - “Resumen del scorecard” → M-04 / viernes DG  
 
 Cuando digas **enchufar runner** o **activar Embudo live**, pasamos del chat al 24/7.
+
+
+---
+
+## Estado 2026-08-04
+
+MVP LIVE encendido: ver `n8n/COMO-EMPEZAR.md` (runner + embudo + tiktok guion + audit enqueue).

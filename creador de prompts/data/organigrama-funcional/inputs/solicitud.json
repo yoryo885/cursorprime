@@ -29,6 +29,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Explicar cómo se haría el flujo en la práctica + ciclo de revisión si no gusta PDF/video (no arregla solo el usuario)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Armar MVP LIVE: runner + embudo/tiktok/audit activos + healthcheck."
     }
   ]
 }

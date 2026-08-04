@@ -25,5 +25,7 @@ Vuelven a `sistemas/` solo cuando el panel los pase a proyectos creados y digas 
 ## Estado
 
 - ✅ Sistemas de proyectos creados + **Videos TikTok** en `sistemas/`
-- ✅ Instancia n8n alineada (~26 workflows)
-- ⏸ Sin API real (mock / TODO)
+- ✅ **Runner LIVE** (`runner/` · puerto 8780) — leads + briefs/jobs
+- ✅ Embudo / TikTok guion / Audit disparo / Ops healthcheck **activos**
+- 📄 Cómo usar: `COMO-EMPEZAR.md`
+- ⏸ Meta / Vercel / Kling reales todavía pendientes

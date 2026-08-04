@@ -1,0 +1,81 @@
+{
+  "name": "Ops · healthcheck",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "id": "sched-ops-health",
+      "name": "Cada 15 min",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://127.0.0.1:8780/health",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "http-ops-health",
+      "name": "Runner health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const h = $json;\nreturn [{ json: { ok: !!h.ok, leads: h.leads, jobs: h.jobs, at: new Date().toISOString(), nota: 'Si ok=false, avisar Ops/Cursor' } }];"
+      },
+      "id": "code-ops-health",
+      "name": "Resumen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Cada 15 min": {
+      "main": [
+        [
+          {
+            "node": "Runner health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Runner health": {
+      "main": [
+        [
+          {
+            "node": "Resumen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

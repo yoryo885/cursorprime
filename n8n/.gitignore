@@ -6,3 +6,5 @@ data/
 URL-PUBLICA.txt
 .api-key
 .credentials-local.md
+runner/data/
+runner/jobs/
