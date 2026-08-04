@@ -126,6 +126,30 @@
     {
       "fecha": "2026-08-03",
       "texto": "Sistemas #3 cola pedidos + #4 wasap task FAQ/citas creados; ranking 1-4 completo en n8n/sistemas"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Cómo certificar sistemas 1-4 + explicar #5 Vértice/PDF+dropship"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar sistema #5 Vértice PDF+dropship: apps y flujo"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar rol n8n del #5 Vértice PDF→upsell dropship (flujo webhooks)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Aclarar: sistema PDF en Cursor sí acopla a n8n vía webhook/CLI; n8n orquesta, Cursor genera"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Cursor puede crear PDF automático si n8n/automation dispara el pipeline CLI; el chat no escucha 24/7 solo"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Q&A: n8n puede llevar catálogo/reglas de qué PDF crear (brief JSON); análisis de datos puede decidir nicho y n8n dispara"
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"

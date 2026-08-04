@@ -1,0 +1,80 @@
+{
+  "name": "11b-disparar-pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kdp/disparar",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-11b-disparar-pipeline",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "11b-disparar-pipeline"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst slug = String(b.slug || '').trim();\nif (!slug) return [{ json: { ok: false, error: 'falta slug' } }];\nreturn [{ json: {\n  ok: true, sistema: '11-kdp-resumenes', etapa: 'disparo', sin_api: true,\n  slug, cmd_mock: `python3 kdp_main.py --slug ${slug}`,\n  status: 'queued_mock',\n  todo: 'SIN API: no ejecuta. Después: runner CLI',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-11b-disparar-pipeline",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-11b-disparar-pipeline",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

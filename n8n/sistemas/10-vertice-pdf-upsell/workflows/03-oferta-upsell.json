@@ -1,0 +1,80 @@
+{
+  "name": "10c-oferta-upsell",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vertice/upsell",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-10c-oferta-upsell",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "10c-oferta-upsell"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst slug = String(b.slug || '').trim();\nconst email = String(b.email || '').trim();\nconst accesorios = [\n  { id: 'lampara', nombre: 'Lámpara de lectura', precio: 19.99 },\n  { id: 'repisa', nombre: 'Repisa / organizador', precio: 14.99 },\n];\nreturn [{ json: {\n  ok: true, sistema: '10-vertice-pdf-upsell', etapa: 'upsell', sin_api: true,\n  slug, email, accesorios,\n  mensaje_mock: 'Gracias por tu guía. ¿Sumás un accesorio de lectura?',\n  status: 'oferta_lista',\n  todo: 'SIN API: no envía email. Después: Klaviyo/Wasap + dropship',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-10c-oferta-upsell",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-10c-oferta-upsell",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

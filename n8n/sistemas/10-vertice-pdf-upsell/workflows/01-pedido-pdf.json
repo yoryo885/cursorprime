@@ -1,0 +1,95 @@
+{
+  "name": "10a-pedido-pdf",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vertice/pedido-pdf",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-10a-pedido-pdf",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "10a-pedido-pdf"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst catalogo = {\n  'pareto-psicopedagogas': { titulo: 'Pareto para psicopedagogas', rol: 'psicopedagogas', libro: 'pareto' },\n  'habitos-docentes': { titulo: 'Hábitos para docentes', rol: 'docentes', libro: 'habitos' },\n};\nconst slug = String(b.slug || b.sku || '').trim();\nconst email = String(b.email || '').trim();\nconst item = catalogo[slug];\nif (!item) {\n  return [{ json: { ok: false, error: 'slug desconocido', slugs: Object.keys(catalogo), sin_api: true } }];\n}\nreturn [{ json: {\n  ok: true, sistema: '10-vertice-pdf-upsell', etapa: 'pedido_pdf', sin_api: true,\n  orderId: `ORD-${Date.now()}`, slug, email, pdf: item,\n  brief_cursor: { slug, titulo: item.titulo, rol: item.rol, libro: item.libro, accion: 'generar_o_entregar_pdf' },\n  siguiente: 'oferta_upsell',\n  todo: 'SIN API: mock OK. Después: Shopify webhook + pipeline Cursor',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-10a-pedido-pdf",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-10a-pedido-pdf",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #5 sin API\nCatálogo mock decide qué PDF.\nCursor genera después.",
+        "height": 220,
+        "width": 300
+      },
+      "id": "note-10a-pedido-pdf",
+      "name": "Nota",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

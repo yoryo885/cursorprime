@@ -1,0 +1,17 @@
+{
+  "sistema": "13-creador-contenido",
+  "ranking": 8,
+  "sin_api": true,
+  "paquetes": [
+    {
+      "id": "lote_png",
+      "nombre": "Lote imágenes",
+      "precio_desde": 0
+    },
+    {
+      "id": "slideshow",
+      "nombre": "Slideshow",
+      "precio_desde": 0
+    }
+  ]
+}

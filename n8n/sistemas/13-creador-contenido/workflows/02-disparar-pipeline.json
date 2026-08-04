@@ -1,0 +1,80 @@
+{
+  "name": "13b-disparar-pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contenido/disparar",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-13b-disparar-pipeline",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "13b-disparar-pipeline"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nreturn [{ json: {\n  ok: true, sistema: '13-creador-contenido', etapa: 'disparo', sin_api: true,\n  slug: b.slug || '', tipo: b.tipo || 'imagenes',\n  cmd_mock: `python3 creador_imagenes_main.py --slug ${b.slug || 'demo'}`,\n  status: 'queued_mock',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-13b-disparar-pipeline",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-13b-disparar-pipeline",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

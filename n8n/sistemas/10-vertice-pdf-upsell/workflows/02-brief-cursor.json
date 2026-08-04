@@ -1,0 +1,80 @@
+{
+  "name": "10b-brief-cursor",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vertice/brief-cursor",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-10b-brief-cursor",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "10b-brief-cursor"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst slug = String(b.slug || '').trim();\nconst titulo = String(b.titulo || b.pdf?.titulo || '').trim();\nif (!slug) return [{ json: { ok: false, error: 'falta slug' } }];\nreturn [{ json: {\n  ok: true, sistema: '10-vertice-pdf-upsell', etapa: 'brief_cursor', sin_api: true,\n  brief: {\n    proyecto: 'libros a entender / vertice',\n    slug, titulo,\n    prompt: `Generar o empaquetar PDF guía: ${titulo || slug}`,\n    output: `data/${slug}/output/`\n  },\n  status: 'brief_listo',\n  todo: 'SIN API: no llama Cursor aún. Después: HTTP/CLI al pipeline',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-10b-brief-cursor",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-10b-brief-cursor",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

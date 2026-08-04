@@ -1,42 +1,39 @@
-# Sistemas n8n — solo diseño (insertar después)
+# Sistemas n8n — diseño sin API (para ver cómo queda)
 
-No hace falta login ahora. Acá guardamos **sistemas listos** (JSON) para importar cuando tengas n8n.cloud o VPS.
+Importar después en n8n.cloud. **Sin Meta / Shopify / credenciales** por ahora.
 
-## Cómo insertarlos después (celular o PC)
+## Cómo ver el catálogo
 
-1. Abrí tu n8n (cloud o self-host)
-2. Menú **⋯** → **Import from File** (o Workflows → Import)
-3. Elegí el `.json` de `sistemas/{id}/workflows/*.json`
-4. Completá credenciales marcadas `TODO_CREDENCIAL`
-5. **Activate** → copiá la URL del Webhook si aplica
+Abrí `catalogo/index.html` (o la URL del tunnel si está servido).
 
-## Catálogo de negocio (ranking 1–4) ✅
+## Ranking 1–8 (negocio)
 
-| # | ID | Sistema | Entrega al cliente |
-|---|-----|---------|-------------------|
-| 1 | `06-auditorias-locales` | Auditorías | Informe score + puerta a planes |
-| 2 | `07-presencia-digital` | Presencia digital | Web + GBP (+ Wasap) |
-| 3 | `08-cola-pedidos-wasap` | Cola pedidos | Tickets + estados + avisos |
-| 4 | `09-wasap-task-faq-citas` | Wasap task | FAQ + citas + handoff |
+| # | ID | Qué entrega | Workflows |
+|---|-----|-------------|-----------|
+| 1 | `06-auditorias-locales` | Informe → planes | 3 |
+| 2 | `07-presencia-digital` | Web + GBP | 4 |
+| 3 | `08-cola-pedidos-wasap` | Cola pedidos | 4 |
+| 4 | `09-wasap-task-faq-citas` | FAQ + citas + handoff | 5 |
+| 5 | `10-vertice-pdf-upsell` | PDF + upsell dropship | 4 |
+| 6 | `11-kdp-resumenes` | Resumen + listing KDP | 3 |
+| 7 | `12-linkedin-ghostwriter` | Pack posts mes | 3 |
+| 8 | `13-creador-contenido` | Lote imágenes | 3 |
 
-## Utilitarios (plantillas cortas)
+## Utilitarios
 
-| ID | Sistema | Archivo |
-|----|---------|---------|
-| `01-ping` | Ping salud | `sistemas/01-ping/` |
-| `02-lead-landing` | Lead landing | `sistemas/02-lead-landing/` |
-| `03-wasap-faq` | FAQ corto | `sistemas/03-wasap-faq/` |
-| `04-audit-trigger` | Disparo audit genérico | `sistemas/04-audit-trigger/` |
-| `05-contenido-lote` | Lote contenido | `sistemas/05-contenido-lote/` |
+`01-ping` … `05-contenido-lote` — plantillas cortas.
 
-## Embudo recomendado
+## Embudo
 
 ```
-#1 Audit → #2 Presencia → (#3 Cola ó #4 FAQ/citas según el rubro)
+#1 Audit → #2 Presencia → (#3 Cola | #4 Wasap task)
+#5–#8 = productos / canales propios
 ```
 
 ## Estado
 
-- **Ahora:** esqueletos en GitHub (1–4 hechos).
-- **Después:** import + Meta API + precios reales.
-- Login n8n owner: pendiente a propósito.
+- ✅ Esqueletos 1–8 en GitHub  
+- ⏸ Sin API (mock `sin_api: true` en respuestas)  
+- ⏸ Login n8n pendiente  
+
+Cuando digas **enchufar APIs**, se conectan Meta / Shopify / runners Cursor.

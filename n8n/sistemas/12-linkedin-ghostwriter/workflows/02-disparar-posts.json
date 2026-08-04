@@ -1,0 +1,80 @@
+{
+  "name": "12b-disparar-posts",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "linkedin/disparar",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-12b-disparar-posts",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "12b-disparar-posts"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nreturn [{ json: {\n  ok: true, sistema: '12-linkedin-ghostwriter', etapa: 'disparo', sin_api: true,\n  perfil: b.perfil || '', mes: b.mes || '',\n  cmd_mock: 'python3 generar_posts.py',\n  status: 'queued_mock',\n  todo: 'SIN API: no publica en LinkedIn',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-12b-disparar-posts",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-12b-disparar-posts",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

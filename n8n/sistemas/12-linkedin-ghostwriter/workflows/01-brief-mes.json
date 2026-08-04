@@ -1,0 +1,80 @@
+{
+  "name": "12a-brief-mes",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "linkedin/brief-mes",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-12a-brief-mes",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "12a-brief-mes"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst perfil = String(b.perfil || b.nombre || '').trim();\nconst mes = String(b.mes || '').trim();\nif (!perfil || !mes) return [{ json: { ok: false, error: 'falta perfil o mes' } }];\nreturn [{ json: {\n  ok: true, sistema: '12-linkedin-ghostwriter', etapa: 'brief', sin_api: true,\n  jobId: `LI-${Date.now()}`, perfil, mes,\n  brief: { accion: 'generar_posts', perfil, mes, tono: b.tono || 'profesional' },\n  todo: 'SIN API. Después: linkedin-ghostwriter/generar_posts.py',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-12a-brief-mes",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-12a-brief-mes",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

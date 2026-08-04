@@ -1,0 +1,80 @@
+{
+  "name": "11a-elegir-nicho",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kdp/elegir-nicho",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-11a-elegir-nicho",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "11a-elegir-nicho"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst nicho = String(b.nicho || b.tema || '').trim();\nconst libro = String(b.libro || b.titulo || '').trim();\nif (!nicho && !libro) return [{ json: { ok: false, error: 'falta nicho o libro' } }];\nconst slug = (libro || nicho).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');\nreturn [{ json: {\n  ok: true, sistema: '11-kdp-resumenes', etapa: 'nicho', sin_api: true,\n  jobId: `KDP-${Date.now()}`, slug, nicho, libro,\n  brief: { accion: 'resumir_y_listing', slug, nicho, libro },\n  todo: 'SIN API. Después: analisis-de-proyectos + kdp_main.py',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-11a-elegir-nicho",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-11a-elegir-nicho",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
