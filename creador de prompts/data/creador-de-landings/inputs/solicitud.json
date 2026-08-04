@@ -194,7 +194,11 @@
     {
       "fecha": "2026-08-04",
       "texto": "Renombrados workflows n8n a nombres simples en español (1·Auditoría…)"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Usuario pidió nombres n8n más simples (sin 10a/12c); formato Producto · acción."
     }
   ],
-  "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"
+  "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/ | Nombres n8n: Producto · acción (sin códigos técnicos)."
 }

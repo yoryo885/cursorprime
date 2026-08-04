@@ -1,12 +1,12 @@
 {
-  "version": 28,
+  "version": 29,
   "activo": {
     "slug": "creador-de-landings",
     "tipo": "pipeline",
     "proyecto_destino": "creador-de-landings",
     "titulo": "Arreglar creador de landings (visual)",
-    "version": 9,
-    "ultima_mejora": "n8n UI+API key+swagger abiertos",
+    "version": 10,
+    "ultima_mejora": "nombres n8n simples Producto · acción",
     "ruta": "creador de prompts/data/creador-de-landings/output/prompts.md"
   }
 }
