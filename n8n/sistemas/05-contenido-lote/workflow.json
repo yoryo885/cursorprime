@@ -1,5 +1,5 @@
 {
-  "name": "05-contenido-lote",
+  "name": "Contenido · lote genérico",
   "nodes": [
     {
       "parameters": {
@@ -12,7 +12,10 @@
       "name": "Webhook Contenido",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [
+        0,
+        0
+      ],
       "webhookId": "05-contenido-lote"
     },
     {
@@ -23,7 +26,10 @@
       "name": "Armar lote",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [280, 0]
+      "position": [
+        280,
+        0
+      ]
     },
     {
       "parameters": {
@@ -35,17 +41,40 @@
       "name": "Respond",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [540, 0]
+      "position": [
+        540,
+        0
+      ]
     }
   ],
   "connections": {
     "Webhook Contenido": {
-      "main": [[{ "node": "Armar lote", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Armar lote",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Armar lote": {
-      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "settings": { "executionOrder": "v1" },
-  "meta": { "templateCredsSetupCompleted": true }
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
 }

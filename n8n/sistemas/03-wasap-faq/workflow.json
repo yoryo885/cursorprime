@@ -1,5 +1,5 @@
 {
-  "name": "03-wasap-faq",
+  "name": "Wasap · FAQ corto",
   "nodes": [
     {
       "parameters": {
@@ -12,7 +12,10 @@
       "name": "Webhook Meta",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [
+        0,
+        0
+      ],
       "webhookId": "03-wasap-faq"
     },
     {
@@ -23,7 +26,10 @@
       "name": "Intent FAQ/Handoff",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [280, 0]
+      "position": [
+        280,
+        0
+      ]
     },
     {
       "parameters": {
@@ -35,7 +41,10 @@
       "name": "Respond ack",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
-      "position": [560, 0]
+      "position": [
+        560,
+        0
+      ]
     },
     {
       "parameters": {
@@ -47,17 +56,40 @@
       "name": "TODO Meta",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [280, 200]
+      "position": [
+        280,
+        200
+      ]
     }
   ],
   "connections": {
     "Webhook Meta": {
-      "main": [[{ "node": "Intent FAQ/Handoff", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Intent FAQ/Handoff",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Intent FAQ/Handoff": {
-      "main": [[{ "node": "Respond ack", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Respond ack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "settings": { "executionOrder": "v1" },
-  "meta": { "templateCredsSetupCompleted": true }
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
 }

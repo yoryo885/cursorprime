@@ -190,6 +190,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Nodos n8n con nombre de app + descripción de qué hace cada una"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Renombrados workflows n8n a nombres simples en español (1·Auditoría…)"
     }
   ],
   "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/"
