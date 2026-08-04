@@ -85,6 +85,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Video del creador de contenido llega a Telegram (MP4); comando video + runner pipeline.contenido_video + n8n webhook."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Video con personaje (frames ilustrados) a Telegram; default animado no slideshow."
     }
   ]
 }

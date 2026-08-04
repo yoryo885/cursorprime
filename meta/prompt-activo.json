@@ -1,12 +1,12 @@
 {
-  "version": 51,
+  "version": 52,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
     "version": 5,
-    "ultima_mejora": "video creador de contenido → Telegram",
+    "ultima_mejora": "video personaje a Telegram",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }

@@ -271,17 +271,34 @@ def handle_contenido_video(payload: dict) -> dict:
         tema = (payload.get("tema") or payload.get("titulo") or "Contenido demo").strip()
         temas = [tema, "WhatsApp", "Clientes"]
     titulo = (payload.get("titulo") or temas[0]).strip()
-    modo_video = (payload.get("modo") or "slideshow").strip()
+    # Por defecto animado CON personaje (no slideshow de cards)
+    modo_video = (payload.get("modo") or "animado").strip()
     content_root = CURSORPRIME / "creador de contenido"
     lote_dir = content_root / "data" / slug / "inputs"
     lote_dir.mkdir(parents=True, exist_ok=True)
+    guion = (payload.get("guion") or "").strip()
+    if not guion:
+        guion = (
+            f"Un emprendedor con delantal mira el celular: {titulo}.\n\n"
+            f"Aparece un personaje guía amable que le muestra la solución.\n\n"
+            f"El emprendedor sonríe: ahora puede atender el local tranquilo."
+        )
     lote = {
         "titulo": titulo,
         "salidas": ["png", "video"],
-        "estilo": payload.get("estilo") or "yordy-minimal",
+        "estilo": payload.get("estilo") or "papel-sketch",
         "temas": temas[:5],
-        "video": {"modo": modo_video, "fps": int(payload.get("fps") or 2)},
-        "notas": "Generado por runner → Telegram",
+        "video": {
+            "modo": modo_video,
+            "fps": int(payload.get("fps") or 2),
+            "limit_escenas": int(payload.get("limit_escenas") or 2),
+        },
+        "guion": guion,
+        "personaje": {
+            "descripcion": payload.get("personaje")
+            or "Emprendedor joven con delantal + personaje guía ilustrado"
+        },
+        "notas": "Generado por runner → Telegram (modo personaje)",
     }
     (lote_dir / "lote.json").write_text(
         json.dumps(lote, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
