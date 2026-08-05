@@ -28,7 +28,7 @@ El ~80% sí: draft, clasificar, disparar pipelines, reportes, healthchecks, FAQ,
 | **O-03** API sin_api→live | Configuro nodos, docs, prueba `--limit` | Checklist; credenciales = humano |
 | **O-04** Incidente | Leo error, propongo fix, parche | Reintentos + resumen IA del log |
 
-**Pipelines listos (disparo manual hoy):** marketing-audit, creador-de-landings / presencia, wasap FAQ, KDP, LinkedIn `generar_posts.py`, creador de contenido, videos TikTok (slideshow).
+**Pipelines listos:** marketing-audit, creador-de-landings / presencia, wasap FAQ, KDP, LinkedIn `generar_posts.py`, **creador de contenido (animado + personaje → Telegram)**, videos TikTok (guion LIVE; render aún mock).
 
 ---
 
@@ -76,14 +76,21 @@ Ejemplos que ya son el 80% en chat:
 - “Caption + CTA para este reel” → M-02  
 - “Corré audit demo Clínica Sol” → O-02  
 - “Pack LinkedIn marzo” → pipeline LinkedIn  
-- “Short TikTok slideshow del tema X” → sistema 14 + contenido  
+- “Video con personaje del tema X” → Telegram `video TEMA` / sistema 13  
+- “Short TikTok del tema X” → sistema 14 + contenido  
 - “Resumen del scorecard” → M-04 / viernes DG  
-
-Cuando digas **enchufar runner** o **activar Embudo live**, pasamos del chat al 24/7.
-
 
 ---
 
-## Estado 2026-08-04
+## Estado 2026-08-05 — arreglos ya procesados
 
-MVP LIVE encendido: ver `n8n/COMO-EMPEZAR.md` (runner + embudo + tiktok guion + audit enqueue).
+| Arreglo | Estado |
+|---------|--------|
+| Solo sistemas de **proyectos creados** en n8n (cola afuera) | ✅ |
+| Runner LIVE `:8780` | ✅ |
+| Embudo / TikTok guion / Audit / Ops healthcheck activos | ✅ |
+| Telegram @yoryo321 + inbox de comandos | ✅ |
+| `video` / `correr` → MP4 **con personaje** (no slideshow) | ✅ |
+| Kling real / Meta Wasap / dominio fijo | ⏸ pendiente |
+
+Detalle: `n8n/COMO-EMPEZAR.md`, `n8n/TELEGRAM.md`, `n8n/SISTEMAS.md`.
