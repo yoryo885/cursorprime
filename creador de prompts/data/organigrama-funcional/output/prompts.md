@@ -14,3 +14,10 @@ Documento formal (HTML+PDF) con organigrama piramidal por **roles** (no personas
 - Default: **animado + personaje** (emprendedor + guía), nunca slideshow de cards.
 - Comandos: `video TEMA` y `correr` → MP4 con personaje al bot.
 - Runner: `pipeline.contenido_video` fuerza modo animado salvo `modo: slideshow` explícito.
+
+
+## Sistemas — arreglos ya procesados (2026-08-05)
+- n8n solo proyectos creados; cola fuera.
+- Runner LIVE + Embudo/TikTok/Audit/Ops.
+- Telegram inbox; video/correr = animado + personaje.
+- Pendiente: Kling real, Meta, dominio fijo.

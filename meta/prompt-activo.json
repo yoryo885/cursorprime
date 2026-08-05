@@ -1,12 +1,12 @@
 {
-  "version": 53,
+  "version": 54,
   "activo": {
     "slug": "organigrama-funcional",
     "tipo": "documento",
     "proyecto_destino": "meta/organizacion",
     "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
-    "version": 6,
-    "ultima_mejora": "video personaje = default del sistema",
+    "version": 7,
+    "ultima_mejora": "procesar arreglos de sistemas en docs/org",
     "ruta": "creador de prompts/data/organigrama-funcional/output/prompts.md"
   }
 }

@@ -24,7 +24,7 @@ El ~80% sí: draft, clasificar, disparar pipelines, reportes, healthchecks, FAQ,
 | Rutina | Yo (agente Cursor) | Automatizar 24/7 |
 |--------|--------------------|------------------|
 | **O-01** Healthcheck | Reviso logs / arreglo fallos | Ping n8n + alertas (cron) |
-| **O-02** Entregar job | Corro `*_main.py`, armo brief, QA | Webhook n8n → runner CLI (falta enchufar) |
+| **O-02** Entregar job | Corro `*_main.py`, armo brief, QA | Webhook n8n → runner `:8780` LIVE (leads, audit, tiktok, **video personaje → Telegram**) |
 | **O-03** API sin_api→live | Configuro nodos, docs, prueba `--limit` | Checklist; credenciales = humano |
 | **O-04** Incidente | Leo error, propongo fix, parche | Reintentos + resumen IA del log |
 

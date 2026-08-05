@@ -93,6 +93,10 @@
     {
       "fecha": "2026-08-04",
       "texto": "Video CON personaje es el default del sistema (Telegram video/correr/runner); no slideshow de cards."
+    },
+    {
+      "fecha": "2026-08-05",
+      "texto": "Confirmar y procesar en docs/org los arreglos de sistemas (LIVE, Telegram, video personaje)."
     }
   ]
 }

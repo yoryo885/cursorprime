@@ -22,10 +22,12 @@ Lo demás queda en `cola/` (ideas en cola — **no se importan ni se crean** en 
 En `cola/`: ping, utilitarios, **Cola Wasap**, **Vértice PDF/upsell**, etc.
 Vuelven a `sistemas/` solo cuando el panel los pase a proyectos creados y digas **construye**.
 
-## Estado
+## Estado (procesado 2026-08-05)
 
-- ✅ Sistemas de proyectos creados + **Videos TikTok** en `sistemas/`
-- ✅ **Runner LIVE** (`runner/` · puerto 8780) — leads + briefs/jobs
+- ✅ Solo **proyectos creados** en `sistemas/` (+ TikTok); resto en `cola/`
+- ✅ **Runner LIVE** (`runner/` · `:8780`) — leads + briefs/jobs + video
 - ✅ Embudo / TikTok guion / Audit disparo / Ops healthcheck **activos**
-- 📄 Cómo usar: `COMO-EMPEZAR.md`
-- ⏸ Meta / Vercel / Kling reales todavía pendientes
+- ✅ Telegram @yoryo321: inbox (`video`, `correr`, `audit`…)
+- ✅ **Contenido · video a Telegram** = default **animado + personaje** (no slideshow)
+- 📄 Cómo usar: `COMO-EMPEZAR.md` · `TELEGRAM.md`
+- ⏸ Meta / Vercel / Kling reales / dominio fijo todavía pendientes
