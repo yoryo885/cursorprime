@@ -21,3 +21,9 @@ Documento formal (HTML+PDF) con organigrama piramidal por **roles** (no personas
 - Runner LIVE + Embudo/TikTok/Audit/Ops.
 - Telegram inbox; video/correr = animado + personaje.
 - Pendiente: Kling real, Meta, dominio fijo.
+
+## Video Telegram — calidad
+- Formato vertical **9:16** (1080×1920).
+- Personaje cartoon legible (emprendedor + guía), no cards/slideshow.
+- Clip corto (~8s) con motion; no mock de 5 minutos.
+- Caption de escena en 1–2 líneas sin cortar a mitad.

@@ -43,8 +43,8 @@ def slideshow_from_pngs(png_paths: list[Path], out_mp4: Path, fps: int = 2) -> t
     return True, out_mp4.name
 
 
-def _mock_clip_from_pair(start: Path, end: Path, out_clip: Path, duration: float = 3.0) -> tuple[bool, str]:
-    """Simula Kling: crossfade entre frame inicio y fin."""
+def _mock_clip_from_pair(start: Path, end: Path, out_clip: Path, duration: float = 4.0) -> tuple[bool, str]:
+    """Motion de personaje corto: Ken Burns + crossfade (~duration segundos)."""
     ffmpeg = _ffmpeg()
     if not ffmpeg:
         return False, "ffmpeg no instalado"
@@ -52,19 +52,84 @@ def _mock_clip_from_pair(start: Path, end: Path, out_clip: Path, duration: float
         return False, f"frames faltantes: {start.name}, {end.name}"
 
     out_clip.parent.mkdir(parents=True, exist_ok=True)
-    half = duration / 2
-    offset = max(0.1, half - 0.5)
+    half = max(1.8, duration / 2)
+    # frames totales por tramo (24 fps)
+    d = max(36, int(half * 24))
+    offset = max(0.3, half - 0.6)
+
+    def ken(label_in: str, label_out: str, zoom_dir: str) -> str:
+        # zoom_dir: "in" crece, "out" parte más cerca
+        if zoom_dir == "in":
+            z = "min(1.0+0.0018*on,1.12)"
+        else:
+            z = "max(1.12-0.0018*on,1.0)"
+        return (
+            f"[{label_in}]scale=1200:2133:force_original_aspect_ratio=increase,"
+            f"crop=1200:2133,"
+            f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+            f"d={d}:s=1080x1920:fps=24,format=yuv420p[{label_out}];"
+        )
+
+    filt = (
+        ken("0:v", "v0", "in")
+        + ken("1:v", "v1", "out")
+        + f"[v0][v1]xfade=transition=fade:duration=0.6:offset={offset},format=yuv420p[vout]"
+    )
     cmd = [
         ffmpeg, "-y",
-        "-loop", "1", "-t", str(half), "-i", str(start.resolve()),
-        "-loop", "1", "-t", str(half), "-i", str(end.resolve()),
-        "-filter_complex",
-        f"[0][1]xfade=transition=fade:duration=0.8:offset={offset},format=yuv420p",
-        "-c:v", "libx264", "-pix_fmt", "yuv420p", str(out_clip),
+        "-loop", "1", "-i", str(start.resolve()),
+        "-loop", "1", "-i", str(end.resolve()),
+        "-filter_complex", filt,
+        "-map", "[vout]",
+        "-t", f"{duration:.2f}",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "24",
+        "-movflags", "+faststart",
+        str(out_clip),
     ]
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
-        return False, proc.stderr[:300]
+        cmd2 = [
+            ffmpeg, "-y",
+            "-loop", "1", "-t", str(half), "-i", str(start.resolve()),
+            "-loop", "1", "-t", str(half), "-i", str(end.resolve()),
+            "-filter_complex",
+            (
+                f"[0]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1[a];"
+                f"[1]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1[b];"
+                f"[a][b]xfade=transition=fade:duration=0.7:offset={offset},format=yuv420p"
+            ),
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+            str(out_clip),
+        ]
+        proc2 = subprocess.run(cmd2, capture_output=True, text=True)
+        if proc2.returncode != 0:
+            return False, (proc.stderr or proc2.stderr)[:400]
+    # sanity: no clips enormes
+    try:
+        import json as _json
+        probe = subprocess.run(
+            [
+                "ffprobe", "-v", "error", "-show_entries", "format=duration",
+                "-of", "json", str(out_clip),
+            ],
+            capture_output=True,
+            text=True,
+        )
+        dur = float((_json.loads(probe.stdout).get("format") or {}).get("duration") or 0)
+        if dur > duration * 3:
+            # forzar recorte
+            tmp = out_clip.with_suffix(".tmp.mp4")
+            subprocess.run(
+                [
+                    ffmpeg, "-y", "-i", str(out_clip), "-t", f"{duration:.2f}",
+                    "-c", "copy", str(tmp),
+                ],
+                capture_output=True,
+            )
+            if tmp.exists():
+                tmp.replace(out_clip)
+    except Exception:
+        pass
     return True, out_clip.name
 
 

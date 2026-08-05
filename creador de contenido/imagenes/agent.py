@@ -23,6 +23,8 @@ class ImagenesModule:
         img_dir.mkdir(parents=True, exist_ok=True)
 
         force_character = video_modo == "animado"
+        # Telegram / shorts: vertical 9:16
+        frame_size = (1080, 1920) if video_modo == "animado" else (1024, 1024)
         for item in data.get("prompts", []):
             path = img_dir / item["archivo"]
             frame = 1 if item.get("tipo_frame") == "inicio" else 2
@@ -34,6 +36,7 @@ class ImagenesModule:
                 palette=style.get("palette", []),
                 frame=frame,
                 frames_total=2 if item.get("tipo_frame") else 1,
+                size=frame_size,
                 force_character=force_character,
             )
             generated.append(

@@ -97,6 +97,10 @@
     {
       "fecha": "2026-08-05",
       "texto": "Confirmar y procesar en docs/org los arreglos de sistemas (LIVE, Telegram, video personaje)."
+    },
+    {
+      "fecha": "2026-08-05",
+      "texto": "Video a Telegram estaba mal: corregir a personaje vertical 9:16 con motion corto (~8s), no figuras planas/clip roto."
     }
   ]
 }
