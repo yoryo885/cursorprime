@@ -1,0 +1,99 @@
+{
+  "name": "Embudo · formulario landing",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-landing",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-02-lead",
+      "name": "Webhook Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "02-lead-landing"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst lead = {\n  leadId: `L-${Date.now()}`,\n  nombre: String(b.nombre || b.name || '').trim(),\n  email: String(b.email || '').trim().toLowerCase(),\n  mensaje: String(b.mensaje || b.message || '').trim(),\n  marca: String(b.marca || b.brand || '').trim(),\n  origen: String(b.origen || 'landing').trim(),\n  at: new Date().toISOString(),\n};\nif (!lead.email && !lead.nombre) {\n  return [{ json: { ok: false, error: 'falta nombre o email', lead } }];\n}\nreturn [{ json: { ok: true, lead, action: 'lead.append' } }];"
+      },
+      "id": "code-02-norm",
+      "name": "Normalizar lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8780/job",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'lead.append', payload: { lead: $json.lead } }) }}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "http-02-runner",
+      "name": "Runner · guardar lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 0],
+      "notes": "Guarda el lead en runner/data/leads.jsonl y crea job de seguimiento.",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const prev = $json;\nconst lead = prev.lead || (($('Normalizar lead').first().json || {}).lead);\nreturn [{ json: {\n  ok: true,\n  sistema: 'embudo-live',\n  lead,\n  runner: prev,\n  siguiente: 'Revisión humana (20%): contactar lead. Pedile a Cursor copy de respuesta si hace falta.',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-02-out",
+      "name": "Armar respuesta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [780, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-02-lead",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1040, 0]
+    },
+    {
+      "parameters": {
+        "content": "## Embudo LIVE\n\n1. Webhook recibe lead\n2. Normaliza\n3. **Runner** guarda en `n8n/runner/data/leads.jsonl`\n4. Crea job de seguimiento\n\nEl 20%: vos (o Marketing) contactás al lead.\nEl 80%: sistema registra + encola solo.",
+        "height": 280,
+        "width": 360,
+        "color": 4
+      },
+      "id": "note-02-live",
+      "name": "Cómo funciona",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-420, -40]
+    }
+  ],
+  "connections": {
+    "Webhook Lead": {
+      "main": [[{ "node": "Normalizar lead", "type": "main", "index": 0 }]]
+    },
+    "Normalizar lead": {
+      "main": [[{ "node": "Runner · guardar lead", "type": "main", "index": 0 }]]
+    },
+    "Runner · guardar lead": {
+      "main": [[{ "node": "Armar respuesta", "type": "main", "index": 0 }]]
+    },
+    "Armar respuesta": {
+      "main": [[{ "node": "Respond OK", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true }
+}

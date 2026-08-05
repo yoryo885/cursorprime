@@ -1,0 +1,17 @@
+{
+  "sistema": "11-kdp-resumenes",
+  "ranking": 6,
+  "sin_api": true,
+  "paquetes": [
+    {
+      "id": "resumen",
+      "nombre": "Resumen editorial",
+      "precio_desde": 0
+    },
+    {
+      "id": "listing",
+      "nombre": "Listing KDP",
+      "precio_desde": 0
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "sistema": "08-cola-pedidos-wasap",
+  "producto": "cola_pedidos_whatsapp_locales",
+  "ranking": 3,
+  "moneda": "USD",
+  "nota": "Precios placeholder",
+  "paquetes": [
+    {
+      "id": "setup",
+      "nombre": "Setup cola Wasap",
+      "precio_desde": 199,
+      "incluye": [
+        "Flujo pedido → ticket",
+        "Estados básicos",
+        "Plantillas de aviso"
+      ]
+    },
+    {
+      "id": "mensual",
+      "nombre": "Cola mensual",
+      "precio_desde": 49,
+      "recurrente": true,
+      "incluye": [
+        "Hosting del flujo",
+        "Ajustes menores",
+        "Soporte por Wasap"
+      ]
+    },
+    {
+      "id": "pico",
+      "nombre": "Temporada alta",
+      "precio_desde": 99,
+      "incluye": [
+        "Refuerzo de cola",
+        "Horarios extendidos",
+        "Reporte semanal"
+      ]
+    }
+  ]
+}

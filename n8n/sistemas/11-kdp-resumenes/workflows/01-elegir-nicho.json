@@ -1,0 +1,186 @@
+{
+  "name": "KDP · elegir nicho",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kdp/elegir-nicho",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-11a-elegir-nicho",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "11a-elegir-nicho"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst nicho = String(b.nicho || b.tema || '').trim();\nconst libro = String(b.libro || b.titulo || '').trim();\nif (!nicho && !libro) return [{ json: { ok: false, error: 'falta nicho o libro' } }];\nconst slug = (libro || nicho).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');\nreturn [{ json: {\n  ok: true, sistema: '11-kdp-resumenes', etapa: 'nicho', sin_api: true,\n  jobId: `KDP-${Date.now()}`, slug, nicho, libro,\n  brief: { accion: 'resumir_y_listing', slug, nicho, libro },\n  todo: 'SIN API. Después: analisis-de-proyectos + kdp_main.py',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-11a-elegir-nicho",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-11a-elegir-nicho",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #6 KDP / resúmenes\n\nDe un nicho/libro a resumen + listing Amazon.\n\n### Apps\n\n**Cursor · libros a entender**  \nResume el libro / arma material editorial.\n\n**Cursor · kdp_main**  \nGenera el listing KDP (título, blurb, keywords).\n\n**Amazon KDP**  \nPublicación del ebook (manual o API después).\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-01-elegir-nicho",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-elegir-nicho-0",
+      "name": "Cursor · libros a entender",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Resume el libro / arma material editorial.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-elegir-nicho-1",
+      "name": "Cursor · kdp_main",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Genera el listing KDP (título, blurb, keywords).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-elegir-nicho-2",
+      "name": "Amazon KDP",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Publicación del ebook (manual o API después).",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cursor · libros a entender",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · libros a entender": {
+      "main": [
+        [
+          {
+            "node": "Cursor · kdp_main",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · kdp_main": {
+      "main": [
+        [
+          {
+            "node": "Amazon KDP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

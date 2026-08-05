@@ -1,0 +1,280 @@
+{
+  "referencia": {
+    "trust_badge_posicion": "arriba del todo, antes del hero",
+    "hero_visual": "imagen real de producto, nunca texto duplicado",
+    "testimonio_formato": "quote corto + nombre + ciudad entre paréntesis",
+    "cta_por_bloque": "un único CTA claro por bloque, no botones compitiendo",
+    "fuente": [
+      "https://filjos.com/"
+    ]
+  },
+  "brief": {
+    "slug": "vertice-pro",
+    "marca": "Vértice Pro",
+    "nombre_producto": "Vértice Pro",
+    "propuesta_valor": "Métodos de libros clásicos, aplicados a tu oficio",
+    "producto": "Guías PDF libro × rol",
+    "producto_interno": "Guías PDF libro × rol",
+    "rubro": "educacion / productividad profesional",
+    "precio": "desde $4.99",
+    "publico": "psicopedagogas, docentes y profesionales por oficio",
+    "tono": "editorial, claro, sin relleno",
+    "promesa": "Métodos de libros clásicos, aplicados a tu oficio",
+    "cta": "Ver colección",
+    "contacto": "hola@vertice.pro",
+    "n_productos": 6,
+    "n_roles": 5,
+    "testimonios": [],
+    "extras": {
+      "redes": []
+    }
+  },
+  "copy": {
+    "hero": {
+      "titulo": "Métodos de libros clásicos, aplicados a tu oficio",
+      "bajada": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
+      "cta": "Ver colección",
+      "tiene_imagen": false,
+      "imagen_hero": "",
+      "_ref_hero_visual": "imagen real de producto, nunca texto duplicado"
+    },
+    "social_proof": {
+      "cifra_o_logos": "6 productos · 5 perfiles",
+      "texto": "Dato del catálogo · sin reseñas inventadas",
+      "confianza": "media",
+      "fuente": "producto"
+    },
+    "problem": {
+      "headline": "Sabés la teoría… y el día a día no cambia",
+      "dolores": [
+        "Leés libros útiles pero no llegan a tu rol como psicopedagogas, docentes y profesionales por oficio.",
+        "Perdés tiempo buscando el 20% que importa.",
+        "Los resúmenes genéricos no hablan tu lenguaje."
+      ],
+      "puente": "Por eso Vértice Pro traduce métodos clásicos a tu oficio."
+    },
+    "benefits": {
+      "items": [
+        {
+          "titulo": "Hecho para tu oficio",
+          "texto": "Ejemplos y prioridades de psicopedagogas, docentes y profesionales por oficio, no teoría genérica."
+        },
+        {
+          "titulo": "Método claro en semanas",
+          "texto": "Sabés qué hacer cada semana, sin relleno ni moda."
+        },
+        {
+          "titulo": "Formato listo para usar",
+          "texto": "PDF profesional: ordenado, descargable, aplicable hoy."
+        },
+        {
+          "titulo": "Precio de entrada real",
+          "texto": "Empezás desde $4.99."
+        }
+      ]
+    },
+    "testimonials": {
+      "omitida": true,
+      "motivo": "sin testimonios reales en el brief",
+      "items": []
+    },
+    "pricing": {
+      "precio": "desde $4.99",
+      "incluye": [
+        "Acceso / descarga inmediata",
+        "Formato profesional listo para usar",
+        "Soporte de lanzamiento de colección"
+      ],
+      "cta": "Ver colección",
+      "garantia": "Pago único · acceso inmediato · sin letra chica"
+    },
+    "faq": {
+      "items": [
+        {
+          "q": "¿Qué es Vértice Pro?",
+          "a": "Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno."
+        },
+        {
+          "q": "¿Para quién es?",
+          "a": "Para psicopedagogas, docentes y profesionales por oficio que quieren método práctico, no teoría genérica."
+        },
+        {
+          "q": "¿Cómo lo recibo?",
+          "a": "Acceso digital inmediato tras la compra (PDF / descarga según el producto)."
+        },
+        {
+          "q": "¿En qué se diferencia de un resumen genérico?",
+          "a": "Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día."
+        },
+        {
+          "q": "¿Qué pasa si no me sirve?",
+          "a": "Escribimos y te ayudamos. Queremos que te sirva en tu oficio — sin letra chica escondida."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "desde $4.99 Pago único, sin suscripción."
+        }
+      ]
+    },
+    "cta_final": {
+      "headline": "Métodos de libros clásicos, aplicados a tu oficio",
+      "sub": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
+      "cta": "Ver colección"
+    },
+    "footer": {
+      "marca": "Vértice Pro",
+      "contacto": "hola@vertice.pro",
+      "legales": [
+        "Privacidad",
+        "Términos"
+      ],
+      "redes": []
+    }
+  },
+  "tokens": {
+    "ink": "#1b222c",
+    "paper": "#f4f1ec",
+    "accent": "#c9a962",
+    "muted": "#7a847c",
+    "sand": "#ebe6df",
+    "font_heading": "\"Cormorant Garamond\"",
+    "font_body": "Outfit",
+    "radius": "0",
+    "layout": {
+      "hero": "centrado",
+      "benefits": "lista_numerada",
+      "pricing": "comparativa"
+    }
+  },
+  "qa": {
+    "score": 100,
+    "criticos": [],
+    "sugerencias": [
+      "Hero y CTA final comparten mensaje (esperado).",
+      "hero_split excluido: sin imagen_hero real → hero_centrado forzado"
+    ],
+    "regenerar": [],
+    "omisiones": [
+      {
+        "seccion": "testimonials",
+        "motivo": "sin testimonios reales en el brief"
+      }
+    ],
+    "bugs_v2": {
+      "copy_duplicado": "ok",
+      "overlap_secciones": "ok",
+      "acento_inconsistente": "ok",
+      "naming_inconsistente": "ok",
+      "testimonios_silenciados": "ok_omitida_explicita",
+      "secciones_duplicadas": "ok",
+      "duplicado_intra_hero": "ok"
+    },
+    "section_counts": {
+      "hero": 1,
+      "social_proof": 1,
+      "problem": 1,
+      "benefits": 1,
+      "testimonials": 0,
+      "pricing": 1,
+      "faq": 1,
+      "cta_final": 1,
+      "footer": 1
+    },
+    "n_sections": 8,
+    "cta_count": 4,
+    "duplicado_intra_seccion": {
+      "hero": false
+    },
+    "visual_qa": {
+      "skipped": false,
+      "motivo": "",
+      "screenshots": {
+        "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
+        "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
+      },
+      "scroll_shots": [
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_00.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_01.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_02.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_03.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_04.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_05.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_06.png",
+        "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_07.png"
+      ],
+      "overlaps": [],
+      "animation_risks": [],
+      "ok": true
+    }
+  },
+  "visual_qa": {
+    "skipped": false,
+    "motivo": "",
+    "screenshots": {
+      "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
+      "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
+    },
+    "scroll_shots": [
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_00.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_01.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_02.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_03.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_04.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_05.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_06.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_07.png"
+    ],
+    "overlaps": [],
+    "animation_risks": [],
+    "ok": true
+  },
+  "assemble_meta": {
+    "included": [
+      "hero",
+      "social_proof",
+      "problem",
+      "benefits",
+      "pricing",
+      "faq",
+      "cta_final",
+      "footer"
+    ],
+    "omitted": [
+      "testimonials"
+    ],
+    "templates_used": {
+      "hero": "hero_centrado.html",
+      "social_proof": "trust_badge@base",
+      "problem": "problem.html",
+      "benefits": "benefits_lista_numerada.html",
+      "pricing": "pricing_comparativa.html",
+      "faq": "faq.html",
+      "cta_final": "cta_final.html",
+      "footer": "footer.html"
+    },
+    "layout_efectivo": {
+      "hero": "centrado",
+      "benefits": "lista_numerada",
+      "pricing": "comparativa"
+    },
+    "hero_forzado_centrado": true
+  },
+  "done": [
+    "00_referencia",
+    "01_brief",
+    "02_hero",
+    "03_social_proof",
+    "04_problem",
+    "05_benefits",
+    "06_testimonials",
+    "07_pricing",
+    "08_faq",
+    "09_cta_final",
+    "10_footer",
+    "11a_design_tokens",
+    "11b_assemble",
+    "12_qa",
+    "13_visual_qa"
+  ],
+  "html_saved": true
+}

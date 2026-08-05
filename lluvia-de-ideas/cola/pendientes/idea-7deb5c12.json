@@ -1,0 +1,12 @@
+{
+  "id": "idea-7deb5c12",
+  "categoria": "meta",
+  "titulo": "Enlace investigación → evaluar-idea → construir",
+  "problema": "Las ideas no fluyen solas hacia ideas de proyectos.",
+  "propuesta": "Al aprobar idea en cola, generar borrador JSON en ideas de proyectos automáticamente.",
+  "proyecto_afectado": "ideas de proyectos",
+  "confidence": 0.8,
+  "estado": "pendiente_aprobacion",
+  "origen": "direccion",
+  "creado_at": "2026-07-19T05:43:15.300189+00:00"
+}

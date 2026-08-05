@@ -1,0 +1,186 @@
+{
+  "name": "LinkedIn · generar posts",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "linkedin/disparar",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-12b-disparar-posts",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "12b-disparar-posts"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nreturn [{ json: {\n  ok: true, sistema: '12-linkedin-ghostwriter', etapa: 'disparo', sin_api: true,\n  perfil: b.perfil || '', mes: b.mes || '',\n  cmd_mock: 'python3 generar_posts.py',\n  status: 'queued_mock',\n  todo: 'SIN API: no publica en LinkedIn',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-12b-disparar-posts",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-12b-disparar-posts",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #7 LinkedIn ghostwriter\n\nPack de posts del mes al estilo del perfil.\n\n### Apps\n\n**Cursor · generar_posts.py**  \nEscribe el lote de posts del mes.\n\n**Carpeta posts_generados/**  \nGuarda los textos listos para publicar.\n\n**LinkedIn (después)**  \nPublicación manual o API más adelante.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-02-disparar-posts",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-disparar-posts-0",
+      "name": "Cursor · generar_posts.py",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Escribe el lote de posts del mes.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-disparar-posts-1",
+      "name": "Carpeta posts_generados/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Guarda los textos listos para publicar.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-disparar-posts-2",
+      "name": "LinkedIn (después)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Publicación manual o API más adelante.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cursor · generar_posts.py",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · generar_posts.py": {
+      "main": [
+        [
+          {
+            "node": "Carpeta posts_generados/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Carpeta posts_generados/": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn (después)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

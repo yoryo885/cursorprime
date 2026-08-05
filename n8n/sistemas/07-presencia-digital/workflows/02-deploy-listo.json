@@ -1,0 +1,250 @@
+{
+  "name": "Presencia · web publicada",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "presencia/deploy-listo",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-07b",
+      "name": "Webhook Deploy",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "07b-deploy-listo"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst jobId = String(b.jobId || '').trim();\nconst slug = String(b.slug || b.cliente || '').trim();\nconst landingUrl = String(b.landingUrl || b.url || '').trim();\nconst host = String(b.host || 'vercel').trim();\nif (!landingUrl || !/^https?:\\/\\//i.test(landingUrl)) {\n  return [{ json: { ok: false, error: 'landingUrl inválida' } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '07-presencia-digital',\n  etapa: 'deploy',\n  jobId,\n  slug,\n  landingUrl,\n  host,\n  status: 'web_publicada',\n  siguiente: 'gbp_checklist',\n  todo: 'TODO: guardar URL en clientes/{slug}/entregables/',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-07b",
+      "name": "Registrar deploy",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-07b",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #2 Presencia digital\n\nArma la web y Google del negocio después del audit.\n\n### Apps\n\n**Cursor · creador-de-landings**  \nCrea la landing/HTML del negocio.\n\n**Vercel / Netlify**  \nPublica la web con URL viva.\n\n**Google Business Profile**  \nOrdena ficha Google (horarios, fotos, link).\n\n**WhatsApp**  \nAvisa al cliente que la presencia quedó lista.\n\n**Carpeta clientes/**  \nGuarda URL, checklist GBP y entregables.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-02-deploy-listo",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-deploy-listo-0",
+      "name": "Cursor · creador-de-landings",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Crea la landing/HTML del negocio.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-deploy-listo-1",
+      "name": "Vercel / Netlify",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Publica la web con URL viva.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-deploy-listo-2",
+      "name": "Google Business Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Ordena ficha Google (horarios, fotos, link).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-deploy-listo-3",
+      "name": "WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Avisa al cliente que la presencia quedó lista.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-deploy-listo-4",
+      "name": "Carpeta clientes/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Guarda URL, checklist GBP y entregables.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook Deploy": {
+      "main": [
+        [
+          {
+            "node": "Registrar deploy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar deploy": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cursor · creador-de-landings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · creador-de-landings": {
+      "main": [
+        [
+          {
+            "node": "Vercel / Netlify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vercel / Netlify": {
+      "main": [
+        [
+          {
+            "node": "Google Business Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Business Profile": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Carpeta clientes/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

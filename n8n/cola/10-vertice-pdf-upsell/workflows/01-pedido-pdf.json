@@ -1,0 +1,265 @@
+{
+  "name": "Vértice · pedido PDF",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vertice/pedido-pdf",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-10a-pedido-pdf",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "10a-pedido-pdf"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst catalogo = {\n  'pareto-psicopedagogas': { titulo: 'Pareto para psicopedagogas', rol: 'psicopedagogas', libro: 'pareto' },\n  'habitos-docentes': { titulo: 'Hábitos para docentes', rol: 'docentes', libro: 'habitos' },\n};\nconst slug = String(b.slug || b.sku || '').trim();\nconst email = String(b.email || '').trim();\nconst item = catalogo[slug];\nif (!item) {\n  return [{ json: { ok: false, error: 'slug desconocido', slugs: Object.keys(catalogo), sin_api: true } }];\n}\nreturn [{ json: {\n  ok: true, sistema: '10-vertice-pdf-upsell', etapa: 'pedido_pdf', sin_api: true,\n  orderId: `ORD-${Date.now()}`, slug, email, pdf: item,\n  brief_cursor: { slug, titulo: item.titulo, rol: item.rol, libro: item.libro, accion: 'generar_o_entregar_pdf' },\n  siguiente: 'oferta_upsell',\n  todo: 'SIN API: mock OK. Después: Shopify webhook + pipeline Cursor',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-10a-pedido-pdf",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-10a-pedido-pdf",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #5 sin API\nCatálogo mock decide qué PDF.\nCursor genera después.",
+        "height": 220,
+        "width": 300
+      },
+      "id": "note-10a-pedido-pdf",
+      "name": "Nota",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #5 Vértice PDF + upsell\n\nVende la guía PDF y ofrece accesorio físico.\n\n### Apps\n\n**Shopify**  \nCobra el PDF y avisa el pedido pagado.\n\n**Cursor · generador PDF**  \nCrea/entrega el PDF según el slug (libro×rol).\n\n**Email / WhatsApp**  \nManda la oferta de upsell (lámpara, repisa…).\n\n**Dropshipping (CJ/Spocket/etc.)**  \nSi acepta, el proveedor envía el físico.\n\n**Google Sheet**  \nLog: PDF vendido + upsell sí/no.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-01-pedido-pdf",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-pedido-pdf-0",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Cobra el PDF y avisa el pedido pagado.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-pedido-pdf-1",
+      "name": "Cursor · generador PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Crea/entrega el PDF según el slug (libro×rol).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-pedido-pdf-2",
+      "name": "Email / WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Manda la oferta de upsell (lámpara, repisa…).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-pedido-pdf-3",
+      "name": "Dropshipping (CJ/Spocket/etc.)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Si acepta, el proveedor envía el físico.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-pedido-pdf-4",
+      "name": "Google Sheet",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Log: PDF vendido + upsell sí/no.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Cursor · generador PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · generador PDF": {
+      "main": [
+        [
+          {
+            "node": "Email / WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email / WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Dropshipping (CJ/Spocket/etc.)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dropshipping (CJ/Spocket/etc.)": {
+      "main": [
+        [
+          {
+            "node": "Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

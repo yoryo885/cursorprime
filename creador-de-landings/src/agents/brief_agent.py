@@ -1,0 +1,125 @@
+"""Arma brief JSON + markdown (catálogo + copy profesional de marketing)."""
+
+from __future__ import annotations
+
+from src.catalog import ensure_catalog, guias_from_catalog, roles_from_catalog, serie_from_catalog
+from src.config import save_json
+from src.copy_marketing import copy_profesional, enriquecer_productos
+from src.learning import aplicar_al_brief
+from src.palettes import elegir_paleta
+from src.types import AgentResult, PipelineContext
+
+
+class BriefAgent:
+    def run(self, ctx: PipelineContext) -> AgentResult:
+        r = ctx.respuestas
+        ejemplo = ctx.ejemplo or r.get("estilo") or r.get("estilo_preferido") or "editorial"
+        if ejemplo == "auto":
+            ejemplo = "tienda"
+        catalog = ensure_catalog(ctx.slug)
+        guias = guias_from_catalog(catalog)
+        roles = roles_from_catalog(catalog)
+        serie = serie_from_catalog(catalog)
+        paleta = elegir_paleta(r)
+        marca = r.get("marca") or ctx.slug
+        precio = r.get("precio") or "desde $4.99"
+        producto_r = (r.get("producto") or "").strip()
+        cliente_r = (r.get("cliente") or "").strip()
+        promesa_user = (r.get("promesa") or "").strip()
+        promesa_default_entrevista = "Ideas de libros aplicadas a tu rol — elige tu guía"
+        promesa_para_copy = (
+            promesa_user
+            if promesa_user and promesa_user != promesa_default_entrevista
+            else ""
+        )
+        copy = copy_profesional(
+            marca,
+            len(guias),
+            len(roles),
+            precio,
+            producto=producto_r,
+            cliente=cliente_r,
+            promesa=promesa_para_copy,
+            tono=(r.get("tono") or ""),
+        )
+        productos = enriquecer_productos(guias, serie)
+
+        if promesa_para_copy:
+            promesa = promesa_para_copy
+        else:
+            promesa = copy["promesa"]
+
+        brief = {
+            "marca": marca,
+            "producto": producto_r or "Guías PDF profesionales libro × rol",
+            "cliente": cliente_r or "Profesionales por oficio",
+            "promesa": promesa,
+            "cta": r.get("cta") or "Ver colección",
+            "precio": precio,
+            "tono": r.get("tono") or "editorial",
+            "estilo": ejemplo,
+            "paleta": paleta,
+            "idea": r.get("idea") or "",
+            "referencia": r.get("referencia") or "",
+            "serie_libros": serie,
+            "roles": roles,
+            "productos": productos,
+            "mostrar_catalogo": True,
+            "copy": copy,
+            "barra_aviso": copy.get("barra_aviso", ""),
+            "hero_eyebrow": copy.get("hero_eyebrow", ""),
+            "hero_titulo": copy.get("hero_titulo", marca),
+            "hero_sub": copy.get("hero_sub", ""),
+            "hero_badge_calidad": copy.get(
+                "hero_badge_calidad",
+                "Edición profesional · listo para usar",
+            ),
+            "historia": copy.get("historia", ""),
+            "mision": copy.get("mision", ""),
+            "beneficios": copy.get("beneficios", []),
+            "calidad": copy.get("calidad", []),
+            "incluye": copy.get("incluye", []),
+            "faq": copy.get("faq", []),
+            "newsletter_titulo": copy.get("newsletter_titulo", ""),
+            "newsletter_sub": copy.get("newsletter_sub", ""),
+            "newsletter_cta": copy.get("newsletter_cta", ""),
+            "social_proof_nota": copy.get("social_proof_nota", ""),
+            "catalogo_titulo": copy.get("catalogo_titulo", "Catálogo"),
+            "catalogo_sub": copy.get("catalogo_sub", ""),
+            "serie_titulo": copy.get("serie_titulo", ""),
+            "serie_sub": copy.get("serie_sub", ""),
+            "calidad_titulo": copy.get("calidad_titulo", ""),
+            "incluye_titulo": copy.get("incluye_titulo", ""),
+            "testimonios": [
+                {"texto": "[PENDIENTE: testimonio real]", "autor": "Cliente"},
+            ],
+        }
+        brief = aplicar_al_brief(brief)
+        save_json(ctx.paths["brief"], brief)
+
+        md = [
+            f"# Landing brief — {brief['marca']}",
+            "",
+            f"- **Estilo:** {brief['estilo']}",
+            f"- **Paleta:** {paleta.get('nombre')} ({paleta.get('clima')}/{paleta.get('id')})",
+            f"- **Promesa:** {brief['promesa']}",
+            f"- **CTA:** {brief['cta']}",
+            f"- **Productos en catálogo:** {len(productos)}",
+            "",
+            "## Copy marketing",
+            f"- Hero: {brief['hero_titulo']}",
+            f"- Calidad: {len(brief['calidad'])} pilares",
+            "",
+            "## Serie (libros)",
+        ]
+        for s in serie:
+            md.append(f"- {s.get('titulo')} ({s.get('slug')})")
+        md += ["", "## Guías (libro × rol)"]
+        for g in productos:
+            estado = "disponible" if g.get("disponible") else "próximamente"
+            md.append(f"- **{g.get('titulo')}** — {g.get('precio', '')} · {estado}")
+
+        path_md = ctx.paths["output"] / "brief.md"
+        path_md.write_text("\n".join(md), encoding="utf-8")
+        print(f"     catálogo: {len(productos)} guías · {len(roles)} roles · copy profesional")
+        return AgentResult(ok=True, artifacts=[str(ctx.paths["brief"]), str(path_md)])

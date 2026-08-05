@@ -6,9 +6,55 @@
       "type": "command",
       "command": "simpleBrowser.show",
       "args": ["http://localhost:8768/index.html"]
+    },
+    {
+      "id": "openLandingsPreview",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8768/preview.html"]
+    },
+    {
+      "id": "openLandingsPreview8777",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8777/preview.html"]
     }
   ],
   "tasks": [
+    {
+      "label": "Landings: abrir preview en Browser",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Landings: sync preview a 8768",
+        "Landings: launch Simple Browser"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Landings: sync preview a 8768",
+      "type": "shell",
+      "command": "cp -f \"${workspaceFolder}/creador-de-landings/data/demo-cliente/output/preview.html\" \"${workspaceFolder}/vertice-pro-preview/preview.html\" && curl -sf -o /dev/null http://127.0.0.1:8768/preview.html && echo OK http://localhost:8768/preview.html",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Landings: launch Simple Browser",
+      "type": "shell",
+      "command": "${input:openLandingsPreview}",
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "close": true
+      },
+      "problemMatcher": []
+    },
     {
       "label": "Vértice Pro: abrir en Browser",
       "dependsOrder": "sequence",
@@ -16,10 +62,6 @@
         "Vértice Pro: servir preview",
         "Vértice Pro: launch Simple Browser"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": []
     },
     {

@@ -1,0 +1,11 @@
+<section id="faq" class="band" data-section="faq">
+  <div class="inner">
+    <h2>Preguntas frecuentes</h2>
+    {% for f in faq["items"][:6] %}
+    <details>
+      <summary>{{ f.q }}</summary>
+      <p>{{ f.a }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>

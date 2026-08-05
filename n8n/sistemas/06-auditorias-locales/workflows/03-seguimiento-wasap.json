@@ -1,0 +1,250 @@
+{
+  "name": "Auditoría · seguimiento WhatsApp",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "auditorias/seguimiento",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-06c",
+      "name": "Webhook Seguimiento",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "06c-seguimiento-wasap"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst to = String(b.whatsapp || b.to || '').trim();\nconst cliente = String(b.cliente || '').trim();\nconst plantilla = String(b.plantilla || 'post_audit').trim();\nconst mensajes = {\n  post_audit: `Hola${cliente ? ' — ' + cliente : ''}: ya tenés el informe de auditoría. Si querés, te paso los planes Básico / Presencia / Completo.`,\n  oferta_plan: `Te dejo los planes: Básico (quick wins), Presencia (web+GBP), Completo (+Wasap). ¿Cuál te sirve?`,\n  cierre: `Cuando quieras avanzamos con el plan que elijas. Sin compromiso en la auditoría.`\n};\nconst texto = mensajes[plantilla] || mensajes.post_audit;\nif (!to) {\n  return [{ json: { ok: false, error: 'falta whatsapp', texto } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'seguimiento',\n  to,\n  plantilla,\n  texto,\n  status: 'draft_ready',\n  todo: 'TODO_CREDENCIAL: enviar vía Meta Cloud API / proveedor Wasap',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-06c",
+      "name": "Armar mensaje",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-06c",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #1 Auditorías locales\n\nEncuentra el problema del local y abre la venta.\n\n### Apps\n\n**Google Maps / Places**  \nBuscar locales y su web/ficha para auditar.\n\n**Cursor · marketing-audit**  \nGenera el informe con score y quick wins.\n\n**Google Sheet / Notion**  \nGuarda el job del audit (estado, cliente, URL).\n\n**WhatsApp**  \nManda el informe o el seguimiento al dueño del local.\n\n**Carpeta clientes/**  \nArchiva brief + entregables del cliente en el repo.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-03-seguimiento-wasap",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-0",
+      "name": "Google Maps / Places",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Buscar locales y su web/ficha para auditar.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-1",
+      "name": "Cursor · marketing-audit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Genera el informe con score y quick wins.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-2",
+      "name": "Google Sheet / Notion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Guarda el job del audit (estado, cliente, URL).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-3",
+      "name": "WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Manda el informe o el seguimiento al dueño del local.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-seguimiento-wasap-4",
+      "name": "Carpeta clientes/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Archiva brief + entregables del cliente en el repo.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook Seguimiento": {
+      "main": [
+        [
+          {
+            "node": "Armar mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar mensaje": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Maps / Places",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Maps / Places": {
+      "main": [
+        [
+          {
+            "node": "Cursor · marketing-audit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · marketing-audit": {
+      "main": [
+        [
+          {
+            "node": "Google Sheet / Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheet / Notion": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Carpeta clientes/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

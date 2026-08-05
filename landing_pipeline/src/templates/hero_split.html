@@ -1,0 +1,14 @@
+<section class="hero dark hero-split" id="hero" data-section="hero">
+  <div class="inner split">
+    <div class="split-copy">
+      <div class="brand-hero">{{ nombre }}</div>
+      <h1>{{ hero.titulo }}</h1>
+      <p class="sub">{{ hero.bajada }}</p>
+      <a class="btn" href="#precio">{{ hero.cta }}</a>
+    </div>
+    <div class="split-visual">
+      {# Solo imagen real — NUNCA repetir titulo/bajada aquí #}
+      <img class="hero-img" src="{{ hero.imagen_hero }}" alt="{{ nombre }}"/>
+    </div>
+  </div>
+</section>

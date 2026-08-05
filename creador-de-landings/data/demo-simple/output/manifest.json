@@ -1,0 +1,11 @@
+{
+  "slug": "demo-simple",
+  "generado_at": "2026-07-25T18:02:39.850839+00:00",
+  "estilo": "tienda",
+  "marca": "Norte Claro",
+  "archivos": {
+    "preview": "/workspace/creador-de-landings/data/demo-simple/output/preview.html",
+    "brief": "/workspace/creador-de-landings/data/demo-simple/output/brief.md",
+    "ejemplos": "/workspace/creador-de-landings/data/demo-simple/output/ejemplos.md"
+  }
+}

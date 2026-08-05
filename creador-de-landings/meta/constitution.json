@@ -1,0 +1,18 @@
+{
+  "proyecto": "creador-de-landings",
+  "principios": [
+    "Primero preguntas, luego ejemplos, luego HTML",
+    "Una sola CTA principal en el hero",
+    "Marca hero-level, no solo en el nav",
+    "Hero full-bleed con una imagen dominante",
+    "Sin inventar testimonios: marcar [PENDIENTE]",
+    "Generación en segundos con plantillas (MVP sin API de pago)"
+  ],
+  "qc_minimo": {
+    "tiene_marca": true,
+    "tiene_headline": true,
+    "tiene_cta": true,
+    "tiene_hero_visual": true,
+    "archivo_html": true
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "Wasap · FAQ corto",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-faq",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-03-wa",
+      "name": "Webhook Meta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "03-wasap-faq"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json;\nconst entry = (body.entry || [])[0] || {};\nconst change = ((entry.changes || [])[0] || {}).value || {};\nconst msg = ((change.messages || [])[0]) || {};\nconst text = String((msg.text || {}).body || msg.button?.text || '').trim().toLowerCase();\nconst from = msg.from || '';\nconst faqs = {\n  horario: 'Atendemos lun–vie 9 a 18 hs.',\n  precio: 'Te paso la lista de precios por este chat en un momento.',\n  direccion: 'Estamos en el centro — te mando el mapa si querés.',\n};\nlet intent = 'handoff';\nlet reply = 'Te derivo con una persona del equipo.';\nfor (const [k, v] of Object.entries(faqs)) {\n  if (text.includes(k) || text.includes(k.replace('cion','ción'))) {\n    intent = 'faq';\n    reply = v;\n    break;\n  }\n}\nif (!text) {\n  intent = 'ignore';\n  reply = '';\n}\nreturn [{ json: { ok: true, from, text, intent, reply, todo: 'TODO_CREDENCIAL: enviar reply vía Meta Graph API' } }];"
+      },
+      "id": "code-03-intent",
+      "name": "Intent FAQ/Handoff",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-03-wa",
+      "name": "Respond ack",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## TODO_CREDENCIAL\n1. HTTP Request → Graph API messages\n2. Verify token GET para Meta\n3. FAQ por cliente en data store",
+        "height": 220,
+        "width": 300
+      },
+      "id": "note-03-todo",
+      "name": "TODO Meta",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Meta": {
+      "main": [
+        [
+          {
+            "node": "Intent FAQ/Handoff",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intent FAQ/Handoff": {
+      "main": [
+        [
+          {
+            "node": "Respond ack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

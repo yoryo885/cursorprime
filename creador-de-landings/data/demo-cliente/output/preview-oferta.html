@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Vértice Pro — Oferta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --ink:#111; --accent:#0f1419; --bg:#fff; --soft:#f3f1ec; --muted:#666; }
+    * { box-sizing:border-box; margin:0; }
+    body { font-family:Outfit,system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+    .hero { background:var(--soft); padding:clamp(40px,8vw,72px) 20px; text-align:center; }
+    .brand { font-size:.75rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    h1 { font-family:"Cormorant Garamond",serif; font-size:clamp(1.8rem,4vw,2.6rem); max-width:18ch; margin:0 auto 14px; line-height:1.15; }
+    .sub { color:var(--muted); max-width:40ch; margin:0 auto 22px; }
+    .price { font-size:1.6rem; font-weight:700; margin-bottom:18px; }
+    .btn { display:inline-flex; min-height:52px; padding:0 32px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+    section { max-width:720px; margin:0 auto; padding:40px 20px; }
+    ul { list-style:none; padding:0; }
+    ul li { padding:12px 0; border-bottom:1px solid #eee; }
+    .faq { background:var(--soft); padding:16px; margin-bottom:10px; }
+    .faq p { color:var(--muted); margin-top:6px; font-size:.92rem; }
+    .sticky { position:sticky; bottom:0; background:#fff; border-top:1px solid #eee; padding:14px; text-align:center; }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <p class="brand">Vértice Pro</p>
+    <h1>Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas</h1>
+    <p class="sub">Para Psicopedagogas en escuela. Guías PDF para tu rol profesional</p>
+    <p class='price'>$4.99</p>
+    <a class="btn" href="#faq">Ver colección</a>
+  </section>
+  <section>
+    <ul><li>✓ Hecho para Psicopedagogas en escuela</li><li>✓ Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas</li><li>✓ Descarga al instante</li></ul>
+  </section>
+  <section id="faq">
+    <div class='faq'><strong>¿Qué recibo?</strong><p>Guías PDF para tu rol profesional</p></div><div class='faq'><strong>¿Para quién es?</strong><p>Psicopedagogas en escuela</p></div><div class='faq'><strong>¿Cómo lo recibo?</strong><p>Descarga inmediata tras la compra.</p></div>
+  </section>
+  <div class="sticky"><a class="btn" href="#">Ver colección</a></div>
+</body>
+</html>

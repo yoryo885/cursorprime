@@ -1,0 +1,17 @@
+{
+  "sistema": "12-linkedin-ghostwriter",
+  "ranking": 7,
+  "sin_api": true,
+  "paquetes": [
+    {
+      "id": "mes",
+      "nombre": "Pack 1 mes",
+      "precio_desde": 199
+    },
+    {
+      "id": "trimestre",
+      "nombre": "3 meses",
+      "precio_desde": 499
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Vértice Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --ink:#14110f; --bg:#faf6f0; --muted:#6a635c; --pad:clamp(16px,4vw,36px); }
+    * { box-sizing:border-box; margin:0; }
+    body { font-family:Outfit,system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+    header { padding:20px var(--pad); text-align:center; font-family:"Cormorant Garamond",serif; letter-spacing:.14em; font-size:1.2rem; }
+    .hero { display:grid; grid-template-columns:1.1fr .9fr; gap:32px; max-width:1100px; margin:0 auto; padding:clamp(32px,6vw,64px) var(--pad); align-items:center; }
+    .mock {
+      aspect-ratio:4/3; background:linear-gradient(145deg,#1e293b,#0f172a); border-radius:12px;
+      display:flex; align-items:center; justify-content:center; color:#fff; font-family:"Cormorant Garamond",serif;
+      font-size:1.4rem; letter-spacing:.08em; box-shadow:0 24px 60px rgba(0,0,0,.18);
+      animation: up .8s ease both;
+    }
+    @keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+    h1 { font-family:"Cormorant Garamond",serif; font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:12px; }
+    .sub { color:var(--muted); margin-bottom:20px; max-width:36ch; }
+    .btn { display:inline-flex; min-height:48px; padding:0 24px; align-items:center; background:var(--ink); color:#fff; text-decoration:none; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; }
+    .price { font-size:1.35rem; font-weight:600; margin:16px 0; }
+    ul { margin:20px 0; padding-left:18px; color:var(--muted); }
+    @media (max-width:800px) { .hero { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>Vértice Pro</header>
+  <section class="hero">
+    <div class="mock">PDF · Preview</div>
+    <div>
+      <h1>Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas</h1>
+      <p class="sub">Guías PDF para tu rol profesional para Psicopedagogas en escuela</p>
+      <p class='price'>$4.99</p>
+      <a class="btn" href="#">Ver colección</a>
+      <ul><li>Hecho para Psicopedagogas en escuela</li><li>Priorizar el 20% de casos que dan el 80% del impacto en 10 semanas</li><li>Descarga al instante</li></ul>
+    </div>
+  </section>
+</body>
+</html>

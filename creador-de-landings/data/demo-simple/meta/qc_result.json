@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "score": 100,
+  "checks": {
+    "archivo_html": true,
+    "tiene_marca": true,
+    "tiene_headline": true,
+    "tiene_cta": true,
+    "tiene_estilo": true,
+    "tiene_catalogo": true,
+    "tiene_hero_visual": true,
+    "html_tiene_cta": true,
+    "html_tiene_marca": true,
+    "html_tiene_grid": true,
+    "sin_estrellas_inventadas": true
+  },
+  "constitution_aplicada": true,
+  "n_productos": 1
+}

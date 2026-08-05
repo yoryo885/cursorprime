@@ -1,0 +1,186 @@
+{
+  "name": "Cola Wasap · nuevo pedido",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cola/pedido",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-08a",
+      "name": "Webhook Pedido",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "08a-nuevo-pedido"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst negocio = String(b.negocio || b.slug || '').trim();\nconst cliente = String(b.cliente || b.nombre || '').trim();\nconst whatsapp = String(b.whatsapp || b.from || '').trim();\nconst items = b.items || b.pedido || b.texto || '';\nconst nota = String(b.nota || '').trim();\nif (!negocio) return [{ json: { ok: false, error: 'falta negocio' } }];\nif (!whatsapp && !cliente) return [{ json: { ok: false, error: 'falta cliente/whatsapp' } }];\nconst ticket = `P-${Date.now().toString().slice(-6)}`;\nreturn [{ json: {\n  ok: true,\n  sistema: '08-cola-pedidos-wasap',\n  etapa: 'nuevo_pedido',\n  ticket,\n  negocio,\n  cliente,\n  whatsapp,\n  items,\n  nota,\n  estado: 'nuevo',\n  status: 'en_cola',\n  todo: 'TODO: guardar en Sheet/Notion + ack al cliente',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-08a",
+      "name": "Asignar ticket",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-08a",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #3 Cola de pedidos WhatsApp\n\nOrdena pedidos del local en hora pico.\n\n### Apps\n\n**WhatsApp · Meta Cloud API**  \nRecibe pedidos y manda avisos de estado.\n\n**Google Sheet / Notion**  \nCola del día: ticket, estado, cliente.\n\n**n8n (este flujo)**  \nAsigna ticket y cambia estados (nuevo→listo).\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-01-nuevo-pedido",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-nuevo-pedido-0",
+      "name": "WhatsApp · Meta Cloud API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Recibe pedidos y manda avisos de estado.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-nuevo-pedido-1",
+      "name": "Google Sheet / Notion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Cola del día: ticket, estado, cliente.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-nuevo-pedido-2",
+      "name": "n8n (este flujo)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Asigna ticket y cambia estados (nuevo→listo).",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook Pedido": {
+      "main": [
+        [
+          {
+            "node": "Asignar ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asignar ticket": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WhatsApp · Meta Cloud API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp · Meta Cloud API": {
+      "main": [
+        [
+          {
+            "node": "Google Sheet / Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheet / Notion": {
+      "main": [
+        [
+          {
+            "node": "n8n (este flujo)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

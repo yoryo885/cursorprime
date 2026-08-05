@@ -1,5 +1,5 @@
-Preview móvil: https://lovely-ghosts-melt.loca.lt/tienda.html
+https://transmit-madrid-monitor-audience.trycloudflare.com/preview.html
 
-Si localtunnel pide contraseña, usa la IP pública del servidor (ver mensaje en pantalla).
-
-Local: http://localhost:8768/tienda.html
+NO se desinstaló nada.
+localhost falla porque Cursor Cloud no reenvía el puerto a tu PC.
+Usa la URL de Cloudflare de arriba (funciona en cualquier navegador).

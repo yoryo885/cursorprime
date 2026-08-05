@@ -1,0 +1,106 @@
+{
+  "slug": "organigrama-funcional",
+  "tipo": "documento",
+  "proyecto_destino": "meta/organizacion",
+  "titulo": "Organigrama Funcional + Manual de Operaciones (Marketing y Operaciones)",
+  "contexto": "Estrategia organizacional del emprendedor: pirámide por roles, no por nombres. DG = Emprendedor. Delegar de inmediato Tráfico/Adquisición (Marketing) y Soporte/Ejecución Técnica (Operaciones), con IA/automatización cubriendo ~80% de fricción.",
+  "temas": [
+    "organigrama",
+    "roles",
+    "manual de operaciones",
+    "marketing adquisición",
+    "operaciones técnicas",
+    "IA automatización"
+  ],
+  "notas": "Entrega visual PDF/HTML. Alinear con productos creados: Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok, n8n. | Ciclo: borrador → feedback usuario → yo itero; QA checklist antes de cliente. | Entrega video sistema: animado + personaje → Telegram.",
+  "mejoras": [
+    {
+      "fecha": "2026-08-04",
+      "texto": "Pedido inicial: organigrama piramidal + JD + rutinas + IA 80%."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Quiere poder descargar el organigrama (URL PDF estable/fresca)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Detalle del 80%: qué hace el agente Cursor vs qué se automatiza en n8n/pipelines."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Explicar cómo se haría el flujo en la práctica + ciclo de revisión si no gusta PDF/video (no arregla solo el usuario)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Armar MVP LIVE: runner + embudo/tiktok/audit activos + healthcheck."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Entregables simples al decir 'corré'; Telegram como canal de entrega."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Telegram destino @yoryo321 para entrega de contenido."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Guía BotFather: qué seleccionar al crear el bot."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Usuario preguntó si puede entregar el token API de Telegram al agente."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Token Telegram guardado en .env; pendiente /start al bot para chat_id."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Telegram @yoryo321 conectado; mensaje de prueba enviado."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Pregunta: ¿órdenes desde Telegram? Hoy solo recepción; falta inbox de comandos."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Ejecutar inbox Telegram: órdenes desde el bot hacia runner."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Comando Telegram `correr` para demo sistema completo; esperar orden del usuario."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Explicar qué hace `correr` hoy vs entregables cliente (PDF/video)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Demo en Telegram de formatos de mensaje (hoy vs entregable PDF/video)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Entrega demo real a Telegram: PDF adjunto + links trycloudflare (no ejemplo.com)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Video del creador de contenido llega a Telegram (MP4); comando video + runner pipeline.contenido_video + n8n webhook."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Video con personaje (frames ilustrados) a Telegram; default animado no slideshow."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Video CON personaje es el default del sistema (Telegram video/correr/runner); no slideshow de cards."
+    },
+    {
+      "fecha": "2026-08-05",
+      "texto": "Confirmar y procesar en docs/org los arreglos de sistemas (LIVE, Telegram, video personaje)."
+    },
+    {
+      "fecha": "2026-08-05",
+      "texto": "Video a Telegram estaba mal: corregir a personaje vertical 9:16 con motion corto (~8s), no figuras planas/clip roto."
+    }
+  ]
+}

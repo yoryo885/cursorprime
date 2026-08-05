@@ -1,0 +1,13 @@
+{
+  "name": "cursorprime-n8n",
+  "version": "1.0.0",
+  "private": true,
+  "description": "n8n local para cursorprime — usable desde celular vía tunnel",
+  "scripts": {
+    "start": "node ./scripts/start.mjs",
+    "tunnel": "bash ./scripts/tunnel.sh"
+  },
+  "dependencies": {
+    "n8n": "^1.107.0"
+  }
+}

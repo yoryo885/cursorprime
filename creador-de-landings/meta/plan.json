@@ -1,0 +1,68 @@
+{
+  "slug": "creador-de-landings",
+  "nombre": "Creador de Landings",
+  "version": "0.1.0",
+  "modo": "A",
+  "pasos": [
+    {
+      "id": 1,
+      "slug": "interview",
+      "nombre": "Entrevista",
+      "agente": "InterviewAgent",
+      "input": "meta/preguntas.json + stdin|respuestas.json",
+      "output": "inputs/respuestas.json",
+      "puede_fallar": false,
+      "flag_cli": "--solo interview"
+    },
+    {
+      "id": 2,
+      "slug": "examples",
+      "nombre": "Ejemplos de estilo",
+      "agente": "ExamplesAgent",
+      "input": "respuestas.json",
+      "output": "output/ejemplos.md + meta/ejemplos.json",
+      "puede_fallar": false,
+      "flag_cli": "--solo examples"
+    },
+    {
+      "id": 3,
+      "slug": "brief",
+      "nombre": "Brief de landing",
+      "agente": "BriefAgent",
+      "input": "respuestas + ejemplo elegido",
+      "output": "output/brief.md + meta/brief.json",
+      "puede_fallar": false,
+      "flag_cli": "--solo brief"
+    },
+    {
+      "id": 4,
+      "slug": "build",
+      "nombre": "Generar HTML",
+      "agente": "BuildAgent",
+      "input": "brief.json",
+      "output": "output/preview.html",
+      "puede_fallar": false,
+      "flag_cli": "--solo build"
+    },
+    {
+      "id": 5,
+      "slug": "qc",
+      "nombre": "QC",
+      "agente": "QcAgent",
+      "input": "preview.html + brief",
+      "output": "meta/qc_result.json",
+      "puede_fallar": true,
+      "flag_cli": "--solo qc"
+    },
+    {
+      "id": 6,
+      "slug": "packager",
+      "nombre": "Packager",
+      "agente": "PackagerAgent",
+      "input": "artefactos",
+      "output": "output/manifest.json",
+      "puede_fallar": false,
+      "flag_cli": "--solo packager"
+    }
+  ]
+}

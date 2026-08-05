@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "titulo": "Métodos de libros clásicos, aplicados a tu oficio",
+    "bajada": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
+    "cta": "Ver colección",
+    "tiene_imagen": false,
+    "imagen_hero": "",
+    "_ref_hero_visual": "imagen real de producto, nunca texto duplicado"
+  },
+  "social_proof": {
+    "cifra_o_logos": "6 productos · 5 perfiles",
+    "texto": "Dato del catálogo · sin reseñas inventadas",
+    "confianza": "media",
+    "fuente": "producto"
+  },
+  "problem": {
+    "headline": "Sabés la teoría… y el día a día no cambia",
+    "dolores": [
+      "Leés libros útiles pero no llegan a tu rol como psicopedagogas, docentes y profesionales por oficio.",
+      "Perdés tiempo buscando el 20% que importa.",
+      "Los resúmenes genéricos no hablan tu lenguaje."
+    ],
+    "puente": "Por eso Vértice Pro traduce métodos clásicos a tu oficio."
+  },
+  "benefits": {
+    "items": [
+      {
+        "titulo": "Hecho para tu oficio",
+        "texto": "Ejemplos y prioridades de psicopedagogas, docentes y profesionales por oficio, no teoría genérica."
+      },
+      {
+        "titulo": "Método claro en semanas",
+        "texto": "Sabés qué hacer cada semana, sin relleno ni moda."
+      },
+      {
+        "titulo": "Formato listo para usar",
+        "texto": "PDF profesional: ordenado, descargable, aplicable hoy."
+      },
+      {
+        "titulo": "Precio de entrada real",
+        "texto": "Empezás desde $4.99."
+      }
+    ]
+  },
+  "testimonials": {
+    "omitida": true,
+    "motivo": "sin testimonios reales en el brief",
+    "items": []
+  },
+  "pricing": {
+    "precio": "desde $4.99",
+    "incluye": [
+      "Acceso / descarga inmediata",
+      "Formato profesional listo para usar",
+      "Soporte de lanzamiento de colección"
+    ],
+    "cta": "Ver colección",
+    "garantia": "Pago único · acceso inmediato · sin letra chica"
+  },
+  "faq": {
+    "items": [
+      {
+        "q": "¿Qué es Vértice Pro?",
+        "a": "Vértice Pro ofrece guías prácticas para psicopedagogas, docentes y profesionales por oficio: claras, aplicables y sin relleno."
+      },
+      {
+        "q": "¿Para quién es?",
+        "a": "Para psicopedagogas, docentes y profesionales por oficio que quieren método práctico, no teoría genérica."
+      },
+      {
+        "q": "¿Cómo lo recibo?",
+        "a": "Acceso digital inmediato tras la compra (PDF / descarga según el producto)."
+      },
+      {
+        "q": "¿En qué se diferencia de un resumen genérico?",
+        "a": "Está escrito para tu rol: lenguaje, ejemplos y prioridades de tu día a día."
+      },
+      {
+        "q": "¿Qué pasa si no me sirve?",
+        "a": "Escribimos y te ayudamos. Queremos que te sirva en tu oficio — sin letra chica escondida."
+      },
+      {
+        "q": "¿Cuánto cuesta?",
+        "a": "desde $4.99 Pago único, sin suscripción."
+      }
+    ]
+  },
+  "cta_final": {
+    "headline": "Métodos de libros clásicos, aplicados a tu oficio",
+    "sub": "Hecho para psicopedagogas, docentes y profesionales por oficio. Sin relleno.",
+    "cta": "Ver colección"
+  },
+  "footer": {
+    "marca": "Vértice Pro",
+    "contacto": "hola@vertice.pro",
+    "legales": [
+      "Privacidad",
+      "Términos"
+    ],
+    "redes": []
+  }
+}

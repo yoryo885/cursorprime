@@ -131,7 +131,20 @@
       "priority": 86,
       "match": {
         "any": ["evaluar", "viabilidad", "idea de", "negocio", "rentable", "escalable", "margen", "veredicto", "sirve la idea"],
-        "none": ["project-lens", "investigacion profunda", "mercado real", "competencia"]
+        "none": [
+          "project-lens",
+          "investigacion profunda",
+          "mercado real",
+          "competencia",
+          "tienda web",
+          "idea de tienda",
+          "idea de landing",
+          "landing",
+          "hazme una landing",
+          "hazme una tienda",
+          "filjos",
+          "ecommerce"
+        ]
       },
       "skill": "evaluar-idea",
       "proyecto": "ideas-de-proyectos",
@@ -222,11 +235,74 @@
       "pipeline": null
     },
     {
+      "id": "landing-pipeline-agentes",
+      "priority": 96,
+      "match": {
+        "any": [
+          "landing_pipeline",
+          "pipeline de landings",
+          "pipeline de agentes",
+          "agentes de landing",
+          "skills por seccion",
+          "skills por sección",
+          "prompt_pipeline_landings",
+          "01_brief",
+          "landing con agentes"
+        ],
+        "none": ["creador de landings entrevista", "entrevista landing"]
+      },
+      "skill": "landing-pipeline",
+      "proyecto": "landing_pipeline",
+      "prompt": { "tipo": "pipeline", "proyecto_destino": "landing_pipeline", "auto": false },
+      "pipeline": {
+        "cwd": "landing_pipeline",
+        "cmd": "python3 landing_main.py run --demo"
+      },
+      "nota": "Agentes 01-12 + skills.md → copy.json + landing.html + QA"
+    },
+    {
+      "id": "creador-de-landings",
+      "priority": 93,
+      "match": {
+        "any": [
+          "creador de landings",
+          "creador-de-landings",
+          "generar landing",
+          "generador de landings",
+          "landing en segundos",
+          "entrevista landing",
+          "sistema de landings",
+          "crear landings",
+          "usa creador-de-landings",
+          "tienda web",
+          "idea de tienda",
+          "idea de landing",
+          "pagina como",
+          "página como",
+          "hazme una landing",
+          "hazme una tienda",
+          "crear tienda",
+          "landing como",
+          "ecommerce",
+          "filjos"
+        ],
+        "none": ["evaluar idea", "solo copy", "viabilidad", "rentable"]
+      },
+      "skill": "creador-de-landings",
+      "proyecto": "creador-de-landings",
+      "prompt": { "tipo": "marketing", "proyecto_destino": "creador-de-landings", "auto": false },
+      "pipeline": {
+        "cwd": "creador-de-landings",
+        "cmd": "python3 landings_main.py preguntas"
+      },
+      "nota": "Ante idea de tienda/landing: primero entrevista estándar (preguntas.json), luego generar"
+    },
+    {
       "id": "landing-lanzamiento-route",
       "priority": 81,
       "match": {
-        "any": ["landing", "lanzamiento", "pagina ventas", "página ventas", "copy lanzamiento", "oferta", "funnel"],
-        "none": ["evaluar idea", "libro", "kdp"]
+        "any": ["lanzamiento", "copy lanzamiento", "funnel copy", "solo copy landing"],
+        "none": ["evaluar idea", "libro", "kdp", "creador de landings", "generar landing", "landing en segundos", "sistema de landings", "tienda web", "idea de landing", "idea de tienda"]
       },
       "skill": "landing-lanzamiento",
       "proyecto": "general",

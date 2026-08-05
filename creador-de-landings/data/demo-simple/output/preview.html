@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Norte Claro — Colección profesional de guías</title>
+  <meta name="description" content="Un plan claro de 8 semanas para ordenar tu oferta"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:#1b222c; --paper:#f4f1ec; --accent:#2a3544; --muted:#7a847c; --hero:#1b222c; --sand:color-mix(in srgb, var(--paper) 85%, var(--muted));
+      --gold:#c9a962; --pad:clamp(16px,4vw,40px); --max:1120px;
+    }
+    * { box-sizing:border-box; margin:0; }
+    body { font-family:Outfit,system-ui,sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }
+    .announce {
+      background:var(--hero); color:#f0ebe3; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+      text-align:center; padding:10px var(--pad);
+    }
+    .top {
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px var(--pad); border-bottom:1px solid #e4dfd6; background:color-mix(in srgb, var(--paper) 92%, transparent);
+      position:sticky; top:0; z-index:5; backdrop-filter:blur(8px);
+    }
+    .logo {
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(1.5rem,3vw,2rem);
+      letter-spacing:.18em; font-weight:600; text-decoration:none; color:var(--ink);
+    }
+    .nav { display:flex; flex-wrap:wrap; gap:14px; }
+    .nav a { color:var(--muted); text-decoration:none; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }
+    .nav a:hover { color:var(--ink); }
+    .hero-nuevo {
+      min-height:min(78svh,680px); display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+      background:linear-gradient(115deg, color-mix(in srgb, var(--hero) 96%, #fff) 0%, color-mix(in srgb, var(--hero) 88%, #3a4555) 45%, color-mix(in srgb, var(--hero) 92%, #4a5565) 100%);
+      color:#e8e4dc; animation: rise .85s ease both;
+    }
+    @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    .hero-copy { padding:clamp(40px,10vh,96px) var(--pad); display:flex; flex-direction:column; justify-content:flex-end; max-width:36rem; }
+    .eyebrow { font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,228,220,.65); margin-bottom:14px; }
+    .hero-copy .brand-hero {
+      font-family:"Cormorant Garamond",Georgia,serif; letter-spacing:.18em; font-weight:600;
+      font-size:clamp(2.2rem,5.5vw,3.6rem); margin-bottom:14px; color:#f0ebe3;
+    }
+    .hero-copy h1 {
+      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+      font-size:clamp(1.35rem,2.8vw,1.75rem); max-width:22ch; margin-bottom:14px; line-height:1.2;
+      color:#f0ebe3;
+    }
+    .hero-copy .sub { color:rgba(232,228,220,.82); margin-bottom:14px; max-width:42ch; font-size:.98rem; }
+    .hero-copy .badge-q {
+      font-size:.72rem; letter-spacing:.06em; color:rgba(232,228,220,.68); margin-bottom:18px; max-width:40ch;
+    }
+    .hero-copy .price-lg { font-size:1.05rem; font-weight:600; margin-bottom:20px; color:#f0ebe3; }
+    .hero-visual {
+      position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:clamp(28px,5vw,48px) var(--pad) clamp(20px,4vw,36px);
+      min-height:520px;
+      background:
+        radial-gradient(ellipse at 50% 40%, #2f3a48 0%, var(--hero) 68%);
+      overflow:hidden;
+    }
+    .role-carousel {
+      position:relative; width:min(100%,340px); height:390px; margin:0 auto;
+    }
+    .role-slide {
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:18px;
+      opacity:0; visibility:hidden;
+      transform:scale(.92) translateY(12px);
+      transition:opacity .5s ease, transform .5s ease, visibility .5s;
+      pointer-events:none;
+    }
+    .role-slide.is-active {
+      opacity:1; visibility:visible; transform:scale(1) translateY(0);
+      pointer-events:auto; z-index:2;
+    }
+    .book {
+      position:relative; width:148px; height:210px; flex-shrink:0;
+      transform:perspective(900px) rotateY(-14deg) rotateX(3deg);
+      filter:drop-shadow(0 22px 32px rgba(0,0,0,.5));
+    }
+    .book-hero {
+      width:200px; height:290px;
+      transform:perspective(900px) rotateY(-16deg) rotateX(4deg);
+      animation: bookIn .7s ease both;
+    }
+    @keyframes bookIn {
+      from { opacity:0; transform:perspective(900px) rotateY(-28deg) translateY(18px); }
+      to { opacity:1; transform:perspective(900px) rotateY(-16deg) rotateX(4deg); }
+    }
+    .book-spine {
+      position:absolute; left:0; top:8px; bottom:8px; width:16px;
+      background:linear-gradient(90deg, #0a0e14, color-mix(in srgb, var(--book-bg) 65%, #000));
+      border-radius:3px 0 0 3px;
+      box-shadow:inset -2px 0 4px rgba(0,0,0,.35);
+    }
+    .book-front {
+      position:absolute; left:14px; right:0; top:0; bottom:0;
+      background:
+        linear-gradient(165deg, color-mix(in srgb, var(--book-bg) 92%, #fff) 0%, var(--book-bg) 48%, color-mix(in srgb, var(--book-bg) 75%, #000) 100%);
+      border:1px solid color-mix(in srgb, var(--book-accent) 40%, transparent);
+      border-radius:0 5px 5px 0;
+      padding:20px 16px 18px;
+      display:flex; flex-direction:column;
+      color:var(--book-accent);
+    }
+    .book-hero .book-front { padding:24px 18px 20px; }
+    .book-series {
+      font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
+      color:rgba(240,235,227,.55); margin-bottom:10px;
+    }
+    .book-mark {
+      font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; opacity:.75; margin-bottom:14px;
+      color:var(--book-accent);
+    }
+    .book-title {
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:1.05rem; font-weight:600;
+      line-height:1.2; letter-spacing:.02em; flex:1; color:#f5f0e8;
+    }
+    .book-hero .book-title { font-size:1.35rem; }
+    .book-author { font-size:.7rem; letter-spacing:.04em; opacity:.8; margin-top:12px; color:#e8e0d4; }
+    .book-footer {
+      margin-top:auto; padding-top:12px;
+      border-top:1px solid color-mix(in srgb, var(--book-accent) 35%, transparent);
+    }
+    .book-rol {
+      font-size:.62rem; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--book-accent); margin:0;
+    }
+    .book-estado {
+      margin-top:6px; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase;
+      opacity:.7; color:#e8e0d4;
+    }
+    .slide-caption { text-align:center; max-width:260px; }
+    .slide-count {
+      font-size:.78rem; letter-spacing:.04em; color:rgba(232,228,220,.78);
+    }
+    .slide-count strong {
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:1.15rem; font-weight:500; color:#f0ebe3;
+    }
+    .slide-guia {
+      margin-top:6px; font-size:.78rem; color:rgba(216,210,200,.55); line-height:1.35;
+    }
+    .carousel-nav {
+      display:flex; align-items:center; justify-content:center; gap:16px; margin-top:8px; width:100%;
+      position:relative; z-index:3;
+    }
+    .carousel-btn {
+      width:42px; height:42px; border:1px solid rgba(216,210,200,.4); background:rgba(0,0,0,.15);
+      color:#d8d2c8; font-size:1.2rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
+      transition:border-color .2s, background .2s;
+    }
+    .carousel-btn:hover { border-color:rgba(216,210,200,.85); background:rgba(255,255,255,.06); }
+    .role-dots { display:flex; gap:8px; align-items:center; }
+    .role-dot {
+      width:7px; height:7px; border-radius:50%; border:none; padding:0; cursor:pointer;
+      background:rgba(216,210,200,.28);
+    }
+    .role-dot.is-active { background:#d8d2c8; }
+    @media (max-width:860px) {
+      .book-hero { width:170px; height:250px; transform:perspective(900px) rotateY(-8deg); }
+      .role-carousel { height:350px; }
+    }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 26px;
+      background:var(--gold); color:var(--ink); font-size:.72rem; font-weight:600; letter-spacing:.12em;
+      text-transform:uppercase; text-decoration:none; border:none; cursor:pointer;
+    }
+    .btn-dark { background:var(--ink); color:var(--paper); }
+    .btn-outline {
+      background:transparent; color:var(--ink); border:1px solid var(--ink);
+      display:inline-flex; align-items:center; justify-content:center; min-height:48px;
+      font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    }
+    .btn-block { width:100%; }
+    section { padding:clamp(48px,8vw,80px) var(--pad); max-width:var(--max); margin:0 auto; }
+    section.band { max-width:none; background:var(--sand); }
+    section.band > * { max-width:var(--max); margin-left:auto; margin-right:auto; }
+    h2 {
+      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+      font-size:clamp(1.45rem,3vw,2rem); margin-bottom:12px; text-align:center;
+    }
+    .sec-sub { text-align:center; color:var(--muted); max-width:48ch; margin:0 auto 28px; font-size:.95rem; }
+    .story { max-width:52ch; margin:0 auto; text-align:center; color:var(--muted); }
+    .center { text-align:center; }
+    .muted { color:var(--muted); }
+    .pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:8px; }
+    .pillar { background:#fff; border:1px solid #e4dfd6; padding:22px 20px; }
+    .pillar h3 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:1.15rem; margin-bottom:8px; }
+    .pillar p { color:var(--muted); font-size:.92rem; }
+    .incluye { max-width:40ch; margin:0 auto; list-style:none; padding:0; }
+    .incluye li { padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }
+    .guia-card .card-cover-wrap {
+      aspect-ratio:4/5; background:color-mix(in srgb, var(--paper) 88%, #dfe6ee);
+      display:flex; align-items:center; justify-content:center; padding:24px 16px;
+    }
+    .book-card {
+      width:120px; height:168px;
+      transform:perspective(800px) rotateY(-10deg) rotateX(2deg);
+      filter:drop-shadow(0 14px 22px rgba(0,0,0,.22));
+    }
+    .book-card .book-title { font-size:.92rem; }
+    .guia-card h3 {
+      font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+      font-size:1.05rem; margin:8px 0 10px; line-height:1.25;
+    }
+    .guia-card .price { font-size:1rem; font-weight:600; margin-bottom:12px; }
+    details { background:#fff; border:1px solid #e4dfd6; padding:14px 16px; margin-bottom:10px; }
+    summary { cursor:pointer; font-weight:500; }
+    details p { margin-top:8px; color:var(--muted); font-size:.92rem; }
+    .news {
+      text-align:center; padding:clamp(48px,8vw,72px) var(--pad);
+      background:var(--hero); color:#f0ebe3;
+    }
+    .news h2 { color:#f0ebe3; }
+    .news p { color:rgba(240,235,227,.72); max-width:38ch; margin:0 auto 20px; }
+    .news .btn { background:#f0ebe3; color:var(--ink); }
+    footer { text-align:center; padding:28px; font-size:.7rem; color:var(--muted); }
+    .hero-badge { display:inline-block; margin:12px 0 0; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+    .hero-precio { margin:8px 0 0; font-size:.95rem; color:rgba(240,235,227,.85); }
+    .mision { margin-top:18px; font-style:italic; }
+    .incluye { max-width:40ch; margin:16px auto 0; list-style:none; padding:0; text-align:left; }
+    .incluye li { padding:12px 0; border-bottom:1px solid #e4dfd6; color:var(--muted); }
+    .card-sub { font-size:.78rem; color:var(--muted); line-height:1.4; margin-bottom:12px; }
+    
+    .serie-line { text-align:center; color:var(--muted); font-size:.85rem; margin:-8px 0 20px; }
+    .role-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:28px; }
+    .role-chip {
+      padding:10px 16px; border:1px solid #e7e1d8; background:#fff; font-size:.72rem;
+      letter-spacing:.06em; text-transform:uppercase; cursor:pointer; color:var(--muted); border-radius:999px;
+    }
+    .role-chip.is-active { background:var(--ink); color:#fff; border-color:var(--ink); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr)); gap:20px; }
+    .card { background:#fff; border:1px solid #e7e1d8; display:flex; flex-direction:column; }
+    .card-cover {
+      aspect-ratio:3/4; background:#efeae3; display:flex; align-items:center; justify-content:center;
+      color:var(--muted); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+    }
+    .card-body { padding:18px; text-align:center; flex:1; display:flex; flex-direction:column; }
+    .card-brand { font-size:.62rem; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; }
+    .card h3 { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.05rem; font-weight:500; line-height:1.35; margin-bottom:10px; flex:1; }
+    .price { font-size:1.05rem; font-weight:600; margin-bottom:14px; }
+    .btn-block { width:100%; }
+    .btn-outline { background:transparent; color:var(--ink); border:1px solid var(--ink); display:inline-flex; align-items:center; justify-content:center; min-height:48px; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+    .card[hidden] { display:none !important; }
+
+    @media (max-width:860px) {
+      .hero-nuevo { grid-template-columns:1fr; min-height:auto; }
+      .hero-visual { min-height:280px; order:-1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announce">Norte Claro · Guía práctica para coaches 1:1 · $9</div>
+  <div class="top">
+    <a class="logo" href="#">Norte Claro</a>
+    <nav class="nav"><a href="#guias">Colección</a><a href="#historia">Marca</a><a href="#faq">FAQ</a></nav>
+  </div>
+
+  <section class="hero-nuevo">
+    <div class="hero-copy">
+      <p class="eyebrow">Directo</p>
+      <div class="brand-hero">Norte Claro</div>
+      <h1>Guía práctica para coaches 1:1</h1>
+      <p class="sub">Coaches que arrancan su práctica. Un plan claro de 8 semanas para ordenar tu oferta</p>
+      <p class="hero-badge">Edición profesional · $9</p>
+      <p class="hero-precio">$9</p>
+      <a class="btn" href="#guias">Quiero la guía</a>
+    </div>
+    <div class="hero-visual" id="roleHero">
+      <div class="role-carousel" id="roleCarousel" aria-roledescription="carrusel" aria-label="Roles de la colección">
+        
+        <div class="role-slide is-active" data-slide="0" data-rol-slide="todos" aria-hidden="false">
+          
+          <div class="book book-hero" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-series">Norte Claro</p>
+              <p class="book-mark">guía</p>
+              <p class="book-title">Ordena tu práctica</p>
+              <p class="book-author">Norte Claro</p>
+              <div class="book-footer">
+                <p class="book-rol">Toda la colección</p>
+                <p class="book-estado">Disponible</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-caption">
+            <p class="slide-count"><strong>1</strong> disponible · +0 próximamente</p>
+            <p class="slide-guia">Guía práctica para coaches 1:1</p>
+          </div>
+        </div>
+        <div class="role-slide" data-slide="1" data-rol-slide="coach" aria-hidden="true">
+          
+          <div class="book book-hero" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-series">Norte Claro</p>
+              <p class="book-mark">guía</p>
+              <p class="book-title">Ordena tu práctica</p>
+              <p class="book-author">Norte Claro</p>
+              <div class="book-footer">
+                <p class="book-rol">Coach</p>
+                <p class="book-estado">Disponible</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-caption">
+            <p class="slide-count"><strong>1</strong> disponible · +0 próximamente</p>
+            <p class="slide-guia">Guía práctica para coaches 1:1</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button type="button" class="carousel-btn" id="rolePrev" aria-label="Rol anterior">‹</button>
+        <div class="role-dots" id="roleDots"><button type="button" class="role-dot is-active" data-dot="0" aria-label="Toda la colección"></button><button type="button" class="role-dot" data-dot="1" aria-label="Coach"></button></div>
+        <button type="button" class="carousel-btn" id="roleNext" aria-label="Rol siguiente">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="guias">
+    <h2>Explora la colección</h2>
+    <p class="sec-sub">1 guías · 1 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.</p>
+    <div class="role-filters" id="roleFilters"><button type="button" class="role-chip is-active" data-rol="todos">Todos los roles</button><button type="button" class="role-chip" data-rol="coach">Coach</button></div>
+    <div class="grid" id="guiasGrid">
+      <article class="card guia-card" data-rol-card="coach" data-disp="1">
+        <div class="card-cover-wrap">
+          <div class="book book-card" style="--book-bg:#3d4f5c; --book-accent:#d8c4a0">
+            <div class="book-spine"></div>
+            <div class="book-front">
+              <p class="book-mark">guía</p>
+              <p class="book-title">Ordena tu práctica</p>
+              <p class="book-rol">Coach</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-brand">Disponible ahora</p>
+          <h3>Guía práctica para coaches 1:1</h3>
+          <p class="card-sub">Basada en Ordena tu práctica · Norte Claro · Edición profesional · Plan 10 semanas</p>
+          <p class="price">$9</p>
+          <a class="btn btn-dark btn-block" href="#">Comprar · $9</a>
+        </div>
+      </article></div>
+  </section>
+
+  <section id="historia" class="band">
+    <h2>La marca</h2>
+    <p class="story">Norte Claro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.</p>
+    <p class="story mision">Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.</p>
+    <div class="pillars" style="margin-top:32px"><article class="pillar"><h3>Hecha para tu oficio</h3><p>Ejemplos, lenguaje y prioridades de tu rol — no teoría genérica.</p></article><article class="pillar"><h3>Método claro en 10 semanas</h3><p>Plan semanal accionable: sabes qué hacer cada semana, sin relleno.</p></article><article class="pillar"><h3>Formato profesional</h3><p>PDF editable en la práctica diaria: denso, ordenado y listo para imprimir o digital.</p></article></div>
+    <h3 style="text-align:center;margin-top:36px">Qué incluye cada guía</h3><ul class="incluye"><li>Marco del libro aplicado a tu rol</li><li>Plan de acción de 10 semanas</li><li>Checklist y prioridades 80/20</li><li>Descarga inmediata en PDF</li></ul>
+    <p class="center" style="margin-top:28px"><a class="btn btn-dark" href="#guias">Ver toda la colección</a></p>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <p class="sec-sub">Las reseñas reales de clientes aparecerán aquí. No publicamos testimonios inventados.</p>
+    <details><summary>¿Solo venden una guía?</summary><p>No. Ofrecemos una colección de guías (libro × rol). Algunas ya están disponibles y otras se lanzan pronto; puedes filtrar por oficio.</p></details><details><summary>¿En qué se diferencia de un resumen genérico?</summary><p>Cada guía está escrita para un rol concreto: lenguaje, ejemplos y plan de 10 semanas pensados para tu práctica profesional.</p></details><details><summary>¿Qué calidad puedo esperar?</summary><p>Edición profesional: estructura clara, método accionable y PDF listo para usar en el trabajo o estudio. Sin relleno.</p></details><details><summary>¿Puedo comprar más de una?</summary><p>Sí. La colección está pensada para ampliar: empieza por tu rol y suma otras guías cuando las necesites.</p></details>
+  </section>
+
+  <div class="news" id="newsletter">
+    <h2>Acceso anticipado a nuevas guías</h2>
+    <p>Te avisamos cuando salga tu rol o libro. Sin spam: solo lanzamientos de la colección.</p>
+    <a class="btn" href="#guias">Quiero avisos de la colección</a>
+  </div>
+
+  <footer>Norte Claro · Colección profesional de guías · PDF de calidad</footer>
+  <script>
+  (function() {
+    const chips = document.querySelectorAll('.role-chip');
+    const cards = document.querySelectorAll('[data-rol-card]');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const rol = chip.dataset.rol;
+      cards.forEach(card => {
+        card.hidden = !(rol === 'todos' || card.dataset.rolCard === rol);
+      });
+    }));
+
+    // Hero roles: auto 5s (independiente de #guias)
+    const slides = Array.from(document.querySelectorAll('.role-slide'));
+    const dots = Array.from(document.querySelectorAll('.role-dot'));
+    const prev = document.getElementById('rolePrev');
+    const next = document.getElementById('roleNext');
+    if (!slides.length) return;
+    let idx = 0;
+    let timer = null;
+    const INTERVAL = 5000;
+
+    const show = (n) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const on = i === idx;
+        s.classList.toggle('is-active', on);
+        s.setAttribute('aria-hidden', on ? 'false' : 'true');
+        const book = s.querySelector('.book-hero');
+        if (book && on) {
+          book.style.animation = 'none';
+          void book.offsetWidth;
+          book.style.animation = '';
+        }
+      });
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    };
+    const restart = () => {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => show(idx + 1), INTERVAL);
+    };
+    prev && prev.addEventListener('click', () => { show(idx - 1); restart(); });
+    next && next.addEventListener('click', () => { show(idx + 1); restart(); });
+    dots.forEach(d => d.addEventListener('click', () => {
+      show(Number(d.dataset.dot) || 0); restart();
+    }));
+    restart();
+  })();
+  </script>
+</body>
+</html>

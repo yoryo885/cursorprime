@@ -1,0 +1,10 @@
+node_modules/
+data/
+.n8n/
+*.log
+.env
+URL-PUBLICA.txt
+.api-key
+.credentials-local.md
+runner/data/
+runner/jobs/

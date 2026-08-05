@@ -1,0 +1,218 @@
+{
+  "name": "Wasap FAQ · mensaje entrante",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wasap-task/entrada",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-09a",
+      "name": "Webhook Meta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "09a-entrada-meta"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json;\nconst entry = (body.entry || [])[0] || {};\nconst change = ((entry.changes || [])[0] || {}).value || {};\nconst msg = ((change.messages || [])[0]) || {};\nconst text = String((msg.text || {}).body || msg.button?.text || body.texto || '').trim();\nconst from = String(msg.from || body.from || body.whatsapp || '').trim();\nconst negocio = String(body.negocio || body.slug || change.metadata?.phone_number_id || 'default').trim();\nreturn [{ json: {\n  ok: true,\n  sistema: '09-wasap-task-faq-citas',\n  etapa: 'entrada',\n  from,\n  text,\n  textLower: text.toLowerCase(),\n  negocio,\n  rawHasMeta: Array.isArray(body.entry),\n  status: 'normalizado',\n  siguiente: 'intent_router',\n  todo: 'TODO: verify token GET + credencial Meta',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-09a",
+      "name": "Normalizar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-09a",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #4 Wasap FAQ / citas\n\nAtiende preguntas y turnos; pasa a humano si hace falta.\n\n### Apps\n\n**WhatsApp · Meta Cloud API**  \nCanal de mensajes con el cliente.\n\n**FAQ JSON del negocio**  \nRespuestas de horario, precio, dirección, servicios.\n\n**Sheet / Cal.com**  \nAgenda de citas solicitadas.\n\n**WhatsApp equipo**  \nHandoff: avisa a una persona del local.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-01-entrada-meta",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-entrada-meta-0",
+      "name": "WhatsApp · Meta Cloud API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Canal de mensajes con el cliente.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-entrada-meta-1",
+      "name": "FAQ JSON del negocio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Respuestas de horario, precio, dirección, servicios.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-entrada-meta-2",
+      "name": "Sheet / Cal.com",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Agenda de citas solicitadas.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-01-entrada-meta-3",
+      "name": "WhatsApp equipo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Handoff: avisa a una persona del local.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook Meta": {
+      "main": [
+        [
+          {
+            "node": "Normalizar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WhatsApp · Meta Cloud API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp · Meta Cloud API": {
+      "main": [
+        [
+          {
+            "node": "FAQ JSON del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ JSON del negocio": {
+      "main": [
+        [
+          {
+            "node": "Sheet / Cal.com",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sheet / Cal.com": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp equipo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

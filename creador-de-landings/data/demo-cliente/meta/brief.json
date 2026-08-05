@@ -1,0 +1,306 @@
+{
+  "marca": "Vértice Pro",
+  "producto": "Guías PDF para tu rol profesional",
+  "cliente": "Profesionales por oficio (psicopedagogas, docentes, abogados…)",
+  "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
+  "cta": "Ver colección",
+  "precio": "desde $4.99",
+  "tono": "editorial",
+  "estilo": "tienda",
+  "paleta": {
+    "nombre": "Editorial carbón",
+    "ink": "#1b222c",
+    "paper": "#f4f1ec",
+    "accent": "#2a3544",
+    "muted": "#7a847c",
+    "hero": "#1b222c",
+    "id": "A",
+    "clima": "neutro"
+  },
+  "idea": "Tienda de guías PDF por oficio, look colección tipo Filjós",
+  "referencia": "https://filjos.com/",
+  "serie_libros": [
+    {
+      "slug": "pareto",
+      "titulo": "El principio de Pareto",
+      "autor": "Antoine Delers"
+    },
+    {
+      "slug": "habitos",
+      "titulo": "Hábitos atómicos",
+      "autor": "James Clear"
+    },
+    {
+      "slug": "kahneman",
+      "titulo": "Pensar rápido, pensar despacio",
+      "autor": "Daniel Kahneman"
+    }
+  ],
+  "roles": [
+    {
+      "slug": "psicopedagogas",
+      "nombre": "Psicopedagogas"
+    },
+    {
+      "slug": "abogados",
+      "nombre": "Abogados"
+    },
+    {
+      "slug": "docentes",
+      "nombre": "Docentes"
+    },
+    {
+      "slug": "enfermeras",
+      "nombre": "Enfermeras"
+    },
+    {
+      "slug": "soldadores",
+      "nombre": "Soldadores"
+    }
+  ],
+  "productos": [
+    {
+      "slug": "pareto-psicopedagogas",
+      "libro": "pareto",
+      "rol": "psicopedagogas",
+      "titulo": "Pareto para psicopedagogas en 10 semanas",
+      "precio": "$4.99",
+      "disponible": true,
+      "destacado": true,
+      "subtitulo": "Basada en El principio de Pareto · Antoine Delers · Edición profesional · Plan 10 semanas",
+      "badge_marketing": "Disponible ahora"
+    },
+    {
+      "slug": "pareto-abogados",
+      "libro": "pareto",
+      "rol": "abogados",
+      "titulo": "Pareto para abogados en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "destacado": false,
+      "subtitulo": "Próximo lanzamiento · El principio de Pareto · Antoine Delers · Misma calidad de la colección",
+      "badge_marketing": "Próximamente"
+    },
+    {
+      "slug": "habitos-enfermeras",
+      "libro": "habitos",
+      "rol": "enfermeras",
+      "titulo": "Hábitos atómicos para enfermeras en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "destacado": false,
+      "subtitulo": "Próximo lanzamiento · Hábitos atómicos · James Clear · Misma calidad de la colección",
+      "badge_marketing": "Próximamente"
+    },
+    {
+      "slug": "kahneman-docentes",
+      "libro": "kahneman",
+      "rol": "docentes",
+      "titulo": "Kahneman para docentes en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "destacado": false,
+      "subtitulo": "Próximo lanzamiento · Pensar rápido, pensar despacio · Daniel Kahneman · Misma calidad de la colección",
+      "badge_marketing": "Próximamente"
+    },
+    {
+      "slug": "pareto-soldadores",
+      "libro": "pareto",
+      "rol": "soldadores",
+      "titulo": "Pareto para soldadores en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "destacado": false,
+      "subtitulo": "Próximo lanzamiento · El principio de Pareto · Antoine Delers · Misma calidad de la colección",
+      "badge_marketing": "Próximamente"
+    },
+    {
+      "slug": "habitos-abogados",
+      "libro": "habitos",
+      "rol": "abogados",
+      "titulo": "Hábitos atómicos para abogados en 10 semanas",
+      "precio": "$4.99",
+      "disponible": false,
+      "destacado": false,
+      "subtitulo": "Próximo lanzamiento · Hábitos atómicos · James Clear · Misma calidad de la colección",
+      "badge_marketing": "Próximamente"
+    }
+  ],
+  "mostrar_catalogo": true,
+  "copy": {
+    "barra_aviso": "Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99",
+    "promesa": "Métodos de libros clásicos, aplicados a tu oficio — con la calidad de una guía profesional",
+    "hero_eyebrow": "Colección profesional",
+    "hero_titulo": "Guías PDF para tu rol profesional",
+    "hero_sub": "Para Profesionales por oficio (psicopedagogas, docentes, abogados…) · 6 guías · 5 oficios · métodos de libros clásicos aplicados a tu trabajo.",
+    "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
+    "catalogo_titulo": "Explora la colección",
+    "catalogo_sub": "6 guías · 5 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
+    "serie_titulo": "Basadas en libros que ya funcionan",
+    "serie_sub": "Cada guía toma un libro de referencia y lo traduce a tu realidad laboral.",
+    "calidad_titulo": "Por qué la calidad importa",
+    "calidad": [
+      {
+        "titulo": "Hecha para tu oficio",
+        "texto": "Ejemplos, lenguaje y prioridades de tu rol — no teoría genérica."
+      },
+      {
+        "titulo": "Método claro en 10 semanas",
+        "texto": "Plan semanal accionable: sabes qué hacer cada semana, sin relleno."
+      },
+      {
+        "titulo": "Formato profesional",
+        "texto": "PDF editable en la práctica diaria: denso, ordenado y listo para imprimir o digital."
+      },
+      {
+        "titulo": "Colección que crece",
+        "texto": "Más libros × más roles. Empiezas con una guía y amplías cuando lo necesites."
+      }
+    ],
+    "incluye_titulo": "Qué incluye cada guía",
+    "incluye": [
+      "Marco del libro aplicado a tu rol",
+      "Plan de acción de 10 semanas",
+      "Checklist y prioridades 80/20",
+      "Descarga inmediata en PDF"
+    ],
+    "historia": "Vértice Pro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
+    "mision": "Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.",
+    "beneficios": [
+      "Colección multiproducto: varias guías libro × rol, no un único PDF",
+      "Calidad editorial: estructura clara, sin relleno, lista para aplicar",
+      "Enfocada en tu oficio: ejemplos y prioridades de tu día a día",
+      "Plan de 10 semanas con avance medible",
+      "Precio accesible de entrada profesional",
+      "Nuevas combinaciones en camino — avísame cuando salgan"
+    ],
+    "faq": [
+      {
+        "q": "¿Solo venden una guía?",
+        "a": "No. Ofrecemos una colección de guías (libro × rol). Algunas ya están disponibles y otras se lanzan pronto; puedes filtrar por oficio."
+      },
+      {
+        "q": "¿En qué se diferencia de un resumen genérico?",
+        "a": "Cada guía está escrita para un rol concreto: lenguaje, ejemplos y plan de 10 semanas pensados para tu práctica profesional."
+      },
+      {
+        "q": "¿Qué calidad puedo esperar?",
+        "a": "Edición profesional: estructura clara, método accionable y PDF listo para usar en el trabajo o estudio. Sin relleno."
+      },
+      {
+        "q": "¿Puedo comprar más de una?",
+        "a": "Sí. La colección está pensada para ampliar: empieza por tu rol y suma otras guías cuando las necesites."
+      },
+      {
+        "q": "¿Cómo la recibo?",
+        "a": "Descarga inmediata en PDF tras la compra. Sin esperas ni envíos físicos."
+      },
+      {
+        "q": "¿Hay más productos próximamente?",
+        "a": "Sí. Seguimos abriendo combinaciones libro × rol. Usa “Avísame” en las guías próximas o el newsletter."
+      }
+    ],
+    "newsletter_titulo": "Acceso anticipado a nuevas guías",
+    "newsletter_sub": "Te avisamos cuando salga tu rol o libro. Sin spam: solo lanzamientos de la colección.",
+    "newsletter_cta": "Quiero avisos de la colección",
+    "social_proof_nota": "Las reseñas reales de clientes aparecerán aquí. No publicamos testimonios inventados."
+  },
+  "barra_aviso": "Colección profesional · PDF de alta calidad · descarga inmediata · desde $4.99",
+  "hero_eyebrow": "Colección profesional",
+  "hero_titulo": "Guías PDF para tu rol profesional",
+  "hero_sub": "Para Profesionales por oficio (psicopedagogas, docentes, abogados…) · 6 guías · 5 oficios · métodos de libros clásicos aplicados a tu trabajo.",
+  "hero_badge_calidad": "Edición profesional · plan 10 semanas · listo para usar",
+  "historia": "Vértice Pro convierte ideas de libros clásicos en herramientas de trabajo real. Diseñamos cada guía con criterio editorial: precisión, utilidad y respeto por tu tiempo. La colección cubre varios oficios — psicopedagogía, derecho, educación, salud y más — para que elijas la que habla tu lenguaje.",
+  "mision": "Creemos que el conocimiento útil debe llegar al oficio, no quedarse en el estante. Por eso cada guía une un libro de referencia con un plan práctico para profesionales que quieren mejorar con método, no con moda.",
+  "beneficios": [
+    "Colección multiproducto: varias guías libro × rol, no un único PDF",
+    "Calidad editorial: estructura clara, sin relleno, lista para aplicar",
+    "Enfocada en tu oficio: ejemplos y prioridades de tu día a día",
+    "Plan de 10 semanas con avance medible",
+    "Precio accesible de entrada profesional",
+    "Nuevas combinaciones en camino — avísame cuando salgan"
+  ],
+  "calidad": [
+    {
+      "titulo": "Hecha para tu oficio",
+      "texto": "Ejemplos, lenguaje y prioridades de tu rol — no teoría genérica."
+    },
+    {
+      "titulo": "Método claro en 10 semanas",
+      "texto": "Plan semanal accionable: sabes qué hacer cada semana, sin relleno."
+    },
+    {
+      "titulo": "Formato profesional",
+      "texto": "PDF editable en la práctica diaria: denso, ordenado y listo para imprimir o digital."
+    },
+    {
+      "titulo": "Colección que crece",
+      "texto": "Más libros × más roles. Empiezas con una guía y amplías cuando lo necesites."
+    }
+  ],
+  "incluye": [
+    "Marco del libro aplicado a tu rol",
+    "Plan de acción de 10 semanas",
+    "Checklist y prioridades 80/20",
+    "Descarga inmediata en PDF"
+  ],
+  "faq": [
+    {
+      "q": "¿Solo venden una guía?",
+      "a": "No. Ofrecemos una colección de guías (libro × rol). Algunas ya están disponibles y otras se lanzan pronto; puedes filtrar por oficio."
+    },
+    {
+      "q": "¿En qué se diferencia de un resumen genérico?",
+      "a": "Cada guía está escrita para un rol concreto: lenguaje, ejemplos y plan de 10 semanas pensados para tu práctica profesional."
+    },
+    {
+      "q": "¿Qué calidad puedo esperar?",
+      "a": "Edición profesional: estructura clara, método accionable y PDF listo para usar en el trabajo o estudio. Sin relleno."
+    },
+    {
+      "q": "¿Puedo comprar más de una?",
+      "a": "Sí. La colección está pensada para ampliar: empieza por tu rol y suma otras guías cuando las necesites."
+    },
+    {
+      "q": "¿Cómo la recibo?",
+      "a": "Descarga inmediata en PDF tras la compra. Sin esperas ni envíos físicos."
+    },
+    {
+      "q": "¿Hay más productos próximamente?",
+      "a": "Sí. Seguimos abriendo combinaciones libro × rol. Usa “Avísame” en las guías próximas o el newsletter."
+    }
+  ],
+  "newsletter_titulo": "Acceso anticipado a nuevas guías",
+  "newsletter_sub": "Te avisamos cuando salga tu rol o libro. Sin spam: solo lanzamientos de la colección.",
+  "newsletter_cta": "Quiero avisos de la colección",
+  "social_proof_nota": "Las reseñas reales de clientes aparecerán aquí. No publicamos testimonios inventados.",
+  "catalogo_titulo": "Explora la colección",
+  "catalogo_sub": "6 guías · 5 roles · elige la combinación que necesitas hoy y reserva aviso para las que vienen.",
+  "serie_titulo": "Basadas en libros que ya funcionan",
+  "serie_sub": "Cada guía toma un libro de referencia y lo traduce a tu realidad laboral.",
+  "calidad_titulo": "Por qué la calidad importa",
+  "incluye_titulo": "Qué incluye cada guía",
+  "testimonios": [
+    {
+      "texto": "[PENDIENTE: testimonio real]",
+      "autor": "Cliente"
+    }
+  ],
+  "aprendizaje": [
+    "Catálogo multi-producto (libro×rol) + grid con filtros + log de aprendizaje",
+    "Catálogo multi-producto libro×rol + filtros + logs/mejoras.json",
+    "catalogo multiproducto + grid + filtros por rol + log de aprendizaje",
+    "estilo tienda (barra+nav+hero nuevo+bestsellers+historia+newsletter) + ref meta/referencias/filjos.md",
+    "flujo paleta: 1 clima + 3 presets auto → CSS vars; override opcional",
+    "preguntas.json v2 + regla cursor + router priority 93 + paletas en HTML",
+    "referencia visual activa; entrevista estándar pendiente de respuestas",
+    "entrevista v3 solo letras A/B/C/D + CLI responder",
+    "paleta carbón navy #1b222c + carrusel roles auto 5s con flechas/dots",
+    "portada libro 3D CSS por slide (pareto/habitos/kahneman) en carrusel roles",
+    "#guias carrusel manual flechas+filtros; hero ya no filtra la coleccion",
+    "hero: portada grande book-hero centrada, caption abajo, auto 5s + flechas",
+    "REGLAS_CAMBIOS.md: solo tocar lo pedido; max 7 bloques; personalidad con foto/tipo no mas secciones",
+    "plantilla tienda: 6 bloques, grid coleccion, hero corto, cambios quirurgicos"
+  ],
+  "efectos_aprendizaje": {}
+}

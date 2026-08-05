@@ -1,0 +1,8 @@
+{
+  "telegram": {
+    "username": "yoryo321",
+    "username_at": "@yoryo321",
+    "chat_id": 6387268777,
+    "nota": "chat_id se completa tras /start al bot. Token va en n8n/.env (TELEGRAM_BOT_TOKEN)."
+  }
+}

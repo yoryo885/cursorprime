@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Organigrama Funcional · Manual de Operaciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #14202b;
+      --muted: #5c6b78;
+      --line: #d5dde5;
+      --paper: #f7f5f1;
+      --card: #ffffff;
+      --accent: #0e6b5c;
+      --accent-soft: #d8efe9;
+      --warn: #8a5a12;
+      --dg: #1b2a38;
+      --mkt: #0e6b5c;
+      --ops: #2c4a6e;
+      --ai: #4a5560;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, #e4efe9 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, #e8eef5 0%, transparent 50%),
+        var(--paper);
+      line-height: 1.55;
+    }
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 28px 80px;
+    }
+    .cover {
+      min-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 16px;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.12;
+      margin: 0 0 18px;
+      font-weight: 700;
+      max-width: 16ch;
+    }
+    .lede {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 42ch;
+      margin: 0 0 28px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .meta-row span {
+      border: 1px solid var(--line);
+      background: var(--card);
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.65rem;
+      margin: 52px 0 14px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin: 28px 0 10px;
+      color: var(--ink);
+    }
+    h4 {
+      margin: 18px 0 8px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 0 0 16px; padding-left: 1.25em; }
+    li { margin: 4px 0; }
+    .principle {
+      background: var(--card);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      margin: 18px 0 28px;
+      box-shadow: 0 1px 0 rgba(20,32,43,.04);
+    }
+    /* Org chart */
+    .org {
+      margin: 28px 0 36px;
+      padding: 28px 16px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .org-tier {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .org-tier + .org-tier { margin-top: 36px; }
+    .org-connector {
+      height: 28px;
+      width: 2px;
+      background: var(--line);
+      margin: 0 auto;
+    }
+    .org-bar {
+      height: 2px;
+      background: var(--line);
+      width: min(520px, 86%);
+      margin: 0 auto;
+      position: relative;
+    }
+    .org-bar::before, .org-bar::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 18px;
+      background: var(--line);
+    }
+    .org-bar::before { left: 0; }
+    .org-bar::after { right: 0; }
+    .role-card {
+      width: min(280px, 100%);
+      border-radius: 8px;
+      padding: 16px 18px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(20,32,43,.12);
+    }
+    .role-card.dg { background: var(--dg); width: min(340px, 100%); }
+    .role-card.mkt { background: var(--mkt); }
+    .role-card.ops { background: var(--ops); }
+    .role-card .role-code {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: .75;
+      margin-bottom: 6px;
+    }
+    .role-card .role-title {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0 0 6px;
+      line-height: 1.25;
+    }
+    .role-card .role-sub {
+      font-size: 0.85rem;
+      opacity: .88;
+      margin: 0;
+      line-height: 1.35;
+    }
+    .ai-layer {
+      margin-top: 28px;
+      padding: 14px 16px;
+      border: 1px dashed var(--ai);
+      border-radius: 8px;
+      background: #f2f4f6;
+      text-align: center;
+    }
+    .ai-layer strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+    .ai-layer span { font-size: 0.88rem; color: var(--muted); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px 18px 8px;
+    }
+    .panel.mkt-border { border-top: 4px solid var(--mkt); }
+    .panel.ops-border { border-top: 4px solid var(--ops); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 12px 0 20px;
+      background: var(--card);
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef2f5; font-weight: 700; }
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .tag.warn { background: #f5ead6; color: var(--warn); }
+    .routine {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 0 16px;
+      background: var(--card);
+    }
+    .routine header {
+      padding: 10px 14px;
+      background: #eef2f5;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .routine .body { padding: 12px 14px 4px; }
+    .pct {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1;
+    }
+    footer.doc-foot {
+      margin-top: 56px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    @media print {
+      body { background: #fff; }
+      .page { padding: 0; max-width: none; }
+      .cover { min-height: auto; page-break-after: always; }
+      h2 { page-break-after: avoid; }
+      .panel, .routine, .org { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+    <div id="dl-bar" style="position:sticky;top:0;z-index:50;background:#0e6b5c;color:#fff;padding:12px 16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+      <span style="font-weight:700;">Organigrama Funcional · PDF</span>
+      <a href="output/ORGANIGRAMA-FUNCIONAL.pdf" download="ORGANIGRAMA-FUNCIONAL.pdf" style="background:#fff;color:#0e6b5c;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:6px;">Descargar PDF</a>
+    </div>
+
+  <div class="page">
+
+    <section class="cover">
+      <p class="eyebrow">cursorprime · Estrategia organizacional</p>
+      <h1>Organigrama Funcional por Roles</h1>
+      <p class="lede">Estructura piramidal, descripciones de puesto y Manual de Operaciones inicial para los dos sombreros a delegar de inmediato — con IA y automatización absorbiendo ~80% de la fricción.</p>
+      <div class="meta-row">
+        <span>Versión 1.0 · 2026-08-04</span>
+        <span>Por roles · no por nombres</span>
+        <span>DG = Emprendedor</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>1. Principio rector</h2>
+      <div class="principle">
+        La organización se diseña por <strong>función</strong>, no por persona. Mientras una sola persona ocupe varios roles, cada “sombrero” debe tener dueño de resultado, rutina y sistema (humano, IA o n8n). El Director General no opera el detalle: decide, prioriza y cierra.
+      </div>
+      <p>Delegación inmediata (no negociable en esta fase):</p>
+      <ol>
+        <li><strong>Estrategia de Tráfico / Adquisición (Marketing)</strong> — traer demanda calificada.</li>
+        <li><strong>Soporte / Ejecución Técnica (Operaciones)</strong> — que el producto y las automatizaciones funcionen.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>2. Organigrama piramidal</h2>
+      <div class="org" aria-label="Organigrama funcional">
+        <div class="org-tier">
+          <div class="role-card dg">
+            <div class="role-code">Nivel 1 · Dirección</div>
+            <p class="role-title">Director General</p>
+            <p class="role-sub">Emprendedor · Dueño de visión, capital y prioridades</p>
+          </div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-bar"></div>
+        <div class="org-connector" style="height:18px"></div>
+        <div class="org-tier">
+          <div class="role-card mkt">
+            <div class="role-code">Nivel 2 · Delegar ya</div>
+            <p class="role-title">Marketing</p>
+            <p class="role-sub">Estrategia de Tráfico y Adquisición</p>
+          </div>
+          <div class="role-card ops">
+            <div class="role-code">Nivel 2 · Delegar ya</div>
+            <p class="role-title">Operaciones</p>
+            <p class="role-sub">Soporte y Ejecución Técnica</p>
+          </div>
+        </div>
+        <div class="ai-layer">
+          <strong>Capa transversal · Sistema IA + Automatización (n8n / Cursor)</strong>
+          <span>No es un “empleado” en el organigrama: es la capacidad que ejecuta ~80% de tareas repetibles bajo cada rol de Nivel 2.</span>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Rol</th>
+            <th>Resultado que debe entregar</th>
+            <th>Lo que NO hace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Director General</strong></td>
+            <td>Prioridades semanales, oferta, precio, “sí/no” de proyectos, cierre comercial clave</td>
+            <td>Campañas diarias, tickets técnicos, configuración de APIs</td>
+          </tr>
+          <tr>
+            <td><strong>Marketing</strong></td>
+            <td>Leads / atención calificada a Embudo, Audit, Presencia, contenido y TikTok</td>
+            <td>Deploy, Meta API técnica, pipelines de código</td>
+          </tr>
+          <tr>
+            <td><strong>Operaciones</strong></td>
+            <td>Sistemas arriba, entregables técnicos a tiempo, n8n/runners verdes</td>
+            <td>Definir posicionamiento ni creatividades de campaña</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. Descripción de puesto — Director General (Emprendedor)</h2>
+      <p><span class="tag">Rol que conservás</span></p>
+      <h4>Misión</h4>
+      <p>Convertir la visión de cursorprime en un portafolio rentable de productos creados (Audit → Presencia → Wasap → Embudo → contenido), protegiendo el tiempo del fundador para decisiones de alto apalancamiento.</p>
+      <h4>Responsabilidades formales</h4>
+      <ul>
+        <li>Definir qué se vende este mes y a qué precio.</li>
+        <li>Aprobar el backlog de “proyectos creados” vs cola.</li>
+        <li>Revisión semanal de embudo (leads → piloto → pago).</li>
+        <li>Contratar / despedir / reasignar dueños de Marketing y Operaciones (humano o IA+proceso).</li>
+        <li>Representación ante clientes estratégicos.</li>
+      </ul>
+      <h4>Rutina operativa del DG (máximo 5 bloques / semana)</h4>
+      <ol>
+        <li><strong>Lunes 45 min</strong> — Prioridades: 3 objetivos de la semana.</li>
+        <li><strong>Miércoles 30 min</strong> — Pipeline comercial + bloqueos de Ops.</li>
+        <li><strong>Viernes 45 min</strong> — Scorecard: leads, demos, ingresos, uptime sistemas.</li>
+        <li><strong>Ad hoc</strong> — Solo excepciones marcadas “DG” en el Manual.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>4. Descripción de puesto — Marketing (Tráfico / Adquisición)</h2>
+      <p><span class="tag">Sombrero a delegar de inmediato</span></p>
+      <div class="panel mkt-border">
+        <h3>4.1 Identificación del puesto</h3>
+        <ul>
+          <li><strong>Título funcional:</strong> Responsable de Estrategia de Tráfico y Adquisición</li>
+          <li><strong>Reporta a:</strong> Director General</li>
+          <li><strong>Colabora con:</strong> Operaciones (landing, tracking, Wasap), Contenido/TikTok (activos)</li>
+          <li><strong>KPI primario:</strong> Leads calificados / semana y costo por lead (o por demo agendada)</li>
+          <li><strong>KPI secundarios:</strong> Tasa lead→llamada, ocupación del embudo comercial HTML</li>
+        </ul>
+      </div>
+
+      <h3>4.2 Misión del puesto</h3>
+      <p>Garantizar un flujo predecible de demanda hacia los productos creados — empezando por Marketing Audit y Presencia web locales — sin que el DG diseñe creatividades ni gestione campañas día a día.</p>
+
+      <h3>4.3 Responsabilidades formales</h3>
+      <ul>
+        <li>Definir canales (orgánico LinkedIn/TikTok, outreach local, ads cuando haya presupuesto).</li>
+        <li>Mantener mensaje, oferta y CTA alineados al embudo HTML.</li>
+        <li>Producir o encargar hooks, captions y briefs de contenido (skills hooks-redes / captions-redes).</li>
+        <li>Monitorear respuesta de mercado y proponer cambios de oferta al DG.</li>
+        <li>Entregar a Operaciones los requisitos de tracking (UTM, webhook de lead, WhatsApp).</li>
+      </ul>
+
+      <h3>4.4 Competencias mínimas</h3>
+      <ul>
+        <li>Copy de oferta local / B2B ligero.</li>
+        <li>Lectura de métricas simples (no vanity).</li>
+        <li>Brief claro para IA y para Operaciones.</li>
+      </ul>
+
+      <h3>4.5 Manual de Operaciones — rutinas Marketing</h3>
+
+      <div class="routine">
+        <header>Rutina M-01 · Brief semanal de adquisición (lunes, 40 min)</header>
+        <div class="body">
+          <ol>
+            <li>Revisar scorecard: leads, demos, no-shows.</li>
+            <li>Elegir 1 oferta protagonista (ej. Audit piloto).</li>
+            <li>Generar con IA 5 hooks + 3 ángulos (skill hooks-redes).</li>
+            <li>Elegir 1–2 piezas a publicar; archivar el resto.</li>
+            <li>Actualizar tablero “esta semana publicamos…”.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="routine">
+        <header>Rutina M-02 · Publicación / outreach (diario, 25 min)</header>
+        <div class="body">
+          <ol>
+            <li>IA redacta caption + CTA (captions-redes).</li>
+            <li>Humano aprueba en 5 min (tono y claim).</li>
+            <li>Publicar o encolar; registrar UTM.</li>
+            <li>Si hay lista local: 10 mensajes personalizados semi-IA (plantilla + 1 dato real).</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="routine">
+        <header>Rutina M-03 · Nutrición de lead (cuando entra lead)</header>
+        <div class="body">
+          <ol>
+            <li>Webhook Embudo → Sheet/CRM (n8n).</li>
+            <li>IA clasifica intención (audit / presencia / wasap).</li>
+            <li>Respuesta automática + handoff a Wasap o agenda.</li>
+            <li>Solo si score alto: aviso al DG.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="routine">
+        <header>Rutina M-04 · Retrospectiva canal (viernes, 30 min)</header>
+        <div class="body">
+          <ol>
+            <li>Qué pieza trajo leads reales.</li>
+            <li>Matar o doblar apuesta.</li>
+            <li>Nota de 5 líneas al DG (sin slides).</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>4.6 Cómo la IA / automatización reemplaza ~80% de la fricción</h3>
+      <div class="grid-2">
+        <div class="panel">
+          <p class="pct">~80%</p>
+          <p><strong>Automatizable ya</strong></p>
+          <ul>
+            <li>Generación de hooks, guiones TikTok, captions, variantes A/B de copy.</li>
+            <li>Clasificación de leads y respuestas FAQ de primer contacto.</li>
+            <li>Encolado n8n: lead → Sheet → Wasap → recordatorio.</li>
+            <li>Pack LinkedIn / lote de contenido (pipelines existentes).</li>
+            <li>Reportes semanales en markdown desde el Sheet.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <p class="pct" style="color:var(--warn)">~20%</p>
+          <p><strong>Humano / DG (juicio)</strong></p>
+          <ul>
+            <li>Elegir oferta y precio.</li>
+            <li>Aprobar claims sensibles.</li>
+            <li>Negociar con early adopters.</li>
+            <li>Decidir “apagamos este canal”.</li>
+            <li>Relación con partners locales.</li>
+          </ul>
+        </div>
+      </div>
+      <p><span class="tag warn">Regla</span> Si una tarea de Marketing se hace más de 2 veces por semana y no requiere juicio de precio/reputación → se documenta en el Manual y se mueve a n8n o skill de IA.</p>
+    </section>
+
+    <section>
+      <h2>5. Descripción de puesto — Operaciones (Soporte / Ejecución Técnica)</h2>
+      <p><span class="tag">Sombrero a delegar de inmediato</span></p>
+      <div class="panel ops-border">
+        <h3>5.1 Identificación del puesto</h3>
+        <ul>
+          <li><strong>Título funcional:</strong> Responsable de Soporte y Ejecución Técnica</li>
+          <li><strong>Reporta a:</strong> Director General</li>
+          <li><strong>Colabora con:</strong> Marketing (tracking, landings), clientes (entrega)</li>
+          <li><strong>KPI primario:</strong> % de workflows críticos en verde + entregables a tiempo</li>
+          <li><strong>KPI secundarios:</strong> Tiempo medio de resolución de incidente; deploys exitosos / semana</li>
+        </ul>
+      </div>
+
+      <h3>5.2 Misión del puesto</h3>
+      <p>Mantener el “sistema nervioso” de cursorprime operativo: n8n, runners de pipelines, landings publicadas, bots Wasap, generación de contenido/PDF — de modo que Marketing pueda vender sin romper producción.</p>
+
+      <h3>5.3 Responsabilidades formales</h3>
+      <ul>
+        <li>Operar y documentar sistemas de proyectos creados (Audit, Presencia, Wasap, Embudo, KDP, LinkedIn, Contenido, TikTok).</li>
+        <li>Gestionar secretos, webhooks, deploys (Vercel) y backups de n8n.</li>
+        <li>Ejecutar o disparar pipelines Cursor (`*_main.py`) vía runner.</li>
+        <li>Soporte L1/L2 a demos y clientes piloto (errores técnicos, no comerciales).</li>
+        <li>Convertir TODOs `sin_api` en integraciones reales según presupuesto aprobado por DG.</li>
+      </ul>
+
+      <h3>5.4 Competencias mínimas</h3>
+      <ul>
+        <li>n8n / webhooks / logs.</li>
+        <li>CLI Python de los pipelines cursorprime.</li>
+        <li>Checklist de deploy y rollback simple.</li>
+      </ul>
+
+      <h3>5.5 Manual de Operaciones — rutinas Operaciones</h3>
+
+      <div class="routine">
+        <header>Rutina O-01 · Healthcheck diario (10 min, automatizable)</header>
+        <div class="body">
+          <ol>
+            <li>Ping n8n + túnel/dominio.</li>
+            <li>Última ejecución de workflows críticos (Embudo, Wasap, Audit).</li>
+            <li>Si falla: alerta automática → cola de incidentes; solo escalar a DG si &gt;4 h o cliente esperando.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="routine">
+        <header>Rutina O-02 · Entrega de job (cuando Marketing o cliente dispara)</header>
+        <div class="body">
+          <ol>
+            <li>Recibir brief estructurado (slug, tipo, deadline).</li>
+            <li>n8n dispara runner → pipeline Cursor (audit / landing / contenido / TikTok).</li>
+            <li>Validar output (QA checklist corta).</li>
+            <li>Publicar artefacto / notificar Wasap o email.</li>
+            <li>Cerrar ticket en Sheet.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="routine">
+        <header>Rutina O-03 · Activación de API (cambio de estado sin_api → live)</header>
+        <div class="body">
+          <ol>
+            <li>DG aprueba gasto (ver PRESUPUESTO-ACTIVAR).</li>
+            <li>Crear credencial en n8n; nodos grises → vivos.</li>
+            <li>Prueba con `--limit` / demo.</li>
+            <li>Documentar en runbook (URL, secret name, rollback).</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="routine">
+        <header>Rutina O-04 · Soporte incidente (SLA piloto)</header>
+        <div class="body">
+          <ol>
+            <li>Clasificar: bloqueante / molesto / mejora.</li>
+            <li>IA resume logs y propone fix.</li>
+            <li>Humano aplica fix o rollback.</li>
+            <li>Postmortem de 8 líneas si fue bloqueante.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>5.6 Cómo la IA / automatización reemplaza ~80% de la fricción</h3>
+      <div class="grid-2">
+        <div class="panel">
+          <p class="pct">~80%</p>
+          <p><strong>Automatizable ya</strong></p>
+          <ul>
+            <li>Healthchecks, alertas, reintentos de webhook.</li>
+            <li>Disparo de pipelines y armado de briefs JSON.</li>
+            <li>Generación de informes audit, landings, posts, shorts animados con personaje (Telegram LIVE).</li>
+            <li>FAQ Wasap + handoff (sistema 09).</li>
+            <li>Logs a Sheet y resúmenes diarios por IA.</li>
+            <li>QA heurístico (links rotos, HTML vacío, score mínimo).</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <p class="pct" style="color:var(--warn)">~20%</p>
+          <p><strong>Humano / criterio</strong></p>
+          <ul>
+            <li>Credenciales y cumplimiento Meta.</li>
+            <li>Decisiones de arquitectura y deuda técnica.</li>
+            <li>Incidentes nuevos sin runbook.</li>
+            <li>Negociación con vendors (Vercel, BSP Wasap).</li>
+            <li>Aprobación de gasto con DG.</li>
+          </ul>
+        </div>
+      </div>
+      <p><span class="tag warn">Regla</span> Ningún deploy manual “de memoria”: si no está en el Manual o en n8n, no es un proceso — es un riesgo.</p>
+    </section>
+
+    <section>
+      <h2>6. Matriz RACI inicial (piloto)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Actividad</th>
+            <th>DG</th>
+            <th>Marketing</th>
+            <th>Operaciones</th>
+            <th>IA / n8n</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Definir oferta y precio</td>
+            <td>A/R</td>
+            <td>C</td>
+            <td>I</td>
+            <td>I</td>
+          </tr>
+          <tr>
+            <td>Campañas / contenido adquisición</td>
+            <td>I</td>
+            <td>A/R</td>
+            <td>C</td>
+            <td>R (draft)</td>
+          </tr>
+          <tr>
+            <td>Lead → CRM → primer mensaje</td>
+            <td>I</td>
+            <td>A</td>
+            <td>C</td>
+            <td>R</td>
+          </tr>
+          <tr>
+            <td>Correr audit / landing / video</td>
+            <td>I</td>
+            <td>C</td>
+            <td>A</td>
+            <td>R</td>
+          </tr>
+          <tr>
+            <td>Uptime n8n y APIs</td>
+            <td>I</td>
+            <td>I</td>
+            <td>A/R</td>
+            <td>R (monitor)</td>
+          </tr>
+          <tr>
+            <td>Cierre de venta clave</td>
+            <td>A/R</td>
+            <td>C</td>
+            <td>I</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.9rem;color:var(--muted)">R = Responsible · A = Accountable · C = Consulted · I = Informed</p>
+    </section>
+
+    <section>
+      <h2>7. Cadencia semanal (sistema operativo)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Marketing</th>
+            <th>Operaciones</th>
+            <th>DG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lunes</td>
+            <td>M-01 Brief</td>
+            <td>Plan de jobs de la semana</td>
+            <td>3 prioridades</td>
+          </tr>
+          <tr>
+            <td>Mar–Jue</td>
+            <td>M-02 Diario</td>
+            <td>O-01 + O-02</td>
+            <td>Solo excepciones</td>
+          </tr>
+          <tr>
+            <td>Miércoles</td>
+            <td>Pipeline leads</td>
+            <td>Bloqueos técnicos</td>
+            <td>Sync 30 min</td>
+          </tr>
+          <tr>
+            <td>Viernes</td>
+            <td>M-04 Retro</td>
+            <td>Score uptime + deuda</td>
+            <td>Scorecard 45 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>8. Criterio de “rol cubierto”</h2>
+      <p>Un sombrero se considera <strong>delegado de verdad</strong> cuando:</p>
+      <ol>
+        <li>Existe dueño (persona, contractor o “IA + checklist humano 20%”).</li>
+        <li>Las rutinas M-01… / O-01… corren sin que el DG las recuerde.</li>
+        <li>≥80% de las tareas repetibles tienen skill, pipeline o workflow n8n.</li>
+        <li>El DG solo interviene en excepciones etiquetadas.</li>
+      </ol>
+      <div class="principle">
+        Hasta que Marketing y Operaciones estén cubiertos, todo crecimiento de producto nuevo (cola) está <strong>congelado</strong>: primero sistema que venda y entregue, después más sistemas.
+      </div>
+    </section>
+
+    <footer class="doc-foot">
+      Documento: Organigrama Funcional por Roles v1.0 · cursorprime / meta/organizacion<br/>
+      Relacionado: n8n/PRESUPUESTO-ACTIVAR.md · n8n/SISTEMAS.md · Proyectos creados (panel)
+    </footer>
+  </div>
+</body>
+</html>

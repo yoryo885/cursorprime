@@ -1,0 +1,27 @@
+{
+  "sistema": "10-vertice-pdf-upsell",
+  "ranking": 5,
+  "sin_api": true,
+  "paquetes": [
+    {
+      "id": "pdf",
+      "nombre": "Guía PDF",
+      "precio_desde": 4.99
+    },
+    {
+      "id": "pdf_upsell",
+      "nombre": "PDF + accesorio",
+      "precio_desde": 24.99
+    }
+  ],
+  "catalogo_ejemplo": [
+    {
+      "slug": "pareto-psicopedagogas",
+      "titulo": "Pareto para psicopedagogas"
+    },
+    {
+      "slug": "habitos-docentes",
+      "titulo": "Hábitos para docentes"
+    }
+  ]
+}

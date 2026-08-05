@@ -1,0 +1,61 @@
+{
+  "score": 100,
+  "criticos": [],
+  "sugerencias": [
+    "Hero y CTA final comparten mensaje (esperado).",
+    "hero_split excluido: sin imagen_hero real → hero_centrado forzado"
+  ],
+  "regenerar": [],
+  "omisiones": [
+    {
+      "seccion": "testimonials",
+      "motivo": "sin testimonios reales en el brief"
+    }
+  ],
+  "bugs_v2": {
+    "copy_duplicado": "ok",
+    "overlap_secciones": "ok",
+    "acento_inconsistente": "ok",
+    "naming_inconsistente": "ok",
+    "testimonios_silenciados": "ok_omitida_explicita",
+    "secciones_duplicadas": "ok",
+    "duplicado_intra_hero": "ok"
+  },
+  "section_counts": {
+    "hero": 1,
+    "social_proof": 1,
+    "problem": 1,
+    "benefits": 1,
+    "testimonials": 0,
+    "pricing": 1,
+    "faq": 1,
+    "cta_final": 1,
+    "footer": 1
+  },
+  "n_sections": 8,
+  "cta_count": 4,
+  "duplicado_intra_seccion": {
+    "hero": false
+  },
+  "visual_qa": {
+    "skipped": false,
+    "motivo": "",
+    "screenshots": {
+      "mobile": "/workspace/landing_pipeline/output/vertice-pro/screenshots/mobile.png",
+      "desktop": "/workspace/landing_pipeline/output/vertice-pro/screenshots/desktop.png"
+    },
+    "scroll_shots": [
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_00.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_01.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_02.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_03.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_04.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_05.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_06.png",
+      "/workspace/landing_pipeline/output/vertice-pro/screenshots/scroll/scroll_07.png"
+    ],
+    "overlaps": [],
+    "animation_risks": [],
+    "ok": true
+  }
+}

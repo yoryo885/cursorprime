@@ -1,0 +1,19 @@
+<section id="beneficios" class="band" data-section="benefits">
+  <div class="inner">
+    <h2>Lo que ganás</h2>
+    <ol class="bens-lista">
+      {% for i in benefits.get("items", [])[:5] %}
+      <li>
+        <span class="num">{{ loop.index }}</span>
+        <div>
+          <h3>{{ i.titulo }}</h3>
+          <p>{{ i.texto }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    <p class="mid-cta">
+      <a class="btn" href="#precio">{{ hero.cta if hero and hero.cta else "Ver oferta" }}</a>
+    </p>
+  </div>
+</section>

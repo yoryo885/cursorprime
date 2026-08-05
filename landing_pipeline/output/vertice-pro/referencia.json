@@ -1,0 +1,9 @@
+{
+  "trust_badge_posicion": "arriba del todo, antes del hero",
+  "hero_visual": "imagen real de producto, nunca texto duplicado",
+  "testimonio_formato": "quote corto + nombre + ciudad entre paréntesis",
+  "cta_por_bloque": "un único CTA claro por bloque, no botones compitiendo",
+  "fuente": [
+    "https://filjos.com/"
+  ]
+}

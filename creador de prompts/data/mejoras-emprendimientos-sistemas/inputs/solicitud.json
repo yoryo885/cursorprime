@@ -1,0 +1,93 @@
+{
+  "titulo": "Radar de mejoras para emprendimientos cursorprime",
+  "tipo": "evaluacion",
+  "proyecto_destino": "lluvia-de-ideas",
+  "temas": [
+    "mejoras por sistema (audit, WhatsApp, presencia, contenido, KDP, LinkedIn)",
+    "priorización por progreso (cobro + piloto) no por features",
+    "fuentes YouTube/web 2026 LATAM",
+    "WACRM / Meta API / n8n / GBP / GEO"
+  ],
+  "contexto": {
+    "audiencia": "operador de cursorprime / agencia presencia digital LATAM",
+    "tono": "simple, claro, sin jerga innecesaria",
+    "estilo": "resumen corto primero; luego 3 pasos; una sola decisión; evitar radar genérico KDP",
+    "idioma": "español",
+    "objetivo": "Cada mensaje del usuario refina el radar: qué acelerar en los sistemas existentes para aumentar progreso real"
+  },
+  "notas": [
+    "Inventario base: top3 (audit, wasap, presencia), marketing-audit, creador contenido, KDP, LinkedIn, lluvia, clientes/",
+    "Cuello principal: capacidad alta, cierre comercial bajo",
+    "Video reciente revisado: CRM WhatsApp open source WACRM (Andy Cruz)",
+    "Preferencia: explicar para que se entienda fácil y resumido"
+  ],
+  "mejoras": [
+    {
+      "mensaje": "buscar en youtube/otros sitios mejoras para todos los emprendimientos, perspectiva profesional e innovadora, qué aumenta progreso en los sistemas",
+      "cambio": "Slug nuevo; radar P0–P3 mapeado a sistemas reales + fuentes live 2026"
+    },
+    {
+      "mensaje": "dame la informacion que la pueda entender y resumida",
+      "cambio": "Tono simple; respuesta corta primero; 3 pasos + 1 decisión"
+    },
+    {
+      "mensaje": "la los pdf con rol le ves potencial ?",
+      "cambio": "Incluir línea Vértice Pro / PDF libro×rol como producto con potencial condicionado a 1 venta real"
+    },
+    {
+      "mensaje": "aprendiendo landing Shopify; venderé los libros ahí; difícil por falta de videos para tráfico; videos después con sistema; terminar landing primero; PDF listo reutilizable con otros libros/roles?",
+      "cambio": "Prioridad oficial: 1) landing Shopify 2) videos después (creador de contenido) 3) PDF libro×rol es plantilla reutilizable"
+    },
+    {
+      "mensaje": "esta wenarda de donde puedo sacar imagenes ??",
+      "cambio": "Fuentes de imágenes para landing: Unsplash/Pexels gratis; portada PDF propia; IA (OpenAI en sitio-pdf); mockups"
+    },
+    {
+      "mensaje": "guarda esto como ideas despues puedo vender productos para libros como repisas dropshipping buscar productos del nicho",
+      "cambio": "Idea en espera: upsell dropship accesorios lectura (repisas etc.) después de landing+PDF"
+    },
+    {
+      "mensaje": "me refiero que a la landing le faltan imagenes no al pdf",
+      "cambio": "Aclaración: faltan imágenes de la landing Shopify (hero, mockups, beneficios), no del PDF editorial"
+    },
+    {
+      "mensaje": "es viable hacer eso pero has un analisis de mercado sumar productos del mismo nicho por dropshipping sin stock",
+      "cambio": "Análisis mercado dropship lectura: veredicto condicional 62/100; fase 2 tras PDF; proveedor local"
+    },
+    {
+      "mensaje": "mandame 5 imagenes y vere cual esta mejor no la coloques en el html",
+      "cambio": "Generar 5 opciones visuales para landing Shopify; usuario elige; no insertar en HTML"
+    },
+    {
+      "mensaje": "las que estan mas buenas y relacionadas al tema son la 2 y la 3; mandame 3 mas con esa misma vibra diferentes",
+      "cambio": "Usuario prefiere vibra 2 (lectura profesional) y 3 (mockup tablet); generar 3 variantes más"
+    },
+    {
+      "mensaje": "6 7 8 estan buenas pero como las colocariamos en la landing muestrame visual en html; de donde salen; cuanto cuestan",
+      "cambio": "Preview HTML con 6=hero 7=producto 8=banda; explicar origen IA Cursor + costos aprox"
+    },
+    {
+      "mensaje": "regenerame esta landin pero con 1 sola imagen la 6 https://modern-lies-return.loca.lt/index.html",
+      "cambio": "Landing Vértice Pro regenerada: hero full-bleed solo imagen 6; sin carrusel"
+    },
+    {
+      "mensaje": "quiero avanzar pero no se que pedirte mientras duermo que podrias hacer",
+      "cambio": "Avance autónomo noche: comprimir hero, SEO, checklist Shopify, MANANA.md"
+    },
+    {
+      "mensaje": "investigacion mercado landings que venden ingresos como se evalua actualizado",
+      "cambio": "Informe landings 2026: look, benchmarks, checklist, diagnóstico Vértice Pro"
+    }
+  ],
+  "temas_extra": [
+    "PDF Aplicar en tu rol (libro × profesión) — potencial sí, escala solo tras primera venta",
+    "Prioridad usuario: terminar landing Shopify antes que videos/tráfico",
+    "Investigación landings que venden 2026"
+  ],
+  "notas_prioridad": [
+    "Ahora: landing Shopify lista para vender PDF",
+    "Después: videos con creador de contenido para traer gente",
+    "El PDF/pipeline se reusa: mismo libro + otro rol, u otro libro + mismo rol"
+  ],
+  "variantes": 1
+}

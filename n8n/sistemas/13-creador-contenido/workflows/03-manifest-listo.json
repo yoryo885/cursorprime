@@ -1,0 +1,186 @@
+{
+  "name": "Contenido · lote listo",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contenido/manifest",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-13c-manifest-listo",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "13c-manifest-listo"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nreturn [{ json: {\n  ok: true, sistema: '13-creador-contenido', etapa: 'manifest', sin_api: true,\n  slug: b.slug || '',\n  entregable_mock: `data/${b.slug || 'demo'}/output/manifest.json`,\n  status: 'listo_mock',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-13c-manifest-listo",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-13c-manifest-listo",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #8 Creador de contenido\n\nLote de imágenes/video a partir de un slug.\n\n### Apps\n\n**Cursor · creador_imagenes_main**  \nGenera el lote (PNG/GIF/video mock).\n\n**MOCK_KLING / Kling API**  \nAnimación de escenas (mock ahora).\n\n**manifest.json**  \nLista de archivos generados en output/.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-03-manifest-listo",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-manifest-listo-0",
+      "name": "Cursor · creador_imagenes_main",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Genera el lote (PNG/GIF/video mock).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-manifest-listo-1",
+      "name": "MOCK_KLING / Kling API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Animación de escenas (mock ahora).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-03-manifest-listo-2",
+      "name": "manifest.json",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Lista de archivos generados en output/.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cursor · creador_imagenes_main",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · creador_imagenes_main": {
+      "main": [
+        [
+          {
+            "node": "MOCK_KLING / Kling API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MOCK_KLING / Kling API": {
+      "main": [
+        [
+          {
+            "node": "manifest.json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

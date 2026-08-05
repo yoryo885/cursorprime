@@ -1,0 +1,15 @@
+{% if not testimonials.get("omitida") and testimonials.get("items") %}
+<section id="testimonios" data-section="testimonials">
+  <div class="inner">
+    <h2>Lo que dicen</h2>
+    <div class="tests">
+      {% for t in testimonials.get("items", [])[:3] %}
+      <blockquote>
+        <p>“{{ t.quote }}”</p>
+        <cite>{{ t.nombre }} · {{ t.cargo }}</cite>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

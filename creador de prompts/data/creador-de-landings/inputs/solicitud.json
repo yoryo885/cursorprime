@@ -1,0 +1,220 @@
+{
+  "titulo": "Arreglar creador-de-landings paso a paso (entrega siempre visual)",
+  "tipo": "pipeline",
+  "proyecto_destino": "creador-de-landings",
+  "temas": [
+    "entrega solo URL sin screenshots",
+    "QC constitution 1 producto",
+    "campos brief visibles",
+    "demo-simple",
+    "aprendizaje efectos HTML",
+    "tienda.py modular",
+    "docs CLI skill"
+  ],
+  "contexto": {
+    "audiencia": "operador cursorprime",
+    "tono": "claro y accionable",
+    "idioma": "español",
+    "objetivo": "Plan paso a paso para dejar creador-de-landings usable; el usuario sabe que es una landing y necesita verla visual (URL+capturas), no código",
+    "fuente_prompt": "auditoría 2026-07-25 + pedido prompt de arreglo"
+  },
+  "mejoras": [
+    {
+      "fecha": "2026-07-20",
+      "texto": "Ejecutar prompt: pipeline agentes + skills por sección para landings"
+    },
+    {
+      "fecha": "2026-07-20",
+      "texto": "Prompt ejecutado: landing_pipeline completo + demo Vertice Pro QA 100"
+    },
+    {
+      "fecha": "2026-07-20",
+      "texto": "Prompt v5: garantía bajo precio, FAQ riesgo, CTA×3, social proof verificable"
+    },
+    {
+      "fecha": "2026-07-23",
+      "texto": "Pedido: mandar HTML de nuevo en formato visual (URL/capturas), no código fuente"
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "Auditoría código base: KeyError hero_badge_calidad rompe demo; aprendizaje no-op; HTML monolítico f-string; copy/catalogo hardcodeados a Vértice; QC superficial; sin tests"
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "Prompt v8: plan paso a paso 0–8 para arreglar creador-de-landings; regla de oro entrega visual obligatoria (URL+screenshots, nunca pegar HTML); criterios de listo + anti-patrones"
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "Paso 0+1 hechos: KeyError hero_badge_calidad arreglado; demo pasa; test contrato; entrega visual URL+screenshots. Cuello de botella: Chrome headless ~25–60s por captura, no el pipeline."
+    },
+    {
+      "fecha": "2026-07-25",
+      "texto": "v9: sin screenshots solo URL; pasos 2-7: QC constitution, campos brief, demo-simple, aprendizaje real, tienda modular, docs/CLI"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Pregunta iPad: ¿se puede usar n8n desde este agente? Respuesta: no hay n8n instalado/MCP; sí se puede diseñar workflows o llamar webhooks si da URL."
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Pregunta: manera más rápida de usar n8n desde iPad/agente → webhook n8n.cloud + URL"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Aclaración: subir n8n a GitHub = versionar workflows JSON (sí edito); ejecutar requiere instancia n8n + webhook"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Celular = mismo flujo que iPad: agente cloud + webhook n8n; GitHub solo versiona"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "n8n instalado en repo /n8n + tunnel para celular; workflows versionados; instancia efímera del cloud agent"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "n8n: reset owner incompleto para permitir correo Cursor c.pprimepersonal@gmail.com"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "n8n: pausa login; catálogo sistemas 01-05 importables después (lead, wasap, audit, contenido)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Usuario pregunta qué sistemas n8n se crearon — responder catálogo 01-05"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Ranking rentabilidad proyectos existentes 1-10 (radar P0 + evaluaciones); esperar elección antes de esqueletos n8n"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar #9 n8n; elegir #1 auditorías; informar qué haría primero (resumido) antes de construir"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Aclaración: #1 auditorías = producto/sistema a esqueletizar en n8n; aún no creado como sistema n8n"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Info apps del sistema #1 auditorías + producto final entregable"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Aclarar embudo comercial #1: qué se entrega al cliente (audit primero) + planes/upsell después"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Creado sistema n8n 06-auditorias-locales: embudo audit→planes, 3 workflows, planes.json"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar #2 Presencia digital locales (producto, entrega, relación con audit)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Apps del #2 Presencia digital (web, GBP, Wasap, n8n, deploy)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Creado sistema n8n 07-presencia-digital: alta, deploy, GBP, entrega + paquetes.json"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Pregunta qué sigue: #1+#2 hechos; recomendar #3 Wasap o ejecutar 5 audits reales"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Sistemas #3 cola pedidos + #4 wasap task FAQ/citas creados; ranking 1-4 completo en n8n/sistemas"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Cómo certificar sistemas 1-4 + explicar #5 Vértice/PDF+dropship"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar sistema #5 Vértice PDF+dropship: apps y flujo"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Explicar rol n8n del #5 Vértice PDF→upsell dropship (flujo webhooks)"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Aclarar: sistema PDF en Cursor sí acopla a n8n vía webhook/CLI; n8n orquesta, Cursor genera"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Cursor puede crear PDF automático si n8n/automation dispara el pipeline CLI; el chat no escucha 24/7 solo"
+    },
+    {
+      "fecha": "2026-08-03",
+      "texto": "Q&A: n8n puede llevar catálogo/reglas de qué PDF crear (brief JSON); análisis de datos puede decidir nicho y n8n dispara"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n reabierto con tunnel para celular"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n abierto con owner Cursor email + API key + swagger"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Fix login n8n: owner = yordifallodelgado@gmail.com"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n tunnel nuevo + login verificado yordifallodelgado"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n owner restaurado a c.pprimepersonal@gmail.com"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Aclarar dónde está lo armado: n8n/sistemas + catálogo + UI tunnel"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Usuario ve solo 01-ping en UI; aclarar que el armado completo está en repo, falta importar"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Importados 34 workflows a n8n UI via API (antes solo 01-ping)"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Workflows n8n enriquecidos con nodos TODO visibles de apps (Shopify/Meta/Vercel/Cursor)"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Nodos n8n con nombre de app + descripción de qué hace cada una"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Renombrados workflows n8n a nombres simples en español (1·Auditoría…)"
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Usuario pidió nombres n8n más simples (sin 10a/12c); formato Producto · acción."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "n8n: solo proyectos creados del panel; cola fuera de la instancia (borrar utilitarios/Vertice/Cola Wasap)."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Añadir sistema n8n Videos TikTok (guion→render→listo→publicar) con creador de contenido / Kling mock."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Presupuesto para activar sistemas n8n: gaps por sistema + costos mensuales/one-shot."
+    },
+    {
+      "fecha": "2026-08-04",
+      "texto": "Entregar presupuesto activar n8n en PDF."
+    }
+  ],
+  "notas": "Sistema #1 auditorías esqueleto en n8n/sistemas/06-auditorias-locales/ | Nombres n8n: Producto · acción (sin códigos técnicos)."
+}

@@ -1,0 +1,265 @@
+{
+  "name": "Auditoría · interés en un plan",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "auditorias/interes-plan",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-06b",
+      "name": "Webhook Interés Plan",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "06b-lead-interes-plan"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst planesOk = new Set(['basico', 'presencia', 'completo']);\nconst plan = String(b.plan || '').trim().toLowerCase();\nconst cliente = String(b.cliente || b.slug || '').trim();\nconst nombre = String(b.nombre || '').trim();\nconst whatsapp = String(b.whatsapp || b.telefono || '').trim();\nconst jobAudit = String(b.jobId || b.job_audit || '').trim();\nif (!planesOk.has(plan)) {\n  return [{ json: { ok: false, error: 'plan inválido', planes: [...planesOk], sistema: '06-auditorias-locales' } }];\n}\nif (!cliente && !whatsapp) {\n  return [{ json: { ok: false, error: 'falta cliente o whatsapp' } }];\n}\nreturn [{ json: {\n  ok: true,\n  sistema: '06-auditorias-locales',\n  etapa: 'upsell_plan',\n  leadId: `LP-${Date.now()}`,\n  plan,\n  cliente,\n  nombre,\n  whatsapp,\n  jobAudit,\n  status: 'interes_registrado',\n  todo: 'TODO: avisar por Wasap + crear carpeta clientes/{slug}/proyectos/…',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-06b",
+      "name": "Validar plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-06b",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Planes\nbasico | presencia | completo\n(ver planes.json)\n\nEl audit ya se entregó antes.",
+        "height": 200,
+        "width": 280
+      },
+      "id": "note-06b",
+      "name": "Nota planes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## #1 Auditorías locales\n\nEncuentra el problema del local y abre la venta.\n\n### Apps\n\n**Google Maps / Places**  \nBuscar locales y su web/ficha para auditar.\n\n**Cursor · marketing-audit**  \nGenera el informe con score y quick wins.\n\n**Google Sheet / Notion**  \nGuarda el job del audit (estado, cliente, URL).\n\n**WhatsApp**  \nManda el informe o el seguimiento al dueño del local.\n\n**Carpeta clientes/**  \nArchiva brief + entregables del cliente en el repo.\n\n_Nodos grises = sin API todavía._",
+        "height": 520,
+        "width": 400,
+        "color": 5
+      },
+      "id": "viz-legend-02-lead-interes-plan",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-lead-interes-plan-0",
+      "name": "Google Maps / Places",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: Buscar locales y su web/ficha para auditar.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-lead-interes-plan-1",
+      "name": "Cursor · marketing-audit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        150
+      ],
+      "notes": "Qué hace: Genera el informe con score y quick wins.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-lead-interes-plan-2",
+      "name": "Google Sheet / Notion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        300
+      ],
+      "notes": "Qué hace: Guarda el job del audit (estado, cliente, URL).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-lead-interes-plan-3",
+      "name": "WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        450
+      ],
+      "notes": "Qué hace: Manda el informe o el seguimiento al dueño del local.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-02-lead-interes-plan-4",
+      "name": "Carpeta clientes/",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        600
+      ],
+      "notes": "Qué hace: Archiva brief + entregables del cliente en el repo.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook Interés Plan": {
+      "main": [
+        [
+          {
+            "node": "Validar plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar plan": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Maps / Places",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Maps / Places": {
+      "main": [
+        [
+          {
+            "node": "Cursor · marketing-audit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · marketing-audit": {
+      "main": [
+        [
+          {
+            "node": "Google Sheet / Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheet / Notion": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Carpeta clientes/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

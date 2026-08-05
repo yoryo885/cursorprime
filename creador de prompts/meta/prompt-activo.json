@@ -1,23 +1,15 @@
 {
-  "version": 1,
-  "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
+  "version": 19,
+  "descripcion": "Prompt en refinamiento continuo.",
   "activo": {
-    "slug": "pdf-guion-video",
-    "tipo": "cursor",
-    "proyecto_destino": "creador-de-contenido",
-    "titulo": "PDF + guiones de video",
-    "version": 2
+    "slug": "creador-de-landings",
+    "tipo": "pipeline",
+    "proyecto_destino": "landing_pipeline",
+    "titulo": "Pipeline landings v7 (referencia + fix hero split)",
+    "version": 13,
+    "ultima_mejora": "prompt reemplazado por usuario: 00_referencia + fix hero split"
   },
-  "historial": [
-    {
-      "version": 1,
-      "mensaje": "La parte PDF debería crear guiones para video, no solo PDF",
-      "cambio": "Prompt inicial en data/pdf-guion-video/output/"
-    },
-    {
-      "version": 2,
-      "mensaje": "No pendientes — cada mensaje mejora el prompt",
-      "cambio": "Flujo cambiado a mejora continua (prompt-activo.json); pendientes.json deprecado"
-    }
-  ]
+  "slug": "creador-de-landings",
+  "ultima_mejora": "prompt v7 aplicado + código alineado",
+  "updated_at": "2026-07-20T22:10:00Z"
 }

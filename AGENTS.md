@@ -6,6 +6,7 @@ Workspace único. Guía de apertura: [COMO_ABRIR.md](./COMO_ABRIR.md)
 
 | Proyecto | Entrypoint | Skill | Inputs | Outputs |
 |----------|------------|-------|--------|---------|
+| **landing_pipeline** | `python3 landing_main.py run --demo` | `usa landing-pipeline` | brief JSON / demo | `output/{slug}/landing.html` + QA |
 | creador de prompts | `python3 creador_prompts_main.py --slug {slug}` | `usa creador-de-prompts` | `data/{slug}/inputs/solicitud.json` | `data/{slug}/output/prompts.json` |
 | creador de skills | `python3 creador_skills_main.py --slug {slug}` | `usa creador-de-skills` | `catalogo/{slug}.json` | `~/.cursor/skills/{nombre}/` |
 | creador de contenido | `python3 creador_imagenes_main.py --slug {slug}` | `usa guion-a-video` | `data/{slug}/inputs/lote.json` | `data/{slug}/output/` |
@@ -19,6 +20,7 @@ Workspace único. Guía de apertura: [COMO_ABRIR.md](./COMO_ABRIR.md)
 | nuevo pipeline Python | diseño → `construye` | `usa crear-pipeline` | brief YAML | `{proyecto}/` + CLI |
 | gestión proyecto | docs → gate | `usa gestion-proyecto` | brief YAML/JSON | PROYECTO.md + plan |
 | landing / lanzamiento | chat + prompts | `usa landing-lanzamiento` | brief producto | landing-brief.md |
+| **creador de landings** | `python3 landings_main.py demo` | `usa creador-de-landings` | entrevista / respuestas.json | `data/{slug}/output/preview.html` |
 | WhatsApp comercial | chat | `usa whatsapp-marketing` | negocio + objetivo | secuencia copy |
 | audit marketing | chat + web | `usa audit-marketing` | URL + competidores | informe-audit.md |
 | market audit (completo) | `python3 marketing_audit_main.py audit --url {url}` | `usa market-audit` | `brief.json` + URL | MARKETING-AUDIT.md + PDF |

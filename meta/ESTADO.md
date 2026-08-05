@@ -1,8 +1,19 @@
 # cursorprime — Estado del ecosistema
 
-Actualizado: 2026-06-27
+Actualizado: 2026-08-05
 
 Referencia rápida para agentes y usuarios: qué está listo y qué falta.
+
+## Sistemas n8n / LIVE (arreglos procesados)
+
+- [x] Solo sistemas de **proyectos creados** en n8n (`cola/` fuera)
+- [x] Runner LIVE `:8780` (leads, jobs, pipelines)
+- [x] Embudo · TikTok guion · Audit · Ops healthcheck activos
+- [x] Telegram @yoryo321 + inbox de comandos
+- [x] Video del sistema = **animado + personaje** → Telegram (`video` / `correr`)
+- [ ] Kling real, Meta Wasap, dominio fijo (no tunnel)
+
+Detalle: `n8n/SISTEMAS.md`, `n8n/COMO-EMPEZAR.md`, `meta/organizacion/AUTOMATIZACION-80.md`.
 
 ## Menú de productos
 
@@ -11,6 +22,7 @@ Referencia rápida para agentes y usuarios: qué está listo y qué falta.
 - [x] Skill `guion-a-video` instalado
 - [x] Pipeline `creador de contenido/creador_imagenes_main.py`
 - [x] Demos (`demo_animado`, `demo_slideshow`, `demo_full`, `demo_lote`)
+- [x] Entrega LIVE a Telegram con **personaje** (mock Kling / crossfade)
 - [ ] Video animado con API Kling real (requiere `.env`; mock: `MOCK_KLING=true`)
 
 ### Libro o PDF — resumen, listing KDP

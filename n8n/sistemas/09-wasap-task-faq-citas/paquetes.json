@@ -1,0 +1,38 @@
+{
+  "sistema": "09-wasap-task-faq-citas",
+  "producto": "wasap_task_faq_citas",
+  "ranking": 4,
+  "moneda": "USD",
+  "nota": "Precios placeholder — task-scoped, no agente genérico",
+  "paquetes": [
+    {
+      "id": "faq",
+      "nombre": "FAQ Wasap",
+      "precio_desde": 99,
+      "incluye": [
+        "Mapa FAQ del negocio",
+        "Respuestas automáticas",
+        "Handoff a humano"
+      ]
+    },
+    {
+      "id": "citas",
+      "nombre": "Citas Wasap",
+      "precio_desde": 149,
+      "incluye": [
+        "Todo FAQ",
+        "Solicitud de cita + confirmación básica"
+      ]
+    },
+    {
+      "id": "full_task",
+      "nombre": "Wasap task full",
+      "precio_desde": 249,
+      "incluye": [
+        "FAQ + citas",
+        "Handoff con aviso al equipo",
+        "Métricas básicas (TODO)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "name": "TikTok · render video",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tiktok/render",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-14b-tiktok-render",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "14b-tiktok-render"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $json.body || $json;\nconst slug = String(b.slug || '').trim();\nconst modo = String(b.modo || 'slideshow').trim(); // slideshow | animado\nif (!slug) return [{ json: { ok: false, error: 'falta slug' } }];\nreturn [{ json: {\n  ok: true, sistema: '14-videos-tiktok', etapa: 'render', sin_api: true,\n  jobId: `TT-R-${Date.now()}`, slug, modo, formato: '9:16',\n  status: 'queued_mock',\n  todo: 'SIN API. Después: python3 creador_imagenes_main.py --slug ' + slug + ' (video.modo=' + modo + ', MOCK_KLING ok)',\n  at: new Date().toISOString()\n}}];"
+      },
+      "id": "code-14b-tiktok-render",
+      "name": "Procesar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "rs-14b-tiktok-render",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Videos TikTok\n\nVertical 9:16 · hooks → guion → MP4 (slideshow o animado).\n\n### Apps\n\n**Cursor · hooks-redes**  \nGanchos / angles para el short.\n\n**Cursor · guion-a-video**  \nArma el guion por escenas.\n\n**Cursor · creador_imagenes_main**  \nGenera frames + MP4 (`video.modo` slideshow|animado).\n\n**MOCK_KLING / Kling**  \nAnima escenas (mock ahora).\n\n**TikTok / CapCut (después)**  \nPublicar o exportar — sin API todavía.\n\n_Nodos grises = sin API._",
+        "height": 560,
+        "width": 420,
+        "color": 5
+      },
+      "id": "viz-legend-14b-tiktok-render",
+      "name": "Qué hace cada app",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-14b-tiktok-render-0",
+      "name": "Cursor · hooks-redes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        0
+      ],
+      "notes": "Qué hace: ganchos y angles para TikTok.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-14b-tiktok-render-1",
+      "name": "Cursor · guion-a-video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        140
+      ],
+      "notes": "Qué hace: guion por escenas listo para render.",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-14b-tiktok-render-2",
+      "name": "Cursor · creador_imagenes_main",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        280
+      ],
+      "notes": "Qué hace: frames + MP4 vertical (9:16).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-14b-tiktok-render-3",
+      "name": "MOCK_KLING / Kling",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        420
+      ],
+      "notes": "Qué hace: anima escenas (mock sin API).",
+      "notesInFlow": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:9999/todo-sin-api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "viz-app-14b-tiktok-render-4",
+      "name": "TikTok API (después)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        560
+      ],
+      "notes": "Qué hace: publicar o programar el short.",
+      "notesInFlow": true,
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Procesar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cursor · hooks-redes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · hooks-redes": {
+      "main": [
+        [
+          {
+            "node": "Cursor · guion-a-video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · guion-a-video": {
+      "main": [
+        [
+          {
+            "node": "Cursor · creador_imagenes_main",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cursor · creador_imagenes_main": {
+      "main": [
+        [
+          {
+            "node": "MOCK_KLING / Kling",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MOCK_KLING / Kling": {
+      "main": [
+        [
+          {
+            "node": "TikTok API (después)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
