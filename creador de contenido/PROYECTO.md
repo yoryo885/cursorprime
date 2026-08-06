@@ -1,50 +1,75 @@
 # Creador de Contenido
 
-Proyecto **independiente** en `~/cursorprime/creador de contenido`.
+Proyecto en `creador de contenido`.
 
-Genera **PNG · GIF · Video · PDF** — cada modo solo o combinado. Sin conexión a otros proyectos (hooks listos para futuro).
+Genera **PNG · GIF · Video · PDF** y un **sistema de video por recetas**: agentes y skills se activan según lo que necesite el video.
 
 ## Comandos
 
 ```bash
-cd "/Users/yoryo/cursorprime/creador de contenido"
+cd "creador de contenido"
 pip install -r requirements.txt
 
-# Solo imágenes
-python creador_imagenes_main.py --slug demo_lote --modo png
+# Listar recetas (qué agentes/skills activa cada una)
+python3 creador_imagenes_main.py --listar-recetas
 
-# Solo GIF
-python creador_imagenes_main.py --modo gif --slug demo_full
+# Promo de una guía PDF (hook → guion → escenas → video → captions → thumb)
+python3 creador_imagenes_main.py --slug demo_promo_guia --receta promo-guia --reset-checkpoint
 
-# PNG + GIF + PDF
-python creador_imagenes_main.py --slug demo_full --modo all
+# Solo video animado desde guion
+python3 creador_imagenes_main.py --slug demo_animado --receta animado
 
-# Video (requiere: brew install ffmpeg)
-python creador_imagenes_main.py --modo video --slug demo_slideshow
+# Slideshow rápido
+python3 creador_imagenes_main.py --slug demo_slideshow --receta slideshow
 
-# Video ANIMADO (guion → escenas → clips)
-python creador_imagenes_main.py --modo video --slug demo_animado
+# Modos clásicos
+python3 creador_imagenes_main.py --slug demo_lote --modo png
+python3 creador_imagenes_main.py --slug demo_full --modo all
 ```
 
-## Arquitectura
+## Recetas → agentes / skills
 
-```
-imagenes/        → módulo PNG
-gifs/            → módulo GIF (frames)
-videos/          → módulo MP4 (usa PNG)
-pdf/             → módulo PDF (usa PNG)
-src/agents/      → core: context, style, prompt, qc, packager
-src/pipeline.py  → orquestador
+| Receta | Skills | Agentes activos |
+|--------|--------|-----------------|
+| `slideshow` | guion-a-video | context → planner → style → prompt → png → video → qc → packager |
+| `animado` | guion-a-video | + escenas (requiere guion) |
+| `promo-guia` | hooks-redes, guion-a-video, captions-redes, thumbnail-social | + hook → guion → escenas → … → captions → thumbnail |
+| `reels-pack` | mismas 4 | pack redes completo |
+| `custom` | — | según `salidas` / `copy` del lote |
+
+Definición: `meta/recetas.json`. Plan runtime por lote: `data/{slug}/meta/plan_runtime.json`.
+
+## Flujo (mermaid)
+
+```mermaid
+flowchart TD
+  A[lote.json + receta] --> B[ContextAgent]
+  B --> C[PlannerAgent]
+  C --> D{¿necesita copy?}
+  D -->|promo-guia / reels| E[HookAgent]
+  E --> F[GuionAgent]
+  D -->|guion ya existe| G[EscenasAgent]
+  F --> G
+  G --> H[Style + Prompt]
+  H --> I[PNG / GIF / Video / PDF]
+  I --> J[Captions + Thumbnail si receta]
+  J --> K[QC + Packager]
 ```
 
-## Entrada lote.json
+## Entrada lote.json (promo guía)
 
 ```json
 {
-  "titulo": "Mi pack",
-  "salidas": ["png", "gif"],
-  "temas": ["enfoque", "tiempo"],
-  "gif": {"frames": 4}
+  "titulo": "Mi guía",
+  "receta": "promo-guia",
+  "guia": {
+    "titulo": "El principio de Pareto",
+    "promesa": "enfocarte en el 20% que importa",
+    "ideas": ["idea 1", "idea 2", "idea 3"],
+    "cta": "Comenta PARETO"
+  },
+  "fuente_guia": "ruta/opcional/al/resumen.md",
+  "video": { "modo": "animado", "limit_escenas": 2 }
 }
 ```
 
@@ -53,48 +78,37 @@ src/pipeline.py  → orquestador
 ```
 data/{slug}/
 ├── imagenes/
-├── gifs/
-├── videos/
-├── pdf/
+├── videos/          ← MP4 + clips/
+├── copy/            ← guion.md, captions.md, thumbnail.png
+├── meta/
+│   ├── plan_runtime.json
+│   ├── hooks.json
+│   ├── guion.json
+│   ├── escenas.json
+│   └── …
 └── output/{slug}_contenido.zip
 ```
 
-## Video — dos modos
+## Video — modos de render
 
 | Modo | Qué hace | Costo |
 |------|----------|-------|
 | `slideshow` | PNGs → ffmpeg concat | Gratis |
-| `animado` | Guion → escenas → frame A+B → clip/escena → MP4 | Mock gratis / Kling ~$0.40/escena |
+| `animado` | Guion → escenas → frame A+B → clip → MP4 | Mock gratis / Kling ~pago |
 
-```json
-{
-  "video": { "modo": "animado", "limit_escenas": 2 },
-  "guion": "Texto del video...\n\nOtra escena..."
-}
+## Arquitectura
+
+```
+src/pipeline.py      → orquestador + AGENTS dict
+src/recipes.py       → resolve_recipe / infer_receta
+src/agents/          → context, planner, hook, guion, escenas, style, prompt, qc, packager, captions, thumbnail
+imagenes|gifs|videos|pdf/ → módulos de salida
+meta/recetas.json    → catálogo de recetas
 ```
 
 ## Pendiente V1
 
-- **PDF + guiones de video** — el módulo PDF no debe limitarse al documento; también debe poder generar guiones para video (prompt activo: `data/pdf-guion-video/output/`)
-- IA real imágenes (Replicate/Flux) — `MOCK_GENERATE=false`
-- Kling real (Kie.ai + Cloudinary URLs) — `MOCK_KLING=false` + `KIE_API_KEY`
-- Conexión creador de prompts (elegir pack al iniciar)
-- Integración externa — `INTEGRACION_EXTERNA=true`
-
-## Del video YouTube — qué falta rescatar
-
-| Del video | Estado |
-|-----------|--------|
-| Guion → escenas | ✅ EscenasAgent |
-| Frame inicio + fin | ✅ modo animado |
-| Biblioteca estilos | ✅ meta/estilos_animacion.json |
-| Clips ordenados + MP4 final | ✅ videos/clips/ |
-| Slideshow simple | ✅ modo slideshow |
-| OpenAI divide guion (LLM) | ⏳ hoy heurística; Cursor chat o API |
-| Gemini genera frames | ⏳ mock Pillow; API V1 |
-| Kling image-to-video | ⏳ mock ffmpeg; Kie pendiente |
-| Cloudinary URLs | ⏳ solo si API lo exige |
-| n8n / Baserow / webhooks | ❌ no necesario (pipeline Python) |
-| Google Drive auto-upload | ⏳ opcional futuro |
-| UI “Activar” en tabla | ⏳ CLI por ahora |
-| Costos por escena | ⏳ logs futuro |
+- Kling real (`MOCK_KLING=false` + `KIE_API_KEY`)
+- IA real imágenes (`MOCK_GENERATE=false`)
+- LLM para split de guion / hooks (hoy heurística)
+- Conexión directa a salida de `libros a entender` vía path `fuente_guia`

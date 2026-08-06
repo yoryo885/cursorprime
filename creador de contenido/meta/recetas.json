@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "descripcion": "Recetas de video: cada una activa agentes y skills según la necesidad del lote",
+  "recetas": {
+    "slideshow": {
+      "nombre": "Slideshow PNG → MP4",
+      "descripcion": "Preview rápido sin guion animado",
+      "skills": ["guion-a-video"],
+      "agentes": ["context", "planner", "style", "prompt", "png", "video", "qc", "packager"],
+      "salidas": ["png", "video"],
+      "video_modo": "slideshow",
+      "copy": []
+    },
+    "animado": {
+      "nombre": "Guion → escenas → clips",
+      "descripcion": "Video animado desde guion existente",
+      "skills": ["guion-a-video"],
+      "agentes": ["context", "planner", "escenas", "style", "prompt", "png", "video", "qc", "packager"],
+      "salidas": ["png", "video"],
+      "video_modo": "animado",
+      "copy": [],
+      "requiere": ["guion"]
+    },
+    "promo-guia": {
+      "nombre": "Promo de guía PDF",
+      "descripcion": "Promociona una guía/PDF: hook → guion → escenas → video → captions → thumbnail",
+      "skills": ["hooks-redes", "guion-a-video", "captions-redes", "thumbnail-social"],
+      "agentes": [
+        "context",
+        "planner",
+        "hook",
+        "guion",
+        "escenas",
+        "style",
+        "prompt",
+        "png",
+        "video",
+        "captions",
+        "thumbnail",
+        "qc",
+        "packager"
+      ],
+      "salidas": ["png", "video"],
+      "video_modo": "animado",
+      "copy": ["hook", "guion", "captions", "thumbnail"],
+      "requiere": ["guia"]
+    },
+    "reels-pack": {
+      "nombre": "Pack redes (hook + video + captions + thumb)",
+      "descripcion": "Pack completo para Reels/Shorts a partir de guion o guía",
+      "skills": ["hooks-redes", "guion-a-video", "captions-redes", "thumbnail-social"],
+      "agentes": [
+        "context",
+        "planner",
+        "hook",
+        "guion",
+        "escenas",
+        "style",
+        "prompt",
+        "png",
+        "video",
+        "captions",
+        "thumbnail",
+        "qc",
+        "packager"
+      ],
+      "salidas": ["png", "video"],
+      "video_modo": "animado",
+      "copy": ["hook", "guion", "captions", "thumbnail"]
+    },
+    "custom": {
+      "nombre": "Personalizado",
+      "descripcion": "Usa salidas/agentes del lote.json (planner resuelve dependencias)",
+      "skills": [],
+      "agentes": [],
+      "salidas": [],
+      "video_modo": null,
+      "copy": []
+    }
+  }
+}

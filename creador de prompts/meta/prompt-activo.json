@@ -3,10 +3,11 @@
   "descripcion": "Prompt en refinamiento continuo. Cada mensaje del usuario lo mejora — no es una cola de pendientes.",
   "activo": {
     "slug": "pdf-guion-video",
-    "tipo": "cursor",
+    "tipo": "animacion",
     "proyecto_destino": "creador-de-contenido",
-    "titulo": "PDF + guiones de video",
-    "version": 2
+    "titulo": "Sistema de video por recetas — promo guías PDF",
+    "version": 3,
+    "ultima_mejora": "Pipeline con PlannerAgent + recetas (promo-guia) y agentes/skills condicionales"
   },
   "historial": [
     {
@@ -18,6 +19,11 @@
       "version": 2,
       "mensaje": "No pendientes — cada mensaje mejora el prompt",
       "cambio": "Flujo cambiado a mejora continua (prompt-activo.json); pendientes.json deprecado"
+    },
+    {
+      "version": 3,
+      "mensaje": "sistema de creación de videos con agentes, skill, pipeline como otros proyectos",
+      "cambio": "Recetas + Planner + agentes copy; demo_promo_guia; skill guion-a-video actualizada"
     }
   ]
 }

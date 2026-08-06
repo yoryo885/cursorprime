@@ -1,0 +1,32 @@
+{
+  "videos": [
+    {
+      "escena_id": 1,
+      "archivo": "01-muchos_emprendedores_quieren_conectar_ch.mp4",
+      "path": "/workspace/creador de contenido/data/demo_animado/videos/clips/01-muchos_emprendedores_quieren_conectar_ch.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "escena_id": 2,
+      "archivo": "02-luego_conectas_la_api_de_whatsapp_busine.mp4",
+      "path": "/workspace/creador de contenido/data/demo_animado/videos/clips/02-luego_conectas_la_api_de_whatsapp_busine.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "mock_kling": true
+    },
+    {
+      "archivo": "demo_animado.mp4",
+      "path": "/workspace/creador de contenido/data/demo_animado/videos/demo_animado.mp4",
+      "modulo": "videos",
+      "modo": "animado",
+      "tipo": "final",
+      "escenas": 2,
+      "generado_at": "2026-07-19T21:14:59.572789+00:00"
+    }
+  ],
+  "count": 2,
+  "modo": "animado",
+  "final": "/workspace/creador de contenido/data/demo_animado/videos/demo_animado.mp4"
+}

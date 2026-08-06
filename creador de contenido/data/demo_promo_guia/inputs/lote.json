@@ -1,0 +1,24 @@
+{
+  "titulo": "El principio de Pareto",
+  "receta": "promo-guia",
+  "estilo": "papel-sketch",
+  "plataforma": "reels",
+  "fuente_guia": "../libros a entender/resumenes/pareto/El principio de Pareto - Antoine Delers.md",
+  "guia": {
+    "titulo": "El principio de Pareto",
+    "promesa": "enfocarte en el 20% que mueve el 80% de tus resultados",
+    "ideas": [
+      "Identifica las pocas causas que generan la mayoría del efecto",
+      "Elimina o delega lo que no mueve la aguja",
+      "Revisa semanalmente tu 20% prioritario"
+    ],
+    "cta": "Comenta PARETO y te paso la guía completa"
+  },
+  "video": {
+    "modo": "animado",
+    "limit_escenas": 2
+  },
+  "notas": "Demo sistema de video: planner activa hook→guion→escenas→video→captions→thumbnail",
+  "hook": "Si El principio de Pareto te abruma, esto te ordena en minutos.",
+  "guion": "Si El principio de Pareto te abruma, esto te ordena en minutos.\n\nEl problema: acumular PDFs sin un plan claro sobre El principio de Pareto.\n\nEsta guía te da enfocarte en el 20% que mueve el 80% de tus resultados sin relleno.\n\n1. Identifica las pocas causas que generan la mayoría del efecto\n\n2. Elimina o delega lo que no mueve la aguja\n\n3. Revisa semanalmente tu 20% prioritario\n\nComenta PARETO y te paso la guía completa"
+}

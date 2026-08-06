@@ -1,44 +1,59 @@
 ---
 name: guion-a-video
 description: >-
-  Convierte un guion de video en escenas con frames inicio/fin y clips animados
-  usando el pipeline de creador de contenido. Conecta con creador de prompts si
-  hace falta prompts exactos por escena. Proyecto: Creador de Contenido. Usar
-  cuando el usuario menciona guion a video, crear video desde guion, modo
-  animado, escenas de video, usa guion-a-video, o pide seguir este flujo paso a paso.
+  Sistema de creación de videos en creador de contenido: planner + agentes/skills
+  condicionales según receta (slideshow, animado, promo-guia, reels-pack). Usar
+  cuando el usuario menciona guion a video, promo de guía PDF, sistema de video,
+  receta promo-guia, modo animado, usa guion-a-video, o pide pipeline de video.
 ---
 
-# Guion a Video
+# Guion a Video (sistema por recetas)
 
 Skill de **workflow** para Creador de Contenido.
 
 ## Cuándo usar
 
-Activar cuando el usuario diga: guion a video, crear video desde guion, modo animado, escenas de video, usa guion-a-video.
+Activar cuando el usuario diga: guion a video, crear video, promo guía PDF, sistema de video, receta, modo animado, reels pack, usa guion-a-video.
 
-## Proceso
+## Idea clave
 
-Convierte un guion de video en escenas con frames inicio/fin y clips animados usando el pipeline de creador de contenido. Conecta con creador de prompts si hace falta prompts exactos por escena.
+No corren todos los agentes siempre. El **PlannerAgent** lee la **receta** del lote y activa solo lo necesario:
+
+| Receta | Para qué |
+|--------|----------|
+| `slideshow` | Preview PNG→MP4 |
+| `animado` | Guion → escenas → clips |
+| `promo-guia` | Promocionar PDF/guía (hook+guion+video+captions+thumb) |
+| `reels-pack` | Pack redes completo |
+| `custom` | Según `salidas` / `copy` del lote |
+
+## Skills embebidas como agentes
+
+| Skill chat | Agente pipeline |
+|------------|-----------------|
+| hooks-redes | HookAgent |
+| guion-a-video | GuionAgent + EscenasAgent + VideosModule |
+| captions-redes | CaptionsAgent |
+| thumbnail-social | ThumbnailAgent |
 
 ## Pasos
 
-1. **Recibir guion**: Texto libre o archivo. Confirmar titulo del video y estilo (meta/estilos_animacion.json).
-2. **Generar prompts (opcional)**: Si no hay pack: correr creador de prompts tipo animacion → proyecto creador-de-contenido.
-3. **Armar lote.json**: salidas: [png, video], video.modo: animado|slideshow, guion, limit_escenas para pruebas.
-4. **Ejecutar pipeline**: cd cursorprime/creador de contenido && python3 creador_imagenes_main.py --slug {slug} --modo video
-5. **Entregar**: data/{slug}/videos/clips/ + MP4 final + manifest. Indicar si MOCK_KLING o Kling real.
+1. **Definir necesidad**: ¿promo de guía, animado, slideshow, pack redes?
+2. **Armar lote.json** con `receta` (o dejar que infiera: si hay `guia` → `promo-guia`).
+3. **Ejecutar**:
+   ```bash
+   cd "creador de contenido"
+   python3 creador_imagenes_main.py --listar-recetas
+   python3 creador_imagenes_main.py --slug {slug} --receta promo-guia --reset-checkpoint
+   ```
+4. **Entregar**: `data/{slug}/videos/`, `copy/`, `meta/plan_runtime.json`, zip en `output/`.
 
 ## Reglas
 
-- Modo slideshow = gratis (ffmpeg). Modo animado = frame A+B (mock o Kling).
-- Probar con limit_escenas: 1 antes de lote completo.
-- No inventar metricas; el guion define las escenas.
-- Ruta base: ~/cursorprime/creador de contenido
+- Probar con `limit_escenas: 1` o `2` y `MOCK_KLING=true`.
+- No inventar métricas; copy heurístico lleva `confidence` medium/low.
+- Ruta: `creador de contenido/`.
 
 ## Proyecto
 
 Carpeta: `../creador de contenido`
-
-## Iteración
-
-Si el resultado no encaja, pedir feedback y actualizar esta skill (v2 en misma carpeta).
