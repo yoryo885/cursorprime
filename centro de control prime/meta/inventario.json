@@ -1,7 +1,7 @@
 {
   "version": 1,
   "nombre": "Centro de control prime",
-  "generado_at": "2026-08-04T02:24:22.894788+00:00",
+  "generado_at": "2026-08-06T00:48:37.564163+00:00",
   "resumen": {
     "analisis": 3,
     "radar_corridas": 3,
@@ -1020,7 +1020,7 @@
     "falta": 0
   },
   "analisis_ecosistema": {
-    "generado_at": "2026-08-04T02:24:22.893906+00:00",
+    "generado_at": "2026-08-06T00:48:37.563196+00:00",
     "avance_global": 90,
     "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Auditoría de marketing**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
     "capas": [
@@ -1659,7 +1659,7 @@
     }
   },
   "viabilidad_proyectos": {
-    "generado_at": "2026-08-04T02:24:22.894761+00:00",
+    "generado_at": "2026-08-06T00:48:37.564139+00:00",
     "total": 16,
     "capas": [
       {
@@ -6034,7 +6034,7 @@
         "tareas": [
           {
             "id": "p3-sub",
-            "texto": "Plan B: subdominio temporal live en 24h"
+            "texto": "Plan B: subdominio temporal en línea en 24 h"
           },
           {
             "id": "p3-landing",
@@ -6042,7 +6042,7 @@
           },
           {
             "id": "p3-deploy",
-            "texto": "Deploy en Vercel/Netlify (SSL activo)"
+            "texto": "Publicar en Vercel/Netlify (SSL activo)"
           },
           {
             "id": "p3-dominio",
@@ -6054,7 +6054,7 @@
           },
           {
             "id": "p3-gbp",
-            "texto": "Google Business Profile con URL de la web"
+            "texto": "Perfil de Google Business con URL del sitio web"
           },
           {
             "id": "p3-test",
@@ -6070,7 +6070,7 @@
           "Meta API (A)",
           "Evolution API (B)"
         ],
-        "flujo": "Web live → elegir ruta A u B → bot agenda / responde",
+        "flujo": "Sitio web en línea → elegir ruta A o B → bot agenda / responde",
         "plan_b": "Ruta B (Evolution): sin verificación Meta; ideal negocio informal.",
         "tareas": [
           {
@@ -6087,7 +6087,7 @@
           },
           {
             "id": "p4-webhook",
-            "texto": "Webhook / servidor con URL pública"
+            "texto": "Webhook / servidor con URL pública (conexión en vivo)"
           },
           {
             "id": "p4-flujos",

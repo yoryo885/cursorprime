@@ -626,6 +626,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <title>Centro de control · cursorprime</title>
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>{HUD_CSS}</style>
@@ -635,7 +636,7 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
     <header class="topbar">
       <div class="topbar-brand">
         <h1>Centro de control prime</h1>
-        <p>cursorprime · actualizado {gen}</p>
+        <p>cursorprime · actualizado {gen} · <strong>UI español</strong></p>
       </div>
       <div class="topbar-actions">
         <button type="button" class="quick-btn" data-view="embudo">Presencia digital</button>

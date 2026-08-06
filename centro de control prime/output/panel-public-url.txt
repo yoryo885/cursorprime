@@ -1,5 +1,6 @@
-https://affecting-including-examines-donations.trycloudflare.com/panel.html
+http://localhost:8770/panel.html
 
-Tablet / móvil — Centro de control prime
-Generado: 2026-08-04
-Nota: link temporal mientras el agente cloud esté activo
+Centro de control prime — ver en Cursor
+1. Cmd+Shift+P → "Tasks: Run Task" → "Centro de control: abrir en Browser"
+2. O abre en Simple Browser: http://localhost:8770/panel.html
+3. O abre el archivo: centro de control prime/output/panel.html
