@@ -1,7 +1,7 @@
 {
   "version": 1,
   "nombre": "Centro de control prime",
-  "generado_at": "2026-07-09T16:24:46.480238+00:00",
+  "generado_at": "2026-08-06T00:48:37.564163+00:00",
   "resumen": {
     "analisis": 3,
     "radar_corridas": 3,
@@ -18,10 +18,10 @@
     "skills_generadas": 13,
     "skills_instaladas": 0,
     "proyectos_activos": 9,
-    "carpetas_total": 15,
+    "carpetas_total": 18,
     "modulos_hecho": 6,
     "modulos_parcial": 10,
-    "clientes_total": 4,
+    "clientes_total": 5,
     "analisis_live": 1,
     "radar_semana_ok": "2026w27"
   },
@@ -605,7 +605,8 @@
         "clinica-sol",
         "demo-kerkus",
         "empanadas-don-pedro",
-        "ferreteria-central"
+        "ferreteria-central",
+        "vertice-pro"
       ]
     },
     {
@@ -748,6 +749,18 @@
       ]
     },
     {
+      "nombre": "proyecto landing",
+      "path": "proyecto landing",
+      "tipo": "otro",
+      "has_cli": false,
+      "subcarpetas": [
+        "copy",
+        "preview",
+        "scripts",
+        "shopify"
+      ]
+    },
+    {
       "nombre": "proyectos-top3",
       "path": "proyectos-top3",
       "tipo": "producto",
@@ -757,12 +770,33 @@
         "02-wasap-pymes",
         "03-presencia-digital"
       ]
+    },
+    {
+      "nombre": "sitio-pdf",
+      "path": "sitio-pdf",
+      "tipo": "otro",
+      "has_cli": true,
+      "subcarpetas": [
+        "data",
+        "logs",
+        "meta",
+        "src"
+      ]
+    },
+    {
+      "nombre": "vertice-pro-preview",
+      "path": "vertice-pro-preview",
+      "tipo": "otro",
+      "has_cli": false,
+      "subcarpetas": [
+        "assets"
+      ]
     }
   ],
   "modulos": [
     {
       "id": "router",
-      "nombre": "Router + skills",
+      "nombre": "Enrutador + habilidades",
       "carpeta": "router.py",
       "grupo": "core",
       "capa": "creador",
@@ -822,7 +856,7 @@
       "hecho_count": 1,
       "checks_total": 1,
       "pendientes": [
-        "Web real (--no-mock-web + Playwright)"
+        "Búsqueda web real (--no-mock-web + Playwright)"
       ]
     },
     {
@@ -863,7 +897,7 @@
     },
     {
       "id": "marketing_audit",
-      "nombre": "Marketing Audit",
+      "nombre": "Auditoría de marketing",
       "carpeta": "marketing-audit",
       "grupo": "comercial",
       "capa": "producto",
@@ -872,9 +906,9 @@
       "hecho_count": 2,
       "checks_total": 2,
       "pendientes": [
-        "PDF --pdf",
-        "Audit URL real (MOCK_FETCH=false)",
-        "Outreach automático"
+        "Informe PDF (--pdf)",
+        "Auditoría con URL real (MOCK_FETCH=false)",
+        "Contacto automático"
       ]
     },
     {
@@ -902,8 +936,8 @@
       "hecho_count": 2,
       "checks_total": 2,
       "pendientes": [
-        "Propuesta HTML auto desde pipeline",
-        "Deploy web real"
+        "Propuesta HTML automática desde pipeline",
+        "Despliegue web real"
       ]
     },
     {
@@ -918,7 +952,7 @@
       "checks_total": 1,
       "pendientes": [
         "API Meta",
-        "Webhook live",
+        "Webhook en vivo",
         "1 piloto"
       ]
     },
@@ -933,8 +967,8 @@
       "hecho_count": 1,
       "checks_total": 1,
       "pendientes": [
-        "HTML deploy",
-        "Google Business Profile"
+        "Despliegue HTML",
+        "Perfil de Google Business"
       ]
     },
     {
@@ -948,7 +982,7 @@
       "hecho_count": 1,
       "checks_total": 1,
       "pendientes": [
-        "Video Kling API real"
+        "Video con API Kling real"
       ]
     },
     {
@@ -986,9 +1020,9 @@
     "falta": 0
   },
   "analisis_ecosistema": {
-    "generado_at": "2026-07-09T16:24:46.479187+00:00",
+    "generado_at": "2026-08-06T00:48:37.563196+00:00",
     "avance_global": 90,
-    "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Marketing Audit**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
+    "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Auditoría de marketing**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
     "capas": [
       {
         "id": "creador",
@@ -1004,7 +1038,7 @@
         "proyectos": [
           {
             "id": "router",
-            "nombre": "Router + skills",
+            "nombre": "Enrutador + habilidades",
             "carpeta": "router.py",
             "grupo": "core",
             "estado": "hecho",
@@ -1061,10 +1095,10 @@
             "estado": "parcial",
             "avance_pct": 85,
             "pendientes": [
-              "Web real (--no-mock-web + Playwright)"
+              "Búsqueda web real (--no-mock-web + Playwright)"
             ],
             "pendientes_n": 1,
-            "diagnostico": "Demo funcional. Falta: Web real (--no-mock-web + Playwright).",
+            "diagnostico": "Demo funcional. Falta: Búsqueda web real (--no-mock-web + Playwright).",
             "prioridad": "media"
           },
           {
@@ -1120,15 +1154,15 @@
         "proyectos": [
           {
             "id": "marketing_audit",
-            "nombre": "Marketing Audit",
+            "nombre": "Auditoría de marketing",
             "carpeta": "marketing-audit",
             "grupo": "comercial",
             "estado": "parcial",
             "avance_pct": 85,
             "pendientes": [
-              "PDF --pdf",
-              "Audit URL real (MOCK_FETCH=false)",
-              "Outreach automático"
+              "Informe PDF (--pdf)",
+              "Auditoría con URL real (MOCK_FETCH=false)",
+              "Contacto automático"
             ],
             "pendientes_n": 3,
             "diagnostico": "Avance 85%. 3 tareas abiertas.",
@@ -1156,11 +1190,11 @@
             "estado": "parcial",
             "avance_pct": 85,
             "pendientes": [
-              "Propuesta HTML auto desde pipeline",
-              "Deploy web real"
+              "Propuesta HTML automática desde pipeline",
+              "Despliegue web real"
             ],
             "pendientes_n": 2,
-            "diagnostico": "Avance 85%. Pendiente: Propuesta HTML auto desde pipeline · Deploy web real.",
+            "diagnostico": "Avance 85%. Pendiente: Propuesta HTML automática desde pipeline · Despliegue web real.",
             "prioridad": "media"
           },
           {
@@ -1172,7 +1206,7 @@
             "avance_pct": 85,
             "pendientes": [
               "API Meta",
-              "Webhook live",
+              "Webhook en vivo",
               "1 piloto"
             ],
             "pendientes_n": 3,
@@ -1187,11 +1221,11 @@
             "estado": "parcial",
             "avance_pct": 85,
             "pendientes": [
-              "HTML deploy",
-              "Google Business Profile"
+              "Despliegue HTML",
+              "Perfil de Google Business"
             ],
             "pendientes_n": 2,
-            "diagnostico": "Avance 85%. Pendiente: HTML deploy · Google Business Profile.",
+            "diagnostico": "Avance 85%. Pendiente: Despliegue HTML · Perfil de Google Business.",
             "prioridad": "media"
           },
           {
@@ -1202,10 +1236,10 @@
             "estado": "parcial",
             "avance_pct": 85,
             "pendientes": [
-              "Video Kling API real"
+              "Video con API Kling real"
             ],
             "pendientes_n": 1,
-            "diagnostico": "Demo funcional. Falta: Video Kling API real.",
+            "diagnostico": "Demo funcional. Falta: Video con API Kling real.",
             "prioridad": "media"
           },
           {
@@ -1238,7 +1272,7 @@
           }
         ],
         "bloqueadores": [
-          "Marketing Audit",
+          "Auditoría de marketing",
           "Bot WhatsApp pymes"
         ]
       }
@@ -1257,7 +1291,7 @@
       "proyectos": [
         {
           "id": "router",
-          "nombre": "Router + skills",
+          "nombre": "Enrutador + habilidades",
           "carpeta": "router.py",
           "grupo": "core",
           "estado": "hecho",
@@ -1314,10 +1348,10 @@
           "estado": "parcial",
           "avance_pct": 85,
           "pendientes": [
-            "Web real (--no-mock-web + Playwright)"
+            "Búsqueda web real (--no-mock-web + Playwright)"
           ],
           "pendientes_n": 1,
-          "diagnostico": "Demo funcional. Falta: Web real (--no-mock-web + Playwright).",
+          "diagnostico": "Demo funcional. Falta: Búsqueda web real (--no-mock-web + Playwright).",
           "prioridad": "media"
         },
         {
@@ -1373,15 +1407,15 @@
       "proyectos": [
         {
           "id": "marketing_audit",
-          "nombre": "Marketing Audit",
+          "nombre": "Auditoría de marketing",
           "carpeta": "marketing-audit",
           "grupo": "comercial",
           "estado": "parcial",
           "avance_pct": 85,
           "pendientes": [
-            "PDF --pdf",
-            "Audit URL real (MOCK_FETCH=false)",
-            "Outreach automático"
+            "Informe PDF (--pdf)",
+            "Auditoría con URL real (MOCK_FETCH=false)",
+            "Contacto automático"
           ],
           "pendientes_n": 3,
           "diagnostico": "Avance 85%. 3 tareas abiertas.",
@@ -1409,11 +1443,11 @@
           "estado": "parcial",
           "avance_pct": 85,
           "pendientes": [
-            "Propuesta HTML auto desde pipeline",
-            "Deploy web real"
+            "Propuesta HTML automática desde pipeline",
+            "Despliegue web real"
           ],
           "pendientes_n": 2,
-          "diagnostico": "Avance 85%. Pendiente: Propuesta HTML auto desde pipeline · Deploy web real.",
+          "diagnostico": "Avance 85%. Pendiente: Propuesta HTML automática desde pipeline · Despliegue web real.",
           "prioridad": "media"
         },
         {
@@ -1425,7 +1459,7 @@
           "avance_pct": 85,
           "pendientes": [
             "API Meta",
-            "Webhook live",
+            "Webhook en vivo",
             "1 piloto"
           ],
           "pendientes_n": 3,
@@ -1440,11 +1474,11 @@
           "estado": "parcial",
           "avance_pct": 85,
           "pendientes": [
-            "HTML deploy",
-            "Google Business Profile"
+            "Despliegue HTML",
+            "Perfil de Google Business"
           ],
           "pendientes_n": 2,
-          "diagnostico": "Avance 85%. Pendiente: HTML deploy · Google Business Profile.",
+          "diagnostico": "Avance 85%. Pendiente: Despliegue HTML · Perfil de Google Business.",
           "prioridad": "media"
         },
         {
@@ -1455,10 +1489,10 @@
           "estado": "parcial",
           "avance_pct": 85,
           "pendientes": [
-            "Video Kling API real"
+            "Video con API Kling real"
           ],
           "pendientes_n": 1,
-          "diagnostico": "Demo funcional. Falta: Video Kling API real.",
+          "diagnostico": "Demo funcional. Falta: Video con API Kling real.",
           "prioridad": "media"
         },
         {
@@ -1491,22 +1525,22 @@
         }
       ],
       "bloqueadores": [
-        "Marketing Audit",
+        "Auditoría de marketing",
         "Bot WhatsApp pymes"
       ]
     },
     "top_prioridades": [
       {
         "id": "marketing_audit",
-        "nombre": "Marketing Audit",
+        "nombre": "Auditoría de marketing",
         "carpeta": "marketing-audit",
         "grupo": "comercial",
         "estado": "parcial",
         "avance_pct": 85,
         "pendientes": [
-          "PDF --pdf",
-          "Audit URL real (MOCK_FETCH=false)",
-          "Outreach automático"
+          "Informe PDF (--pdf)",
+          "Auditoría con URL real (MOCK_FETCH=false)",
+          "Contacto automático"
         ],
         "pendientes_n": 3,
         "diagnostico": "Avance 85%. 3 tareas abiertas.",
@@ -1521,7 +1555,7 @@
         "avance_pct": 85,
         "pendientes": [
           "API Meta",
-          "Webhook live",
+          "Webhook en vivo",
           "1 piloto"
         ],
         "pendientes_n": 3,
@@ -1551,11 +1585,11 @@
         "estado": "parcial",
         "avance_pct": 85,
         "pendientes": [
-          "Propuesta HTML auto desde pipeline",
-          "Deploy web real"
+          "Propuesta HTML automática desde pipeline",
+          "Despliegue web real"
         ],
         "pendientes_n": 2,
-        "diagnostico": "Avance 85%. Pendiente: Propuesta HTML auto desde pipeline · Deploy web real.",
+        "diagnostico": "Avance 85%. Pendiente: Propuesta HTML automática desde pipeline · Despliegue web real.",
         "prioridad": "media"
       },
       {
@@ -1566,11 +1600,11 @@
         "estado": "parcial",
         "avance_pct": 85,
         "pendientes": [
-          "HTML deploy",
-          "Google Business Profile"
+          "Despliegue HTML",
+          "Perfil de Google Business"
         ],
         "pendientes_n": 2,
-        "diagnostico": "Avance 85%. Pendiente: HTML deploy · Google Business Profile.",
+        "diagnostico": "Avance 85%. Pendiente: Despliegue HTML · Perfil de Google Business.",
         "prioridad": "media"
       },
       {
@@ -1581,10 +1615,10 @@
         "estado": "parcial",
         "avance_pct": 85,
         "pendientes": [
-          "Web real (--no-mock-web + Playwright)"
+          "Búsqueda web real (--no-mock-web + Playwright)"
         ],
         "pendientes_n": 1,
-        "diagnostico": "Demo funcional. Falta: Web real (--no-mock-web + Playwright).",
+        "diagnostico": "Demo funcional. Falta: Búsqueda web real (--no-mock-web + Playwright).",
         "prioridad": "media"
       },
       {
@@ -1609,10 +1643,10 @@
         "estado": "parcial",
         "avance_pct": 85,
         "pendientes": [
-          "Video Kling API real"
+          "Video con API Kling real"
         ],
         "pendientes_n": 1,
-        "diagnostico": "Demo funcional. Falta: Video Kling API real.",
+        "diagnostico": "Demo funcional. Falta: Video con API Kling real.",
         "prioridad": "media"
       }
     ],
@@ -1625,7 +1659,7 @@
     }
   },
   "viabilidad_proyectos": {
-    "generado_at": "2026-07-09T16:24:46.480212+00:00",
+    "generado_at": "2026-08-06T00:48:37.564139+00:00",
     "total": 16,
     "capas": [
       {
@@ -5851,7 +5885,7 @@
       "paso": 4,
       "slug": "paso-4-whatsapp",
       "nombre": "Bot WhatsApp",
-      "desc": "Simulación agendar hora · demo sin API",
+      "desc": "Simulación agendar hora · demostración sin API",
       "path": "clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-4-whatsapp/index.html",
       "estado": "demo",
       "listo": true,
@@ -5995,12 +6029,12 @@
           "Vercel/Netlify",
           "Google Business Profile"
         ],
-        "flujo": "Propuesta OK → landing paso-3 → deploy → enlace en Maps",
+        "flujo": "Propuesta OK → landing paso-3 → publicación → enlace en Mapas",
         "plan_b": "Primero subdominio tuyo (cliente.presencialocal.cl); dominio del cliente después.",
         "tareas": [
           {
             "id": "p3-sub",
-            "texto": "Plan B: subdominio temporal live en 24h"
+            "texto": "Plan B: subdominio temporal en línea en 24 h"
           },
           {
             "id": "p3-landing",
@@ -6008,7 +6042,7 @@
           },
           {
             "id": "p3-deploy",
-            "texto": "Deploy en Vercel/Netlify (SSL activo)"
+            "texto": "Publicar en Vercel/Netlify (SSL activo)"
           },
           {
             "id": "p3-dominio",
@@ -6020,7 +6054,7 @@
           },
           {
             "id": "p3-gbp",
-            "texto": "Google Business Profile con URL de la web"
+            "texto": "Perfil de Google Business con URL del sitio web"
           },
           {
             "id": "p3-test",
@@ -6036,7 +6070,7 @@
           "Meta API (A)",
           "Evolution API (B)"
         ],
-        "flujo": "Web live → elegir ruta A u B → bot agenda / responde",
+        "flujo": "Sitio web en línea → elegir ruta A o B → bot agenda / responde",
         "plan_b": "Ruta B (Evolution): sin verificación Meta; ideal negocio informal.",
         "tareas": [
           {
@@ -6053,7 +6087,7 @@
           },
           {
             "id": "p4-webhook",
-            "texto": "Webhook / servidor con URL pública"
+            "texto": "Webhook / servidor con URL pública (conexión en vivo)"
           },
           {
             "id": "p4-flujos",
@@ -6459,6 +6493,15 @@
       "proyectos": [
         {
           "slug": "web-inicial",
+          "embudo": false
+        }
+      ]
+    },
+    {
+      "slug": "vertice-pro",
+      "proyectos": [
+        {
+          "slug": "shopify",
           "embudo": false
         }
       ]

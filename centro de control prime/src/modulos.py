@@ -70,7 +70,7 @@ def modulos_estado() -> list[dict]:
     items = [
         {
             "id": "router",
-            "nombre": "Router + skills",
+            "nombre": "Enrutador + habilidades",
             "carpeta": "router.py",
             "grupo": "core",
             "capa": CAPA_CREADOR,
@@ -124,7 +124,7 @@ def modulos_estado() -> list[dict]:
             "grupo": "investigacion",
             "capa": CAPA_CREADOR,
             "hecho": [_cli("project_lens")],
-            "falta": ["Web real (--no-mock-web + Playwright)"],
+            "falta": ["Búsqueda web real (--no-mock-web + Playwright)"],
         },
         {
             "id": "prompts",
@@ -155,12 +155,12 @@ def modulos_estado() -> list[dict]:
         },
         {
             "id": "marketing_audit",
-            "nombre": "Marketing Audit",
+            "nombre": "Auditoría de marketing",
             "carpeta": "marketing-audit",
             "grupo": "comercial",
             "capa": CAPA_PRODUCTO,
             "hecho": [_cli("marketing-audit"), _exists("marketing-audit", "src", "html_report.py")],
-            "falta": ["PDF --pdf", "Audit URL real (MOCK_FETCH=false)", "Outreach automático"],
+            "falta": ["Informe PDF (--pdf)", "Auditoría con URL real (MOCK_FETCH=false)", "Contacto automático"],
         },
         {
             "id": "clientes",
@@ -181,7 +181,7 @@ def modulos_estado() -> list[dict]:
                 _exists("proyectos-top3", "01-auditorias-locales", "auditorias_main.py"),
                 _exists("clientes", "clinica-sol", "proyectos", "audit-inicial", "entregables", "index.html"),
             ],
-            "falta": ["Propuesta HTML auto desde pipeline", "Deploy web real"],
+            "falta": ["Propuesta HTML automática desde pipeline", "Despliegue web real"],
         },
         {
             "id": "wasap",
@@ -190,7 +190,7 @@ def modulos_estado() -> list[dict]:
             "grupo": "comercial",
             "capa": CAPA_PRODUCTO,
             "hecho": [_exists("proyectos-top3", "02-wasap-pymes", "wasap_main.py")],
-            "falta": ["API Meta", "Webhook live", "1 piloto"],
+            "falta": ["API Meta", "Webhook en vivo", "1 piloto"],
         },
         {
             "id": "presencia",
@@ -199,7 +199,7 @@ def modulos_estado() -> list[dict]:
             "grupo": "comercial",
             "capa": CAPA_PRODUCTO,
             "hecho": [_exists("proyectos-top3", "03-presencia-digital", "presencia_main.py")],
-            "falta": ["HTML deploy", "Google Business Profile"],
+            "falta": ["Despliegue HTML", "Perfil de Google Business"],
         },
         {
             "id": "contenido",
@@ -208,7 +208,7 @@ def modulos_estado() -> list[dict]:
             "grupo": "produccion",
             "capa": CAPA_PRODUCTO,
             "hecho": [_cli("creador de contenido")],
-            "falta": ["Video Kling API real"],
+            "falta": ["Video con API Kling real"],
         },
         {
             "id": "libros",
@@ -300,7 +300,7 @@ def embudo_comercial() -> list[dict]:
             "paso": 4,
             "slug": "paso-4-whatsapp",
             "nombre": "Bot WhatsApp",
-            "desc": "Simulación agendar hora · demo sin API",
+            "desc": "Simulación agendar hora · demostración sin API",
             "path": f"{base}/paso-4-whatsapp/index.html",
             "estado": "demo",
             "listo": True,

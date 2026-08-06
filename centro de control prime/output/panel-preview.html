@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>Centro de control · cursorprime</title>
+  <script>…JS omitido…</script>
+  <style>…CSS omitido…</style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-brand">
+        <h1>Centro de control prime</h1>
+        <p>cursorprime · actualizado 05/08/2026 02:16</p>
+      </div>
+      <div class="topbar-actions">
+        <button type="button" class="quick-btn" data-view="embudo">Presencia digital</button>
+        <button type="button" class="quick-btn" data-view="rentabilidad">Rentabilidad</button>
+        <code>panel_main.py refresh</code>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <button class="nav-btn active" data-view="resumen">Resumen</button>
+      <button class="nav-btn" data-view="modulos">Módulos</button>
+      <button class="nav-btn" data-view="operaciones">Cola e ideas</button>
+      <button class="nav-btn" data-view="sistema">Sistema</button>
+    </nav>
+
+    <!-- RESUMEN -->
+    <section id="view-resumen" class="view active">
+      <div class="kpi-row"><div class="kpi"><div class="kpi-val">3</div><div class="kpi-lbl">Investigaciones hechas</div></div><div class="kpi"><div class="kpi-val">7</div><div class="kpi-lbl">Ideas evaluadas</div></div><div class="kpi"><div class="kpi-val">12</div><div class="kpi-lbl">Sin revisar</div></div><div class="kpi"><div class="kpi-val">6</div><div class="kpi-lbl">Módulos listos</div></div><div class="kpi"><div class="kpi-val">5</div><div class="kpi-lbl">Clientes</div></div><div class="kpi"><div class="kpi-val">3</div><div class="kpi-lbl">Ideas ya hechas</div></div><div class="kpi"><div class="kpi-val">17%</div><div class="kpi-lbl">Avance cola</div></div></div>
+      <div class="grid-2" style="margin-bottom:12px">
+        <div class="card">
+          <div class="card-head"><h2>Flujo de trabajo</h2><span class="hint">Clic → ir al detalle</span></div>
+          <div class="card-body"><div class="flujo-compact">
+        <div class="flujo-pill" data-goto="operaciones" data-sub="analisis">
+          <div class="step">Paso 1</div>
+          <div class="name">Investigar mercado</div>
+          <div class="cnt">3</div>
+        </div>
+        <div class="flujo-pill" data-goto="operaciones" data-sub="pendientes">
+          <div class="step">Paso 2</div>
+          <div class="name">Lluvia de ideas</div>
+          <div class="cnt">18</div>
+        </div>
+        <div class="flujo-pill" data-goto="operaciones" data-sub="evaluaciones">
+          <div class="step">Paso 3</div>
+          <div class="name">Evaluar y diseñar</div>
+          <div class="cnt">9</div>
+        </div>
+        <div class="flujo-pill" data-goto="sistema">
+          <div class="step">Paso 4</div>
+          <div class="name">Crear contenido</div>
+          <div class="cnt">3</div>
+        </div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Último radar KDP</h2><span class="hint">YouTube + web · en vivo</span></div>
+          <div class="card-body">
+    <div class="hero-compact">
+      <div class="hero-top">
+        <h2>Radar KDP — radar-2026w27</h2>
+        <div class="meta">Semana 2026w27 · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="hero-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="hero-stat"><div class="lbl">Puntuación</div><div class="val">85</div></div>
+        <div class="hero-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="resumen"><strong>Tema:</strong> nichos kdp resumenes libros youtube — Investigación sobre «nichos kdp resumenes libros youtube»: demanda en KDP/guias digitales, creadores combinan YouTube + </p>
+      <a href='../../analisis-de-proyectos/data/radar-2026w27/output/analisis.md'>Informe completo →</a>
+    </div></div>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="card-head"><h2>Cola de ideas</h2></div><div class="card-body chart-box"><canvas id="chartCola"></canvas></div></div>
+        <div class="card"><div class="card-head"><h2>Estado módulos</h2></div><div class="card-body chart-box"><canvas id="chartModulos"></canvas></div></div>
+        <div class="card"><div class="card-head"><h2>Producción</h2></div><div class="card-body chart-box"><canvas id="chartProd"></canvas></div></div>
+      </div>
+    </section>
+
+    <!-- MÓDULOS + VIABILIDAD -->
+    <section id="view-modulos" class="view">
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-head"><h2>Análisis de viabilidad</h2><span class="hint">YouTube + web · formato radar</span></div>
+        <div class="card-body">
+        <div class="capa-block">
+          <div class="capa-label ">
+            <h3>Creador de proyectos</h3>
+            <span>6 viables · puntuación 77</span>
+          </div>
+          <div class="analisis-heroes-grid">
+    <article class="analisis-hero">
+      <h2>Análisis de proyectos</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">market research pipeline digital product kdp youtube automation</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">8</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">75</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «market research pipeline digital product kdp youtube automation»: 0 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/analisis.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Ideas + evaluar</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">startup idea evaluation viability side project saas</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">84</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «startup idea evaluation viability side project saas»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/ideas.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Lluvia de ideas</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">brainstorm product ideas digital business automation 2026</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">7</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge condicional'>Condicional</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">69</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">1</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «brainstorm product ideas digital business automation 2026»: 0 YouTube · 7 web. Demanda parcial — conviene nicho más específico o MVP pequeño.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/lluvia.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Centro de control</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">project dashboard control panel productivity software</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">8</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge condicional'>Condicional</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">63</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «project dashboard control panel productivity software»: 0 YouTube · 8 web. Demanda parcial — conviene nicho más específico o MVP pequeño.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/panel.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Project Lens (profundo)</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">business viability market analysis tool entrepreneur</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">80</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «business viability market analysis tool entrepreneur»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/project_lens.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Creador de prompts</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">ai prompt templates automation cursor pipeline</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">82</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «ai prompt templates automation cursor pipeline»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/prompts.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Router + skills</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">cursor ai agent skills automation workflow developer</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">84</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «cursor ai agent skills automation workflow developer»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/router.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Creador de skills</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">cursor agent custom skills workflow automation</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">82</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «cursor agent custom skills workflow automation»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/skills.md'>Ver informe →</a>
+    </article></div>
+        </div>
+        <div class="capa-block">
+          <div class="capa-label producto">
+            <h3>Proyectos creados</h3>
+            <span>7 viables · puntuación 81</span>
+          </div>
+          <div class="analisis-heroes-grid">
+    <article class="analisis-hero">
+      <h2>Capa clientes</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">digital agency client onboarding local business</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">6</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge condicional'>Condicional</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">67</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">1</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «digital agency client onboarding local business»: 6 YouTube · 0 web. Demanda parcial — conviene nicho más específico o MVP pequeño.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/clientes.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Creador de contenido</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">ai content creation youtube faceless video automation</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">13</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">86</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «ai content creation youtube faceless video automation»: 6 YouTube · 7 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/contenido.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Embudo comercial HTML</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">sales funnel local business marketing audit proposal</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">7</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">77</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">1</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «sales funnel local business marketing audit proposal»: 6 YouTube · 1 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/embudo.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Libros / KDP</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">amazon kdp book summary niche youtube faceless</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">13</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">92</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «amazon kdp book summary niche youtube faceless»: 6 YouTube · 7 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/libros.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>LinkedIn ghostwriter</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">linkedin ghostwriter b2b content automation posts</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">82</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «linkedin ghostwriter b2b content automation posts»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/linkedin.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Marketing Audit</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">local business marketing audit digital presence 2026</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">82</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «local business marketing audit digital presence 2026»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/marketing_audit.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Presencia web locales</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">local business google business profile website seo</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">14</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">80</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «local business google business profile website seo»: 6 YouTube · 8 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/presencia.md'>Ver informe →</a>
+    </article>
+    <article class="analisis-hero">
+      <h2>Bot WhatsApp pymes</h2>
+      <div class="meta">Viabilidad mercado · 2026-06-29 · <span class='badge live'>En vivo</span></div>
+      <div class="analisis-stat stat-tema"><div class="lbl">Tema</div><div class="val">whatsapp bot small business latin america automation</div></div>
+      <div class="analisis-hero-grid">
+        <div class="analisis-stat"><div class="lbl">Fuentes</div><div class="val">13</div></div>
+        <div class="analisis-stat"><div class="lbl">Veredicto</div><div class="val"><span class='badge viable'>Viable</span></div></div>
+        <div class="analisis-stat"><div class="lbl">Puntuación</div><div class="val">84</div></div>
+        <div class="analisis-stat"><div class="lbl">Oportunidades</div><div class="val">2</div></div>
+      </div>
+      <p class="analisis-resumen">Investigación sobre «whatsapp bot small business latin america automation»: 6 YouTube · 7 web. Hay señales de demanda y productos similares activos hoy.</p>
+      <a class='informe-link' href='../../centro de control prime/meta/viabilidad/wasap.md'>Ver informe →</a>
+    </article></div>
+        </div></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Estado de implementación</h2><span class="hint">Clic fila → pendientes</span></div>
+        <div class="card-body">
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Módulo</th><th>Carpeta</th><th>Estado</th><th>Avance</th><th>Pendientes</th></tr></thead>
+        <tbody>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Enrutador + habilidades</strong></td>
+              <td><code>router.py</code></td>
+              <td><span class='badge hecho'>Hecho</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:100%"></span></span> 100%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">—</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">—</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Análisis de proyectos</strong></td>
+              <td><code>analisis-de-proyectos</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Síntesis con LLM (hoy heurística); Informe HTML del análisis (solo markdown)</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Síntesis con LLM (hoy heurística); Informe HTML del análisis (solo markdown)</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Lluvia de ideas</strong></td>
+              <td><code>lluvia-de-ideas</code></td>
+              <td><span class='badge hecho'>Hecho</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:100%"></span></span> 100%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">—</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">—</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Ideas + evaluar</strong></td>
+              <td><code>ideas de proyectos</code></td>
+              <td><span class='badge hecho'>Hecho</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:100%"></span></span> 100%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">—</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">—</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Project Lens (profundo)</strong></td>
+              <td><code>project_lens</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Búsqueda web real (--no-mock-web + Playwright)</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Búsqueda web real (--no-mock-web + Playwright)</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Creador de prompts</strong></td>
+              <td><code>creador de prompts</code></td>
+              <td><span class='badge hecho'>Hecho</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:100%"></span></span> 100%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">—</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">—</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Creador de skills</strong></td>
+              <td><code>creador de skills</code></td>
+              <td><span class='badge hecho'>Hecho</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:100%"></span></span> 100%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">—</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">—</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Creador de proyectos</span><br><strong>Centro de control</strong></td>
+              <td><code>centro de control prime</code></td>
+              <td><span class='badge hecho'>Hecho</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:100%"></span></span> 100%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">—</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">—</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Auditoría de marketing</strong></td>
+              <td><code>marketing-audit</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Informe PDF (--pdf); Auditoría con URL real (MOCK_FETCH=false); Contacto automát…</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Informe PDF (--pdf); Auditoría con URL real (MOCK_FETCH=false); Contacto automático</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Capa clientes</strong></td>
+              <td><code>clientes</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">1 cliente real que pague</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">1 cliente real que pague</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Embudo comercial HTML</strong></td>
+              <td><code>proyectos-top3</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Propuesta HTML automática desde pipeline; Despliegue web real</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Propuesta HTML automática desde pipeline; Despliegue web real</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Bot WhatsApp pymes</strong></td>
+              <td><code>proyectos-top3/02-wasap-pymes</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">API Meta; Webhook en vivo; 1 piloto</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">API Meta; Webhook en vivo; 1 piloto</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Presencia web locales</strong></td>
+              <td><code>proyectos-top3/03-presencia-digital</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Despliegue HTML; Perfil de Google Business</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Despliegue HTML; Perfil de Google Business</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Creador de contenido</strong></td>
+              <td><code>creador de contenido</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Video con API Kling real</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Video con API Kling real</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>Libros / KDP</strong></td>
+              <td><code>libros a entender</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Correr con PDF usuario</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Correr con PDF usuario</td></tr>
+            <tr class="expandable">
+              <td><span style="color:var(--muted);font-size:0.68rem">Proyectos creados</span><br><strong>LinkedIn ghostwriter</strong></td>
+              <td><code>linkedin-ghostwriter</code></td>
+              <td><span class='badge parcial'>Parcial</span></td>
+              <td><span class="bar-mini"><span class="bar-mini-fill" style="width:85%"></span></span> 85%</td>
+              <td style="color:var(--yellow);font-size:0.72rem">Mes de posts real</td>
+            </tr>
+            <tr class="detail-row" style="display:none"><td colspan="5">Mes de posts real</td></tr></tbody>
+      </table>
+    </div></div>
+      </div>
+    </section>
+
+    <!-- OPERACIONES -->
+    <section id="view-operaciones" class="view">
+      <div class="card">
+        <div class="card-head"><h2>Cola, evaluaciones e investigaciones</h2></div>
+        <div class="card-body" id="operaciones">
+          <div class="subnav">
+            <button class="active" data-sub="pendientes">Sin revisar (12)</button>
+            <button data-sub="evaluaciones">Evaluaciones (7)</button>
+            <button data-sub="analisis">Investigaciones (3)</button>
+            <button data-sub="implementadas">Implementadas (3)</button>
+            <button data-sub="espera">Pospuestas (3)</button>
+          </div>
+          <div id="operaciones-pendientes" class="subpanel active"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Idea</th><th>Tipo</th></tr></thead><tbody><tr><td>Empaquetar pipeline como producto vendible</td><td>nuevo_proyecto</td></tr><tr><td>Pipeline investigación → producto para: resumenes li…</td><td>nuevo_proyecto</td></tr><tr><td>Pack promocional automático post-investigación</td><td>visual</td></tr><tr><td>Empaquetar pipeline como producto vendible</td><td>nuevo_proyecto</td></tr><tr><td>Pipeline investigación → producto para: nichos kdp r…</td><td>nuevo_proyecto</td></tr><tr><td>Landing «vende tu pipeline» para primer sistema empa…</td><td>marketing</td></tr><tr><td>Enlace investigación → evaluar-idea → construir</td><td>meta</td></tr><tr><td>Radar de nichos KDP desde YouTube semanal</td><td>informacion</td></tr><tr><td>Landing «vende tu pipeline» para primer sistema empa…</td><td>marketing</td></tr><tr><td>Pack promocional automático post-investigación</td><td>visual</td></tr><tr><td>Enlace investigación → evaluar-idea → construir</td><td>meta</td></tr><tr><td>Radar de nichos KDP desde YouTube semanal</td><td>informacion</td></tr></tbody></table></div></div>
+          <div id="operaciones-evaluaciones" class="subpanel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Idea</th><th>Veredicto</th><th>Puntuación</th></tr></thead><tbody><tr><td>Auditorías marketing para negocios locales</td><td><span class='badge viable'>Viable</span></td><td>98</td></tr><tr><td>Cola de pedidos + bot WhatsApp para negocios locales</td><td><span class='badge viable'>Viable</span></td><td>90</td></tr><tr><td>contenido_creativo</td><td><span class='badge condicional'>Condicional</span></td><td>50</td></tr><tr><td>Pipeline investigación → producto para: nichos kdp r…</td><td><span class='badge viable'>Viable</span></td><td>85</td></tr><tr><td>Pipeline investigación → producto para: resumenes li…</td><td><span class='badge viable'>Viable</span></td><td>85</td></tr><tr><td>Agencia de presencia digital para negocios locales</td><td><span class='badge viable'>Viable</span></td><td>98</td></tr><tr><td>wasap_pymes</td><td><span class='badge condicional'>Condicional</span></td><td>50</td></tr></tbody></table></div></div>
+          <div id="operaciones-analisis" class="subpanel"><div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tema</th><th>Identificador</th><th>Modo</th><th>Fuentes</th><th>Veredicto</th><th>Puntuación</th><th></th></tr></thead>
+      <tbody><tr>
+          <td>nichos kdp resumenes libros youtube</td>
+          <td><code>radar-2026w27</code></td>
+          <td><span class='badge live'>En vivo</span></td>
+          <td>14</td>
+          <td><span class='badge viable'>Viable</span></td>
+          <td>85</td>
+          <td><a href='../../analisis-de-proyectos/data/radar-2026w27/output/analisis.md'>↗</a></td>
+        </tr><tr>
+          <td>resumenes libros kdp</td>
+          <td><code>demo_investigacion</code></td>
+          <td><span class='badge mock'>Simulado</span></td>
+          <td>5</td>
+          <td><span class='badge viable'>Viable</span></td>
+          <td>85</td>
+          <td><a href='../../analisis-de-proyectos/data/demo_investigacion/output/analisis.md'>↗</a></td>
+        </tr><tr>
+          <td>nichos kdp resumenes libros youtube</td>
+          <td><code>radar-2026w26</code></td>
+          <td><span class='badge mock'>Simulado</span></td>
+          <td>5</td>
+          <td><span class='badge '>—</span></td>
+          <td>—</td>
+          <td><a href='../../analisis-de-proyectos/data/radar-2026w26/output/analisis.md'>↗</a></td>
+        </tr></tbody></table></div></div>
+          <div id="operaciones-implementadas" class="subpanel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Idea</th><th>Tipo</th></tr></thead><tbody><tr><td>Pack promocional automático post-investigación</td><td>visual</td></tr><tr><td>Enlace investigación → evaluar-idea → construir</td><td>meta</td></tr><tr><td>Radar de nichos KDP desde YouTube semanal</td><td>informacion</td></tr></tbody></table></div></div>
+          <div id="operaciones-espera" class="subpanel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Idea</th><th>Tipo</th></tr></thead><tbody><tr><td>Landing «vende tu pipeline» para primer sistema empa…</td><td>marketing</td></tr><tr><td>Empaquetar pipeline como producto vendible</td><td>nuevo_proyecto</td></tr><tr><td>Pipeline investigación → producto para: resumenes li…</td><td>nuevo_proyecto</td></tr></tbody></table></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESENCIA DIGITAL -->
+    <section id="view-embudo" class="view">
+      <div class="card">
+        <div class="card-head"><h2>Presencia digital — Clínica Sol</h2><span class="hint">4 pasos · informe → propuesta → sitio web → WhatsApp</span></div>
+        <div class="card-body">
+    <div id="embudo-shell" class="embudo-shell" data-index-url="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/index.html" data-steps="[{&quot;paso&quot;: 1, &quot;url&quot;: &quot;../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-1-informe/index.html&quot;, &quot;title&quot;: &quot;Informe de marketing&quot;}, {&quot;paso&quot;: 2, &quot;url&quot;: &quot;../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-2-propuesta/index.html&quot;, &quot;title&quot;: &quot;Propuesta comercial&quot;}, {&quot;paso&quot;: 3, &quot;url&quot;: &quot;../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-3-web/index.html&quot;, &quot;title&quot;: &quot;Web presencia&quot;}, {&quot;paso&quot;: 4, &quot;url&quot;: &quot;../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-4-whatsapp/index.html&quot;, &quot;title&quot;: &quot;Bot WhatsApp&quot;}]">
+      <div id="embudo-overview">
+        <div class="embudo-intro">
+          <p>Cliente de demostración <strong>Clínica Sol</strong> · flujo prospección → informe → propuesta → sitio web → WhatsApp.
+          Cada paso se abre aquí mismo; puedes seguir con anterior / siguiente.</p>
+          <button type="button" class="btn-outline" data-embudo-url="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/index.html"
+            data-embudo-title="Índice del embudo" data-embudo-paso="0">Abrir índice del embudo</button>
+        </div>
+        <div class="embudo-flow"><span class="embudo-flow-item paso0 done">0</span><span class="embudo-flow-arrow">→</span><span class="embudo-flow-item done">1</span><span class="embudo-flow-arrow">→</span><span class="embudo-flow-item done">2</span><span class="embudo-flow-arrow">→</span><span class="embudo-flow-item done">3</span><span class="embudo-flow-arrow">→</span><span class="embudo-flow-item done">4</span></div>
+        <div class="card" style="margin-top:12px">
+          <div class="card-head"><h2>Prospección · Paso 0</h2><span class="hint">Bot de Mapas · contactos viables</span></div>
+          <div class="card-body">
+    <div class="prod-leads">
+      <p class="prod-leads-meta">
+        Paso 0 · <strong>dentista</strong> en <strong>Providencia</strong> · Simulado · 09/07/2026 15:48 UTC
+        · 2 viables / 5 contactos · identificador <code>demo-prov</code>
+      </p>
+      <div class="prod-leads-cards">
+        <article class="lead-card viable">
+          <div class="lead-card-top">
+            <h4>Dentista Central Providencia</h4>
+            <span class='badge viable'>Viable</span>
+          </div>
+          <p class="lead-card-addr">Av. Principal 100, Providencia</p>
+          <div class="lead-card-stats">
+            <span class="score">80 puntos</span>
+            <span>★ 3.8</span>
+            <span>6 reseñas</span>
+          </div>
+          <p class="lead-card-senales">sin_web, pocas_resenas, rating_bajo, tiene_telefono</p>
+          <div class="lead-card-actions">
+            <a class="lead-card-btn" href="tel:+56912345678">Llamar</a>
+            <a class="lead-card-btn" href="https://maps.google.com/?q=mock1" target="_blank" rel="noopener">Abrir Mapas</a>
+          </div>
+        </article>
+        <article class="lead-card viable">
+          <div class="lead-card-top">
+            <h4>Dentista Familiar</h4>
+            <span class='badge viable'>Viable</span>
+          </div>
+          <p class="lead-card-addr">Providencia 800, Providencia</p>
+          <div class="lead-card-stats">
+            <span class="score">75 puntos</span>
+            <span>★ 3.2</span>
+            <span>3 reseñas</span>
+          </div>
+          <p class="lead-card-senales">sin_web, pocas_resenas, rating_bajo, sin_telefono</p>
+          <div class="lead-card-actions">
+            
+            <a class="lead-card-btn" href="https://maps.google.com/?q=mock4" target="_blank" rel="noopener">Abrir Mapas</a>
+          </div>
+        </article>
+        <article class="lead-card">
+          <div class="lead-card-top">
+            <h4>Clínica Dentista Norte</h4>
+            <span class='badge '>No</span>
+          </div>
+          <p class="lead-card-addr">Los Leones 450, Providencia</p>
+          <div class="lead-card-stats">
+            <span class="score">35 puntos</span>
+            <span>★ 4.2</span>
+            <span>18 reseñas</span>
+          </div>
+          <p class="lead-card-senales">solo_red_social, resenas_medias, tiene_telefono</p>
+          <div class="lead-card-actions">
+            <a class="lead-card-btn" href="tel:+56987654321">Llamar</a>
+            <a class="lead-card-btn" href="https://maps.google.com/?q=mock2" target="_blank" rel="noopener">Abrir Mapas</a>
+          </div>
+        </article>
+        <article class="lead-card">
+          <div class="lead-card-top">
+            <h4>Servicios Dentista Express</h4>
+            <span class='badge '>No</span>
+          </div>
+          <p class="lead-card-addr">Mapocho 2200, Providencia</p>
+          <div class="lead-card-stats">
+            <span class="score">5 puntos</span>
+            <span>★ 4.5</span>
+            <span>42 reseñas</span>
+          </div>
+          <p class="lead-card-senales">tiene_telefono</p>
+          <div class="lead-card-actions">
+            <a class="lead-card-btn" href="tel:+56222334455">Llamar</a>
+            <a class="lead-card-btn" href="https://maps.google.com/?q=mock3" target="_blank" rel="noopener">Abrir Mapas</a>
+          </div>
+        </article>
+        <article class="lead-card">
+          <div class="lead-card-top">
+            <h4>Centro Dentista Premium</h4>
+            <span class='badge '>No</span>
+          </div>
+          <p class="lead-card-addr">Apoquindo 3000, Providencia</p>
+          <div class="lead-card-stats">
+            <span class="score">5 puntos</span>
+            <span>★ 4.8</span>
+            <span>120 reseñas</span>
+          </div>
+          <p class="lead-card-senales">tiene_telefono</p>
+          <div class="lead-card-actions">
+            <a class="lead-card-btn" href="tel:+56911112222">Llamar</a>
+            <a class="lead-card-btn" href="https://maps.google.com/?q=mock5" target="_blank" rel="noopener">Abrir Mapas</a>
+          </div>
+        </article></div>
+      <div class="tbl-wrap prod-leads-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Negocio</th><th>Dirección</th><th>Tel</th><th>Web</th>
+              <th>★</th><th>Reseñas</th><th>Puntuación</th><th>Señales</th><th></th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr class="viable">
+          <td>Dentista Central Providencia</td>
+          <td>Av. Principal 100, Providencia</td>
+          <td><a href="tel:+56912345678">+56912345678</a></td>
+          <td>—</td>
+          <td>3.8</td>
+          <td>6</td>
+          <td class="score">80</td>
+          <td style="font-size:0.65rem;color:var(--muted)">sin_web, pocas_resenas, rating_bajo, tiene_telefono</td>
+          <td><span class='badge viable'>Viable</span></td>
+          <td><a href="https://maps.google.com/?q=mock1" target="_blank" rel="noopener">Mapas</a></td>
+        </tr>
+        <tr class="viable">
+          <td>Dentista Familiar</td>
+          <td>Providencia 800, Providencia</td>
+          <td>—</td>
+          <td>—</td>
+          <td>3.2</td>
+          <td>3</td>
+          <td class="score">75</td>
+          <td style="font-size:0.65rem;color:var(--muted)">sin_web, pocas_resenas, rating_bajo, sin_telefono</td>
+          <td><span class='badge viable'>Viable</span></td>
+          <td><a href="https://maps.google.com/?q=mock4" target="_blank" rel="noopener">Mapas</a></td>
+        </tr>
+        <tr class="">
+          <td>Clínica Dentista Norte</td>
+          <td>Los Leones 450, Providencia</td>
+          <td><a href="tel:+56987654321">+56987654321</a></td>
+          <td><a href="https://facebook.com/clinica.demo" target="_blank" rel="noopener">Sitio web</a></td>
+          <td>4.2</td>
+          <td>18</td>
+          <td class="score">35</td>
+          <td style="font-size:0.65rem;color:var(--muted)">solo_red_social, resenas_medias, tiene_telefono</td>
+          <td><span class='badge '>No</span></td>
+          <td><a href="https://maps.google.com/?q=mock2" target="_blank" rel="noopener">Mapas</a></td>
+        </tr>
+        <tr class="">
+          <td>Servicios Dentista Express</td>
+          <td>Mapocho 2200, Providencia</td>
+          <td><a href="tel:+56222334455">+56222334455</a></td>
+          <td><a href="https://ejemplo-dental-antiguo.cl" target="_blank" rel="noopener">Sitio web</a></td>
+          <td>4.5</td>
+          <td>42</td>
+          <td class="score">5</td>
+          <td style="font-size:0.65rem;color:var(--muted)">tiene_telefono</td>
+          <td><span class='badge '>No</span></td>
+          <td><a href="https://maps.google.com/?q=mock3" target="_blank" rel="noopener">Mapas</a></td>
+        </tr>
+        <tr class="">
+          <td>Centro Dentista Premium</td>
+          <td>Apoquindo 3000, Providencia</td>
+          <td><a href="tel:+56911112222">+56911112222</a></td>
+          <td><a href="https://centro-premium.cl" target="_blank" rel="noopener">Sitio web</a></td>
+          <td>4.8</td>
+          <td>120</td>
+          <td class="score">5</td>
+          <td style="font-size:0.65rem;color:var(--muted)">tiene_telefono</td>
+          <td><span class='badge '>No</span></td>
+          <td><a href="https://maps.google.com/?q=mock5" target="_blank" rel="noopener">Mapas</a></td>
+        </tr></tbody>
+        </table>
+      </div>
+      <p class="prod-leads-meta">Nueva búsqueda: <code>cd prospeccion-locales &amp;&amp; python3 prospeccion_main.py buscar --rubro dentista --ciudad Providencia --mock</code></p>
+    </div></div>
+        </div>
+        <div class="embudo-steps">
+        <button type="button" class="embudo-step step-done" data-embudo-url="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-1-informe/index.html"
+          data-embudo-title="Informe de marketing" data-embudo-paso="1">
+          <span class="embudo-step-num">1</span>
+          <h3>Informe de marketing</h3>
+          <p>Audit 55/100 · lenguaje claro · listo para enviar</p>
+          <span class="embudo-step-meta"><span class='badge mock'>Demo</span></span>
+        </button>
+        <button type="button" class="embudo-step step-done" data-embudo-url="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-2-propuesta/index.html"
+          data-embudo-title="Propuesta comercial" data-embudo-paso="2">
+          <span class="embudo-step-num">2</span>
+          <h3>Propuesta comercial</h3>
+          <p>3 planes: $80k · $120k · $180k / mes</p>
+          <span class="embudo-step-meta"><span class='badge mock'>Demo</span></span>
+        </button>
+        <button type="button" class="embudo-step step-done" data-embudo-url="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-3-web/index.html"
+          data-embudo-title="Web presencia" data-embudo-paso="3">
+          <span class="embudo-step-num">3</span>
+          <h3>Web presencia</h3>
+          <p>Landing con CTA, FAQ y «Por qué elegirnos»</p>
+          <span class="embudo-step-meta"><span class='badge mock'>Demo</span></span>
+        </button>
+        <button type="button" class="embudo-step step-done" data-embudo-url="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-4-whatsapp/index.html"
+          data-embudo-title="Bot WhatsApp" data-embudo-paso="4">
+          <span class="embudo-step-num">4</span>
+          <h3>Bot WhatsApp</h3>
+          <p>Simulación agendar hora · demostración sin API</p>
+          <span class="embudo-step-meta"><span class='badge mock'>Demo</span></span>
+        </button></div>
+        <div class="card" style="margin-top:12px">
+          <div class="card-head"><h2>Presencia digital — checklist</h2><span class="hint">Apps · conexión · checklist</span></div>
+          <div class="card-body">
+    <div id="embudo-produccion" class="prod-plan" data-cliente="clinica-sol">
+      <p class="prod-intro">Marca cada tarea (se guarda en tu navegador). Si algo se traba, usa el Plan B — el embudo no debe detenerse.</p>
+      
+    <div class="prod-paginas">
+      <h4>Páginas y plataformas que necesitas</h4>
+      <table><thead><tr><th>Paso</th><th>Plataforma</th><th>URL</th><th>Para qué</th></tr></thead><tbody><tr><td>P1</td><td><strong>Web del cliente</strong></td><td>URL del negocio</td><td>Auditar presencia y contenido</td></tr><tr><td>P1</td><td><strong>Google Maps / Business</strong></td><td><a href="https://business.google.com" target="_blank" rel="noopener">https://business.google.com</a></td><td>Ficha, reseñas y visibilidad local</td></tr><tr><td>P2</td><td><strong>WhatsApp del cliente</strong></td><td>wa.me/...</td><td>Enviar informe y propuesta</td></tr><tr><td>P3</td><td><strong>Vercel o Netlify</strong></td><td><a href="https://vercel.com" target="_blank" rel="noopener">https://vercel.com</a></td><td>Hosting de la landing</td></tr><tr><td>P3</td><td><strong>Registrador de dominio</strong></td><td><a href="https://www.namecheap.com" target="_blank" rel="noopener">https://www.namecheap.com</a></td><td>Dominio propio (o subdominio tuyo primero)</td></tr><tr><td>P4</td><td><strong>Meta Business (ruta A)</strong></td><td><a href="https://business.facebook.com" target="_blank" rel="noopener">https://business.facebook.com</a></td><td>API oficial WhatsApp — requiere empresa formal</td></tr><tr><td>P4</td><td><strong>Evolution API (ruta B)</strong></td><td><a href="https://evolution-api.com" target="_blank" rel="noopener">https://evolution-api.com</a></td><td>Bot rápido sin burocracia Meta — negocios informales</td></tr></tbody></table>
+    </div>
+      
+        <div class="prod-paso" data-paso="1">
+          <div class="prod-paso-head">
+            <h3>Paso 1 · Informe de marketing</h3>
+            <span class="prod-paso-progress">0/0</span>
+          </div>
+          <div class="prod-apps"><span class="prod-app">marketing-audit</span><span class="prod-app">audit-marketing</span><span class="prod-app">plantilla manual</span></div>
+          <p class="prod-meta"><strong>Conexión:</strong> URL → audit automático (o informe manual) → HTML paso-1 → enviar al cliente</p>
+          <p class="prod-planb"><strong>Plan B:</strong> Si el script falla: informe manual con plantilla (web + Maps + WhatsApp).</p>
+          <ul class="prod-checklist">
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-url" />
+                <span>Conseguir URL real del negocio</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-maps" />
+                <span>Revisar Google Maps: ficha, reseñas, horario</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-wa" />
+                <span>Probar WhatsApp del negocio (responde / no responde)</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-run" />
+                <span>Correr audit: python3 marketing_audit_main.py audit --url {url}</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-manual" />
+                <span>Plan B: si audit falla → completar informe manual con plantilla</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-html" />
+                <span>Publicar en entregables/paso-1-informe/</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-send" />
+                <span>Enviar informe al cliente</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p1-pago" />
+                <span>Cliente paga o confirma interés</span>
+              </label>
+            </li></ul>
+        </div>
+        <div class="prod-paso" data-paso="2">
+          <div class="prod-paso-head">
+            <h3>Paso 2 · Propuesta comercial</h3>
+            <span class="prod-paso-progress">0/0</span>
+          </div>
+          <div class="prod-apps"><span class="prod-app">market-proposal</span><span class="prod-app">market-report-pdf</span><span class="prod-app">creador de prompts</span></div>
+          <p class="prod-meta"><strong>Conexión:</strong> Hallazgos paso 1 → 3 planes con precio → HTML paso-2 → enviar si hay interés</p>
+          <p class="prod-planb"><strong>Plan B:</strong> Propuesta se envía solo si el cliente respondió al informe.</p>
+          <ul class="prod-checklist">
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p2-audit" />
+                <span>Importar hallazgos (audit.json o notas manuales)</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p2-planes" />
+                <span>Definir 3 planes con precios reales</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p2-html" />
+                <span>Actualizar paso-2-propuesta/index.html</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p2-send" />
+                <span>Enviar propuesta por WhatsApp o email</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p2-ok" />
+                <span>Cliente elige plan (verbal o por escrito)</span>
+              </label>
+            </li></ul>
+        </div>
+        <div class="prod-paso" data-paso="3">
+          <div class="prod-paso-head">
+            <h3>Paso 3 · Web presencia</h3>
+            <span class="prod-paso-progress">0/0</span>
+          </div>
+          <div class="prod-apps"><span class="prod-app">landing-lanzamiento</span><span class="prod-app">Vercel/Netlify</span><span class="prod-app">Google Business Profile</span></div>
+          <p class="prod-meta"><strong>Conexión:</strong> Propuesta OK → landing paso-3 → publicación → enlace en Mapas</p>
+          <p class="prod-planb"><strong>Plan B:</strong> Primero subdominio tuyo (cliente.presencialocal.cl); dominio del cliente después.</p>
+          <ul class="prod-checklist">
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-sub" />
+                <span>Plan B: subdominio temporal en línea en 24 h</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-landing" />
+                <span>Armar landing en paso-3-web</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-deploy" />
+                <span>Publicar en Vercel/Netlify (SSL activo)</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-dominio" />
+                <span>Dominio del cliente (tú compras/configuras DNS si hace falta)</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-cta" />
+                <span>CTA WhatsApp y formulario funcionando</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-gbp" />
+                <span>Perfil de Google Business con URL del sitio web</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p3-test" />
+                <span>Probar en móvil</span>
+              </label>
+            </li></ul>
+        </div>
+        <div class="prod-paso" data-paso="4">
+          <div class="prod-paso-head">
+            <h3>Paso 4 · Bot WhatsApp</h3>
+            <span class="prod-paso-progress">0/0</span>
+          </div>
+          <div class="prod-apps"><span class="prod-app">whatsapp-marketing</span><span class="prod-app">Meta API (A)</span><span class="prod-app">Evolution API (B)</span></div>
+          <p class="prod-meta"><strong>Conexión:</strong> Sitio web en línea → elegir ruta A o B → bot agenda / responde</p>
+          <p class="prod-planb"><strong>Plan B:</strong> Ruta B (Evolution): sin verificación Meta; ideal negocio informal.</p>
+          <ul class="prod-checklist">
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p4-ruta" />
+                <span>Elegir ruta: A oficial (Meta) o B rápida (Evolution)</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p4-meta" />
+                <span>Ruta A: cuenta Meta Business + documentos legales</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p4-evolution" />
+                <span>Ruta B: Evolution API + número dedicado</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p4-webhook" />
+                <span>Webhook / servidor con URL pública (conexión en vivo)</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p4-flujos" />
+                <span>Flujos: saludo, agendar, derivar a humano</span>
+              </label>
+            </li>
+            <li>
+              <label class="prod-check">
+                <input type="checkbox" data-task-id="p4-piloto" />
+                <span>Piloto 1 semana con cliente real</span>
+              </label>
+            </li></ul>
+        </div>
+    </div></div>
+        </div>
+      </div>
+      <div id="embudo-viewer" class="embudo-viewer" hidden>
+        <div class="embudo-toolbar">
+          <button type="button" class="embudo-tool" data-embudo-back>← Índice panel</button>
+          <span id="embudo-viewer-title" class="embudo-viewer-title">—</span>
+          <span id="embudo-viewer-step" class="embudo-viewer-step"></span>
+          <div class="embudo-tool-group">
+            <button type="button" class="embudo-tool is-disabled" data-embudo-prev disabled aria-disabled="true">← Anterior</button>
+            <button type="button" class="embudo-tool is-disabled" data-embudo-next disabled aria-disabled="true">Siguiente →</button>
+            <a id="embudo-external" class="embudo-tool embudo-tool-link" href="#" target="_blank" rel="noopener">Nueva pestaña ↗</a>
+          </div>
+        </div>
+        <iframe id="embudo-frame" class="embudo-frame" title="Vista previa presencia digital"></iframe>
+      </div>
+    </div></div>
+      </div>
+    </section>
+
+    <!-- RENTABILIDAD -->
+    <section id="view-rentabilidad" class="view">
+      <div class="card">
+        <div class="card-head"><h2>Ideas por crear — rentabilidad</h2><span class="hint">RANKING_RENTABILIDAD.json</span></div>
+        <div class="card-body">
+    <div class="rent-top3">
+      <h2>Prioridad ahora</h2>
+      <ol><li>1. auditorias-locales: 3 audits piloto live + outreach Maps</li><li>2. wasap-pymes: 1 negocio piloto temporada alta</li><li>3. presencia-digital: upsell solo tras audit cerrado</li></ol>
+    </div>
+    <div class="rent-leyenda">
+      <span><i class="dot dot-alta"></i> Alta — primer $ rápido</span>
+      <span><i class="dot dot-media"></i> Media — lento o bloqueado</span>
+      <span><i class="dot dot-baja"></i> Baja — mucho esfuerzo</span>
+      <span><i class="dot dot-no"></i> No crear</span>
+    </div>
+    <div class="rent-grid">
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#1</span>
+            <span class="rent-badge rent-alta">Alta</span>
+          </div>
+          <h3>Auditorías marketing web → retainer locales</h3>
+          <p class="rent-why">Pipeline marketing-audit hecho. Primer cobro en días. PDF = gancho comercial (modelo Zubair).</p>
+          <div class="rent-meta">Puntuación 98 · margen 25-55% · <span class="estado-tag listo">Infra: marketing-audit, clientes/…</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#2</span>
+            <span class="rent-badge rent-alta">Alta</span>
+          </div>
+          <h3>Bot WhatsApp + cola pedidos pymes</h3>
+          <p class="rent-why">SaaS recurrente CLP 35-120k/mes. Dolor real temporada alta. Mejor LTV que audit one-shot.</p>
+          <div class="rent-meta">Puntuación 90 · margen 60-85 bruto% · <span class="estado-tag falta">Falta MVP bot operativo — no solo copy</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#3</span>
+            <span class="rent-badge rent-alta">Alta</span>
+          </div>
+          <h3>Web + presencia digital para locales</h3>
+          <p class="rent-why">Upsell natural post-audit. Ticket setup alto. IA acelera landing.</p>
+          <div class="rent-meta">Puntuación 98 · margen 25-55% · <span class="estado-tag listo">Infra: landing-lanzamiento, creador de contenido</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#4</span>
+            <span class="rent-badge rent-media">Media</span>
+          </div>
+          <h3>Micro-SaaS audit marketing SMB ($19-49/mes)</h3>
+          <p class="rent-why">Nicho web 2026: herramientas caras excluyen 35% SMB. Productizar marketing-audit más adelante.</p>
+          <div class="rent-meta">Puntuación 75 · <span class="estado-tag falta">Necesita 5-10 clientes servicio antes de SaaS</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#5</span>
+            <span class="rent-badge rent-media">Media</span>
+          </div>
+          <h3>Sistema KDP resúmenes libros (producto + método)</h3>
+          <p class="rent-why">Stack completo (analisis → libros → contenido). Ingreso pasivo Amazon. Más lento que B2B local.</p>
+          <div class="rent-meta">Puntuación 85 · margen 15-40% · <span class="estado-tag listo">Infra: analisis-de-proyectos, libros a entender…</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#6</span>
+            <span class="rent-badge rent-baja">Baja</span>
+          </div>
+          <h3>CRM vertical nicho (entrenadores / clínicas locales)</h3>
+          <p class="rent-why">Vertical SaaS = retención alta. Genérico pierde. Requiere nicho único.</p>
+          <div class="rent-meta">Puntuación 70 · <span class="estado-tag falta">Mucho build; no encaja con lo ya hecho</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#7</span>
+            <span class="rent-badge rent-baja">Baja</span>
+          </div>
+          <h3>Landings + lanzamientos como servicio</h3>
+          <p class="rent-why">Skill listo. Mercado saturado. Solo rentable con clientes recurrentes.</p>
+          <div class="rent-meta">Puntuación 55 · <span class="estado-tag listo">Infra: landing-lanzamiento</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#8</span>
+            <span class="rent-badge rent-baja">Baja</span>
+          </div>
+          <h3>Secuencias WhatsApp marketing (solo copy)</h3>
+          <p class="rent-why">Entrega rápida pero ticket bajo y poco recurrente vs bot.</p>
+          <div class="rent-meta">Puntuación 50 · <span class="estado-tag listo">Infra: whatsapp-marketing</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#9</span>
+            <span class="rent-badge rent-baja">Baja</span>
+          </div>
+          <h3>Canal faceless + productos digitales</h3>
+          <p class="rent-why">Infra video existe. Competencia alta. Monetización lenta (6-12 meses).</p>
+          <div class="rent-meta">Puntuación 45 · <span class="estado-tag listo">Infra: guion-a-video, hooks-redes</span></div>
+        </article>
+        <article class="rent-card">
+          <div class="rent-card-top">
+            <span class="rent-rank">#10</span>
+            <span class="rent-badge rent-no">No crear</span>
+          </div>
+          <h3>Agencia IA genérica / packs skills</h3>
+          <p class="rent-why">Sin nicho = guerra de precios. Ya resuelto en cursorprime con router+skills.</p>
+          <div class="rent-meta">Puntuación 20 · <span class="estado-tag listo">Infra: skills</span></div>
+        </article></div>
+    <p class="rent-footer">Confianza medio · 2026-06-29 · Ranking rentabilidad para crear — mezcla ideas cursorprime + patrones web 2026. No son ingresos garantizados.</p></div>
+      </div>
+    </section>
+
+    <!-- SISTEMA -->
+    <section id="view-sistema" class="view">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><h2>Presencia digital</h2><span class="hint">Demostración Clínica Sol</span></div>
+          <div class="card-body"><div class="embudo-mini">
+        <div class="embudo-mini-row">
+          <span>1</span>
+          <div><div style="font-size:0.72rem;margin-bottom:3px"><a href="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-1-informe/index.html" target="_blank" rel="noopener">Informe de marketing</a></div>
+          <div class="embudo-mini-bar"><div class="embudo-mini-fill" style="width:100%"></div></div></div>
+          <span style="text-align:right;color:var(--accent)">100%</span>
+        </div>
+        <div class="embudo-mini-row">
+          <span>2</span>
+          <div><div style="font-size:0.72rem;margin-bottom:3px"><a href="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-2-propuesta/index.html" target="_blank" rel="noopener">Propuesta comercial</a></div>
+          <div class="embudo-mini-bar"><div class="embudo-mini-fill" style="width:100%"></div></div></div>
+          <span style="text-align:right;color:var(--accent)">100%</span>
+        </div>
+        <div class="embudo-mini-row">
+          <span>3</span>
+          <div><div style="font-size:0.72rem;margin-bottom:3px"><a href="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-3-web/index.html" target="_blank" rel="noopener">Web presencia</a></div>
+          <div class="embudo-mini-bar"><div class="embudo-mini-fill" style="width:100%"></div></div></div>
+          <span style="text-align:right;color:var(--accent)">100%</span>
+        </div>
+        <div class="embudo-mini-row">
+          <span>4</span>
+          <div><div style="font-size:0.72rem;margin-bottom:3px"><a href="../../clientes/clinica-sol/proyectos/audit-inicial/entregables/paso-4-whatsapp/index.html" target="_blank" rel="noopener">Bot WhatsApp</a></div>
+          <div class="embudo-mini-bar"><div class="embudo-mini-fill" style="width:100%"></div></div></div>
+          <span style="text-align:right;color:var(--accent)">100%</span>
+        </div></div><p class="embudo-mini-foot"><button type="button" class="link-btn" data-view="embudo">Ver presencia digital →</button></p></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Clientes</h2></div>
+          <div class="card-body"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Cliente</th><th>Proyectos</th><th>#</th></tr></thead><tbody><tr><td>clinica-sol</td><td>audit-inicial ✓</td><td>1</td></tr><tr><td>demo-kerkus</td><td>black-friday</td><td>1</td></tr><tr><td>empanadas-don-pedro</td><td>bot-pedidos</td><td>1</td></tr><tr><td>ferreteria-central</td><td>web-inicial</td><td>1</td></tr><tr><td>vertice-pro</td><td>shopify</td><td>1</td></tr></tbody></table></div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="card-head"><h2>Carpetas cursorprime</h2></div>
+        <div class="card-body"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Carpeta</th><th>Tipo</th><th>Comando</th><th>Contenido</th></tr></thead><tbody><tr><td>analisis-de-proyectos</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>centro de control prime, clientes, data, logs, meta, scripts</td></tr><tr><td>centro de control prime</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>meta, output, src</td></tr><tr><td>clientes</td><td>clientes</td><td>—</td><td style='font-size:0.72rem;color:var(--muted)'>_plantilla, clinica-sol, demo-kerkus, empanadas-don-pedro, ferreteria-central, vertice-pro</td></tr><tr><td>creador de contenido</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>data, gifs, imagenes, logs, meta, operador</td></tr><tr><td>creador de prompts</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>data, meta, plantillas, src</td></tr><tr><td>creador de skills</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>catalogo, data, logs, meta, plantillas, src</td></tr><tr><td>ideas de proyectos</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>borradores, docs, dropship_ml, evaluaciones, ideas, mejoras</td></tr><tr><td>libros a entender</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>ejemplos de pdf, libros, logs, meta, resumenes, src</td></tr><tr><td>linkedin-ghostwriter</td><td>pipeline</td><td>—</td><td style='font-size:0.72rem;color:var(--muted)'>posts_generados</td></tr><tr><td>lluvia-de-ideas</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>cola, data, logs, meta, src</td></tr><tr><td>marketing-audit</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>assets, data, logs, meta, src</td></tr><tr><td>meta</td><td>config</td><td>—</td><td style='font-size:0.72rem;color:var(--muted)'></td></tr><tr><td>project_lens</td><td>pipeline</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>data, logs, meta, scripts, src</td></tr><tr><td>prospeccion-locales</td><td>otro</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>data, src</td></tr><tr><td>proyecto landing</td><td>otro</td><td>—</td><td style='font-size:0.72rem;color:var(--muted)'>copy, preview, scripts, shopify</td></tr><tr><td>proyectos-top3</td><td>producto</td><td>—</td><td style='font-size:0.72rem;color:var(--muted)'>01-auditorias-locales, 02-wasap-pymes, 03-presencia-digital</td></tr><tr><td>sitio-pdf</td><td>otro</td><td>Comando</td><td style='font-size:0.72rem;color:var(--muted)'>data, logs, meta, src</td></tr><tr><td>vertice-pro-preview</td><td>otro</td><td>—</td><td style='font-size:0.72rem;color:var(--muted)'>assets</td></tr></tbody></table></div></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="card-head"><h2>Habilidades instaladas</h2><span class="hint">0 habilidades</span></div>
+        <div class="card-body"><div class="skills-row"><span class="empty">Ninguna</span></div></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Solo lectura · Viabilidad: <code>python3 panel_main.py viabilidad --live --refresh</code>
+    </footer>
+  </div>
+
+  <script>window.INVENTARIO = { …datos JSON… }</script>
+  <script>
+const ACCENT = '#58a6ff';
+const FONT = { family: 'Inter', size: 11 };
+
+function initCharts(D) {
+  if (typeof Chart === 'undefined') {
+    document.querySelectorAll('.chart-box').forEach(el =>…</script>
+</body>
+</html>

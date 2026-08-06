@@ -1,1 +1,6 @@
-https://stated-sequence-dennis-revised.trycloudflare.com/centro%20de%20control%20prime/output/panel.html
+http://localhost:8770/panel.html
+
+Centro de control prime — ver en Cursor
+1. Cmd+Shift+P → "Tasks: Run Task" → "Centro de control: abrir en Browser"
+2. O abre en Simple Browser: http://localhost:8770/panel.html
+3. O abre el archivo: centro de control prime/output/panel.html

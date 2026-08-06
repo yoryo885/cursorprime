@@ -2,13 +2,60 @@
   "version": "2.0.0",
   "inputs": [
     {
-      "id": "openSimpleBrowser",
+      "id": "openLandingBrowser",
       "type": "command",
       "command": "simpleBrowser.show",
       "args": ["http://localhost:8768/index.html"]
+    },
+    {
+      "id": "openCentroBrowser",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8770/panel.html"]
     }
   ],
   "tasks": [
+    {
+      "label": "Centro de control: abrir en Browser",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Centro de control: servir panel",
+        "Centro de control: launch Simple Browser"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Centro de control: servir panel",
+      "type": "shell",
+      "command": "python3 -m http.server 8770",
+      "options": {
+        "cwd": "${workspaceFolder}/centro de control prime/output"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Serving HTTP"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Centro de control: launch Simple Browser",
+      "type": "shell",
+      "command": "${input:openCentroBrowser}",
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "close": true
+      },
+      "problemMatcher": []
+    },
     {
       "label": "Vértice Pro: abrir en Browser",
       "dependsOrder": "sequence",
@@ -46,7 +93,7 @@
     {
       "label": "Vértice Pro: launch Simple Browser",
       "type": "shell",
-      "command": "${input:openSimpleBrowser}",
+      "command": "${input:openLandingBrowser}",
       "presentation": {
         "reveal": "never",
         "panel": "shared",
