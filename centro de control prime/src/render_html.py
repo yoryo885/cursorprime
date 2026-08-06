@@ -632,6 +632,9 @@ def render_html(inv: dict, *, href_prefix: str = "../") -> str:
   <style>{HUD_CSS}</style>
 </head>
 <body>
+  <div style="background:#3fb950;color:#0d1117;text-align:center;padding:10px 12px;font-weight:700;font-size:0.9rem;letter-spacing:0.02em">
+    ✓ Versión nueva · UI español · build {gen}
+  </div>
   <div class="app">
     <header class="topbar">
       <div class="topbar-brand">

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "nombre": "Centro de control prime",
-  "generado_at": "2026-08-06T00:48:37.564163+00:00",
+  "generado_at": "2026-08-06T01:05:15.565857+00:00",
   "resumen": {
     "analisis": 3,
     "radar_corridas": 3,
@@ -1020,7 +1020,7 @@
     "falta": 0
   },
   "analisis_ecosistema": {
-    "generado_at": "2026-08-06T00:48:37.563196+00:00",
+    "generado_at": "2026-08-06T01:05:15.565182+00:00",
     "avance_global": 90,
     "sintesis": "**Creador de proyectos** (8 módulos): 6 listos, 2 parciales — veredicto *avanzado* (avance medio 96%). **Proyectos creados** (8 pipelines): 0 listos, 8 parciales — veredicto *avanzado* (avance medio 85%). Bloqueadores en productos: **Auditoría de marketing**, **Bot WhatsApp pymes**. Cola lluvia: **12** sin revisar · **7** evaluaciones de ideas.",
     "capas": [
@@ -1659,7 +1659,7 @@
     }
   },
   "viabilidad_proyectos": {
-    "generado_at": "2026-08-06T00:48:37.564139+00:00",
+    "generado_at": "2026-08-06T01:05:15.565836+00:00",
     "total": 16,
     "capas": [
       {
